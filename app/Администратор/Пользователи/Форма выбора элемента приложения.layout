@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?><layout name="Form" prefHeight="300px" prefWidth="400px">
+<widget actionPerformed="btnSelectedActionPerformed" name="btnSelected" opaque="false" parent="Form" prefHeight="20px" prefWidth="100px" text="Выбрать" type="ButtonDesignInfo">
+<constraints bottom="10px" height="20px" right="110px" type="MarginConstraintsDesignInfo" width="100px"/>
+</widget>
+<widget actionPerformed="btnCloseActionPerformed" name="btnClose" opaque="false" parent="Form" prefHeight="20px" prefWidth="90px" text="Закрыть" type="ButtonDesignInfo">
+<constraints bottom="10px" height="20px" right="10px" type="MarginConstraintsDesignInfo" width="90px"/>
+</widget>
+<widget deletable="false" editable="false" insertable="false" mouseClicked="grdEntityMouseClicked" name="grdEntity" parent="Form" prefHeight="250px" prefWidth="380px" type="DbGridDesignInfo">
+<rowsColumnsDesignInfo>
+<rowsDatasource entityId="132134531478117" field="false"/>
+</rowsColumnsDesignInfo>
+<treeDesignInfo treeKind="2">
+<unaryLinkField entityId="132134531478117" fieldName="MDENT_PARENT_ID"/>
+<param2GetChildren entityId="132134531478117" field="false" fieldName="PARENT"/>
+<paramSourceField entityId="132134531478117" fieldName="MDENT_ID"/>
+</treeDesignInfo>
+<column cellFunction="grdEntity_MDENT_NAME_calcCell" name="MDENT_NAME" title="Элемент приложения" width="400">
+<controlInfo classHint="DbLabelDesignInfo">
+<datamodelElement entityId="129310403564032" fieldName="MDENT_NAME"/>
+</controlInfo>
+<datamodelElement entityId="132134531478117" fieldName="MDENT_NAME"/>
+<cellDesignInfo>
+<rowsKeyField/>
+<columnsKeyField/>
+<cellValueField/>
+</cellDesignInfo>
+<columnsDatasource/>
+<columnsDisplayField/>
+<cellsDatasource/>
+<headerStyle>
+<nativeFont name="Tahoma" size="11"/>
+</headerStyle>
+</column>
+<constraints bottom="40px" left="10px" right="10px" top="10px" type="MarginConstraintsDesignInfo"/>
+</widget>
+<layout type="MarginLayoutDesignInfo"/>
+</layout>

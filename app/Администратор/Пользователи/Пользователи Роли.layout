@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?><layout name="Form" prefHeight="300px" prefWidth="400px" windowClosing="formWindowClosing" windowOpened="formWindowOpened">
+<widget name="grdUsers" parent="Form" prefHeight="230px" prefWidth="380px" type="DbGridDesignInfo">
+<rowsColumnsDesignInfo>
+<rowsDatasource entityId="132135015195320" field="false"/>
+</rowsColumnsDesignInfo>
+<treeDesignInfo>
+<unaryLinkField/>
+<param2GetChildren/>
+<paramSourceField/>
+</treeDesignInfo>
+<column name="USR_NAME" title="Роль">
+<controlInfo classHint="DbTextDesignInfo">
+<datamodelElement entityId="132135015195320" fieldName="role_name"/>
+</controlInfo>
+<datamodelElement entityId="132135015195320" fieldName="role_name"/>
+<cellDesignInfo>
+<rowsKeyField/>
+<columnsKeyField/>
+<cellValueField/>
+</cellDesignInfo>
+<columnsDatasource/>
+<columnsDisplayField/>
+<cellsDatasource/>
+<headerStyle>
+<nativeFont name="Tahoma" size="11"/>
+</headerStyle>
+</column>
+<column name="USR_FORM" selectFunction="USR_FORM_selectValue" title="Стартовая форма">
+<controlInfo classHint="DbComboDesignInfo">
+<valueField entityId="132134563800070" fieldName="mdent_id"/>
+<displayField entityId="132134563800070" fieldName="mdent_name"/>
+<datamodelElement entityId="132135015195320" fieldName="defaultform"/>
+</controlInfo>
+<datamodelElement entityId="132135015195320" fieldName="defaultform"/>
+<cellDesignInfo>
+<rowsKeyField/>
+<columnsKeyField/>
+<cellValueField/>
+</cellDesignInfo>
+<columnsDatasource/>
+<columnsDisplayField/>
+<cellsDatasource/>
+<headerStyle>
+<nativeFont name="Tahoma" size="11"/>
+</headerStyle>
+</column>
+<constraints height="230px" left="10px" top="30px" type="MarginConstraintsDesignInfo" width="380px"/>
+</widget>
+<widget actionPerformed="btnCloseActionPerformed" name="btnClose" opaque="false" parent="Form" prefHeight="20px" prefWidth="100px" text="Закрыть" type="ButtonDesignInfo">
+<constraints bottom="10px" height="20px" right="10px" type="MarginConstraintsDesignInfo" width="100px"/>
+</widget>
+<widget floatable="false" name="jToolBar" parent="Form" prefHeight="30px" prefWidth="380px" type="ToolbarDesignInfo">
+<constraints bottom="270px" height="30px" left="10px" right="10px" top="0px" type="MarginConstraintsDesignInfo" width="380px"/>
+</widget>
+<widget actionPerformed="btnCreateUserActionPerformed" borderPainted="false" icon="user--plus.png" name="btnCreateUser" opaque="false" parent="jToolBar" prefHeight="23px" prefWidth="23px" toolTipText="Создать пользователя" type="ButtonDesignInfo"/>
+<widget actionPerformed="btnDeleteUserActionPerformed" borderPainted="false" icon="user--minus.png" name="btnDeleteUser" opaque="false" parent="jToolBar" prefHeight="23px" prefWidth="23px" toolTipText="Удалить пользователя" type="ButtonDesignInfo"/>
+<widget actionPerformed="btnSaveActionPerformed" borderPainted="false" icon="disk-blue.png" name="btnSave" opaque="false" parent="jToolBar" prefHeight="23px" prefWidth="23px" toolTipText="Сохранить" type="ButtonDesignInfo"/>
+<widget actionPerformed="btnRefreshActionPerformed" borderPainted="false" icon="refresh/refresh.png" name="btnRefresh" opaque="false" parent="jToolBar" prefHeight="23px" prefWidth="23px" toolTipText="Обновить" type="ButtonDesignInfo"/>
+<widget actionPerformed="btnFindActionPerformed" borderPainted="false" icon="binocular.png" name="btnFind" opaque="false" parent="jToolBar" prefHeight="23px" prefWidth="23px" toolTipText="Найти..." type="ButtonDesignInfo"/>
+<layout type="MarginLayoutDesignInfo"/>
+</layout>

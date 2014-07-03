@@ -1,0 +1,5 @@
+/**
+ * @name 134514554903531
+*/
+DELETE FROM mtd_entities
+where mdent_id in (132058680585958, 131891445431191)

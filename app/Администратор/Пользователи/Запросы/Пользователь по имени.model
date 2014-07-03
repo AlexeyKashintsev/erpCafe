@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?><datamodel>
+<parameters>
+<parameter description="" name="UserName" nullable="true" parameterMode="1" precision="0" scale="0" selectionForm="null" signed="true" size="100" type="12" typeName="VARCHAR"/>
+</parameters>
+<parametersEntity entityHeight="200" entityIconified="false" entityLocationX="8" entityLocationY="7" entityWidth="150"/>
+<entity Title="mtd_users" entityHeight="200" entityIconified="false" entityId="132137437482860" entityLocationX="176" entityLocationY="6" entityWidth="150" queryId="null" tableAlias="t" tableName="mtd_users" tableSchemaName=""/>
+<relation leftEntityFieldName="UserName" leftEntityId="-1" rightEntityFieldName="usr_name" rightEntityId="132137437482860"/>
+</datamodel>

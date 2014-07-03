@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?><datamodel>
+<parameters>
+<parameter description="Пользователь" name="parUser" nullable="true" parameterMode="1" precision="0" scale="0" selectionForm="null" signed="true" size="100" type="12" typeName="VARCHAR"/>
+</parameters>
+<parametersEntity entityHeight="200" entityIconified="false" entityLocationX="8" entityLocationY="7" entityWidth="150"/>
+<entity Name="dsUser" Title="Пользователи" entityHeight="200" entityIconified="false" entityId="132134521042108" entityLocationX="228" entityLocationY="-2" entityWidth="150" queryId="132134435379639" tableName="" tableSchemaName=""/>
+<relation leftEntityFieldName="parUser" leftEntityId="-1" rightEntityFieldName="usr_name" rightEntityId="132134521042108"/>
+</datamodel>

@@ -1,0 +1,4 @@
+/**
+ * @name VACUUM
+ */
+VACUUM FULL

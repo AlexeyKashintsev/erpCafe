@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?><datamodel>
+<parameters>
+<parameter description="" name="parUserName" nullable="true" parameterMode="1" precision="0" scale="0" selectionForm="null" signed="true" size="100" type="12" typeName="VARCHAR"/>
+</parameters>
+<parametersEntity entityHeight="200" entityIconified="false" entityLocationX="12" entityLocationY="12" entityWidth="150"/>
+<entity Name="dsRoleType" Title="Типы ролей справочник" entityHeight="200" entityIconified="false" entityId="134514863285233" entityLocationX="531" entityLocationY="6" entityWidth="150" queryId="134514554903531" tableDbId="null" tableName="" tableSchemaName=""/>
+<entity Name="dsEployees" Title="Пользователи" entityHeight="200" entityIconified="false" entityId="132326676120311" entityLocationX="367" entityLocationY="6" entityWidth="150" queryId="132134435379639" tableDbId="null" tableName="" tableSchemaName=""/>
+<relation leftEntityFieldName="parUserName" leftEntityId="-1" rightEntityFieldName="usr_name" rightEntityId="132326676120311"/>
+</datamodel>
