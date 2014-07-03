@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?><datamodel>
+  <parametersEntity entityHeight="200" entityIconified="false" entityLocationX="12" entityLocationY="12" entityWidth="150"/>
+  <entity Name="qBillById" Title="" entityHeight="200" entityIconified="false" entityId="140411536313039" entityLocationX="195" entityLocationY="7" entityWidth="150" queryId="qBillById" tableName="" tableSchemaName=""/>
+  <entity Name="billsCount" Title="" entityHeight="200" entityIconified="false" entityId="140411547693998" entityLocationX="450" entityLocationY="74" entityWidth="150" queryId="billsCount" tableName="" tableSchemaName=""/>
+</datamodel>

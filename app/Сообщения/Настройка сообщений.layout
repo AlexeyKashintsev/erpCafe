@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?><layout defaultCloseOperation="2" name="Form" prefHeight="311px" prefWidth="396px">
+  <widget name="modelGrid" parent="Form" prefHeight="249px" prefWidth="386px" type="DbGridDesignInfo">
+    <column name="colEVENT_TYPE" title="Событие" width="100">
+      <controlInfo classHint="DbComboDesignInfo" name="view" prefHeight="0px" prefWidth="0px">
+        <displayField entityId="139090927626527" fieldName="EVENTNAME"/>
+        <valueField entityId="139090927626527" fieldName="TR_TRACKING_EVENT_TYPES_ID"/>
+      </controlInfo>
+      <cellDesignInfo>
+        <cellValueField/>
+        <columnsKeyField/>
+        <rowsKeyField/>
+      </cellDesignInfo>
+      <cellsDatasource/>
+      <columnsDatasource/>
+      <columnsDisplayField/>
+      <headerStyle>
+        <nativeFont name="Lucida Grande" size="13"/>
+      </headerStyle>
+      <datamodelElement entityId="139090827886639" fieldName="EVENT_TYPE"/>
+    </column>
+    <column name="column" title="Оповещение">
+      <column name="colSEND_TO_SCREEN" title="на экран">
+        <controlInfo classHint="DbCheckDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
+        <cellDesignInfo>
+          <cellValueField/>
+          <columnsKeyField/>
+          <rowsKeyField/>
+        </cellDesignInfo>
+        <cellsDatasource/>
+        <columnsDatasource/>
+        <columnsDisplayField/>
+        <headerStyle>
+          <nativeFont name="Lucida Grande" size="13"/>
+        </headerStyle>
+        <datamodelElement entityId="139090827886639" fieldName="SEND_TO_SCREEN"/>
+      </column>
+      <column name="colSEND_EMAIL" title="по e-mail">
+        <controlInfo classHint="DbCheckDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
+        <cellDesignInfo>
+          <cellValueField/>
+          <columnsKeyField/>
+          <rowsKeyField/>
+        </cellDesignInfo>
+        <cellsDatasource/>
+        <columnsDatasource/>
+        <columnsDisplayField/>
+        <headerStyle>
+          <nativeFont name="Lucida Grande" size="13"/>
+        </headerStyle>
+        <datamodelElement entityId="139090827886639" fieldName="SEND_EMAIL"/>
+      </column>
+      <column name="colSEND_SMS" title="по СМС">
+        <controlInfo classHint="DbCheckDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
+        <cellDesignInfo>
+          <cellValueField/>
+          <columnsKeyField/>
+          <rowsKeyField/>
+        </cellDesignInfo>
+        <cellsDatasource/>
+        <columnsDatasource/>
+        <columnsDisplayField/>
+        <headerStyle>
+          <nativeFont name="Lucida Grande" size="13"/>
+        </headerStyle>
+        <datamodelElement entityId="139090827886639" fieldName="SEND_SMS"/>
+      </column>
+      <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
+      <cellDesignInfo>
+        <cellValueField/>
+        <columnsKeyField/>
+        <rowsKeyField/>
+      </cellDesignInfo>
+      <cellsDatasource/>
+      <columnsDatasource/>
+      <columnsDisplayField/>
+      <headerStyle>
+        <nativeFont name="Lucida Grande" size="13"/>
+      </headerStyle>
+    </column>
+    <rowsColumnsDesignInfo>
+      <rowsDatasource entityId="139090827886639" field="false"/>
+    </rowsColumnsDesignInfo>
+    <treeDesignInfo/>
+    <constraints bottom="57px" left="5px" right="5px" top="5px" type="MarginConstraintsDesignInfo"/>
+  </widget>
+  <widget mouseClicked="btnSaveMouseClicked" name="btnSave" parent="Form" prefHeight="29px" prefWidth="98px" text="Сохранить" type="ButtonDesignInfo">
+    <constraints bottom="16px" height="29px" right="94px" type="MarginConstraintsDesignInfo" width="98px"/>
+  </widget>
+  <widget actionPerformed="btnExitActionPerformed" name="btnExit" parent="Form" prefHeight="29px" prefWidth="94px" text="Закрыть" type="ButtonDesignInfo">
+    <constraints bottom="16px" height="29px" right="6px" type="MarginConstraintsDesignInfo" width="94px"/>
+  </widget>
+  <layout type="MarginLayoutDesignInfo"/>
+</layout>

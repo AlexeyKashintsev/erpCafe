@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?><datamodel>
+  <parameters>
+    <parameter description="" name="aEqu" nullable="true" parameterMode="1" precision="0" scale="0" selectionForm="null" signed="true" size="0" type="2" typeName="NUMERIC"/>
+    <parameter description="" name="date" nullable="true" parameterMode="1" precision="0" scale="0" selectionForm="null" signed="true" size="100" type="91" typeName="DATE"/>
+    <parameter description="" name="agent" nullable="true" parameterMode="1" precision="0" scale="0" selectionForm="null" signed="true" size="0" type="2" typeName="NUMERIC"/>
+    <parameter description="" name="aCar" nullable="true" parameterMode="1" precision="0" scale="0" selectionForm="null" signed="true" size="0" type="2" typeName="NUMERIC"/>
+  </parameters>
+  <parametersEntity entityHeight="200" entityIconified="false" entityLocationX="12" entityLocationY="12" entityWidth="150"/>
+  <entity Name="equ" Title="Оборудование в подразделении" entityHeight="200" entityIconified="false" entityId="139238724593661" entityLocationX="184" entityLocationY="26" entityWidth="354" queryId="126468849923104" tableName="" tableSchemaName=""/>
+  <entity Name="nav_data_test" Title="Навигационные данные на ТА" entityHeight="200" entityIconified="false" entityId="139265078019428" entityLocationX="567" entityLocationY="16" entityWidth="150" queryId="nav_data_test" tableName="" tableSchemaName=""/>
+  <relation leftEntityId="-1" leftEntityParameterName="agent" rightEntityId="139238724593661" rightEntityParameterName="agent"/>
+  <relation leftEntityId="-1" leftEntityParameterName="aCar" rightEntityId="139584165282825" rightEntityParameterName="aEqu"/>
+  <relation leftEntityId="-1" leftEntityParameterName="date" rightEntityId="139584165282825" rightEntityParameterName="date"/>
+  <relation leftEntityId="-1" leftEntityParameterName="date" rightEntityId="139238724593661" rightEntityParameterName="TA"/>
+  <referenceRelation leftEntityFieldName="device_id" leftEntityId="139265078019428" rightEntityFieldName="tr_equipment_id" rightEntityId="139238724593661"/>
+  <referenceRelation leftEntityFieldName="parentmark" leftEntityId="139238724593661" rightEntityFieldName="tr_marks_id" rightEntityId="139238724593661"/>
+  <referenceRelation leftEntityFieldName="equmark" leftEntityId="139238724593661" rightEntityFieldName="tr_marks_id" rightEntityId="139238724593661"/>
+</datamodel>

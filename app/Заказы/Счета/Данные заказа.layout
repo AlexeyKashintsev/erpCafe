@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?><layout defaultCloseOperation="2" name="Form" prefHeight="298px" prefWidth="552px">
+  <widget deletable="false" editable="false" insertable="false" mouseClicked="mgSelectListMouseClicked" name="mgSelectList" parent="Form" prefHeight="240px" prefWidth="184px" type="DbGridDesignInfo">
+    <column name="column" title="Наименование">
+      <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
+      <datamodelElement entityId="140393275093522" fieldName="pName"/>
+      <cellDesignInfo>
+        <cellValueField/>
+        <columnsKeyField/>
+        <rowsKeyField/>
+      </cellDesignInfo>
+      <cellsDatasource/>
+      <columnsDatasource/>
+      <columnsDisplayField/>
+      <headerStyle>
+        <nativeFont name="Lucida Grande" size="13"/>
+      </headerStyle>
+    </column>
+    <rowsColumnsDesignInfo>
+      <rowsDatasource entityId="140393275093522" field="false"/>
+    </rowsColumnsDesignInfo>
+    <treeDesignInfo>
+      <unaryLinkField entityId="140393275093522" fieldName="pParent"/>
+    </treeDesignInfo>
+    <constraints bottom="58px" left="0px" top="0px" type="MarginConstraintsDesignInfo" width="184px"/>
+  </widget>
+  <widget actionPerformed="btnAddActionPerformed" name="btnAdd" parent="Form" prefHeight="41px" prefWidth="98px" text="Добавить" type="ButtonDesignInfo">
+    <constraints bottom="7px" height="41px" left="84px" type="MarginConstraintsDesignInfo" width="98px"/>
+  </widget>
+  <widget name="pnlDetails" parent="Form" prefHeight="240px" prefWidth="360px" type="PanelDesignInfo">
+    <layout axis="3" type="BoxLayoutDesignInfo"/>
+    <constraints bottom="58px" left="192px" right="0px" top="0px" type="MarginConstraintsDesignInfo"/>
+  </widget>
+  <widget name="lbDetails" parent="Form" prefHeight="16px" prefWidth="336px" text="Итого 0 позиций на сумму 0 рублей" type="LabelDesignInfo">
+    <constraints bottom="18px" height="16px" left="204px" right="12px" type="MarginConstraintsDesignInfo"/>
+  </widget>
+  <layout type="MarginLayoutDesignInfo"/>
+</layout>

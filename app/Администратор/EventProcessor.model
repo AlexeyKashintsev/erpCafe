@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?><datamodel>
+  <parametersEntity entityHeight="200" entityIconified="false" entityLocationX="12" entityLocationY="12" entityWidth="150"/>
+  <entity Name="eventTypes" Title="" entityHeight="200" entityIconified="false" entityId="140413290324291" entityLocationX="435" entityLocationY="50" entityWidth="150" queryId="eventTypes" tableName="" tableSchemaName=""/>
+  <entity Name="eventById" Title="" entityHeight="200" entityIconified="false" entityId="140413275452907" entityLocationX="242" entityLocationY="50" entityWidth="150" queryId="eventById" tableName="" tableSchemaName=""/>
+  <referenceRelation leftEntityFieldName="event_type" leftEntityId="140413275452907" rightEntityFieldName="adm_event_types_id" rightEntityId="140413290324291"/>
+</datamodel>

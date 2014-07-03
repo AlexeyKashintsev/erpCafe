@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?><datamodel>
+  <parametersEntity entityHeight="200" entityIconified="false" entityLocationX="12" entityLocationY="12" entityWidth="150"/>
+  <entity Name="eventTypes" Title="Типы событий" entityHeight="200" entityIconified="false" entityId="139090927626527" entityLocationX="337" entityLocationY="11" entityWidth="150" queryId="EventTypes" tableName="" tableSchemaName=""/>
+  <entity Name="notification_settings" Title="Настройка сообщений пользователя" entityHeight="200" entityIconified="false" entityId="139090827886639" entityLocationX="173" entityLocationY="11" entityWidth="150" queryId="notification_settings" tableName="" tableSchemaName=""/>
+  <referenceRelation leftEntityFieldName="EVENT_TYPE" leftEntityId="139090827886639" rightEntityFieldName="TR_TRACKING_EVENT_TYPES_ID" rightEntityId="139090927626527"/>
+</datamodel>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?><datamodel>
+  <parameters>
+    <parameter description="" name="itemName" nullable="true" parameterMode="1" precision="1" scale="0" selectionForm="null" signed="true" size="200" type="12" typeName="VARCHAR"/>
+    <parameter description="" name="itemDesc" nullable="true" parameterMode="1" precision="0" scale="0" selectionForm="null" signed="true" size="3" type="12" typeName="VARCHAR"/>
+    <parameter description="" name="cost" nullable="true" parameterMode="1" precision="0" scale="0" selectionForm="null" signed="true" size="0" type="2" typeName="NUMERIC"/>
+    <parameter description="" name="quantity" nullable="true" parameterMode="1" precision="0" scale="0" selectionForm="null" signed="true" size="0" type="2" typeName="NUMERIC"/>
+    <parameter description="" name="sum" nullable="true" parameterMode="1" precision="0" scale="0" selectionForm="null" signed="true" size="0" type="2" typeName="NUMERIC"/>
+  </parameters>
+  <parametersEntity entityHeight="200" entityIconified="false" entityLocationX="12" entityLocationY="11" entityWidth="150" onAfterChange="paramsOnChanged"/>
+</datamodel>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?><layout defaultCloseOperation="2" name="Form" prefHeight="37px" prefWidth="802px">
+  <widget name="lbMultiply2" parent="Form" prefHeight="28px" prefWidth="12px" text="=" type="LabelDesignInfo">
+    <constraints height="28px" right="97px" top="5px" type="MarginConstraintsDesignInfo" width="12px"/>
+  </widget>
+  <widget name="lbMultiply" parent="Form" prefHeight="28px" prefWidth="12px" text="*" type="LabelDesignInfo">
+    <constraints height="28px" right="193px" top="5px" type="MarginConstraintsDesignInfo" width="12px"/>
+  </widget>
+  <widget name="lbSum" parent="Form" prefHeight="28px" prefWidth="84px" text="Наименование" type="LabelDesignInfo">
+    <constraints height="28px" right="1px" top="5px" type="MarginConstraintsDesignInfo" width="84px"/>
+  </widget>
+  <widget name="lbDef" parent="Form" prefHeight="28px" prefWidth="24px" text="шт" type="LabelDesignInfo">
+    <constraints height="28px" right="109px" top="5px" type="MarginConstraintsDesignInfo" width="24px"/>
+  </widget>
+  <widget name="lbCost" parent="Form" prefHeight="28px" prefWidth="57px" text="1000 р." type="LabelDesignInfo">
+    <constraints height="28px" right="217px" top="5px" type="MarginConstraintsDesignInfo" width="57px"/>
+  </widget>
+  <widget format="#0" name="modelFormattedField" parent="Form" prefHeight="28px" prefWidth="45px" type="DbLabelDesignInfo" valueType="0">
+    <datamodelElement entityId="-1" fieldName="quantity"/>
+    <constraints height="28px" right="145px" top="8px" type="MarginConstraintsDesignInfo" width="45px"/>
+  </widget>
+  <widget name="lbName" parent="Form" prefHeight="28px" prefWidth="516px" text="Наименование" type="LabelDesignInfo">
+    <constraints height="28px" left="12px" right="274px" top="5px" type="MarginConstraintsDesignInfo"/>
+  </widget>
+  <layout type="MarginLayoutDesignInfo"/>
+</layout>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?><layout defaultCloseOperation="2" name="Form" prefHeight="308px" prefWidth="280px">
+  <widget actionPerformed="btnCreateBillActionPerformed" name="btnCreateBill" parent="Form" prefHeight="29px" prefWidth="122px" text="Сохранить" type="ButtonDesignInfo">
+    <constraints bottom="8px" height="29px" right="4px" type="MarginConstraintsDesignInfo" width="122px"/>
+  </widget>
+  <widget name="label" parent="Form" prefHeight="16px" prefWidth="84px" text="Получатель" type="LabelDesignInfo">
+    <constraints height="16px" left="12px" top="12px" type="MarginConstraintsDesignInfo" width="84px"/>
+  </widget>
+  <widget name="label2" parent="Form" prefHeight="16px" prefWidth="38px" text="ИНН" type="LabelDesignInfo">
+    <constraints height="16px" left="12px" top="66px" type="MarginConstraintsDesignInfo" width="38px"/>
+  </widget>
+  <widget name="label3" parent="Form" prefHeight="16px" prefWidth="38px" text="КПП" type="LabelDesignInfo">
+    <constraints height="16px" left="144px" top="66px" type="MarginConstraintsDesignInfo" width="38px"/>
+  </widget>
+  <widget name="tfSupplierName" parent="Form" prefHeight="28px" prefWidth="264px" text="textField" type="TextFieldDesignInfo">
+    <constraints height="28px" left="12px" top="32px" type="MarginConstraintsDesignInfo" width="264px"/>
+  </widget>
+  <widget name="tfSupplierINN" parent="Form" prefHeight="28px" prefWidth="84px" text="textField1" type="TextFieldDesignInfo">
+    <constraints height="28px" left="48px" top="60px" type="MarginConstraintsDesignInfo" width="84px"/>
+  </widget>
+  <widget name="tfSupplierKPP" parent="Form" prefHeight="28px" prefWidth="96px" text="textField2" type="TextFieldDesignInfo">
+    <constraints height="28px" left="180px" top="60px" type="MarginConstraintsDesignInfo" width="96px"/>
+  </widget>
+  <widget name="label4" parent="Form" prefHeight="16px" prefWidth="48px" text="Адрес" type="LabelDesignInfo">
+    <constraints height="16px" left="12px" top="90px" type="MarginConstraintsDesignInfo" width="48px"/>
+  </widget>
+  <widget name="tfSupplierAddress" parent="Form" prefHeight="28px" prefWidth="264px" text="textField3" type="TextFieldDesignInfo">
+    <constraints height="28px" left="12px" top="108px" type="MarginConstraintsDesignInfo" width="264px"/>
+  </widget>
+  <widget name="label5" parent="Form" prefHeight="16px" prefWidth="156px" text="Банк" type="LabelDesignInfo">
+    <constraints height="16px" left="12px" top="144px" type="MarginConstraintsDesignInfo" width="156px"/>
+  </widget>
+  <widget name="tfBankName" parent="Form" prefHeight="28px" prefWidth="264px" text="textField4" type="TextFieldDesignInfo">
+    <constraints height="28px" left="12px" top="164px" type="MarginConstraintsDesignInfo" width="264px"/>
+  </widget>
+  <widget name="label1" parent="Form" prefHeight="16px" prefWidth="60px" text="Счет №" type="LabelDesignInfo">
+    <constraints height="16px" left="12px" top="198px" type="MarginConstraintsDesignInfo" width="60px"/>
+  </widget>
+  <widget name="tfAccountNumber" parent="Form" prefHeight="28px" prefWidth="204px" text="textField5" type="TextFieldDesignInfo">
+    <constraints height="28px" left="72px" top="192px" type="MarginConstraintsDesignInfo" width="204px"/>
+  </widget>
+  <widget name="label6" parent="Form" prefHeight="16px" prefWidth="38px" text="БИК" type="LabelDesignInfo">
+    <constraints height="16px" left="12px" top="222px" type="MarginConstraintsDesignInfo" width="38px"/>
+  </widget>
+  <widget name="tfBIK" parent="Form" prefHeight="28px" prefWidth="204px" text="textField6" type="TextFieldDesignInfo">
+    <constraints height="28px" left="72px" top="216px" type="MarginConstraintsDesignInfo" width="204px"/>
+  </widget>
+  <widget name="label7" parent="Form" prefHeight="16px" prefWidth="60px" text="Кор. сч" type="LabelDesignInfo">
+    <constraints height="16px" left="12px" top="246px" type="MarginConstraintsDesignInfo" width="60px"/>
+  </widget>
+  <widget name="tfCorAccountNumber" parent="Form" prefHeight="28px" prefWidth="204px" text="textField7" type="TextFieldDesignInfo">
+    <constraints height="28px" left="72px" top="240px" type="MarginConstraintsDesignInfo" width="204px"/>
+  </widget>
+  <layout type="MarginLayoutDesignInfo"/>
+</layout>

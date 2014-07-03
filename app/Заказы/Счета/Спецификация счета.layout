@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?><layout defaultCloseOperation="2" name="Form" prefHeight="346px" prefWidth="592px" windowOpened="formWindowOpened">
+  <widget name="label" parent="Form" prefHeight="16px" prefWidth="72px" text="Дата счета" type="LabelDesignInfo">
+    <constraints height="16px" left="12px" top="18px" type="MarginConstraintsDesignInfo" width="72px"/>
+  </widget>
+  <widget name="modelDate" parent="Form" prefHeight="28px" prefWidth="119px" type="DbDateDesignInfo">
+    <datamodelElement entityId="-1" fieldName="billDate"/>
+    <constraints height="28px" left="96px" top="12px" type="MarginConstraintsDesignInfo" width="119px"/>
+  </widget>
+  <widget name="label1" parent="Form" prefHeight="16px" prefWidth="60px" text="От кого:" type="LabelDesignInfo">
+    <constraints height="16px" left="228px" top="18px" type="MarginConstraintsDesignInfo" width="60px"/>
+  </widget>
+  <widget name="lbSupplierName" parent="Form" prefHeight="16px" prefWidth="300px" text="ООО &quot;Кто-то&quot;" type="LabelDesignInfo">
+    <constraints height="16px" left="288px" right="4px" top="18px" type="MarginConstraintsDesignInfo"/>
+  </widget>
+  <widget name="label2" parent="Form" prefHeight="16px" prefWidth="180px" text="Наименование покупателя" type="LabelDesignInfo">
+    <constraints height="16px" left="12px" top="48px" type="MarginConstraintsDesignInfo" width="180px"/>
+  </widget>
+  <widget name="tfCostumerName" parent="Form" prefHeight="28px" prefWidth="569px" type="TextFieldDesignInfo">
+    <constraints height="28px" left="12px" right="11px" top="72px" type="MarginConstraintsDesignInfo"/>
+  </widget>
+  <widget name="label3" parent="Form" prefHeight="16px" prefWidth="144px" text="Позиции по счету" type="LabelDesignInfo">
+    <constraints height="16px" left="12px" top="108px" type="MarginConstraintsDesignInfo" width="144px"/>
+  </widget>
+  <widget name="modelGrid" parent="Form" prefHeight="135px" prefWidth="572px" type="DbGridDesignInfo">
+    <column name="colPNumb" title="№" width="10">
+      <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
+      <cellDesignInfo>
+        <cellValueField/>
+        <columnsKeyField/>
+        <rowsKeyField/>
+      </cellDesignInfo>
+      <cellsDatasource/>
+      <columnsDatasource/>
+      <columnsDisplayField/>
+      <headerStyle>
+        <nativeFont name="Lucida Grande" size="13"/>
+      </headerStyle>
+      <datamodelElement entityId="140388527435094" fieldName="pNumb"/>
+    </column>
+    <column name="colPName" title="Наименование">
+      <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
+      <cellDesignInfo>
+        <cellValueField/>
+        <columnsKeyField/>
+        <rowsKeyField/>
+      </cellDesignInfo>
+      <cellsDatasource/>
+      <columnsDatasource/>
+      <columnsDisplayField/>
+      <headerStyle>
+        <nativeFont name="Lucida Grande" size="13"/>
+      </headerStyle>
+      <datamodelElement entityId="140388527435094" fieldName="pName"/>
+    </column>
+    <column name="colPDef" title="Единица измерения" visible="false" width="30">
+      <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
+      <cellDesignInfo>
+        <cellValueField/>
+        <columnsKeyField/>
+        <rowsKeyField/>
+      </cellDesignInfo>
+      <cellsDatasource/>
+      <columnsDatasource/>
+      <columnsDisplayField/>
+      <headerStyle>
+        <nativeFont name="Lucida Grande" size="13"/>
+      </headerStyle>
+      <datamodelElement entityId="140388527435094" fieldName="pDef"/>
+    </column>
+    <column name="colPPrice" title="Цена" width="30">
+      <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
+      <cellDesignInfo>
+        <cellValueField/>
+        <columnsKeyField/>
+        <rowsKeyField/>
+      </cellDesignInfo>
+      <cellsDatasource/>
+      <columnsDatasource/>
+      <columnsDisplayField/>
+      <headerStyle>
+        <nativeFont name="Lucida Grande" size="13"/>
+      </headerStyle>
+      <datamodelElement entityId="140388527435094" fieldName="pPrice"/>
+    </column>
+    <column name="colPCount" title="Количество" width="30">
+      <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
+      <cellDesignInfo>
+        <cellValueField/>
+        <columnsKeyField/>
+        <rowsKeyField/>
+      </cellDesignInfo>
+      <cellsDatasource/>
+      <columnsDatasource/>
+      <columnsDisplayField/>
+      <headerStyle>
+        <nativeFont name="Lucida Grande" size="13"/>
+      </headerStyle>
+      <datamodelElement entityId="140388527435094" fieldName="pCount"/>
+    </column>
+    <column name="colPCost" title="Сумма" width="30">
+      <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
+      <cellDesignInfo>
+        <cellValueField/>
+        <columnsKeyField/>
+        <rowsKeyField/>
+      </cellDesignInfo>
+      <cellsDatasource/>
+      <columnsDatasource/>
+      <columnsDisplayField/>
+      <headerStyle>
+        <nativeFont name="Lucida Grande" size="13"/>
+      </headerStyle>
+      <datamodelElement entityId="140388527435094" fieldName="pCost"/>
+    </column>
+    <rowsColumnsDesignInfo>
+      <rowsDatasource entityId="140388527435094" field="false"/>
+    </rowsColumnsDesignInfo>
+    <treeDesignInfo/>
+    <constraints bottom="79px" left="12px" right="8px" top="132px" type="MarginConstraintsDesignInfo"/>
+  </widget>
+  <widget actionPerformed="buttonActionPerformed" name="button" parent="Form" prefHeight="29px" prefWidth="86px" text="Добавить" type="ButtonDesignInfo">
+    <constraints bottom="14px" height="29px" left="12px" type="MarginConstraintsDesignInfo" width="86px"/>
+  </widget>
+  <widget actionPerformed="btnCreateBillActionPerformed" name="btnCreateBill" parent="Form" prefHeight="29px" prefWidth="154px" text="Сформировать" type="ButtonDesignInfo">
+    <constraints bottom="14px" height="29px" right="11px" type="MarginConstraintsDesignInfo" width="154px"/>
+  </widget>
+  <widget name="label4" parent="Form" prefHeight="16px" prefWidth="62px" text="Сумма" type="LabelDesignInfo">
+    <constraints bottom="54px" height="16px" right="110px" type="MarginConstraintsDesignInfo" width="62px"/>
+  </widget>
+  <widget name="lbSum" parent="Form" prefHeight="16px" prefWidth="110px" text="0 р." type="LabelDesignInfo">
+    <constraints bottom="54px" height="16px" right="14px" type="MarginConstraintsDesignInfo" width="110px"/>
+  </widget>
+  <layout type="MarginLayoutDesignInfo"/>
+</layout>

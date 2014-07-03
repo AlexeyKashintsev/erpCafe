@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?><layout defaultCloseOperation="2" name="Form" prefHeight="325px" prefWidth="490px">
+  <widget actionPerformed="buttonActionPerformed" name="button" parent="Form" prefHeight="29px" prefWidth="86px" text="e-mail" type="ButtonDesignInfo">
+    <constraints height="29px" left="12px" top="24px" type="MarginConstraintsDesignInfo" width="86px"/>
+  </widget>
+  <widget actionPerformed="button1ActionPerformed" name="button1" parent="Form" prefHeight="29px" prefWidth="94px" text="sms" type="ButtonDesignInfo">
+    <constraints height="29px" left="108px" top="24px" type="MarginConstraintsDesignInfo" width="94px"/>
+  </widget>
+  <widget name="modelCombo" parent="Form" prefHeight="28px" prefWidth="468px" type="DbComboDesignInfo">
+    <valueField entityId="139238724593661" fieldName="TR_EQUIPMENT_ID"/>
+    <displayField entityId="139238724593661" fieldName="GOSNUMBER"/>
+    <datamodelElement entityId="-1" fieldName="aCar"/>
+    <constraints height="28px" left="12px" top="60px" type="MarginConstraintsDesignInfo" width="468px"/>
+  </widget>
+  <widget actionPerformed="button2ActionPerformed" name="button2" parent="Form" prefHeight="29px" prefWidth="94px" text="requery" type="ButtonDesignInfo">
+    <constraints height="29px" left="228px" top="24px" type="MarginConstraintsDesignInfo" width="94px"/>
+  </widget>
+  <widget actionPerformed="button3ActionPerformed" name="button3" parent="Form" prefHeight="29px" prefWidth="72px" text="sos" type="ButtonDesignInfo">
+    <constraints bottom="13px" height="29px" left="12px" type="MarginConstraintsDesignInfo" width="72px"/>
+  </widget>
+  <widget name="modelGrid" parent="Form" prefHeight="179px" prefWidth="468px" type="DbGridDesignInfo">
+    <column name="colEquDescription">
+      <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
+      <cellDesignInfo>
+        <cellValueField/>
+        <columnsKeyField/>
+        <rowsKeyField/>
+      </cellDesignInfo>
+      <cellsDatasource/>
+      <columnsDatasource/>
+      <columnsDisplayField/>
+      <datamodelElement entityId="139584165282825" fieldName="equDescription"/>
+      <headerStyle>
+        <nativeFont name="Lucida Grande" size="13"/>
+      </headerStyle>
+    </column>
+    <rowsColumnsDesignInfo>
+      <rowsDatasource entityId="139584165282825" field="false"/>
+    </rowsColumnsDesignInfo>
+    <treeDesignInfo/>
+    <constraints bottom="50px" left="12px" right="10px" top="96px" type="MarginConstraintsDesignInfo"/>
+  </widget>
+  <layout type="MarginLayoutDesignInfo"/>
+</layout>
