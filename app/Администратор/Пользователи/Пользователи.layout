@@ -1,13 +1,23 @@
-<?xml version="1.0" encoding="UTF-8"?><layout defaultCloseOperation="2" name="Form" prefHeight="300px" prefWidth="673px" windowClosing="formWindowClosing" windowOpened="formWindowOpened">
-  <widget name="grdUsers" parent="Form" prefHeight="230px" prefWidth="653px" type="DbGridDesignInfo">
-    <rowsColumnsDesignInfo>
-      <rowsDatasource entityId="132137124678162" field="false"/>
-    </rowsColumnsDesignInfo>
-    <treeDesignInfo>
-      <unaryLinkField/>
-      <param2GetChildren/>
-      <paramSourceField/>
-    </treeDesignInfo>
+<?xml version="1.0" encoding="UTF-8"?><layout defaultCloseOperation="2" name="Form" prefHeight="300px" prefWidth="652px" windowClosing="formWindowClosing" windowOpened="formWindowOpened">
+  <widget name="pnlSelLock" parent="Form" prefHeight="48px" prefWidth="648px" type="PanelDesignInfo">
+    <layout type="MarginLayoutDesignInfo"/>
+    <constraints bottom="0px" height="48px" left="0px" right="4px" type="MarginConstraintsDesignInfo"/>
+  </widget>
+  <widget icon="icons/22x22/actions/dialog-apply.png" name="btnSelect" parent="pnlSelLock" prefHeight="35px" prefWidth="125px" text="Выбрать" type="ButtonDesignInfo">
+    <constraints bottom="7px" height="35px" right="7px" type="MarginConstraintsDesignInfo" width="125px"/>
+  </widget>
+  <widget actionPerformed="tbSetEditActionPerformed" icon="icons/22x22/stock/stock_lock.png" name="tbSetEdit" parent="pnlSelLock" prefHeight="35px" prefWidth="35px" toolTipText="Открыть форму для редактирования" type="ToggleButtonDesignInfo">
+    <constraints bottom="7px" height="35px" left="7px" type="MarginConstraintsDesignInfo" width="35px"/>
+  </widget>
+  <widget floatable="false" name="toolBar" parent="Form" prefHeight="37px" prefWidth="180px" rollover="true" type="ToolbarDesignInfo">
+    <constraints height="37px" left="0px" top="0px" type="MarginConstraintsDesignInfo" width="180px"/>
+  </widget>
+  <widget actionPerformed="btnAddActionPerformed" focusable="false" horizontalTextPosition="0" icon="icons/22x22/actions/list-add.png" name="btnAdd" parent="toolBar" prefHeight="34px" prefWidth="34px" toolTipText="Добавить" type="ButtonDesignInfo" verticalTextPosition="3"/>
+  <widget actionPerformed="btnDelActionPerformed" focusable="false" horizontalTextPosition="0" icon="icons/22x22/actions/list-remove.png" name="btnDel" parent="toolBar" prefHeight="34px" prefWidth="34px" toolTipText="Удалить" type="ButtonDesignInfo" verticalTextPosition="3"/>
+  <widget actionPerformed="btnReqActionPerformed" focusable="false" horizontalTextPosition="0" icon="icons/22x22/actions/new-view-refresh.png" name="btnReq" parent="toolBar" prefHeight="34px" prefWidth="34px" toolTipText="Обновить" type="ButtonDesignInfo" verticalTextPosition="3"/>
+  <widget actionPerformed="btnSaveActionPerformed" focusable="false" horizontalTextPosition="0" icon="icons/22x22/actions/document-save.png" name="btnSave" parent="toolBar" prefHeight="34px" prefWidth="34px" toolTipText="Сохранить" type="ButtonDesignInfo" verticalTextPosition="3"/>
+  <widget actionPerformed="btnFindActionPerformed" focusable="false" horizontalTextPosition="0" icon="icons/22x22/actions/new-edit-find.png" name="btnFind" parent="toolBar" prefHeight="34px" prefWidth="34px" toolTipText="Сохранить" type="ButtonDesignInfo" verticalTextPosition="3"/>
+  <widget name="grdUsers" parent="Form" prefHeight="204px" prefWidth="653px" type="DbGridDesignInfo">
     <column name="USR_NAME" title="Пользователь">
       <datamodelElement entityId="132137124678162" fieldName="usr_name"/>
       <columnsDatasource/>
@@ -60,7 +70,7 @@
       </controlInfo>
     </column>
     <column name="USR_PASSWD" selectFunction="USR_PASSWDOnSelect" selectOnly="true" title="Пароль" width="30">
-      <datamodelElement entityId="132137124678162" fieldName="usr_passwd"/>
+      <datamodelElement entityId="132137124678162" fieldName="pswSet"/>
       <columnsDatasource/>
       <columnsDisplayField/>
       <cellsDatasource/>
@@ -74,18 +84,15 @@
       </headerStyle>
       <controlInfo classHint="DbComboDesignInfo" emptyText="Не установлен" list="false" name="view" prefHeight="0px" prefWidth="0px"/>
     </column>
-    <constraints bottom="40px" left="10px" right="10px" top="30px" type="MarginConstraintsDesignInfo"/>
+    <rowsColumnsDesignInfo>
+      <rowsDatasource entityId="132137124678162" field="false"/>
+    </rowsColumnsDesignInfo>
+    <treeDesignInfo>
+      <unaryLinkField/>
+      <param2GetChildren/>
+      <paramSourceField/>
+    </treeDesignInfo>
+    <constraints bottom="60px" left="0px" right="-1px" top="36px" type="MarginConstraintsDesignInfo"/>
   </widget>
-  <widget actionPerformed="btnCloseActionPerformed" name="btnClose" parent="Form" prefHeight="20px" prefWidth="100px" text="Закрыть" type="ButtonDesignInfo">
-    <constraints bottom="10px" height="20px" right="10px" type="MarginConstraintsDesignInfo" width="100px"/>
-  </widget>
-  <widget floatable="false" name="jToolBar" parent="Form" prefHeight="30px" prefWidth="380px" type="ToolbarDesignInfo">
-    <constraints height="30px" left="10px" top="0px" type="MarginConstraintsDesignInfo" width="380px"/>
-  </widget>
-  <widget actionPerformed="btnCreateUserActionPerformed" icon="user--plus.png" name="btnCreateUser" parent="jToolBar" prefHeight="28px" prefWidth="28px" toolTipText="Создать пользователя" type="ButtonDesignInfo"/>
-  <widget actionPerformed="btnDeleteUserActionPerformed" icon="user--minus.png" name="btnDeleteUser" parent="jToolBar" prefHeight="28px" prefWidth="28px" toolTipText="Удалить пользователя" type="ButtonDesignInfo"/>
-  <widget actionPerformed="btnSaveActionPerformed" icon="disk-blue.png" name="btnSave" parent="jToolBar" prefHeight="28px" prefWidth="28px" toolTipText="Сохранить" type="ButtonDesignInfo"/>
-  <widget actionPerformed="btnRefreshActionPerformed" icon="refresh/refresh.png" name="btnRefresh" parent="jToolBar" prefHeight="28px" prefWidth="28px" toolTipText="Обновить" type="ButtonDesignInfo"/>
-  <widget actionPerformed="btnFindActionPerformed" icon="binocular.png" name="btnFind" parent="jToolBar" prefHeight="28px" prefWidth="28px" toolTipText="Найти..." type="ButtonDesignInfo"/>
   <layout type="MarginLayoutDesignInfo"/>
 </layout>

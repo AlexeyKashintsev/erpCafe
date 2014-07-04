@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?><datamodel>
   <parametersEntity entityHeight="200" entityIconified="false" entityLocationX="63" entityLocationY="13" entityWidth="150"/>
-  <entity Name="dsRoles" Title="Роли Справочник" entityHeight="200" entityIconified="false" entityId="132135015195320" entityLocationX="246" entityLocationY="6" entityWidth="150" queryId="132134984618701" tableName="" tableSchemaName=""/>
+  <entity Name="dsRoles" Title="Роли Справочник" entityHeight="200" entityIconified="false" entityId="132135015195320" entityLocationX="246" entityLocationY="6" entityWidth="150" queryId="queryRoles" tableName="" tableSchemaName=""/>
   <entity Name="" Title="Элементы приложения справочник" entityHeight="200" entityIconified="false" entityId="132134563800070" entityLocationX="429" entityLocationY="6" entityWidth="150" queryId="132134555582879" tableName="" tableSchemaName=""/>
   <referenceRelation leftEntityFieldName="mdent_parent_id" leftEntityId="132134563800070" rightEntityFieldName="mdent_id" rightEntityId="132134563800070"/>
 </datamodel>

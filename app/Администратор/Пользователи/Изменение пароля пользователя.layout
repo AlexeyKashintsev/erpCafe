@@ -2,7 +2,7 @@
   <widget name="jETALabel" parent="Form" prefHeight="20px" prefWidth="100px" text="Пользователь:" type="LabelDesignInfo">
     <constraints height="20px" left="10px" top="10px" type="MarginConstraintsDesignInfo" width="100px"/>
   </widget>
-  <widget backgroundColor="#f0f0f0" foregroundColor="#000000" name="lblUser" parent="Form" prefHeight="20px" prefWidth="250px" toolTipText="Пользователь Platypus" type="DbLabelDesignInfo">
+  <widget backgroundColor="#f0f0f0" editable="false" foregroundColor="#000000" name="lblUser" parent="Form" prefHeight="20px" prefWidth="250px" toolTipText="Пользователь Platypus" type="DbLabelDesignInfo">
     <datamodelElement entityId="132134521042108" fieldName="usr_name"/>
     <constraints height="20px" left="140px" right="10px" top="10px" type="MarginConstraintsDesignInfo"/>
   </widget>
@@ -18,11 +18,11 @@
   <widget name="edNewPswd2" parent="Form" prefHeight="20px" prefWidth="250px" toolTipText="Повторно введите новый пароль" type="PasswordFieldDesignInfo">
     <constraints height="20px" left="140px" top="70px" type="MarginConstraintsDesignInfo" width="250px"/>
   </widget>
-  <widget actionPerformed="btnCancelActionPerformed" name="btnCancel" parent="Form" prefHeight="20px" prefWidth="80px" text="Отмена" type="ButtonDesignInfo">
-    <constraints bottom="10px" height="20px" right="10px" type="MarginConstraintsDesignInfo" width="80px"/>
+  <widget actionPerformed="btnCancelActionPerformed" name="btnCancel" parent="Form" prefHeight="20px" prefWidth="102px" text="Отмена" type="ButtonDesignInfo">
+    <constraints bottom="8px" height="20px" right="10px" type="MarginConstraintsDesignInfo" width="102px"/>
   </widget>
   <widget actionPerformed="btnOkActionPerformed" name="btnOk" parent="Form" prefHeight="20px" prefWidth="90px" text="ОK" type="ButtonDesignInfo">
-    <constraints bottom="10px" height="20px" right="100px" type="MarginConstraintsDesignInfo" width="90px"/>
+    <constraints bottom="8px" height="20px" left="192px" type="MarginConstraintsDesignInfo" width="90px"/>
   </widget>
   <layout type="MarginLayoutDesignInfo"/>
 </layout>

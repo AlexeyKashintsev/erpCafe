@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?><datamodel>
-<parameters>
-<parameter description="Родительский элемент" name="PARENT" nullable="true" parameterMode="1" precision="0" scale="0" selectionForm="null" signed="true" size="0" type="2" typeName="NUMERIC"/>
-</parameters>
-<parametersEntity entityHeight="200" entityIconified="false" entityLocationX="10" entityLocationY="20" entityWidth="150"/>
-<entity Name="dsEntities" Title="Элементы приложения" entityHeight="200" entityIconified="false" entityId="132134531478117" entityLocationX="214" entityLocationY="21" entityWidth="150" queryId="132134455010936" tableName="" tableSchemaName=""/>
-<relation leftEntityFieldName="PARENT" leftEntityId="-1" rightEntityId="132134531478117" rightEntityParameterName="PARENT"/>
+  <parameters>
+    <parameter description="Родительский элемент" name="PARENT" nullable="true" parameterMode="1" precision="0" scale="0" selectionForm="null" signed="true" size="0" type="2" typeName="NUMERIC"/>
+  </parameters>
+  <parametersEntity entityHeight="200" entityIconified="false" entityLocationX="10" entityLocationY="20" entityWidth="150"/>
+  <entity Name="dsEntities" Title="Элементы приложения" entityHeight="200" entityIconified="false" entityId="132134531478117" entityLocationX="214" entityLocationY="21" entityWidth="150" queryId="132134455010936" tableName="" tableSchemaName=""/>
+  <relation leftEntityId="-1" leftEntityParameterName="PARENT" rightEntityId="132134531478117" rightEntityParameterName="PARENT"/>
+  <referenceRelation leftEntityFieldName="mdent_parent_id" leftEntityId="132134531478117" rightEntityFieldName="mdent_id" rightEntityId="132134531478117"/>
 </datamodel>

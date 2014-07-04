@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?><datamodel>
   <parametersEntity entityHeight="200" entityIconified="false" entityLocationX="49" entityLocationY="48" entityWidth="150"/>
   <entity Name="" Title="Типы элементов приложения" entityHeight="200" entityIconified="false" entityId="132137137584324" entityLocationX="637" entityLocationY="49" entityWidth="150" queryId="queryMTD" tableName="" tableSchemaName=""/>
-  <entity Name="dsMtdUsers" Title="Пользователи" entityHeight="200" entityIconified="false" entityId="132137124678162" entityLocationX="253" entityLocationY="47" entityWidth="188" queryId="queryUsers" tableName="" tableSchemaName=""/>
   <entity Name="queryRoles" Title="" entityHeight="200" entityIconified="false" entityId="140440041151635" entityLocationX="454" entityLocationY="51" entityWidth="150" queryId="queryRoles" tableName="" tableSchemaName=""/>
+  <entity Name="dsMtdUsers" Title="Пользователи" entityHeight="200" entityIconified="false" entityId="132137124678162" entityLocationX="253" entityLocationY="47" entityWidth="188" onAfterChange="dsMtdUsersOnChanged" queryId="queryUsers" tableName="" tableSchemaName=""/>
 </datamodel>

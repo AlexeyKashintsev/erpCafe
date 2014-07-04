@@ -3,6 +3,6 @@
     <parameter description="Пользователь" name="parUser" nullable="true" parameterMode="1" precision="0" scale="0" selectionForm="null" signed="true" size="100" type="12" typeName="VARCHAR"/>
   </parameters>
   <parametersEntity entityHeight="200" entityIconified="false" entityLocationX="8" entityLocationY="7" entityWidth="194"/>
-  <entity Name="dsUser" Title="Пользователи" entityHeight="200" entityIconified="false" entityId="132134521042108" entityLocationX="234" entityLocationY="7" entityWidth="150" queryId="queryUsers" tableName="" tableSchemaName=""/>
+  <entity Name="dsUser" Title="Пользователи" entityHeight="200" entityIconified="false" entityId="132134521042108" entityLocationX="234" entityLocationY="7" entityWidth="205" queryId="queryUsers" tableName="" tableSchemaName=""/>
   <relation leftEntityId="-1" leftEntityParameterName="parUser" rightEntityFieldName="usr_name" rightEntityId="132134521042108"/>
 </datamodel>
