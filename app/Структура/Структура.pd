@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?><datamodel datamodelDbId="null">
+  <fieldsEntity entityHeight="200" entityIconified="false" entityId="140446947726265" entityLocationX="401" entityLocationY="449" entityWidth="150" tableName="mtd_users"/>
+  <fieldsEntity entityHeight="200" entityIconified="false" entityId="140446988010336" entityLocationX="206" entityLocationY="236" entityWidth="150" tableName="org_franc_users"/>
+  <fieldsEntity entityHeight="200" entityIconified="false" entityId="140446696259849" entityLocationX="198" entityLocationY="15" entityWidth="150" tableName="org_franchizer"/>
+  <fieldsEntity entityHeight="200" entityIconified="false" entityId="140446694355671" entityLocationX="17" entityLocationY="15" entityWidth="150" tableName="org_franchize"/>
+  <fieldsEntity entityHeight="200" entityIconified="false" entityId="140446870062584" entityLocationX="387" entityLocationY="235" entityWidth="150" tableName="org_tp_users"/>
+  <fieldsEntity entityHeight="200" entityIconified="false" entityId="140446013471536" entityLocationX="19" entityLocationY="227" entityWidth="150" tableName="org_contragent"/>
+  <fieldsEntity entityHeight="200" entityIconified="false" entityId="140446697714767" entityLocationX="388" entityLocationY="11" entityWidth="150" tableName="org_trade_point"/>
+</datamodel>
