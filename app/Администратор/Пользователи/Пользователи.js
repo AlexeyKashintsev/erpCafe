@@ -1,47 +1,36 @@
 /**
- * @name 132137120593719
+ * @name UserView
 */
-var   ROLE_USER_UCH = 132135001843723;
-var locUsers = null;
-var userForm = new Form("132134435407827");
-var fmAppElS = new Form("132134455025048");
-
-function setControlsEnabled()
-{
-    btnSave.enabled = model.modified;
-}
-
-function refreshUsers()
-{
-    var cur = dsMtdUsers.usr_id;
-    if (model.modified && confirm('Сохранить изменения?', title))
-        model.save();
-    model.requery();	
-    if (locUsers.find(cur))
-    {
-        locUsers.first()
-        grdUsers.makeVisible(cur);
-    }			
-}
-
-function grdUsers_USR_PASSWD_selectValue() {//GEN-FIRST:event_grdUsers_USR_PASSWD_selectValue
-    userForm.parUser = dsMtdUsers.usr_id;
-    if (userForm.showModal() == ok)
-        refreshUsers();
-}//GEN-LAST:event_grdUsers_USR_PASSWD_selectValue
+function UserView(){
+    var self = this, model = self.model, form = this;
+    var changePassView = new ChangePassView();
+    
+    function setControlsEnabled() {
+         self.btnSave.enabled = model.modified;
+    }
+    
+    function refreshUsers() {
+        var cur = model.dsMtdUsers.usr_id;
+        if (model.modified && confirm('Сохранить изменения?', self.title))
+            model.save();
+        model.requery();
+        
+    }
 
 function btnCloseActionPerformed(evt) {//GEN-FIRST:event_btnCloseActionPerformed
-    close();
+    form.close();
 }//GEN-LAST:event_btnCloseActionPerformed
 
 function btnCreateUserActionPerformed(evt) {//GEN-FIRST:event_btnCreateUserActionPerformed
-    dsMtdUsers.insert();
-    dsMtdUsers.userrole = ROLE_USER_UCH;
-    dsMtdUsers.usr_form = dsRole.defaultform;
+    model.dsMtdUsers.insert();
+    //model.dsMtdUsers.userrole = ROLE_USER_UCH;
+    model.dsMtdUsers.usr_form = self.dsRole.defaultform;
 }//GEN-LAST:event_btnCreateUserActionPerformed
 
 function btnDeleteUserActionPerformed(evt) {//GEN-FIRST:event_btnDeleteUserActionPerformed
-    dsMtdUsers.deleteRow();
+    if (confirm("Удалить текущего пользователя"))
+        model.dsMtdUsers.deleteRow();
+    
 }//GEN-LAST:event_btnDeleteUserActionPerformed
 
 function btnSaveActionPerformed(evt) {//GEN-FIRST:event_btnSaveActionPerformed
@@ -55,21 +44,31 @@ function btnRefreshActionPerformed(evt) {//GEN-FIRST:event_btnRefreshActionPerfo
 }//GEN-LAST:event_btnRefreshActionPerformed
 
 function btnFindActionPerformed(evt) {//GEN-FIRST:event_btnFindActionPerformed
-    grdUsers.findSomething();
+    form.grdUsers.findSomething();
 }//GEN-LAST:event_btnFindActionPerformed
 
 function formWindowOpened(evt) {//GEN-FIRST:event_formWindowOpened
-    locUsers = dsMtdUsers.createLocator(dsMtdUsers.md.usr_id);
-    parUserRole = ROLE_USER_UCH;
     setControlsEnabled();
 }//GEN-LAST:event_formWindowOpened
 
 function formWindowClosing(evt) {//GEN-FIRST:event_formWindowClosing
-    if(model.modified && confirm("Сохранить?", title))
+    if(model.modified && confirm("Сохранить?", self.title))
         model.save();
 }//GEN-LAST:event_formWindowClosing
 
 function usr_formSelectValue() {//GEN-FIRST:event_usr_formSelectValue
-    if(fmAppElS.showModal() == ok)
-        return fmAppElS.getSelected();
+    if(self.fmAppElS.showModal() == self.ok)
+        return self.fmAppElS.getSelected();
 }//GEN-LAST:event_usr_formSelectValue
+
+    function USR_ROLESelectValue(aEditor) {//GEN-FIRST:event_USR_ROLESelectValue
+        // TODO Добавьте свой код:
+    }//GEN-LAST:event_USR_ROLESelectValue
+
+    function USR_PASSWDOnSelect(aEditor) {//GEN-FIRST:event_USR_PASSWDOnSelect
+    changePassView.setUserId(self.dsMtdUsers.usr_name);
+    changePassView.showModal(function(){
+        refreshUsers();
+    });   
+    }//GEN-LAST:event_USR_PASSWDOnSelect
+}

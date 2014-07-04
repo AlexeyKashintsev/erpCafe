@@ -2,4 +2,6 @@
   <fieldsEntity entityHeight="200" entityIconified="false" entityId="140413203977046" entityLocationX="41" entityLocationY="33" entityWidth="150" tableName="adm_events"/>
   <fieldsEntity entityHeight="200" entityIconified="false" entityId="140413225920927" entityLocationX="427" entityLocationY="39" entityWidth="150" tableName="adm_event_type_settings"/>
   <fieldsEntity entityHeight="200" entityIconified="false" entityId="140413210926302" entityLocationX="230" entityLocationY="36" entityWidth="150" tableName="adm_event_types"/>
+  <fieldsEntity entityHeight="200" entityIconified="false" entityId="140439895174763" entityLocationX="355" entityLocationY="313" entityWidth="150" tableName="mtd_users"/>
+  <fieldsEntity entityHeight="200" entityIconified="false" entityId="140439856245759" entityLocationX="642" entityLocationY="40" entityWidth="150" tableName="adm_roles"/>
 </datamodel>

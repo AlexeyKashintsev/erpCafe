@@ -1,5 +1,6 @@
 /**
- * @name 132134435379639
+ * @name queryUsers
 */
-Select * 
-From MTD_USERS T_MTD_USERS_1
+Select t.usr_name, t.usr_form, t.usr_context, t.usr_roles, t.usr_phone, t.usr_email,
+case when t.usr_passwd is null then 'Не установлен' else '***' end as usr_passwd
+From MTD_USERS t

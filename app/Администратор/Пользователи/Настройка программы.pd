@@ -1,8 +1,3 @@
 <?xml version="1.0" encoding="UTF-8"?><datamodel datamodelDbId="null">
-<fieldsEntity entityHeight="200" entityIconified="false" entityId="132134776737586" entityLocationX="29" entityLocationY="9" entityWidth="150" tableName="mtd_users"/>
-<fieldsEntity entityHeight="200" entityIconified="false" entityId="132134809150028" entityLocationX="226" entityLocationY="6" entityWidth="150" tableName="AgtiProf_User_Roles"/>
-<fieldsEntity entityHeight="200" entityIconified="false" entityId="135596154330189" entityLocationX="421" entityLocationY="246" entityWidth="150" tableName="columns_std_names"/>
-<fieldsEntity entityHeight="200" entityIconified="false" entityId="135595796619326" entityLocationX="42" entityLocationY="245" entityWidth="150" tableName="colums_set"/>
-<fieldsEntity entityHeight="200" entityIconified="false" entityId="135595799473508" entityLocationX="238" entityLocationY="245" entityWidth="150" tableName="columns_in_set"/>
-<fieldsEntity entityHeight="200" entityIconified="false" entityId="136188003036006" entityLocationX="416" entityLocationY="26" entityWidth="150" tableName="mtd_app_version"/>
+  <fieldsEntity entityHeight="200" entityIconified="false" entityId="132134776737586" entityLocationX="29" entityLocationY="9" entityWidth="228" tableName="mtd_users"/>
 </datamodel>

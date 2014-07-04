@@ -1,5 +1,5 @@
 /**
- * @name 132134984618701
-*/
+ * @name queryRoles
+*/ 
 Select * 
-From agtiprof_user_roles t
+From adm_roles t1

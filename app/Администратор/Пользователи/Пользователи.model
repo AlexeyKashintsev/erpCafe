@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?><datamodel>
-<parametersEntity entityHeight="200" entityIconified="false" entityLocationX="63" entityLocationY="13" entityWidth="150"/>
-<entity Name="dsRole" Title="Роли Справочник" entityHeight="200" entityIconified="false" entityId="132135092695391" entityLocationX="462" entityLocationY="29" entityWidth="150" queryId="132134984618701" tableName="" tableSchemaName=""/>
-<entity Name="" Title="Типы элементов приложения" entityHeight="200" entityIconified="false" entityId="132137137584324" entityLocationX="636" entityLocationY="27" entityWidth="150" queryId="132134455018708" tableName="" tableSchemaName=""/>
-<entity Name="dsMtdUsers" Title="Пользователи" entityHeight="200" entityIconified="false" entityId="132137124678162" entityLocationX="252" entityLocationY="46" entityWidth="150" queryId="132134435379639" tableName="" tableSchemaName=""/>
+  <parametersEntity entityHeight="200" entityIconified="false" entityLocationX="49" entityLocationY="48" entityWidth="150"/>
+  <entity Name="" Title="Типы элементов приложения" entityHeight="200" entityIconified="false" entityId="132137137584324" entityLocationX="637" entityLocationY="49" entityWidth="150" queryId="queryMTD" tableName="" tableSchemaName=""/>
+  <entity Name="dsMtdUsers" Title="Пользователи" entityHeight="200" entityIconified="false" entityId="132137124678162" entityLocationX="253" entityLocationY="47" entityWidth="188" queryId="queryUsers" tableName="" tableSchemaName=""/>
+  <entity Name="queryRoles" Title="" entityHeight="200" entityIconified="false" entityId="140440041151635" entityLocationX="454" entityLocationY="51" entityWidth="150" queryId="queryRoles" tableName="" tableSchemaName=""/>
 </datamodel>

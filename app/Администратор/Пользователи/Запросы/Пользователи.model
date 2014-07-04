@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?><datamodel>
-<parametersEntity entityHeight="200" entityIconified="false" entityLocationX="10" entityLocationY="20" entityWidth="150"/>
-<entity Title="MTD_USERS" entityHeight="200" entityIconified="false" entityId="129258923376401" entityLocationX="183" entityLocationY="23" entityWidth="150" queryId="null" tableAlias="T_MTD_USERS_1" tableName="MTD_USERS" tableSchemaName=""/>
+  <parametersEntity entityHeight="192" entityIconified="false" entityLocationX="16" entityLocationY="27" entityWidth="150"/>
+  <entity Title="" entityHeight="200" entityIconified="false" entityId="140447086426511" entityLocationX="187" entityLocationY="19" entityWidth="238" tableAlias="t" tableName="MTD_USERS" tableSchemaName=""/>
 </datamodel>

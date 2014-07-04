@@ -38,6 +38,7 @@
  * @module
  */
 function Mailer() {
+    var self = this, model = self.model;
     var Session = javax.mail.Session;
     var Message = javax.mail.Message;
     var Transport = javax.mail.Transport;
@@ -53,7 +54,7 @@ function Mailer() {
      * @param {String} text message body
      * @returns {Boolean} true if the message have sent successully
      */
-    this.sendEmail = function (from, to, subject, text) {
+    self.sendEmail = function (from, to, subject, text) {
         Logger.info("Sending email message..");
         try {
             var session = constructSession();//getSession();
