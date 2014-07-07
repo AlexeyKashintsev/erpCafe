@@ -71,8 +71,11 @@ function UserView(){
     }//GEN-LAST:event_btnAddActionPerformed
 
     function btnDelActionPerformed(evt) {//GEN-FIRST:event_btnDelActionPerformed
-        if (confirm("Удалить текущего пользователя"))
-            model.dsMtdUsers.deleteRow();
+        if (confirm("Удалить текущего пользователя")){
+            model.dsMtdUsers.usr_passwd = 'false';
+            model.save();
+            refreshUsers();
+        }
     }//GEN-LAST:event_btnDelActionPerformed
 
     function btnFindActionPerformed(evt) {//GEN-FIRST:event_btnFindActionPerformed
