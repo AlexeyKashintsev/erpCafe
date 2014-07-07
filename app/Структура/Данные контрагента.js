@@ -1,32 +1,29 @@
 /**
  * 
- * @name SupplierDetailsForm
+ * @name ContragentDetailsForm
  * @author Alexey
  */
-function SupplierDetailsForm() {
+function ContragentDetailsForm() {
     var self = this, model = this.model, form = this;
+    model.params.contragent_id = 0;
     
-    self.setSupplierDetails = function(aDetails) {
-        form.tfSupplierName = aDetails.supplierName;
-        form.tfSupplierINN = aDetails.supplierINN;
-        form.tfSupplierKPP = aDetails.supplierKPP;
-        form.tfSupplierAddress = aDetails.supplierAddress;
-        form.tfBankName = aDetails.bankName;
-        form.tfAccountNumber = aDetails.accountNumber;
-        form.tfBIK = aDetails.bik;
-        form.tfCorAccountNumber = aDetails.corAccount;
+    self.setContragentId = function(aContragentId){
+        model.params.contragent_id = aContragentId;
     };
+    
+    function btnSaveActionPerformed(evt) {//GEN-FIRST:event_btnSaveActionPerformed
+        model.save();
+        form.close(true);
+    }//GEN-LAST:event_btnSaveActionPerformed
 
-    function btnCreateBillActionPerformed(evt) {//GEN-FIRST:event_btnCreateBillActionPerformed
-        return {
-            supplierName    :   form.tfSupplierName,
-            supplierINN     :   form.tfSupplierINN,
-            supplierKPP     :   form.tfSupplierKPP,
-            supplierAddress :   form.tfSupplierAddress,
-            bankName        :   form.tfBankName,
-            accountNumber   :   form.tfAccountNumber,
-            bik             :   form.tfBIK,
-            corAccount      :   form.tfCorAccountNumber
-        };
-    }//GEN-LAST:event_btnCreateBillActionPerformed
+    function formWindowOpened(evt) {//GEN-FIRST:event_formWindowOpened
+        if(model.params.contragent_id === 0){
+            model.requery();
+            model.listContragent.insert();
+        }
+    }//GEN-LAST:event_formWindowOpened
+
+    function formWindowClosed(evt) {//GEN-FIRST:event_formWindowClosed
+        model.params.contragent_id = 0;
+    }//GEN-LAST:event_formWindowClosed
 }

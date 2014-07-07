@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?><datamodel>
-    <parametersEntity Title="Параметры" entityHeight="200" entityIconified="false" entityLocationX="12" entityLocationY="12" entityWidth="150">
-    </parametersEntity>
+  <parameters>
+    <parameter description="" name="contragent_id" nullable="true" parameterMode="1" precision="0" scale="0" selectionForm="null" signed="true" size="0" type="2" typeName="NUMERIC"/>
+  </parameters>
+  <parametersEntity entityHeight="200" entityIconified="false" entityLocationX="12" entityLocationY="12" entityWidth="150"/>
+  <entity Name="listContragent" Title="" entityHeight="200" entityIconified="false" entityId="140473263018092" entityLocationX="302" entityLocationY="19" entityWidth="150" queryId="listContragent" tableName="" tableSchemaName=""/>
+  <relation leftEntityId="-1" leftEntityParameterName="contragent_id" rightEntityId="140473263018092" rightEntityParameterName="contragent_id"/>
 </datamodel>
