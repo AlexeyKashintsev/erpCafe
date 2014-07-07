@@ -1,5 +1,6 @@
 /**
  * @name DevelopmentNotation
+ * @autor mg
  */
 
 function DevelopmentNotation() {
