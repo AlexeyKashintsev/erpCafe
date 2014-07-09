@@ -1,11 +1,11 @@
 /**
  * 
  * @author Алексей
- * @name TreadPointsForm
+ * @name TreadPointsBaristForm
  * @public
  */
 
-function TreadPointsForm() {
+function TreadPointsbaristForm() {
 var self = this, model = this.model, form = this;
 
 var isSelectForm = true;

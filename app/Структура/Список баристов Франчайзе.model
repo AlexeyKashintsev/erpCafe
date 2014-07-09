@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?><datamodel>
+  <parameters>
+    <parameter description="" name="franchazi_id" nullable="true" parameterMode="1" precision="0" scale="0" selectionForm="null" signed="true" size="0" type="2" typeName="NUMERIC"/>
+  </parameters>
+  <parametersEntity entityHeight="200" entityIconified="false" entityLocationX="12" entityLocationY="12" entityWidth="150"/>
+  <entity Name="listTradePointUsers" Title="" entityHeight="200" entityIconified="false" entityId="140489862821608" entityLocationX="294" entityLocationY="12" entityWidth="240" queryId="listTradePointUsers" tableName="" tableSchemaName=""/>
+  <entity Name="createTradePointUser" Title="" entityHeight="200" entityIconified="false" entityId="140490499060986" entityLocationX="221" entityLocationY="253" entityWidth="150" queryId="createTradePointUser" tableName="" tableSchemaName=""/>
+  <relation leftEntityId="-1" leftEntityParameterName="franchazi_id" rightEntityId="140489862821608" rightEntityParameterName="franchazi_id"/>
+  <referenceRelation leftEntityFieldName="trade_point_id" leftEntityId="140490499060986" rightEntityFieldName="org_trade_point_id" rightEntityId="140489862821608"/>
+  <referenceRelation leftEntityFieldName="user_name" leftEntityId="140489862821608" rightEntityFieldName="usr_name" rightEntityId="140489862821608"/>
+  <referenceRelation leftEntityFieldName="trade_point_id" leftEntityId="140489862821608" rightEntityFieldName="org_trade_point_id" rightEntityId="140489862821608"/>
+  <referenceRelation leftEntityFieldName="user_name" leftEntityId="140490499060986" rightEntityFieldName="usr_name" rightEntityId="140489862821608"/>
+</datamodel>

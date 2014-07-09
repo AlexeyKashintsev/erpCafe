@@ -1,19 +1,28 @@
 /**
  * 
  * @author Алексей
- * @name template
+ * @name UsersFrachaziOrTP
  * @public
  */
 
-function template_3() {
+function UsersFrachaziOrTP() {
+    
+var self = this, model = this.model, form = this;
 
-
-var self = this;
-
+model.params.franchazi_id = 0;
+model.params.trade_point_id = 0;
 
 var isSelectForm = true;
 var isEditable = false;
 var canSetEdit = true;
+
+self.setFranchaziId = function (aFranchaziId){
+    model.params.franchazi_id = aFranchaziId;
+};
+
+self.setTradePointId = function (aTradePointId){
+    model.params.trade_point_id = aTradePointId;
+};
 
 function setEdit(){
     self.modelGrid.editable = self.btnAdd.enabled = 

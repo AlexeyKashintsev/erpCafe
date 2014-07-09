@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?><layout defaultCloseOperation="2" name="Form" prefHeight="348px" prefWidth="372px" windowClosing="formWindowClosing" windowOpened="formWindowOpened">
-  <widget name="toolBar" parent="Form" prefHeight="36px" prefWidth="372px" rollover="true" type="ToolbarDesignInfo">
+<?xml version="1.0" encoding="UTF-8"?><layout defaultCloseOperation="2" name="Form" prefHeight="348px" prefWidth="730px" windowClosing="formWindowClosing" windowOpened="formWindowOpened">
+  <widget name="toolBar" parent="Form" prefHeight="36px" prefWidth="730px" rollover="true" type="ToolbarDesignInfo">
     <constraints place="North" type="BorderLayoutConstraintsDesignInfo"/>
   </widget>
   <widget focusable="false" horizontalTextPosition="0" icon="icons/22x22/actions/list-add.png" name="btnAdd" parent="toolBar" prefHeight="34px" prefWidth="34px" toolTipText="Добавить" type="ButtonDesignInfo" verticalTextPosition="3"/>
@@ -7,7 +7,7 @@
   <widget focusable="false" horizontalTextPosition="0" icon="icons/22x22/actions/list-remove.png" name="btnDel" parent="toolBar" prefHeight="34px" prefWidth="34px" toolTipText="Удалить" type="ButtonDesignInfo" verticalTextPosition="3"/>
   <widget actionPerformed="btnReqActionPerformed" focusable="false" horizontalTextPosition="0" icon="icons/22x22/actions/new-view-refresh.png" name="btnReq" parent="toolBar" prefHeight="34px" prefWidth="34px" toolTipText="Обновить" type="ButtonDesignInfo" verticalTextPosition="3"/>
   <widget actionPerformed="btnSaveActionPerformed" focusable="false" horizontalTextPosition="0" icon="icons/22x22/actions/document-save.png" name="btnSave" parent="toolBar" prefHeight="34px" prefWidth="34px" toolTipText="Сохранить" type="ButtonDesignInfo" verticalTextPosition="3"/>
-  <widget name="pnlSelLock" parent="Form" prefHeight="50px" prefWidth="372px" type="PanelDesignInfo">
+  <widget name="pnlSelLock" parent="Form" prefHeight="50px" prefWidth="730px" type="PanelDesignInfo">
     <layout type="MarginLayoutDesignInfo"/>
     <constraints place="South" type="BorderLayoutConstraintsDesignInfo"/>
   </widget>
@@ -17,13 +17,103 @@
   <widget actionPerformed="tbSetEditActionPerformed" icon="icons/22x22/stock/stock_lock.png" name="tbSetEdit" parent="pnlSelLock" prefHeight="35px" prefWidth="35px" toolTipText="Открыть форму для редактирования" type="ToggleButtonDesignInfo">
     <constraints bottom="7px" height="35px" left="7px" type="MarginConstraintsDesignInfo" width="35px"/>
   </widget>
-  <widget name="pnlWorkSpace" parent="Form" prefHeight="262px" prefWidth="372px" type="PanelDesignInfo">
+  <widget name="pnlWorkSpace" parent="Form" prefHeight="262px" prefWidth="730px" type="PanelDesignInfo">
     <layout type="MarginLayoutDesignInfo"/>
     <constraints place="Center" type="BorderLayoutConstraintsDesignInfo"/>
   </widget>
-  <widget name="modelGrid" parent="pnlWorkSpace" prefHeight="262px" prefWidth="372px" type="DbGridDesignInfo">
+  <widget name="modelGrid" parent="pnlWorkSpace" prefHeight="262px" prefWidth="730px" type="DbGridDesignInfo">
+    <column name="colUser_name">
+      <datamodelElement entityId="140480753495865" fieldName="user_name"/>
+      <columnsDatasource/>
+      <columnsDisplayField/>
+      <cellsDatasource/>
+      <cellDesignInfo>
+        <rowsKeyField/>
+        <columnsKeyField/>
+        <cellValueField/>
+      </cellDesignInfo>
+      <headerStyle>
+        <nativeFont name="Ubuntu" size="15"/>
+      </headerStyle>
+      <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
+    </column>
+    <column name="colUsr_name">
+      <datamodelElement entityId="140480753495865" fieldName="usr_name"/>
+      <columnsDatasource/>
+      <columnsDisplayField/>
+      <cellsDatasource/>
+      <cellDesignInfo>
+        <rowsKeyField/>
+        <columnsKeyField/>
+        <cellValueField/>
+      </cellDesignInfo>
+      <headerStyle>
+        <nativeFont name="Ubuntu" size="15"/>
+      </headerStyle>
+      <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
+    </column>
+    <column name="colUsr_context">
+      <datamodelElement entityId="140480753495865" fieldName="usr_context"/>
+      <columnsDatasource/>
+      <columnsDisplayField/>
+      <cellsDatasource/>
+      <cellDesignInfo>
+        <rowsKeyField/>
+        <columnsKeyField/>
+        <cellValueField/>
+      </cellDesignInfo>
+      <headerStyle>
+        <nativeFont name="Ubuntu" size="15"/>
+      </headerStyle>
+      <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
+    </column>
+    <column name="colUsr_phone">
+      <datamodelElement entityId="140480753495865" fieldName="usr_phone"/>
+      <columnsDatasource/>
+      <columnsDisplayField/>
+      <cellsDatasource/>
+      <cellDesignInfo>
+        <rowsKeyField/>
+        <columnsKeyField/>
+        <cellValueField/>
+      </cellDesignInfo>
+      <headerStyle>
+        <nativeFont name="Ubuntu" size="15"/>
+      </headerStyle>
+      <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
+    </column>
+    <column name="colUsr_email">
+      <datamodelElement entityId="140480753495865" fieldName="usr_email"/>
+      <columnsDatasource/>
+      <columnsDisplayField/>
+      <cellsDatasource/>
+      <cellDesignInfo>
+        <rowsKeyField/>
+        <columnsKeyField/>
+        <cellValueField/>
+      </cellDesignInfo>
+      <headerStyle>
+        <nativeFont name="Ubuntu" size="15"/>
+      </headerStyle>
+      <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
+    </column>
+    <column name="colUser_name1">
+      <datamodelElement entityId="140480753495865" fieldName="user_name"/>
+      <columnsDatasource/>
+      <columnsDisplayField/>
+      <cellsDatasource/>
+      <cellDesignInfo>
+        <rowsKeyField/>
+        <columnsKeyField/>
+        <cellValueField/>
+      </cellDesignInfo>
+      <headerStyle>
+        <nativeFont name="Ubuntu" size="15"/>
+      </headerStyle>
+      <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
+    </column>
     <rowsColumnsDesignInfo>
-      <rowsDatasource/>
+      <rowsDatasource entityId="140480753495865" field="false"/>
     </rowsColumnsDesignInfo>
     <treeDesignInfo/>
     <constraints bottom="0px" left="0px" right="0px" top="0px" type="MarginConstraintsDesignInfo"/>

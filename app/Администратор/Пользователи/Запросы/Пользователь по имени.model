@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?><datamodel>
   <parameters>
-    <parameter description="" name="UserName" nullable="true" parameterMode="1" precision="0" scale="0" selectionForm="null" signed="true" size="100" type="12" typeName="VARCHAR"/>
+    <parameter description="" name="usr_name" nullable="true" parameterMode="1" precision="0" scale="0" selectionForm="null" signed="true" size="100" type="12" typeName="VARCHAR"/>
   </parameters>
   <parametersEntity entityHeight="200" entityIconified="false" entityLocationX="8" entityLocationY="7" entityWidth="150"/>
-  <entity Title="mtd_users" entityHeight="200" entityIconified="false" entityId="132137437482860" entityLocationX="479" entityLocationY="7" entityWidth="150" tableAlias="t" tableName="mtd_users" tableSchemaName=""/>
-  <relation leftEntityId="-1" leftEntityParameterName="UserName" rightEntityFieldName="usr_name" rightEntityId="132137437482860"/>
+  <entity Title="" entityHeight="200" entityIconified="false" entityId="140488666404878" entityLocationX="281" entityLocationY="7" entityWidth="150" tableAlias="t1" tableName="mtd_users" tableSchemaName=""/>
+  <relation leftEntityId="-1" leftEntityParameterName="usr_name" rightEntityFieldName="usr_name" rightEntityId="140488666404878"/>
 </datamodel>

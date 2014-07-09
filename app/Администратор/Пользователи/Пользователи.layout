@@ -18,6 +18,14 @@
   <widget actionPerformed="btnSaveActionPerformed" focusable="false" horizontalTextPosition="0" icon="icons/22x22/actions/document-save.png" name="btnSave" parent="toolBar" prefHeight="34px" prefWidth="34px" toolTipText="Сохранить" type="ButtonDesignInfo" verticalTextPosition="3"/>
   <widget actionPerformed="btnFindActionPerformed" focusable="false" horizontalTextPosition="0" icon="icons/22x22/actions/new-edit-find.png" name="btnFind" parent="toolBar" prefHeight="34px" prefWidth="34px" toolTipText="Сохранить" type="ButtonDesignInfo" verticalTextPosition="3"/>
   <widget name="grdUsers" parent="Form" prefHeight="204px" prefWidth="653px" type="DbGridDesignInfo">
+    <rowsColumnsDesignInfo>
+      <rowsDatasource entityId="132137124678162" field="false"/>
+    </rowsColumnsDesignInfo>
+    <treeDesignInfo>
+      <unaryLinkField/>
+      <param2GetChildren/>
+      <paramSourceField/>
+    </treeDesignInfo>
     <column name="USR_NAME" title="Пользователь">
       <datamodelElement entityId="132137124678162" fieldName="usr_name"/>
       <columnsDatasource/>
@@ -33,8 +41,8 @@
       </headerStyle>
       <controlInfo classHint="DbTextDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
     </column>
-    <column name="USR_ROLE" selectFunction="USR_ROLESelectValue" title="Роль">
-      <datamodelElement entityId="132137124678162" fieldName="usr_form"/>
+    <column name="USR_ROLE" selectFunction="USR_ROLESelectValue" selectOnly="true" title="Роль">
+      <datamodelElement entityId="132137124678162" fieldName="usr_roles"/>
       <columnsDatasource/>
       <columnsDisplayField/>
       <cellsDatasource/>
@@ -46,28 +54,7 @@
       <headerStyle>
         <nativeFont name="Dialog" size="11"/>
       </headerStyle>
-      <controlInfo classHint="DbComboDesignInfo" name="view" prefHeight="0px" prefWidth="0px">
-        <valueField entityId="140440041151635" fieldName="role_form"/>
-        <displayField entityId="140440041151635" fieldName="role_name"/>
-      </controlInfo>
-    </column>
-    <column name="usr_form" selectFunction="usr_formSelectValue" title="Стартовая форма">
-      <datamodelElement entityId="132137124678162" fieldName="usr_form"/>
-      <columnsDatasource/>
-      <columnsDisplayField/>
-      <cellsDatasource/>
-      <cellDesignInfo>
-        <rowsKeyField/>
-        <columnsKeyField/>
-        <cellValueField/>
-      </cellDesignInfo>
-      <headerStyle>
-        <nativeFont name="Dialog" size="11"/>
-      </headerStyle>
-      <controlInfo classHint="DbComboDesignInfo" name="view" prefHeight="0px" prefWidth="0px">
-        <valueField entityId="132137137584324" fieldName="MDENT_ID"/>
-        <displayField entityId="132137137584324" fieldName="MDENT_NAME"/>
-      </controlInfo>
+      <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
     </column>
     <column name="USR_PASSWD" selectFunction="USR_PASSWDOnSelect" selectOnly="true" title="Пароль" width="30">
       <datamodelElement entityId="132137124678162" fieldName="pswSet"/>
@@ -84,14 +71,6 @@
       </headerStyle>
       <controlInfo classHint="DbComboDesignInfo" emptyText="Не установлен" list="false" name="view" prefHeight="0px" prefWidth="0px"/>
     </column>
-    <rowsColumnsDesignInfo>
-      <rowsDatasource entityId="132137124678162" field="false"/>
-    </rowsColumnsDesignInfo>
-    <treeDesignInfo>
-      <unaryLinkField/>
-      <param2GetChildren/>
-      <paramSourceField/>
-    </treeDesignInfo>
     <constraints bottom="60px" left="0px" right="-1px" top="36px" type="MarginConstraintsDesignInfo"/>
   </widget>
   <layout type="MarginLayoutDesignInfo"/>

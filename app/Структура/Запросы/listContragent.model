@@ -3,6 +3,6 @@
     <parameter description="" name="contragent_id" nullable="true" parameterMode="1" precision="0" scale="0" selectionForm="null" signed="true" size="0" type="2" typeName="NUMERIC"/>
   </parameters>
   <parametersEntity entityHeight="200" entityIconified="false" entityLocationX="8" entityLocationY="7" entityWidth="150"/>
-  <entity Title="" entityHeight="200" entityIconified="false" entityId="140472948068721" entityLocationX="305" entityLocationY="14" entityWidth="150" tableAlias="t1" tableName="org_contragent" tableSchemaName=""/>
+  <entity Title="" entityHeight="200" entityIconified="false" entityId="140472948068721" entityLocationX="301" entityLocationY="8" entityWidth="150" tableAlias="t1" tableName="org_contragent" tableSchemaName=""/>
   <relation leftEntityId="-1" leftEntityParameterName="contragent_id" rightEntityFieldName="org_contragent_id" rightEntityId="140472948068721"/>
 </datamodel>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?><datamodel>
+  <parameters>
+    <parameter description="" name="franchazi_id" nullable="true" parameterMode="1" precision="0" scale="0" selectionForm="null" signed="true" size="0" type="2" typeName="NUMERIC"/>
+    <parameter description="" name="franchazi_tp_id" nullable="true" parameterMode="1" precision="0" scale="0" selectionForm="null" signed="true" size="0" type="2" typeName="NUMERIC"/>
+  </parameters>
+  <parametersEntity entityHeight="200" entityIconified="false" entityLocationX="8" entityLocationY="7" entityWidth="150"/>
+  <entity Title="" entityHeight="200" entityIconified="false" entityId="140489460853403" entityLocationX="483" entityLocationY="7" entityWidth="150" tableAlias="t" tableName="org_tp_users" tableSchemaName=""/>
+  <entity Title="" entityHeight="200" entityIconified="false" entityId="140489463659813" entityLocationX="222" entityLocationY="230" entityWidth="150" tableAlias="t3" tableName="org_franc_users" tableSchemaName=""/>
+  <entity Title="" entityHeight="200" entityIconified="false" entityId="140489460283051" entityLocationX="217" entityLocationY="7" entityWidth="150" tableAlias="t1" tableName="org_trade_point" tableSchemaName=""/>
+  <entity Title="" entityHeight="200" entityIconified="false" entityId="140489461440519" entityLocationX="483" entityLocationY="233" entityWidth="150" tableAlias="t2" tableName="mtd_users" tableSchemaName=""/>
+  <relation leftEntityFieldName="user_name" leftEntityId="140489463659813" rightEntityFieldName="usr_name" rightEntityId="140489461440519"/>
+  <relation leftEntityId="-1" leftEntityParameterName="franchazi_tp_id" rightEntityFieldName="franchazi_id" rightEntityId="140489460283051"/>
+  <relation leftEntityFieldName="user_name" leftEntityId="140489460853403" rightEntityFieldName="usr_name" rightEntityId="140489461440519"/>
+  <relation leftEntityId="-1" leftEntityParameterName="franchazi_id" rightEntityFieldName="franchazi_id" rightEntityId="140489463659813"/>
+  <relation leftEntityFieldName="org_trade_point_id" leftEntityId="140489460283051" rightEntityFieldName="trade_point_id" rightEntityId="140489460853403"/>
+</datamodel>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?><datamodel>
+  <parameters>
+    <parameter description="" name="usr_name" nullable="true" parameterMode="1" precision="0" scale="0" selectionForm="null" signed="true" size="100" type="12" typeName="VARCHAR"/>
+  </parameters>
+  <parametersEntity entityHeight="200" entityIconified="false" entityLocationX="12" entityLocationY="12" entityWidth="150"/>
+  <entity Name="queryRoles" Title="" entityHeight="200" entityIconified="false" entityId="140482553846373" entityLocationX="227" entityLocationY="10" entityWidth="150" queryId="queryRoles" tableName="" tableSchemaName=""/>
+  <entity Name="queryUsers" Title="" entityHeight="200" entityIconified="false" entityId="140488912600101" entityLocationX="227" entityLocationY="226" entityWidth="150" queryId="queryUsers" tableName="" tableSchemaName=""/>
+  <relation leftEntityId="-1" leftEntityParameterName="usr_name" rightEntityId="140488912600101" rightEntityParameterName="usr_name"/>
+</datamodel>

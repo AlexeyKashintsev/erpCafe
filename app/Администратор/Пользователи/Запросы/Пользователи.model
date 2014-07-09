@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?><datamodel>
-  <parametersEntity entityHeight="192" entityIconified="false" entityLocationX="16" entityLocationY="27" entityWidth="150"/>
-  <entity Title="" entityHeight="200" entityIconified="false" entityId="140447086426511" entityLocationX="187" entityLocationY="19" entityWidth="238" tableAlias="t" tableName="MTD_USERS" tableSchemaName=""/>
+  <parameters>
+    <parameter description="" name="usr_name" nullable="true" parameterMode="1" precision="0" scale="0" selectionForm="null" signed="true" size="100" type="12" typeName="VARCHAR"/>
+  </parameters>
+  <parametersEntity entityHeight="192" entityIconified="false" entityLocationX="17" entityLocationY="21" entityWidth="150"/>
+  <entity Title="" entityHeight="200" entityIconified="false" entityId="140447086426511" entityLocationX="213" entityLocationY="18" entityWidth="198" tableAlias="t" tableName="MTD_USERS" tableSchemaName=""/>
 </datamodel>

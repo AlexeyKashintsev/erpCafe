@@ -4,6 +4,7 @@
 function UserView(){
     var self = this, model = self.model, form = this;
     var changePassView = new ChangePassView();
+    var rolesForm = new RolesForm();
     
     function setControlsEnabled() {
          form.btnSave.enabled = model.modified;
@@ -26,13 +27,17 @@ function UserView(){
             model.save();
     }//GEN-LAST:event_formWindowClosing
 
-    function usr_formSelectValue() {//GEN-FIRST:event_usr_formSelectValue
-//        if(self.fmAppElS.showModal() == self.ok)
-//            return self.fmAppElS.getSelected();
-    }//GEN-LAST:event_usr_formSelectValue
-
     function USR_ROLESelectValue(aEditor) {//GEN-FIRST:event_USR_ROLESelectValue
-        // TODO Добавьте свой код:
+        model.save();
+        rolesForm.setUserName(model.dsMtdUsers.cursor.usr_name);
+        rolesForm.showModal(function(user){
+           if(user){
+                model.dsMtdUsers.cursor.usr_roles = user.usr_role;      
+                model.dsMtdUsers.cursor.usr_form = user.usr_form;  
+                model.save();
+                model.requery();
+           }
+        });
     }//GEN-LAST:event_USR_ROLESelectValue
 
     function USR_PASSWDOnSelect(aEditor) {//GEN-FIRST:event_USR_PASSWDOnSelect

@@ -1,13 +1,12 @@
-<?xml version="1.0" encoding="UTF-8"?><layout defaultCloseOperation="2" name="Form" prefHeight="384px" prefWidth="234px" windowClosing="formWindowClosing" windowOpened="formWindowOpened">
-  <widget name="toolBar" parent="Form" prefHeight="36px" prefWidth="234px" rollover="true" type="ToolbarDesignInfo">
+<?xml version="1.0" encoding="UTF-8"?><layout defaultCloseOperation="2" name="Form" prefHeight="372px" prefWidth="225px" windowClosing="formWindowClosing" windowOpened="formWindowOpened">
+  <widget floatable="false" name="toolBar" parent="Form" prefHeight="36px" prefWidth="225px" rollover="true" type="ToolbarDesignInfo">
     <constraints place="North" type="BorderLayoutConstraintsDesignInfo"/>
   </widget>
   <widget focusable="false" horizontalTextPosition="0" icon="icons/22x22/actions/list-add.png" name="btnAdd" parent="toolBar" prefHeight="34px" prefWidth="34px" toolTipText="Добавить" type="ButtonDesignInfo" verticalTextPosition="3"/>
-  <widget focusable="false" horizontalTextPosition="0" icon="icons/22x22/actions/human-folder-new.png" name="btnAddParent" parent="toolBar" prefHeight="34px" prefWidth="34px" toolTipText="Добавить вложенный элемент" type="ButtonDesignInfo" verticalTextPosition="3"/>
   <widget focusable="false" horizontalTextPosition="0" icon="icons/22x22/actions/list-remove.png" name="btnDel" parent="toolBar" prefHeight="34px" prefWidth="34px" toolTipText="Удалить" type="ButtonDesignInfo" verticalTextPosition="3"/>
   <widget actionPerformed="btnReqActionPerformed" focusable="false" horizontalTextPosition="0" icon="icons/22x22/actions/new-view-refresh.png" name="btnReq" parent="toolBar" prefHeight="34px" prefWidth="34px" toolTipText="Обновить" type="ButtonDesignInfo" verticalTextPosition="3"/>
   <widget actionPerformed="btnSaveActionPerformed" focusable="false" horizontalTextPosition="0" icon="icons/22x22/actions/document-save.png" name="btnSave" parent="toolBar" prefHeight="34px" prefWidth="34px" toolTipText="Сохранить" type="ButtonDesignInfo" verticalTextPosition="3"/>
-  <widget name="pnlSelLock" parent="Form" prefHeight="50px" prefWidth="234px" type="PanelDesignInfo">
+  <widget name="pnlSelLock" parent="Form" prefHeight="50px" prefWidth="225px" type="PanelDesignInfo">
     <layout type="MarginLayoutDesignInfo"/>
     <constraints place="South" type="BorderLayoutConstraintsDesignInfo"/>
   </widget>
@@ -17,13 +16,12 @@
   <widget actionPerformed="tbSetEditActionPerformed" icon="icons/22x22/stock/stock_lock.png" name="tbSetEdit" parent="pnlSelLock" prefHeight="35px" prefWidth="35px" toolTipText="Открыть форму для редактирования" type="ToggleButtonDesignInfo">
     <constraints bottom="7px" height="35px" left="7px" type="MarginConstraintsDesignInfo" width="35px"/>
   </widget>
-  <widget name="pnlWorkSpace" parent="Form" prefHeight="298px" prefWidth="234px" type="PanelDesignInfo">
+  <widget name="pnlWorkSpace" parent="Form" prefHeight="286px" prefWidth="225px" type="PanelDesignInfo">
     <layout type="MarginLayoutDesignInfo"/>
     <constraints place="Center" type="BorderLayoutConstraintsDesignInfo"/>
   </widget>
-  <widget name="modelGrid" parent="pnlWorkSpace" prefHeight="298px" prefWidth="234px" type="DbGridDesignInfo">
-    <column name="colTp_name" title="Название">
-      <datamodelElement entityId="140480249926639" fieldName="tp_name"/>
+  <widget name="modelGrid" parent="pnlWorkSpace" prefHeight="286px" prefWidth="225px" type="DbGridDesignInfo">
+    <column name="colF_name" title="Франчази">
       <columnsDatasource/>
       <columnsDisplayField/>
       <cellsDatasource/>
@@ -35,27 +33,13 @@
       <headerStyle>
         <nativeFont name="Ubuntu" size="15"/>
       </headerStyle>
+      <datamodelElement entityId="140480203387606" fieldName="f_name"/>
       <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
     </column>
-    <column name="colTp_address" title="Адрес">
-      <datamodelElement entityId="140480249926639" fieldName="tp_address"/>
-      <columnsDatasource/>
-      <columnsDisplayField/>
-      <cellsDatasource/>
-      <cellDesignInfo>
-        <rowsKeyField/>
-        <columnsKeyField/>
-        <cellValueField/>
-      </cellDesignInfo>
-      <headerStyle>
-        <nativeFont name="Ubuntu" size="15"/>
-      </headerStyle>
-      <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
-    </column>
-    <rowsColumnsDesignInfo>
-      <rowsDatasource entityId="140480249926639" field="false"/>
-    </rowsColumnsDesignInfo>
     <treeDesignInfo/>
+    <rowsColumnsDesignInfo>
+      <rowsDatasource entityId="140480203387606" field="false"/>
+    </rowsColumnsDesignInfo>
     <constraints bottom="0px" left="0px" right="0px" top="0px" type="MarginConstraintsDesignInfo"/>
   </widget>
   <layout type="BorderLayoutDesignInfo"/>
