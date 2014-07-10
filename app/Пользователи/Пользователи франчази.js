@@ -6,22 +6,25 @@
  */
 
 function SelectBaristForm() {
-var self = this, model = this.model, form = this;
+    var self = this, model = this.model, form = this;
 
-var treadPointsForm = new TreadPointsForm();
-var usersFrachaziOrTP = new UsersFrachaziOrTP();
-var createTreadPointUser = new CreateTreadPointUser();
+    var tradePointsForm = new TreadPointsForm();
+    var usersFrachaziOrTP = new UsersFrachaziOrTP();
+    var createTreadPointUser = new CreateTreadPointUser();
 
-var isSelectForm = true;
-var isEditable = false;
-var canSetEdit = true;
+    var isSelectForm = true;
+    var isEditable = false;
+    var canSetEdit = true;
 
-model.params.franchazi_id = null;
+    model.params.franchazi_id = null;
 
-self.setFranchaziId = function(aFranchaziId){
-    model.params.franchazi_id = aFranchaziId;
-};
-
+    self.setFranchaziId = function(aFranchaziId) {
+        model.params.franchazi_id = aFranchaziId;
+    };
+    
+    self.setTradePointId = function(aTradePointId) {
+        model.params.trade_point_id = aTradePointId;
+    };
 
 //
 //function setEdit(){
@@ -69,14 +72,7 @@ function formWindowClosing(evt) {//GEN-FIRST:event_formWindowClosing
 
 
     function btnSelectActionPerformed(evt) {//GEN-FIRST:event_btnSelectActionPerformed
-        treadPointsForm.setFranchaziId(model.listFranchazi.cursor.org_franchazi_id);
-        treadPointsForm.showModal(function(){
-            
-        });
-        usersFrachaziOrTP.setFranchaziId(model.listFranchazi.cursor.org_franchazi_id);
-        usersFrachaziOrTP.showModal(function(){
-            
-        });
+        form.close(model.listTradePointUsers.usr_name);
     }//GEN-LAST:event_btnSelectActionPerformed
 
     function btnAddActionPerformed(evt) {//GEN-FIRST:event_btnAddActionPerformed

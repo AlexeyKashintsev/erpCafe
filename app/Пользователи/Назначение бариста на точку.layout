@@ -1,7 +1,7 @@
-<?xml version="1.0" encoding="UTF-8"?><layout defaultCloseOperation="2" name="Form" prefHeight="300px" prefWidth="281px">
+<?xml version="1.0" encoding="UTF-8"?><layout defaultCloseOperation="2" name="Form" prefHeight="194px" prefWidth="281px">
   <widget name="modelComboUsrName" parent="Form" prefHeight="27px" prefWidth="228px" type="DbComboDesignInfo">
-    <valueField entityId="140490094215734" fieldName="usr_name"/>
     <displayField entityId="140490094215734" fieldName="usr_name"/>
+    <valueField entityId="140490094215734" fieldName="usr_name"/>
     <datamodelElement entityId="140490094215734" fieldName="usr_name"/>
     <constraints height="27px" left="24px" top="96px" type="MarginConstraintsDesignInfo" width="228px"/>
   </widget>
@@ -12,8 +12,8 @@
     <constraints height="17px" left="24px" top="12px" type="MarginConstraintsDesignInfo" width="228px"/>
   </widget>
   <widget name="modelComboTreadPoint" parent="Form" prefHeight="27px" prefWidth="228px" type="DbComboDesignInfo">
-    <valueField entityId="140490090698561" fieldName="org_trade_point_id"/>
     <displayField entityId="140490090698561" fieldName="tp_name"/>
+    <valueField entityId="140490090698561" fieldName="org_trade_point_id"/>
     <datamodelElement entityId="140490090698561" fieldName="tp_name"/>
     <constraints height="27px" left="24px" top="36px" type="MarginConstraintsDesignInfo" width="228px"/>
   </widget>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?><layout defaultCloseOperation="2" name="Form" prefHeight="300px" prefWidth="400px">
+  <widget name="tabbedPane" parent="Form" prefHeight="300px" prefWidth="400px" type="TabsDesignInfo">
+    <constraints bottom="0px" left="0px" right="0px" top="0px" type="MarginConstraintsDesignInfo"/>
+  </widget>
+  <widget name="pnlReport" parent="tabbedPane" prefHeight="254px" prefWidth="379px" type="PanelDesignInfo">
+    <layout type="MarginLayoutDesignInfo"/>
+    <constraints tabTitle="Информация" type="TabsConstraintsDesignInfo"/>
+  </widget>
+  <widget name="pnlBaristas" parent="tabbedPane" prefHeight="254px" prefWidth="379px" type="PanelDesignInfo" visible="false">
+    <layout type="MarginLayoutDesignInfo"/>
+    <constraints tabTitle="Баристы" type="TabsConstraintsDesignInfo"/>
+  </widget>
+  <layout type="MarginLayoutDesignInfo"/>
+</layout>
