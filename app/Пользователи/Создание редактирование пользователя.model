@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?><datamodel>
+  <parameters>
+    <parameter description="" name="franchaziID" nullable="true" parameterMode="1" precision="0" scale="0" selectionForm="null" signed="true" size="0" type="2" typeName="NUMERIC"/>
+    <parameter description="" name="userRole" nullable="true" parameterMode="1" precision="0" scale="0" selectionForm="null" signed="true" size="100" type="12" typeName="VARCHAR"/>
+  </parameters>
+  <parametersEntity entityHeight="200" entityIconified="false" entityLocationX="12" entityLocationY="12" entityWidth="150"/>
+  <entity Name="queryUsers" Title="" entityHeight="200" entityIconified="false" entityId="140481906862819" entityLocationX="250" entityLocationY="16" entityWidth="150" queryId="queryUsers" tableName="" tableSchemaName=""/>
+  <entity Name="listFrancUsers" Title="" entityHeight="200" entityIconified="false" entityId="140491278995415" entityLocationX="441" entityLocationY="16" entityWidth="150" queryId="listFrancUsers" tableName="" tableSchemaName=""/>
+  <referenceRelation leftEntityFieldName="user_name" leftEntityId="140491278995415" rightEntityFieldName="usr_name" rightEntityId="140491278995415"/>
+  <referenceRelation leftEntityFieldName="user_name" leftEntityId="140491278995415" rightEntityFieldName="usr_name" rightEntityId="140481906862819"/>
+</datamodel>

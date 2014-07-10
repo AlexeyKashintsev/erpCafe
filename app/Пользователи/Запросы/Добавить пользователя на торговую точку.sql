@@ -1,5 +1,6 @@
 /**
  *
+ * @manual 
  * @author mike
  * @name createTradePointUser
  */ 
