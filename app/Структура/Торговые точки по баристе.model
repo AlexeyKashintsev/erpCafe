@@ -2,13 +2,13 @@
   <parameters>
     <parameter description="" name="franchazi_id" nullable="true" parameterMode="1" precision="0" scale="0" selectionForm="null" signed="true" size="0" type="2" typeName="NUMERIC"/>
     <parameter description="" name="usr_name" nullable="true" parameterMode="1" precision="0" scale="0" selectionForm="null" signed="true" size="100" type="12" typeName="VARCHAR"/>
-    <parameter description="" name="tp_id" nullable="true" parameterMode="1" precision="0" scale="0" selectionForm="null" signed="true" size="0" type="2" typeName="NUMERIC"/>
   </parameters>
   <parametersEntity entityHeight="200" entityIconified="false" entityLocationX="12" entityLocationY="12" entityWidth="150"/>
+  <entity Name="deleteUserFromTradePoint" Title="" entityHeight="200" entityIconified="false" entityId="140497664924965" entityLocationX="273" entityLocationY="249" entityWidth="150" queryId="deleteUserFromTradePoint" tableName="" tableSchemaName=""/>
   <entity Name="tradePointsBarist" Title="" entityHeight="200" entityIconified="false" entityId="140490948655008" entityLocationX="214" entityLocationY="12" entityWidth="158" queryId="tradePointsBarist" tableName="" tableSchemaName=""/>
-  <entity Name="createTradePointUser" Title="" entityHeight="200" entityIconified="false" entityId="140497384119094" entityLocationX="224" entityLocationY="234" entityWidth="150" queryId="createTradePointUser" tableName="" tableSchemaName=""/>
-  <relation leftEntityId="-1" leftEntityParameterName="usr_name" rightEntityId="140490948655008" rightEntityParameterName="usr_name"/>
+  <entity Name="createTradePointUser" Title="" entityHeight="200" entityIconified="false" entityId="140497685992073" entityLocationX="7" entityLocationY="248" entityWidth="150" queryId="createTradePointUser" tableName="" tableSchemaName=""/>
   <relation leftEntityId="-1" leftEntityParameterName="franchazi_id" rightEntityId="140490948655008" rightEntityParameterName="franchazi_id"/>
-  <referenceRelation leftEntityFieldName="trade_point_id" leftEntityId="140497384119094" rightEntityFieldName="org_trade_point_id" rightEntityId="140490948655008"/>
+  <relation leftEntityId="-1" leftEntityParameterName="usr_name" rightEntityId="140490948655008" rightEntityParameterName="usr_name"/>
+  <referenceRelation leftEntityFieldName="trade_point_id" leftEntityId="140497685992073" rightEntityFieldName="org_trade_point_id" rightEntityId="140490948655008"/>
   <referenceRelation leftEntityFieldName="trade_point_id" leftEntityId="140490948655008" rightEntityFieldName="org_trade_point_id" rightEntityId="140490948655008"/>
 </datamodel>

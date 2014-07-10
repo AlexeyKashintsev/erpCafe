@@ -11,7 +11,7 @@
     <constraints place="Center" type="BorderLayoutConstraintsDesignInfo"/>
   </widget>
   <widget deletable="false" insertable="false" name="modelGrid" parent="pnlWorkSpace" prefHeight="334px" prefWidth="356px" type="DbGridDesignInfo">
-    <column name="colTp_name1" title="Название">
+    <column name="colTp_name1" readonly="true" title="Название">
       <datamodelElement entityId="140490948655008" fieldName="tp_name"/>
       <columnsDatasource/>
       <columnsDisplayField/>
@@ -26,7 +26,7 @@
       </headerStyle>
       <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
     </column>
-    <column name="colTp_address1" title="Адрес">
+    <column name="colTp_address1" readonly="true" title="Адрес">
       <datamodelElement entityId="140490948655008" fieldName="tp_address"/>
       <columnsDatasource/>
       <columnsDisplayField/>
@@ -41,7 +41,7 @@
       </headerStyle>
       <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
     </column>
-    <column name="colOnPoint">
+    <column name="colOnPoint" title="Добавить">
       <datamodelElement entityId="140490948655008" fieldName="onPoint"/>
       <columnsDatasource/>
       <columnsDisplayField/>

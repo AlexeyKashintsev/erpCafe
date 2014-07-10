@@ -30,8 +30,9 @@ function saveModel(){
                 };
                 model.createTradePointUser.push(createBarist);
             } else {
-                model.params.tp_id = model.tradePointsBarist.org_trade_point_id;
-                model.createTradePointUser.deleteRow();
+                model.deleteUserFromTradePoint.params.trade_point_id = model.tradePointsBarist.org_trade_point_id;
+                model.deleteUserFromTradePoint.params.user_name = model.params.usr_name;
+                model.deleteUserFromTradePoint.executeUpdate();
             }
         }
     }
