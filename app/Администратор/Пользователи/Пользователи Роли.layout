@@ -41,7 +41,7 @@
         <displayField entityId="132134563800070" fieldName="mdent_name"/>
       </controlInfo>
     </column>
-    <constraints height="230px" left="10px" top="30px" type="MarginConstraintsDesignInfo" width="380px"/>
+    <constraints bottom="40px" left="10px" right="10px" top="30px" type="MarginConstraintsDesignInfo"/>
   </widget>
   <widget actionPerformed="btnCloseActionPerformed" name="btnClose" parent="Form" prefHeight="20px" prefWidth="100px" text="Закрыть" type="ButtonDesignInfo">
     <constraints bottom="10px" height="20px" right="10px" type="MarginConstraintsDesignInfo" width="100px"/>

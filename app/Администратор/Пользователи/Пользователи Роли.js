@@ -13,17 +13,11 @@ function setControlsEnabled()
     self.btnSave.enabled = self.model.modified;
 }
 
-function refreshUsers()
-{
+function refreshUsers() {
     var cur = self.dsRoles.adm_roles_id;
-    if (self.model.modified && confirm('Сохранить изменения?', self.title))
-        self.model.save();
     self.model.requery();	
-    if (locUsersRoles.find(cur))
-    {
-        locUsersRoles.first();
-        self.grdUsers.makeVisible(cur);
-    }			
+    self.model.dsRoles.scrollTo(self.model.dsRoles.findById(cur));
+    //self.grdUsers.makeVisible(self.model.dsRoles.findById(cur));		
 }
 
 function USR_FORM_selectValue() {//GEN-FIRST:event_USR_FORM_selectValue
@@ -60,7 +54,6 @@ function btnFindActionPerformed(evt) {//GEN-FIRST:event_btnFindActionPerformed
 }//GEN-LAST:event_btnFindActionPerformed
 
 function formWindowOpened(evt) {//GEN-FIRST:event_formWindowOpened
-    locUsers = self.dsRoles.createLocator(self.dsRoles.md.adm_roles_id);
     setControlsEnabled();
 }//GEN-LAST:event_formWindowOpened
 

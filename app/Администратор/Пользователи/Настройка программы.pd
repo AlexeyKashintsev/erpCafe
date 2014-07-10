@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?><datamodel datamodelDbId="null">
   <fieldsEntity entityHeight="200" entityIconified="false" entityId="132134776737586" entityLocationX="29" entityLocationY="9" entityWidth="228" tableName="mtd_users"/>
+  <fieldsEntity entityHeight="200" entityIconified="false" entityId="140498901090182" entityLocationX="238" entityLocationY="276" entityWidth="150" tableName="adm_roles"/>
   <fieldsEntity entityHeight="200" entityIconified="false" entityId="140489054880750" entityLocationX="314" entityLocationY="7" entityWidth="150" tableName="mtd_entities"/>
 </datamodel>

@@ -1,44 +1,78 @@
-<?xml version="1.0" encoding="UTF-8"?><layout defaultCloseOperation="2" name="Form" prefHeight="248px" prefWidth="303px">
-  <widget name="modelFormattedField2" parent="Form" prefHeight="27px" prefWidth="192px" type="DbLabelDesignInfo">
-    <datamodelElement entityId="140481906862819" fieldName="usr_email"/>
-    <constraints height="27px" left="96px" top="96px" type="MarginConstraintsDesignInfo" width="192px"/>
+<?xml version="1.0" encoding="UTF-8"?><layout defaultCloseOperation="2" name="Form" prefHeight="448px" prefWidth="303px" windowClosed="formWindowClosed" windowOpened="formWindowOpened">
+  <nonvisual name="buttonGroup" type="ButtonGroupDesignInfo"/>
+  <nonvisual name="buttonGroup1" type="ButtonGroupDesignInfo"/>
+  <widget name="tfAdress" parent="Form" prefHeight="27px" prefWidth="192px" type="DbLabelDesignInfo">
+    <datamodelElement entityId="140498079905740" fieldName="address"/>
+    <constraints height="27px" left="96px" top="204px" type="MarginConstraintsDesignInfo" width="192px"/>
   </widget>
-  <widget name="label2" parent="Form" prefHeight="17px" prefWidth="72px" text="Email" type="LabelDesignInfo">
-    <constraints height="17px" left="24px" top="101px" type="MarginConstraintsDesignInfo" width="72px"/>
+  <widget name="tfFIO" parent="Form" prefHeight="27px" prefWidth="192px" type="DbLabelDesignInfo">
+    <datamodelElement entityId="140498079905740" fieldName="fio"/>
+    <constraints height="27px" left="96px" top="168px" type="MarginConstraintsDesignInfo" width="192px"/>
   </widget>
-  <widget name="label11" parent="Form" prefHeight="17px" prefWidth="72px" text="Телефон" type="LabelDesignInfo">
-    <constraints height="17px" left="24px" top="137px" type="MarginConstraintsDesignInfo" width="72px"/>
-  </widget>
-  <widget name="modelFormattedField11" parent="Form" prefHeight="27px" prefWidth="192px" type="DbLabelDesignInfo">
-    <datamodelElement entityId="140481906862819" fieldName="usr_phone"/>
+  <widget name="tfPhone" parent="Form" prefHeight="27px" prefWidth="192px" type="DbLabelDesignInfo">
+    <datamodelElement entityId="140499275621413" fieldName="usr_phone"/>
     <constraints height="27px" left="96px" top="132px" type="MarginConstraintsDesignInfo" width="192px"/>
   </widget>
-  <widget name="modelFormattedField1" parent="Form" prefHeight="27px" prefWidth="192px" type="DbLabelDesignInfo">
-    <datamodelElement entityId="140481906862819" fieldName="usr_passwd"/>
+  <widget name="tfEmail" parent="Form" prefHeight="27px" prefWidth="192px" type="DbLabelDesignInfo">
+    <datamodelElement entityId="140499275621413" fieldName="usr_email"/>
+    <constraints height="27px" left="96px" top="96px" type="MarginConstraintsDesignInfo" width="192px"/>
+  </widget>
+  <widget name="label112" parent="Form" prefHeight="17px" prefWidth="72px" text="Адрес" type="LabelDesignInfo">
+    <constraints height="17px" left="24px" right="207px" top="209px" type="MarginConstraintsDesignInfo"/>
+  </widget>
+  <widget name="label1111" parent="Form" prefHeight="17px" prefWidth="264px" text="Дополнительная информация" type="LabelDesignInfo">
+    <constraints height="17px" left="24px" right="15px" top="240px" type="MarginConstraintsDesignInfo"/>
+  </widget>
+  <widget name="label111" parent="Form" prefHeight="17px" prefWidth="72px" text="ФИО" type="LabelDesignInfo">
+    <constraints height="17px" left="24px" right="207px" top="173px" type="MarginConstraintsDesignInfo"/>
+  </widget>
+  <widget name="label2" parent="Form" prefHeight="17px" prefWidth="72px" text="Email" type="LabelDesignInfo">
+    <constraints height="17px" left="24px" right="207px" top="101px" type="MarginConstraintsDesignInfo"/>
+  </widget>
+  <widget mouseClicked="tfPassMouseClicked" name="tfPass" parent="Form" prefHeight="27px" prefWidth="192px" type="TextFieldDesignInfo">
     <constraints height="27px" left="96px" top="60px" type="MarginConstraintsDesignInfo" width="192px"/>
   </widget>
-  <widget name="label1" parent="Form" prefHeight="17px" prefWidth="72px" text="Пароль" type="LabelDesignInfo">
-    <constraints height="17px" left="24px" top="65px" type="MarginConstraintsDesignInfo" width="72px"/>
+  <widget name="label11" parent="Form" prefHeight="17px" prefWidth="72px" text="Телефон" type="LabelDesignInfo">
+    <constraints height="17px" left="24px" right="207px" top="137px" type="MarginConstraintsDesignInfo"/>
   </widget>
-  <widget name="btnSave" parent="Form" prefHeight="29px" prefWidth="120px" text="Сохранить" type="ButtonDesignInfo">
-    <constraints bottom="17px" height="29px" right="99px" type="MarginConstraintsDesignInfo" width="120px"/>
+  <widget name="label1" parent="Form" prefHeight="17px" prefWidth="72px" text="Пароль" type="LabelDesignInfo">
+    <constraints height="17px" left="24px" right="207px" top="65px" type="MarginConstraintsDesignInfo"/>
+  </widget>
+  <widget actionPerformed="btnSaveActionPerformed" name="btnSave" parent="Form" prefHeight="29px" prefWidth="120px" text="Сохранить" type="ButtonDesignInfo">
+    <constraints bottom="18px" height="29px" left="84px" type="MarginConstraintsDesignInfo" width="120px"/>
   </widget>
   <widget name="label" parent="Form" prefHeight="17px" prefWidth="72px" text="Логин" type="LabelDesignInfo">
-    <constraints height="17px" left="24px" top="29px" type="MarginConstraintsDesignInfo" width="72px"/>
-  </widget>
-  <widget name="modelFormattedField" parent="Form" prefHeight="27px" prefWidth="192px" type="DbLabelDesignInfo">
-    <datamodelElement entityId="140481906862819" fieldName="usr_name"/>
-    <constraints height="27px" left="96px" top="24px" type="MarginConstraintsDesignInfo" width="192px"/>
+    <constraints height="17px" left="24px" right="207px" top="29px" type="MarginConstraintsDesignInfo"/>
   </widget>
   <widget name="btnCancel" parent="Form" prefHeight="29px" prefWidth="94px" text="Отмена" type="ButtonDesignInfo">
-    <constraints bottom="17px" height="29px" right="5px" type="MarginConstraintsDesignInfo" width="94px"/>
+    <constraints bottom="18px" height="29px" right="5px" type="MarginConstraintsDesignInfo" width="94px"/>
   </widget>
-  <widget buttonGroup="buttonGroup" name="rbAdmin" parent="Form" prefHeight="23px" prefWidth="144px" text="Администратор" type="RadioDesignInfo">
-    <constraints height="23px" left="24px" top="168px" type="MarginConstraintsDesignInfo" width="144px"/>
+  <widget name="panelEnabled" parent="Form" prefHeight="36px" prefWidth="300px" type="PanelDesignInfo">
+    <layout type="MarginLayoutDesignInfo"/>
+    <constraints height="36px" left="0px" top="361px" type="MarginConstraintsDesignInfo" width="300px"/>
   </widget>
-  <widget buttonGroup="buttonGroup" name="rbBarista" parent="Form" prefHeight="23px" prefWidth="113px" selected="true" text="Бариста" type="RadioDesignInfo">
-    <constraints height="23px" left="168px" top="168px" type="MarginConstraintsDesignInfo" width="113px"/>
+  <widget buttonGroup="buttonGroup1" name="rbEnable" parent="panelEnabled" prefHeight="23px" prefWidth="144px" selected="true" text="Включить" type="RadioDesignInfo">
+    <constraints height="23px" left="24px" top="0px" type="MarginConstraintsDesignInfo" width="144px"/>
   </widget>
-  <nonvisual name="buttonGroup" type="ButtonGroupDesignInfo"/>
+  <widget buttonGroup="buttonGroup1" name="rbDisable" parent="panelEnabled" prefHeight="23px" prefWidth="113px" text="Выключить" type="RadioDesignInfo">
+    <constraints height="23px" left="168px" top="0px" type="MarginConstraintsDesignInfo" width="113px"/>
+  </widget>
+  <widget name="tfLogin" parent="Form" prefHeight="27px" prefWidth="192px" type="TextFieldDesignInfo">
+    <constraints height="27px" left="96px" top="24px" type="MarginConstraintsDesignInfo" width="192px"/>
+  </widget>
+  <widget name="panelBarist" parent="Form" prefHeight="36px" prefWidth="300px" type="PanelDesignInfo">
+    <layout type="MarginLayoutDesignInfo"/>
+    <constraints height="36px" left="0px" top="358px" type="MarginConstraintsDesignInfo" width="300px"/>
+  </widget>
+  <widget buttonGroup="buttonGroup" name="rbAdmin" parent="panelBarist" prefHeight="23px" prefWidth="144px" text="Администратор" type="RadioDesignInfo">
+    <constraints height="23px" left="24px" top="0px" type="MarginConstraintsDesignInfo" width="144px"/>
+  </widget>
+  <widget buttonGroup="buttonGroup" name="rbBarista" parent="panelBarist" prefHeight="23px" prefWidth="113px" selected="true" text="Бариста" type="RadioDesignInfo">
+    <constraints height="23px" left="168px" top="0px" type="MarginConstraintsDesignInfo" width="113px"/>
+  </widget>
+  <widget name="tfAdditional" parent="Form" prefHeight="96px" prefWidth="264px" type="DbTextDesignInfo">
+    <datamodelElement entityId="140498079905740" fieldName="additional_info"/>
+    <constraints height="96px" left="24px" top="264px" type="MarginConstraintsDesignInfo" width="264px"/>
+  </widget>
   <layout type="MarginLayoutDesignInfo"/>
 </layout>
