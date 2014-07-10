@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?><datamodel>
   <parametersEntity entityHeight="200" entityIconified="false" entityLocationX="8" entityLocationY="7" entityWidth="150"/>
-  <entity Title="" entityHeight="200" entityIconified="false" entityId="140490082462223" entityLocationX="208" entityLocationY="6" entityWidth="247" tableAlias="t1" tableName="org_tp_users" tableSchemaName=""/>
+  <entity Title="" entityHeight="200" entityIconified="false" entityId="140490082462223" entityLocationX="208" entityLocationY="6" entityWidth="144" tableAlias="t1" tableName="org_tp_users" tableSchemaName=""/>
 </datamodel>

@@ -8,54 +8,40 @@
 function TreadPointsbaristForm() {
 var self = this, model = this.model, form = this;
 
-var isSelectForm = true;
-var isEditable = false;
-var canSetEdit = true;
-
-var usersFrachaziOrTP = new UsersFrachaziOrTP();
-
-model.params.franchazi_id = null;
+model.params.franchazi_id = 1;
+model.params.usr_name = "barista";
 
 self.setFranchaziId = function(aFranchaziId){
     model.params.franchazi_id = aFranchaziId;
 };
 
-//function setEdit(){
-//    self.modelGrid.editable = self.btnAdd.enabled = 
-//            self.btnDel.enabled = self.btnSave.enabled = isEditable;    
-//    self.btnAddParent.enabled = isEditable;
-//    self.tbSetEdit.visible = canSetEdit;
-//    self.tbSetEdit.selected = isEditable;
-//}
+self.setUserName = function(aFranchaziId){
+    model.params.franchazi_id = aFranchaziId;
+};
 
-//function setElShown(){
-//    setEdit();
-//    if (!isSelectForm){
-//        self.pnlSelLock.visible = false;
-//        self.pnlWorkSpace.height += 48;
-//        self.modelGrid.bottom += 48;
-//    }
-//}
-
-function btnReqActionPerformed(evt) {//GEN-FIRST:event_btnReqActionPerformed
-    if (self.model.modified&&confirm('Сохранить изменения?')){
-        self.model.save();
+function saveModel(){
+    model.tradePointsBarist.beforeFirst();
+    while(model.tradePointsBarist.next()){
+        if(model.tradePointsBarist.onPointHidden != model.tradePointsBarist.onPoint){
+            if(model.tradePointsBarist.onPoint){
+                var createBarist = {
+                    trade_point_id: model.tradePointsBarist.org_trade_point_id,
+                    user_name: model.params.usr_name 
+                };
+                model.createTradePointUser.push(createBarist);
+            } else {
+                model.params.tp_id = model.tradePointsBarist.org_trade_point_id;
+                model.createTradePointUser.deleteRow();
+            }
+        }
     }
-    self.model.requery();
-}//GEN-LAST:event_btnReqActionPerformed
-
-function btnSaveActionPerformed(evt) {//GEN-FIRST:event_btnSaveActionPerformed
-    self.model.save();
-}//GEN-LAST:event_btnSaveActionPerformed
+    model.save();
+    model.requery();
+}
 
 function formWindowOpened(evt) {//GEN-FIRST:event_formWindowOpened
-    //setElShown();
-}//GEN-LAST:event_formWindowOpened
 
-//function tbSetEditActionPerformed(evt) {//GEN-FIRST:event_tbSetEditActionPerformed
-//    isEditable = self.tbSetEdit.selected;
-//    setEdit();
-//}//GEN-LAST:event_tbSetEditActionPerformed
+}//GEN-LAST:event_formWindowOpened
 
 function formWindowClosing(evt) {//GEN-FIRST:event_formWindowClosing
     if (self.model.modified&&confirm('Сохранить изменения?')){
@@ -65,9 +51,6 @@ function formWindowClosing(evt) {//GEN-FIRST:event_formWindowClosing
 
 
     function btnSelectActionPerformed(evt) {//GEN-FIRST:event_btnSelectActionPerformed
-        usersFrachaziOrTP.setTradePointId(model.listTreadPoints.cursor.org_trade_point_id);
-        usersFrachaziOrTP.showModal(function(){
-            
-        });
+        saveModel();
     }//GEN-LAST:event_btnSelectActionPerformed
 }
