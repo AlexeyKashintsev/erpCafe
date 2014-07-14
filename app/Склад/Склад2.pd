@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?><datamodel datamodelDbId="null">
+  <fieldsEntity entityHeight="200" entityIconified="false" entityId="140533080137955" entityLocationX="424" entityLocationY="29" entityWidth="150" tableName="wh_session_balance"/>
+  <fieldsEntity entityHeight="200" entityIconified="false" entityId="140533080126537" entityLocationX="237" entityLocationY="294" entityWidth="150" tableName="wh_items"/>
+  <fieldsEntity entityHeight="200" entityIconified="false" entityId="140533080135806" entityLocationX="620" entityLocationY="285" entityWidth="150" tableName="wh_measures"/>
+  <fieldsEntity entityHeight="200" entityIconified="false" entityId="140533080136363" entityLocationX="781" entityLocationY="30" entityWidth="150" tableName="wh_movement_types"/>
+  <fieldsEntity entityHeight="200" entityIconified="false" entityId="140533080127132" entityLocationX="53" entityLocationY="297" entityWidth="150" tableName="wh_items_in_warehouse"/>
+  <fieldsEntity entityHeight="200" entityIconified="false" entityId="140533084435050" entityLocationX="51" entityLocationY="18" entityWidth="150" tableName="org_trade_point"/>
+  <fieldsEntity entityHeight="200" entityIconified="false" entityId="140533080137424" entityLocationX="241" entityLocationY="39" entityWidth="150" tableName="wh_session"/>
+  <fieldsEntity entityHeight="200" entityIconified="false" entityId="140533080125960" entityLocationX="430" entityLocationY="285" entityWidth="150" tableName="wh_item_types"/>
+  <fieldsEntity entityHeight="200" entityIconified="false" entityId="140533080136828" entityLocationX="602" entityLocationY="28" entityWidth="150" tableName="wh_movements"/>
+</datamodel>

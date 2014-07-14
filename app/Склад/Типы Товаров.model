@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?><datamodel>
+  <parametersEntity entityHeight="200" entityIconified="false" entityLocationX="12" entityLocationY="12" entityWidth="150"/>
+  <entity Name="itemType" Title="" entityHeight="200" entityIconified="false" entityId="140532276305367" entityLocationX="251" entityLocationY="18" entityWidth="150" queryId="itemType" tableName="" tableSchemaName=""/>
+  <entity Name="queryMeasures" Title="" entityHeight="200" entityIconified="false" entityId="140532276543923" entityLocationX="480" entityLocationY="14" entityWidth="150" queryId="queryMeasures" tableName="" tableSchemaName=""/>
+  <referenceRelation leftEntityFieldName="measure" leftEntityId="140532276305367" rightEntityFieldName="wh_measures_id" rightEntityId="140532276543923"/>
+  <referenceRelation leftEntityFieldName="parent_type" leftEntityId="140532276305367" rightEntityFieldName="wh_item_types_id" rightEntityId="140532276305367"/>
+</datamodel>

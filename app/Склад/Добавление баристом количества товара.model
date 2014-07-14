@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?><datamodel>
+  <parameters>
+    <parameter description="" name="trade_point_id" nullable="true" parameterMode="1" precision="0" scale="0" selectionForm="null" signed="true" size="0" type="2" typeName="NUMERIC"/>
+  </parameters>
+  <parametersEntity entityHeight="200" entityIconified="false" entityLocationX="12" entityLocationY="12" entityWidth="150"/>
+  <entity Name="addSessionBarist" Title="" entityHeight="200" entityIconified="false" entityId="140533878639528" entityLocationX="265" entityLocationY="13" entityWidth="150" queryId="addSessionBarist" tableName="" tableSchemaName=""/>
+  <entity Name="itemsByTP" Title="" entityHeight="200" entityIconified="false" entityId="140533879758635" entityLocationX="184" entityLocationY="255" entityWidth="150" queryId="itemsByTP" tableName="" tableSchemaName=""/>
+  <relation leftEntityId="-1" leftEntityParameterName="trade_point_id" rightEntityId="140533879758635" rightEntityParameterName="trade_point_id"/>
+  <referenceRelation leftEntityFieldName="item_id" leftEntityId="140533878639528" rightEntityFieldName="wh_items_id" rightEntityId="140533879758635"/>
+  <referenceRelation leftEntityFieldName="item_id" leftEntityId="140533879758635" rightEntityFieldName="wh_items_id" rightEntityId="140533879758635"/>
+  <referenceRelation leftEntityFieldName="session_id" leftEntityId="140533878639528" rightEntityFieldName="wh_session_id" rightEntityId="140533878639528"/>
+</datamodel>

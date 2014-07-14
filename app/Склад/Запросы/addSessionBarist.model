@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?><datamodel>
+  <parameters>
+    <parameter description="" name="trade_point_id" nullable="true" parameterMode="1" precision="0" scale="0" selectionForm="null" signed="true" size="0" type="2" typeName="NUMERIC"/>
+  </parameters>
+  <parametersEntity entityHeight="200" entityIconified="false" entityLocationX="8" entityLocationY="7" entityWidth="150"/>
+  <entity Title="" entityHeight="200" entityIconified="false" entityId="140533862564568" entityLocationX="234" entityLocationY="11" entityWidth="150" tableAlias="t1" tableName="wh_session" tableSchemaName=""/>
+  <entity Title="" entityHeight="200" entityIconified="false" entityId="140533867017369" entityLocationX="448" entityLocationY="8" entityWidth="150" tableAlias="t" tableName="wh_session_balance" tableSchemaName=""/>
+  <relation leftEntityFieldName="session_id" leftEntityId="140533867017369" rightEntityFieldName="wh_session_id" rightEntityId="140533862564568"/>
+  <relation leftEntityId="-1" leftEntityParameterName="trade_point_id" rightEntityFieldName="warehouse" rightEntityId="140533862564568"/>
+</datamodel>
