@@ -5,8 +5,8 @@ if (!platypus) {
 	var platypus = {};
 }
 platypus.ready = function() {
-	require(['UserView'], function(){
-		var f = new UserView();
+	require(['createFancUserForm'], function(){
+		var f = new createFancUserForm();
 		f.show();
 	});
 };

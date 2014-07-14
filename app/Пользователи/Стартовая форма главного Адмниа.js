@@ -1,9 +1,9 @@
 /**
  * 
  * @author mike
- * @rolesAllowed barista
+ * @rolesAllowed admin
  */
-function BaristStartForm() {
+function StartMasterAdminForm() {
     var self = this, model = this.model, form = this;
     
     // TODO : place your code here

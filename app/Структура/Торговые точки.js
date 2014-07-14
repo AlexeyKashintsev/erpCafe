@@ -1,18 +1,18 @@
 /**
  * 
  * @author Алексей
- * @name TreadPointsForm
+ * @name TradePointsForm
  * @public
  */
 
-function TreadPointsForm() {
+function TradePointsForm() {
 var self = this, model = this.model, form = this;
 
 var isSelectForm = true;
 var isEditable = false;
 var canSetEdit = true;
 
-var usersFrachaziOrTP = new UsersFrachaziOrTP();
+//var usersFrachaziOrTP = new UsersFrachaziOrTP();
 
 model.params.franchazi_id = null;
 
@@ -65,9 +65,8 @@ function formWindowClosing(evt) {//GEN-FIRST:event_formWindowClosing
 
 
     function btnSelectActionPerformed(evt) {//GEN-FIRST:event_btnSelectActionPerformed
-        usersFrachaziOrTP.setTradePointId(model.listTreadPoints.cursor.org_trade_point_id);
-        usersFrachaziOrTP.showModal(function(){
-            
-        });
+        //usersFrachaziOrTP.setTradePointId(model.listTradePoints.cursor.org_trade_point_id);
+        //usersFrachaziOrTP.showModal(function(){   
+       // });
     }//GEN-LAST:event_btnSelectActionPerformed
 }

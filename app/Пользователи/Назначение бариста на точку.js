@@ -1,8 +1,8 @@
 /**
- * @name CreateTreadPointUser
+ * @name CreateTradePointUser
  * @author mike
  */
-function CreateTreadPointUser() {
+function CreateTradePointUser() {
     var self = this, model = this.model, form = this;
     
     self.setFranchaziId = function(aFranchaziId){
@@ -13,7 +13,7 @@ function CreateTreadPointUser() {
     function btnCreateActionPerformed(evt) {//GEN-FIRST:event_btnCreateActionPerformed
         var user = {
             user_name : form.modelComboUsrName,
-            trade_point_id : form.modelComboTreadPoint
+            trade_point_id : form.modelComboTradePoint
         };
         form.close(user);
     }//GEN-LAST:event_btnCreateActionPerformed

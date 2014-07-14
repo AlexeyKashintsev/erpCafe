@@ -2,15 +2,16 @@
  * 
  * @author Алексей
  * @name SelectBaristForm
+ * @rolesAllowed barista
  * @public
  */
 
 function SelectBaristForm() {
     var self = this, model = this.model, form = this;
 
-    var tradePointsForm = new TreadPointsForm();
+    var tradePointsForm = new TradePointsForm();
     var usersFrachaziOrTP = new UsersFrachaziOrTP();
-    var createTreadPointUser = new CreateTreadPointUser();
+    var createTradePointUser = new CreateTradePointUser();
 
     var isSelectForm = true;
     var isEditable = false;
@@ -76,13 +77,13 @@ function formWindowClosing(evt) {//GEN-FIRST:event_formWindowClosing
     }//GEN-LAST:event_btnSelectActionPerformed
 
     function btnAddActionPerformed(evt) {//GEN-FIRST:event_btnAddActionPerformed
-        createTreadPointUser.setFranchaziId(model.params.franchazi_id);
-        createTreadPointUser.showModal(function(user){
+        createTradePointUser.setFranchaziId(model.params.franchazi_id);
+        createTradePointUser.showModal(function(user){
             if(user){
-                model.createTreadPointUser.insert(
-                model.createTreadPointUser.schema.user_name, user.user_name,
-                model.createTreadPointUser.schema.trade_point_id, user.trade_point_id,
-                model.createTreadPointUser.schema.tp_users_active , true);
+                model.createTradePointUser.insert(
+                model.createTradePointUser.schema.user_name, user.user_name,
+                model.createTradePointUser.schema.trade_point_id, user.trade_point_id,
+                model.createTradePointUser.schema.tp_users_active , true);
                 model.save();
                 model.requery();
             }   

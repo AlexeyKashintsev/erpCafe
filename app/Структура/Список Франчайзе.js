@@ -13,7 +13,7 @@ var isSelectForm = true;
 var isEditable = false;
 var canSetEdit = true;
 
-var treadPointsForm = new TreadPointsForm();
+var tradePointsForm = new TradePointsForm();
 var usersFrachaziOrTP = new UsersFrachaziOrTP();
 var selectFranchaziForm = new SelectFranchaziForm();
 var selectBaristForm = new SelectBaristForm();
@@ -63,8 +63,8 @@ function formWindowClosing(evt) {//GEN-FIRST:event_formWindowClosing
 
 
     function btnSelectActionPerformed(evt) {//GEN-FIRST:event_btnSelectActionPerformed
-//        treadPointsForm.setFranchaziId(model.listFranchazi.cursor.org_franchazi_id);
-//        treadPointsForm.showModal(function(){            
+//        tradePointsForm.setFranchaziId(model.listFranchazi.cursor.org_franchazi_id);
+//        tradePointsForm.showModal(function(){            
 //        });
 
 //        usersFrachaziOrTP.setFranchaziId(model.listFranchazi.cursor.org_franchazi_id);

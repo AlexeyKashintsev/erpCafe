@@ -1,11 +1,12 @@
 /**
  * 
  * @author Алексей
- * @name TreadPointsBaristForm
+ * @name TradePointsBaristForm
  * @public
+ * @rolesAllowed admin franchazi
  */
 
-function TreadPointsbaristForm() {
+function TradePointsbaristForm() {
 var self = this, model = this.model, form = this;
 
 model.params.franchazi_id = 1;
@@ -46,7 +47,7 @@ function formWindowOpened(evt) {//GEN-FIRST:event_formWindowOpened
 
 function formWindowClosing(evt) {//GEN-FIRST:event_formWindowClosing
     if (self.model.modified&&confirm('Сохранить изменения?')){
-        self.model.save();
+        saveModel();
     }
 }//GEN-LAST:event_formWindowClosing
 
