@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?><datamodel datamodelDbId="null">
+  <fieldsEntity entityHeight="200" entityIconified="false" entityId="140499438972146" entityLocationX="24" entityLocationY="14" entityWidth="150" tableName="org_trade_point"/>
+  <fieldsEntity entityHeight="200" entityIconified="false" entityId="140499452279469" entityLocationX="195" entityLocationY="13" entityWidth="150" tableName="wh_balance"/>
+  <fieldsEntity entityHeight="200" entityIconified="false" entityId="140531743173203" entityLocationX="30" entityLocationY="222" entityWidth="150" tableName="org_franchazi"/>
+  <fieldsEntity entityHeight="200" entityIconified="false" entityId="140531746141844" entityLocationX="383" entityLocationY="224" entityWidth="150" tableName="wh_item_types"/>
+  <fieldsEntity entityHeight="200" entityIconified="false" entityId="140499475221844" entityLocationX="197" entityLocationY="223" entityWidth="150" tableName="wh_items"/>
+  <fieldsEntity entityHeight="200" entityIconified="false" entityId="140531784742817" entityLocationX="566" entityLocationY="226" entityWidth="150" tableName="wh_measures"/>
+</datamodel>
