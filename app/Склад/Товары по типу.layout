@@ -20,31 +20,13 @@
     <layout type="MarginLayoutDesignInfo"/>
     <constraints place="Center" type="BorderLayoutConstraintsDesignInfo"/>
   </widget>
-  <widget mouseClicked="modelGridMouseClicked" name="modelGrid" parent="pnlWorkSpace" prefHeight="262px" prefWidth="288px" type="DbGridDesignInfo">
-    <column name="colType_description" title="Тип товара">
-      <datamodelElement entityId="140532276305367" fieldName="type_description"/>
-      <columnsDatasource/>
-      <columnsDisplayField/>
-      <cellsDatasource/>
-      <cellDesignInfo>
-        <rowsKeyField/>
-        <columnsKeyField/>
-        <cellValueField/>
-      </cellDesignInfo>
-      <headerStyle>
-        <nativeFont name="Ubuntu" size="15"/>
-      </headerStyle>
-      <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
-    </column>
-    <rowsColumnsDesignInfo>
-      <rowsDatasource entityId="140532276305367" field="false"/>
-    </rowsColumnsDesignInfo>
-    <treeDesignInfo>
-      <unaryLinkField entityId="140532276305367" fieldName="parent_type"/>
-    </treeDesignInfo>
-    <constraints bottom="0px" left="0px" top="0px" type="MarginConstraintsDesignInfo" width="288px"/>
+  <widget dividerLocation="230" leftComponent="panel" name="splitPane" parent="pnlWorkSpace" prefHeight="262px" prefWidth="697px" rightComponent="panel1" type="SplitDesignInfo">
+    <constraints bottom="0px" left="0px" right="0px" top="0px" type="MarginConstraintsDesignInfo"/>
   </widget>
-  <widget name="modelGrid1" parent="pnlWorkSpace" prefHeight="288px" prefWidth="396px" type="DbGridDesignInfo">
+  <widget name="panel1" parent="splitPane" prefHeight="262px" prefWidth="461px" type="PanelDesignInfo">
+    <layout type="MarginLayoutDesignInfo"/>
+  </widget>
+  <widget name="modelGrid1" parent="panel1" prefHeight="262px" prefWidth="461px" type="DbGridDesignInfo">
     <column name="colItem_name">
       <datamodelElement entityId="140534393699468" fieldName="item_name"/>
       <columnsDatasource/>
@@ -79,7 +61,34 @@
       <rowsDatasource entityId="140534393699468" field="false"/>
     </rowsColumnsDesignInfo>
     <treeDesignInfo/>
-    <constraints bottom="-26px" left="300px" right="1px" top="0px" type="MarginConstraintsDesignInfo"/>
+    <constraints bottom="0px" left="0px" right="0px" top="0px" type="MarginConstraintsDesignInfo"/>
+  </widget>
+  <widget name="panel" parent="splitPane" prefHeight="262px" prefWidth="230px" type="PanelDesignInfo">
+    <layout type="MarginLayoutDesignInfo"/>
+  </widget>
+  <widget deletable="false" editable="false" insertable="false" mouseClicked="modelGridMouseClicked" name="modelGrid" parent="panel" prefHeight="262px" prefWidth="230px" type="DbGridDesignInfo">
+    <column name="colType_description" title="Тип товара">
+      <datamodelElement entityId="140532276305367" fieldName="type_description"/>
+      <columnsDatasource/>
+      <columnsDisplayField/>
+      <cellsDatasource/>
+      <cellDesignInfo>
+        <rowsKeyField/>
+        <columnsKeyField/>
+        <cellValueField/>
+      </cellDesignInfo>
+      <headerStyle>
+        <nativeFont name="Ubuntu" size="15"/>
+      </headerStyle>
+      <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
+    </column>
+    <rowsColumnsDesignInfo>
+      <rowsDatasource entityId="140532276305367" field="false"/>
+    </rowsColumnsDesignInfo>
+    <treeDesignInfo>
+      <unaryLinkField entityId="140532276305367" fieldName="parent_type"/>
+    </treeDesignInfo>
+    <constraints bottom="0px" left="0px" right="0px" top="0px" type="MarginConstraintsDesignInfo"/>
   </widget>
   <layout type="BorderLayoutDesignInfo"/>
 </layout>
