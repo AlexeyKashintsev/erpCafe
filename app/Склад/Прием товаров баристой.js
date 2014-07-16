@@ -1,23 +1,20 @@
 /**
  * 
  * @author Алексей
- * @name WhRevisionByBarista
+ * @name GetItemsByBarista
  * @public
  */
 
-function WhRevisionByBarista_1() {
-
+function GetItemsByBarista() {
+    
 var self = this, model = this.model, form = this;
-var warehouseFunctions = new ServerModule("WarehouseFunctions");
+var getItemsByBaristaModule = new ServerModule("GetItemsByBaristaModule");
 model.params.trade_point_id = 4;
 model.params.session_id = null;
 
 self.setTradePointId = function(aTradePointId) {
      model.params.trade_point_id = aTradePointId;
 };
-
-self.sess = {};
-self.sessClosed = false;
 
 var isSelectForm = true;
 var isEditable = true;
@@ -38,69 +35,32 @@ function setElShown(){
     }
 }
 
-function ModelSave(){
-    var items = [];
-    model.itemsByTP.beforeFirst();
-    while(model.itemsByTP.next()){
-        items[model.itemsByTP.cursor.item_id] = model.itemsByTP.cursor.start_value;
-    }
-    self.sess.items = warehouseFunctions.AddItems(self.sess.id, items);
-}
-
-function ModelRequery(){
-    if(!self.sessClosed){
-        self.sess = warehouseFunctions.GetSession(model.params.trade_point_id);
-        model.itemsByTP.beforeFirst();
-        while(model.itemsByTP.next()){
-            model.itemsByTP.cursor.start_value = self.sess.items[model.itemsByTP.cursor.item_id];
-        }
-    }
-}
-
-function ModelModified(){
-    if(!self.sessClosed){
-        model.itemsByTP.beforeFirst();
-        while(model.itemsByTP.next()){
-            if(self.sess.items[model.itemsByTP.cursor.item_id] != model.itemsByTP.cursor.start_value)
-                return true;
-        }
-        return false;
-    } else {
-        return false;
-    }
-    
-}
 
 function formWindowOpened(evt) {//GEN-FIRST:event_formWindowOpened
-    form.modelGrid.colItem_id.readonly = true;
+    model.itemsByTP.beforeFirst();
+    while(model.itemsByTP.next()){
+        model.itemsByTP.cursor.start_value = 0;
+    }
 }//GEN-LAST:event_formWindowOpened
 
 function formWindowClosing(evt) {//GEN-FIRST:event_formWindowClosing
-    if (ModelModified()&&confirm('Сохранить изменения?')){    
-        ModelSave();
-    }
+
 }//GEN-LAST:event_formWindowClosing
 
     function btnCloseSessionActionPerformed(evt) {//GEN-FIRST:event_btnCloseSessionActionPerformed
-        if(warehouseFunctions.CloseSession(model.params.trade_point_id, self.sess.id)){
+        var aItems = {};
+        if(confirm("Вы уверены что хотите добавить на склад? Это действие будет невозможно отменить!")){
             model.itemsByTP.beforeFirst();
             while (model.itemsByTP.next()){
-                model.itemsByTP.cursor.start_value = " ";
+                if(model.itemsByTP.cursor.start_value != 0){
+                    aItems[model.itemsByTP.cursor.item_id] = model.itemsByTP.cursor.start_value;
+                }            
             }
-            form.modelGrid.colItem_id.readonly = true;
-            self.sessClosed = true;
-            alert("Сессия успешно закрыта!");
-        } else {
-            alert("Не удалось закрыть сессию");
-        }
+            //if(aItems.length > 0){
+                //добавить в таблицу
+                getItemsByBaristaModule.AddMovements(model.params.trade_point_id, aItems);
+           // }
+            form.close();  
+       }     
     }//GEN-LAST:event_btnCloseSessionActionPerformed
-
-    function btnStartSessionActionPerformed(evt) {//GEN-FIRST:event_btnStartSessionActionPerformed
-        form.modelGrid.colItem_id.readonly = false;
-        self.sess = warehouseFunctions.GetSession(model.params.trade_point_id);
-        model.itemsByTP.beforeFirst();
-        while(model.itemsByTP.next()){
-            model.itemsByTP.cursor.start_value = self.sess.items[model.itemsByTP.cursor.item_id];
-        }
-    }//GEN-LAST:event_btnStartSessionActionPerformed
 }

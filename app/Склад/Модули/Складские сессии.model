@@ -5,11 +5,11 @@
   </parameters>
   <parametersEntity entityHeight="200" entityIconified="false" entityLocationX="12" entityLocationY="12" entityWidth="150"/>
   <entity Name="itemsByTP" Title="" entityHeight="200" entityIconified="false" entityId="140549955021843" entityLocationX="14" entityLocationY="220" entityWidth="150" queryId="itemsByTP" tableName="" tableSchemaName=""/>
-  <entity Name="querySessionBalance" Title="" entityHeight="200" entityIconified="false" entityId="140549953114953" entityLocationX="394" entityLocationY="10" entityWidth="150" queryId="querySessionBalance" tableName="" tableSchemaName=""/>
+  <entity Name="querySessionBalance" Title="" entityHeight="200" entityIconified="false" entityId="140549953114953" entityLocationX="394" entityLocationY="10" entityWidth="224" queryId="querySessionBalance" tableName="" tableSchemaName=""/>
   <entity Name="getSessions" Title="" entityHeight="200" entityIconified="false" entityId="140549305341208" entityLocationX="199" entityLocationY="12" entityWidth="150" queryId="getSessions" tableName="" tableSchemaName=""/>
   <relation leftEntityId="-1" leftEntityParameterName="trade_point_id" rightEntityId="140549305341208" rightEntityParameterName="trade_point_id"/>
   <relation leftEntityId="-1" leftEntityParameterName="trade_point_id" rightEntityId="140549955021843" rightEntityParameterName="trade_point_id"/>
-  <referenceRelation leftEntityFieldName="session_id" leftEntityId="140549953114953" rightEntityFieldName="wh_session_id" rightEntityId="140549305341208"/>
-  <referenceRelation leftEntityFieldName="item_id" leftEntityId="140549955021843" rightEntityFieldName="wh_items_id" rightEntityId="140549955021843"/>
   <referenceRelation leftEntityFieldName="item_id" leftEntityId="140549953114953" rightEntityFieldName="wh_items_id" rightEntityId="140549955021843"/>
+  <referenceRelation leftEntityFieldName="item_id" leftEntityId="140549955021843" rightEntityFieldName="wh_items_id" rightEntityId="140549955021843"/>
+  <referenceRelation leftEntityFieldName="session_id" leftEntityId="140549953114953" rightEntityFieldName="wh_session_id" rightEntityId="140549305341208"/>
 </datamodel>
