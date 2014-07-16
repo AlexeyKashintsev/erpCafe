@@ -17,7 +17,7 @@ function ItemsByTypesForm() {
     var canSetEdit = true;
 
     model.params.franchazi_id = 3;
-    model.params.trade_point_id = 4;
+    model.params.trade_point_id = 3;
     model.params.item_type = null;
 
     function setEdit() {

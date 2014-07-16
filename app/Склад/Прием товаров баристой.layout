@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?><layout defaultCloseOperation="2" name="Form" prefHeight="348px" prefWidth="448px" windowClosing="formWindowClosing" windowOpened="formWindowOpened">
+  <widget name="pnlSelLock" parent="Form" prefHeight="50px" prefWidth="448px" type="PanelDesignInfo">
+    <layout type="MarginLayoutDesignInfo"/>
+    <constraints place="South" type="BorderLayoutConstraintsDesignInfo"/>
+  </widget>
+  <widget actionPerformed="btnStartSessionActionPerformed" icon="icons/22x22/actions/dialog-apply.png" name="btnStartSession" parent="pnlSelLock" prefHeight="35px" prefWidth="161px" text="Начать сессию" type="ButtonDesignInfo">
+    <constraints height="35px" left="60px" top="10px" type="MarginConstraintsDesignInfo" width="161px"/>
+  </widget>
+  <widget actionPerformed="btnCloseSessionActionPerformed" icon="icons/22x22/actions/dialog-apply.png" name="btnCloseSession" parent="pnlSelLock" prefHeight="35px" prefWidth="201px" text="Закрыть сессию" type="ButtonDesignInfo">
+    <constraints bottom="5px" height="35px" right="7px" type="MarginConstraintsDesignInfo" width="201px"/>
+  </widget>
+  <widget name="pnlWorkSpace" parent="Form" prefHeight="298px" prefWidth="448px" type="PanelDesignInfo">
+    <layout type="MarginLayoutDesignInfo"/>
+    <constraints place="Center" type="BorderLayoutConstraintsDesignInfo"/>
+  </widget>
+  <widget name="modelGrid" parent="pnlWorkSpace" prefHeight="298px" prefWidth="448px" type="DbGridDesignInfo">
+    <column name="colItem_name" title="Товар">
+      <datamodelElement entityId="140549864254788" fieldName="item_name"/>
+      <columnsDatasource/>
+      <columnsDisplayField/>
+      <cellsDatasource/>
+      <cellDesignInfo>
+        <rowsKeyField/>
+        <columnsKeyField/>
+        <cellValueField/>
+      </cellDesignInfo>
+      <headerStyle>
+        <nativeFont name="Ubuntu" size="15"/>
+      </headerStyle>
+      <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
+    </column>
+    <column name="colItem_id" title="Количество">
+      <datamodelElement entityId="140549864254788" fieldName="start_value"/>
+      <columnsDatasource/>
+      <columnsDisplayField/>
+      <cellsDatasource/>
+      <cellDesignInfo>
+        <rowsKeyField/>
+        <columnsKeyField/>
+        <cellValueField/>
+      </cellDesignInfo>
+      <headerStyle>
+        <nativeFont name="Ubuntu" size="15"/>
+      </headerStyle>
+      <controlInfo classHint="DbLabelDesignInfo" emptyText="0" name="view" prefHeight="0px" prefWidth="0px"/>
+    </column>
+    <rowsColumnsDesignInfo>
+      <rowsDatasource entityId="140549864254788" field="false"/>
+    </rowsColumnsDesignInfo>
+    <treeDesignInfo/>
+    <constraints bottom="0px" left="0px" right="0px" top="0px" type="MarginConstraintsDesignInfo"/>
+  </widget>
+  <layout type="BorderLayoutDesignInfo"/>
+</layout>
