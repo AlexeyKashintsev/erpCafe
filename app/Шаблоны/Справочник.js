@@ -27,8 +27,6 @@ function setElShown(){
     setEdit();
     if (!isSelectForm){
         self.pnlSelLock.visible = false;
-        self.pnlWorkSpace.height += 48;
-        self.modelGrid.bottom += 48;
     }
 }
 

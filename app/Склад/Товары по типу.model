@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?><datamodel>
+  <parameters>
+    <parameter description="" name="item_type" nullable="true" parameterMode="1" precision="0" scale="0" selectionForm="null" signed="true" size="0" type="2" typeName="NUMERIC"/>
+    <parameter description="" name="franchazi_id" nullable="true" parameterMode="1" precision="0" scale="0" selectionForm="null" signed="true" size="0" type="2" typeName="NUMERIC"/>
+    <parameter description="" name="trade_point_id" nullable="true" parameterMode="1" precision="0" scale="0" selectionForm="null" signed="true" size="0" type="2" typeName="NUMERIC"/>
+  </parameters>
+  <parametersEntity entityHeight="200" entityIconified="false" entityLocationX="12" entityLocationY="12" entityWidth="150"/>
+  <entity Name="itemType" Title="" entityHeight="200" entityIconified="false" entityId="140532276305367" entityLocationX="251" entityLocationY="18" entityWidth="150" queryId="itemType" tableName="" tableSchemaName=""/>
+  <entity Name="delItemsInWH" Title="" entityHeight="200" entityIconified="false" entityId="140541237238023" entityLocationX="466" entityLocationY="231" entityWidth="150" queryId="delItemsInWH" tableName="" tableSchemaName=""/>
+  <entity Name="queryMeasures" Title="" entityHeight="200" entityIconified="false" entityId="140532276543923" entityLocationX="480" entityLocationY="14" entityWidth="150" queryId="queryMeasures" tableName="" tableSchemaName=""/>
+  <entity Name="queryItems" Title="" entityHeight="200" entityIconified="false" entityId="140534393699468" entityLocationX="252" entityLocationY="224" entityWidth="150" onAfterChange="queryItemsOnChanged" onRequeried="queryItemsOnRequeried" queryId="queryItems" tableName="" tableSchemaName=""/>
+  <entity Name="queryItemsInWH" Title="" entityHeight="200" entityIconified="false" entityId="140541080945918" entityLocationX="18" entityLocationY="227" entityWidth="150" queryId="queryItemsInWH" tableName="" tableSchemaName=""/>
+  <relation leftEntityId="-1" leftEntityParameterName="trade_point_id" rightEntityId="140534393699468" rightEntityParameterName="trade_point_id"/>
+  <relation leftEntityFieldName="wh_item_types_id" leftEntityId="140532276305367" rightEntityId="140534393699468" rightEntityParameterName="item_type"/>
+  <referenceRelation leftEntityFieldName="item_id" leftEntityId="140541080945918" rightEntityFieldName="wh_items_id" rightEntityId="140534393699468"/>
+  <referenceRelation leftEntityFieldName="measure" leftEntityId="140532276305367" rightEntityFieldName="wh_measures_id" rightEntityId="140532276543923"/>
+  <referenceRelation leftEntityFieldName="item_type" leftEntityId="140534393699468" rightEntityFieldName="wh_item_types_id" rightEntityId="140532276305367"/>
+  <referenceRelation leftEntityFieldName="parent_type" leftEntityId="140532276305367" rightEntityFieldName="wh_item_types_id" rightEntityId="140532276305367"/>
+</datamodel>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?><datamodel>
+  <parameters>
+    <parameter description="" name="trade_point_id" nullable="true" parameterMode="1" precision="0" scale="0" selectionForm="null" signed="true" size="0" type="2" typeName="NUMERIC"/>
+  </parameters>
+  <parametersEntity entityHeight="200" entityIconified="false" entityLocationX="12" entityLocationY="12" entityWidth="150"/>
+  <entity Name="querySessionBalance" Title="" entityHeight="200" entityIconified="false" entityId="140551591950568" entityLocationX="419" entityLocationY="261" entityWidth="150" queryId="querySessionBalance" tableName="" tableSchemaName=""/>
+  <entity Name="queryMovements" Title="" entityHeight="200" entityIconified="false" entityId="140551550927526" entityLocationX="404" entityLocationY="10" entityWidth="150" queryId="queryMovements" tableName="" tableSchemaName=""/>
+  <entity Name="getSessions" Title="" entityHeight="200" entityIconified="false" entityId="140551539004018" entityLocationX="197" entityLocationY="12" entityWidth="150" queryId="getSessions" tableName="" tableSchemaName=""/>
+  <entity Name="itemsByTP" Title="" entityHeight="200" entityIconified="false" entityId="140551532983725" entityLocationX="14" entityLocationY="225" entityWidth="150" queryId="itemsByTP" tableName="" tableSchemaName=""/>
+  <relation leftEntityId="-1" leftEntityParameterName="trade_point_id" rightEntityId="140551539004018" rightEntityParameterName="trade_point_id"/>
+  <referenceRelation leftEntityFieldName="item_id" leftEntityId="140551550927526" rightEntityFieldName="wh_items_id" rightEntityId="140551532983725"/>
+  <referenceRelation leftEntityFieldName="item_id" leftEntityId="140551591950568" rightEntityFieldName="wh_items_id" rightEntityId="140551532983725"/>
+  <referenceRelation leftEntityFieldName="session_id" leftEntityId="140551591950568" rightEntityFieldName="wh_session_id" rightEntityId="140551539004018"/>
+  <referenceRelation leftEntityFieldName="item_id" leftEntityId="140551532983725" rightEntityFieldName="wh_items_id" rightEntityId="140551532983725"/>
+  <referenceRelation leftEntityFieldName="session_id" leftEntityId="140551550927526" rightEntityFieldName="wh_session_id" rightEntityId="140551539004018"/>
+</datamodel>
