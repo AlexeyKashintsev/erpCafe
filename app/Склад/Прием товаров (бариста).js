@@ -1,16 +1,22 @@
 /**
  * 
  * @author Алексей
- * @name GetItemsByBarista
+ * @name GetItemsByBaristaForm
  * @public
  */
 
-function GetItemsByBarista() {
-    
+function GetItemsByBaristaForm() {
+var MSG_SESSION_CLOSED_ERROR = "Сначала нужно открыть смену!";
+var MSG_SET_MOVEMENTS_ERROR  = "Произошла ошибка при добавлении товаров!";
+
 var self = this, model = this.model, form = this;
-var getItemsByBaristaModule = new ServerModule("GetItemsByBaristaModule");
+
+var whSessionModule = new ServerModule("WhSessionModule");
+
 model.params.trade_point_id = 4;
-model.params.session_id = null;
+
+whSessionModule.setTradePoint(model.params.trade_point_id);
+model.params.session_id = whSessionModule.getCurrentSession();
 
 self.setTradePointId = function(aTradePointId) {
      model.params.trade_point_id = aTradePointId;
@@ -35,11 +41,11 @@ function setElShown(){
     }
 }
 
-
 function formWindowOpened(evt) {//GEN-FIRST:event_formWindowOpened
-    model.itemsByTP.beforeFirst();
-    while(model.itemsByTP.next()){
-        model.itemsByTP.cursor.start_value = 0;
+    form.btnCloseSession.enabled = true;
+    if(!model.params.session_id) {
+        alert(MSG_SESSION_CLOSED_ERROR);
+        form.close();
     }
 }//GEN-LAST:event_formWindowOpened
 
@@ -48,19 +54,16 @@ function formWindowClosing(evt) {//GEN-FIRST:event_formWindowClosing
 }//GEN-LAST:event_formWindowClosing
 
     function btnCloseSessionActionPerformed(evt) {//GEN-FIRST:event_btnCloseSessionActionPerformed
-        var aItems = {};
-        if(confirm("Вы уверены что хотите добавить на склад? Это действие будет невозможно отменить!")){
-            model.itemsByTP.beforeFirst();
-            while (model.itemsByTP.next()){
-                if(model.itemsByTP.cursor.start_value != 0){
-                    aItems[model.itemsByTP.cursor.item_id] = model.itemsByTP.cursor.start_value;
-                }            
-            }
-            //if(aItems.length > 0){
-                //добавить в таблицу
-                getItemsByBaristaModule.AddMovements(model.params.trade_point_id, aItems);
-           // }
-            form.close();  
-       }     
+         var items = {};
+         model.itemsByTP.beforeFirst();
+         while(model.itemsByTP.next()){
+             if(model.itemsByTP.cursor.start_value != null) {
+                 items[model.itemsByTP.cursor.item_id] = model.itemsByTP.cursor.start_value;
+             }
+         }
+         if(whSessionModule.addItems(items, whSessionModule.WH_ADD_ITEMS)) 
+            form.close();
+         else
+             alert(MSG_SET_MOVEMENTS_ERROR);
     }//GEN-LAST:event_btnCloseSessionActionPerformed
 }

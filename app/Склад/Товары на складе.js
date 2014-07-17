@@ -1,37 +1,20 @@
 /**
  * 
  * @author Алексей
- * @name ItemsByTypesForm
+ * @name SelectItemsInWH
  * @public
  */
 
-function ItemsByTypesForm() {
+function SelectItemsInWH() {
 
     var self = this, model = this.model, form = this;
 
     self.changes = [];
     self.autoChange = true;
 
-    var isSelectForm = true;
-    var isEditable = false;
-    var canSetEdit = true;
-
     model.params.franchazi_id = 3;
     model.params.trade_point_id = 3;
     model.params.item_type = null;
-
-    function setEdit() {
-//    self.modelGrid.editable = self.btnAdd.enabled = 
-//            self.btnDel.enabled = self.btnSave.enabled = isEditable;    
-//    self.tbSetEdit.selected = isEditable;
-    }
-
-    function setElShown() {
-        setEdit();
-        if (!isSelectForm) {
-            self.pnlSelLock.visible = false;
-        }
-    }
 
 function btnReqActionPerformed(evt) {//GEN-FIRST:event_btnReqActionPerformed
         if (self.model.modified && confirm('Сохранить изменения?')) {
@@ -63,13 +46,8 @@ function btnSaveActionPerformed(evt) {//GEN-FIRST:event_btnSaveActionPerformed
 }//GEN-LAST:event_btnSaveActionPerformed
 
 function formWindowOpened(evt) {//GEN-FIRST:event_formWindowOpened
-        setElShown();
-}//GEN-LAST:event_formWindowOpened
 
-function tbSetEditActionPerformed(evt) {//GEN-FIRST:event_tbSetEditActionPerformed
-        isEditable = self.tbSetEdit.selected;
-        setEdit();
-}//GEN-LAST:event_tbSetEditActionPerformed
+}//GEN-LAST:event_formWindowOpened
 
 function formWindowClosing(evt) {//GEN-FIRST:event_formWindowClosing
         if (self.model.modified && confirm('Сохранить изменения?')) {

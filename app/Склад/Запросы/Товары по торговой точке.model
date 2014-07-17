@@ -6,7 +6,7 @@
   <parametersEntity entityHeight="200" entityIconified="false" entityLocationX="8" entityLocationY="7" entityWidth="150"/>
   <entity Title="" entityHeight="200" entityIconified="false" entityId="140533239060622" entityLocationX="447" entityLocationY="2" entityWidth="150" tableAlias="t2" tableName="wh_items" tableSchemaName=""/>
   <entity Title="" entityHeight="200" entityIconified="false" entityId="140533235896956" entityLocationX="230" entityLocationY="6" entityWidth="150" tableAlias="t" tableName="wh_items_in_warehouse" tableSchemaName=""/>
+  <relation leftEntityFieldName="franchazi_id" leftEntityId="140533239060622" rightEntityId="-1" rightEntityParameterName="franchazi_id"/>
   <relation leftEntityId="-1" leftEntityParameterName="trade_point_id" rightEntityFieldName="warehouse" rightEntityId="140533235896956"/>
   <relation leftEntityFieldName="item_id" leftEntityId="140533235896956" rightEntityFieldName="wh_items_id" rightEntityId="140533239060622"/>
-  <relation leftEntityFieldName="franchazi_id" leftEntityId="140533239060622" rightEntityId="-1" rightEntityParameterName="franchazi_id"/>
 </datamodel>

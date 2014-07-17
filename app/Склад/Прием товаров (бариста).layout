@@ -3,7 +3,7 @@
     <layout type="MarginLayoutDesignInfo"/>
     <constraints place="South" type="BorderLayoutConstraintsDesignInfo"/>
   </widget>
-  <widget actionPerformed="btnCloseSessionActionPerformed" name="btnCloseSession" parent="pnlSelLock" prefHeight="25px" prefWidth="201px" text="Добавить" type="ButtonDesignInfo">
+  <widget actionPerformed="btnCloseSessionActionPerformed" name="btnCloseSession" parent="pnlSelLock" prefHeight="25px" prefWidth="201px" text="Сохранить" type="ButtonDesignInfo">
     <constraints bottom="14px" height="25px" right="7px" type="MarginConstraintsDesignInfo" width="201px"/>
   </widget>
   <widget name="pnlWorkSpace" parent="Form" prefHeight="298px" prefWidth="448px" type="PanelDesignInfo">

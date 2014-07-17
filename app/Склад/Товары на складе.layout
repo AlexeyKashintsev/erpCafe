@@ -13,9 +13,6 @@
   <widget actionPerformed="btnSelectActionPerformed" icon="icons/22x22/actions/dialog-apply.png" name="btnSelect" parent="pnlSelLock" prefHeight="35px" prefWidth="125px" text="Выбрать" type="ButtonDesignInfo">
     <constraints bottom="7px" height="35px" right="7px" type="MarginConstraintsDesignInfo" width="125px"/>
   </widget>
-  <widget actionPerformed="tbSetEditActionPerformed" icon="icons/22x22/stock/stock_lock.png" name="tbSetEdit" parent="pnlSelLock" prefHeight="35px" prefWidth="35px" toolTipText="Открыть форму для редактирования" type="ToggleButtonDesignInfo">
-    <constraints bottom="7px" height="35px" left="7px" type="MarginConstraintsDesignInfo" width="35px"/>
-  </widget>
   <widget name="pnlWorkSpace" parent="Form" prefHeight="262px" prefWidth="697px" type="PanelDesignInfo">
     <layout type="MarginLayoutDesignInfo"/>
     <constraints place="Center" type="BorderLayoutConstraintsDesignInfo"/>
@@ -23,11 +20,15 @@
   <widget dividerLocation="230" leftComponent="panel" name="splitPane" parent="pnlWorkSpace" prefHeight="262px" prefWidth="697px" rightComponent="panel1" type="SplitDesignInfo">
     <constraints bottom="0px" left="0px" right="0px" top="0px" type="MarginConstraintsDesignInfo"/>
   </widget>
-  <widget name="panel1" parent="splitPane" prefHeight="262px" prefWidth="461px" type="PanelDesignInfo">
+  <widget name="panel1" parent="splitPane" prefHeight="262px" prefWidth="462px" type="PanelDesignInfo">
     <layout type="MarginLayoutDesignInfo"/>
   </widget>
-  <widget name="modelGrid1" parent="panel1" prefHeight="262px" prefWidth="461px" type="DbGridDesignInfo">
-    <column name="colItem_name">
+  <widget name="modelGrid1" parent="panel1" prefHeight="262px" prefWidth="462px" type="DbGridDesignInfo">
+    <rowsColumnsDesignInfo>
+      <rowsDatasource entityId="140534393699468" field="false"/>
+    </rowsColumnsDesignInfo>
+    <treeDesignInfo/>
+    <column name="colItem_name" title="Название">
       <datamodelElement entityId="140534393699468" fieldName="item_name"/>
       <columnsDatasource/>
       <columnsDisplayField/>
@@ -42,7 +43,7 @@
       </headerStyle>
       <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
     </column>
-    <column name="select" title="select">
+    <column name="select" title="Выбрать">
       <datamodelElement entityId="140534393699468" fieldName="selectItem"/>
       <columnsDatasource/>
       <columnsDisplayField/>
@@ -57,16 +58,18 @@
       </headerStyle>
       <controlInfo classHint="DbCheckDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
     </column>
-    <rowsColumnsDesignInfo>
-      <rowsDatasource entityId="140534393699468" field="false"/>
-    </rowsColumnsDesignInfo>
-    <treeDesignInfo/>
     <constraints bottom="0px" left="0px" right="0px" top="0px" type="MarginConstraintsDesignInfo"/>
   </widget>
   <widget name="panel" parent="splitPane" prefHeight="262px" prefWidth="230px" type="PanelDesignInfo">
     <layout type="MarginLayoutDesignInfo"/>
   </widget>
   <widget deletable="false" editable="false" insertable="false" mouseClicked="modelGridMouseClicked" name="modelGrid" parent="panel" prefHeight="262px" prefWidth="230px" type="DbGridDesignInfo">
+    <rowsColumnsDesignInfo>
+      <rowsDatasource entityId="140532276305367" field="false"/>
+    </rowsColumnsDesignInfo>
+    <treeDesignInfo>
+      <unaryLinkField entityId="140532276305367" fieldName="parent_type"/>
+    </treeDesignInfo>
     <column name="colType_description" title="Тип товара">
       <datamodelElement entityId="140532276305367" fieldName="type_description"/>
       <columnsDatasource/>
@@ -82,12 +85,6 @@
       </headerStyle>
       <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
     </column>
-    <rowsColumnsDesignInfo>
-      <rowsDatasource entityId="140532276305367" field="false"/>
-    </rowsColumnsDesignInfo>
-    <treeDesignInfo>
-      <unaryLinkField entityId="140532276305367" fieldName="parent_type"/>
-    </treeDesignInfo>
     <constraints bottom="0px" left="0px" right="0px" top="0px" type="MarginConstraintsDesignInfo"/>
   </widget>
   <layout type="BorderLayoutDesignInfo"/>
