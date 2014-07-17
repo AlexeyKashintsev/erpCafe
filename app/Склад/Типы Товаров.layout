@@ -14,14 +14,17 @@
   <widget icon="icons/22x22/actions/dialog-apply.png" name="btnSelect" parent="pnlSelLock" prefHeight="35px" prefWidth="125px" text="Выбрать" type="ButtonDesignInfo">
     <constraints bottom="7px" height="35px" right="7px" type="MarginConstraintsDesignInfo" width="125px"/>
   </widget>
-  <widget actionPerformed="tbSetEditActionPerformed" icon="icons/22x22/stock/stock_lock.png" name="tbSetEdit" parent="pnlSelLock" prefHeight="35px" prefWidth="35px" toolTipText="Открыть форму для редактирования" type="ToggleButtonDesignInfo">
-    <constraints bottom="7px" height="35px" left="7px" type="MarginConstraintsDesignInfo" width="35px"/>
-  </widget>
   <widget name="pnlWorkSpace" parent="Form" prefHeight="262px" prefWidth="314px" type="PanelDesignInfo">
     <layout type="MarginLayoutDesignInfo"/>
     <constraints place="Center" type="BorderLayoutConstraintsDesignInfo"/>
   </widget>
   <widget name="modelGrid" parent="pnlWorkSpace" prefHeight="262px" prefWidth="314px" type="DbGridDesignInfo">
+    <rowsColumnsDesignInfo>
+      <rowsDatasource entityId="140532276305367" field="false"/>
+    </rowsColumnsDesignInfo>
+    <treeDesignInfo>
+      <unaryLinkField entityId="140532276305367" fieldName="parent_type"/>
+    </treeDesignInfo>
     <column name="colType_description" title="Тип товара">
       <datamodelElement entityId="140532276305367" fieldName="type_description"/>
       <columnsDatasource/>
@@ -51,16 +54,10 @@
         <nativeFont name="Ubuntu" size="15"/>
       </headerStyle>
       <controlInfo classHint="DbComboDesignInfo" name="view" prefHeight="0px" prefWidth="0px">
-        <valueField entityId="140532276543923" fieldName="wh_measures_id"/>
         <displayField entityId="140532276543923" fieldName="measure_desc"/>
+        <valueField entityId="140532276543923" fieldName="wh_measures_id"/>
       </controlInfo>
     </column>
-    <rowsColumnsDesignInfo>
-      <rowsDatasource entityId="140532276305367" field="false"/>
-    </rowsColumnsDesignInfo>
-    <treeDesignInfo>
-      <unaryLinkField entityId="140532276305367" fieldName="parent_type"/>
-    </treeDesignInfo>
     <constraints bottom="0px" left="0px" right="0px" top="0px" type="MarginConstraintsDesignInfo"/>
   </widget>
   <layout type="BorderLayoutDesignInfo"/>

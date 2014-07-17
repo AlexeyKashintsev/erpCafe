@@ -4,7 +4,7 @@
  * @name itemsByTP
  */ 
 Select * ,
-' ' as start_value
+null as start_value
 From wh_items_in_warehouse t
  Inner Join wh_items t2 on t.item_id = t2.wh_items_id
  Where :trade_point_id = t.warehouse
