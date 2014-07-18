@@ -1,22 +1,26 @@
 /**
  * 
  * @author Алексей
- * @name template
+ * @name ContentTradeItem
  * @public
  */
 
-function template() {
+function ContentTradeItem() {
 var self = this, model = this.model, form = this; 
 
+self.setTradeItem = function (aTradeItem){
+    model.params.trade_item = aTradeItem;
+}
+
 function btnReqActionPerformed(evt) {//GEN-FIRST:event_btnReqActionPerformed
-    if (self.model.modified&&confirm('Сохранить изменения?')){
-        self.model.save();
+    if (model.modified&&confirm('Сохранить изменения?')){
+        model.save();
     }
-    self.model.requery();
+    model.requery();
 }//GEN-LAST:event_btnReqActionPerformed
 
 function btnSaveActionPerformed(evt) {//GEN-FIRST:event_btnSaveActionPerformed
-    self.model.save();
+    model.save();
 }//GEN-LAST:event_btnSaveActionPerformed
 
 function formWindowOpened(evt) {//GEN-FIRST:event_formWindowOpened
@@ -26,9 +30,15 @@ function tbSetEditActionPerformed(evt) {//GEN-FIRST:event_tbSetEditActionPerform
 }//GEN-LAST:event_tbSetEditActionPerformed
 
 function formWindowClosing(evt) {//GEN-FIRST:event_formWindowClosing
-    if (self.model.modified&&confirm('Сохранить изменения?')){
-        self.model.save();
+    if (model.modified&&confirm('Сохранить изменения?')){
+        model.save();
     }
 }//GEN-LAST:event_formWindowClosing
 
+
+    function btnAddActionPerformed(evt) {//GEN-FIRST:event_btnAddActionPerformed
+        model.qTradeItemContents.insert(
+                model.qTradeItemContents.schema.trade_item, model.params.trade_item
+        );
+    }//GEN-LAST:event_btnAddActionPerformed
 }
