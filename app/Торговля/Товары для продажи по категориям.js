@@ -28,15 +28,19 @@ function formWindowClosing(evt) {//GEN-FIRST:event_formWindowClosing
 }//GEN-LAST:event_formWindowClosing
 
     function btnAddActionPerformed(evt) {//GEN-FIRST:event_btnAddActionPerformed
-        model.qTradeItems.insert(
-                model.qTradeItems.schema.franchazi_id, model.params.franchazi_id,
-                model.qTradeItems.schema.item_type, model.qTradeItemTypes.cursor.trade_item_type_id
-        );
+        if(model.qTradeItemTypes.cursor.trade_item_type_id == 0){
+            alert("Выберите тип товара");
+        } else {
+            model.qTradeItems.insert(
+                    model.qTradeItems.schema.franchazi_id, model.params.franchazi_id,
+                    model.qTradeItems.schema.item_type, model.qTradeItemTypes.cursor.trade_item_type_id
+            );
+        }
     }//GEN-LAST:event_btnAddActionPerformed
 
     function btnDelActionPerformed(evt) {//GEN-FIRST:event_btnDelActionPerformed
-       // if (confirm('Вы уверены что хотите удалить ...?'))
-           // model.queryItems.deleteRow();
+        if (confirm('Вы уверены что хотите удалить товар?'))
+            model.qTradeItems.deleteRow();
     }//GEN-LAST:event_btnDelActionPerformed
 
     function modelGridMouseClicked(evt) {//GEN-FIRST:event_modelGridMouseClicked
@@ -70,17 +74,31 @@ function formWindowClosing(evt) {//GEN-FIRST:event_formWindowClosing
     }//GEN-LAST:event_btnReq1ActionPerformed
 
     function btnItemSelActionPerformed(evt) {//GEN-FIRST:event_btnItemSelActionPerformed
-
-    }//GEN-LAST:event_btnItemSelActionPerformed
-
-    function modelGrid1MouseClicked(evt) {//GEN-FIRST:event_modelGrid1MouseClicked
-        if(evt.clickCount === 2){
-            if(model.qTradeItems.length > 0){
+        if(model.qTradeItems.length > 0){
+            if (self.model.modified&&confirm('Сохранить изменения?')){
+                self.model.save();
                 contentTradeItem.setTradeItem(model.qTradeItems.cursor.trade_items_id);
                 contentTradeItem.showModal(function(){
                     model.qTradeItemContents.requery();
                     model.qTradeItems.requery();
                 });
+            }
+        } else {
+            alert('Вы не выбрали товар!');
+        }
+    }//GEN-LAST:event_btnItemSelActionPerformed
+
+    function modelGrid1MouseClicked(evt) {//GEN-FIRST:event_modelGrid1MouseClicked
+        if(evt.clickCount === 2){
+            if(model.qTradeItems.length > 0){
+                if (model.modified&&confirm('Сохранить изменения?')){
+                    model.save();
+                    contentTradeItem.setTradeItem(model.qTradeItems.cursor.trade_items_id);
+                    contentTradeItem.showModal(function(){
+                        model.qTradeItemContents.requery();
+                        model.qTradeItems.requery();
+                    });
+                } 
             } else {
                 alert('Вы не выбрали товар!');
             }

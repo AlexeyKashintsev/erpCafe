@@ -10,40 +10,18 @@ function SelectBaristForm() {
     var self = this, model = this.model, form = this;
 
     var tradePointsForm = new TradePointsForm();
-    var usersFrachaziOrTP = new UsersFrachaziOrTP();
     var createTradePointUser = new CreateTradePointUser();
-
-    var isSelectForm = true;
-    var isEditable = false;
-    var canSetEdit = true;
-
     model.params.franchazi_id = null;
-
+    model.params.trade_point_id = null;
+    
+    
     self.setFranchaziId = function(aFranchaziId) {
         model.params.franchazi_id = aFranchaziId;
     };
-    
+
     self.setTradePointId = function(aTradePointId) {
         model.params.trade_point_id = aTradePointId;
     };
-
-//
-//function setEdit(){
-//    self.modelGrid.editable = self.btnAdd.enabled = 
-//            self.btnDel.enabled = self.btnSave.enabled = isEditable;    
-//    self.btnAddParent.enabled = isEditable;
-//    self.tbSetEdit.visible = canSetEdit;
-//    self.tbSetEdit.selected = isEditable;
-//}
-
-//function setElShown(){
-//    setEdit();
-//    if (!isSelectForm){
-//        self.pnlSelLock.visible = false;
-//        self.pnlWorkSpace.height += 48;
-//        self.modelGrid.bottom += 48;
-//    }
-//}
 
 function btnReqActionPerformed(evt) {//GEN-FIRST:event_btnReqActionPerformed
     if (self.model.modified&&confirm('Сохранить изменения?')){
@@ -57,12 +35,11 @@ function btnSaveActionPerformed(evt) {//GEN-FIRST:event_btnSaveActionPerformed
 }//GEN-LAST:event_btnSaveActionPerformed
 
 function formWindowOpened(evt) {//GEN-FIRST:event_formWindowOpened
-//   setElShown();
+
 }//GEN-LAST:event_formWindowOpened
 
 function tbSetEditActionPerformed(evt) {//GEN-FIRST:event_tbSetEditActionPerformed
-//    isEditable = self.tbSetEdit.selected;
-//    setEdit();
+
 }//GEN-LAST:event_tbSetEditActionPerformed
 
 function formWindowClosing(evt) {//GEN-FIRST:event_formWindowClosing

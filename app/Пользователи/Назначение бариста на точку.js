@@ -5,6 +5,7 @@
 function CreateTradePointUser() {
     var self = this, model = this.model, form = this;
     
+    //model.params.franchazi_id = 3;
     self.setFranchaziId = function(aFranchaziId){
          model.params.franchazi_id = aFranchaziId;
     };
