@@ -19,7 +19,6 @@ function setEdit(){
     self.btnAdd.enabled = true;
     self.btnDel.enabled = true;
     self.btnAddParent.enabled = isEditable;
-    self.tbSetEdit.selected = isEditable;
 }
 
 function setElShown(){
