@@ -17,7 +17,7 @@
     <layout type="MarginLayoutDesignInfo"/>
   </widget>
   <widget floatable="false" name="toolBar" parent="panel1" prefHeight="36px" prefWidth="468px" rollover="true" type="ToolbarDesignInfo">
-    <constraints height="36px" left="0px" top="0px" type="MarginConstraintsDesignInfo" width="468px"/>
+    <constraints height="36px" left="0px" right="-6px" top="0px" type="MarginConstraintsDesignInfo"/>
   </widget>
   <widget actionPerformed="btnAddActionPerformed" focusable="false" horizontalTextPosition="0" icon="icons/22x22/actions/list-add.png" name="btnAdd" parent="toolBar" prefHeight="34px" prefWidth="34px" toolTipText="Добавить" type="ButtonDesignInfo" verticalTextPosition="3"/>
   <widget actionPerformed="btnDelActionPerformed" focusable="false" horizontalTextPosition="0" icon="icons/22x22/actions/list-remove.png" name="btnDel" parent="toolBar" prefHeight="34px" prefWidth="34px" toolTipText="Удалить" type="ButtonDesignInfo" verticalTextPosition="3"/>
@@ -39,8 +39,8 @@
       </headerStyle>
       <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
     </column>
-    <column name="select" title="Состав">
-      <datamodelElement entityId="140566813019746" fieldName="contents"/>
+    <column name="select" readonly="true" selectOnly="true" title="Состав">
+      <datamodelElement entityId="140566813019746" fieldName="trade_items_id"/>
       <columnsDatasource/>
       <columnsDisplayField/>
       <cellsDatasource/>
@@ -52,7 +52,10 @@
       <headerStyle>
         <nativeFont name="Ubuntu" size="15"/>
       </headerStyle>
-      <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
+      <controlInfo classHint="DbComboDesignInfo" list="false" name="view" prefHeight="0px" prefWidth="0px">
+        <valueField entityId="140568805648895" fieldName="trade_items_id"/>
+        <displayField entityId="140568805648895" fieldName="contents"/>
+      </controlInfo>
     </column>
     <rowsColumnsDesignInfo>
       <rowsDatasource entityId="140566813019746" field="false"/>

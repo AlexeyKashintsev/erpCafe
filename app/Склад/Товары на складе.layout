@@ -24,10 +24,6 @@
     <layout type="MarginLayoutDesignInfo"/>
   </widget>
   <widget name="modelGrid1" parent="panel1" prefHeight="262px" prefWidth="462px" type="DbGridDesignInfo">
-    <rowsColumnsDesignInfo>
-      <rowsDatasource entityId="140534393699468" field="false"/>
-    </rowsColumnsDesignInfo>
-    <treeDesignInfo/>
     <column name="colItem_name" title="Название">
       <datamodelElement entityId="140534393699468" fieldName="item_name"/>
       <columnsDatasource/>
@@ -58,18 +54,16 @@
       </headerStyle>
       <controlInfo classHint="DbCheckDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
     </column>
+    <rowsColumnsDesignInfo>
+      <rowsDatasource entityId="140534393699468" field="false"/>
+    </rowsColumnsDesignInfo>
+    <treeDesignInfo/>
     <constraints bottom="0px" left="0px" right="0px" top="0px" type="MarginConstraintsDesignInfo"/>
   </widget>
   <widget name="panel" parent="splitPane" prefHeight="262px" prefWidth="230px" type="PanelDesignInfo">
     <layout type="MarginLayoutDesignInfo"/>
   </widget>
   <widget deletable="false" editable="false" insertable="false" mouseClicked="modelGridMouseClicked" name="modelGrid" parent="panel" prefHeight="262px" prefWidth="230px" type="DbGridDesignInfo">
-    <rowsColumnsDesignInfo>
-      <rowsDatasource entityId="140532276305367" field="false"/>
-    </rowsColumnsDesignInfo>
-    <treeDesignInfo>
-      <unaryLinkField entityId="140532276305367" fieldName="parent_type"/>
-    </treeDesignInfo>
     <column name="colType_description" title="Тип товара">
       <datamodelElement entityId="140532276305367" fieldName="type_description"/>
       <columnsDatasource/>
@@ -85,6 +79,12 @@
       </headerStyle>
       <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
     </column>
+    <rowsColumnsDesignInfo>
+      <rowsDatasource entityId="140532276305367" field="false"/>
+    </rowsColumnsDesignInfo>
+    <treeDesignInfo>
+      <unaryLinkField entityId="140532276305367" fieldName="parent_type"/>
+    </treeDesignInfo>
     <constraints bottom="0px" left="0px" right="0px" top="0px" type="MarginConstraintsDesignInfo"/>
   </widget>
   <layout type="BorderLayoutDesignInfo"/>

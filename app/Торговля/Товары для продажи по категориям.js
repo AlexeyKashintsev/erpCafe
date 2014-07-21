@@ -40,15 +40,7 @@ function formWindowClosing(evt) {//GEN-FIRST:event_formWindowClosing
     }//GEN-LAST:event_btnDelActionPerformed
 
     function modelGridMouseClicked(evt) {//GEN-FIRST:event_modelGridMouseClicked
-        if(model.qTradeItems.length > 0){
-            model.qTradeItems.beforeFirst();
-            while(model.qTradeItems.next()){
-                model.qTradeItemContents.params.item_id = model.qTradeItems.cursor.trade_items_id;
-                model.qTradeItemContents.requery(function(){
-                    model.qTradeItems.cursor.contents = model.qTradeItemContents.cursor.contents;
-                });
-            }
-        }
+
     }//GEN-LAST:event_modelGridMouseClicked
 
     function btnSelectActionPerformed(evt) {//GEN-FIRST:event_btnSelectActionPerformed
@@ -78,17 +70,20 @@ function formWindowClosing(evt) {//GEN-FIRST:event_formWindowClosing
     }//GEN-LAST:event_btnReq1ActionPerformed
 
     function btnItemSelActionPerformed(evt) {//GEN-FIRST:event_btnItemSelActionPerformed
-        if(model.qTradeItems.length > 0){
-            contentTradeItem.setTradeItem(model.qTradeItems.cursor.trade_items_id);
-            contentTradeItem.showModal();
-        } else {
-            alert('Вы не выбрали товар!');
-        }
+
     }//GEN-LAST:event_btnItemSelActionPerformed
 
     function modelGrid1MouseClicked(evt) {//GEN-FIRST:event_modelGrid1MouseClicked
         if(evt.clickCount === 2){
-            alert(123);
+            if(model.qTradeItems.length > 0){
+                contentTradeItem.setTradeItem(model.qTradeItems.cursor.trade_items_id);
+                contentTradeItem.showModal(function(){
+                    model.qTradeItemContents.requery();
+                    model.qTradeItems.requery();
+                });
+            } else {
+                alert('Вы не выбрали товар!');
+            }
         }
     }//GEN-LAST:event_modelGrid1MouseClicked
 }

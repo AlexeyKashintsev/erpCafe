@@ -74,20 +74,25 @@ function formWindowClosing(evt) {//GEN-FIRST:event_formWindowClosing
     }//GEN-LAST:event_modelGridMouseClicked
 
     function btnSelectActionPerformed(evt) {//GEN-FIRST:event_btnSelectActionPerformed
-                var items = [];
-                var i = 0;
-                model.queryItems.beforeFirst();
-                while (model.queryItems.next()) {
-                    if (model.queryItems.cursor.selectItem) {
-                        items[i] = {};
-                        items[i].franchazi_id = model.queryItems.cursor.franchazi_id;
-                        items[i].item_name = model.queryItems.cursor.item_name;
-                        items[i].item_type = model.queryItems.cursor.item_type;
-                        items[i].wh_item_id = model.queryItems.cursor.wh_items_id;
-                        i++;
-                    }
-                }
-                alert(items);
+//        var items = [];
+//        var i = 0;
+//        model.queryItems.beforeFirst();
+//        while (model.queryItems.next()) {
+//            if (model.queryItems.cursor.selectItem) {
+//                items[i] = {};
+//                items[i].franchazi_id = model.queryItems.cursor.franchazi_id;
+//                items[i].item_name = model.queryItems.cursor.item_name;
+//                items[i].item_type = model.queryItems.cursor.item_type;
+//                items[i].wh_item_id = model.queryItems.cursor.wh_items_id;
+//                i++;
+//            }
+//        }
+//        alert(items);
+        if(model.queryItems.length > 0){
+            form.close(model.queryItems.cursor.wh_items_id);
+        } else {
+            alert('Вы ничего не выбрали!');
+        }
     }//GEN-LAST:event_btnSelectActionPerformed
 
     function queryItemsOnChanged(evt) {//GEN-FIRST:event_queryItemsOnChanged
