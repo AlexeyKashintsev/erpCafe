@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><layout defaultCloseOperation="2" name="Form" prefHeight="355px" prefWidth="343px" windowClosed="formWindowClosed" windowOpened="formWindowOpened">
+<?xml version="1.0" encoding="UTF-8"?><layout defaultCloseOperation="2" locationByPlatform="true" name="Form" prefHeight="355px" prefWidth="343px" windowClosed="formWindowClosed" windowOpened="formWindowOpened">
   <widget actionPerformed="btnSaveActionPerformed" name="btnSave" parent="Form" prefHeight="29px" prefWidth="122px" text="Сохранить" type="ButtonDesignInfo">
     <constraints bottom="8px" height="29px" right="4px" type="MarginConstraintsDesignInfo" width="122px"/>
   </widget>

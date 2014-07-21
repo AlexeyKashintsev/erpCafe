@@ -36,7 +36,7 @@
         <cellValueField/>
       </cellDesignInfo>
     </column>
-    <column name="select" title="Выбрать">
+    <column name="select" title="на складе">
       <controlInfo classHint="DbCheckDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
       <datamodelElement entityId="140534393699468" fieldName="selectItem"/>
       <headerStyle>
