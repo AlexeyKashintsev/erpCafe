@@ -122,7 +122,7 @@ function WhSessionModule() {
     /*
      * Добавление товаров на склад
      */
-    self.addItems = function(anTradePointId, anItems, aMovementType) {
+    self.addItems = function(anItems, aMovementType) {
         if (self.getCurrentSession()) {
             for (var id in anItems) {
                 model.queryMovements.push({

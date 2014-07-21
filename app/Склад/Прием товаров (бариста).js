@@ -13,7 +13,7 @@ var self = this, model = this.model, form = this;
 
 var whSessionModule = new ServerModule("WhSessionModule");
 
-model.params.trade_point_id = 4;
+model.params.trade_point_id = 3;
 
 whSessionModule.setTradePoint(model.params.trade_point_id);
 model.params.session_id = whSessionModule.getCurrentSession();
