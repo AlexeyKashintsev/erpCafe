@@ -11,7 +11,11 @@
     <constraints place="Center" type="BorderLayoutConstraintsDesignInfo"/>
   </widget>
   <widget deletable="false" insertable="false" name="modelGrid" parent="pnlWorkSpace" prefHeight="334px" prefWidth="356px" type="DbGridDesignInfo">
-    <column name="colTp_name1" readonly="true" title="Название">
+    <column name="colTp_name1" readonly="true" title="Точка">
+      <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
+      <headerStyle>
+        <nativeFont name="Dialog" size="15"/>
+      </headerStyle>
       <datamodelElement entityId="140490948655008" fieldName="tp_name"/>
       <columnsDatasource/>
       <columnsDisplayField/>
@@ -21,12 +25,12 @@
         <columnsKeyField/>
         <cellValueField/>
       </cellDesignInfo>
-      <headerStyle>
-        <nativeFont name="Ubuntu" size="15"/>
-      </headerStyle>
-      <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
     </column>
     <column name="colTp_address1" readonly="true" title="Адрес">
+      <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
+      <headerStyle>
+        <nativeFont name="Dialog" size="15"/>
+      </headerStyle>
       <datamodelElement entityId="140490948655008" fieldName="tp_address"/>
       <columnsDatasource/>
       <columnsDisplayField/>
@@ -36,12 +40,12 @@
         <columnsKeyField/>
         <cellValueField/>
       </cellDesignInfo>
-      <headerStyle>
-        <nativeFont name="Ubuntu" size="15"/>
-      </headerStyle>
-      <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
     </column>
-    <column name="colOnPoint" title="Добавить">
+    <column name="colOnPoint" title="Доступ открыт">
+      <controlInfo classHint="DbCheckDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
+      <headerStyle>
+        <nativeFont name="Dialog" size="15"/>
+      </headerStyle>
       <datamodelElement entityId="140490948655008" fieldName="onPoint"/>
       <columnsDatasource/>
       <columnsDisplayField/>
@@ -51,10 +55,6 @@
         <columnsKeyField/>
         <cellValueField/>
       </cellDesignInfo>
-      <headerStyle>
-        <nativeFont name="Ubuntu" size="15"/>
-      </headerStyle>
-      <controlInfo classHint="DbCheckDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
     </column>
     <rowsColumnsDesignInfo>
       <rowsDatasource entityId="140490948655008" field="false"/>

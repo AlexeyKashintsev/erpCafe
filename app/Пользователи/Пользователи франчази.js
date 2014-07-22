@@ -1,14 +1,15 @@
 /**
  * 
  * @author Алексей
- * @name SelectBaristForm
- * @rolesAllowed barista
+ * @name FranchaziUsers
+
  * @public
  */
 
-function SelectBaristForm() {
+function FranchaziUsers() {
     var self = this, model = this.model, form = this;
-
+    self.isSelectForm = false;
+    
     var tradePointsForm = new TradePointsForm();
     var createTradePointUser = new CreateTradePointUser();
     model.params.franchazi_id = null;
@@ -35,7 +36,7 @@ function btnSaveActionPerformed(evt) {//GEN-FIRST:event_btnSaveActionPerformed
 }//GEN-LAST:event_btnSaveActionPerformed
 
 function formWindowOpened(evt) {//GEN-FIRST:event_formWindowOpened
-
+        form.pnlSelLock.visible = self.isSelectForm
 }//GEN-LAST:event_formWindowOpened
 
 function tbSetEditActionPerformed(evt) {//GEN-FIRST:event_tbSetEditActionPerformed

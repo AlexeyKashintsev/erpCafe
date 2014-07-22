@@ -5,9 +5,9 @@
     <parameter description="" name="user_roles" nullable="true" parameterMode="1" precision="0" scale="0" selectionForm="null" signed="true" size="100" type="12" typeName="VARCHAR"/>
   </parameters>
   <parametersEntity entityHeight="200" entityIconified="false" entityLocationX="12" entityLocationY="12" entityWidth="150"/>
-  <entity Name="createFrancizerUser" Title="" entityHeight="200" entityIconified="false" entityId="140491314220346" entityLocationX="396" entityLocationY="248" entityWidth="208" queryId="createFrancizerUser" tableName="" tableSchemaName=""/>
   <entity Name="listTradePointUsers" Title="" entityHeight="200" entityIconified="false" entityId="140489862821608" entityLocationX="294" entityLocationY="12" entityWidth="240" queryId="listUsersFranchaziOrTP" tableName="" tableSchemaName=""/>
   <entity Name="createTradePointUser" Title="" entityHeight="200" entityIconified="false" entityId="140490499060986" entityLocationX="221" entityLocationY="253" entityWidth="150" queryId="createTradePointUser" tableName="" tableSchemaName=""/>
+  <entity Name="createFrancizerUser" Title="" entityHeight="200" entityIconified="false" entityId="140491314220346" entityLocationX="396" entityLocationY="248" entityWidth="208" queryId="createFrancizerUser" tableName="" tableSchemaName=""/>
   <relation leftEntityId="-1" leftEntityParameterName="trade_point_id" rightEntityId="140489862821608" rightEntityParameterName="trade_point_id"/>
   <relation leftEntityId="-1" leftEntityParameterName="franchazi_id" rightEntityId="140489862821608" rightEntityParameterName="franchazi_id"/>
   <referenceRelation leftEntityFieldName="user_name" leftEntityId="140490499060986" rightEntityFieldName="usr_name" rightEntityId="140489862821608"/>
