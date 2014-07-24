@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?><layout defaultCloseOperation="2" name="Form" prefHeight="372px" prefWidth="330px" windowClosing="formWindowClosing" windowOpened="formWindowOpened">
-  <widget floatable="false" name="toolBar" parent="Form" prefHeight="31px" prefWidth="330px" rollover="true" type="ToolbarDesignInfo">
+  <widget floatable="false" name="toolBar" parent="Form" prefHeight="30px" prefWidth="330px" rollover="true" type="ToolbarDesignInfo">
     <constraints place="North" type="BorderLayoutConstraintsDesignInfo"/>
   </widget>
-  <widget actionPerformed="btnAddActionPerformed" focusable="false" horizontalTextPosition="0" icon="icons/22x22/actions/list-add.png" name="btnAdd" parent="toolBar" prefHeight="29px" prefWidth="29px" toolTipText="Добавить" type="ButtonDesignInfo" verticalTextPosition="3"/>
-  <widget focusable="false" horizontalTextPosition="0" icon="icons/22x22/actions/list-remove.png" name="btnDel" parent="toolBar" prefHeight="29px" prefWidth="29px" toolTipText="Удалить" type="ButtonDesignInfo" verticalTextPosition="3"/>
-  <widget actionPerformed="btnReqActionPerformed" focusable="false" horizontalTextPosition="0" icon="icons/22x22/actions/new-view-refresh.png" name="btnReq" parent="toolBar" prefHeight="29px" prefWidth="29px" toolTipText="Обновить" type="ButtonDesignInfo" verticalTextPosition="3"/>
-  <widget actionPerformed="btnSaveActionPerformed" focusable="false" horizontalTextPosition="0" icon="icons/22x22/actions/document-save.png" name="btnSave" parent="toolBar" prefHeight="29px" prefWidth="29px" toolTipText="Сохранить" type="ButtonDesignInfo" verticalTextPosition="3"/>
+  <widget actionPerformed="btnAddActionPerformed" focusable="false" horizontalTextPosition="0" icon="icons/22x22/actions/contact-new.png" name="btnAdd" parent="toolBar" prefHeight="26px" prefWidth="34px" toolTipText="Добавить" type="ButtonDesignInfo" verticalTextPosition="3"/>
+  <widget focusable="false" horizontalTextPosition="0" icon="icons/22x22/actions/list-remove.png" name="btnDel" parent="toolBar" prefHeight="26px" prefWidth="34px" toolTipText="Удалить" type="ButtonDesignInfo" verticalTextPosition="3"/>
+  <widget actionPerformed="btnReqActionPerformed" focusable="false" horizontalTextPosition="0" icon="icons/22x22/actions/new-view-refresh.png" name="btnReq" parent="toolBar" prefHeight="26px" prefWidth="34px" toolTipText="Обновить" type="ButtonDesignInfo" verticalTextPosition="3"/>
+  <widget actionPerformed="btnSaveActionPerformed" focusable="false" horizontalTextPosition="0" icon="icons/22x22/actions/document-save.png" name="btnSave" parent="toolBar" prefHeight="26px" prefWidth="34px" toolTipText="Сохранить" type="ButtonDesignInfo" verticalTextPosition="3"/>
   <widget name="pnlSelLock" parent="Form" prefHeight="50px" prefWidth="330px" type="PanelDesignInfo">
     <layout type="MarginLayoutDesignInfo"/>
     <constraints place="South" type="BorderLayoutConstraintsDesignInfo"/>
@@ -13,63 +13,60 @@
   <widget actionPerformed="btnSelectActionPerformed" icon="icons/22x22/actions/dialog-apply.png" name="btnSelect" parent="pnlSelLock" prefHeight="35px" prefWidth="125px" text="Выбрать" type="ButtonDesignInfo">
     <constraints bottom="7px" height="35px" right="7px" type="MarginConstraintsDesignInfo" width="125px"/>
   </widget>
-  <widget actionPerformed="tbSetEditActionPerformed" icon="icons/22x22/stock/stock_lock.png" name="tbSetEdit" parent="pnlSelLock" prefHeight="35px" prefWidth="35px" toolTipText="Открыть форму для редактирования" type="ToggleButtonDesignInfo">
-    <constraints bottom="7px" height="35px" left="7px" type="MarginConstraintsDesignInfo" width="35px"/>
-  </widget>
-  <widget name="pnlWorkSpace" parent="Form" prefHeight="291px" prefWidth="330px" type="PanelDesignInfo">
+  <widget name="pnlWorkSpace" parent="Form" prefHeight="292px" prefWidth="330px" type="PanelDesignInfo">
     <layout type="MarginLayoutDesignInfo"/>
     <constraints place="Center" type="BorderLayoutConstraintsDesignInfo"/>
   </widget>
-  <widget deletable="false" editable="false" insertable="false" mouseClicked="modelGridMouseClicked" name="modelGrid" parent="pnlWorkSpace" prefHeight="291px" prefWidth="330px" type="DbGridDesignInfo">
+  <widget deletable="false" editable="false" insertable="false" mouseClicked="modelGridMouseClicked" name="modelGrid" parent="pnlWorkSpace" prefHeight="292px" prefWidth="330px" type="DbGridDesignInfo">
+    <column name="colUsr_name" title="Имя">
+      <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
+      <headerStyle>
+        <nativeFont name="Dialog" size="15"/>
+      </headerStyle>
+      <cellDesignInfo>
+        <rowsKeyField/>
+        <cellValueField/>
+        <columnsKeyField/>
+      </cellDesignInfo>
+      <cellsDatasource/>
+      <columnsDatasource/>
+      <columnsDisplayField/>
+      <datamodelElement entityId="140489862821608" fieldName="usr_name"/>
+    </column>
+    <column name="colUsr_phone" title="Телефон">
+      <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
+      <headerStyle>
+        <nativeFont name="Dialog" size="15"/>
+      </headerStyle>
+      <cellDesignInfo>
+        <rowsKeyField/>
+        <cellValueField/>
+        <columnsKeyField/>
+      </cellDesignInfo>
+      <cellsDatasource/>
+      <columnsDatasource/>
+      <columnsDisplayField/>
+      <datamodelElement entityId="140489862821608" fieldName="usr_phone"/>
+    </column>
+    <column name="colUsr_email" title="Email">
+      <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
+      <headerStyle>
+        <nativeFont name="Dialog" size="15"/>
+      </headerStyle>
+      <cellDesignInfo>
+        <rowsKeyField/>
+        <cellValueField/>
+        <columnsKeyField/>
+      </cellDesignInfo>
+      <cellsDatasource/>
+      <columnsDatasource/>
+      <columnsDisplayField/>
+      <datamodelElement entityId="140489862821608" fieldName="usr_email"/>
+    </column>
     <rowsColumnsDesignInfo>
       <rowsDatasource entityId="140489862821608" field="false"/>
     </rowsColumnsDesignInfo>
     <treeDesignInfo/>
-    <column name="colUsr_name" title="Имя">
-      <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
-      <datamodelElement entityId="140489862821608" fieldName="usr_name"/>
-      <columnsDatasource/>
-      <columnsDisplayField/>
-      <cellsDatasource/>
-      <cellDesignInfo>
-        <columnsKeyField/>
-        <cellValueField/>
-        <rowsKeyField/>
-      </cellDesignInfo>
-      <headerStyle>
-        <nativeFont name="Dialog" size="15"/>
-      </headerStyle>
-    </column>
-    <column name="colUsr_phone" title="Телефон">
-      <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
-      <datamodelElement entityId="140489862821608" fieldName="usr_phone"/>
-      <columnsDatasource/>
-      <columnsDisplayField/>
-      <cellsDatasource/>
-      <cellDesignInfo>
-        <columnsKeyField/>
-        <cellValueField/>
-        <rowsKeyField/>
-      </cellDesignInfo>
-      <headerStyle>
-        <nativeFont name="Dialog" size="15"/>
-      </headerStyle>
-    </column>
-    <column name="colUsr_email" title="Email">
-      <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
-      <datamodelElement entityId="140489862821608" fieldName="usr_email"/>
-      <columnsDatasource/>
-      <columnsDisplayField/>
-      <cellsDatasource/>
-      <cellDesignInfo>
-        <columnsKeyField/>
-        <cellValueField/>
-        <rowsKeyField/>
-      </cellDesignInfo>
-      <headerStyle>
-        <nativeFont name="Dialog" size="15"/>
-      </headerStyle>
-    </column>
     <constraints bottom="0px" left="0px" right="0px" top="0px" type="MarginConstraintsDesignInfo"/>
   </widget>
   <layout type="BorderLayoutDesignInfo"/>

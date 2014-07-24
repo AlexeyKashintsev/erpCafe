@@ -44,4 +44,8 @@ self.showFormAsInternal = function(aForm) {
     function btnUsersViewActionPerformed(evt) {//GEN-FIRST:event_btnUsersViewActionPerformed
         self.showFormAsInternal(usersView);
     }//GEN-LAST:event_btnUsersViewActionPerformed
+
+    function button2ActionPerformed(evt) {//GEN-FIRST:event_button2ActionPerformed
+        self.showFormAsInternal(tradePoints);
+    }//GEN-LAST:event_button2ActionPerformed
 }

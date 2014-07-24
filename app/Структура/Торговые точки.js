@@ -9,8 +9,6 @@ function TradePoints() {
 var self = this, model = this.model, form = this;
 
 var isSelectForm = false;
-var isEditable = false;
-var canSetEdit = true;
 
 //var usersFrachaziOrTP = new UsersFrachaziOrTP();
 

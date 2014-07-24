@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?><datamodel>
+  <parameters>
+    <parameter description="" name="usr_name" nullable="true" parameterMode="1" precision="0" scale="0" selectionForm="null" signed="true" size="0" type="12" typeName="VARCHAR"/>
+    <parameter description="" name="usr_role" nullable="true" parameterMode="1" precision="0" scale="0" selectionForm="null" signed="true" size="0" type="12" typeName="VARCHAR"/>
+  </parameters>
+  <parametersEntity entityHeight="200" entityIconified="false" entityLocationX="8" entityLocationY="7" entityWidth="150"/>
+  <entity Title="" entityHeight="200" entityIconified="false" entityId="140619276446466" entityLocationX="211" entityLocationY="13" entityWidth="150" tableAlias="t" tableName="mtd_groups" tableSchemaName=""/>
+  <relation leftEntityFieldName="group_name" leftEntityId="140619276446466" rightEntityId="-1" rightEntityParameterName="usr_role"/>
+  <relation leftEntityFieldName="usr_name" leftEntityId="140619276446466" rightEntityId="-1" rightEntityParameterName="usr_name"/>
+</datamodel>

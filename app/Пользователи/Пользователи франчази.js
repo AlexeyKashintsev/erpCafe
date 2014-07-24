@@ -41,10 +41,6 @@ function formWindowOpened(evt) {//GEN-FIRST:event_formWindowOpened
         form.pnlSelLock.visible = self.isSelectForm;
 }//GEN-LAST:event_formWindowOpened
 
-function tbSetEditActionPerformed(evt) {//GEN-FIRST:event_tbSetEditActionPerformed
-
-}//GEN-LAST:event_tbSetEditActionPerformed
-
 function formWindowClosing(evt) {//GEN-FIRST:event_formWindowClosing
     if (self.model.modified&&confirm('Сохранить изменения?')){
         self.model.save();

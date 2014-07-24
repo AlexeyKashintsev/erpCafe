@@ -41,7 +41,6 @@ function createFancUserForm() {
 
         model.usersByName.cursor.usr_name = form.tfLogin.text;
         model.usersByName.cursor.usr_passwd = adminFunctions.MD5(form.tfPass.text);
-        model.usersByName.cursor.usr_roles = roleName;
         model.usersByName.cursor.usr_form = model.queryRoles.cursor.role_form;
         
         model.createFrancizerUser.cursor.franchazi_id = model.params.franchazi_id;
@@ -51,6 +50,7 @@ function createFancUserForm() {
         else 
             model.createFrancizerUser.cursor.franc_users_active = false;
         if(model.save()){
+                model.qUserAddRole.executeUpdate();
                 form.close();
             }     
     }//GEN-LAST:event_btnSaveActionPerformed
