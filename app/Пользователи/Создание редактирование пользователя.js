@@ -3,7 +3,7 @@
  * @author mike
  * @rolesAllowed admin franchize
  */
-function createFancUserForm() {
+function UserCreateAndEditForm() {
     var self = this, model = this.model, form = this;
     var adminFunctions = new ServerModule("AdminFunctions");
     var changePassView = new ChangePassView();

@@ -2,7 +2,7 @@
  * @name CreateTradePointUser
  * @author mike
  */
-function CreateTradePointUser() {
+function AddBaristaToTradePoint() {
     var self = this, model = this.model, form = this;
     
     //model.params.franchazi_id = 3;
