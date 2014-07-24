@@ -38,7 +38,6 @@ function saveModel(){
         }
     }
     model.save();
-    model.requery();
 }
 
 function formWindowOpened(evt) {//GEN-FIRST:event_formWindowOpened
@@ -54,5 +53,11 @@ function formWindowClosing(evt) {//GEN-FIRST:event_formWindowClosing
 
     function btnSelectActionPerformed(evt) {//GEN-FIRST:event_btnSelectActionPerformed
         saveModel();
+        close();
     }//GEN-LAST:event_btnSelectActionPerformed
+
+    function buttonActionPerformed(evt) {//GEN-FIRST:event_buttonActionPerformed
+        model.revert();
+        close();
+    }//GEN-LAST:event_buttonActionPerformed
 }

@@ -3,9 +3,11 @@
     <constraints place="North" type="BorderLayoutConstraintsDesignInfo"/>
   </widget>
   <widget actionPerformed="btnAddActionPerformed" focusable="false" horizontalTextPosition="0" icon="icons/22x22/actions/contact-new.png" name="btnAdd" parent="toolBar" prefHeight="29px" prefWidth="29px" toolTipText="Добавить" type="ButtonDesignInfo" verticalTextPosition="3"/>
-  <widget focusable="false" horizontalTextPosition="0" icon="icons/22x22/actions/list-remove.png" name="btnDel" parent="toolBar" prefHeight="29px" prefWidth="29px" toolTipText="Удалить" type="ButtonDesignInfo" verticalTextPosition="3"/>
+  <widget focusable="false" horizontalTextPosition="0" icon="icons/22x22/actions/window-close.png" name="btnDel" parent="toolBar" prefHeight="29px" prefWidth="29px" toolTipText="Отключить" type="ButtonDesignInfo" verticalTextPosition="3"/>
   <widget actionPerformed="btnReqActionPerformed" focusable="false" horizontalTextPosition="0" icon="icons/22x22/actions/new-view-refresh.png" name="btnReq" parent="toolBar" prefHeight="29px" prefWidth="29px" toolTipText="Обновить" type="ButtonDesignInfo" verticalTextPosition="3"/>
   <widget actionPerformed="btnSaveActionPerformed" focusable="false" horizontalTextPosition="0" icon="icons/22x22/actions/document-save.png" name="btnSave" parent="toolBar" prefHeight="29px" prefWidth="29px" toolTipText="Сохранить" type="ButtonDesignInfo" verticalTextPosition="3"/>
+  <widget focusable="false" horizontalTextPosition="0" icon="icons/22x22/actions/document-edit.png" name="btnDel1" parent="toolBar" prefHeight="29px" prefWidth="29px" toolTipText="Изменить" type="ButtonDesignInfo" verticalTextPosition="3"/>
+  <widget actionPerformed="buttonActionPerformed" focusable="false" horizontalTextPosition="0" icon="icons/22x22/apps/okteta.png" name="button" parent="toolBar" prefHeight="29px" prefWidth="29px" toolTipText="Торговые точки по пользователю" type="ButtonDesignInfo" verticalTextPosition="3"/>
   <widget name="pnlSelLock" parent="Form" prefHeight="50px" prefWidth="507px" type="PanelDesignInfo">
     <layout type="MarginLayoutDesignInfo"/>
     <constraints place="South" type="BorderLayoutConstraintsDesignInfo"/>

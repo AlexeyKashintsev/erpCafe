@@ -5,8 +5,9 @@
   <widget floatable="false" name="toolBar" parent="Form" prefHeight="70px" prefWidth="815px" rollover="true" type="ToolbarDesignInfo">
     <constraints height="70px" left="0px" right="0px" top="0px" type="MarginConstraintsDesignInfo"/>
   </widget>
-  <widget icon="icons/Coffee/Books-2-icon.png" name="button" parent="toolBar" prefHeight="52px" prefWidth="60px" toolTipText="Отчеты" type="ButtonDesignInfo"/>
-  <widget actionPerformed="button2ActionPerformed" focusable="false" horizontalTextPosition="0" icon="icons/Coffee/coffee_shop.png" name="button2" parent="toolBar" prefHeight="52px" prefWidth="60px" toolTipText="Торговые точки" type="ButtonDesignInfo" verticalTextPosition="3"/>
-  <widget actionPerformed="btnUsersViewActionPerformed" focusable="false" horizontalTextPosition="0" icon="icons/Coffee/Coffee-break-icon.png" name="btnUsersView" parent="toolBar" prefHeight="52px" prefWidth="60px" toolTipText="Пользователи" type="ButtonDesignInfo" verticalTextPosition="3"/>
+  <widget focusable="false" horizontalTextPosition="0" icon="icons/Coffee/coffee_black.png" name="button1" parent="toolBar" prefHeight="55px" prefWidth="55px" toolTipText="Склад" type="ButtonDesignInfo" verticalTextPosition="3"/>
+  <widget actionPerformed="button2ActionPerformed" focusable="false" horizontalTextPosition="0" icon="icons/Coffee/coffee_shop.png" name="button2" parent="toolBar" prefHeight="55px" prefWidth="55px" toolTipText="Торговые точки" type="ButtonDesignInfo" verticalTextPosition="3"/>
+  <widget actionPerformed="btnUsersViewActionPerformed" focusable="false" horizontalTextPosition="0" icon="icons/Coffee/Coffee-break-icon.png" name="btnUsersView" parent="toolBar" prefHeight="55px" prefWidth="55px" toolTipText="Пользователи" type="ButtonDesignInfo" verticalTextPosition="3"/>
+  <widget focusable="false" horizontalTextPosition="0" icon="icons/Coffee/lightbrown_coffee_2.png" name="button" parent="toolBar" prefHeight="55px" prefWidth="55px" toolTipText="Настройки" type="ButtonDesignInfo" verticalTextPosition="3"/>
   <layout type="MarginLayoutDesignInfo"/>
 </layout>

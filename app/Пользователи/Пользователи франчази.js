@@ -11,7 +11,7 @@ function FranchaziUsers() {
     self.isSelectForm = false;
     
     //var tradePointsForm = new TradePoints();
-    var createTradePointUser = new CreateTradePointUser();
+    var createTradePointUser = new UserCreateAndEditForm();
     var baristaTP = new TradePointsbaristForm();
     
     model.params.franchazi_id = null;
@@ -54,23 +54,24 @@ function formWindowClosing(evt) {//GEN-FIRST:event_formWindowClosing
 
     function btnAddActionPerformed(evt) {//GEN-FIRST:event_btnAddActionPerformed
         createTradePointUser.setFranchaziId(model.params.franchazi_id);
-        createTradePointUser.showModal(function(user){
-            if(user){
-                model.createTradePointUser.insert(
-                model.createTradePointUser.schema.user_name, user.user_name,
-                model.createTradePointUser.schema.trade_point_id, user.trade_point_id,
-                model.createTradePointUser.schema.tp_users_active , true);
-                model.save();
+        createTradePointUser.showModal(function(){
                 model.requery();
-            }   
-        });
+            });
     }//GEN-LAST:event_btnAddActionPerformed
 
     function modelGridMouseClicked(evt) {//GEN-FIRST:event_modelGridMouseClicked
         if (evt.clickCount === 2) {
-            baristaTP.setFranchaziId(model.params.franchazi_id);
-            baristaTP.setUserName(model.listTradePointUsers.cursor.usr_name);
-            baristaTP.showModal();
+            createTradePointUser.setFranchaziId(model.params.franchazi_id);
+            createTradePointUser.setUserName(model.listTradePointUsers.usr_name);
+            createTradePointUser.showModal(function(){
+                    model.requery();
+                });    
         }
     }//GEN-LAST:event_modelGridMouseClicked
+
+    function buttonActionPerformed(evt) {//GEN-FIRST:event_buttonActionPerformed
+        baristaTP.setFranchaziId(model.params.franchazi_id);
+        baristaTP.setUserName(model.listTradePointUsers.usr_name);
+        baristaTP.showModal();
+    }//GEN-LAST:event_buttonActionPerformed
 }

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?><datamodel>
+  <parametersEntity entityHeight="200" entityIconified="false" entityLocationX="10" entityLocationY="12" entityWidth="150"/>
+  <entity Name="listTradePoints" Title="" entityHeight="200" entityIconified="false" entityId="140620003979379" entityLocationX="279" entityLocationY="16" entityWidth="150" queryId="listTradePoints" tableName="" tableSchemaName=""/>
+</datamodel>

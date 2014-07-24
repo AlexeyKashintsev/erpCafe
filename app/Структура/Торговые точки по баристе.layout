@@ -3,8 +3,11 @@
     <layout type="MarginLayoutDesignInfo"/>
     <constraints place="South" type="BorderLayoutConstraintsDesignInfo"/>
   </widget>
-  <widget actionPerformed="btnSelectActionPerformed" icon="icons/22x22/actions/dialog-apply.png" name="btnSelect" parent="pnlSelLock" prefHeight="35px" prefWidth="157px" text="Сохранить" type="ButtonDesignInfo">
-    <constraints bottom="7px" height="35px" right="7px" type="MarginConstraintsDesignInfo" width="157px"/>
+  <widget actionPerformed="btnSelectActionPerformed" name="btnSelect" parent="pnlSelLock" prefHeight="24px" prefWidth="97px" text="Сохранить" type="ButtonDesignInfo">
+    <constraints height="24px" left="144px" top="12px" type="MarginConstraintsDesignInfo" width="97px"/>
+  </widget>
+  <widget actionPerformed="buttonActionPerformed" name="button" parent="pnlSelLock" prefHeight="23px" prefWidth="96px" text="Отмена" type="ButtonDesignInfo">
+    <constraints height="23px" right="8px" top="12px" type="MarginConstraintsDesignInfo" width="96px"/>
   </widget>
   <widget name="pnlWorkSpace" parent="Form" prefHeight="334px" prefWidth="356px" type="PanelDesignInfo">
     <layout type="MarginLayoutDesignInfo"/>

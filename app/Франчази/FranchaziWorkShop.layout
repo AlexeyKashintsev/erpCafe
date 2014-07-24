@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?><layout defaultCloseOperation="2" name="Form" prefHeight="327px" prefWidth="615px">
+  <widget name="modelGrid" parent="Form" prefHeight="327px" prefWidth="156px" type="DbGridDesignInfo">
+    <rowsColumnsDesignInfo>
+      <rowsDatasource/>
+    </rowsColumnsDesignInfo>
+    <treeDesignInfo/>
+    <constraints bottom="0px" left="0px" top="0px" type="MarginConstraintsDesignInfo" width="156px"/>
+  </widget>
+  <layout type="MarginLayoutDesignInfo"/>
+</layout>
