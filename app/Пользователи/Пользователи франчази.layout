@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><layout defaultCloseOperation="2" locationByPlatform="true" name="Form" prefHeight="372px" prefWidth="330px" windowClosing="formWindowClosing" windowOpened="formWindowOpened">
+<?xml version="1.0" encoding="UTF-8"?><layout defaultCloseOperation="2" name="Form" prefHeight="372px" prefWidth="330px" windowClosing="formWindowClosing" windowOpened="formWindowOpened">
   <widget floatable="false" name="toolBar" parent="Form" prefHeight="31px" prefWidth="330px" rollover="true" type="ToolbarDesignInfo">
     <constraints place="North" type="BorderLayoutConstraintsDesignInfo"/>
   </widget>
@@ -20,56 +20,56 @@
     <layout type="MarginLayoutDesignInfo"/>
     <constraints place="Center" type="BorderLayoutConstraintsDesignInfo"/>
   </widget>
-  <widget name="modelGrid" parent="pnlWorkSpace" prefHeight="291px" prefWidth="330px" type="DbGridDesignInfo">
+  <widget deletable="false" editable="false" insertable="false" mouseClicked="modelGridMouseClicked" name="modelGrid" parent="pnlWorkSpace" prefHeight="291px" prefWidth="330px" type="DbGridDesignInfo">
+    <rowsColumnsDesignInfo>
+      <rowsDatasource entityId="140489862821608" field="false"/>
+    </rowsColumnsDesignInfo>
+    <treeDesignInfo/>
     <column name="colUsr_name" title="Имя">
       <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
-      <headerStyle>
-        <nativeFont name="Dialog" size="15"/>
-      </headerStyle>
       <datamodelElement entityId="140489862821608" fieldName="usr_name"/>
       <columnsDatasource/>
       <columnsDisplayField/>
       <cellsDatasource/>
       <cellDesignInfo>
-        <rowsKeyField/>
         <columnsKeyField/>
         <cellValueField/>
+        <rowsKeyField/>
       </cellDesignInfo>
-    </column>
-    <column name="colUsr_phone" title="Телефон">
-      <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
       <headerStyle>
         <nativeFont name="Dialog" size="15"/>
       </headerStyle>
+    </column>
+    <column name="colUsr_phone" title="Телефон">
+      <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
       <datamodelElement entityId="140489862821608" fieldName="usr_phone"/>
       <columnsDatasource/>
       <columnsDisplayField/>
       <cellsDatasource/>
       <cellDesignInfo>
-        <rowsKeyField/>
         <columnsKeyField/>
         <cellValueField/>
+        <rowsKeyField/>
       </cellDesignInfo>
-    </column>
-    <column name="colUsr_email" title="Email">
-      <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
       <headerStyle>
         <nativeFont name="Dialog" size="15"/>
       </headerStyle>
+    </column>
+    <column name="colUsr_email" title="Email">
+      <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
       <datamodelElement entityId="140489862821608" fieldName="usr_email"/>
       <columnsDatasource/>
       <columnsDisplayField/>
       <cellsDatasource/>
       <cellDesignInfo>
-        <rowsKeyField/>
         <columnsKeyField/>
         <cellValueField/>
+        <rowsKeyField/>
       </cellDesignInfo>
+      <headerStyle>
+        <nativeFont name="Dialog" size="15"/>
+      </headerStyle>
     </column>
-    <rowsColumnsDesignInfo>
-      <rowsDatasource entityId="140489862821608" field="false"/>
-    </rowsColumnsDesignInfo>
-    <treeDesignInfo/>
     <constraints bottom="0px" left="0px" right="0px" top="0px" type="MarginConstraintsDesignInfo"/>
   </widget>
   <layout type="BorderLayoutDesignInfo"/>

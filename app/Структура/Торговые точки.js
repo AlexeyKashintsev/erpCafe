@@ -1,11 +1,11 @@
 /**
  * 
  * @author Алексей
- * @name TradePointsForm
+ * @name TradePoints
  * @public
  */
 
-function TradePointsForm() {
+function TradePoints() {
 var self = this, model = this.model, form = this;
 
 var isSelectForm = false;

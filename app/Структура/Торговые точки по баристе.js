@@ -16,8 +16,8 @@ self.setFranchaziId = function(aFranchaziId){
     model.params.franchazi_id = aFranchaziId;
 };
 
-self.setUserName = function(aFranchaziId){
-    model.params.franchazi_id = aFranchaziId;
+self.setUserName = function(aUserName){
+    model.params.usr_name = aUserName;
 };
 
 function saveModel(){

@@ -7,6 +7,6 @@
   </widget>
   <widget icon="icons/Coffee/Books-2-icon.png" name="button" parent="toolBar" prefHeight="55px" prefWidth="55px" toolTipText="Отчеты" type="ButtonDesignInfo"/>
   <widget focusable="false" horizontalTextPosition="0" icon="icons/Coffee/coffee_shop.png" name="button2" parent="toolBar" prefHeight="55px" prefWidth="55px" toolTipText="Торговые точки" type="ButtonDesignInfo" verticalTextPosition="3"/>
-  <widget focusable="false" horizontalTextPosition="0" icon="icons/Coffee/Coffee-break-icon.png" name="button1" parent="toolBar" prefHeight="55px" prefWidth="55px" toolTipText="Пользователи" type="ButtonDesignInfo" verticalTextPosition="3"/>
+  <widget actionPerformed="btnUsersViewActionPerformed" focusable="false" horizontalTextPosition="0" icon="icons/Coffee/Coffee-break-icon.png" name="btnUsersView" parent="toolBar" prefHeight="55px" prefWidth="55px" toolTipText="Пользователи" type="ButtonDesignInfo" verticalTextPosition="3"/>
   <layout type="MarginLayoutDesignInfo"/>
 </layout>

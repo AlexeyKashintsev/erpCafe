@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?><datamodel>
+  <parameters>
+    <parameter description="" name="userName" nullable="true" parameterMode="1" precision="0" scale="0" selectionForm="null" signed="true" size="100" type="12" typeName="VARCHAR"/>
+    <parameter description="" name="franchaziId" nullable="true" parameterMode="1" precision="0" scale="0" selectionForm="null" signed="true" size="0" type="2" typeName="NUMERIC"/>
+  </parameters>
   <parametersEntity entityHeight="200" entityIconified="false" entityLocationX="12" entityLocationY="12" entityWidth="150"/>
-  <entity Name="qFrancByUserName" Title="" entityHeight="200" entityIconified="false" entityId="140601498044177" entityLocationX="238" entityLocationY="22" entityWidth="150" queryId="qFrancByUserName" tableName="" tableSchemaName=""/>
+  <entity Name="qFrancByUserName" Title="" entityHeight="200" entityIconified="false" entityId="140601498044177" entityLocationX="319" entityLocationY="14" entityWidth="150" onRequeried="qFrancByUserNameOnRequeried" queryId="qFrancByUserName" tableName="" tableSchemaName=""/>
+  <relation leftEntityId="-1" leftEntityParameterName="userName" rightEntityId="140601498044177" rightEntityParameterName="user_name"/>
 </datamodel>

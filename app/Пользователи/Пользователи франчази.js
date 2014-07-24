@@ -10,8 +10,10 @@ function FranchaziUsers() {
     var self = this, model = this.model, form = this;
     self.isSelectForm = false;
     
-    var tradePointsForm = new TradePointsForm();
+    //var tradePointsForm = new TradePoints();
     var createTradePointUser = new CreateTradePointUser();
+    var baristaTP = new TradePointsbaristForm();
+    
     model.params.franchazi_id = null;
     model.params.trade_point_id = null;
     
@@ -36,7 +38,7 @@ function btnSaveActionPerformed(evt) {//GEN-FIRST:event_btnSaveActionPerformed
 }//GEN-LAST:event_btnSaveActionPerformed
 
 function formWindowOpened(evt) {//GEN-FIRST:event_formWindowOpened
-        form.pnlSelLock.visible = self.isSelectForm
+        form.pnlSelLock.visible = self.isSelectForm;
 }//GEN-LAST:event_formWindowOpened
 
 function tbSetEditActionPerformed(evt) {//GEN-FIRST:event_tbSetEditActionPerformed
@@ -67,4 +69,12 @@ function formWindowClosing(evt) {//GEN-FIRST:event_formWindowClosing
             }   
         });
     }//GEN-LAST:event_btnAddActionPerformed
+
+    function modelGridMouseClicked(evt) {//GEN-FIRST:event_modelGridMouseClicked
+        if (evt.clickCount === 2) {
+            baristaTP.setFranchaziId(model.params.franchazi_id);
+            baristaTP.setUserName(model.listTradePointUsers.cursor.usr_name);
+            baristaTP.showModal();
+        }
+    }//GEN-LAST:event_modelGridMouseClicked
 }

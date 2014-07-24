@@ -26,10 +26,6 @@ function EventProcessor() {
             event_data  :   JSON.stringify(aEventData),
             event_date  :   new Date()
         });
-        model.save(function(){
-            success(aEventType, aEventData);
-        }, function(aEvt){
-            failure(aEvt, aEventType, aEventData);
-        });
+        model.save();
     };
 }

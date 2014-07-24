@@ -7,7 +7,7 @@
 
 function GetItemsByBaristaForm() {
 var MSG_SESSION_CLOSED_ERROR = "Сначала нужно открыть смену!";
-var MSG_SET_MOVEMENTS_ERROR  = "Произошла ошибка при добавлении товаров!";
+var MSG_SET_MOVEMENTS_ERROR  = "Произошла ошибка при добавлении товара!";
 
 var self = this, model = this.model, form = this;
 
