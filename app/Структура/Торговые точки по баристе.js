@@ -50,14 +50,13 @@ function formWindowClosing(evt) {//GEN-FIRST:event_formWindowClosing
     }
 }//GEN-LAST:event_formWindowClosing
 
-
-    function btnSelectActionPerformed(evt) {//GEN-FIRST:event_btnSelectActionPerformed
+    function btnSaveActionPerformed(evt) {//GEN-FIRST:event_btnSaveActionPerformed
         saveModel();
         close();
-    }//GEN-LAST:event_btnSelectActionPerformed
+    }//GEN-LAST:event_btnSaveActionPerformed
 
-    function buttonActionPerformed(evt) {//GEN-FIRST:event_buttonActionPerformed
+    function btnCancelActionPerformed(evt) {//GEN-FIRST:event_btnCancelActionPerformed
         model.revert();
         close();
-    }//GEN-LAST:event_buttonActionPerformed
+    }//GEN-LAST:event_btnCancelActionPerformed
 }

@@ -9,8 +9,7 @@ function TradePoints() {
 var self = this, model = this.model, form = this;
 
 var isSelectForm = false;
-
-//var usersFrachaziOrTP = new UsersFrachaziOrTP();
+self.addButtons = false;
 
 model.params.franchazi_id = null;
 
@@ -31,6 +30,7 @@ function btnSaveActionPerformed(evt) {//GEN-FIRST:event_btnSaveActionPerformed
 function formWindowOpened(evt) {//GEN-FIRST:event_formWindowOpened
     if (!isSelectForm){
         self.pnlSelLock.visible = false;
+        form.btnAdd.visible = form.btnDel.visible = self.addButtons;
     }
 }//GEN-LAST:event_formWindowOpened
 
@@ -39,7 +39,6 @@ function formWindowClosing(evt) {//GEN-FIRST:event_formWindowClosing
         self.model.save();
     }
 }//GEN-LAST:event_formWindowClosing
-
 
     function btnSelectActionPerformed(evt) {//GEN-FIRST:event_btnSelectActionPerformed
         close(model.listTradePoints.org_trade_point_id);

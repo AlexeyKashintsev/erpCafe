@@ -6,24 +6,37 @@
 function AdminStartForm() {
     var self = this, model = this.model, form = this;
     var MSG_ERROR_INACTIVE_USER = 'Ваша учетная запись неактивна!\nОбратитесь к администратору';
+    var MSG_ERROR_NO_FRANCHAZI_4USER = 'Пользователь не закреплен за франчази!\nОбратитесь к администратору';
     
     var ep = new ServerModule('EventProcessor');
     var guiUtils = new guiModule();
-    var usersView = new FranchaziUsers();
-    var tradePoints = new TradePoints();
+    var usersView = null;
+    var tradePoints = null;
     
     model.params.userName = self.principal.name;
-    ep.addEvent('userLogin', {username : model.params.userName});
+    ep.addEvent('userLogin', null);
     
     function qFrancByUserNameOnRequeried(evt) {//GEN-FIRST:event_qFrancByUserNameOnRequeried
-        if (model.qFrancByUserName.cursor.franc_users_active){
-            model.params.franchaziId = model.qFrancByUserName.franchazi_id;
-            usersView.setFranchaziId(model.params.franchaziId);
-            tradePoints.setFranchaziId(model.params.franchaziId);
-            
+        var franchazi = model.qFrancByUserName.franchazi_id;
+        if (franchazi) {
+            if (model.qFrancByUserName.cursor.franc_users_active){
+                model.params.franchaziId = franchazi;
+                
+                usersView = new FranchaziUsers();
+                tradePoints = new TradePoints();
+                
+                usersView.setFranchaziId(franchazi);
+                tradePoints.setFranchaziId(franchazi);
+
+            } else {
+                alert(MSG_ERROR_INACTIVE_USER);
+                ep.addEvent('userNotActive', {username : model.params.userName});
+                self.close();
+            }
         } else {
-            alert(MSG_ERROR_INACTIVE_USER);
+            alert(MSG_ERROR_NO_FRANCHAZI_4USER);
             ep.addEvent('userNotActive', {username : model.params.userName});
+            self.close();
         }
     }//GEN-LAST:event_qFrancByUserNameOnRequeried
 
@@ -48,4 +61,8 @@ self.showFormAsInternal = function(aForm) {
     function button2ActionPerformed(evt) {//GEN-FIRST:event_button2ActionPerformed
         self.showFormAsInternal(tradePoints);
     }//GEN-LAST:event_button2ActionPerformed
+
+    function formWindowOpened(evt) {//GEN-FIRST:event_formWindowOpened
+        model.qFrancByUserName.requery();
+    }//GEN-LAST:event_formWindowOpened
 }

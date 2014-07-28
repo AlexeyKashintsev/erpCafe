@@ -2,6 +2,7 @@
  *
  * @author Алексей
  * @name qFrancByUserName
+ * @manual
  */ 
 Select * 
 From org_franc_users t1

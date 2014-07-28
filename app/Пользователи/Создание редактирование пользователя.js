@@ -1,7 +1,7 @@
 /**
  * 
  * @author mike
- * @rolesAllowed admin franchize
+ * @rolesAllowed admin franchazi
  */
 function UserCreateAndEditForm() {
     var self = this, model = this.model, form = this;
@@ -22,49 +22,54 @@ function UserCreateAndEditForm() {
     /**
     * @rolesAllowed barista
     */   
-   function DisableInput(){
-       form.tfEmail.enabled = false;
-        form.tfPhone.enabled = false;
-        form.tfFIO.enabled = false;
-        form.tfAdress.enabled = false;
-        form.tfAdditional.enabled = false;
+   function setInputActive(aValue){
+        form.tfEmail.enabled = form.tfPhone.enabled = form.tfFIO.enabled = 
+            form.tfAdress.enabled = form.tfAdditional.enabled = aValue;
    }
 
     function btnSaveActionPerformed(evt) {//GEN-FIRST:event_btnSaveActionPerformed
-        var roleName;
-        if(form.rbAdmin.selected){
-           roleName = "franchazi";
-        } else {
-           roleName = "barista";     
-        }
-        model.params.role_name = roleName;
+        if (!model.params.user_name) { //Создан новый пользователь?
+            if(form.rbAdmin.selected){
+               var roleName = "franchazi";
+            } else {
+               roleName = "barista";     
+            }
+            model.params.role_name = roleName;
 
-        model.usersByName.cursor.usr_name = form.tfLogin.text;
-        model.usersByName.cursor.usr_passwd = adminFunctions.MD5(form.tfPass.text);
-        model.usersByName.cursor.usr_form = model.queryRoles.cursor.role_form;
-        
-        model.createFrancizerUser.cursor.franchazi_id = model.params.franchazi_id;
-        model.createFrancizerUser.cursor.user_name = form.tfLogin.text;
-        if(form.rbEnable.selected)
-            model.createFrancizerUser.cursor.franc_users_active = true;
-        else 
-            model.createFrancizerUser.cursor.franc_users_active = false;
-        if(model.save()){
-                model.qUserAddRole.executeUpdate();
-                form.close();
-            }     
+            model.usersByName.usr_name = form.tfLogin.text;
+            model.usersByName.usr_passwd = adminFunctions.MD5(form.tfPass.text);
+            model.usersByName.usr_form = model.queryRoles.cursor.role_form;
+
+            model.createFrancizerUser.franchazi_id = model.params.franchazi_id;
+            model.createFrancizerUser.user_name = form.tfLogin.text;
+            model.createFrancizerUser.franc_users_active = true;
+            
+            model.save(function(){
+                    model.qUserAddRole.params.usr_name = model.usersByName.usr_name;
+                    model.qUserAddRole.params.usr_role = roleName;
+                    model.qUserAddRole.executeUpdate();
+                    form.close();
+                });
+            } else {
+                if(form.rbEnable.selected)
+                    model.createFrancizerUser.cursor.franc_users_active = true;
+                else 
+                    model.createFrancizerUser.cursor.franc_users_active = false;
+                model.save(form.close);
+            }
     }//GEN-LAST:event_btnSaveActionPerformed
 
     function formWindowOpened(evt) {//GEN-FIRST:event_formWindowOpened
-        DisableInput();
         if(model.params.user_name){
             form.tfLogin.enabled = false;
             form.panelBarist.visible = false;
+            setInputActive(true);
             form.tfLogin.text = model.usersByName.cursor.usr_name;
             form.tfPass.text = "********";
             if(!model.createFrancizerUser.cursor.franc_users_active)
                 form.rbDisable.selected = true;
         } else {
+            setInputActive(false);
             form.panelEnabled.visible = false;
             form.btnSave.enabled = false;
             model.usersByName.insert();
@@ -92,7 +97,7 @@ function UserCreateAndEditForm() {
     function ValidateForm(){
         if(validateLogin && validatePass){
             ChangeStateElements(true);
-            DisableInput();
+            setInputActive();
             model.requery();
             model.createFrancizerUser.insert();
             model.usersByName.insert();
@@ -101,7 +106,7 @@ function UserCreateAndEditForm() {
             ChangeStateElements(false);
     }
     
-    function ChangeStateElements(state){
+    function ChangeStateElements(state) {
         form.btnSave.enabled = state;
         form.tfEmail.enabled = state;
         form.tfPhone.enabled = state;
@@ -143,9 +148,6 @@ function UserCreateAndEditForm() {
     * @rolesAllowed barista
     */   
     function btnCancelActionPerformed(evt) {//GEN-FIRST:event_btnCancelActionPerformed
-        alert('!');
-        if (principal.hasRole("franchazi")) {
-            alert('franchazi');
-        }
+        form.close();
     }//GEN-LAST:event_btnCancelActionPerformed
 }
