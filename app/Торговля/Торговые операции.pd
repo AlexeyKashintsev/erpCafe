@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?><datamodel datamodelDbId="null">
   <fieldsEntity entityHeight="200" entityIconified="false" entityId="140567491556569" entityLocationX="235" entityLocationY="19" entityWidth="150" tableName="trade_operations"/>
   <fieldsEntity entityHeight="200" entityIconified="false" entityId="140567491555949" entityLocationX="46" entityLocationY="238" entityWidth="150" tableName="trade_items_cost"/>
-  <fieldsEntity entityHeight="200" entityIconified="false" entityId="140567491554660" entityLocationX="513" entityLocationY="235" entityWidth="150" tableName="trade_cash_box_operation"/>
+  <fieldsEntity entityHeight="200" entityIconified="false" entityId="140654869018643" entityLocationX="607" entityLocationY="233" entityWidth="150" tableName="mtd_users"/>
+  <fieldsEntity entityHeight="200" entityIconified="false" entityId="140567491554660" entityLocationX="421" entityLocationY="16" entityWidth="145" tableName="trade_cash_box_operation"/>
   <fieldsEntity entityHeight="200" entityIconified="false" entityId="140567491554203" entityLocationX="48" entityLocationY="22" entityWidth="150" tableName="org_trade_point"/>
-  <fieldsEntity entityHeight="200" entityIconified="false" entityId="140567491557162" entityLocationX="513" entityLocationY="7" entityWidth="150" tableName="trade_sessions"/>
   <fieldsEntity entityHeight="200" entityIconified="false" entityId="140567491555313" entityLocationX="231" entityLocationY="238" entityWidth="150" tableName="trade_items"/>
+  <fieldsEntity entityHeight="200" entityIconified="false" entityId="140654881856927" entityLocationX="422" entityLocationY="232" entityWidth="150" tableName="org_session"/>
 </datamodel>

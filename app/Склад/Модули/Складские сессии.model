@@ -16,8 +16,8 @@
   <referenceRelation leftEntityFieldName="item_id" leftEntityId="140558094552687" rightEntityFieldName="wh_items_id" rightEntityId="140549955021843"/>
   <referenceRelation leftEntityFieldName="item_id" leftEntityId="140549955021843" rightEntityFieldName="wh_items_id" rightEntityId="140549955021843"/>
   <referenceRelation leftEntityFieldName="item_id" leftEntityId="140549953114953" rightEntityFieldName="wh_items_id" rightEntityId="140549955021843"/>
-  <referenceRelation leftEntityFieldName="session_id" leftEntityId="140559598452805" rightEntityFieldName="wh_session_id" rightEntityId="140560208256658"/>
-  <referenceRelation leftEntityFieldName="session_id" leftEntityId="140558094552687" rightEntityFieldName="wh_session_id" rightEntityId="140560208256658"/>
+  <referenceRelation leftEntityFieldName="session_id" leftEntityId="140559598452805" rightEntityFieldName="org_session_id" rightEntityId="140560208256658"/>
+  <referenceRelation leftEntityFieldName="session_id" leftEntityId="140558094552687" rightEntityFieldName="org_session_id" rightEntityId="140560208256658"/>
   <referenceRelation leftEntityFieldName="item_id" leftEntityId="140559598452805" rightEntityFieldName="wh_items_id" rightEntityId="140549955021843"/>
-  <referenceRelation leftEntityFieldName="session_id" leftEntityId="140549953114953" rightEntityFieldName="wh_session_id" rightEntityId="140560208256658"/>
+  <referenceRelation leftEntityFieldName="session_id" leftEntityId="140549953114953" rightEntityFieldName="org_session_id" rightEntityId="140560208256658"/>
 </datamodel>

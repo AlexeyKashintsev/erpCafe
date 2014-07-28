@@ -31,7 +31,7 @@ function WhSessionModule() {
     self.getCurrentSession = function() {
         model.qOpenedSession.requery();
         if (model.qOpenedSession.length > 0) {
-            model.params.session_id = model.qOpenedSession.cursor.wh_session_id;
+            model.params.session_id = model.qOpenedSession.cursor.org_session_id;
             return model.params.session_id;
         } else {
             model.params.session_id = null;
@@ -61,9 +61,9 @@ function WhSessionModule() {
         if (self.getCurrentSession()) {
             return aSessionId ? model.params.session_id : false;//Код ошибки
         } else {
-            aSessionId ? model.qOpenedSession.insert(model.qOpenedSession.schema.wh_session_id, aSessionId) :
+            aSessionId ? model.qOpenedSession.insert(model.qOpenedSession.schema.org_session_id, aSessionId) :
                     model.qOpenedSession.insert();
-            model.params.session_id = model.qOpenedSession.cursor.wh_session_id;
+            model.params.session_id = model.qOpenedSession.cursor.org_session_id;
             model.qOpenedSession.cursor.warehouse = model.params.trade_point_id;
             model.qOpenedSession.cursor.start_date = new Date();
             initSession();
