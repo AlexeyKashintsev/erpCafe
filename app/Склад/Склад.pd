@@ -3,9 +3,9 @@
   <fieldsEntity entityHeight="200" entityIconified="false" entityId="140532305776660" entityLocationX="752" entityLocationY="7" entityWidth="150" tableName="wh_movement_types"/>
   <fieldsEntity entityHeight="200" entityIconified="false" entityId="140532273553377" entityLocationX="384" entityLocationY="9" entityWidth="150" tableName="wh_session_balance"/>
   <fieldsEntity entityHeight="200" entityIconified="false" entityId="140531746141844" entityLocationX="384" entityLocationY="257" entityWidth="150" tableName="wh_item_types"/>
-  <fieldsEntity entityHeight="200" entityIconified="false" entityId="140532264723765" entityLocationX="200" entityLocationY="7" entityWidth="150" tableName="wh_session"/>
   <fieldsEntity entityHeight="200" entityIconified="false" entityId="140532292613851" entityLocationX="570" entityLocationY="8" entityWidth="150" tableName="wh_movements"/>
-  <fieldsEntity entityHeight="200" entityIconified="false" entityId="140499475221844" entityLocationX="205" entityLocationY="220" entityWidth="150" tableName="wh_items"/>
+  <fieldsEntity entityHeight="200" entityIconified="false" entityId="140532264723765" entityLocationX="200" entityLocationY="7" entityWidth="150" tableName="wh_session"/>
   <fieldsEntity entityHeight="200" entityIconified="false" entityId="140532613220520" entityLocationX="25" entityLocationY="230" entityWidth="150" tableName="wh_items_in_warehouse"/>
+  <fieldsEntity entityHeight="200" entityIconified="false" entityId="140499475221844" entityLocationX="205" entityLocationY="220" entityWidth="150" tableName="wh_items"/>
   <fieldsEntity entityHeight="200" entityIconified="false" entityId="140531784742817" entityLocationX="568" entityLocationY="259" entityWidth="150" tableName="wh_measures"/>
 </datamodel>
