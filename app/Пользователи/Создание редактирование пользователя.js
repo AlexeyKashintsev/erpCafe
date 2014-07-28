@@ -7,6 +7,7 @@ function UserCreateAndEditForm() {
     var self = this, model = this.model, form = this;
     var adminFunctions = new ServerModule("AdminFunctions");
     var changePassView = new ChangePassView();
+    var userNew = false;
     
     model.params.franchazi_id = null;
     model.params.user_name = "barista";
@@ -28,7 +29,7 @@ function UserCreateAndEditForm() {
    }
 
     function btnSaveActionPerformed(evt) {//GEN-FIRST:event_btnSaveActionPerformed
-        if (!model.params.user_name) { //Создан новый пользователь?
+        if (userNew) { //Создан новый пользователь?
             if(form.rbAdmin.selected){
                var roleName = "franchazi";
             } else {
@@ -48,30 +49,40 @@ function UserCreateAndEditForm() {
                     model.qUserAddRole.params.usr_name = model.usersByName.usr_name;
                     model.qUserAddRole.params.usr_role = roleName;
                     model.qUserAddRole.executeUpdate();
-                    form.close();
+                    form.close(true);
                 });
             } else {
                 if(form.rbEnable.selected)
                     model.createFrancizerUser.cursor.franc_users_active = true;
                 else 
                     model.createFrancizerUser.cursor.franc_users_active = false;
-                model.save(form.close);
+                model.save(function(){form.close(true);});                
             }
     }//GEN-LAST:event_btnSaveActionPerformed
 
     function formWindowOpened(evt) {//GEN-FIRST:event_formWindowOpened
         if(model.params.user_name){
+            userNew = false; //говорим что это не новый пользователь
             form.tfLogin.enabled = false;
             form.panelBarist.visible = false;
             setInputActive(true);
             form.tfLogin.text = model.usersByName.cursor.usr_name;
             form.tfPass.text = "********";
             if(!model.createFrancizerUser.cursor.franc_users_active)
-                form.rbDisable.selected = true;
+                form.rbDisable.selected = true; 
+            else  form.rbEnable.selected = true; 
         } else {
-            setInputActive(false);
-            form.panelEnabled.visible = false;
-            form.btnSave.enabled = false;
+            //очищаем поля и разрешаем редактировать
+            userNew = true; //Говорим что создаем нового пользователя
+            form.tfLogin.text = "";
+            form.tfLogin.enabled = true;
+            form.tfPass.text = "";
+            form.tfPass.enabled = true;
+            setInputActive(true);
+            
+            //form.panelBarist.visible = false;
+            //form.panelEnabled.visible = false;
+            form.btnSave.enabled = true;
             model.usersByName.insert();
             model.createFrancizerUser.insert();
         }
@@ -97,7 +108,7 @@ function UserCreateAndEditForm() {
     function ValidateForm(){
         if(validateLogin && validatePass){
             ChangeStateElements(true);
-            setInputActive();
+            //setInputActive();
             model.requery();
             model.createFrancizerUser.insert();
             model.usersByName.insert();

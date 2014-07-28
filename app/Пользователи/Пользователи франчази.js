@@ -2,7 +2,7 @@
  * 
  * @author Алексей
  * @name FranchaziUsers
-
+ * @rolesAllowed franchazi admin
  * @public
  */
 
@@ -54,7 +54,7 @@ function formWindowClosing(evt) {//GEN-FIRST:event_formWindowClosing
 
     function btnAddActionPerformed(evt) {//GEN-FIRST:event_btnAddActionPerformed
         createFrancahziUser.setFranchaziId(model.params.franchazi_id);
-        createFrancahziUser.setUserName(null);
+        createFrancahziUser.setUserName(undefined);
         createFrancahziUser.showModal(function(){
                 model.requery();
             });
@@ -68,11 +68,21 @@ function formWindowClosing(evt) {//GEN-FIRST:event_formWindowClosing
                     model.requery();
                 });    
         }
+        form.btnSetPoints.enabled = 
+                (model.listTradePointUsers.group_name == 'barista');
     }//GEN-LAST:event_modelGridMouseClicked
 
-    function buttonActionPerformed(evt) {//GEN-FIRST:event_buttonActionPerformed
+    function btnSetPointsActionPerformed(evt) {//GEN-FIRST:event_btnSetPointsActionPerformed
         baristaTP.setFranchaziId(model.params.franchazi_id);
         baristaTP.setUserName(model.listTradePointUsers.usr_name);
         baristaTP.showModal();
-    }//GEN-LAST:event_buttonActionPerformed
+    }//GEN-LAST:event_btnSetPointsActionPerformed
+
+    function modelGridMousePressed(evt) {//GEN-FIRST:event_modelGridMousePressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_modelGridMousePressed
+
+    function btnDel1ActionPerformed(evt) {//GEN-FIRST:event_btnDel1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnDel1ActionPerformed
 }

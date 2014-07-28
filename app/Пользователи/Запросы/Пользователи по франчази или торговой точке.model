@@ -4,11 +4,13 @@
     <parameter description="" name="trade_point_id" nullable="true" parameterMode="1" precision="0" scale="0" selectionForm="null" signed="true" size="0" type="2" typeName="NUMERIC"/>
   </parameters>
   <parametersEntity entityHeight="200" entityIconified="false" entityLocationX="28" entityLocationY="8" entityWidth="150"/>
+  <entity Title="" entityHeight="200" entityIconified="false" entityId="140654488263110" entityLocationX="681" entityLocationY="28" entityWidth="150" tableAlias="t3" tableName="mtd_groups" tableSchemaName=""/>
   <entity Title="" entityHeight="200" entityIconified="false" entityId="140480593967531" entityLocationX="460" entityLocationY="7" entityWidth="150" tableAlias="t1" tableName="mtd_users" tableSchemaName=""/>
   <entity Title="" entityHeight="200" entityIconified="false" entityId="140480665242531" entityLocationX="222" entityLocationY="245" entityWidth="150" tableAlias="t2" tableName="org_tp_users" tableSchemaName=""/>
   <entity Title="" entityHeight="200" entityIconified="false" entityId="140480595096291" entityLocationX="237" entityLocationY="8" entityWidth="150" tableAlias="t" tableName="org_franc_users" tableSchemaName=""/>
-  <relation leftEntityFieldName="user_name" leftEntityId="140480595096291" rightEntityFieldName="usr_name" rightEntityId="140480593967531"/>
-  <relation leftEntityId="-1" leftEntityParameterName="franchazi_id" rightEntityFieldName="franchazi_id" rightEntityId="140480595096291"/>
-  <relation leftEntityFieldName="user_name" leftEntityId="140480665242531" rightEntityFieldName="usr_name" rightEntityId="140480593967531"/>
   <relation leftEntityId="-1" leftEntityParameterName="trade_point_id" rightEntityFieldName="trade_point_id" rightEntityId="140480665242531"/>
+  <relation leftEntityFieldName="usr_name" leftEntityId="140654488263110" rightEntityFieldName="usr_name" rightEntityId="140480593967531"/>
+  <relation leftEntityId="-1" leftEntityParameterName="franchazi_id" rightEntityFieldName="franchazi_id" rightEntityId="140480595096291"/>
+  <relation leftEntityFieldName="user_name" leftEntityId="140480595096291" rightEntityFieldName="usr_name" rightEntityId="140480593967531"/>
+  <relation leftEntityFieldName="user_name" leftEntityId="140480665242531" rightEntityFieldName="usr_name" rightEntityId="140480593967531"/>
 </datamodel>

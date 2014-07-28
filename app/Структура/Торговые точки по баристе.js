@@ -41,7 +41,7 @@ function saveModel(){
 }
 
 function formWindowOpened(evt) {//GEN-FIRST:event_formWindowOpened
-
+    form.lblNameBarista.text = model.params.usr_name;
 }//GEN-LAST:event_formWindowOpened
 
 function formWindowClosing(evt) {//GEN-FIRST:event_formWindowClosing
@@ -52,11 +52,11 @@ function formWindowClosing(evt) {//GEN-FIRST:event_formWindowClosing
 
     function btnSaveActionPerformed(evt) {//GEN-FIRST:event_btnSaveActionPerformed
         saveModel();
-        close();
+        form.close();
     }//GEN-LAST:event_btnSaveActionPerformed
 
     function btnCancelActionPerformed(evt) {//GEN-FIRST:event_btnCancelActionPerformed
         model.revert();
-        close();
+        form.close();
     }//GEN-LAST:event_btnCancelActionPerformed
 }
