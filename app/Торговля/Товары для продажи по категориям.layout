@@ -24,6 +24,10 @@
   <widget actionPerformed="btnReqActionPerformed" focusable="false" horizontalTextPosition="0" icon="icons/22x22/actions/new-view-refresh.png" name="btnReq" parent="toolBar" prefHeight="34px" prefWidth="34px" toolTipText="Обновить" type="ButtonDesignInfo" verticalTextPosition="3"/>
   <widget actionPerformed="btnItemSelActionPerformed" focusable="false" horizontalTextPosition="0" icon="icons/22x22/actions/document-properties.png" name="btnItemSel" parent="toolBar" prefHeight="34px" prefWidth="34px" toolTipText="Состав товара" type="ButtonDesignInfo" verticalTextPosition="3"/>
   <widget mouseClicked="modelGrid1MouseClicked" name="modelGrid1" parent="panel1" prefHeight="262px" prefWidth="462px" type="DbGridDesignInfo">
+    <rowsColumnsDesignInfo>
+      <rowsDatasource entityId="140566813019746" field="false"/>
+    </rowsColumnsDesignInfo>
+    <treeDesignInfo/>
     <column name="colItem_name" title="Название">
       <datamodelElement entityId="140566813019746" fieldName="item_name"/>
       <columnsDatasource/>
@@ -57,10 +61,6 @@
         <displayField entityId="140568805648895" fieldName="contents"/>
       </controlInfo>
     </column>
-    <rowsColumnsDesignInfo>
-      <rowsDatasource entityId="140566813019746" field="false"/>
-    </rowsColumnsDesignInfo>
-    <treeDesignInfo/>
     <constraints bottom="0px" left="0px" right="0px" top="36px" type="MarginConstraintsDesignInfo"/>
   </widget>
   <widget name="panel" parent="splitPane" prefHeight="298px" prefWidth="230px" type="PanelDesignInfo">
@@ -74,6 +74,12 @@
   <widget actionPerformed="btnDel1ActionPerformed" focusable="false" horizontalTextPosition="0" icon="icons/22x22/actions/list-remove.png" name="btnDel1" parent="toolBar1" prefHeight="34px" prefWidth="34px" toolTipText="Удалить" type="ButtonDesignInfo" verticalTextPosition="3"/>
   <widget actionPerformed="btnReq1ActionPerformed" focusable="false" horizontalTextPosition="0" icon="icons/22x22/actions/new-view-refresh.png" name="btnReq1" parent="toolBar1" prefHeight="34px" prefWidth="34px" toolTipText="Обновить" type="ButtonDesignInfo" verticalTextPosition="3"/>
   <widget mouseClicked="modelGridMouseClicked" name="modelGrid" parent="panel" prefHeight="262px" prefWidth="230px" type="DbGridDesignInfo">
+    <rowsColumnsDesignInfo>
+      <rowsDatasource entityId="140566820113240" field="false"/>
+    </rowsColumnsDesignInfo>
+    <treeDesignInfo>
+      <unaryLinkField entityId="140566820113240" fieldName="parent_type"/>
+    </treeDesignInfo>
     <column name="colType_description" title="Категория">
       <datamodelElement entityId="140566820113240" fieldName="type_name"/>
       <columnsDatasource/>
@@ -89,12 +95,6 @@
       </headerStyle>
       <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
     </column>
-    <rowsColumnsDesignInfo>
-      <rowsDatasource entityId="140566820113240" field="false"/>
-    </rowsColumnsDesignInfo>
-    <treeDesignInfo>
-      <unaryLinkField entityId="140566820113240" fieldName="parent_type"/>
-    </treeDesignInfo>
     <constraints bottom="0px" left="0px" right="0px" top="36px" type="MarginConstraintsDesignInfo"/>
   </widget>
   <layout type="BorderLayoutDesignInfo"/>

@@ -8,6 +8,7 @@
 function ContentTradeItem() {
 var self = this, model = this.model, form = this; 
 var selectItemsInWH = new SelectItemsInWH();
+self.productName = '';
 
 self.setTradeItem = function (aTradeItem){
     model.params.trade_item = aTradeItem;
@@ -21,6 +22,7 @@ function btnReqActionPerformed(evt) {//GEN-FIRST:event_btnReqActionPerformed
 }//GEN-LAST:event_btnReqActionPerformed
 
 function formWindowOpened(evt) {//GEN-FIRST:event_formWindowOpened
+    form.title = "Состав товара " + self.productName;
 }//GEN-LAST:event_formWindowOpened
 
 function formWindowClosing(evt) {//GEN-FIRST:event_formWindowClosing
