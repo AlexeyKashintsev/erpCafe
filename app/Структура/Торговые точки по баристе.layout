@@ -13,57 +13,63 @@
     <layout type="MarginLayoutDesignInfo"/>
     <constraints place="Center" type="BorderLayoutConstraintsDesignInfo"/>
   </widget>
-  <widget deletable="false" insertable="false" name="modelGrid" parent="pnlWorkSpace" prefHeight="334px" prefWidth="356px" type="DbGridDesignInfo">
+  <widget deletable="false" insertable="false" name="modelGrid" parent="pnlWorkSpace" prefHeight="298px" prefWidth="356px" type="DbGridDesignInfo">
     <column name="colTp_name1" readonly="true" title="Точка">
-      <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
       <datamodelElement entityId="140490948655008" fieldName="tp_name"/>
-      <cellDesignInfo>
-        <cellValueField/>
-        <columnsKeyField/>
-        <rowsKeyField/>
-      </cellDesignInfo>
-      <cellsDatasource/>
       <columnsDatasource/>
       <columnsDisplayField/>
+      <cellsDatasource/>
+      <cellDesignInfo>
+        <rowsKeyField/>
+        <columnsKeyField/>
+        <cellValueField/>
+      </cellDesignInfo>
       <headerStyle>
         <nativeFont name="Dialog" size="15"/>
       </headerStyle>
+      <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
     </column>
     <column name="colTp_address1" readonly="true" title="Адрес">
-      <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
       <datamodelElement entityId="140490948655008" fieldName="tp_address"/>
-      <cellDesignInfo>
-        <cellValueField/>
-        <columnsKeyField/>
-        <rowsKeyField/>
-      </cellDesignInfo>
-      <cellsDatasource/>
       <columnsDatasource/>
       <columnsDisplayField/>
+      <cellsDatasource/>
+      <cellDesignInfo>
+        <rowsKeyField/>
+        <columnsKeyField/>
+        <cellValueField/>
+      </cellDesignInfo>
       <headerStyle>
         <nativeFont name="Dialog" size="15"/>
       </headerStyle>
+      <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
     </column>
     <column name="colOnPoint" title="Доступ открыт">
-      <controlInfo classHint="DbCheckDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
       <datamodelElement entityId="140490948655008" fieldName="onPoint"/>
-      <cellDesignInfo>
-        <cellValueField/>
-        <columnsKeyField/>
-        <rowsKeyField/>
-      </cellDesignInfo>
-      <cellsDatasource/>
       <columnsDatasource/>
       <columnsDisplayField/>
+      <cellsDatasource/>
+      <cellDesignInfo>
+        <rowsKeyField/>
+        <columnsKeyField/>
+        <cellValueField/>
+      </cellDesignInfo>
       <headerStyle>
         <nativeFont name="Dialog" size="15"/>
       </headerStyle>
+      <controlInfo classHint="DbCheckDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
     </column>
     <rowsColumnsDesignInfo>
       <rowsDatasource entityId="140490948655008" field="false"/>
     </rowsColumnsDesignInfo>
     <treeDesignInfo/>
-    <constraints bottom="0px" left="0px" right="0px" top="0px" type="MarginConstraintsDesignInfo"/>
+    <constraints bottom="0px" left="0px" right="0px" top="36px" type="MarginConstraintsDesignInfo"/>
+  </widget>
+  <widget name="lblNameBarista" parent="pnlWorkSpace" prefHeight="17px" prefWidth="336px" text="label" type="LabelDesignInfo">
+    <constraints height="17px" right="-232px" top="12px" type="MarginConstraintsDesignInfo" width="336px"/>
+  </widget>
+  <widget name="label" parent="pnlWorkSpace" prefHeight="17px" prefWidth="240px" text="Настройки доступа для бариста " type="LabelDesignInfo">
+    <constraints height="17px" left="12px" top="12px" type="MarginConstraintsDesignInfo" width="240px"/>
   </widget>
   <layout type="BorderLayoutDesignInfo"/>
 </layout>
