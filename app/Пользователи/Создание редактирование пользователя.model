@@ -9,9 +9,9 @@
   <entity Name="queryRoles" Title="" entityHeight="200" entityIconified="false" entityId="140498914073670" entityLocationX="24" entityLocationY="235" entityWidth="150" queryId="queryRoles" tableName="" tableSchemaName=""/>
   <entity Name="usersByName" Title="" entityHeight="200" entityIconified="false" entityId="140499275621413" entityLocationX="587" entityLocationY="99" entityWidth="150" queryId="usersByName" tableName="" tableSchemaName=""/>
   <entity Name="qUserAddRole" Title="" entityHeight="200" entityIconified="false" entityId="140619274319921" entityLocationX="509" entityLocationY="298" entityWidth="150" queryId="qUserAddRole" tableName="" tableSchemaName=""/>
+  <relation leftEntityId="-1" leftEntityParameterName="user_name" rightEntityId="140499275621413" rightEntityParameterName="usr_name"/>
   <relation leftEntityId="-1" leftEntityParameterName="role_name" rightEntityFieldName="role_name" rightEntityId="140498914073670"/>
   <relation leftEntityId="-1" leftEntityParameterName="user_name" rightEntityId="140498079905740" rightEntityParameterName="user_name"/>
-  <relation leftEntityId="-1" leftEntityParameterName="user_name" rightEntityId="140499275621413" rightEntityParameterName="usr_name"/>
-  <referenceRelation leftEntityFieldName="usr_name" leftEntityId="140619274319921" rightEntityFieldName="usr_name" rightEntityId="140499275621413"/>
   <referenceRelation leftEntityFieldName="user_name" leftEntityId="140498079905740" rightEntityFieldName="usr_name" rightEntityId="140499275621413"/>
+  <referenceRelation leftEntityFieldName="usr_name" leftEntityId="140619274319921" rightEntityFieldName="usr_name" rightEntityId="140499275621413"/>
 </datamodel>
