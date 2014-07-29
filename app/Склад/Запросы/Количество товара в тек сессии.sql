@@ -5,5 +5,5 @@
  * @manual
  */ 
 Select * 
-From wh_session_balance t1
+From org_session_balance t1
  Where :session_id = t1.session_id

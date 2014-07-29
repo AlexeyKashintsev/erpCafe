@@ -5,7 +5,7 @@
  * @manual
  */ 
 select * from
- wh_session_balance w
+ org_session_balance w
 
   Inner Join #countItems q1
     on w.item_id = q1.item_id
