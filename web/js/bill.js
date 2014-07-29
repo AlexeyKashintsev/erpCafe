@@ -14,8 +14,8 @@ function prevButtonClick() {
 }
 
 platypus.ready = function() {
-            require(['ItemDetails', 'BillGenerator'], function(){
-                units.billGenerator = new BillGenerator();
-		$('#order_details').hide();
+	require(['ItemDetails', 'BillGenerator'], function(){
+	    units.billGenerator = new BillGenerator();
+	    $('#order_details').hide();
 	});
 };

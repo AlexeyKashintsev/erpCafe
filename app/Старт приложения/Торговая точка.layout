@@ -10,5 +10,13 @@
     <layout type="MarginLayoutDesignInfo"/>
     <constraints tabTitle="Баристы" type="TabsConstraintsDesignInfo"/>
   </widget>
+  <widget name="pnlWarehouse" parent="tabbedPane" prefHeight="254px" prefWidth="379px" type="PanelDesignInfo" visible="false">
+    <layout type="MarginLayoutDesignInfo"/>
+    <constraints tabTitle="Склад" type="TabsConstraintsDesignInfo"/>
+  </widget>
+  <widget name="pnlTradePositions" parent="tabbedPane" prefHeight="254px" prefWidth="379px" type="PanelDesignInfo" visible="false">
+    <layout type="MarginLayoutDesignInfo"/>
+    <constraints tabTitle="Позиции" type="TabsConstraintsDesignInfo"/>
+  </widget>
   <layout type="MarginLayoutDesignInfo"/>
 </layout>

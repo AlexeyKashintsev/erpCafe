@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?><layout defaultCloseOperation="2" name="Form" prefHeight="348px" prefWidth="372px" windowClosing="formWindowClosing" windowOpened="formWindowOpened">
-  <widget floatable="false" name="toolBar" parent="Form" prefHeight="36px" prefWidth="372px" rollover="true" type="ToolbarDesignInfo">
+  <widget floatable="false" name="toolBar" parent="Form" prefHeight="30px" prefWidth="372px" rollover="true" type="ToolbarDesignInfo">
     <constraints place="North" type="BorderLayoutConstraintsDesignInfo"/>
   </widget>
-  <widget actionPerformed="btnAddActionPerformed" focusable="false" horizontalTextPosition="0" icon="icons/22x22/actions/list-add.png" name="btnAdd" parent="toolBar" prefHeight="34px" prefWidth="34px" toolTipText="Добавить" type="ButtonDesignInfo" verticalTextPosition="3"/>
-  <widget focusable="false" horizontalTextPosition="0" icon="icons/22x22/actions/list-remove.png" name="btnDel" parent="toolBar" prefHeight="34px" prefWidth="34px" toolTipText="Удалить" type="ButtonDesignInfo" verticalTextPosition="3"/>
-  <widget actionPerformed="btnReqActionPerformed" focusable="false" horizontalTextPosition="0" icon="icons/22x22/actions/new-view-refresh.png" name="btnReq" parent="toolBar" prefHeight="34px" prefWidth="34px" toolTipText="Обновить" type="ButtonDesignInfo" verticalTextPosition="3"/>
+  <widget actionPerformed="btnAddActionPerformed" focusable="false" horizontalTextPosition="0" icon="icons/22x22/actions/list-add.png" name="btnAdd" parent="toolBar" prefHeight="26px" prefWidth="34px" toolTipText="Добавить" type="ButtonDesignInfo" verticalTextPosition="3"/>
+  <widget focusable="false" horizontalTextPosition="0" icon="icons/22x22/actions/list-remove.png" name="btnDel" parent="toolBar" prefHeight="26px" prefWidth="34px" toolTipText="Удалить" type="ButtonDesignInfo" verticalTextPosition="3"/>
+  <widget actionPerformed="btnReqActionPerformed" focusable="false" horizontalTextPosition="0" icon="icons/22x22/actions/new-view-refresh.png" name="btnReq" parent="toolBar" prefHeight="26px" prefWidth="34px" toolTipText="Обновить" type="ButtonDesignInfo" verticalTextPosition="3"/>
   <widget name="pnlSelLock" parent="Form" prefHeight="50px" prefWidth="372px" type="PanelDesignInfo">
     <layout type="MarginLayoutDesignInfo"/>
     <constraints place="South" type="BorderLayoutConstraintsDesignInfo"/>
@@ -12,43 +12,43 @@
   <widget actionPerformed="btnSelectActionPerformed" icon="icons/22x22/actions/dialog-apply.png" name="btnSelect" parent="pnlSelLock" prefHeight="35px" prefWidth="185px" text="Сохранить" type="ButtonDesignInfo">
     <constraints bottom="7px" height="35px" right="7px" type="MarginConstraintsDesignInfo" width="185px"/>
   </widget>
-  <widget name="pnlWorkSpace" parent="Form" prefHeight="262px" prefWidth="372px" type="PanelDesignInfo">
+  <widget name="pnlWorkSpace" parent="Form" prefHeight="268px" prefWidth="372px" type="PanelDesignInfo">
     <layout type="MarginLayoutDesignInfo"/>
     <constraints place="Center" type="BorderLayoutConstraintsDesignInfo"/>
   </widget>
-  <widget name="modelGrid" parent="pnlWorkSpace" prefHeight="262px" prefWidth="372px" type="DbGridDesignInfo">
-    <column name="colWh_item" selectFunction="colWh_itemOnSelect">
-      <datamodelElement entityId="140569000979898" fieldName="wh_item"/>
-      <columnsDatasource/>
-      <columnsDisplayField/>
-      <cellsDatasource/>
-      <cellDesignInfo>
-        <rowsKeyField/>
-        <columnsKeyField/>
-        <cellValueField/>
-      </cellDesignInfo>
-      <headerStyle>
-        <nativeFont name="Ubuntu" size="15"/>
-      </headerStyle>
+  <widget name="modelGrid" parent="pnlWorkSpace" prefHeight="268px" prefWidth="372px" type="DbGridDesignInfo">
+    <column name="colWh_item" selectFunction="colWh_itemOnSelect" title="Наименование">
       <controlInfo classHint="DbComboDesignInfo" name="view" prefHeight="0px" prefWidth="0px">
-        <valueField entityId="140567547607184" fieldName="wh_items_id"/>
         <displayField entityId="140567547607184" fieldName="item_name"/>
+        <valueField entityId="140567547607184" fieldName="wh_items_id"/>
       </controlInfo>
-    </column>
-    <column name="colUsage_quantity">
-      <datamodelElement entityId="140569000979898" fieldName="usage_quantity"/>
+      <datamodelElement entityId="140569000979898" fieldName="wh_item"/>
+      <cellDesignInfo>
+        <cellValueField/>
+        <columnsKeyField/>
+        <rowsKeyField/>
+      </cellDesignInfo>
+      <cellsDatasource/>
       <columnsDatasource/>
       <columnsDisplayField/>
-      <cellsDatasource/>
-      <cellDesignInfo>
-        <rowsKeyField/>
-        <columnsKeyField/>
-        <cellValueField/>
-      </cellDesignInfo>
       <headerStyle>
-        <nativeFont name="Ubuntu" size="15"/>
+        <nativeFont name="Dialog" size="15"/>
       </headerStyle>
+    </column>
+    <column name="colUsage_quantity" title="Количество">
       <controlInfo classHint="DbSpinDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
+      <datamodelElement entityId="140569000979898" fieldName="usage_quantity"/>
+      <cellDesignInfo>
+        <cellValueField/>
+        <columnsKeyField/>
+        <rowsKeyField/>
+      </cellDesignInfo>
+      <cellsDatasource/>
+      <columnsDatasource/>
+      <columnsDisplayField/>
+      <headerStyle>
+        <nativeFont name="Dialog" size="15"/>
+      </headerStyle>
     </column>
     <rowsColumnsDesignInfo>
       <rowsDatasource entityId="140569000979898" field="false"/>

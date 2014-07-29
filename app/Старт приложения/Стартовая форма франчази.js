@@ -11,7 +11,7 @@ function AdminStartForm() {
     var ep = new ServerModule('EventProcessor');
     var guiUtils = new guiModule();
     var usersView = null;
-    var tradePoints = null;
+    var workShop = null;
     
     model.params.userName = self.principal.name;
     ep.addEvent('userLogin', null);
@@ -23,10 +23,10 @@ function AdminStartForm() {
                 model.params.franchaziId = franchazi;
                 
                 usersView = new FranchaziUsers();
-                tradePoints = new TradePoints();
+                workShop = new FranchaziWorkShop();
                 
                 usersView.setFranchaziId(franchazi);
-                tradePoints.setFranchaziId(franchazi);
+                workShop.setFranchaziId(franchazi);
 
             } else {
                 alert(MSG_ERROR_INACTIVE_USER);
@@ -59,7 +59,7 @@ self.showFormAsInternal = function(aForm) {
     }//GEN-LAST:event_btnUsersViewActionPerformed
 
     function button2ActionPerformed(evt) {//GEN-FIRST:event_button2ActionPerformed
-        self.showFormAsInternal(tradePoints);
+        self.showFormAsInternal(workShop);
     }//GEN-LAST:event_button2ActionPerformed
 
     function formWindowOpened(evt) {//GEN-FIRST:event_formWindowOpened

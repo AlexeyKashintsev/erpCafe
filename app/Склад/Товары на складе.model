@@ -12,8 +12,8 @@
   <entity Name="queryItemsInWH" Title="" entityHeight="200" entityIconified="false" entityId="140541080945918" entityLocationX="18" entityLocationY="227" entityWidth="150" queryId="queryItemsInWH" tableName="" tableSchemaName=""/>
   <relation leftEntityFieldName="wh_item_types_id" leftEntityId="140532276305367" rightEntityId="140534393699468" rightEntityParameterName="item_type"/>
   <relation leftEntityId="-1" leftEntityParameterName="trade_point_id" rightEntityId="140534393699468" rightEntityParameterName="trade_point_id"/>
-  <referenceRelation leftEntityFieldName="item_id" leftEntityId="140541080945918" rightEntityFieldName="wh_items_id" rightEntityId="140534393699468"/>
   <referenceRelation leftEntityFieldName="parent_type" leftEntityId="140532276305367" rightEntityFieldName="wh_item_types_id" rightEntityId="140532276305367"/>
-  <referenceRelation leftEntityFieldName="measure" leftEntityId="140532276305367" rightEntityFieldName="wh_measures_id" rightEntityId="140532276543923"/>
   <referenceRelation leftEntityFieldName="item_type" leftEntityId="140534393699468" rightEntityFieldName="wh_item_types_id" rightEntityId="140532276305367"/>
+  <referenceRelation leftEntityFieldName="measure" leftEntityId="140532276305367" rightEntityFieldName="wh_measures_id" rightEntityId="140532276543923"/>
+  <referenceRelation leftEntityFieldName="item_id" leftEntityId="140541080945918" rightEntityFieldName="wh_items_id" rightEntityId="140534393699468"/>
 </datamodel>

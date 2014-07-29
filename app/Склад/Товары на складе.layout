@@ -17,8 +17,9 @@
     <layout type="MarginLayoutDesignInfo"/>
   </widget>
   <widget name="modelGrid1" parent="panel1" prefHeight="263px" prefWidth="460px" type="DbGridDesignInfo">
-    <column name="colItem_name" title="Название">
+    <column name="colItem_name" title="Наименование">
       <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
+      <datamodelElement entityId="140534393699468" fieldName="item_name"/>
       <cellDesignInfo>
         <cellValueField/>
         <columnsKeyField/>
@@ -30,10 +31,10 @@
       <headerStyle>
         <nativeFont name="Dialog" size="15"/>
       </headerStyle>
-      <datamodelElement entityId="140534393699468" fieldName="item_name"/>
     </column>
     <column name="select" title="на складе">
       <controlInfo classHint="DbCheckDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
+      <datamodelElement entityId="140534393699468" fieldName="selectItem"/>
       <cellDesignInfo>
         <cellValueField/>
         <columnsKeyField/>
@@ -45,25 +46,6 @@
       <headerStyle>
         <nativeFont name="Dialog" size="15"/>
       </headerStyle>
-      <datamodelElement entityId="140534393699468" fieldName="selectItem"/>
-    </column>
-    <column name="colType" title="Тип">
-      <controlInfo classHint="DbComboDesignInfo" name="view" prefHeight="0px" prefWidth="0px">
-        <displayField entityId="140532276305367" fieldName="type_description"/>
-        <valueField entityId="140532276305367" fieldName="wh_item_types_id"/>
-      </controlInfo>
-      <cellDesignInfo>
-        <cellValueField/>
-        <columnsKeyField/>
-        <rowsKeyField/>
-      </cellDesignInfo>
-      <cellsDatasource/>
-      <columnsDatasource/>
-      <columnsDisplayField/>
-      <headerStyle>
-        <nativeFont name="Lucida Grande" size="13"/>
-      </headerStyle>
-      <datamodelElement entityId="140534393699468" fieldName="item_type"/>
     </column>
     <rowsColumnsDesignInfo>
       <rowsDatasource entityId="140534393699468" field="false"/>
@@ -84,6 +66,7 @@
   <widget deletable="false" editable="false" insertable="false" mouseClicked="modelGridMouseClicked" name="modelGrid" parent="panel" prefHeight="294px" prefWidth="228px" type="DbGridDesignInfo">
     <column name="colType_description" title="Тип товара">
       <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
+      <datamodelElement entityId="140532276305367" fieldName="type_description"/>
       <cellDesignInfo>
         <cellValueField/>
         <columnsKeyField/>
@@ -95,7 +78,6 @@
       <headerStyle>
         <nativeFont name="Dialog" size="15"/>
       </headerStyle>
-      <datamodelElement entityId="140532276305367" fieldName="type_description"/>
     </column>
     <rowsColumnsDesignInfo>
       <rowsDatasource entityId="140532276305367" field="false"/>
