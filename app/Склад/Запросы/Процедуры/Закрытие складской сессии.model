@@ -3,7 +3,7 @@
     <parameter description="" name="session_id" nullable="true" parameterMode="1" precision="0" scale="0" selectionForm="null" signed="true" size="0" type="2" typeName="NUMERIC"/>
   </parameters>
   <parametersEntity entityHeight="200" entityIconified="false" entityLocationX="8" entityLocationY="7" entityWidth="150"/>
-  <entity Title="" entityHeight="200" entityIconified="false" entityId="140558888418737" entityLocationX="175" entityLocationY="57" entityWidth="150" tableAlias="w" tableName="org_session_balance" tableSchemaName=""/>
+  <entity Title="" entityHeight="200" entityIconified="false" entityId="140558888418737" entityLocationX="175" entityLocationY="57" entityWidth="150" tableAlias="w" tableName="wh_session_balance" tableSchemaName=""/>
   <entity Title="" entityHeight="200" entityIconified="false" entityId="140558888418738" entityLocationX="405" entityLocationY="7" entityWidth="150" queryId="countItems" tableAlias="q1" tableName="" tableSchemaName=""/>
   <relation leftEntityId="-1" leftEntityParameterName="session_id" rightEntityId="140558888418738" rightEntityParameterName="session_id"/>
   <relation leftEntityId="-1" leftEntityParameterName="session_id" rightEntityFieldName="session_id" rightEntityId="140558888418737"/>

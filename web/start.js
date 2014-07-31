@@ -5,8 +5,8 @@ if (!platypus) {
 	var platypus = {};
 }
 platypus.ready = function() {
-	require(['SelectItemsInWH'], function(){
-		var f = new SelectItemsInWH();
+	require(['AdminStartForm'], function(){
+		var f = new AdminStartForm();
 		f.show();
 	});
 };

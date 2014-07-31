@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?><layout defaultCloseOperation="2" name="Form" prefHeight="107px" prefWidth="252px">
+  <widget actionPerformed="btnFrancizeActionPerformed" name="btnFrancize" parent="Form" prefHeight="29px" prefWidth="228px" text="Ко всем торговым точкам" type="ButtonDesignInfo">
+    <constraints height="29px" left="12px" right="12px" top="72px" type="MarginConstraintsDesignInfo"/>
+  </widget>
+  <widget name="label" parent="Form" prefHeight="16px" prefWidth="96px" text="Применить к" type="LabelDesignInfo">
+    <constraints height="16px" left="84px" top="12px" type="MarginConstraintsDesignInfo" width="96px"/>
+  </widget>
+  <widget actionPerformed="btnTPActionPerformed" name="btnTP" parent="Form" prefHeight="29px" prefWidth="228px" text="Текущей торговой точке" type="ButtonDesignInfo">
+    <constraints height="29px" left="12px" right="12px" top="36px" type="MarginConstraintsDesignInfo"/>
+  </widget>
+  <layout type="MarginLayoutDesignInfo"/>
+</layout>

@@ -5,41 +5,24 @@
  */
 function AdminStartForm() {
     var self = this, model = this.model, form = this;
-    var MSG_ERROR_INACTIVE_USER = 'Ваша учетная запись неактивна!\nОбратитесь к администратору';
-    var MSG_ERROR_NO_FRANCHAZI_4USER = 'Пользователь не закреплен за франчази!\nОбратитесь к администратору';
-    
-    var ep = new ServerModule('EventProcessor');
+
+    self.session = new ServerModule('UserSession');
     var guiUtils = new guiModule();
     var usersView = null;
     var workShop = null;
     
-    model.params.userName = self.principal.name;
-    ep.addEvent('userLogin', null);
+    self.session.login(function(aFranchazi){
+        self.setFranchazi(aFranchazi);
+    });
     
-    function qFrancByUserNameOnRequeried(evt) {//GEN-FIRST:event_qFrancByUserNameOnRequeried
-        var franchazi = model.qFrancByUserName.franchazi_id;
-        if (franchazi) {
-            if (model.qFrancByUserName.cursor.franc_users_active){
-                model.params.franchaziId = franchazi;
-                
-                usersView = new FranchaziUsers();
-                workShop = new FranchaziWorkShop();
-                
-                usersView.setFranchaziId(franchazi);
-                workShop.setFranchaziId(franchazi);
+    self.setFranchazi = function(aFaranchazi) {
+        usersView = new FranchaziUsers();
+        workShop = new FranchaziWorkShop();
 
-            } else {
-                alert(MSG_ERROR_INACTIVE_USER);
-                ep.addEvent('userNotActive', {username : model.params.userName});
-                self.close();
-            }
-        } else {
-            alert(MSG_ERROR_NO_FRANCHAZI_4USER);
-            ep.addEvent('userNotActive', {username : model.params.userName});
-            self.close();
-        }
-    }//GEN-LAST:event_qFrancByUserNameOnRequeried
-
+        usersView.setFranchaziId(aFaranchazi);
+        workShop.setFranchaziId(aFaranchazi);
+    };
+    
 self.showFormAsInternal = function(aForm) {
     if(!guiUtils.showOpenedForm(aForm, form.desktop)){
         var frameRunner = aForm;

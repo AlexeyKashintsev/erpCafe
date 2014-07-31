@@ -8,17 +8,18 @@ function TradePoint() {
     var fmWarehouse = new SelectItemsInWH();
     fmWarehouse.showOnPanel(form.pnlWarehouse);
     
-    var fmTradeItems = new ItemsForTrade();
+    var fmTradeItems = new TradeItemsOnTradePoint();
     fmTradeItems.showOnPanel(form.pnlTradePositions);
     
     self.setFranchazi = function(aFranchazi) {
-        self.model.params.franchaziId = aFranchazi;
+        //model.params.franchaziId = aFranchazi;
         fmWarehouse.setFranchazi(aFranchazi);
-        fmTradeItems.set
+        fmTradeItems.setFranchazi(aFranchazi);
     };
     
     self.setTradePoint = function(aTradePoint) {
-        model.params.tradePoint = aTradePoint;
+        //model.params.tradePoint = aTradePoint;
         fmWarehouse.setTradePoint(aTradePoint);
+        fmTradeItems.setTradePoint(aTradePoint);
     };
 }

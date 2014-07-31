@@ -5,6 +5,6 @@
   </parameters>
   <parametersEntity entityHeight="200" entityIconified="false" entityLocationX="8" entityLocationY="7" entityWidth="150"/>
   <entity Title="" entityHeight="200" entityIconified="false" entityId="140549236195468" entityLocationX="259" entityLocationY="6" entityWidth="150" tableAlias="t1" tableName="org_session" tableSchemaName=""/>
-  <relation leftEntityId="-1" leftEntityParameterName="trade_point_id" rightEntityFieldName="warehouse" rightEntityId="140549236195468"/>
+  <relation leftEntityId="-1" leftEntityParameterName="trade_point_id" rightEntityFieldName="trade_point" rightEntityId="140549236195468"/>
   <relation leftEntityId="-1" leftEntityParameterName="session_id" rightEntityFieldName="org_session_id" rightEntityId="140549236195468"/>
 </datamodel>

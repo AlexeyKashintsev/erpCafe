@@ -5,11 +5,14 @@
  */
 
 function ItemsForTrade() {
-    
     var self = this, model = this.model, form = this;
-    model.params.franchazi_id = 3;
     var contentTradeItem = new ContentTradeItem();
-    //form.modelGrid1.select.
+
+    
+    self.setFranchaziId = function(aFranchazi) {
+        self.model.params.franchazi_id = aFranchazi;
+    };
+
 function btnReqActionPerformed(evt) {//GEN-FIRST:event_btnReqActionPerformed
         if (self.model.modified && confirm('Сохранить изменения?')) {
             self.model.save();

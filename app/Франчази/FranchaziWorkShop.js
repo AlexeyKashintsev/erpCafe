@@ -10,7 +10,7 @@ function FranchaziWorkShop() {
     fmTP.setFranchazi(model.params.franchazi);
     
     self.setFranchaziId = function(aFranchazi) {
-        self.model.params.franchaziId = aFranchazi;
+        self.model.params.franchazi = aFranchazi;
         fmTP.setFranchazi(model.params.franchazi);
     };
 
@@ -18,7 +18,7 @@ function FranchaziWorkShop() {
         fmTP.setTradePoint(model.listTradePoints.org_trade_point_id);
     }//GEN-LAST:event_listTradePointsOnScrolled
 
-    function formWindowOpened(evt) {//GEN-FIRST:event_formWindowOpened
-        
-    }//GEN-LAST:event_formWindowOpened
+    function listTradePointsOnRequeried(evt) {//GEN-FIRST:event_listTradePointsOnRequeried
+        fmTP.setTradePoint(model.listTradePoints.org_trade_point_id);
+    }//GEN-LAST:event_listTradePointsOnRequeried
 }

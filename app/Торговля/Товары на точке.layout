@@ -10,16 +10,14 @@
     <layout type="MarginLayoutDesignInfo"/>
     <constraints place="Center" type="BorderLayoutConstraintsDesignInfo"/>
   </widget>
-  <widget dividerLocation="230" leftComponent="panel" name="splitPane" parent="pnlWorkSpace" prefHeight="298px" prefWidth="697px" rightComponent="panel1" type="SplitDesignInfo">
-    <constraints bottom="0px" left="0px" right="0px" top="0px" type="MarginConstraintsDesignInfo"/>
-  </widget>
-  <widget name="panel1" parent="splitPane" prefHeight="294px" prefWidth="460px" type="PanelDesignInfo">
+  <widget name="panel1" parent="pnlWorkSpace" prefHeight="298px" prefWidth="695px" type="PanelDesignInfo">
     <layout type="MarginLayoutDesignInfo"/>
+    <constraints bottom="-2px" left="0px" right="2px" top="2px" type="MarginConstraintsDesignInfo"/>
   </widget>
-  <widget name="modelGrid1" parent="panel1" prefHeight="263px" prefWidth="460px" type="DbGridDesignInfo">
-    <column name="colItem_name" title="Наименование">
+  <widget name="modelGrid1" parent="panel1" prefHeight="267px" prefWidth="695px" type="DbGridDesignInfo">
+    <column name="colItem_name" readonly="true" title="Наименование">
       <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
-      <datamodelElement entityId="140534393699468" fieldName="item_name"/>
+      <datamodelElement entityId="140671973955379" fieldName="r_name"/>
       <cellDesignInfo>
         <cellValueField/>
         <columnsKeyField/>
@@ -32,9 +30,24 @@
         <nativeFont name="Dialog" size="15"/>
       </headerStyle>
     </column>
-    <column name="select" title="на складе">
+    <column name="colCost" title="Цена">
+      <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
+      <datamodelElement entityId="140671973955379" fieldName="r_cost"/>
+      <cellDesignInfo>
+        <cellValueField/>
+        <columnsKeyField/>
+        <rowsKeyField/>
+      </cellDesignInfo>
+      <cellsDatasource/>
+      <columnsDatasource/>
+      <columnsDisplayField/>
+      <headerStyle>
+        <nativeFont name="Lucida Grande" size="13"/>
+      </headerStyle>
+    </column>
+    <column name="select" title=" " width="8">
       <controlInfo classHint="DbCheckDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
-      <datamodelElement entityId="140534393699468" fieldName="selectItem"/>
+      <datamodelElement entityId="140671973955379" fieldName="r_selected"/>
       <cellDesignInfo>
         <cellValueField/>
         <columnsKeyField/>
@@ -47,45 +60,26 @@
         <nativeFont name="Dialog" size="15"/>
       </headerStyle>
     </column>
+    <treeDesignInfo>
+      <unaryLinkField entityId="140671973955379" fieldName="r_parent"/>
+    </treeDesignInfo>
     <rowsColumnsDesignInfo>
-      <rowsDatasource entityId="140534393699468" field="false"/>
+      <rowsDatasource entityId="140671973955379" field="false"/>
     </rowsColumnsDesignInfo>
-    <treeDesignInfo/>
     <constraints bottom="0px" left="0px" right="0px" top="31px" type="MarginConstraintsDesignInfo"/>
   </widget>
-  <widget floatable="false" name="toolBar" parent="panel1" prefHeight="31px" prefWidth="460px" rollover="true" type="ToolbarDesignInfo">
+  <widget floatable="false" name="toolBar" parent="panel1" prefHeight="31px" prefWidth="695px" rollover="true" type="ToolbarDesignInfo">
     <constraints height="31px" left="0px" right="0px" top="0px" type="MarginConstraintsDesignInfo"/>
   </widget>
   <widget actionPerformed="btnAddActionPerformed" focusable="false" horizontalTextPosition="0" icon="icons/22x22/actions/list-add.png" name="btnAdd" parent="toolBar" prefHeight="26px" prefWidth="34px" toolTipText="Добавить" type="ButtonDesignInfo" verticalTextPosition="3"/>
   <widget actionPerformed="btnDelActionPerformed" focusable="false" horizontalTextPosition="0" icon="icons/22x22/actions/list-remove.png" name="btnDel" parent="toolBar" prefHeight="26px" prefWidth="34px" toolTipText="Удалить" type="ButtonDesignInfo" verticalTextPosition="3"/>
   <widget actionPerformed="btnReqActionPerformed" focusable="false" horizontalTextPosition="0" icon="icons/22x22/actions/new-view-refresh.png" name="btnReq" parent="toolBar" prefHeight="26px" prefWidth="34px" toolTipText="Обновить" type="ButtonDesignInfo" verticalTextPosition="3"/>
   <widget actionPerformed="btnSaveActionPerformed" focusable="false" horizontalTextPosition="0" icon="icons/22x22/actions/document-save.png" name="btnSave" parent="toolBar" prefHeight="26px" prefWidth="34px" toolTipText="Сохранить" type="ButtonDesignInfo" verticalTextPosition="3"/>
-  <widget name="panel" parent="splitPane" prefHeight="294px" prefWidth="228px" type="PanelDesignInfo">
-    <layout type="MarginLayoutDesignInfo"/>
+  <widget name="modelCheckBox" parent="toolBar" prefHeight="27px" prefWidth="150px" text="Товары в продаже" type="DbCheckDesignInfo">
+    <datamodelElement entityId="-1" fieldName="show_only_present"/>
   </widget>
-  <widget deletable="false" editable="false" insertable="false" mouseClicked="modelGridMouseClicked" name="modelGrid" parent="panel" prefHeight="294px" prefWidth="228px" type="DbGridDesignInfo">
-    <column name="colType_description" title="Тип товара">
-      <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
-      <datamodelElement entityId="140532276305367" fieldName="type_description"/>
-      <cellDesignInfo>
-        <cellValueField/>
-        <columnsKeyField/>
-        <rowsKeyField/>
-      </cellDesignInfo>
-      <cellsDatasource/>
-      <columnsDatasource/>
-      <columnsDisplayField/>
-      <headerStyle>
-        <nativeFont name="Dialog" size="15"/>
-      </headerStyle>
-    </column>
-    <rowsColumnsDesignInfo>
-      <rowsDatasource entityId="140532276305367" field="false"/>
-    </rowsColumnsDesignInfo>
-    <treeDesignInfo>
-      <unaryLinkField entityId="140532276305367" fieldName="parent_type"/>
-    </treeDesignInfo>
-    <constraints bottom="0px" left="0px" right="0px" top="0px" type="MarginConstraintsDesignInfo"/>
+  <widget name="modelCheckBox1" parent="toolBar" prefHeight="27px" prefWidth="182px" text="Сгруппировать по типу" type="DbCheckDesignInfo">
+    <datamodelElement entityId="-1" fieldName="sort_by_type"/>
   </widget>
   <layout type="BorderLayoutDesignInfo"/>
 </layout>

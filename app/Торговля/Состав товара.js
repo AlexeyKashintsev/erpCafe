@@ -12,7 +12,7 @@ self.productName = '';
 
 self.setTradeItem = function (aTradeItem){
     model.params.trade_item = aTradeItem;
-}
+};
 
 function btnReqActionPerformed(evt) {//GEN-FIRST:event_btnReqActionPerformed
     if (model.modified&&confirm('Сохранить изменения?')){

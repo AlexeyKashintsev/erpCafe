@@ -6,4 +6,5 @@
  */ 
 Select * 
 From org_session t1
- Where :trade_point_id = t1.warehouse and end_date is null
+ Where :trade_point_id = t1.trade_point
+ and end_date is null
