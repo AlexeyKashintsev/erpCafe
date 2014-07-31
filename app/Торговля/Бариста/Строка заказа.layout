@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?><layout defaultCloseOperation="2" name="Form" prefHeight="37px" prefWidth="389px">
+  <widget actionPerformed="btnDeleteActionPerformed" icon="icons/22x22/actions/gtk-no.png" name="btnDelete" parent="Form" prefHeight="36px" prefWidth="36px" type="ButtonDesignInfo">
+    <constraints height="36px" right="4px" top="0px" type="MarginConstraintsDesignInfo" width="36px"/>
+  </widget>
+  <widget actionPerformed="btnRemoveActionPerformed" icon="icons/22x22/actions/list-remove.png" name="btnRemove" parent="Form" prefHeight="36px" prefWidth="36px" type="ButtonDesignInfo">
+    <constraints height="36px" right="40px" top="0px" type="MarginConstraintsDesignInfo" width="36px"/>
+  </widget>
+  <widget name="lbItemName" parent="Form" prefHeight="36px" prefWidth="169px" text="Круасан французский" type="LabelDesignInfo">
+    <constraints height="36px" left="12px" right="208px" top="0px" type="MarginConstraintsDesignInfo"/>
+    <easFont name="Lucida Grande" size="13" style="1"/>
+  </widget>
+  <widget name="lbItemQuantity" parent="Form" prefHeight="36px" prefWidth="36px" text="10" type="LabelDesignInfo">
+    <constraints height="36px" right="172px" top="0px" type="MarginConstraintsDesignInfo" width="36px"/>
+    <easFont name="Lucida Grande" size="13" style="1"/>
+  </widget>
+  <widget actionPerformed="btnAddActionPerformed" icon="icons/22x22/actions/list-add.png" name="btnAdd" parent="Form" prefHeight="36px" prefWidth="36px" type="ButtonDesignInfo">
+    <constraints height="36px" right="76px" top="0px" type="MarginConstraintsDesignInfo" width="36px"/>
+  </widget>
+  <widget name="lbSum" parent="Form" prefHeight="36px" prefWidth="60px" text="2500 р." type="LabelDesignInfo">
+    <constraints height="36px" right="112px" top="0px" type="MarginConstraintsDesignInfo" width="60px"/>
+    <easFont name="Lucida Grande" size="13" style="1"/>
+  </widget>
+  <layout type="MarginLayoutDesignInfo"/>
+</layout>

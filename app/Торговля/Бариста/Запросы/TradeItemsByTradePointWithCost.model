@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?><datamodel>
+  <parameters>
+    <parameter description="" name="franchazi_id" nullable="true" parameterMode="1" precision="0" scale="0" selectionForm="null" signed="true" size="0" type="2" typeName="NUMERIC"/>
+    <parameter description="" name="trade_point_id" nullable="true" parameterMode="1" precision="0" scale="0" selectionForm="null" signed="true" size="0" type="2" typeName="NUMERIC"/>
+    <parameter description="" name="actual_date" nullable="true" parameterMode="1" precision="0" scale="0" selectionForm="null" signed="true" size="100" type="93" typeName="TIMESTAMP"/>
+  </parameters>
+  <parametersEntity entityHeight="200" entityIconified="false" entityLocationX="8" entityLocationY="7" entityWidth="150"/>
+  <entity Title="" entityHeight="200" entityIconified="false" entityId="140684186433135" entityLocationX="628" entityLocationY="13" entityWidth="150" tableAlias="t2" tableName="trade_item_type" tableSchemaName=""/>
+  <entity Title="" entityHeight="200" entityIconified="false" entityId="140684170745834" entityLocationX="221" entityLocationY="10" entityWidth="150" tableAlias="t1" tableName="trade_items_cost" tableSchemaName=""/>
+  <entity Title="" entityHeight="200" entityIconified="false" entityId="140684187742342" entityLocationX="812" entityLocationY="13" entityWidth="150" tableAlias="t3" tableName="trade_item_settings" tableSchemaName=""/>
+  <entity Title="" entityHeight="200" entityIconified="false" entityId="140684183778178" entityLocationX="428" entityLocationY="13" entityWidth="150" tableAlias="t" tableName="trade_items" tableSchemaName=""/>
+  <relation leftEntityFieldName="settings" leftEntityId="140684170745834" rightEntityFieldName="trade_item_settings_id" rightEntityId="140684187742342"/>
+  <relation leftEntityFieldName="settings" leftEntityId="140684186433135" rightEntityFieldName="trade_item_settings_id" rightEntityId="140684187742342"/>
+  <relation leftEntityFieldName="item_type" leftEntityId="140684183778178" rightEntityFieldName="trade_item_type_id" rightEntityId="140684186433135"/>
+  <relation leftEntityId="-1" leftEntityParameterName="trade_point_id" rightEntityFieldName="trade_point_id" rightEntityId="140684170745834"/>
+  <relation leftEntityFieldName="item_id" leftEntityId="140684170745834" rightEntityFieldName="trade_items_id" rightEntityId="140684183778178"/>
+  <relation leftEntityId="-1" leftEntityParameterName="actual_date" rightEntityFieldName="end_date" rightEntityId="140684170745834"/>
+  <relation leftEntityFieldName="franchazi_id" leftEntityId="140684170745834" rightEntityFieldName="franchazi" rightEntityId="140684187742342"/>
+  <relation leftEntityId="-1" leftEntityParameterName="actual_date" rightEntityFieldName="start_date" rightEntityId="140684170745834"/>
+  <relation leftEntityId="-1" leftEntityParameterName="franchazi_id" rightEntityFieldName="franchazi_id" rightEntityId="140684170745834"/>
+</datamodel>

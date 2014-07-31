@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?><layout defaultCloseOperation="2" name="Form" prefHeight="123px" prefWidth="288px">
+  <widget name="lbItemName" parent="Form" prefHeight="24px" prefWidth="272px" text="Круасан французский" type="LabelDesignInfo">
+    <constraints height="24px" left="12px" right="4px" top="12px" type="MarginConstraintsDesignInfo"/>
+    <easFont name="Lucida Grande" size="18"/>
+  </widget>
+  <widget name="lbItemType" parent="Form" prefHeight="24px" prefWidth="132px" text="Выпечка" type="LabelDesignInfo">
+    <constraints height="24px" left="12px" top="36px" type="MarginConstraintsDesignInfo" width="132px"/>
+  </widget>
+  <widget horizontalAlignment="4" name="lbItemCost" parent="Form" prefHeight="53px" prefWidth="192px" text="150 р." type="LabelDesignInfo">
+    <constraints bottom="35px" height="53px" right="16px" type="MarginConstraintsDesignInfo" width="192px"/>
+    <easFont name="Lucida Grande" size="48"/>
+  </widget>
+  <widget name="lbQuantity" parent="Form" prefHeight="24px" prefWidth="72px" text="1 шт" type="LabelDesignInfo">
+    <constraints height="24px" left="12px" top="60px" type="MarginConstraintsDesignInfo" width="72px"/>
+    <easFont name="Lucida Grande" size="18"/>
+  </widget>
+  <widget backgroundColor="#0066cc" name="lbColor" opaque="true" parent="Form" prefHeight="24px" prefWidth="288px" type="LabelDesignInfo">
+    <constraints bottom="0px" height="24px" left="0px" right="0px" type="MarginConstraintsDesignInfo"/>
+  </widget>
+  <layout type="MarginLayoutDesignInfo"/>
+</layout>

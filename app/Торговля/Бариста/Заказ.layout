@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?><layout defaultCloseOperation="2" name="Form" prefHeight="472px" prefWidth="349px">
+  <widget icon="icons/22x22/actions/gtk-no.png" name="btnCancel" parent="Form" prefHeight="48px" prefWidth="48px" toolTipText="Клиент" type="ButtonDesignInfo">
+    <constraints height="48px" right="4px" top="0px" type="MarginConstraintsDesignInfo" width="48px"/>
+  </widget>
+  <widget name="panel" parent="Form" prefHeight="424px" prefWidth="349px" type="PanelDesignInfo">
+    <layout axis="3" type="BoxLayoutDesignInfo"/>
+    <constraints bottom="0px" left="0px" right="0px" top="48px" type="MarginConstraintsDesignInfo"/>
+  </widget>
+  <widget name="label" parent="Form" prefHeight="24px" prefWidth="120px" text="Сумма заказа:" type="LabelDesignInfo">
+    <constraints height="24px" left="12px" top="0px" type="MarginConstraintsDesignInfo" width="120px"/>
+    <easFont name="Lucida Grande" size="14" style="1"/>
+  </widget>
+  <widget name="label1" parent="Form" prefHeight="24px" prefWidth="72px" text="10000 р." type="LabelDesignInfo">
+    <constraints height="24px" left="12px" top="24px" type="MarginConstraintsDesignInfo" width="72px"/>
+    <easFont name="Lucida Grande" size="14" style="1"/>
+  </widget>
+  <widget icon="icons/22x22/actions/bookmark-new.png" name="btnBenefit" parent="Form" prefHeight="48px" prefWidth="48px" toolTipText="Клиент" type="ButtonDesignInfo">
+    <constraints height="48px" right="148px" top="0px" type="MarginConstraintsDesignInfo" width="48px"/>
+  </widget>
+  <widget icon="icons/22x22/actions/dialog-apply.png" name="btnOk" parent="Form" prefHeight="48px" prefWidth="94px" text="Выдать" type="ButtonDesignInfo">
+    <constraints height="48px" right="53px" top="0px" type="MarginConstraintsDesignInfo" width="94px"/>
+  </widget>
+  <layout type="MarginLayoutDesignInfo"/>
+</layout>

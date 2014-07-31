@@ -88,6 +88,7 @@ function btnSaveActionPerformed(evt) {//GEN-FIRST:event_btnSaveActionPerformed
     function qTradeItemsAndTypeOnChanged(evt) {//GEN-FIRST:event_qTradeItemsAndTypeOnChanged
         if (evt.propertyName === 'r_cost' || evt.propertyName === 'r_selected') {
             askForChanges.showModal(function(aResult) {
+                    model.qTradeItemsAndType.scrollTo(model.qTradeItemsAndType.findById(evt.object.r_id));
                     model.qTradeItemsAndType.cursor.add2TP = !(aResult !== 1);
             });
         }

@@ -51,7 +51,9 @@ function TradeModule() {
         } else
             return false;
     };*/
-    
+    /*
+     * TO DO Добавить обход остальных торговых точек точек франчази, если не указана торговая точка
+     */
     self.setCost4TradeItemOnTradePointOrFranchzi = function(anItem, aTradePoint, aFranchazi, aCost) {
         closeItemOnTradePointOrFranchazi(anItem, aTradePoint, aFranchazi);
         addNewItemToTradePointOrFranchazi(anItem, aTradePoint, aFranchazi, aCost);
