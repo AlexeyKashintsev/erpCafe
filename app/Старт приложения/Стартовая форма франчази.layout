@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><layout backgroundColor="#003333" defaultCloseOperation="2" name="Form" prefHeight="561px" prefWidth="815px" windowOpened="formWindowOpened">
+<?xml version="1.0" encoding="UTF-8"?><layout backgroundColor="#003333" defaultCloseOperation="2" name="Form" prefHeight="561px" prefWidth="815px">
   <widget backgroundColor="#464f5c" name="desktop" parent="Form" prefHeight="491px" prefWidth="815px" type="DesktopDesignInfo">
     <constraints bottom="0px" left="0px" right="0px" top="70px" type="MarginConstraintsDesignInfo"/>
   </widget>

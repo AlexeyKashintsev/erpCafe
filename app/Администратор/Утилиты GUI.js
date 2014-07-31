@@ -14,9 +14,9 @@ var self = this;
 
 self.beginLengthyOperation = function(aView)
 {
-    var oldCursor = aView.cursor;
+   /* var oldCursor = aView.cursor;
     aView.cursor = java.awt.Cursor.getPredefinedCursor(java.awt.Cursor.WAIT_CURSOR);
-    return new Cookie(aView, oldCursor);
+    return new Cookie(aView, oldCursor);*/
 }
 
 self.endLengthyOperation = function()

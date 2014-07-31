@@ -2,6 +2,8 @@
  *
  * @author Alexey
  * @name qTradeItemsAndType
+ * @public
+ * @readonly
  * !!! Может затупить если будет несколько цен !!!
  */
 Select t1.trade_item_type_id as r_id, t1.type_name as r_name, t1.parent_type as r_parent

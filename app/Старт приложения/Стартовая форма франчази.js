@@ -10,28 +10,50 @@ function AdminStartForm() {
     var guiUtils = new guiModule();
     var usersView = null;
     var workShop = null;
+    self.browser = null;
     
     self.session.login(function(aFranchazi){
         self.setFranchazi(aFranchazi);
     });
     
+    try {
+        (function(){
+            self.browser = false;
+            self.setFranchazi(self.session.getFranchazi());
+        }).invokeBackground();
+    } catch (e) {
+        Logger.info('browser');
+        self.browser = true;
+    }
+    
     self.setFranchazi = function(aFaranchazi) {
-        usersView = new FranchaziUsers();
+        if (!aFaranchazi)
+            self.close();
+       /* try {!!!!!!!!! Так не работает !!!!!!!!!!!! Косяк !!!!! Автоматическое разрешение зависимостей косячит
+            requery('FranchaziUsers', function(){
+                //usersView = new FranchaziUsers();
+            });
+        } catch (e) {
+            Logger.severe(self.session.msg[MSG_ERROR_NOT_UNDER_BROWSER]);
+        }*/
         workShop = new FranchaziWorkShop();
-
-        usersView.setFranchaziId(aFaranchazi);
         workShop.setFranchaziId(aFaranchazi);
+        
+        if (!self.browser) {
+            usersView = new FranchaziUsers();
+            usersView.setFranchaziId(aFaranchazi);
+        }
     };
     
 self.showFormAsInternal = function(aForm) {
     if(!guiUtils.showOpenedForm(aForm, form.desktop)){
         var frameRunner = aForm;
-        var lenCookie = guiUtils.beginLengthyOperation(this);
+       // var lenCookie = guiUtils.beginLengthyOperation(this);
         try{
             frameRunner.desktop = form.desktop;
             frameRunner.showInternalFrame(form.desktop);
         }finally{
-            lenCookie.end();
+      //      lenCookie.end();
         }
         frameRunner.toFront();
     }
@@ -44,8 +66,4 @@ self.showFormAsInternal = function(aForm) {
     function button2ActionPerformed(evt) {//GEN-FIRST:event_button2ActionPerformed
         self.showFormAsInternal(workShop);
     }//GEN-LAST:event_button2ActionPerformed
-
-    function formWindowOpened(evt) {//GEN-FIRST:event_formWindowOpened
-        model.qFrancByUserName.requery();
-    }//GEN-LAST:event_formWindowOpened
 }

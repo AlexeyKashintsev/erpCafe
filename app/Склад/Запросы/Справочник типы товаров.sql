@@ -2,6 +2,7 @@
  *
  * @author mike
  * @name itemType
+ * @public
  */ 
 select * from
 (Select *

@@ -2,6 +2,7 @@
  *
  * @author mike
  * @name listTradePoints
+ * @public
  */ 
 Select * 
 From org_trade_point t1

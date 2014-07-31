@@ -2,6 +2,8 @@
  * 
  * @author mike
  * @name queryItems
+ * @public
+ * @readonly
  */
 Select t1.wh_items_id, t.warehouse, t.wh_items_in_warehouse_id
 , t1.item_name, t1.franchazi_id, t1.item_type,
