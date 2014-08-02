@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><layout defaultCloseOperation="2" name="Form" prefHeight="123px" prefWidth="288px">
+<?xml version="1.0" encoding="UTF-8"?><layout defaultCloseOperation="2" name="Form" prefHeight="123px" prefWidth="288px" windowOpened="formWindowOpened">
   <widget name="lbItemName" parent="Form" prefHeight="24px" prefWidth="272px" text="Круасан французский" type="LabelDesignInfo">
     <constraints height="24px" left="12px" right="4px" top="12px" type="MarginConstraintsDesignInfo"/>
     <easFont name="Lucida Grande" size="18"/>

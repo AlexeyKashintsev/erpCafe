@@ -3,8 +3,10 @@
  * Сессия - промежуток времени в котором происходят операции со складом, такие как
  * добавление товаров, удаление товаров, списание товаров.
  * По одной торговой точке может быть открыта только одна сессия
- * @author mike
- * @module 
+ * @author mike 
+ * @module
+ * @resident
+ * @public
  */
 function WhSessionModule() {
     var self = this, model = this.model;
@@ -49,7 +51,7 @@ function WhSessionModule() {
             model.querySessionBalance.insert(
                     model.querySessionBalance.schema.session_id, model.params.session_id,
                     model.querySessionBalance.schema.item_id, model.itemsByTP.cursor.item_id
-                    );
+                );
         }
     }
 
@@ -64,8 +66,9 @@ function WhSessionModule() {
             aSessionId ? model.qOpenedSession.insert(model.qOpenedSession.schema.org_session_id, aSessionId) :
                     model.qOpenedSession.insert();
             model.params.session_id = model.qOpenedSession.cursor.org_session_id;
-            model.qOpenedSession.cursor.warehouse = model.params.trade_point_id;
+            model.qOpenedSession.cursor.trade_point = model.params.trade_point_id;
             model.qOpenedSession.cursor.start_date = new Date();
+            model.qOpenedSession.cursor.user_name = self.principal.name;
             initSession();
             model.save();
             return model.params.session_id;
@@ -87,18 +90,20 @@ function WhSessionModule() {
      * Изменение старотовых значений Баланса Сессии по каждому товару торговой
      * точки
      */
-    self.setStartValues = function(anItems) {
-        if (self.getCurrentSession()) {
-            model.querySessionBalance.requery();
-            model.querySessionBalance.beforeFirst();
-            while (model.querySessionBalance.next()) {
-                model.querySessionBalance.cursor.start_value = anItems[model.querySessionBalance.cursor.item_id];
-            }
-            model.save();
-            return true;
-        } else {
-            return false;
+    self.setStartValues = function(anItems, aTradePoint) {
+        self.setTradePoint(aTradePoint);
+        
+        if (!self.getCurrentSession()) {
+            self.createSession();
         }
+
+        model.querySessionBalance.requery();
+        model.querySessionBalance.beforeFirst();
+        while (model.querySessionBalance.next()) {
+            model.querySessionBalance.cursor.start_value = anItems[model.querySessionBalance.cursor.item_id];
+        }
+        model.save();
+        return true;
     };
     /*
      * Получение старотовых значений Баланса Сессии по каждому товару торговой

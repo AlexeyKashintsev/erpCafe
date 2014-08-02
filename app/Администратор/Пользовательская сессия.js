@@ -2,6 +2,7 @@
  * 
  * @author Алексей
  * @module
+ * @resident
  * @public
  */ 
 function UserSession() {
@@ -23,6 +24,15 @@ function UserSession() {
     self.getFranchazi = function() {
         return model.params.franchaziId;
     };
+    
+    self.getActiveTPSession = function() {
+        model.qOpenedSession.requery();
+        return model.qOpenedSession.empty ? false : model.qOpenedSession.org_session_id;
+    };
+    
+    self.getUserName = function() {
+        return self.principal.name;
+    };
 
     function qFrancByUserNameOnRequeried(evt) {//GEN-FIRST:event_qFrancByUserNameOnRequeried
         var franchazi = model.qFrancByUserName.franchazi_id;
@@ -30,11 +40,13 @@ function UserSession() {
             if (model.qFrancByUserName.cursor.franc_users_active){
                 model.params.franchaziId = franchazi;
             } else {
+                model.params.franchaziId = null;
                 alert(self.msg[MSG_ERROR_INACTIVE_USER]);
                 ep.addEvent('userNotActive', {username : model.params.userName});
                 self.close();
             }
         } else {
+            model.params.franchaziId = null;
             alert(self.msg[MSG_ERROR_NO_FRANCHAZI_4USER]);
             ep.addEvent('userNotActive', {username : model.params.userName});
             self.close();

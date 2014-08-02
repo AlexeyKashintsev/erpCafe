@@ -4,6 +4,7 @@
  * @author Alexey
  * @name TradeItemsByTradePointWithCost
  * @readonly
+ * @public
  */ 
 Select t1.item_id, t1.item_cost, t.item_name, t2.type_name
 From trade_items_cost t1

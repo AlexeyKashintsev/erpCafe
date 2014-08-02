@@ -2,6 +2,9 @@
  *
  * @author mike
  * @name itemsByTP
+ * @public
+ * TODO Разделить запрос на публичный, без возможности редактирования,
+ и серверный(для правок)
  */ 
 Select * ,
 null as start_value

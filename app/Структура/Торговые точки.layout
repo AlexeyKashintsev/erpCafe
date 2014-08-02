@@ -48,6 +48,21 @@
         <nativeFont name="Dialog" size="15"/>
       </headerStyle>
     </column>
+    <column name="colTp_active" title=" " width="10">
+      <controlInfo classHint="DbCheckDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
+      <datamodelElement entityId="140480249926639" fieldName="tp_active"/>
+      <cellDesignInfo>
+        <cellValueField/>
+        <columnsKeyField/>
+        <rowsKeyField/>
+      </cellDesignInfo>
+      <cellsDatasource/>
+      <columnsDatasource/>
+      <columnsDisplayField/>
+      <headerStyle>
+        <nativeFont name="Lucida Grande" size="13"/>
+      </headerStyle>
+    </column>
     <rowsColumnsDesignInfo>
       <rowsDatasource entityId="140480249926639" field="false"/>
     </rowsColumnsDesignInfo>

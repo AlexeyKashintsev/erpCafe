@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?><datamodel>
+  <parameters>
+    <parameter description="" name="user_name" nullable="true" parameterMode="1" precision="0" scale="0" selectionForm="null" signed="true" size="100" type="12" typeName="VARCHAR"/>
+  </parameters>
+  <parametersEntity entityHeight="200" entityIconified="false" entityLocationX="8" entityLocationY="7" entityWidth="150"/>
+  <entity Title="" entityHeight="200" entityIconified="false" entityId="140688291115105" entityLocationX="581" entityLocationY="8" entityWidth="150" tableAlias="t2" tableName="org_trade_point" tableSchemaName=""/>
+  <entity Title="" entityHeight="200" entityIconified="false" entityId="140688286135652" entityLocationX="399" entityLocationY="7" entityWidth="150" tableAlias="t" tableName="org_session" tableSchemaName=""/>
+  <entity Title="" entityHeight="200" entityIconified="false" entityId="140688282775904" entityLocationX="199" entityLocationY="10" entityWidth="150" tableAlias="t1" tableName="org_tp_users" tableSchemaName=""/>
+  <relation leftEntityFieldName="trade_point_id" leftEntityId="140688282775904" rightEntityFieldName="org_trade_point_id" rightEntityId="140688291115105"/>
+  <relation leftEntityId="-1" leftEntityParameterName="user_name" rightEntityFieldName="user_name" rightEntityId="140688282775904"/>
+  <relation leftEntityFieldName="trade_point_id" leftEntityId="140688282775904" rightEntityFieldName="trade_point" rightEntityId="140688286135652"/>
+</datamodel>

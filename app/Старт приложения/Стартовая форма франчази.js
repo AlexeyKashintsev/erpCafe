@@ -10,12 +10,13 @@ function AdminStartForm() {
     var guiUtils = new guiModule();
     var usersView = null;
     var workShop = null;
-    self.browser = null;
     
     self.session.login(function(aFranchazi){
         self.setFranchazi(aFranchazi);
     });
     
+    //Определяем как запущена программа
+    self.browser = null;
     try {
         (function(){
             self.browser = false;

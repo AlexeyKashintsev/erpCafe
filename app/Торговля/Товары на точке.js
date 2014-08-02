@@ -41,7 +41,8 @@ function btnReqActionPerformed(evt) {//GEN-FIRST:event_btnReqActionPerformed
         while (model.qTradeItemsAndType.next()) {
             if (model.qTradeItemsAndType.cursor.r_selected2 !== model.qTradeItemsAndType.cursor.r_selected ||
                     model.qTradeItemsAndType.cursor.r_cost !== model.qTradeItemsAndType.cursor.r_old_cost) {
-                if (model.qTradeItemsAndType.cursor.r_selected) {//добавит проверку на цену
+                if (model.qTradeItemsAndType.cursor.r_selected || (
+                        !model.qTradeItemsAndType.cursor.r_selected&&!model.qTradeItemsAndType.cursor.r_selected2)) {
                     tradeModule.setCost4TradeItemOnTradePointOrFranchzi(
                             model.qTradeItemsAndType.r_id,
                             model.qTradeItemsAndType.add2TP ? model.params.trade_point_id : null,

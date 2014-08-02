@@ -8,10 +8,10 @@
   </parameters>
   <parametersEntity entityHeight="200" entityIconified="false" entityLocationX="12" entityLocationY="12" entityWidth="150" onBeforeChange="paramsWillChange"/>
   <entity Name="qTradeItemsAndType" Title="" entityHeight="200" entityIconified="false" entityId="140671973955379" entityLocationX="285" entityLocationY="12" entityWidth="150" onAfterChange="qTradeItemsAndTypeOnChanged" onBeforeChange="qTradeItemsAndTypeWillChange" queryId="qTradeItemsAndType" tableName="" tableSchemaName=""/>
-  <relation leftEntityId="-1" leftEntityParameterName="sort_by_type" rightEntityId="140671973955379" rightEntityParameterName="sort_by_type"/>
   <relation leftEntityId="-1" leftEntityParameterName="actual_date" rightEntityId="140671973955379" rightEntityParameterName="actual_date"/>
   <relation leftEntityId="-1" leftEntityParameterName="trade_point_id" rightEntityId="140671973955379" rightEntityParameterName="trade_point_id"/>
   <relation leftEntityId="-1" leftEntityParameterName="franchazi_id" rightEntityId="140671973955379" rightEntityParameterName="franchazi_id"/>
   <relation leftEntityId="-1" leftEntityParameterName="show_only_present" rightEntityId="140671973955379" rightEntityParameterName="show_only_present"/>
+  <relation leftEntityId="-1" leftEntityParameterName="sort_by_type" rightEntityId="140671973955379" rightEntityParameterName="sort_by_type"/>
   <referenceRelation leftEntityFieldName="r_parent" leftEntityId="140671973955379" rightEntityFieldName="r_id" rightEntityId="140671973955379"/>
 </datamodel>

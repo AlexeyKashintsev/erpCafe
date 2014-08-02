@@ -9,40 +9,43 @@
   <widget actionPerformed="btnReqActionPerformed" focusable="false" horizontalTextPosition="0" name="btnReq" parent="pnlSelLock" prefHeight="24px" prefWidth="120px" text="Сбросить" toolTipText="Обновить" type="ButtonDesignInfo" verticalTextPosition="3">
     <constraints height="24px" left="12px" top="12px" type="MarginConstraintsDesignInfo" width="120px"/>
   </widget>
+  <widget actionPerformed="buttonActionPerformed" name="button" parent="pnlSelLock" prefHeight="29px" prefWidth="86px" text="LazyGen" type="ButtonDesignInfo">
+    <constraints height="29px" left="144px" top="12px" type="MarginConstraintsDesignInfo" width="86px"/>
+  </widget>
   <widget name="pnlWorkSpace" parent="Form" prefHeight="298px" prefWidth="448px" type="PanelDesignInfo">
     <layout type="MarginLayoutDesignInfo"/>
     <constraints place="Center" type="BorderLayoutConstraintsDesignInfo"/>
   </widget>
   <widget name="modelGrid" parent="pnlWorkSpace" prefHeight="298px" prefWidth="448px" type="DbGridDesignInfo">
     <column name="colItem_name" title="Товар">
+      <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
       <datamodelElement entityId="140549864254788" fieldName="item_name"/>
+      <cellDesignInfo>
+        <cellValueField/>
+        <columnsKeyField/>
+        <rowsKeyField/>
+      </cellDesignInfo>
+      <cellsDatasource/>
       <columnsDatasource/>
       <columnsDisplayField/>
-      <cellsDatasource/>
-      <cellDesignInfo>
-        <rowsKeyField/>
-        <columnsKeyField/>
-        <cellValueField/>
-      </cellDesignInfo>
       <headerStyle>
-        <nativeFont name="Ubuntu" size="15"/>
+        <nativeFont name="Dialog" size="15"/>
       </headerStyle>
-      <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
     </column>
     <column name="colItem_id" title="Количество">
+      <controlInfo classHint="DbLabelDesignInfo" emptyText="0" name="view" prefHeight="0px" prefWidth="0px"/>
       <datamodelElement entityId="140549864254788" fieldName="start_value"/>
+      <cellDesignInfo>
+        <cellValueField/>
+        <columnsKeyField/>
+        <rowsKeyField/>
+      </cellDesignInfo>
+      <cellsDatasource/>
       <columnsDatasource/>
       <columnsDisplayField/>
-      <cellsDatasource/>
-      <cellDesignInfo>
-        <rowsKeyField/>
-        <columnsKeyField/>
-        <cellValueField/>
-      </cellDesignInfo>
       <headerStyle>
-        <nativeFont name="Ubuntu" size="15"/>
+        <nativeFont name="Dialog" size="15"/>
       </headerStyle>
-      <controlInfo classHint="DbLabelDesignInfo" emptyText="0" name="view" prefHeight="0px" prefWidth="0px"/>
     </column>
     <rowsColumnsDesignInfo>
       <rowsDatasource entityId="140549864254788" field="false"/>

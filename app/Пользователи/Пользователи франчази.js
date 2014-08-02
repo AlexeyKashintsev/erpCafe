@@ -66,7 +66,7 @@ function formWindowClosing(evt) {//GEN-FIRST:event_formWindowClosing
             createFrancahziUser.setUserName(model.listTradePointUsers.usr_name);
             createFrancahziUser.showModal(function(){
                     model.requery();
-                });    
+                });
         }
         form.btnSetPoints.enabled = 
                 (model.listTradePointUsers.group_name == 'barista');

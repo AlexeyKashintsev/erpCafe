@@ -11,12 +11,12 @@ function WhRevisionByBarista() {
     var self = this, model = this.model, form = this;
     var whSessionModule = new ServerModule("WhSessionModule");
     
-    model.params.trade_point_id = 3;
-    whSessionModule.setTradePoint(model.params.trade_point_id);
-    model.params.session_id = whSessionModule.createSession();
-
+    //model.params.trade_point_id = 3;
     self.setTradePointId = function(aTradePointId) {
         model.params.trade_point_id = aTradePointId;
+        model.params.session_id = whSessionModule.setTradePoint(model.params.trade_point_id);/*, function(){
+            model.params.session_id = whSessionModule.createSession();
+        });*/
     };
 
     self.items = [];
@@ -54,7 +54,8 @@ function formWindowClosing(evt) {//GEN-FIRST:event_formWindowClosing
             }
         }
         if (check) {
-            whSessionModule.setStartValues(items);
+           // whSessionModule.model.params.trade_point_id = model.params.trade_point_id;//!!Косяк - stateless module
+            whSessionModule.setStartValues(items, model.params.trade_point_id);
             return true;
         } else {
             alert(MSG_FAIL_VALIDATE_FORM_ERROR);
@@ -63,6 +64,12 @@ function formWindowClosing(evt) {//GEN-FIRST:event_formWindowClosing
 }//GEN-LAST:event_formWindowClosing
 
     function btnCloseSessionActionPerformed(evt) {//GEN-FIRST:event_btnCloseSessionActionPerformed
-        form.close();
+        form.close(true);
     }//GEN-LAST:event_btnCloseSessionActionPerformed
+
+    function buttonActionPerformed(evt) {//GEN-FIRST:event_buttonActionPerformed
+        model.itemsByTP.beforeFirst();
+        while (model.itemsByTP.next())
+            model.itemsByTP.cursor.start_value = 100;
+    }//GEN-LAST:event_buttonActionPerformed
 }

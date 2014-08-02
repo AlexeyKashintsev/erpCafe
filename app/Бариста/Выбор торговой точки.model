@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?><datamodel>
+  <parametersEntity entityHeight="200" entityIconified="false" entityLocationX="12" entityLocationY="12" entityWidth="150"/>
+  <entity Name="qTradeItemsByUser" Title="" entityHeight="200" entityIconified="false" entityId="140688602934497" entityLocationX="213" entityLocationY="15" entityWidth="150" queryId="qTradeItemsByUser" tableName="" tableSchemaName=""/>
+</datamodel>
