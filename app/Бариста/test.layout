@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?><layout defaultCloseOperation="2" name="Form" prefHeight="137px" prefWidth="400px">
+  <widget actionPerformed="buttonActionPerformed" name="button" parent="Form" prefHeight="29px" prefWidth="86px" text="button" type="ButtonDesignInfo">
+    <constraints height="29px" left="144px" top="96px" type="MarginConstraintsDesignInfo" width="86px"/>
+  </widget>
+  <widget name="textField" parent="Form" prefHeight="28px" prefWidth="240px" text="textField" type="TextFieldDesignInfo">
+    <constraints height="28px" left="144px" top="12px" type="MarginConstraintsDesignInfo" width="240px"/>
+  </widget>
+  <widget name="label" parent="Form" prefHeight="16px" prefWidth="240px" text="label" type="LabelDesignInfo">
+    <constraints height="16px" left="144px" top="60px" type="MarginConstraintsDesignInfo" width="240px"/>
+  </widget>
+  <layout type="MarginLayoutDesignInfo"/>
+</layout>

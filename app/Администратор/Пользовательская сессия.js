@@ -18,7 +18,7 @@ function UserSession() {
         model.params.userName = self.principal.name;
         model.qFrancByUserName.requery();
         ep.addEvent('userLogin', null);
-        return model.params.franchaziId;
+        return self.getUserRole();//model.params.franchaziId;
     };
     
     self.getFranchazi = function() {
@@ -32,6 +32,14 @@ function UserSession() {
     
     self.getUserName = function() {
         return self.principal.name;
+    };
+    
+    self.getUserRole = function() {
+        var roles = ['admin', 'franchazi', 'barista'];
+        for (var j in roles)
+            if (self.principal.hasRole(roles[j]))
+                break;
+        return roles[j];
     };
 
     function qFrancByUserNameOnRequeried(evt) {//GEN-FIRST:event_qFrancByUserNameOnRequeried

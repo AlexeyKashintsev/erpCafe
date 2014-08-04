@@ -3,8 +3,9 @@
  * @author ak
  * @module
  * @public
+ * @resident
  */ 
-function TradeModule() {
+function TradeAdminModule() {
     var self = this, model = this.model;
     var franchazi = null;
     

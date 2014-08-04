@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?><layout defaultCloseOperation="2" name="Form" prefHeight="462px" prefWidth="910px">
+  <widget dividerLocation="350" leftComponent="pnlLeft" name="splitPane" parent="Form" prefHeight="417px" prefWidth="911px" rightComponent="scrollPane" type="SplitDesignInfo">
+    <constraints bottom="-3px" left="0px" right="-1px" top="48px" type="MarginConstraintsDesignInfo"/>
+  </widget>
+  <widget name="scrollPane" parent="splitPane" prefHeight="413px" prefWidth="554px" type="ScrollDesignInfo"/>
+  <widget name="pnlRigth" parent="scrollPane" prefHeight="409px" prefWidth="550px" type="PanelDesignInfo">
+    <layout type="FlowLayoutDesignInfo"/>
+  </widget>
+  <widget name="pnlLeft" parent="splitPane" prefHeight="413px" prefWidth="348px" type="PanelDesignInfo">
+    <layout type="MarginLayoutDesignInfo"/>
+  </widget>
+  <widget actionPerformed="btnSessionCloseActionPerformed" name="btnSessionClose" parent="Form" prefHeight="48px" prefWidth="158px" text="Закрыть смену" type="ButtonDesignInfo">
+    <constraints height="48px" right="8px" top="0px" type="MarginConstraintsDesignInfo" width="158px"/>
+  </widget>
+  <widget actionPerformed="btnWarehouseAddActionPerformed" name="btnWarehouseAdd" parent="Form" prefHeight="48px" prefWidth="158px" text="Пополнить склад" type="ButtonDesignInfo">
+    <constraints height="48px" right="164px" top="0px" type="MarginConstraintsDesignInfo" width="158px"/>
+  </widget>
+  <widget name="btnNewClient" parent="Form" prefHeight="48px" prefWidth="216px" text="Зарегистрировать клиента" type="ButtonDesignInfo">
+    <constraints height="48px" left="0px" top="0px" type="MarginConstraintsDesignInfo" width="216px"/>
+  </widget>
+  <layout type="MarginLayoutDesignInfo"/>
+</layout>

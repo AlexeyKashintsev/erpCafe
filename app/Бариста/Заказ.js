@@ -4,6 +4,23 @@
  */
 function OrderList() {
     var self = this, model = this.model, form = this;
+    self.orderDetails = {};
     
-    // TODO : place your code here
+    self.calculateOrder = function() {
+        var orderSum = 0;
+        for (var i in self.orderDetails) {
+            orderSum += self.orderDetails[i].orderSum;
+        }
+        form.lbOrderSum.text = orderSum + ' р.';
+        return orderSum;
+    };
+    
+    self.addItem = function(anItemData) {
+        if (!!self.orderDetails[anItemData.item_id]){
+            self.orderDetails[anItemData.item_id].increase();
+        } else {
+            self.orderDetails[anItemData.item_id] = new OrderDetail(anItemData, self);
+            self.calculateOrder();
+        }
+    };
 }

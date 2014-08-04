@@ -18,7 +18,7 @@ function TradeItemsOnTradePoint() {
     model.params.actual_date = new Date();
     model.params.endUpdate();*/
     
-    var tradeModule = new ServerModule('TradeModule');
+    var TradeAdminModule = new ServerModule('TradeAdminModule');
     var askForChanges = new AskForChangesApplying();
     
     self.setFranchazi = function(aFranchazi) {
@@ -43,14 +43,14 @@ function btnReqActionPerformed(evt) {//GEN-FIRST:event_btnReqActionPerformed
                     model.qTradeItemsAndType.cursor.r_cost !== model.qTradeItemsAndType.cursor.r_old_cost) {
                 if (model.qTradeItemsAndType.cursor.r_selected || (
                         !model.qTradeItemsAndType.cursor.r_selected&&!model.qTradeItemsAndType.cursor.r_selected2)) {
-                    tradeModule.setCost4TradeItemOnTradePointOrFranchzi(
+                    TradeAdminModule.setCost4TradeItemOnTradePointOrFranchzi(
                             model.qTradeItemsAndType.r_id,
                             model.qTradeItemsAndType.add2TP ? model.params.trade_point_id : null,
                             model.params.franchazi_id, 
                             model.qTradeItemsAndType.cursor.r_cost
                         );
                 } else {
-                    tradeModule.setEndDateForTradeItem(model.qTradeItemsAndType.r_id,
+                    TradeAdminModule.setEndDateForTradeItem(model.qTradeItemsAndType.r_id,
                         model.qTradeItemsAndType.add2TP ? model.params.trade_point_id : null,
                         model.params.franchazi_id, 
                         new Date());

@@ -1,0 +1,16 @@
+/* ### FONTS ### */
+@import "http://webfonts.ru/import/osans.css";
+@import "http://webfonts.ru/import/intro.css";
+@font-face {
+  font-family: 'Futura';
+  src: url("../fonts/FuturaLT.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal; 
+}
+
+/* ### COMMON ### */
+.itemDescription {
+    display: inline-block;
+    background-color: rgb(#555);
+    padding: 20px;
+}

@@ -5,7 +5,7 @@
  * @public
  */
 
-function GetItemsByBaristaForm() {
+function WHSetAddMovement() {
 var MSG_SESSION_CLOSED_ERROR = "Сначала нужно открыть смену!";
 var MSG_SET_MOVEMENTS_ERROR  = "Произошла ошибка при добавлении товара!";
 
@@ -13,33 +13,11 @@ var self = this, model = this.model, form = this;
 
 var whSessionModule = new ServerModule("WhSessionModule");
 
-model.params.trade_point_id = 3;
-
-whSessionModule.setTradePoint(model.params.trade_point_id);
-model.params.session_id = whSessionModule.getCurrentSession();
-
 self.setTradePointId = function(aTradePointId) {
-     model.params.trade_point_id = aTradePointId;
+    model.params.trade_point_id = aTradePointId;
+    whSessionModule.setTradePoint(model.params.trade_point_id);
+    model.params.session_id = whSessionModule.getCurrentSession();
 };
-
-var isSelectForm = true;
-var isEditable = true;
-var canSetEdit = true;
-
-function setEdit(){
-    self.modelGrid.editable = self.btnAdd.enabled = 
-            self.btnDel.enabled = self.btnSave.enabled = isEditable;    
-    self.btnAddParent.enabled = isEditable;
-    self.tbSetEdit.visible = canSetEdit;
-    self.tbSetEdit.selected = isEditable;
-}
-
-function setElShown(){
-    setEdit();
-    if (!isSelectForm){
-        self.pnlSelLock.visible = false;
-    }
-}
 
 function formWindowOpened(evt) {//GEN-FIRST:event_formWindowOpened
     form.btnCloseSession.enabled = true;
@@ -61,7 +39,7 @@ function formWindowClosing(evt) {//GEN-FIRST:event_formWindowClosing
                  items[model.itemsByTP.cursor.item_id] = model.itemsByTP.cursor.start_value;
              }
          }
-         if(whSessionModule.addItems(items, whSessionModule.WH_ADD_ITEMS)) 
+         if (whSessionModule.addItems(items, whSessionModule.WH_ADD_ITEMS)) 
             form.close();
          else
              alert(MSG_SET_MOVEMENTS_ERROR);
