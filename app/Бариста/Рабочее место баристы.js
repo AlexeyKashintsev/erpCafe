@@ -5,14 +5,6 @@
 function BaristaDesktop() {
     var self = this, model = this.model, form = this;
     self.tradeItems = {};
-    self.orderList = new OrderList();
-    self.session = new ServerModule('UserSession');
-    self.whSession = new ServerModule("WhSessionModule");
-    self.tradeSession = new ServerModule("TradeSessions");
-    self.userName = self.session.getUserName();
-    
-    var whAdd = null;
-    
     //Определяем как запущена программа
     self.browser = false;
     try {
@@ -23,6 +15,14 @@ function BaristaDesktop() {
         Logger.info('browser');
         self.browser = true;
     }
+    
+    self.orderList = new OrderList(self);
+    self.session = new ServerModule('UserSession');
+    self.whSession = new ServerModule("WhSessionModule");
+    self.tradeSession = new ServerModule("TradeSessions");
+    self.userName = self.session.getUserName();
+    
+    var whAdd = null;
 
     function setSession(aSession) {
         if (aSession) {
@@ -99,7 +99,7 @@ function BaristaDesktop() {
         if (!model.getSessions.empty){
             model.tradeItemsByTradePointWithCost.params.trade_point_id =
                     model.getSessions.trade_point;
-            self.orderList.showOnPanel(self.browser ? "actionPanel" : form.pnlLeft);
+            //self.orderList.showOnPanel(self.browser ? "actionPanel" : form.pnlLeft);
             model.tradeItemsByTradePointWithCost.execute();
         }
     }//GEN-LAST:event_getSessionsOnRequeried
