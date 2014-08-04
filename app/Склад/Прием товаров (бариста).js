@@ -39,7 +39,7 @@ function formWindowClosing(evt) {//GEN-FIRST:event_formWindowClosing
                  items[model.itemsByTP.cursor.item_id] = model.itemsByTP.cursor.start_value;
              }
          }
-         if (whSessionModule.addItems(items, whSessionModule.WH_ADD_ITEMS)) 
+         if (whSessionModule.whMovement(items, whSessionModule.WH_ADD_ITEMS)) 
             form.close();
          else
              alert(MSG_SET_MOVEMENTS_ERROR);
