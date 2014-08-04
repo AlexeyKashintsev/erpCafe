@@ -17,17 +17,13 @@ function TradeSessions() {
         model.save();
     };
 
-    var userName = self.principal.name;
-    
+  
     function getSelfSession(){
         model.qOpenedSession.params.user_name = self.principal.name;
         model.qOpenedSession.execute();
         return model.qOpenedSession.org_session_id;
     }
-    
-    //задать торговую точку и имя пользователя
-    
-    
+      
     //Запись прихода по кассе
     self.processOrder = function(anOrderDetails){
         if (!model.params.session_id){
@@ -42,13 +38,26 @@ function TradeSessions() {
                 session_id       : model.params.session_id,
                 operation_type   : null //TODO Поменять тип операции
             });
+            
+            model.qTradeOperationsWithItems.params.cash_box_operation_id = model.qTradeOperationBySession.trade_cash_box_operation_id;
+            for (var i in anOrderDetails.orderItems) {
+                if (anOrderDetails.orderItems[i].itemId && anOrderDetails.orderItems[i].quantity){
+                    model.qTradeOperationsWithItems.push({
+                        cash_box_operation : model.qTradeOperationsWithItems.params.cash_box_operation_id,
+                        trade_item : anOrderDetails.orderItems[i].itemId,
+                        items_quantity : anOrderDetails.orderItems[i].quantity
+                    });
+                } else {
+                    alert('Ничего не выбрано');
+                }
+            }
         }
-        var TradeOperationId = model.qTradeOperationBySession.trade_cash_box_operation_id;
+        
+        
         model.save();
     };
-     //Запись прихода по кассе
-     
+
     
-    //TODO записать в журнал торговых операций, записать приход по кассе, посчитать
+    //TODO записать в журнал торговых операций, , посчитать
     //расход по складу и записать
 }

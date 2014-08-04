@@ -34,9 +34,10 @@ function OrderList() {
         if (self.orderDetails){
             for (var i in self.orderDetails) {
                 anOrderDetails.orderSum += self.orderDetails[i].orderSum;
-                anOrderDetails.orderItems[i] = {};
-                anOrderDetails.orderItems[i].itemId = self.orderDetails[i].itemId;
-                anOrderDetails.orderItems[i].quantity = self.orderDetails[i].orderQuantity;
+                anOrderDetails.orderItems.push({
+                    itemId : self.orderDetails[i].itemId,
+                    quantity : self.orderDetails[i].orderQuantity
+                });
             }
         }
         self.tradeSession.processOrder(anOrderDetails);
