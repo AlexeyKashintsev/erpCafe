@@ -22,8 +22,13 @@ function AdminStartForm() {
         }).invokeBackground();
     } catch (e) {
         Logger.info('browser');
-        //TODO Сделать асинхронно
         self.browser = true;
+        self.session.login(function(anUserRole){
+            userRole = anUserRole;
+            self.session.getFranchazi(function(anFranchaziId){
+                self.setFranchazi(anFranchaziId);
+            });
+        });
     }
     
     self.setFranchazi = function(aFaranchazi) {
