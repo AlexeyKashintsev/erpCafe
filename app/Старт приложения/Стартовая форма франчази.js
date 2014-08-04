@@ -9,21 +9,20 @@ function AdminStartForm() {
     self.session = new ServerModule('UserSession');
     var guiUtils = new guiModule();
     var usersView = null;
+    var userRole = null;
     var workShop = null;
-    
-    self.session.login(function(aFranchazi){
-        self.setFranchazi(aFranchazi);
-    });
     
     //Определяем как запущена программа
     self.browser = null;
     try {
         (function(){
             self.browser = false;
+            userRole = self.session.login();
             self.setFranchazi(self.session.getFranchazi());
         }).invokeBackground();
     } catch (e) {
         Logger.info('browser');
+        //TODO Сделать асинхронно
         self.browser = true;
     }
     
