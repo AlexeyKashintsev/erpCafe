@@ -23,4 +23,8 @@ function OrderList() {
             self.calculateOrder();
         }
     };
+
+    function btnOkActionPerformed(evt) {//GEN-FIRST:event_btnOkActionPerformed
+        // TODO Добавьте свой код:
+    }//GEN-LAST:event_btnOkActionPerformed
 }

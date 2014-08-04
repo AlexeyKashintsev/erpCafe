@@ -15,4 +15,22 @@ function TradeSessions() {
         });
         model.save();
     };
+    
+    //задать торговую точку и имя пользователя
+    //Пример заказа
+        var orderDetails = {
+        orderSum    :   null,
+        orderItems  :   [
+            {
+                itemId      :   null,
+                quantity    :   null
+            },
+            {
+                itemId      :   null,
+                quantity    :   null
+            }
+        ]
+    };
+    //TODO записать в журнал торговых операций, записать приход по кассе, посчитать
+    //расход по складу и записать
 }

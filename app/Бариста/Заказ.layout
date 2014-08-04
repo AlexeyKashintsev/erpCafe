@@ -17,7 +17,7 @@
   <widget icon="icons/22x22/actions/bookmark-new.png" name="btnBenefit" parent="Form" prefHeight="48px" prefWidth="48px" toolTipText="Клиент" type="ButtonDesignInfo">
     <constraints height="48px" right="148px" top="0px" type="MarginConstraintsDesignInfo" width="48px"/>
   </widget>
-  <widget icon="icons/22x22/actions/dialog-apply.png" name="btnOk" parent="Form" prefHeight="48px" prefWidth="94px" text="Выдать" type="ButtonDesignInfo">
+  <widget actionPerformed="btnOkActionPerformed" icon="icons/22x22/actions/dialog-apply.png" name="btnOk" parent="Form" prefHeight="48px" prefWidth="94px" text="Выдать" type="ButtonDesignInfo">
     <constraints height="48px" right="53px" top="0px" type="MarginConstraintsDesignInfo" width="94px"/>
   </widget>
   <layout type="MarginLayoutDesignInfo"/>
