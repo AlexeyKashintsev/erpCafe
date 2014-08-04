@@ -7,12 +7,12 @@
     <constraints bottom="0px" left="0px" right="0px" top="48px" type="MarginConstraintsDesignInfo"/>
   </widget>
   <widget name="label" parent="Form" prefHeight="24px" prefWidth="120px" text="Сумма заказа:" type="LabelDesignInfo">
-    <constraints height="24px" left="12px" top="0px" type="MarginConstraintsDesignInfo" width="120px"/>
     <easFont name="Lucida Grande" size="14" style="1"/>
+    <constraints height="24px" left="12px" top="0px" type="MarginConstraintsDesignInfo" width="120px"/>
   </widget>
   <widget name="lbOrderSum" parent="Form" prefHeight="24px" prefWidth="72px" text="10000 р." type="LabelDesignInfo">
-    <constraints height="24px" left="12px" top="24px" type="MarginConstraintsDesignInfo" width="72px"/>
     <easFont name="Lucida Grande" size="14" style="1"/>
+    <constraints height="24px" left="12px" top="24px" type="MarginConstraintsDesignInfo" width="72px"/>
   </widget>
   <widget icon="icons/22x22/actions/bookmark-new.png" name="btnBenefit" parent="Form" prefHeight="48px" prefWidth="48px" toolTipText="Клиент" type="ButtonDesignInfo">
     <constraints height="48px" right="148px" top="0px" type="MarginConstraintsDesignInfo" width="48px"/>

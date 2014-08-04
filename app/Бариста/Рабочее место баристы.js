@@ -11,6 +11,8 @@ function BaristaDesktop() {
     self.tradeSession = new ServerModule("TradeSessions");
     self.userName = self.session.getUserName();
     
+    self.orderList.tradeSession = self.tradeSession;
+    
     var whAdd = null;
     
     //Определяем как запущена программа

@@ -5,6 +5,7 @@
 function OrderList() {
     var self = this, model = this.model, form = this;
     self.orderDetails = {};
+    self.tradeSession = null;
     
     self.calculateOrder = function() {
         var orderSum = 0;
@@ -23,8 +24,25 @@ function OrderList() {
             self.calculateOrder();
         }
     };
+    
+    self.acceptOrder = function() {
+        var anOrderDetails = {
+            orderSum : 0,
+            orderItems : []
+        };
+        
+        if (self.orderDetails){
+            for (var i in self.orderDetails) {
+                anOrderDetails.orderSum += self.orderDetails[i].orderSum;
+                anOrderDetails.orderItems[i] = {};
+                anOrderDetails.orderItems[i].itemId = self.orderDetails[i].itemId;
+                anOrderDetails.orderItems[i].quantity = self.orderDetails[i].orderQuantity;
+            }
+        }
+        self.tradeSession.processOrder(anOrderDetails);
+    };
 
     function btnOkActionPerformed(evt) {//GEN-FIRST:event_btnOkActionPerformed
-        // TODO Добавьте свой код:
+        self.acceptOrder();
     }//GEN-LAST:event_btnOkActionPerformed
 }
