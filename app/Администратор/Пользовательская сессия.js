@@ -8,6 +8,7 @@
 function UserSession() {
     var self = this, model = this.model;
     var ep = new EventProcessor();
+    
     self.msg = {
         MSG_ERROR_INACTIVE_USER         :   'Ваша учетная запись неактивна!\nОбратитесь к администратору',
         MSG_ERROR_NO_FRANCHAZI_4USER    :   'Пользователь не закреплен за франчази!\nОбратитесь к администратору',

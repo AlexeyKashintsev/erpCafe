@@ -7,6 +7,8 @@
  */ 
 function TradeSessions() {
     var self = this, model = this.model;
+    var whSession = new WhSessionModule();
+    var ep = new EventProcessor();
     
     self.initializeSession = function(aSession, aStartBalance) {
         model.qTradeSessionBalance.push({
@@ -18,16 +20,17 @@ function TradeSessions() {
     };
 
   
-    function getSelfSession(){
+    function getCurrentSession(){
         model.qOpenedSession.params.user_name = self.principal.name;
         model.qOpenedSession.execute();
+        whSession.setCurrentSession(model.qOpenedSession.org_session_id);
         return model.qOpenedSession.org_session_id;
     }
       
     //Запись прихода по кассе
     self.processOrder = function(anOrderDetails){
         if (!model.params.session_id){
-            model.params.session_id = getSelfSession();
+            model.params.session_id = getCurrentSession();
         }
         if (!model.params.session_id){
             alert("Сессия не открыта");
@@ -51,6 +54,12 @@ function TradeSessions() {
                     alert('Ничего не выбрано');
                 }
             }
+            
+            if (whSession.whMovement(anOrderDetails.orderItems, WH_PRODUCE_ITEMS)){
+                
+            } else {
+                ep.addEvent('errorAddTradeOperation', anOrderDetails);
+            }
         }
         
         
@@ -58,6 +67,5 @@ function TradeSessions() {
     };
 
     
-    //TODO записать в журнал торговых операций, , посчитать
-    //расход по складу и записать
+    //TODO посчитать  расход по складу и записать
 }

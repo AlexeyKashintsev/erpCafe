@@ -12,7 +12,7 @@ function WhSessionModule() {
     var self = this, model = this.model;
 
     self.WH_ADD_ITEMS = 1;
-    self.WH_DEL_ITMES = 2;
+    self.WH_REMOVE_ITEMS = 2;
     self.WH_PRODUCE_ITEMS = 3;
 
     self.ERRORS = {
@@ -22,9 +22,17 @@ function WhSessionModule() {
 
     self.setTradePoint = function(aTradePointId) {
         model.params.trade_point_id = aTradePointId;
+        model.params.trade_point_id = null;
         self.getCurrentSession();
         return model.params.session_id;
     };
+    
+    self.setCurrentSession = function(aSessionID) {
+        model.params.session_id = aSessionID;
+        model.params.trade_point_id = null;
+        self.getCurrentSession();
+        return model.params.trade_point_id;
+    }
 
     /*
      * Возвращает Id сесси если она уже сущесвует и не закрыта.
@@ -33,6 +41,7 @@ function WhSessionModule() {
     self.getCurrentSession = function() {
         model.qOpenedSession.requery();
         if (model.qOpenedSession.length > 0) {
+            model.params.trade_point_id = model.qOpenedSession.cursor.trade_point;
             model.params.session_id = model.qOpenedSession.cursor.org_session_id;
             return model.params.session_id;
         } else {
@@ -127,7 +136,7 @@ function WhSessionModule() {
     /*
      * Добавление товаров на склад
      */
-    self.addItems = function(anItems, aMovementType) {
+    self.whMovement = function(anItems, aMovementType) {
         if (self.getCurrentSession()) {
             for (var id in anItems) {
                 model.queryMovements.push({
