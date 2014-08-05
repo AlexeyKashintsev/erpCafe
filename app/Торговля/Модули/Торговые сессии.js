@@ -75,6 +75,4 @@ function TradeSessions() {
         model.save();
     };
 
-    
-    //TODO посчитать  расход по складу и записать
 }

@@ -29,7 +29,20 @@ function TradeAdminModule() {
                 franchazi_id    :   franchazi,
                 item_cost   :   aCost
             });
+        addItemComposToWH(anItem, aTradePoint);
     };
+    
+    function addItemComposToWH(anItem, aTradePoint){
+        model.qContents.params.trade_item_id = anItem;
+        model.qContents.requery();
+        model.qContents.beforeFirst();
+        while (model.qContents.next()){
+            model.qAddComposeToWH.push({
+                warehouse : aTradePoint,
+                item_id : model.qContents.cursor.wh_item
+            })
+        }
+    }
     
     function closeItemOnTradePointOrFranchazi(anItem, aTradePoint, aFranchazi, aEndDate) {
         if (setTradeItemOnTradePoint(anItem, aTradePoint, aFranchazi)) {

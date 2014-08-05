@@ -18,6 +18,7 @@ function TradeItemsOnTradePoint() {
     model.params.actual_date = new Date();
     model.params.endUpdate();*/
     
+    
     var TradeAdminModule = new ServerModule('TradeAdminModule');
     var askForChanges = new AskForChangesApplying();
     
@@ -28,6 +29,9 @@ function TradeItemsOnTradePoint() {
     self.setTradePoint = function(aTradePoint) {
         model.params.trade_point_id = aTradePoint;
     };
+    //TODO Please remove next 2 lines before use
+    self.setFranchazi(1);
+    self.setTradePoint(15);
 
 function btnReqActionPerformed(evt) {//GEN-FIRST:event_btnReqActionPerformed
         if (self.model.modified && confirm('Сохранить изменения?')) {
@@ -49,12 +53,12 @@ function btnReqActionPerformed(evt) {//GEN-FIRST:event_btnReqActionPerformed
                             model.params.franchazi_id, 
                             model.qTradeItemsAndType.cursor.r_cost
                         );
-                } else {
-                    TradeAdminModule.setEndDateForTradeItem(model.qTradeItemsAndType.r_id,
-                        model.qTradeItemsAndType.add2TP ? model.params.trade_point_id : null,
-                        model.params.franchazi_id, 
-                        new Date());
-                }
+                    } else {
+                        TradeAdminModule.setEndDateForTradeItem(model.qTradeItemsAndType.r_id,
+                            model.qTradeItemsAndType.add2TP ? model.params.trade_point_id : null,
+                            model.params.franchazi_id, 
+                            new Date());
+                    }
             }
         }
         model.revert();

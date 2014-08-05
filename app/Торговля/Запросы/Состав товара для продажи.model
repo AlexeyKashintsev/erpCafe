@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?><datamodel>
-  <parametersEntity entityHeight="200" entityIconified="false" entityLocationX="8" entityLocationY="7" entityWidth="150"/>
-  <entity Title="" entityHeight="200" entityIconified="false" entityId="140568997878695" entityLocationX="203" entityLocationY="14" entityWidth="150" tableAlias="t1" tableName="trade_items_contents" tableSchemaName=""/>
+  <parameters>
+    <parameter description="" name="trade_item_id" nullable="true" parameterMode="1" precision="0" scale="0" selectionForm="null" signed="true" size="0" type="2" typeName="NUMERIC"/>
+  </parameters>
+  <parametersEntity entityHeight="200" entityIconified="false" entityLocationX="14" entityLocationY="13" entityWidth="150"/>
+  <entity Title="" entityHeight="200" entityIconified="false" entityId="140568997878695" entityLocationX="278" entityLocationY="14" entityWidth="318" tableAlias="t1" tableName="trade_items_contents" tableSchemaName=""/>
+  <relation leftEntityId="-1" leftEntityParameterName="trade_item_id" rightEntityFieldName="trade_item" rightEntityId="140568997878695"/>
 </datamodel>
