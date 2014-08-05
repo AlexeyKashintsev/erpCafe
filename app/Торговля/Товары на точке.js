@@ -29,13 +29,10 @@ function TradeItemsOnTradePoint() {
     self.setTradePoint = function(aTradePoint) {
         model.params.trade_point_id = aTradePoint;
     };
-    //TODO Please remove next 2 lines before use
-    self.setFranchazi(1);
-    self.setTradePoint(15);
 
 function btnReqActionPerformed(evt) {//GEN-FIRST:event_btnReqActionPerformed
         if (self.model.modified && confirm('Сохранить изменения?')) {
-            self.model.save();
+            modelSave();
         }
         self.model.requery();
 }//GEN-LAST:event_btnReqActionPerformed
@@ -97,10 +94,15 @@ function btnSaveActionPerformed(evt) {//GEN-FIRST:event_btnSaveActionPerformed
 
     function qTradeItemsAndTypeOnChanged(evt) {//GEN-FIRST:event_qTradeItemsAndTypeOnChanged
         if (evt.propertyName === 'r_cost' || evt.propertyName === 'r_selected') {
-            askForChanges.showModal(function(aResult) {
+            if (model.qTradeItemsAndType.cursor.r_cost && (model.qTradeItemsAndType.cursor.r_id.match(/type/gi))) {
+                //alert ('Нельзя устанавливать цену на категорию');
+                model.qTradeItemsAndType.cursor.r_cost = null;
+            } else if (model.qTradeItemsAndType.cursor.r_cost !== null){
+                askForChanges.showModal(function(aResult) {
                     model.qTradeItemsAndType.scrollTo(model.qTradeItemsAndType.findById(evt.object.r_id));
                     model.qTradeItemsAndType.cursor.add2TP = (aResult === 1);
-            });
+                });
+            }
         }
     }//GEN-LAST:event_qTradeItemsAndTypeOnChanged
 
