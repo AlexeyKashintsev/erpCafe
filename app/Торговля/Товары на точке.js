@@ -18,6 +18,7 @@ function TradeItemsOnTradePoint() {
     model.params.actual_date = new Date();
     model.params.endUpdate();*/
     
+    
     var TradeAdminModule = new ServerModule('TradeAdminModule');
     var askForChanges = new AskForChangesApplying();
     
@@ -31,29 +32,34 @@ function TradeItemsOnTradePoint() {
 
 function btnReqActionPerformed(evt) {//GEN-FIRST:event_btnReqActionPerformed
         if (self.model.modified && confirm('Сохранить изменения?')) {
-            self.model.save();
+            modelSave();
         }
         self.model.requery();
 }//GEN-LAST:event_btnReqActionPerformed
 
     function modelSave() {
+        model.qTradeItemsAndType.params.actual_date = new Date();
         model.qTradeItemsAndType.beforeFirst();
         while (model.qTradeItemsAndType.next()) {
-            if (model.qTradeItemsAndType.cursor.r_selected2 !== model.qTradeItemsAndType.cursor.r_selected ||
-                    model.qTradeItemsAndType.cursor.r_cost !== model.qTradeItemsAndType.cursor.r_old_cost) {
-                if (model.qTradeItemsAndType.cursor.r_selected || (
-                        !model.qTradeItemsAndType.cursor.r_selected&&!model.qTradeItemsAndType.cursor.r_selected2)) {
-                    TradeAdminModule.setCost4TradeItemOnTradePointOrFranchzi(
-                            model.qTradeItemsAndType.r_id,
-                            model.qTradeItemsAndType.add2TP ? model.params.trade_point_id : null,
-                            model.params.franchazi_id, 
-                            model.qTradeItemsAndType.cursor.r_cost
-                        );
-                } else {
-                    TradeAdminModule.setEndDateForTradeItem(model.qTradeItemsAndType.r_id,
-                        model.qTradeItemsAndType.add2TP ? model.params.trade_point_id : null,
-                        model.params.franchazi_id, 
-                        new Date());
+            if ((model.qTradeItemsAndType.cursor.r_cost !== model.qTradeItemsAndType.cursor.r_old_cost) && (model.qTradeItemsAndType.cursor.r_id.match(/type/gi))){
+                alert ('Нельзя устанавливать цену на тип');
+            } else {
+                if (model.qTradeItemsAndType.cursor.r_selected2 !== model.qTradeItemsAndType.cursor.r_selected ||
+                        model.qTradeItemsAndType.cursor.r_cost !== model.qTradeItemsAndType.cursor.r_old_cost) {
+                    if (model.qTradeItemsAndType.cursor.r_selected || (
+                            !model.qTradeItemsAndType.cursor.r_selected&&!model.qTradeItemsAndType.cursor.r_selected2)) {
+                        TradeAdminModule.setCost4TradeItemOnTradePointOrFranchzi(
+                                model.qTradeItemsAndType.r_id,
+                                model.qTradeItemsAndType.add2TP ? model.params.trade_point_id : null,
+                                model.params.franchazi_id, 
+                                model.qTradeItemsAndType.cursor.r_cost
+                            );
+                        } else {
+                            TradeAdminModule.setEndDateForTradeItem(model.qTradeItemsAndType.r_id,
+                                model.qTradeItemsAndType.add2TP ? model.params.trade_point_id : null,
+                                model.params.franchazi_id, 
+                                new Date());
+                        }
                 }
             }
         }
@@ -88,10 +94,15 @@ function btnSaveActionPerformed(evt) {//GEN-FIRST:event_btnSaveActionPerformed
 
     function qTradeItemsAndTypeOnChanged(evt) {//GEN-FIRST:event_qTradeItemsAndTypeOnChanged
         if (evt.propertyName === 'r_cost' || evt.propertyName === 'r_selected') {
-            askForChanges.showModal(function(aResult) {
+            if (model.qTradeItemsAndType.cursor.r_cost && (model.qTradeItemsAndType.cursor.r_id.match(/type/gi))) {
+                //alert ('Нельзя устанавливать цену на категорию');
+                model.qTradeItemsAndType.cursor.r_cost = null;
+            } else if (model.qTradeItemsAndType.cursor.r_cost !== null){
+                askForChanges.showModal(function(aResult) {
                     model.qTradeItemsAndType.scrollTo(model.qTradeItemsAndType.findById(evt.object.r_id));
-                    model.qTradeItemsAndType.cursor.add2TP = !(aResult !== 1);
-            });
+                    model.qTradeItemsAndType.cursor.add2TP = (aResult === 1);
+                });
+            }
         }
     }//GEN-LAST:event_qTradeItemsAndTypeOnChanged
 

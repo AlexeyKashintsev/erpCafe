@@ -4,4 +4,6 @@
   <field bindedColumn="add2TP" sqlType="16"/>
   <field bindedColumn="r_cost" sqlType="2"/>
   <field bindedColumn="r_old_cost" sqlType="2"/>
+  <field bindedColumn="r_parent" sqlType="12"/>
+  <field bindedColumn="r_id" sqlType="12"/>
 </outputFields>

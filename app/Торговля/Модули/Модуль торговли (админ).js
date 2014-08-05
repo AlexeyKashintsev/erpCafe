@@ -20,16 +20,47 @@ function TradeAdminModule() {
         return (model.qTIbyTP.length !== 0);
     }
     
-    function addNewItemToTradePointOrFranchazi(anItem, aTradePoint, aFranchazi, aCost) {
-        if (aFranchazi) franchazi = aFranchazi;
+    function pushItemInTradePoint(anItem, aTradePointId, aCost, aFranchazi){
         model.qTIbyTP.push({
-                start_date  :   new Date(),
-                item_id     :   anItem,
-                trade_point_id  :   aTradePoint,
-                franchazi_id    :   franchazi,
-                item_cost   :   aCost
-            });
+            start_date  :   new Date(),
+            item_id     :   anItem,
+            trade_point_id  :   aTradePointId,
+            franchazi_id    :   aFranchazi,
+            item_cost   :   aCost
+        });
+    }
+    
+    function addNewItemToTradePointOrFranchazi(anItem, aTradePoint, aFranchazi, aCost) {
+        if (aFranchazi && !aTradePoint) {
+            franchazi = aFranchazi;
+            model.listTradePoints.params.franchazi_id = franchazi;
+            model.listTradePoints.requery();
+            model.listTradePoints.beforeFirst();
+            while (model.listTradePoints.next()){
+                pushItemInTradePoint(anItem, model.listTradePoints.cursor.org_trade_point_id, aCost, franchazi);
+                addItemContentsToWH(anItem, model.listTradePoints.cursor.org_trade_point_id);
+            }
+        } else {
+            pushItemInTradePoint(anItem, aTradePoint, aCost, franchazi);
+            addItemContentsToWH(anItem, aTradePoint);
+        }
     };
+    
+    function addItemContentsToWH(anItem, aTradePoint){
+        model.qContents.params.trade_item_id = anItem;
+        model.qContents.requery();
+        model.queryItemsInWH.params.warehouse_id = aTradePoint;
+        model.queryItemsInWH.requery();
+        model.qContents.beforeFirst();
+        while (model.qContents.next()){
+            if (model.queryItemsInWH.find(model.queryItemsInWH.schema.item_id, model.qContents.wh_item).length === 0){
+                model.queryItemsInWH.push({
+                    warehouse : aTradePoint,
+                    item_id : model.qContents.cursor.wh_item
+                });
+            }
+        }
+    }
     
     function closeItemOnTradePointOrFranchazi(anItem, aTradePoint, aFranchazi, aEndDate) {
         if (setTradeItemOnTradePoint(anItem, aTradePoint, aFranchazi)) {
