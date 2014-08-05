@@ -16,6 +16,11 @@ function TradeSessions() {
             start_value :   aStartBalance
         });
         model.params.session_id = aSession;
+        ep.addEvent('newSession', {
+            session :   aSession,
+            module  :   'TradeSessions',
+            startB  :   aStartBalance
+        });
         model.save();
     };
 
@@ -23,6 +28,10 @@ function TradeSessions() {
     function getCurrentSession(){
         model.qOpenedSession.params.user_name = self.principal.name;
         model.qOpenedSession.execute();
+        ep.addEvent('openSession', {
+            session :   model.qOpenedSession.org_session_id,
+            module  :   'TradeSessions'
+        });
         whSession.setCurrentSession(model.qOpenedSession.org_session_id);
         return model.qOpenedSession.org_session_id;
     }
@@ -55,7 +64,7 @@ function TradeSessions() {
                 }
             }
             
-            if (whSession.whMovement(anOrderDetails.orderItems, WH_PRODUCE_ITEMS)){
+            if (whSession.whMovement(anOrderDetails.orderItems, whSession.WH_PRODUCE_ITEMS)){
                 
             } else {
                 ep.addEvent('errorAddTradeOperation', anOrderDetails);

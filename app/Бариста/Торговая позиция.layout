@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?><layout defaultCloseOperation="2" mouseClicked="addToOrder" name="Form" prefHeight="123px" prefWidth="288px" windowOpened="formWindowOpened">
-  <widget mouseClicked="addToOrder" name="lbItemName" parent="Form" prefHeight="24px" prefWidth="272px" text="Круасан французский" type="LabelDesignInfo">
-    <constraints height="24px" left="12px" right="4px" top="12px" type="MarginConstraintsDesignInfo"/>
+  <widget mouseClicked="addToOrder" name="lbItemName" parent="Form" prefHeight="48px" prefWidth="272px" text="Круасан французский" type="LabelDesignInfo">
+    <constraints height="48px" left="12px" right="4px" top="0px" type="MarginConstraintsDesignInfo"/>
     <easFont name="Lucida Grande" size="18"/>
   </widget>
   <widget mouseClicked="addToOrder" name="lbItemType" parent="Form" prefHeight="24px" prefWidth="132px" text="Выпечка" type="LabelDesignInfo">
     <constraints height="24px" left="12px" top="36px" type="MarginConstraintsDesignInfo" width="132px"/>
   </widget>
-  <widget horizontalAlignment="4" mouseClicked="addToOrder" name="lbItemCost" parent="Form" prefHeight="53px" prefWidth="192px" text="150 р." type="LabelDesignInfo">
-    <constraints bottom="35px" height="53px" right="16px" type="MarginConstraintsDesignInfo" width="192px"/>
+  <widget horizontalAlignment="4" mouseClicked="addToOrder" name="lbItemCost" parent="Form" prefHeight="85px" prefWidth="216px" text="150 р." type="LabelDesignInfo">
+    <constraints bottom="3px" height="85px" right="12px" type="MarginConstraintsDesignInfo" width="216px"/>
     <easFont name="Lucida Grande" size="48"/>
   </widget>
   <widget mouseClicked="addToOrder" name="lbQuantity" parent="Form" prefHeight="24px" prefWidth="72px" text="1 шт" type="LabelDesignInfo">

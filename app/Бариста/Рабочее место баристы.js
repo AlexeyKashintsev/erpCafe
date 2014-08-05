@@ -5,6 +5,13 @@
 function BaristaDesktop() {
     var self = this, model = this.model, form = this;
     self.tradeItems = {};
+    
+    self.session = new ServerModule('UserSession');
+    self.whSession = new ServerModule("WhSessionModule");
+    self.tradeSession = new ServerModule("TradeSessions");
+    self.userName = self.session.getUserName();    
+    var whAdd = null;
+    
     //Определяем как запущена программа
     self.browser = false;
     try {
@@ -12,22 +19,22 @@ function BaristaDesktop() {
             self.browser = false;
         }).invokeBackground();
     } catch (e) {
-        Logger.info('browser');
         self.browser = true;
+        Logger.info('browser');
+        document.getElementById("logActionNav").innerHTML = 
+                '<li><a id="whAddItems" href="#"><span class="glyphicon glyphicon-plus-sign"></span>  Прием товара</a></li>\n\
+                 <li><a id="Logout" href="#"><span class="glyphicon glyphicon-log-out"></span>  Закрыть смену</a></li>'
+        document.getElementById("whAddItems").onclick = btnWarehouseAddActionPerformed;
+        document.getElementById("Logout").onclick = btnSessionCloseActionPerformed;
     }
-    
     self.orderList = new OrderList(self);
-    self.session = new ServerModule('UserSession');
-    self.whSession = new ServerModule("WhSessionModule");
-    self.tradeSession = new ServerModule("TradeSessions");
-    self.userName = self.session.getUserName();
-    
-    var whAdd = null;
+    self.orderList.tradeSession = self.tradeSession;
 
     function setSession(aSession) {
         if (aSession) {
             Logger.info('Сессия открыта ' + aSession);
             model.params.session_id = aSession;
+            self.whSession.setCurrentSession(aSession);
             model.getSessions.requery();
         } else {//открываем новую сессию
             //Выбираем торговую точку
@@ -105,7 +112,7 @@ function BaristaDesktop() {
     }//GEN-LAST:event_getSessionsOnRequeried
 
     function btnSessionCloseActionPerformed(evt) {//GEN-FIRST:event_btnSessionCloseActionPerformed
-        //self.session.
+        self.whSession.closeSession(logout);
     }//GEN-LAST:event_btnSessionCloseActionPerformed
 
     function btnWarehouseAddActionPerformed(evt) {//GEN-FIRST:event_btnWarehouseAddActionPerformed

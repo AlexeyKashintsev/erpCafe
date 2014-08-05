@@ -10,6 +10,7 @@
  */
 function WhSessionModule() {
     var self = this, model = this.model;
+    var ep = new EventProcessor();
 
     self.WH_ADD_ITEMS = 1;
     self.WH_REMOVE_ITEMS = 2;
@@ -22,7 +23,7 @@ function WhSessionModule() {
 
     self.setTradePoint = function(aTradePointId) {
         model.params.trade_point_id = aTradePointId;
-        model.params.trade_point_id = null;
+        model.params.session_id = null;
         self.getCurrentSession();
         return model.params.session_id;
     };
@@ -32,7 +33,7 @@ function WhSessionModule() {
         model.params.trade_point_id = null;
         self.getCurrentSession();
         return model.params.trade_point_id;
-    }
+    };
 
     /*
      * Возвращает Id сесси если она уже сущесвует и не закрыта.
@@ -43,6 +44,10 @@ function WhSessionModule() {
         if (model.qOpenedSession.length > 0) {
             model.params.trade_point_id = model.qOpenedSession.cursor.trade_point;
             model.params.session_id = model.qOpenedSession.cursor.org_session_id;
+            ep.addEvent('openSession', {
+                session :   model.qOpenedSession.org_session_id,
+                module  :   'whSessions'
+            });
             return model.params.session_id;
         } else {
             model.params.session_id = null;
@@ -79,6 +84,10 @@ function WhSessionModule() {
             model.qOpenedSession.cursor.start_date = new Date();
             model.qOpenedSession.cursor.user_name = self.principal.name;
             initSession();
+            ep.addEvent('newSession', {
+                session :   model.params.session_id,
+                module  :   'whSessions'
+            });
             model.save();
             return model.params.session_id;
         }
@@ -90,13 +99,17 @@ function WhSessionModule() {
         if (self.getCurrentSession()) {
             model.qOpenedSession.cursor.end_date = new Date();
             model.save();
+            ep.addEvent('closeSession', {
+                session :   model.params.session_id,
+                module  :   'whSessions'
+            });
             model.updateItems.executeUpdate();
             return true;
         } else
             return false;
     };
     /*
-     * Изменение старотовых значений Баланса Сессии по каждому товару торговой
+     * Изменение стартовых значений Баланса Сессии по каждому товару торговой
      * точки
      */
     self.setStartValues = function(anItems, aTradePoint) {

@@ -1,30 +1,48 @@
 /* ### FONTS ### */
-@import "http://webfonts.ru/import/osans.css";
-@import "http://webfonts.ru/import/intro.css";
-@font-face {
-  font-family: 'Futura';
-  src: url("../fonts/FuturaLT.ttf") format("truetype");
-  font-weight: normal;
-  font-style: normal; 
-}
+@font-face { font-family: 'Segoe UI'; src: url('webFonts/segoe_ui_semibold.eot'); src: url('webFonts/segoe_ui_semibold.eot?#iefix') format('embedded-opentype'), url('webFonts/segoe_ui_semibold.svg#Segoe UI Semibold') format('svg'), url('webFonts/segoe_ui_semibold.woff') format('woff'), url('webFonts/segoe_ui_semibold.ttf') format('truetype'); font-weight: bold; font-style: normal;}
+@font-face { font-family: 'Segoe UI'; src: url('webFonts/segoe_ui_light.eot'); src: url('webFonts/segoe_ui_light.eot?#iefix') format('embedded-opentype'), url('webFonts/segoe_ui_light.svg#Segoe UI Semibold') format('svg'), url('webFonts/segoe_ui_light.woff') format('woff'), url('webFonts/segoe_ui_light.ttf') format('truetype'); font-weight: normal; font-style: normal;}
 
 /* ### COMMON ### */
+button {
+  border: none;
+  margin: 5px;
+  padding:  10px;
+}
+
+button.btnOk {
+  background-color: #26A65B;
+  color: white;
+}
+
+button.btnCancel {
+  background-color: #E74C3C;
+  color: white;
+}
+
 .itemDescription {
     display: inline-block;
     background-color: rgb(#555);
     padding: 20px;
 }
 
-.actionPanel {
-  background-color: rgb(94,51,29);
+body {
+  margin-top: 50px;
+}
+
+div.actionPanel {
+  background-color: #F4B350;
+  margin-top: 50px;
   position: fixed;
   bottom: 0px;
   left: 0px;
   top: 0px;
+  height: 100%;
+  padding-right: 0px;
 }
 
-.mainArea {
-  background-color: rgb(200,178,168);
+div.mainArea {
+  background-color: #FFECDB;
+  margin-top: 50px;
   position: fixed;
   bottom: 0px;
   right: 0px;
@@ -33,32 +51,44 @@
 }
 
 /* ### BARISTA ### */
-#orderItems div.orderItem {
-  background-color: #C8557E;
-  margin: 2px;
-  padding-bottom: 4px;
-  padding-right: 2px;
+div.baristaOrder {
+  background-color: #D2D7D3;
+  text-align: center;
+  position: relative;
+  right: 0px;
+  padding: 10px 0px;
 }
+
 .orderItem h4 {
   display: inline-block;
   padding-right: 5px;
   position: relative;
-  color: white;
+  font-family: Segoe UI;
 }
 
 .orderItem h4.itemName {
   position: absolute;
-  left: 25px;
+  left: 5px;
 }
 
 .orderItem h4.itemCount {
   position: absolute;
-  right: 110px;
+  right: 50px;
 }
 
 .orderItem  {
   text-align: right;
+  background-color: white;
+  margin: 2px;
+  padding-bottom: 4px;
+  padding-right: 2px;
 }
+
+.orderItem:hover  {
+  background-color: #E4F1FE;
+  color: #26A65B;
+}
+
 
 .orderItem button {
   padding: 0px;
@@ -71,14 +101,13 @@
   background-color: rgba(0,0,0,0);
 }
 
+.orderItem button:hover {
+  color: #E74C3C;
+}
+
 .orderItem button > span {
   font-size: large;
   padding-top: 5px;
-  color: white;
-}
-
-.orderItem button:hover > span {
-  color: yellow;
 }
 
 #orderDetails {

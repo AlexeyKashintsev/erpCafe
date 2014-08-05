@@ -28,19 +28,19 @@ function OrderList(aParent) {
             obj.divEl.appendChild(obj.sum);
             obj.sum.className = "itemSum";*/
             
-            obj.btnAdd = document.createElement("button");
-            obj.btnAdd.innerHTML = '<span class="glyphicon glyphicon-plus-sign"></span>';
+            /*obj.btnAdd = document.createElement("button");
+            obj.btnAdd.innerHTML = '<span class="glyphicon glyphicon-plus"></span>';
             obj.btnAdd.className = "addBtn";
+            obj.divEl.appendChild(obj.btnAdd);*/
             
             obj.btnRemove = document.createElement("button");
-            obj.btnRemove.innerHTML = '<span class="glyphicon glyphicon-minus-sign"></span>';
+            obj.btnRemove.innerHTML = '<span class="glyphicon glyphicon-minus"></span>';
             obj.btnRemove.className = "removeBtn";
             
             obj.btnDelete = document.createElement("button");
-            obj.btnDelete.innerHTML = '<span class="glyphicon glyphicon-remove-sign"></span>';
+            obj.btnDelete.innerHTML = '<span class="glyphicon glyphicon-remove"></span>';
             obj.btnDelete.className = "deleteBtn";
             
-            obj.divEl.appendChild(obj.btnAdd);
             obj.divEl.appendChild(obj.btnRemove);
             obj.divEl.appendChild(obj.btnDelete);
             
@@ -58,6 +58,7 @@ function OrderList(aParent) {
         obj.itemCost = anItemData.item_cost;
         obj.orderSum = anItemData.item_cost;
         obj.parent = self;
+        obj.stop = false;
             
         obj.increase = function() {
             obj.orderSum = ++obj.orderQuantity * obj.itemCost;
@@ -83,27 +84,20 @@ function OrderList(aParent) {
         };
         
         if (self.browser) {
-            obj.btnAdd.onclick = obj.increase;
-            obj.btnRemove.onclick = obj.decrease;
+           // obj.btnAdd.onclick = obj.increase;
+            obj.divEl.onclick = function(){
+                if (!obj.stop) obj.increase();
+                else obj.stop = false;
+            };
+            obj.btnRemove.onclick = function(){
+                obj.decrease();
+                obj.stop = true;
+            };
             obj.btnDelete.onclick = obj.delete;
         }
         
         obj.show();
         return obj;
-    }
-    
-    if (self.browser) {
-        var dockElement = document.createElement('div');
-        document.getElementById("actionPanel").appendChild(dockElement);
-        dockElement.className = 'baristaOrder';
-        dockElement.innerHTML = 
-"<h3>Заказ</h3>\
-<div id='orderItems'></div><div id='orderDetails'>\n\
-<div id='orderSum'>Итого: 0 рублей</div><button id='completeOrder'>Пробить чек</button>\n\
-<button id='cancelOrder'>Сбросить</button></div>";
-        //self.showOnPanel('orderDetails');
-    } else {
-        self.showOnPanel(aParent.pnlLeft);
     }
     
     self.calculateOrder = function() {
@@ -149,7 +143,35 @@ function OrderList(aParent) {
             }
         }
         self.tradeSession.processOrder(anOrderDetails);
+        self.deleteOrder();
     };
+    
+    if (self.browser) {
+        var dockElement = document.createElement('div');
+        document.getElementById("actionPanel").appendChild(dockElement);
+        dockElement.className = 'baristaOrder';
+        
+        var newHTMLElement = document.createElement('div');
+        newHTMLElement.innerHTML = 
+"<h3>Заказ</h3>\
+<div id='orderItems'></div><div id='orderDetails'>\n\
+<div id='orderSum'>Итого: 0 рублей</div>";
+        dockElement.appendChild(newHTMLElement);
+
+        var newHTMLElement = document.createElement('button');
+        newHTMLElement.innerHTML = 'Отменить';
+        newHTMLElement.className = 'btnCancel';
+        newHTMLElement.onclick = self.deleteOrder;
+        dockElement.appendChild(newHTMLElement);
+        
+        newHTMLElement = document.createElement('button');
+        newHTMLElement.innerHTML = 'Пробить чек';
+        newHTMLElement.className = 'btnOk';
+        dockElement.appendChild(newHTMLElement);
+        newHTMLElement.onclick = self.acceptOrder;
+    } else {
+        self.showOnPanel(aParent.pnlLeft);
+    }
 
     function btnOkActionPerformed(evt) {//GEN-FIRST:event_btnOkActionPerformed
         self.acceptOrder();
