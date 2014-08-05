@@ -13,5 +13,4 @@
   <relation leftEntityId="-1" leftEntityParameterName="show_only_present" rightEntityId="140671973955379" rightEntityParameterName="show_only_present"/>
   <relation leftEntityId="-1" leftEntityParameterName="actual_date" rightEntityId="140671973955379" rightEntityParameterName="actual_date"/>
   <relation leftEntityId="-1" leftEntityParameterName="trade_point_id" rightEntityId="140671973955379" rightEntityParameterName="trade_point_id"/>
-  <referenceRelation leftEntityFieldName="r_parent" leftEntityId="140671973955379" rightEntityFieldName="r_id" rightEntityId="140671973955379"/>
 </datamodel>

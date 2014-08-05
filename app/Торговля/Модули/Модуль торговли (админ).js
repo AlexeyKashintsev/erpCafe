@@ -31,7 +31,7 @@ function TradeAdminModule() {
     }
     
     function addNewItemToTradePointOrFranchazi(anItem, aTradePoint, aFranchazi, aCost) {
-        if (aFranchazi) {
+        if (aFranchazi && !aTradePoint) {
             franchazi = aFranchazi;
             model.listTradePoints.params.franchazi_id = franchazi;
             model.listTradePoints.requery();
@@ -49,12 +49,12 @@ function TradeAdminModule() {
     function addItemContentsToWH(anItem, aTradePoint){
         model.qContents.params.trade_item_id = anItem;
         model.qContents.requery();
-        model.qAddComposeToWH.params.wh_id = aTradePoint;
-        model.qAddComposeToWH.requery();
+        model.queryItemsInWH.params.warehouse_id = aTradePoint;
+        model.queryItemsInWH.requery();
         model.qContents.beforeFirst();
         while (model.qContents.next()){
-            if (!model.qAddComposeToWH.findById(model.qContents.wh_item)){
-                model.qAddComposeToWH.push({
+            if (model.queryItemsInWH.find(model.queryItemsInWH.schema.item_id, model.qContents.wh_item).length === 0){
+                model.queryItemsInWH.push({
                     warehouse : aTradePoint,
                     item_id : model.qContents.cursor.wh_item
                 });
