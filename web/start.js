@@ -5,8 +5,8 @@ if (!platypus) {
 	var platypus = {};
 }
 platypus.ready = function() {
-	require(['AdminStartForm'], function(){
-		var f = new AdminStartForm();
+	require(['BaristaDesktop'], function(){
+		var f = new BaristaDesktop();
 		f.show();
 	});
 };

@@ -6,10 +6,10 @@
 function AdminStartForm() {
     var self = this, model = this.model, form = this;
 
-    self.session = new ServerModule('UserSession');
+    self.session = units ? units.userSession : new ServerModule('UserSession');
     var guiUtils = new guiModule();
+    self.actionListDisplay = null;
     var usersView = null;
-    var userRole = null;
     var workShop = null;
     
     //Определяем как запущена программа
@@ -17,48 +17,40 @@ function AdminStartForm() {
     try {
         (function(){
             self.browser = false;
-            userRole = self.session.login();
+            self.session.login();
             self.setFranchazi(self.session.getFranchazi());
         }).invokeBackground();
     } catch (e) {
         Logger.info('browser');
         self.browser = true;
-        self.session.login(function(anUserRole){
-            userRole = anUserRole;
-            self.session.getFranchazi(function(anFranchaziId){
-                self.setFranchazi(anFranchaziId);
-            });
+        self.session.getFranchazi(function(anFranchaziId){
+            self.setFranchazi(anFranchaziId);
         });
     }
     
     self.setFranchazi = function(aFaranchazi) {
-        if (!aFaranchazi)
-            self.close();
-       /* try {!!!!!!!!! Так не работает !!!!!!!!!!!! Косяк !!!!! Автоматическое разрешение зависимостей косячит
-            requery('FranchaziUsers', function(){
-                //usersView = new FranchaziUsers();
-            });
-        } catch (e) {
-            Logger.severe(self.session.msg[MSG_ERROR_NOT_UNDER_BROWSER]);
-        }*/
-        workShop = new FranchaziWorkShop();
+        if (!aFaranchazi) logout();
+        model.params.franchaziId = aFaranchazi;
+        
+     /*   workShop = new FranchaziWorkShop();
         workShop.setFranchaziId(aFaranchazi);
         
-        if (!self.browser) {
-            usersView = new FranchaziUsers();
-            usersView.setFranchaziId(aFaranchazi);
-        }
+        usersView = new FranchaziUsers();
+        usersView.setFranchaziId(aFaranchazi);*/
+    };
+    
+    self.getFranchazi = function() {
+        return model.params.franchaziId;
     };
     
 self.showFormAsInternal = function(aForm) {
     if(!guiUtils.showOpenedForm(aForm, form.desktop)){
         var frameRunner = aForm;
-       // var lenCookie = guiUtils.beginLengthyOperation(this);
         try{
             frameRunner.desktop = form.desktop;
             frameRunner.showInternalFrame(form.desktop);
         }finally{
-      //      lenCookie.end();
+
         }
         frameRunner.toFront();
     }
@@ -71,4 +63,36 @@ self.showFormAsInternal = function(aForm) {
     function button2ActionPerformed(evt) {//GEN-FIRST:event_button2ActionPerformed
         self.showFormAsInternal(workShop);
     }//GEN-LAST:event_button2ActionPerformed
+    
+    self.actionList = {
+        common   :   {
+            display     :   "Общая информация",
+            dispForm    :   ""
+        },
+        users   :   {
+            display     :   "Пользователи",
+            dispForm    :   "FranchaziUsers"
+        },
+        warehouse   :   {
+            display     :   "Склад",
+            dispForm    :   "SelectItemsInWH",
+            inner   :   {
+                display     :   "Типы товаров",
+                dispForm    :   "ItemTypesForm"
+            }
+        },
+        tradePositions  :   {
+            display     :   "Торговые позиции",
+            dispForm    :   "ItemsForTrade"
+        },
+        tradePoints :   {
+            display     :   "Торговые точки",
+            dispForm    :   "FranchaziWorkShop"
+        }
+    };
+    
+    if (self.browser) {
+        self.actionListDisplay = new common.ActionList(self.actionList, document.getElementById("actionPanel"));
+        common.addTopRightControl("Выход", "log-out", logout);
+    }
 }

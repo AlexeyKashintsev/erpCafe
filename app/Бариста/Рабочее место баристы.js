@@ -112,7 +112,8 @@ function BaristaDesktop() {
     }//GEN-LAST:event_getSessionsOnRequeried
 
     function btnSessionCloseActionPerformed(evt) {//GEN-FIRST:event_btnSessionCloseActionPerformed
-        self.whSession.closeSession(logout);
+        self.whSession.closeSession();
+        logout();
     }//GEN-LAST:event_btnSessionCloseActionPerformed
 
     function btnWarehouseAddActionPerformed(evt) {//GEN-FIRST:event_btnWarehouseAddActionPerformed
@@ -122,4 +123,9 @@ function BaristaDesktop() {
         }
         whAdd.showModal();
     }//GEN-LAST:event_btnWarehouseAddActionPerformed
+
+    if (self.browser) {
+        common.addTopRightControl("Закрыть смену", "log-out", btnSessionCloseActionPerformed);
+        common.addTopRightControl("Прием товара", "plus-sign", btnWarehouseAddActionPerformed);
+    }
 }

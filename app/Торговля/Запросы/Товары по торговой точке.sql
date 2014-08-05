@@ -3,6 +3,8 @@
  * @author Alexey
  * @name tradeItemsByTP
  * @manual
+ * @public
+ * @rolesallowed admin franchazi
  */ 
 Select * 
 From trade_items_cost t1

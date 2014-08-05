@@ -2,7 +2,10 @@
  *
  * @author Alexey
  * @name qUserAddRole
+ * @public
+ * @rolesAllowed franchazi admin
  * @manual
+ TODO non public
  */ 
 Select * 
 from mtd_groups t

@@ -2,6 +2,8 @@
  *
  * @author mike
  * @name qTradeItemTypes
+ * @public
+ * @rolesallowed admin franchazi
  */ 
 select * from
 (Select *

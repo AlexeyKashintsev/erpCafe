@@ -3,6 +3,8 @@
  * @manual 
  * @author mike
  * @name createTradePointUser
+ * @public
+ * @rolesAllowed admin franchazi
  */ 
 Select * 
 From org_tp_users t1

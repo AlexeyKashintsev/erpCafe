@@ -15,31 +15,6 @@
   <relation leftEntityId="-1" leftEntityParameterName="sort_by_type" rightEntityId="-1" rightEntityParameterName="show_only_present"/>
   <relation leftEntityId="-1" leftEntityParameterName="sort_by_type" rightEntityId="-1" rightEntityParameterName="show_only_present"/>
   <relation leftEntityId="-1" leftEntityParameterName="sort_by_type" rightEntityId="-1" rightEntityParameterName="show_only_present"/>
-  <relation leftEntityId="-1" leftEntityParameterName="sort_by_type" rightEntityId="-1" rightEntityParameterName="show_only_present"/>
-  <relation leftEntityId="-1" leftEntityParameterName="trade_point_id" rightEntityFieldName="trade_point_id" rightEntityId="140680916431440"/>
-  <relation leftEntityId="-1" leftEntityParameterName="sort_by_type" rightEntityId="-1" rightEntityParameterName="show_only_present"/>
-  <relation leftEntityId="-1" leftEntityParameterName="sort_by_type" rightEntityId="-1" rightEntityParameterName="show_only_present"/>
-  <relation leftEntityId="-1" leftEntityParameterName="sort_by_type" rightEntityId="-1" rightEntityParameterName="show_only_present"/>
-  <relation leftEntityId="-1" leftEntityParameterName="sort_by_type" rightEntityId="-1" rightEntityParameterName="show_only_present"/>
-  <relation leftEntityId="-1" leftEntityParameterName="sort_by_type" rightEntityId="-1" rightEntityParameterName="show_only_present"/>
-  <relation leftEntityId="-1" leftEntityParameterName="sort_by_type" rightEntityId="-1" rightEntityParameterName="show_only_present"/>
-  <relation leftEntityId="-1" leftEntityParameterName="sort_by_type" rightEntityId="-1" rightEntityParameterName="show_only_present"/>
-  <relation leftEntityId="-1" leftEntityParameterName="sort_by_type" rightEntityId="-1" rightEntityParameterName="show_only_present"/>
-  <relation leftEntityId="-1" leftEntityParameterName="sort_by_type" rightEntityId="-1" rightEntityParameterName="show_only_present"/>
-  <relation leftEntityId="-1" leftEntityParameterName="sort_by_type" rightEntityId="-1" rightEntityParameterName="show_only_present"/>
-  <relation leftEntityId="-1" leftEntityParameterName="sort_by_type" rightEntityId="-1" rightEntityParameterName="show_only_present"/>
-  <relation leftEntityId="-1" leftEntityParameterName="sort_by_type" rightEntityId="-1" rightEntityParameterName="show_only_present"/>
-  <relation leftEntityId="-1" leftEntityParameterName="sort_by_type" rightEntityId="-1" rightEntityParameterName="show_only_present"/>
-  <relation leftEntityId="-1" leftEntityParameterName="sort_by_type" rightEntityId="-1" rightEntityParameterName="show_only_present"/>
-  <relation leftEntityId="-1" leftEntityParameterName="sort_by_type" rightEntityId="-1" rightEntityParameterName="show_only_present"/>
-  <relation leftEntityId="-1" leftEntityParameterName="sort_by_type" rightEntityId="-1" rightEntityParameterName="show_only_present"/>
-  <relation leftEntityId="-1" leftEntityParameterName="sort_by_type" rightEntityId="-1" rightEntityParameterName="show_only_present"/>
-  <relation leftEntityId="-1" leftEntityParameterName="sort_by_type" rightEntityId="-1" rightEntityParameterName="show_only_present"/>
-  <relation leftEntityId="-1" leftEntityParameterName="sort_by_type" rightEntityId="-1" rightEntityParameterName="show_only_present"/>
-  <relation leftEntityId="-1" leftEntityParameterName="sort_by_type" rightEntityId="-1" rightEntityParameterName="show_only_present"/>
-  <relation leftEntityId="-1" leftEntityParameterName="sort_by_type" rightEntityId="-1" rightEntityParameterName="show_only_present"/>
-  <relation leftEntityId="-1" leftEntityParameterName="sort_by_type" rightEntityId="-1" rightEntityParameterName="show_only_present"/>
-  <relation leftEntityId="-1" leftEntityParameterName="sort_by_type" rightEntityId="-1" rightEntityParameterName="show_only_present"/>
   <relation leftEntityFieldName="franchazi_id" leftEntityId="140680916431440" rightEntityId="-1" rightEntityParameterName="franchazi_id"/>
   <relation leftEntityId="-1" leftEntityParameterName="sort_by_type" rightEntityId="-1" rightEntityParameterName="show_only_present"/>
   <relation leftEntityId="-1" leftEntityParameterName="sort_by_type" rightEntityId="-1" rightEntityParameterName="show_only_present"/>
@@ -47,6 +22,10 @@
   <relation leftEntityId="-1" leftEntityParameterName="sort_by_type" rightEntityId="-1" rightEntityParameterName="show_only_present"/>
   <relation leftEntityId="-1" leftEntityParameterName="sort_by_type" rightEntityId="-1" rightEntityParameterName="show_only_present"/>
   <relation leftEntityId="-1" leftEntityParameterName="sort_by_type" rightEntityId="-1" rightEntityParameterName="show_only_present"/>
+  <relation leftEntityId="-1" leftEntityParameterName="sort_by_type" rightEntityId="-1" rightEntityParameterName="show_only_present"/>
+  <relation leftEntityId="-1" leftEntityParameterName="sort_by_type" rightEntityId="-1" rightEntityParameterName="show_only_present"/>
+  <relation leftEntityId="-1" leftEntityParameterName="sort_by_type" rightEntityId="-1" rightEntityParameterName="show_only_present"/>
+  <relation leftEntityId="-1" leftEntityParameterName="trade_point_id" rightEntityFieldName="trade_point_id" rightEntityId="140680916431440"/>
   <relation leftEntityId="-1" leftEntityParameterName="sort_by_type" rightEntityId="-1" rightEntityParameterName="show_only_present"/>
   <relation leftEntityId="-1" leftEntityParameterName="sort_by_type" rightEntityId="-1" rightEntityParameterName="show_only_present"/>
   <relation leftEntityId="-1" leftEntityParameterName="sort_by_type" rightEntityId="-1" rightEntityParameterName="show_only_present"/>
@@ -123,6 +102,29 @@
   <relation leftEntityId="-1" leftEntityParameterName="sort_by_type" rightEntityId="-1" rightEntityParameterName="show_only_present"/>
   <relation leftEntityId="-1" leftEntityParameterName="sort_by_type" rightEntityId="-1" rightEntityParameterName="show_only_present"/>
   <relation leftEntityFieldName="trade_items_id" leftEntityId="140680916431441" rightEntityFieldName="item_id" rightEntityId="140680916431440"/>
+  <relation leftEntityId="-1" leftEntityParameterName="sort_by_type" rightEntityId="-1" rightEntityParameterName="show_only_present"/>
+  <relation leftEntityId="-1" leftEntityParameterName="sort_by_type" rightEntityId="-1" rightEntityParameterName="show_only_present"/>
+  <relation leftEntityId="-1" leftEntityParameterName="sort_by_type" rightEntityId="-1" rightEntityParameterName="show_only_present"/>
+  <relation leftEntityId="-1" leftEntityParameterName="sort_by_type" rightEntityId="-1" rightEntityParameterName="show_only_present"/>
+  <relation leftEntityId="-1" leftEntityParameterName="sort_by_type" rightEntityId="-1" rightEntityParameterName="show_only_present"/>
+  <relation leftEntityId="-1" leftEntityParameterName="sort_by_type" rightEntityId="-1" rightEntityParameterName="show_only_present"/>
+  <relation leftEntityId="-1" leftEntityParameterName="sort_by_type" rightEntityId="-1" rightEntityParameterName="show_only_present"/>
+  <relation leftEntityId="-1" leftEntityParameterName="sort_by_type" rightEntityId="-1" rightEntityParameterName="show_only_present"/>
+  <relation leftEntityId="-1" leftEntityParameterName="sort_by_type" rightEntityId="-1" rightEntityParameterName="show_only_present"/>
+  <relation leftEntityId="-1" leftEntityParameterName="actual_date" rightEntityFieldName="start_date" rightEntityId="140680916431440"/>
+  <relation leftEntityId="-1" leftEntityParameterName="sort_by_type" rightEntityId="-1" rightEntityParameterName="show_only_present"/>
+  <relation leftEntityId="-1" leftEntityParameterName="sort_by_type" rightEntityId="-1" rightEntityParameterName="show_only_present"/>
+  <relation leftEntityId="-1" leftEntityParameterName="sort_by_type" rightEntityId="-1" rightEntityParameterName="show_only_present"/>
+  <relation leftEntityId="-1" leftEntityParameterName="sort_by_type" rightEntityId="-1" rightEntityParameterName="show_only_present"/>
+  <relation leftEntityId="-1" leftEntityParameterName="actual_date" rightEntityFieldName="end_date" rightEntityId="140680916431440"/>
+  <relation leftEntityId="-1" leftEntityParameterName="sort_by_type" rightEntityId="-1" rightEntityParameterName="show_only_present"/>
+  <relation leftEntityId="-1" leftEntityParameterName="sort_by_type" rightEntityId="-1" rightEntityParameterName="show_only_present"/>
+  <relation leftEntityId="-1" leftEntityParameterName="sort_by_type" rightEntityId="-1" rightEntityParameterName="show_only_present"/>
+  <relation leftEntityId="-1" leftEntityParameterName="sort_by_type" rightEntityId="-1" rightEntityParameterName="show_only_present"/>
+  <relation leftEntityId="-1" leftEntityParameterName="sort_by_type" rightEntityId="-1" rightEntityParameterName="show_only_present"/>
+  <relation leftEntityId="-1" leftEntityParameterName="sort_by_type" rightEntityId="-1" rightEntityParameterName="show_only_present"/>
+  <relation leftEntityId="-1" leftEntityParameterName="sort_by_type" rightEntityId="-1" rightEntityParameterName="show_only_present"/>
+  <relation leftEntityId="-1" leftEntityParameterName="sort_by_type" rightEntityId="-1" rightEntityParameterName="show_only_present"/>
   <relation leftEntityId="-1" leftEntityParameterName="sort_by_type" rightEntityId="-1" rightEntityParameterName="show_only_present"/>
   <relation leftEntityId="-1" leftEntityParameterName="sort_by_type" rightEntityId="-1" rightEntityParameterName="show_only_present"/>
   <relation leftEntityId="-1" leftEntityParameterName="sort_by_type" rightEntityId="-1" rightEntityParameterName="show_only_present"/>

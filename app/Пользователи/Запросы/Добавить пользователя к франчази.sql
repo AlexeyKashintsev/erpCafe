@@ -2,6 +2,8 @@
  *
  * @author Alexey
  * @name createFrancizerUser
+ * @public
+ * @rolesAllowed franchazi admin
  */ 
 Select * 
 From org_franc_users t1

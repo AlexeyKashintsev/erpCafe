@@ -2,6 +2,8 @@
  *
  * @author Alexey
  * @name TradeItemCost
+ * @public
+ * @rolesallowed admin franchazi
  */ 
 Select *
 , case when t1.franchazi_id is not null and t1.trade_point_id is not null then 3

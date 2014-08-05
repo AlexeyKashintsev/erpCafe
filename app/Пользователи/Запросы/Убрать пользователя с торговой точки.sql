@@ -2,6 +2,8 @@
  * 
  * @manual 
  * @author mike
+ * @public
+ * @rolesAllowed admin franchazi
  * @name deleteUserFromTradePoint
  */
 Delete

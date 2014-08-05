@@ -3,6 +3,7 @@
  * @author Alexey
  * @module
  * @public
+ * @stateless
  */ 
 function testModule() {
     var self = this, model = this.model;
@@ -10,9 +11,11 @@ function testModule() {
     
     self.setState = function(aValue) {
         stateVal = aValue;
+        Logger.info(aValue);
     };
     
     self.getState = function() {
-        return self.principal.name;
+        Logger.info(stateVal);
+        return stateVal;
     };
 }

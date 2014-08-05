@@ -2,6 +2,8 @@
  *
  * @author mike
  * @name tradePointsBarist
+ * @public
+ * @rolesAllowed admin franchazi
  */ 
 Select * ,
 case 
