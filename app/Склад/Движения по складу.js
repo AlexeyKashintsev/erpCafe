@@ -9,15 +9,10 @@ function WhMovements() {
 
     var self = this, model = this.model, form = this;
     
-    
-    
-    
-    
-    
     self.setTradePoint = function(aTradePoint) {
         model.params.trade_point = aTradePoint;
     };
-    
+    //TODO Удалить перед использованием
     self.setTradePoint(15);
 
 function btnReqActionPerformed(evt) {//GEN-FIRST:event_btnReqActionPerformed
