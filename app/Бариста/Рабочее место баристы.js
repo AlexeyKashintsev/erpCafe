@@ -88,14 +88,14 @@ function BaristaDesktop() {
     }
     
     function addItemSE(anItemData) {
-        requery(['ProductItem'],function(){
+       //requery(['ProductItem'],function(){
             var itemForm = new ProductItem(self);
             var itemPanel = new AnchorsPane();
             itemForm.data = anItemData;
             self.tradeItems[model.tradeItemsByTradePointWithCost.item_id] = itemForm;
             itemForm.showOnPanel(itemPanel);
             form.pnlRigth.add(itemPanel);
-        });
+        //});
     }
     
     function addItemBrowser(aData) {
