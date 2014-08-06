@@ -4,9 +4,9 @@
     <parameter description="" name="begin_date" nullable="true" parameterMode="1" precision="0" scale="0" selectionForm="null" signed="true" size="100" type="91" typeName="DATE"/>
     <parameter description="" name="end_date" nullable="true" parameterMode="1" precision="0" scale="0" selectionForm="null" signed="true" size="100" type="91" typeName="DATE"/>
   </parameters>
-  <parametersEntity entityHeight="200" entityIconified="false" entityLocationX="12" entityLocationY="12" entityWidth="150"/>
-  <entity Name="countItems" Title="" entityHeight="200" entityIconified="false" entityId="140732323580032" entityLocationX="412" entityLocationY="12" entityWidth="150" queryId="countItems" tableName="" tableSchemaName=""/>
-  <entity Name="qSessionOnTradePoint" Title="" entityHeight="200" entityIconified="false" entityId="140732418814519" entityLocationX="189" entityLocationY="11" entityWidth="150" queryId="qSessionOnTradePoint" tableName="" tableSchemaName=""/>
+  <parametersEntity entityHeight="200" entityIconified="false" entityLocationX="12" entityLocationY="12" entityWidth="150" onAfterChange="paramsOnChanged"/>
+  <entity Name="countItems" Title="" entityHeight="200" entityIconified="false" entityId="140732323580032" entityLocationX="440" entityLocationY="17" entityWidth="150" queryId="countItems" tableName="" tableSchemaName=""/>
+  <entity Name="qSessionOnTradePoint" Title="" entityHeight="200" entityIconified="false" entityId="140732418814519" entityLocationX="231" entityLocationY="12" entityWidth="150" queryId="qSessionOnTradePoint" tableName="" tableSchemaName=""/>
   <relation leftEntityFieldName="org_session_id" leftEntityId="140732418814519" rightEntityId="140732323580032" rightEntityParameterName="session_id"/>
   <relation leftEntityId="-1" leftEntityParameterName="trade_point" rightEntityId="140732418814519" rightEntityParameterName="trade_point_id"/>
   <relation leftEntityId="-1" leftEntityParameterName="end_date" rightEntityId="140732418814519" rightEntityParameterName="end_date"/>

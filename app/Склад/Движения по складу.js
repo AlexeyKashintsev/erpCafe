@@ -10,6 +10,10 @@ function WhMovements() {
     var self = this, model = this.model, form = this;
     
     
+    
+    
+    
+    
     self.setTradePoint = function(aTradePoint) {
         model.params.trade_point = aTradePoint;
     };
@@ -27,7 +31,9 @@ function btnSaveActionPerformed(evt) {//GEN-FIRST:event_btnSaveActionPerformed
 }//GEN-LAST:event_btnSaveActionPerformed
 
 function formWindowOpened(evt) {//GEN-FIRST:event_formWindowOpened
-
+    form.modelDate.value = new Date(1);
+    form.modelDate1.value = new Date();
+    model.qSessionOnTradePoint.requery();
 }//GEN-LAST:event_formWindowOpened
 
 function formWindowClosing(evt) {//GEN-FIRST:event_formWindowClosing
@@ -50,4 +56,8 @@ function formWindowClosing(evt) {//GEN-FIRST:event_formWindowClosing
 
     function btnSelectActionPerformed(evt) {//GEN-FIRST:event_btnSelectActionPerformed
     }//GEN-LAST:event_btnSelectActionPerformed
+
+    function paramsOnChanged(evt) {//GEN-FIRST:event_paramsOnChanged
+        model.qSessionOnTradePoint.requery();        // TODO Добавьте здесь свой код:
+    }//GEN-LAST:event_paramsOnChanged
 }

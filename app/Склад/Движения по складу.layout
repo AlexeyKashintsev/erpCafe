@@ -6,7 +6,7 @@
   <widget actionPerformed="btnDelActionPerformed" focusable="false" horizontalTextPosition="0" icon="icons/22x22/actions/list-remove.png" name="btnDel" parent="toolBar" prefHeight="34px" prefWidth="34px" toolTipText="Удалить" type="ButtonDesignInfo" verticalTextPosition="3"/>
   <widget actionPerformed="btnReqActionPerformed" focusable="false" horizontalTextPosition="0" icon="icons/22x22/actions/new-view-refresh.png" name="btnReq" parent="toolBar" prefHeight="34px" prefWidth="34px" toolTipText="Обновить" type="ButtonDesignInfo" verticalTextPosition="3"/>
   <widget actionPerformed="btnSaveActionPerformed" focusable="false" horizontalTextPosition="0" icon="icons/22x22/actions/document-save.png" name="btnSave" parent="toolBar" prefHeight="34px" prefWidth="34px" toolTipText="Сохранить" type="ButtonDesignInfo" verticalTextPosition="3"/>
-  <widget name="modelDate" parent="toolBar" prefHeight="27px" prefWidth="100px" type="DbDateDesignInfo">
+  <widget emptyText="Дата начала" name="modelDate" parent="toolBar" prefHeight="27px" prefWidth="100px" type="DbDateDesignInfo">
     <datamodelElement entityId="-1" fieldName="begin_date"/>
   </widget>
   <widget name="modelDate1" parent="toolBar" prefHeight="27px" prefWidth="100px" type="DbDateDesignInfo">
