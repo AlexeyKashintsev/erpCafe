@@ -10,6 +10,6 @@
   <entity Name="listTradePoints" Title="" entityHeight="200" entityIconified="false" entityId="140722745993322" entityLocationX="439" entityLocationY="266" entityWidth="150" queryId="listTradePoints" tableName="" tableSchemaName=""/>
   <entity Name="qTIbyTP" Title="" entityHeight="245" entityIconified="false" entityId="140672633656010" entityLocationX="252" entityLocationY="18" entityWidth="150" queryId="tradeItemsByTP" tableName="" tableSchemaName=""/>
   <entity Name="qContents" Title="" entityHeight="200" entityIconified="false" entityId="140722325021382" entityLocationX="650" entityLocationY="9" entityWidth="150" queryId="qContents" tableName="" tableSchemaName=""/>
-  <referenceRelation leftEntityFieldName="trade_point_id" leftEntityId="140672633656010" rightEntityFieldName="org_trade_point_id" rightEntityId="140722745993322"/>
   <referenceRelation leftEntityFieldName="warehouse" leftEntityId="140722330417523" rightEntityFieldName="org_trade_point_id" rightEntityId="140722745993322"/>
+  <referenceRelation leftEntityFieldName="trade_point_id" leftEntityId="140672633656010" rightEntityFieldName="org_trade_point_id" rightEntityId="140722745993322"/>
 </datamodel>
