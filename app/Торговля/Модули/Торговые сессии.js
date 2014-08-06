@@ -40,9 +40,8 @@ function TradeSessions() {
         if (!model.params.session_id){
             model.params.session_id = getCurrentSession();
         }
-        if (!model.params.session_id){
-            //alert("Сессия не открыта");
-        } else {
+        if (model.params.session_id){
+            
             model.qTradeOperationBySession.push({
                 operation_sum    : anOrderDetails.orderSum,
                 operation_date   : new Date(),
@@ -50,6 +49,7 @@ function TradeSessions() {
                 operation_type   : null //TODO Поменять тип операции
             });
             
+            var anWH_items = [];
             model.qTradeOperationsWithItems.params.cash_box_operation_id = model.qTradeOperationBySession.trade_cash_box_operation_id;
             for (var i in anOrderDetails.orderItems) {
                 if (anOrderDetails.orderItems[i].itemId && anOrderDetails.orderItems[i].quantity){
@@ -58,17 +58,27 @@ function TradeSessions() {
                         trade_item : anOrderDetails.orderItems[i].itemId,
                         items_quantity : anOrderDetails.orderItems[i].quantity
                     });
+                    model.qContents.params.trade_item_id = anOrderDetails.orderItems[i].itemId;
+                    model.qContents.execute();
+                    model.qContents.beforeFirst();
+                    while (model.qContents.next()){
+                        if (anWH_items[model.qContents.cursor.wh_item]){
+                            anWH_items[model.qContents.cursor.wh_item] += model.qContents.cursor.usage_quantity * anOrderDetails.orderItems[i].quantity;
+                        } else {
+                            anWH_items[model.qContents.cursor.wh_item] = model.qContents.cursor.usage_quantity * anOrderDetails.orderItems[i].quantity;
+                        }
+                    }
                 } else {
-                    alert('Ничего не выбрано');
+                    //alert('Ничего не выбрано');
                 }
             }
             
             //TODO посчитать расходники, а не торговые позиции
-            //if (whSession.whMovement(anOrderDetails.orderItems, whSession.WH_PRODUCE_ITEMS)){
-                
-            /*} else {
+            
+            if (whSession.whMovement(anWH_items, whSession.WH_PRODUCE_ITEMS)){
+            } else {
                 ep.addEvent('errorAddTradeOperation', anOrderDetails);
-            }*/
+            }
         }
         
         

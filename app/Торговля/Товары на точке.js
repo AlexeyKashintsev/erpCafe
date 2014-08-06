@@ -30,6 +30,9 @@ function TradeItemsOnTradePoint() {
     self.setTradePoint = function(aTradePoint) {
         model.params.trade_point_id = aTradePoint;
     };
+    
+    //self.setFranchazi(1);
+    //self.setTradePoint(15);
 
 function btnReqActionPerformed(evt) {//GEN-FIRST:event_btnReqActionPerformed
         if (self.model.modified && confirm('Сохранить изменения?')) {

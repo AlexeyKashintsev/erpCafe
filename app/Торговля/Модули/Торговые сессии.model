@@ -5,8 +5,9 @@
   <parametersEntity entityHeight="200" entityIconified="false" entityLocationX="11" entityLocationY="18" entityWidth="150"/>
   <entity Name="qTradeOperationsWithItems" Title="" entityHeight="200" entityIconified="false" entityId="140715489889102" entityLocationX="60" entityLocationY="269" entityWidth="286" queryId="qTradeOperationsWithItems" tableName="" tableSchemaName=""/>
   <entity Name="qTradeSessionBalance" Title="" entityHeight="200" entityIconified="false" entityId="140707491747447" entityLocationX="616" entityLocationY="257" entityWidth="310" queryId="qTradeSessionBalance" tableName="" tableSchemaName=""/>
-  <entity Name="qOpenedSession" Title="" entityHeight="200" entityIconified="false" entityId="140715165500248" entityLocationX="251" entityLocationY="50" entityWidth="150" queryId="qOpenedSession" tableName="" tableSchemaName=""/>
+  <entity Name="qContents" Title="" entityHeight="200" entityIconified="false" entityId="140730689615726" entityLocationX="827" entityLocationY="15" entityWidth="150" queryId="qContents" tableName="" tableSchemaName=""/>
   <entity Name="qTradeOperationBySession" Title="" entityHeight="200" entityIconified="false" entityId="140714025677776" entityLocationX="527" entityLocationY="11" entityWidth="266" queryId="qTradeOperationBySession" tableName="" tableSchemaName=""/>
-  <referenceRelation leftEntityFieldName="session_id" leftEntityId="140714025677776" rightEntityFieldName="org_session_id" rightEntityId="140715165500248"/>
+  <entity Name="qOpenedSession" Title="" entityHeight="200" entityIconified="false" entityId="140715165500248" entityLocationX="251" entityLocationY="50" entityWidth="150" queryId="qOpenedSession" tableName="" tableSchemaName=""/>
   <referenceRelation leftEntityFieldName="session_id" leftEntityId="140707491747447" rightEntityFieldName="org_session_id" rightEntityId="140715165500248"/>
+  <referenceRelation leftEntityFieldName="session_id" leftEntityId="140714025677776" rightEntityFieldName="org_session_id" rightEntityId="140715165500248"/>
 </datamodel>
