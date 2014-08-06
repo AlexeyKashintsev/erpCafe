@@ -2,7 +2,6 @@
  * 
  * @author Alexey
  * @module
- * @resident
  * @public
  */ 
 function TradeSessions() {
@@ -42,7 +41,7 @@ function TradeSessions() {
             model.params.session_id = getCurrentSession();
         }
         if (!model.params.session_id){
-            alert("Сессия не открыта");
+            //alert("Сессия не открыта");
         } else {
             model.qTradeOperationBySession.push({
                 operation_sum    : anOrderDetails.orderSum,
@@ -64,11 +63,12 @@ function TradeSessions() {
                 }
             }
             
-            if (whSession.whMovement(anOrderDetails.orderItems, whSession.WH_PRODUCE_ITEMS)){
+            //TODO посчитать расходники, а не торговые позиции
+            //if (whSession.whMovement(anOrderDetails.orderItems, whSession.WH_PRODUCE_ITEMS)){
                 
-            } else {
+            /*} else {
                 ep.addEvent('errorAddTradeOperation', anOrderDetails);
-            }
+            }*/
         }
         
         

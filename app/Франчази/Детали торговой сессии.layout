@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?><layout defaultCloseOperation="2" name="Form" prefHeight="109px" prefWidth="649px">
+  <widget editable="false" name="modelDate1" parent="Form" prefHeight="28px" prefWidth="168px" type="DbDateDesignInfo">
+    <constraints height="28px" left="120px" top="72px" type="MarginConstraintsDesignInfo" width="168px"/>
+  </widget>
+  <widget name="label11" parent="Form" prefHeight="16px" prefWidth="108px" text="Время закрытия" type="LabelDesignInfo">
+    <constraints height="16px" left="12px" top="78px" type="MarginConstraintsDesignInfo" width="108px"/>
+  </widget>
+  <widget name="label" parent="Form" prefHeight="16px" prefWidth="108px" text="Пользователь" type="LabelDesignInfo">
+    <constraints height="16px" left="12px" top="18px" type="MarginConstraintsDesignInfo" width="108px"/>
+  </widget>
+  <widget name="modelFormattedField" parent="Form" prefHeight="28px" prefWidth="168px" type="DbLabelDesignInfo">
+    <datamodelElement entityId="140725640156171" fieldName="user_name"/>
+    <constraints height="28px" left="120px" top="12px" type="MarginConstraintsDesignInfo" width="168px"/>
+  </widget>
+  <widget name="label1" parent="Form" prefHeight="16px" prefWidth="108px" text="Время открытия" type="LabelDesignInfo">
+    <constraints height="16px" left="12px" top="54px" type="MarginConstraintsDesignInfo" width="108px"/>
+  </widget>
+  <widget editable="false" name="modelDate" parent="Form" prefHeight="28px" prefWidth="168px" type="DbDateDesignInfo">
+    <constraints height="28px" left="120px" top="48px" type="MarginConstraintsDesignInfo" width="168px"/>
+  </widget>
+  <widget name="label2" parent="Form" prefHeight="16px" prefWidth="72px" text="Прибыль" type="LabelDesignInfo">
+    <constraints height="16px" left="288px" top="18px" type="MarginConstraintsDesignInfo" width="72px"/>
+  </widget>
+  <layout type="MarginLayoutDesignInfo"/>
+</layout>

@@ -5,7 +5,6 @@
  * По одной торговой точке может быть открыта только одна сессия
  * @author mike 
  * @module
- * @resident
  * @public
  */
 function WhSessionModule() {

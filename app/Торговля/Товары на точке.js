@@ -10,7 +10,8 @@ function TradeItemsOnTradePoint() {
     var self = this, model = this.model, form = this;
 
     self.selectForm = false;
-    
+    model.params.show_only_present = false;
+    model.params.sort_by_type = false;
     /*model.params.beginUpdate();
     model.params.item_type = null;
     model.params.show_only_present = true;
@@ -34,6 +35,10 @@ function btnReqActionPerformed(evt) {//GEN-FIRST:event_btnReqActionPerformed
         if (self.model.modified && confirm('Сохранить изменения?')) {
             modelSave();
         }
+        model.qTradeItemsAndType.params.show_only_present = model.params.show_only_present;
+        model.qTradeItemsAndType.params.sort_by_type = model.params.sort_by_type;
+        /*Logger.info('Param show_only_present: '+ model.params.show_only_present);
+        Logger.info('Param model.params.sort_by_type: '+ model.params.sort_by_type);*/
         self.model.requery();
 }//GEN-LAST:event_btnReqActionPerformed
 
@@ -109,9 +114,9 @@ function btnSaveActionPerformed(evt) {//GEN-FIRST:event_btnSaveActionPerformed
     function formWindowOpened(evt) {//GEN-FIRST:event_formWindowOpened
         form.pnlSelLock.visible = self.selectForm;
         model.params.beginUpdate();
-        model.params.item_type = null;
-        model.params.show_only_present = true;
-        model.params.sort_by_type = true;
+        //model.params.item_type = null;
+        //model.params.show_only_present = false;
+        //model.params.sort_by_type = false;
         model.params.actual_date = new Date();
         model.params.endUpdate();
     }//GEN-LAST:event_formWindowOpened

@@ -85,7 +85,7 @@ if (!platypus) {
 
 platypus.ready = function() {
     require(['getUserSession'], function(){
-        units.userSession = getUserSession();
+        units.userSession = getUserSession();        
         units.userSession.login(function(anUserRole){
                 switch (anUserRole) {
                     case 'admin':

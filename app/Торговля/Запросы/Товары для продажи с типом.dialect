@@ -18,4 +18,5 @@ left join trade_items_cost t2 on t.trade_items_id = t2.item_id
  Where (:franchazi_id = t2.franchazi_id or t2.franchazi_id is null)
     and ((:trade_point_id = t2.trade_point_id 
     and :actual_date >= t2.start_date
-    and (:actual_date < t2.end_date or t2.end_date is null))  or :show_only_present = false)
+    and (:actual_date < t2.end_date or t2.end_date is null))  
+        or :show_only_present = false or :show_only_present is null or true)

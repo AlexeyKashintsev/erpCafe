@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?><layout defaultCloseOperation="2" name="Form" prefHeight="327px" prefWidth="615px">
-  <widget name="modelGrid" parent="Form" prefHeight="327px" prefWidth="192px" type="DbGridDesignInfo">
+<?xml version="1.0" encoding="UTF-8"?><layout defaultCloseOperation="2" locationByPlatform="true" name="Form" prefHeight="613px" prefWidth="924px">
+  <widget name="modelGrid" parent="Form" prefHeight="613px" prefWidth="192px" type="DbGridDesignInfo">
     <column name="column" title="Торговая точка">
       <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
       <datamodelElement entityId="140620003979379" fieldName="tp_name"/>
@@ -15,13 +15,13 @@
         <nativeFont name="Lucida Grande" size="13"/>
       </headerStyle>
     </column>
-    <treeDesignInfo/>
     <rowsColumnsDesignInfo>
       <rowsDatasource entityId="140620003979379" field="false"/>
     </rowsColumnsDesignInfo>
+    <treeDesignInfo/>
     <constraints bottom="0px" left="0px" top="0px" type="MarginConstraintsDesignInfo" width="192px"/>
   </widget>
-  <widget name="pnlWorkArea" parent="Form" prefHeight="327px" prefWidth="423px" type="PanelDesignInfo">
+  <widget name="pnlWorkArea" parent="Form" prefHeight="613px" prefWidth="732px" type="PanelDesignInfo">
     <layout type="MarginLayoutDesignInfo"/>
     <constraints bottom="0px" left="192px" right="0px" top="0px" type="MarginConstraintsDesignInfo"/>
   </widget>

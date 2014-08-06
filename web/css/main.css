@@ -19,18 +19,12 @@ button.btnCancel {
   color: white;
 }
 
-.itemDescription {
-    display: inline-block;
-    background-color: rgb(#555);
-    padding: 20px;
-}
-
 body {
   margin-top: 50px;
 }
 
 div.actionPanel {
-  background-color: #F4B350;
+  background-color: #633611;
   margin-top: 50px;
   position: fixed;
   bottom: 0px;
@@ -60,6 +54,18 @@ div.baristaOrder {
   padding: 10px 0px;
 }
 
+.itemDescription {
+    display: inline-block;
+    padding: 10px;
+    margin: 10px;
+    background-color: #049372;
+    cursor: pointer;
+}
+
+.itemDescription h4 {
+  #font-size: 
+}
+
 .orderItem h4 {
   display: inline-block;
   padding-right: 5px;
@@ -83,6 +89,7 @@ div.baristaOrder {
   margin: 2px;
   padding-bottom: 4px;
   padding-right: 2px;
+  cursor: pointer;
 }
 
 .orderItem:hover  {

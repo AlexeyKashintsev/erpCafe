@@ -3,7 +3,6 @@
  * @author Alexey
  * @module
  * @public
- * @stateless
  */ 
 function testModule() {
     var self = this, model = this.model;

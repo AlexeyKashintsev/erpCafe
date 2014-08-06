@@ -16,49 +16,49 @@
   </widget>
   <widget name="modelGrid1" parent="panel1" prefHeight="267px" prefWidth="695px" type="DbGridDesignInfo">
     <column name="colItem_name" readonly="true" title="Наименование">
+      <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
       <datamodelElement entityId="140671973955379" fieldName="r_name"/>
+      <cellDesignInfo>
+        <cellValueField/>
+        <columnsKeyField/>
+        <rowsKeyField/>
+      </cellDesignInfo>
+      <cellsDatasource/>
       <columnsDatasource/>
       <columnsDisplayField/>
-      <cellsDatasource/>
-      <cellDesignInfo>
-        <rowsKeyField/>
-        <columnsKeyField/>
-        <cellValueField/>
-      </cellDesignInfo>
       <headerStyle>
         <nativeFont name="Dialog" size="15"/>
       </headerStyle>
-      <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
     </column>
     <column name="colCost" title="Цена">
+      <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
       <datamodelElement entityId="140671973955379" fieldName="r_cost"/>
+      <cellDesignInfo>
+        <cellValueField/>
+        <columnsKeyField/>
+        <rowsKeyField/>
+      </cellDesignInfo>
+      <cellsDatasource/>
       <columnsDatasource/>
       <columnsDisplayField/>
-      <cellsDatasource/>
-      <cellDesignInfo>
-        <rowsKeyField/>
-        <columnsKeyField/>
-        <cellValueField/>
-      </cellDesignInfo>
       <headerStyle>
         <nativeFont name="Dialog" size="13"/>
       </headerStyle>
-      <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
     </column>
     <column name="select" title=" " width="8">
+      <controlInfo classHint="DbCheckDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
       <datamodelElement entityId="140671973955379" fieldName="r_selected"/>
+      <cellDesignInfo>
+        <cellValueField/>
+        <columnsKeyField/>
+        <rowsKeyField/>
+      </cellDesignInfo>
+      <cellsDatasource/>
       <columnsDatasource/>
       <columnsDisplayField/>
-      <cellsDatasource/>
-      <cellDesignInfo>
-        <rowsKeyField/>
-        <columnsKeyField/>
-        <cellValueField/>
-      </cellDesignInfo>
       <headerStyle>
         <nativeFont name="Dialog" size="15"/>
       </headerStyle>
-      <controlInfo classHint="DbCheckDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
     </column>
     <rowsColumnsDesignInfo>
       <rowsDatasource entityId="140671973955379" field="false"/>
@@ -71,14 +71,14 @@
   <widget floatable="false" name="toolBar" parent="panel1" prefHeight="31px" prefWidth="695px" rollover="true" type="ToolbarDesignInfo">
     <constraints height="31px" left="0px" right="0px" top="0px" type="MarginConstraintsDesignInfo"/>
   </widget>
-  <widget actionPerformed="btnAddActionPerformed" focusable="false" horizontalTextPosition="0" icon="icons/22x22/actions/list-add.png" name="btnAdd" parent="toolBar" prefHeight="29px" prefWidth="34px" toolTipText="Добавить" type="ButtonDesignInfo" verticalTextPosition="3"/>
-  <widget actionPerformed="btnDelActionPerformed" focusable="false" horizontalTextPosition="0" icon="icons/22x22/actions/list-remove.png" name="btnDel" parent="toolBar" prefHeight="29px" prefWidth="34px" toolTipText="Удалить" type="ButtonDesignInfo" verticalTextPosition="3"/>
-  <widget actionPerformed="btnReqActionPerformed" focusable="false" horizontalTextPosition="0" icon="icons/22x22/actions/new-view-refresh.png" name="btnReq" parent="toolBar" prefHeight="29px" prefWidth="34px" toolTipText="Обновить" type="ButtonDesignInfo" verticalTextPosition="3"/>
-  <widget actionPerformed="btnSaveActionPerformed" focusable="false" horizontalTextPosition="0" icon="icons/22x22/actions/document-save.png" name="btnSave" parent="toolBar" prefHeight="29px" prefWidth="34px" toolTipText="Сохранить" type="ButtonDesignInfo" verticalTextPosition="3"/>
-  <widget name="modelCheckBox" parent="toolBar" prefHeight="27px" prefWidth="158px" text="Товары в продаже" type="DbCheckDesignInfo">
+  <widget actionPerformed="btnAddActionPerformed" focusable="false" horizontalTextPosition="0" icon="icons/22x22/actions/list-add.png" name="btnAdd" parent="toolBar" prefHeight="26px" prefWidth="34px" toolTipText="Добавить" type="ButtonDesignInfo" verticalTextPosition="3"/>
+  <widget actionPerformed="btnDelActionPerformed" focusable="false" horizontalTextPosition="0" icon="icons/22x22/actions/list-remove.png" name="btnDel" parent="toolBar" prefHeight="26px" prefWidth="34px" toolTipText="Удалить" type="ButtonDesignInfo" verticalTextPosition="3"/>
+  <widget actionPerformed="btnReqActionPerformed" focusable="false" horizontalTextPosition="0" icon="icons/22x22/actions/new-view-refresh.png" name="btnReq" parent="toolBar" prefHeight="26px" prefWidth="34px" toolTipText="Обновить" type="ButtonDesignInfo" verticalTextPosition="3"/>
+  <widget actionPerformed="btnSaveActionPerformed" focusable="false" horizontalTextPosition="0" icon="icons/22x22/actions/document-save.png" name="btnSave" parent="toolBar" prefHeight="26px" prefWidth="34px" toolTipText="Сохранить" type="ButtonDesignInfo" verticalTextPosition="3"/>
+  <widget name="modelCheckBox" parent="toolBar" prefHeight="27px" prefWidth="150px" text="Товары в продаже" type="DbCheckDesignInfo">
     <datamodelElement entityId="-1" fieldName="show_only_present"/>
   </widget>
-  <widget name="modelCheckBox1" parent="toolBar" prefHeight="27px" prefWidth="190px" text="Сгруппировать по типу" type="DbCheckDesignInfo">
+  <widget name="modelCheckBox1" parent="toolBar" prefHeight="27px" prefWidth="182px" text="Сгруппировать по типу" type="DbCheckDesignInfo">
     <datamodelElement entityId="-1" fieldName="sort_by_type"/>
   </widget>
   <layout type="BorderLayoutDesignInfo"/>

@@ -5,8 +5,11 @@
  */
 function AdminStartForm() {
     var self = this, model = this.model, form = this;
-
-    self.session = units ? units.userSession : new ServerModule('UserSession');
+    try {
+        self.session = units.userSession;
+    } catch(e) {
+        self.session = new ServerModule('UserSession');
+    }
     var guiUtils = new guiModule();
     self.actionListDisplay = null;
     var usersView = null;
@@ -32,11 +35,14 @@ function AdminStartForm() {
         if (!aFaranchazi) logout();
         model.params.franchaziId = aFaranchazi;
         
-     /*   workShop = new FranchaziWorkShop();
-        workShop.setFranchaziId(aFaranchazi);
-        
-        usersView = new FranchaziUsers();
-        usersView.setFranchaziId(aFaranchazi);*/
+        if (!self.browser) {
+            workShop = new FranchaziWorkShop();
+            workShop.setFranchaziId(aFaranchazi);
+
+            usersView = new FranchaziUsers();
+            usersView.setFranchaziId(aFaranchazi)
+        }
+     /*   ;*/
     };
     
     self.getFranchazi = function() {
@@ -68,6 +74,10 @@ self.showFormAsInternal = function(aForm) {
         common   :   {
             display     :   "Общая информация",
             dispForm    :   ""
+        },
+        franchazi   :   {
+            display     :   "Франчази",
+            dispForm    :   "SelectFranchaziAdminForm"
         },
         users   :   {
             display     :   "Пользователи",

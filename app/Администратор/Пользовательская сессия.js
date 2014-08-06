@@ -2,7 +2,6 @@
  * 
  * @author Алексей
  * @module
- * @resident
  * @public
  */ 
 function UserSession() {

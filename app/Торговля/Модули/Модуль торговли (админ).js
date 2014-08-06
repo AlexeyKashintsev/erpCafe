@@ -3,7 +3,6 @@
  * @author ak
  * @module
  * @public
- * @resident
  */ 
 function TradeAdminModule() {
     var self = this, model = this.model;

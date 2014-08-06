@@ -21,11 +21,11 @@ function BaristaDesktop() {
     } catch (e) {
         self.browser = true;
         Logger.info('browser');
-        document.getElementById("logActionNav").innerHTML = 
-                '<li><a id="whAddItems" href="#"><span class="glyphicon glyphicon-plus-sign"></span>  Прием товара</a></li>\n\
-                 <li><a id="Logout" href="#"><span class="glyphicon glyphicon-log-out"></span>  Закрыть смену</a></li>'
-        document.getElementById("whAddItems").onclick = btnWarehouseAddActionPerformed;
-        document.getElementById("Logout").onclick = btnSessionCloseActionPerformed;
+//        document.getElementById("logActionNav").innerHTML = 
+//                '<li><a id="whAddItems" href="#"><span class="glyphicon glyphicon-plus-sign"></span>  Прием товара</a></li>\n\
+//                 <li><a id="Logout" href="#"><span class="glyphicon glyphicon-log-out"></span>  Закрыть смену</a></li>'
+//        document.getElementById("whAddItems").onclick = btnWarehouseAddActionPerformed;
+//        document.getElementById("Logout").onclick = btnSessionCloseActionPerformed;
     }
     self.orderList = new OrderList(self);
     self.orderList.tradeSession = self.tradeSession;
@@ -66,6 +66,7 @@ function BaristaDesktop() {
     
     function setFranchazi(aFranchazi) {
         if (!aFranchazi) logout();
+        
         model.tradeItemsByTradePointWithCost.params.franchazi_id = aFranchazi;
         model.tradeItemsByTradePointWithCost.params.actual_date = new Date();
         
@@ -85,20 +86,51 @@ function BaristaDesktop() {
         self.session.login();
         setFranchazi(self.session.getFranchazi());
     }
+    
+    function addItemSE(anItemData) {
+        requery(['ProductItem'],function(){
+            var itemForm = new ProductItem(self);
+            var itemPanel = new AnchorsPane();
+            itemForm.data = anItemData;
+            self.tradeItems[model.tradeItemsByTradePointWithCost.item_id] = itemForm;
+            itemForm.showOnPanel(itemPanel);
+            form.pnlRigth.add(itemPanel);
+        });
+    }
+    
+    function addItemBrowser(aData) {
+        var itemPanel = document.createElement('div');
+        var itemDesc = document.createElement('h4');
+        var itemCost = document.createElement('h1');
+        var itemType = document.createElement('p');
+        
+        itemPanel.className = "itemDescription col-md-2 col-sm-4";
+        itemDesc.className = "itemDesc";
+        itemCost.className = "itemCost";
+        itemType.className = "itemType";
+        
+        itemDesc.innerHTML = aData.item_name;
+        itemType.innerHTML = aData.type_name;
+        itemCost.innerHTML = aData.item_cost;
+        
+        itemPanel.appendChild(itemDesc);
+        itemPanel.appendChild(itemType);
+        itemPanel.appendChild(itemCost);
+        
+        itemPanel.onclick = function() {
+            self.orderList.addItem(aData);
+        };
+        
+        document.getElementById("mainArea").appendChild(itemPanel);
+    }
 
     function tradeItemsByTradePointWithCostOnRequeried(evt) {//GEN-FIRST:event_tradeItemsByTradePointWithCostOnRequeried
         model.tradeItemsByTradePointWithCost.beforeFirst();
-        while (model.tradeItemsByTradePointWithCost.next()) {
-             var itemForm = new ProductItem(self);
-             var itemPanel = self.browser ? document.createElement('div') : new AnchorsPane();
-             itemForm.data = model.tradeItemsByTradePointWithCost.cursor;
-             self.tradeItems[model.tradeItemsByTradePointWithCost.item_id] = itemForm;
-             itemForm.showOnPanel(itemPanel);
+        while (model.tradeItemsByTradePointWithCost.next()) {             
              if (self.browser) {
-                 itemPanel.className = "itemDescription";
-                 document.getElementById("mainArea").appendChild(itemPanel);
+                 addItemBrowser(model.tradeItemsByTradePointWithCost.cursor);
              } else
-                 form.pnlRigth.add(itemPanel);
+                 addItemSE(model.tradeItemsByTradePointWithCost.cursor);
         }
     }//GEN-LAST:event_tradeItemsByTradePointWithCostOnRequeried
 
@@ -125,7 +157,7 @@ function BaristaDesktop() {
     }//GEN-LAST:event_btnWarehouseAddActionPerformed
 
     if (self.browser) {
-        common.addTopRightControl("Закрыть смену", "log-out", btnSessionCloseActionPerformed);
         common.addTopRightControl("Прием товара", "plus-sign", btnWarehouseAddActionPerformed);
+        common.addTopRightControl("Закрыть смену", "log-out", btnSessionCloseActionPerformed);
     }
 }

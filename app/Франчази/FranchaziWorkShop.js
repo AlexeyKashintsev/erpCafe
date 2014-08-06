@@ -13,6 +13,14 @@ function FranchaziWorkShop() {
         self.model.params.franchazi = aFranchazi;
         fmTP.setFranchazi(model.params.franchazi);
     };
+    
+    try {
+        units.userSession.getFranchazi(function(aFranchazi){
+            self.setFranchaziId(aFranchazi);
+        });
+    } catch (e) {
+        Logger.info('Not under browser');
+    }
 
     function listTradePointsOnScrolled(evt) {//GEN-FIRST:event_listTradePointsOnScrolled
         fmTP.setTradePoint(model.listTradePoints.org_trade_point_id);
