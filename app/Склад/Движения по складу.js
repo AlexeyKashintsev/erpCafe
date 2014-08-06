@@ -31,7 +31,7 @@ function btnSaveActionPerformed(evt) {//GEN-FIRST:event_btnSaveActionPerformed
 }//GEN-LAST:event_btnSaveActionPerformed
 
 function formWindowOpened(evt) {//GEN-FIRST:event_formWindowOpened
-    form.modelDate.value = new Date(1);
+    form.modelDate.value = new Date(2014,7);
     form.modelDate1.value = new Date();
     model.qSessionOnTradePoint.requery();
 }//GEN-LAST:event_formWindowOpened
