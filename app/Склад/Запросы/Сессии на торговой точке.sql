@@ -4,7 +4,7 @@
  * @name qSessionOnTradePoint
  * @manual
  */ 
-Select org_session_id
+Select t1.org_session_id
 From org_session t1
 Where :trade_point_id = t1.trade_point 
 and (:begin_date <= t1.start_date) 
