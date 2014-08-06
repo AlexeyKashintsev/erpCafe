@@ -1,13 +1,20 @@
 /**
  * 
  * @author Алексей
- * @name template2
+ * @name WhMovements
  * @public
  */
 
-function template2() {
+function WhMovements() {
 
     var self = this, model = this.model, form = this;
+    
+    
+    self.setTradePoint = function(aTradePoint) {
+        model.params.trade_point = aTradePoint;
+    };
+    
+    self.setTradePoint(15);
 
 function btnReqActionPerformed(evt) {//GEN-FIRST:event_btnReqActionPerformed
         if (self.model.modified && confirm('Сохранить изменения?')) {
@@ -34,8 +41,7 @@ function formWindowClosing(evt) {//GEN-FIRST:event_formWindowClosing
     }//GEN-LAST:event_btnAddActionPerformed
 
     function btnDelActionPerformed(evt) {//GEN-FIRST:event_btnDelActionPerformed
-        
-           // model.queryItems.deleteRow();
+
     }//GEN-LAST:event_btnDelActionPerformed
 
     function modelGridMouseClicked(evt) {//GEN-FIRST:event_modelGridMouseClicked
