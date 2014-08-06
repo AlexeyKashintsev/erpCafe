@@ -49,7 +49,7 @@ function TradeAdminModule() {
         model.qContents.params.trade_item_id = anItem;
         model.qContents.requery();
         model.queryItemsInWH.params.warehouse_id = aTradePoint;
-        model.queryItemsInWH.requery();
+        model.queryItemsInWH.execute();
         model.qContents.beforeFirst();
         while (model.qContents.next()){
             if (model.queryItemsInWH.find(model.queryItemsInWH.schema.item_id, model.qContents.wh_item).length === 0){
