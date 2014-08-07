@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?><datamodel>
+  <parametersEntity entityHeight="200" entityIconified="false" entityLocationX="12" entityLocationY="12" entityWidth="150"/>
+  <entity Name="qClientRegistration" Title="" entityHeight="367" entityIconified="false" entityId="140740749929200" entityLocationX="201" entityLocationY="15" entityWidth="367" queryId="qClientRegistration" tableName="" tableSchemaName=""/>
+  <referenceRelation leftEntityFieldName="usr_name" leftEntityId="140740749929200" rightEntityFieldName="usr_name" rightEntityId="140740749929200"/>
+</datamodel>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?><layout defaultCloseOperation="2" name="Form" prefHeight="478px" prefWidth="400px">
+  <widget name="panel" parent="Form" prefHeight="372px" prefWidth="324px" type="PanelDesignInfo">
+    <layout type="MarginLayoutDesignInfo"/>
+    <constraints height="372px" left="36px" top="72px" type="MarginConstraintsDesignInfo" width="324px"/>
+  </widget>
+  <widget actionPerformed="last_name1ActionPerformed" name="last_name1" parent="panel" prefHeight="27px" prefWidth="144px" text="textField" type="TextFieldDesignInfo">
+    <constraints height="27px" left="158px" top="12px" type="MarginConstraintsDesignInfo" width="144px"/>
+  </widget>
+  <widget name="label6" parent="panel" prefHeight="17px" prefWidth="120px" text="Адрес" type="LabelDesignInfo">
+    <constraints bottom="67px" height="17px" left="24px" type="MarginConstraintsDesignInfo" width="120px"/>
+  </widget>
+  <widget name="label5" parent="panel" prefHeight="17px" prefWidth="120px" text="E-mail" type="LabelDesignInfo">
+    <constraints bottom="103px" height="17px" left="24px" type="MarginConstraintsDesignInfo" width="120px"/>
+  </widget>
+  <widget name="label4" parent="panel" prefHeight="17px" prefWidth="120px" text="Телефон" type="LabelDesignInfo">
+    <constraints height="17px" left="24px" top="216px" type="MarginConstraintsDesignInfo" width="120px"/>
+  </widget>
+  <widget name="label3" parent="panel" prefHeight="17px" prefWidth="120px" text="Дата рождения" type="LabelDesignInfo">
+    <constraints height="17px" left="24px" top="180px" type="MarginConstraintsDesignInfo" width="120px"/>
+  </widget>
+  <widget name="label2" parent="panel" prefHeight="17px" prefWidth="120px" text="Отчество" type="LabelDesignInfo">
+    <constraints height="17px" left="24px" top="144px" type="MarginConstraintsDesignInfo" width="120px"/>
+  </widget>
+  <widget name="label1" parent="panel" prefHeight="17px" prefWidth="120px" text="Имя" type="LabelDesignInfo">
+    <constraints height="17px" left="24px" top="108px" type="MarginConstraintsDesignInfo" width="120px"/>
+  </widget>
+  <widget name="label" parent="panel" prefHeight="17px" prefWidth="120px" text="Фамилия" type="LabelDesignInfo">
+    <constraints height="17px" left="24px" top="72px" type="MarginConstraintsDesignInfo" width="120px"/>
+  </widget>
+  <widget name="email" parent="panel" prefHeight="27px" prefWidth="144px" text="textField" type="TextFieldDesignInfo">
+    <constraints bottom="93px" height="27px" left="156px" type="MarginConstraintsDesignInfo" width="144px"/>
+  </widget>
+  <widget name="phone" parent="panel" prefHeight="27px" prefWidth="144px" text="textField" type="TextFieldDesignInfo">
+    <constraints height="27px" left="156px" top="216px" type="MarginConstraintsDesignInfo" width="144px"/>
+  </widget>
+  <widget name="middle_name" parent="panel" prefHeight="27px" prefWidth="144px" text="textField" type="TextFieldDesignInfo">
+    <constraints height="27px" left="156px" top="144px" type="MarginConstraintsDesignInfo" width="144px"/>
+  </widget>
+  <widget name="first_name" parent="panel" prefHeight="27px" prefWidth="144px" text="textField" type="TextFieldDesignInfo">
+    <constraints height="27px" left="156px" top="108px" type="MarginConstraintsDesignInfo" width="144px"/>
+  </widget>
+  <widget actionPerformed="last_nameActionPerformed" name="last_name" parent="panel" prefHeight="27px" prefWidth="144px" text="textField" type="TextFieldDesignInfo">
+    <constraints height="27px" left="156px" top="72px" type="MarginConstraintsDesignInfo" width="144px"/>
+  </widget>
+  <widget name="address" parent="panel" prefHeight="72px" prefWidth="144px" type="ScrollDesignInfo">
+    <constraints bottom="12px" height="72px" left="156px" type="MarginConstraintsDesignInfo" width="144px"/>
+  </widget>
+  <widget name="textArea" parent="address" prefHeight="70px" prefWidth="142px" type="TextPaneDesignInfo"/>
+  <widget dateFormat="dd.MM.yyyy" name="birthday" parent="panel" prefHeight="24px" prefWidth="144px" type="DbDateDesignInfo">
+    <constraints height="24px" left="156px" top="180px" type="MarginConstraintsDesignInfo" width="144px"/>
+  </widget>
+  <layout type="MarginLayoutDesignInfo"/>
+</layout>
