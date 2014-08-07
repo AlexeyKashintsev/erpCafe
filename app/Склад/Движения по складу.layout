@@ -6,10 +6,10 @@
   <widget actionPerformed="btnDelActionPerformed" focusable="false" horizontalTextPosition="0" icon="icons/22x22/actions/list-remove.png" name="btnDel" parent="toolBar" prefHeight="34px" prefWidth="34px" toolTipText="Удалить" type="ButtonDesignInfo" verticalTextPosition="3"/>
   <widget actionPerformed="btnReqActionPerformed" focusable="false" horizontalTextPosition="0" icon="icons/22x22/actions/new-view-refresh.png" name="btnReq" parent="toolBar" prefHeight="34px" prefWidth="34px" toolTipText="Обновить" type="ButtonDesignInfo" verticalTextPosition="3"/>
   <widget actionPerformed="btnSaveActionPerformed" focusable="false" horizontalTextPosition="0" icon="icons/22x22/actions/document-save.png" name="btnSave" parent="toolBar" prefHeight="34px" prefWidth="34px" toolTipText="Сохранить" type="ButtonDesignInfo" verticalTextPosition="3"/>
-  <widget emptyText="Дата начала" name="modelDate" parent="toolBar" prefHeight="27px" prefWidth="100px" type="DbDateDesignInfo">
+  <widget dateFormat="dd.MM.yyyy hh:mm" emptyText="Дата начала" name="modelDate" parent="toolBar" prefHeight="27px" prefWidth="123px" type="DbDateDesignInfo">
     <datamodelElement entityId="-1" fieldName="begin_date"/>
   </widget>
-  <widget name="modelDate1" parent="toolBar" prefHeight="27px" prefWidth="100px" type="DbDateDesignInfo">
+  <widget dateFormat="dd.MM.yyyy" name="modelDate1" parent="toolBar" prefHeight="27px" prefWidth="100px" type="DbDateDesignInfo">
     <datamodelElement entityId="-1" fieldName="end_date"/>
   </widget>
   <widget name="pnlSelLock" parent="Form" prefHeight="50px" prefWidth="697px" type="PanelDesignInfo">
@@ -60,10 +60,10 @@
       </headerStyle>
       <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
     </column>
-    <treeDesignInfo/>
     <rowsColumnsDesignInfo>
       <rowsDatasource entityId="140732323580032" field="false"/>
     </rowsColumnsDesignInfo>
+    <treeDesignInfo/>
     <constraints bottom="0px" left="0px" right="0px" top="0px" type="MarginConstraintsDesignInfo"/>
   </widget>
   <widget name="panel" parent="splitPane" prefHeight="262px" prefWidth="230px" type="PanelDesignInfo">
@@ -85,12 +85,12 @@
       </headerStyle>
       <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
     </column>
-    <treeDesignInfo>
-      <unaryLinkField entityId="140532276305367" fieldName="parent_type"/>
-    </treeDesignInfo>
     <rowsColumnsDesignInfo>
       <rowsDatasource entityId="140732418814519" field="false"/>
     </rowsColumnsDesignInfo>
+    <treeDesignInfo>
+      <unaryLinkField entityId="140532276305367" fieldName="parent_type"/>
+    </treeDesignInfo>
     <constraints bottom="0px" left="0px" right="0px" top="0px" type="MarginConstraintsDesignInfo"/>
   </widget>
   <layout type="BorderLayoutDesignInfo"/>
