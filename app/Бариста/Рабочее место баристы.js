@@ -104,7 +104,8 @@ function BaristaDesktop() {
         var itemCost = document.createElement('h1');
         var itemType = document.createElement('p');
         
-        itemPanel.className = "itemDescription col-md-2 col-sm-4";
+        itemPanel.className = "itemDescription col-md-2 col-sm-4 tc_" 
+                + aData.trade_item_type_id + (aData.classtag ? " " + aData.classtag : "");
         itemDesc.className = "itemDesc";
         itemCost.className = "itemCost";
         itemType.className = "itemType";
@@ -153,7 +154,7 @@ function BaristaDesktop() {
             whAdd = new WHSetAddMovement();
             whAdd.setTradePointId(model.getSessions.trade_point);
         }
-        whAdd.showModal();
+        whAdd.show();
     }//GEN-LAST:event_btnWarehouseAddActionPerformed
 
     if (self.browser) {

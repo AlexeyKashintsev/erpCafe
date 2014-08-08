@@ -5,8 +5,8 @@ if (!platypus) {
 	var platypus = {};
 }
 platypus.ready = function() {
-	require(['TradePointCommonDetails'], function(){
-		var f = new TradePointCommonDetails();
+	require(['AskForChangesApplying'], function(){
+		var f = new AskForChangesApplying();
 		f.show();
 	});
 };
