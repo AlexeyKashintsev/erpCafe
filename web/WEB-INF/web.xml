@@ -2,7 +2,7 @@
 <web-app xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="3.0" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
   <context-param>
     <param-name>default-datasource</param-name>
-    <param-value>cafeErp</param-value>
+    <param-value>cafeErp_Server</param-value>
   </context-param>
   <context-param>
     <param-name>url</param-name>
@@ -27,50 +27,14 @@
     <url-pattern>/application/*</url-pattern>
   </servlet-mapping>
   <resource-ref>
-    <description>jdbc:oracle:thin:@192.168.10.205:1521/DBALT [trans3 на TRANS3]</description>
-    <res-ref-name>TRANSPORT</res-ref-name>
-    <res-type>javax.sql.DataSource</res-type>
-    <res-auth>Container</res-auth>
-  </resource-ref>
-  <resource-ref>
-    <description>jdbc:oracle:thin:@192.168.10.205:1521:DBALT [trans3 на TRANS3]</description>
-    <res-ref-name>TRANS</res-ref-name>
+    <description>jdbc:postgresql://192.168.10.119:5432/cafeErp [cafeErp на cafeErp]</description>
+    <res-ref-name>cafeErp_Server</res-ref-name>
     <res-type>javax.sql.DataSource</res-type>
     <res-auth>Container</res-auth>
   </resource-ref>
   <resource-ref>
     <description>jdbc:postgresql://localhost:5432/cafeErp [cafeErp на cafeErp]</description>
     <res-ref-name>cafeErp</res-ref-name>
-    <res-type>javax.sql.DataSource</res-type>
-    <res-auth>Container</res-auth>
-  </resource-ref>
-  <resource-ref>
-    <description>jdbc:postgresql://192.168.10.85:5432/Trans [trans на trans3]</description>
-    <res-ref-name>transport_postgresql</res-ref-name>
-    <res-type>javax.sql.DataSource</res-type>
-    <res-auth>Container</res-auth>
-  </resource-ref>
-  <resource-ref>
-    <description>jdbc:postgresql://akashintsev.no-ip.biz:5432/TSG [tsg_main на tsg_main]</description>
-    <res-ref-name>TSG_HOME</res-ref-name>
-    <res-type>javax.sql.DataSource</res-type>
-    <res-auth>Container</res-auth>
-  </resource-ref>
-  <resource-ref>
-    <description>jdbc:postgresql://localhost:5432/TSG [tsg_main на tsg_main]</description>
-    <res-ref-name>TSG</res-ref-name>
-    <res-type>javax.sql.DataSource</res-type>
-    <res-auth>Container</res-auth>
-  </resource-ref>
-  <resource-ref>
-    <description>jdbc:postgresql://localhost:5432/AgitProf [Alexey на public]</description>
-    <res-ref-name>AgitProf</res-ref-name>
-    <res-type>javax.sql.DataSource</res-type>
-    <res-auth>Container</res-auth>
-  </resource-ref>
-  <resource-ref>
-    <description>jdbc:postgresql://89.179.68.48:5432/rcErp [rcErp на rcErp]</description>
-    <res-ref-name>rcData</res-ref-name>
     <res-type>javax.sql.DataSource</res-type>
     <res-auth>Container</res-auth>
   </resource-ref>
