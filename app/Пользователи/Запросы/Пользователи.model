@@ -4,4 +4,5 @@
   </parameters>
   <parametersEntity entityHeight="192" entityIconified="false" entityLocationX="17" entityLocationY="21" entityWidth="150"/>
   <entity Title="" entityHeight="200" entityIconified="false" entityId="140447086426511" entityLocationX="213" entityLocationY="18" entityWidth="198" tableAlias="t" tableName="MTD_USERS" tableSchemaName=""/>
+  <relation leftEntityId="-1" leftEntityParameterName="usr_name" rightEntityFieldName="usr_name" rightEntityId="140447086426511"/>
 </datamodel>

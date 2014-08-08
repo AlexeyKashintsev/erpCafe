@@ -54,6 +54,7 @@ function UserCreateAndEditForm() {
                 model.createFrancizerUser.cursor.franc_users_active = true;
             else 
                 model.createFrancizerUser.cursor.franc_users_active = false;
+            userModule.editUser(form.tfLogin.text, form.tfEmail.text, form.tfPhone.text);
             model.save(function(){form.close(true);});                
         }
     }//GEN-LAST:event_btnSaveActionPerformed
@@ -89,7 +90,7 @@ function UserCreateAndEditForm() {
     function tfPassMouseClicked(evt) {//GEN-FIRST:event_tfPassMouseClicked
         
         if(model.params.user_name && !form.tfLogin.enabled){
-            changePassView.setUserId(model.params.user_name);
+            changePassView.setUserName(model.params.user_name);
             changePassView.showModal(function(){
                 model.requery();
             });
@@ -144,6 +145,8 @@ function UserCreateAndEditForm() {
     }//GEN-LAST:event_btnCancelActionPerformed
 
     function tfLoginKeyPressed(evt) {//GEN-FIRST:event_tfLoginKeyPressed
+//        TODO Асинхронный код
+//        
 //        userModule.checkLogin(form.tfLogin.text, function(aResult){
 //            if(!aResult){
 //                form.lbInfo.text = "Логин уже занят!";

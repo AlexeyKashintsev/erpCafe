@@ -17,6 +17,12 @@ function UserModule() {
         addRole(aLogin, aRoleName);
     };
     
+    self.editUser = function(aLogin, aEmail, aPhone){
+        model.params.user_name = aLogin;
+        model.usersByName.usr_email = aEmail;
+        model.usersByName.usr_phone = aPhone;
+        model.save();
+    }
     function addRole(aUserName, aRoleName){
         model.qUserAddRole.params.usr_name = aUserName;
         model.qUserAddRole.params.usr_role = aRoleName;
@@ -24,7 +30,9 @@ function UserModule() {
     }
     
     self.setPassword = function(aUserName, aNewPasswordMD5) {
-        
+        model.params.user_name = aUserName;
+        model.usersByName.usr_passwd = aNewPasswordMD5;
+        model.save();
     };
     
     self.checkLogin = function(aLogin) {

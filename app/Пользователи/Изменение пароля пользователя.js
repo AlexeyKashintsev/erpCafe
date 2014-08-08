@@ -4,15 +4,16 @@
 function ChangePassView(){
     var self = this, model = self.model, form = this;
     var adminFunctions = new ServerModule("AdminFunctions");
+    var userModule = new UserModule();
+    var userName = null;
     
-    self.setUserId = function(aUserId){
-        model.params.parUser = aUserId;
+    self.setUserName = function(aUserName){
+        userName = aUserName;
     };
        
     function clearData() {
         form.edNewPswd1.text = '';
         form.edNewPswd2.text = '';
-        model.requery();
     }
 
     function btnOkActionPerformed(evt) {//GEN-FIRST:event_btnOkActionPerformed
@@ -20,9 +21,7 @@ function ChangePassView(){
             warn('Необходимо ввести одинаковые пароли!', 'Предупреждение');
             return;
         }
-        model.dsUser.usr_passwd =  adminFunctions.MD5(form.edNewPswd1.text);
-        model.save();
-        //dsUser.save();
+        userModule.setPassword(userName, adminFunctions.MD5(form.edNewPswd1.text));
         self.modalResult = self.ok;
         self.close(true);	
     }//GEN-LAST:event_btnOkActionPerformed
@@ -32,6 +31,48 @@ function ChangePassView(){
     }//GEN-LAST:event_btnCancelActionPerformed
 
     function formWindowOpened(evt) {//GEN-FIRST:event_formWindowOpened
+        form.label1.text = userName;
+        form.btnOk.enabled = false;
         clearData();
     }//GEN-LAST:event_formWindowOpened
+
+    function edNewPswd1KeyTyped(evt) {//GEN-FIRST:event_edNewPswd1KeyTyped
+        
+    }//GEN-LAST:event_edNewPswd1KeyTyped
+
+    function edNewPswd2KeyTyped(evt) {//GEN-FIRST:event_edNewPswd2KeyTyped
+        
+    }//GEN-LAST:event_edNewPswd2KeyTyped
+    
+    function validateForm(){
+        if (form.edNewPswd1.text.length >= 5 && form.edNewPswd2.text == form.edNewPswd1.text){
+            form.btnOk.enabled = true;
+            form.label.text = '';
+        } else {
+            form.btnOk.enabled = false;
+        }
+    }
+
+
+    function edNewPswd1FocusLost(evt) {//GEN-FIRST:event_edNewPswd1FocusLost
+        validateForm();
+    }//GEN-LAST:event_edNewPswd1FocusLost
+
+    function edNewPswd2FocusLost(evt) {//GEN-FIRST:event_edNewPswd2FocusLost
+        validateForm();
+    }//GEN-LAST:event_edNewPswd2FocusLost
+
+    function edNewPswd2KeyReleased(evt) {//GEN-FIRST:event_edNewPswd2KeyReleased
+        if (form.edNewPswd2.text != form.edNewPswd1.text){
+            form.label.text = 'Пароли не совпадают';
+        } else form.label.text = '';
+        validateForm();
+    }//GEN-LAST:event_edNewPswd2KeyReleased
+
+    function edNewPswd1KeyReleased(evt) {//GEN-FIRST:event_edNewPswd1KeyReleased
+        if (form.edNewPswd1.text.length < 5){
+            form.label.text = 'Пароль меньше 6 символов';
+        } else form.label.text = '';
+        validateForm();
+    }//GEN-LAST:event_edNewPswd1KeyReleased
 }
