@@ -5,19 +5,12 @@
 function ClientRegistrationByBarist() {
     var self = this, model = this.model, form = this;
     var clientModule = new ClientServerModule();
-    
+    var adminFunctions = new ServerModule("AdminFunctions");
+    var roleName = "client";
     
     function buttonActionPerformed(evt) {//GEN-FIRST:event_buttonActionPerformed
-       
-        clientModule.AddNewUser(form.phoneField.text, Math.random().toString(36));
-        model.qClientRegistration.push({
-            usr_name : form.phoneField.text,
-            reg_date : new Date(),
-            email : form.emailField.text
-        });
-        
-        model.save(function(){
-           form.close(true);
-        });
+        var genPass = Math.random().toString(36);
+        alert('Ваш пароль: ' + genPass);
+        clientModule.createUser(form.phoneField.text, adminFunctions.MD5(genPass), roleName, form.emailField.text);
     }//GEN-LAST:event_buttonActionPerformed
 }

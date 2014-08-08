@@ -7,13 +7,18 @@ function ClientServerModule() {
     var self = this, model = this.model;
     //TODO Исправить под логику работы с клиентами
     
-    self.createUser = function(anUserName, aPasswordMD5, aRole_Form, aRoleName, aEmail, aPhone){
+    
+    self.createUser = function(anUserName, aPasswordMD5, aRoleName, anEmail){
         model.usersByName.insert();
+        model.params.user_role = aRoleName;
         model.usersByName.usr_name = anUserName;
         model.usersByName.usr_passwd = aPasswordMD5;
-        model.usersByName.usr_form = aRole_Form;
-        model.usersByName.usr_email = aEmail;
-        model.usersByName.usr_phone = aPhone;
+        model.usersByName.usr_form = model.queryRoles.role_form;
+        model.qPersonalData.insert();
+        model.qPersonalData.cursor.phone = anUserName;
+        model.qPersonalData.cursor.email = anEmail;
+        model.qPersonalData.cursor.usr_name = anUserName;
+        model.qPersonalData.cursor.reg_date = new Date();
         model.save();
         addRole(anUserName, aRoleName);
     };
