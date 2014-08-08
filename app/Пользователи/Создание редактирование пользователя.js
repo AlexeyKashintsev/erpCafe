@@ -7,6 +7,7 @@ function UserCreateAndEditForm() {
     var self = this, model = this.model, form = this;
     var adminFunctions = new ServerModule("AdminFunctions");
     var changePassView = new ChangePassView();
+    var userModule = new UserModule();
     var userNew = false;
     
     model.params.franchazi_id = null;
@@ -36,19 +37,22 @@ function UserCreateAndEditForm() {
                roleName = "barista";     
             }
             model.params.role_name = roleName;
+            
+            userModule.SaveUser(form.tfLogin.text, form.tfPass.text, model.queryRoles.cursor.role_form);
 
-            model.usersByName.usr_name = form.tfLogin.text;
-            model.usersByName.usr_passwd = adminFunctions.MD5(form.tfPass.text);
-            model.usersByName.usr_form = model.queryRoles.cursor.role_form;
+            //model.usersByName.usr_name = form.tfLogin.text;
+            //model.usersByName.usr_passwd = adminFunctions.MD5(form.tfPass.text);
+            //model.usersByName.usr_form = model.queryRoles.cursor.role_form;
 
             model.createFrancizerUser.franchazi_id = model.params.franchazi_id;
             model.createFrancizerUser.user_name = form.tfLogin.text;
             model.createFrancizerUser.franc_users_active = true;
             
             model.save(function(){
-                    model.qUserAddRole.params.usr_name = model.usersByName.usr_name;
-                    model.qUserAddRole.params.usr_role = roleName;
-                    model.qUserAddRole.executeUpdate();
+                userModule.AddRole(roleName);
+                    //model.qUserAddRole.params.usr_name = model.usersByName.usr_name;
+                    //model.qUserAddRole.params.usr_role = roleName;
+                    //model.qUserAddRole.executeUpdate();
                     form.close(true);
                 });
             } else {
@@ -133,8 +137,6 @@ function UserCreateAndEditForm() {
             form.lbInfo.text = "Логин уже занят!";
             form.lbInfo.foreground = Color.RED;
             model.params.user_name = null;
-            //model.requery();
-            //model.createFrancizerUser.insert();
             validateLogin = false;
         } else {
             form.lbInfo.text = "Логин свободен!";
