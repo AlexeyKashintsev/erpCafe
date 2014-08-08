@@ -23,8 +23,8 @@
   <widget name="label" parent="Form" prefHeight="17px" prefWidth="168px" type="LabelDesignInfo">
     <constraints bottom="11px" height="17px" left="12px" type="MarginConstraintsDesignInfo" width="168px"/>
   </widget>
-  <widget name="label1" parent="Form" prefHeight="17px" prefWidth="42px" type="LabelDesignInfo">
-    <constraints height="17px" left="144px" top="12px" type="MarginConstraintsDesignInfo" width="42px"/>
+  <widget name="label1" parent="Form" prefHeight="17px" prefWidth="240px" type="LabelDesignInfo">
+    <constraints height="17px" left="144px" top="12px" type="MarginConstraintsDesignInfo" width="240px"/>
   </widget>
   <layout type="MarginLayoutDesignInfo"/>
 </layout>

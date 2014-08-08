@@ -113,7 +113,7 @@ function UserCreateAndEditForm() {
     }
     
     function tfLoginFocusLost(evt) {//GEN-FIRST:event_tfLoginFocusLost
-        if(userModule.checkLogin(form.tfLogin.text)){
+        if(userModule.checkIfLoginExists(form.tfLogin.text)){
                 form.lbInfo.text = "Логин уже занят!";
                 form.lbInfo.foreground = Color.RED;
                 model.params.user_name = null;
@@ -161,6 +161,13 @@ function UserCreateAndEditForm() {
 //            ValidateForm();            
 //        });
     }//GEN-LAST:event_tfLoginKeyPressed
+    
+    function validateEmail(){
+        var re = /.+@.+\..+/i;
+        if (re.test(form.tfEmail.text)){
+            return true;
+        } else return false;
+    }
 
     function tfEmailFocusLost(evt) {//GEN-FIRST:event_tfEmailFocusLost
         // TODO Добавьте свой код:
@@ -177,4 +184,31 @@ function UserCreateAndEditForm() {
     function tfPhoneKeyPressed(evt) {//GEN-FIRST:event_tfPhoneKeyPressed
         // TODO Добавьте свой код:
     }//GEN-LAST:event_tfPhoneKeyPressed
+
+    function tfEmailKeyReleased(evt) {//GEN-FIRST:event_tfEmailKeyReleased
+        if (validateEmail()){
+            form.lbEmail.text = '';
+            form.btnSave.enabled = true;0.
+        } else {
+            form.lbEmail.text = 'Email некорректен';
+            form.btnSave.enabled = false;
+        }
+    }//GEN-LAST:event_tfEmailKeyReleased
+
+    function validatePhone(){
+        var re = new RegExp("");  //TODO Написать регулярку для телефонов.
+        if (re.test(form.tfPhone.text)){
+            return true;
+        } else return false;
+    }
+
+    function tfPhoneKeyReleased(evt) {//GEN-FIRST:event_tfPhoneKeyReleased
+        if (validatePhone()){
+            form.lbPhone.text = '';
+            form.btnSave.enabled = true;0.
+        } else {
+            form.lbPhone.text = 'Номер телефона некорректен';
+            form.btnSave.enabled = false;
+        }
+    }//GEN-LAST:event_tfPhoneKeyReleased
 }

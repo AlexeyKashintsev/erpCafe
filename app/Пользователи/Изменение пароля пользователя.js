@@ -32,6 +32,7 @@ function ChangePassView(){
 
     function formWindowOpened(evt) {//GEN-FIRST:event_formWindowOpened
         form.label1.text = userName;
+        form.label.foreground = Color.RED;
         form.btnOk.enabled = false;
         clearData();
     }//GEN-LAST:event_formWindowOpened
