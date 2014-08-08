@@ -1,16 +1,7 @@
 /**
  * @name queryUsers
  * @public
-*/
-Select *,
-(case 
-    when t.usr_passwd is null
-    then 'Не установлен'     
-    else '•••••••••••••' 
-end) as pswSet,
-(case 
-    when t.usr_passwd = 'false'
-    then true     
-    else false 
-end) as usrBlock
+*/ 
+Select t.usr_name, t.usr_passwd 
 From MTD_USERS t
+ Where :usr_name = t.usr_name

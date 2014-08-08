@@ -2,20 +2,16 @@
   <widget name="jETALabel" parent="Form" prefHeight="20px" prefWidth="100px" text="Пользователь:" type="LabelDesignInfo">
     <constraints height="20px" left="10px" top="10px" type="MarginConstraintsDesignInfo" width="100px"/>
   </widget>
-  <widget backgroundColor="#f0f0f0" editable="false" foregroundColor="#000000" name="lblUser" parent="Form" prefHeight="20px" prefWidth="250px" toolTipText="Пользователь Platypus" type="DbLabelDesignInfo">
-    <datamodelElement entityId="132134521042108" fieldName="usr_name"/>
-    <constraints height="20px" left="140px" right="10px" top="10px" type="MarginConstraintsDesignInfo"/>
-  </widget>
   <widget name="jETALabel1" parent="Form" prefHeight="20px" prefWidth="100px" text="Новый пароль:" type="LabelDesignInfo">
     <constraints height="20px" left="10px" top="40px" type="MarginConstraintsDesignInfo" width="100px"/>
   </widget>
-  <widget name="edNewPswd1" parent="Form" prefHeight="20px" prefWidth="250px" toolTipText="Введите новый пароль" type="PasswordFieldDesignInfo">
+  <widget focusLost="edNewPswd1FocusLost" keyReleased="edNewPswd1KeyReleased" keyTyped="edNewPswd1KeyTyped" name="edNewPswd1" parent="Form" prefHeight="20px" prefWidth="250px" toolTipText="Введите новый пароль" type="PasswordFieldDesignInfo">
     <constraints height="20px" left="140px" right="10px" top="40px" type="MarginConstraintsDesignInfo"/>
   </widget>
   <widget name="jETALabel2" parent="Form" prefHeight="20px" prefWidth="130px" text="Новый пароль еще раз:" type="LabelDesignInfo">
     <constraints height="20px" left="10px" top="70px" type="MarginConstraintsDesignInfo" width="130px"/>
   </widget>
-  <widget name="edNewPswd2" parent="Form" prefHeight="20px" prefWidth="250px" toolTipText="Повторно введите новый пароль" type="PasswordFieldDesignInfo">
+  <widget focusLost="edNewPswd2FocusLost" keyReleased="edNewPswd2KeyReleased" keyTyped="edNewPswd2KeyTyped" name="edNewPswd2" parent="Form" prefHeight="20px" prefWidth="250px" toolTipText="Повторно введите новый пароль" type="PasswordFieldDesignInfo">
     <constraints height="20px" left="140px" top="70px" type="MarginConstraintsDesignInfo" width="250px"/>
   </widget>
   <widget actionPerformed="btnCancelActionPerformed" name="btnCancel" parent="Form" prefHeight="20px" prefWidth="102px" text="Отмена" type="ButtonDesignInfo">
@@ -23,6 +19,12 @@
   </widget>
   <widget actionPerformed="btnOkActionPerformed" name="btnOk" parent="Form" prefHeight="20px" prefWidth="90px" text="ОK" type="ButtonDesignInfo">
     <constraints bottom="8px" height="20px" left="192px" type="MarginConstraintsDesignInfo" width="90px"/>
+  </widget>
+  <widget name="label" parent="Form" prefHeight="17px" prefWidth="168px" type="LabelDesignInfo">
+    <constraints bottom="11px" height="17px" left="12px" type="MarginConstraintsDesignInfo" width="168px"/>
+  </widget>
+  <widget name="label1" parent="Form" prefHeight="17px" prefWidth="240px" type="LabelDesignInfo">
+    <constraints height="17px" left="144px" top="12px" type="MarginConstraintsDesignInfo" width="240px"/>
   </widget>
   <layout type="MarginLayoutDesignInfo"/>
 </layout>

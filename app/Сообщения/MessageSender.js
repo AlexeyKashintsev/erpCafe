@@ -9,11 +9,6 @@ function MessageSender() {
     var self = this;
     var email = null;
     var phone = null;
-    /*self.model.dsUser.params.userName = self.principal.name;
-    self.model.dsUser.requery(function(){
-        email = self.model.dsUser.cursor.usr_email;
-        phone = self.model.dsUser.cursor.usr_phone;
-    });*/
     var smsSender = new SmsSender();
     var emailSender = new Mailer();
             

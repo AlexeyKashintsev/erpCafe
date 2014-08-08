@@ -25,6 +25,8 @@ function FranchaziUsers() {
     self.setTradePointId = function(aTradePointId) {
         model.params.trade_point_id = aTradePointId;
     };
+    
+    self.setFranchaziId(1);
 
 function btnReqActionPerformed(evt) {//GEN-FIRST:event_btnReqActionPerformed
     if (self.model.modified&&confirm('Сохранить изменения?')){
