@@ -188,11 +188,11 @@ function UserCreateAndEditForm() {
     function tfEmailKeyReleased(evt) {//GEN-FIRST:event_tfEmailKeyReleased
         if (validateEmail()){
             form.lbEmail.text = '';
-            form.btnSave.enabled = true;0.
         } else {
             form.lbEmail.text = 'Email некорректен';
             form.btnSave.enabled = false;
         }
+        if (validateEmail() && validatePhone()) form.btnSave.enabled = true;
     }//GEN-LAST:event_tfEmailKeyReleased
 
     function validatePhone(){
@@ -205,10 +205,10 @@ function UserCreateAndEditForm() {
     function tfPhoneKeyReleased(evt) {//GEN-FIRST:event_tfPhoneKeyReleased
         if (validatePhone()){
             form.lbPhone.text = '';
-            form.btnSave.enabled = true;0.
         } else {
             form.lbPhone.text = 'Номер телефона некорректен';
             form.btnSave.enabled = false;
         }
+        if (validateEmail() && validatePhone()) form.btnSave.enabled = true;
     }//GEN-LAST:event_tfPhoneKeyReleased
 }
