@@ -9,6 +9,8 @@ function UserCreateAndEditForm() {
     var changePassView = new ChangePassView();
     var userModule = new UserModule();
     var userNew = false;
+    var validateLogin = false;
+    var validatePass = false;
     
     model.params.franchazi_id = null;
     model.params.user_name = "barista";
@@ -20,48 +22,40 @@ function UserCreateAndEditForm() {
     self.setUserName = function(aUserName){
         model.params.user_name = aUserName;
     };
+    
 
     /**
     * @rolesAllowed barista
     */   
-   function setInputActive(aValue){
-        form.tfEmail.enabled = form.tfPhone.enabled = form.tfFIO.enabled = 
-            form.tfAdress.enabled = form.tfAdditional.enabled = aValue;
-   }
+   
 
     function btnSaveActionPerformed(evt) {//GEN-FIRST:event_btnSaveActionPerformed
-        if (userNew) { //Создан новый пользователь?
-            if(form.rbAdmin.selected){
+        if (userNew) { //Если создан новый пользователь...
+            if (form.rbAdmin.selected){
                var roleName = "franchazi";
             } else {
                roleName = "barista";     
             }
-            model.params.role_name = roleName;
             
-            userModule.SaveUser(form.tfLogin.text, form.tfPass.text, model.queryRoles.cursor.role_form);
-
-            //model.usersByName.usr_name = form.tfLogin.text;
-            //model.usersByName.usr_passwd = adminFunctions.MD5(form.tfPass.text);
-            //model.usersByName.usr_form = model.queryRoles.cursor.role_form;
+            model.params.role_name = roleName;
+            userModule.createUser(form.tfLogin.text, adminFunctions.MD5(form.tfPass.text), 
+                                  model.queryRoles.cursor.role_form, roleName, 
+                                  form.tfEmail.text, form.tfPhone.text);
 
             model.createFrancizerUser.franchazi_id = model.params.franchazi_id;
             model.createFrancizerUser.user_name = form.tfLogin.text;
             model.createFrancizerUser.franc_users_active = true;
             
             model.save(function(){
-                userModule.AddRole(roleName);
-                    //model.qUserAddRole.params.usr_name = model.usersByName.usr_name;
-                    //model.qUserAddRole.params.usr_role = roleName;
-                    //model.qUserAddRole.executeUpdate();
-                    form.close(true);
-                });
-            } else {
-                if(form.rbEnable.selected)
-                    model.createFrancizerUser.cursor.franc_users_active = true;
-                else 
-                    model.createFrancizerUser.cursor.franc_users_active = false;
-                model.save(function(){form.close(true);});                
-            }
+                form.close(true);
+            });
+        } else {
+            if(form.rbEnable.selected)
+                model.createFrancizerUser.cursor.franc_users_active = true;
+            else 
+                model.createFrancizerUser.cursor.franc_users_active = false;
+            model.save(function(){form.close(true);});                
+        }
     }//GEN-LAST:event_btnSaveActionPerformed
 
     function formWindowOpened(evt) {//GEN-FIRST:event_formWindowOpened
@@ -69,9 +63,10 @@ function UserCreateAndEditForm() {
             userNew = false; //говорим что это не новый пользователь
             form.tfLogin.enabled = false;
             form.panelBarist.visible = false;
-            setInputActive(true);
             form.tfLogin.text = model.usersByName.cursor.usr_name;
             form.tfPass.text = "********";
+            form.tfEmail.text = model.usersByName.cursor.usr_email;
+            form.tfPhone.text = model.usersByName.cursor.usr_phone;
             if(!model.createFrancizerUser.cursor.franc_users_active)
                 form.rbDisable.selected = true; 
             else  form.rbEnable.selected = true; 
@@ -81,13 +76,8 @@ function UserCreateAndEditForm() {
             form.tfLogin.text = "";
             form.tfLogin.enabled = true;
             form.tfPass.text = "";
-            form.tfPass.enabled = true;
-            setInputActive(true);
-            
-            //form.panelBarist.visible = false;
-            //form.panelEnabled.visible = false;
+            form.tfPass.enabled = true;           
             form.btnSave.enabled = true;
-            model.usersByName.insert();
             model.createFrancizerUser.insert();
         }
     }//GEN-LAST:event_formWindowOpened
@@ -105,20 +95,11 @@ function UserCreateAndEditForm() {
             });
         }
     }//GEN-LAST:event_tfPassMouseClicked
-    
-    var validateLogin = false;
-    var validatePass = false;
-    
+
     function ValidateForm(){
         if(validateLogin && validatePass){
             ChangeStateElements(true);
-            //setInputActive();
-            model.requery();
-            model.createFrancizerUser.insert();
-            model.usersByName.insert();
-        }
-        else
-            ChangeStateElements(false);
+        } else ChangeStateElements(false);
     }
     
     function ChangeStateElements(state) {
@@ -131,19 +112,17 @@ function UserCreateAndEditForm() {
     }
     
     function tfLoginFocusLost(evt) {//GEN-FIRST:event_tfLoginFocusLost
-        model.requery();
-        model.params.user_name = form.tfLogin.text;
-        if(model.usersByName.cursor){
-            form.lbInfo.text = "Логин уже занят!";
-            form.lbInfo.foreground = Color.RED;
-            model.params.user_name = null;
-            validateLogin = false;
-        } else {
-            form.lbInfo.text = "Логин свободен!";
-            form.lbInfo.foreground = new Color("#2F7F39");
-            validateLogin = true;
-        }
-        ValidateForm();
+        if(userModule.checkLogin(form.tfLogin.text)){
+                form.lbInfo.text = "Логин уже занят!";
+                form.lbInfo.foreground = Color.RED;
+                model.params.user_name = null;
+                validateLogin = false;
+            } else {
+                form.lbInfo.text = "Логин свободен!";
+                form.lbInfo.foreground = new Color("#2F7F39");
+                validateLogin = true;
+            }
+          ValidateForm(); 
     }//GEN-LAST:event_tfLoginFocusLost
 
     function tfPassKeyPressed(evt) {//GEN-FIRST:event_tfPassKeyPressed
@@ -163,4 +142,36 @@ function UserCreateAndEditForm() {
     function btnCancelActionPerformed(evt) {//GEN-FIRST:event_btnCancelActionPerformed
         form.close();
     }//GEN-LAST:event_btnCancelActionPerformed
+
+    function tfLoginKeyPressed(evt) {//GEN-FIRST:event_tfLoginKeyPressed
+//        userModule.checkLogin(form.tfLogin.text, function(aResult){
+//            if(!aResult){
+//                form.lbInfo.text = "Логин уже занят!";
+//                form.lbInfo.foreground = Color.RED;
+//                model.params.user_name = null;
+//                validateLogin = false;
+//            } else {
+//                form.lbInfo.text = "Логин свободен!";
+//                form.lbInfo.foreground = new Color("#2F7F39");
+//                validateLogin = true;
+//            }
+//            ValidateForm();            
+//        });
+    }//GEN-LAST:event_tfLoginKeyPressed
+
+    function tfEmailFocusLost(evt) {//GEN-FIRST:event_tfEmailFocusLost
+        // TODO Добавьте свой код:
+    }//GEN-LAST:event_tfEmailFocusLost
+
+    function tfEmailKeyPressed(evt) {//GEN-FIRST:event_tfEmailKeyPressed
+        // TODO Добавьте свой код:
+    }//GEN-LAST:event_tfEmailKeyPressed
+
+    function tfPhoneFocusLost(evt) {//GEN-FIRST:event_tfPhoneFocusLost
+        // TODO Добавьте свой код:
+    }//GEN-LAST:event_tfPhoneFocusLost
+
+    function tfPhoneKeyPressed(evt) {//GEN-FIRST:event_tfPhoneKeyPressed
+        // TODO Добавьте свой код:
+    }//GEN-LAST:event_tfPhoneKeyPressed
 }

@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?><layout defaultCloseOperation="2" name="Form" prefHeight="448px" prefWidth="303px" windowClosed="formWindowClosed" windowOpened="formWindowOpened">
   <nonvisual name="buttonGroup" type="ButtonGroupDesignInfo"/>
   <nonvisual name="buttonGroup1" type="ButtonGroupDesignInfo"/>
+  <widget focusLost="tfPhoneFocusLost" keyPressed="tfPhoneKeyPressed" name="tfPhone" parent="Form" prefHeight="27px" prefWidth="192px" type="TextFieldDesignInfo">
+    <constraints height="27px" left="96px" top="144px" type="MarginConstraintsDesignInfo" width="192px"/>
+  </widget>
+  <widget focusLost="tfEmailFocusLost" keyPressed="tfEmailKeyPressed" name="tfEmail" parent="Form" prefHeight="27px" prefWidth="192px" type="TextFieldDesignInfo">
+    <constraints height="27px" left="96px" top="108px" type="MarginConstraintsDesignInfo" width="192px"/>
+  </widget>
   <widget name="tfAdress" parent="Form" prefHeight="27px" prefWidth="192px" type="DbLabelDesignInfo">
     <datamodelElement entityId="140498079905740" fieldName="address"/>
     <constraints height="27px" left="96px" top="216px" type="MarginConstraintsDesignInfo" width="192px"/>
@@ -8,14 +14,6 @@
   <widget name="tfFIO" parent="Form" prefHeight="27px" prefWidth="192px" type="DbLabelDesignInfo">
     <datamodelElement entityId="140498079905740" fieldName="fio"/>
     <constraints height="27px" left="96px" top="180px" type="MarginConstraintsDesignInfo" width="192px"/>
-  </widget>
-  <widget name="tfPhone" parent="Form" prefHeight="27px" prefWidth="192px" type="DbLabelDesignInfo">
-    <datamodelElement entityId="140499275621413" fieldName="usr_phone"/>
-    <constraints height="27px" left="96px" top="144px" type="MarginConstraintsDesignInfo" width="192px"/>
-  </widget>
-  <widget name="tfEmail" parent="Form" prefHeight="27px" prefWidth="192px" type="DbLabelDesignInfo">
-    <datamodelElement entityId="140499275621413" fieldName="usr_email"/>
-    <constraints height="27px" left="96px" top="108px" type="MarginConstraintsDesignInfo" width="192px"/>
   </widget>
   <widget name="label112" parent="Form" prefHeight="17px" prefWidth="72px" text="Адрес" type="LabelDesignInfo">
     <constraints height="17px" left="24px" top="221px" type="MarginConstraintsDesignInfo" width="72px"/>
@@ -57,7 +55,7 @@
   <widget buttonGroup="buttonGroup1" name="rbDisable" parent="panelEnabled" prefHeight="23px" prefWidth="113px" text="Выключить" type="RadioDesignInfo">
     <constraints height="23px" left="168px" top="0px" type="MarginConstraintsDesignInfo" width="113px"/>
   </widget>
-  <widget focusLost="tfLoginFocusLost" name="tfLogin" parent="Form" prefHeight="27px" prefWidth="192px" type="TextFieldDesignInfo">
+  <widget focusLost="tfLoginFocusLost" keyPressed="tfLoginKeyPressed" name="tfLogin" parent="Form" prefHeight="27px" prefWidth="192px" type="TextFieldDesignInfo">
     <constraints height="27px" left="96px" top="12px" type="MarginConstraintsDesignInfo" width="192px"/>
   </widget>
   <widget name="panelBarist" parent="Form" prefHeight="36px" prefWidth="300px" type="PanelDesignInfo">
