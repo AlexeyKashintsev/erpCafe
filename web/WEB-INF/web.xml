@@ -51,6 +51,12 @@
     <res-auth>Container</res-auth>
   </resource-ref>
   <resource-ref>
+    <description>jdbc:postgresql://192.168.137.1:5432/TSG [tsg_main на tsg_main]</description>
+    <res-ref-name>TSG_HOME_LOCAL</res-ref-name>
+    <res-type>javax.sql.DataSource</res-type>
+    <res-auth>Container</res-auth>
+  </resource-ref>
+  <resource-ref>
     <description>jdbc:postgresql://akashintsev.no-ip.biz:5432/TSG [tsg_main на tsg_main]</description>
     <res-ref-name>TSG_HOME</res-ref-name>
     <res-type>javax.sql.DataSource</res-type>
