@@ -2,14 +2,11 @@
   <parameters>
     <parameter description="" name="franchazi_id" nullable="true" parameterMode="1" precision="0" scale="0" selectionForm="null" signed="true" size="0" type="2" typeName="NUMERIC"/>
     <parameter description="" name="user_name" nullable="true" parameterMode="1" precision="0" scale="0" selectionForm="null" signed="true" size="100" type="12" typeName="VARCHAR"/>
-    <parameter description="" name="role_name" nullable="true" parameterMode="1" precision="0" scale="0" selectionForm="null" signed="true" size="100" type="12" typeName="VARCHAR"/>
   </parameters>
   <parametersEntity entityHeight="200" entityIconified="false" entityLocationX="12" entityLocationY="12" entityWidth="150"/>
   <entity Name="createFrancizerUser" Title="" entityHeight="331" entityIconified="false" entityId="140498079905740" entityLocationX="249" entityLocationY="12" entityWidth="225" queryId="createFrancizerUser" tableName="" tableSchemaName=""/>
-  <entity Name="queryRoles" Title="" entityHeight="200" entityIconified="false" entityId="140498914073670" entityLocationX="24" entityLocationY="235" entityWidth="150" queryId="queryRoles" tableName="" tableSchemaName=""/>
   <entity Name="usersByName" Title="" entityHeight="200" entityIconified="false" entityId="140499275621413" entityLocationX="587" entityLocationY="99" entityWidth="150" queryId="usersByName" tableName="" tableSchemaName=""/>
-  <relation leftEntityId="-1" leftEntityParameterName="user_name" rightEntityId="140499275621413" rightEntityParameterName="usr_name"/>
   <relation leftEntityId="-1" leftEntityParameterName="user_name" rightEntityId="140498079905740" rightEntityParameterName="user_name"/>
-  <relation leftEntityId="-1" leftEntityParameterName="role_name" rightEntityFieldName="role_name" rightEntityId="140498914073670"/>
+  <relation leftEntityId="-1" leftEntityParameterName="user_name" rightEntityId="140499275621413" rightEntityParameterName="usr_name"/>
   <referenceRelation leftEntityFieldName="user_name" leftEntityId="140498079905740" rightEntityFieldName="usr_name" rightEntityId="140499275621413"/>
 </datamodel>

@@ -7,11 +7,12 @@ function UserModule() {
     var self = this, model = this.model;
     //TODO сделать проверку может ли пользователь создавать пользователя с такой ролью
     
-    self.createUser = function(anUserName, aPasswordMD5, aRole_Form, aRoleName, aEmail, aPhone){
+    self.createUser = function(anUserName, aPasswordMD5, aRoleName, aEmail, aPhone){
         model.usersByName.insert();
+        model.params.user_role = aRoleName;
         model.usersByName.usr_name = anUserName;
         model.usersByName.usr_passwd = aPasswordMD5;
-        model.usersByName.usr_form = aRole_Form;
+        model.usersByName.usr_form = model.queryRoles.role_form;
         model.usersByName.usr_email = aEmail;
         model.usersByName.usr_phone = aPhone;
         model.save();

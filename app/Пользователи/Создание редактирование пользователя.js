@@ -39,8 +39,7 @@ function UserCreateAndEditForm() {
             
             model.params.role_name = roleName;
             userModule.createUser(form.tfLogin.text, adminFunctions.MD5(form.tfPass.text), 
-                                  model.queryRoles.cursor.role_form, roleName, 
-                                  form.tfEmail.text, form.tfPhone.text);
+                                  roleName, form.tfEmail.text, form.tfPhone.text);
 
             model.createFrancizerUser.franchazi_id = model.params.franchazi_id;
             model.createFrancizerUser.user_name = form.tfLogin.text;
