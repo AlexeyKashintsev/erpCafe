@@ -8,11 +8,11 @@
   <widget actionPerformed="buttonActionPerformed" name="button" parent="Form" prefHeight="29px" prefWidth="144px" text="Добавить" type="ButtonDesignInfo">
     <constraints bottom="18px" height="29px" right="16px" type="MarginConstraintsDesignInfo" width="144px"/>
   </widget>
-  <widget name="phoneField" parent="Form" prefHeight="27px" prefWidth="72px" type="TextFieldDesignInfo">
-    <constraints height="27px" left="204px" top="24px" type="MarginConstraintsDesignInfo" width="72px"/>
+  <widget name="phoneField" parent="Form" prefHeight="27px" prefWidth="180px" type="TextFieldDesignInfo">
+    <constraints height="27px" left="204px" top="24px" type="MarginConstraintsDesignInfo" width="180px"/>
   </widget>
-  <widget name="emailField" parent="Form" prefHeight="27px" prefWidth="80px" type="TextFieldDesignInfo">
-    <constraints height="27px" left="204px" top="72px" type="MarginConstraintsDesignInfo" width="80px"/>
+  <widget name="emailField" parent="Form" prefHeight="27px" prefWidth="180px" type="TextFieldDesignInfo">
+    <constraints height="27px" left="204px" top="72px" type="MarginConstraintsDesignInfo" width="180px"/>
   </widget>
   <layout type="MarginLayoutDesignInfo"/>
 </layout>
