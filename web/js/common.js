@@ -1,13 +1,13 @@
 var units = {};
-var common = {};
+var cmn = {};
 
-common.showModal = function(aForm, aCallback) {
+cmn.showModal = function(aForm, aCallback) {
     aForm.showOnPanel('modalFormContent');
     aForm.onClose = aCallback;
     $('#modalForm').modal({});
 }
 
-common.pFrameRunner = new function() {
+cmn.pFrameRunner = new function() {
     var frames = {};
     var activeFrame = null;
     
@@ -17,19 +17,30 @@ common.pFrameRunner = new function() {
         activeFrame = aFormName;
     }
     
-    this.show = function(aFormName) {
+    this.show = function(aFormName, aCaption, aSelfGeneration) {
         if (!frames[aFormName]) {
             frames[aFormName] = {};
-            frames[aFormName].div = document.createElement('div');
-            frames[aFormName].div.innerHTML = 'Загрузка...';
-            document.getElementById('mainArea').appendChild(frames[aFormName].div);
+            frames[aFormName].div = cmn.createElement('div', 'formContainer', 'mainArea', aFormName);
+            if (aCaption) {
+                var header = cmn.createElement('div', 'navbar navbar-default navbar-static-top', frames[aFormName].div, '');
+                header.innerHTML = '<div class="container"><h2>' + aCaption + '</h2></div>';
+            }
+            var Loading = cmn.createElement('blockquote', '', frames[aFormName].div, '');
+            Loading.innerHTML = '<p>Загрузка...</p>';
             setActiveFrame(aFormName);
             require([aFormName], function(){
                 frames[aFormName].form = new Form(aFormName);
-                frames[aFormName].div.id = aFormName;
-                frames[aFormName].div.classname = 'formContainer';
-                frames[aFormName].div.innerHTML = '';
-                frames[aFormName].form.showOnPanel(frames[aFormName].div);/********************/
+                try {
+                    frames[aFormName].form.setFranchazi(units.userSession.franchaziId);
+                } catch (e) {
+                    Logger.warning('Невозможно задать ID франчази для '+ aFormName);
+                }
+                frames[aFormName].div.removeChild(Loading);
+                if (!aSelfGeneration) {
+                    frames[aFormName].form.showOnPanel(frames[aFormName].div);
+                } else {
+                    frames[aFormName].form.manualShow(frames[aFormName].div);
+                }
                 return frames[aFormName].form;
             });
         }
@@ -38,11 +49,43 @@ common.pFrameRunner = new function() {
     }
 }
 
-common.ActionList = function(anActions, aParentContainer) {
+cmn.createElement = function(aType, aClass, aContainer, aID, aBeforeContainer) {
+        var el = document.createElement(aType);
+        if (!!aClass) el.className = aClass;
+        if (!!aID) el.id = aID;
+        
+        function appendChild() {
+            if (typeof aContainer !== 'string') {
+                aContainer.appendChild(el);
+            } else {
+                document.getElementById(aContainer).appendChild(el);
+            }
+        }
+        
+        function appendChildBefore() {
+            if (typeof aContainer !== 'string') {
+                aContainer.insertBefore(el, aBeforeContainer);
+            } else {
+                document.getElementById(aContainer).insertBefore(el, aBeforeContainer);
+            }
+        }
+        
+        if (aContainer) {
+            if (!aBeforeContainer)
+                appendChild();
+            else 
+                appendChildBefore();
+        }
+        
+        return el;
+    }
+
+cmn.ActionList = function(anActions, aParentContainer) {
    /* var acExample = {
         actionName : {
                 display     :   'someName',
                 dispForm    :   'someFormName',
+                selfGeneration  :   false,
                 inner   :   {}
             }
         }*/
@@ -53,7 +96,7 @@ common.ActionList = function(anActions, aParentContainer) {
         this.element.innerHTML = '<h4 class="list-group-item-heading">' + anAction.display + '</h4>';
         var ale = this.element;
         this.element.onclick = function() {
-            common.pFrameRunner.show(anAction.dispForm);
+            cmn.pFrameRunner.show(anAction.dispForm, anAction.display, anAction.selfGeneration);
             $('.list-group-item').removeClass('active');
             ale.className += ' active';
         }
@@ -70,11 +113,11 @@ common.ActionList = function(anActions, aParentContainer) {
     }
 }
 
-common.addTopRightControl = function(aText, anIcon, aFunction) {
+cmn.addTopRightControl = function(aText, anIcon, aFunction, aHref) {
     //<li><a id="whAdd" href="#"><span class="glyphicon glyphicon-plus-sign"></span>  Прием товара</a></li>
     var li = document.createElement('li');
     li.onclick = aFunction;
-    li.innerHTML = '<a id="whAdd" href="#"><span class="glyphicon glyphicon-' + anIcon +
+    li.innerHTML = '<a id="whAdd" href="' + (aHref ? aHref : '#') + '"><span class="glyphicon glyphicon-' + anIcon +
                     '"></span>   ' + aText + '</a>';
     document.getElementById('logActionNav').appendChild(li);
 }
@@ -87,6 +130,8 @@ platypus.ready = function() {
     require(['getUserSession'], function(){
         units.userSession = getUserSession();        
         units.userSession.login(function(anUserRole){
+                units.userSession.userRole = anUserRole;
+                units.userSession.franchaziId = units.userSession.getFranchazi();
                 switch (anUserRole) {
                     case 'admin':
                         break;

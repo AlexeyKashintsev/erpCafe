@@ -13,7 +13,7 @@ self.addButtons = false;
 
 model.params.franchazi_id = null;
 
-self.setFranchaziId = function(aFranchaziId){
+self.setFranchazi = function(aFranchaziId){
     model.params.franchazi_id = aFranchaziId;
 };
 function btnReqActionPerformed(evt) {//GEN-FIRST:event_btnReqActionPerformed

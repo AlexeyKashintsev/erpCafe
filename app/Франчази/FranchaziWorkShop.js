@@ -9,14 +9,15 @@ function FranchaziWorkShop() {
     fmTP.showOnPanel(form.pnlWorkArea);
     fmTP.setFranchazi(model.params.franchazi);
     
-    self.setFranchaziId = function(aFranchazi) {
+    self.setFranchazi = function(aFranchazi) {
         self.model.params.franchazi = aFranchazi;
         fmTP.setFranchazi(model.params.franchazi);
+        model.listTradePoints.requery();
     };
     
     try {
         units.userSession.getFranchazi(function(aFranchazi){
-            self.setFranchaziId(aFranchazi);
+            self.setFranchazi(aFranchazi);
         });
     } catch (e) {
         Logger.info('Not under browser');

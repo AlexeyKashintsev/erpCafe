@@ -7,6 +7,23 @@ function OrderList(aParent) {
     self.browser = aParent.browser;
     self.orderDetails = {};
     self.tradeSession = null;
+    var lastDiv = null;
+    
+    function putAcceptedOrderAlert(aSum) {
+        var divEl = cmn.createElement("div", "alert alert-success", "actionPanel", null, lastDiv ? lastDiv : false);
+        divEl.role = "alert";
+        divEl.innerHTML = "<h4>Заказ успешно проведен</h4>Сумма заказа: <strong>"
+                + aSum + " рублей </strong";
+        lastDiv = divEl;
+        
+        function closeIt(){
+            divEl.parentNode.removeChild(divEl);
+            if (lastDiv===divEl) lastDiv = null;
+        }
+        
+        divEl.onclick = closeIt;
+        setTimeout(closeIt, 15000);
+    }
     
     function orderItem(anItemData) {
         var obj = {};
@@ -143,19 +160,20 @@ function OrderList(aParent) {
             }
         }
         self.tradeSession.processOrder(anOrderDetails);
+        putAcceptedOrderAlert(anOrderDetails.orderSum);
         self.deleteOrder();
     };
     
     if (self.browser) {
-        var dockElement = document.createElement('div');
-        document.getElementById("actionPanel").appendChild(dockElement);
-        dockElement.className = 'baristaOrder';
+        var dockElement = cmn.createElement("div", 'baristaOrder panel panel-primary', "actionPanel")
         
         var newHTMLElement = document.createElement('div');
         newHTMLElement.innerHTML = 
-"<h3>Заказ</h3>\
-<div id='orderItems'></div><div id='orderDetails'>\n\
-<div id='orderSum'>Итого: 0 рублей</div>";
+"<div class='panel-heading'><h3 class='panel-title'>Заказ</h3></div>\
+<div id='orderItems'></div><div id='orderDetails'>\
+<div class='panel-body'>\
+<div id='orderSum'>Итого: 0 рублей</div>\
+</div>";
         dockElement.appendChild(newHTMLElement);
 
         var newHTMLElement = document.createElement('button');

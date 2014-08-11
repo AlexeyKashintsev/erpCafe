@@ -21,12 +21,8 @@ function BaristaDesktop() {
     } catch (e) {
         self.browser = true;
         Logger.info('browser');
-//        document.getElementById("logActionNav").innerHTML = 
-//                '<li><a id="whAddItems" href="#"><span class="glyphicon glyphicon-plus-sign"></span>  Прием товара</a></li>\n\
-//                 <li><a id="Logout" href="#"><span class="glyphicon glyphicon-log-out"></span>  Закрыть смену</a></li>'
-//        document.getElementById("whAddItems").onclick = btnWarehouseAddActionPerformed;
-//        document.getElementById("Logout").onclick = btnSessionCloseActionPerformed;
     }
+    
     self.orderList = new OrderList(self);
     self.orderList.tradeSession = self.tradeSession;
 
@@ -99,30 +95,22 @@ function BaristaDesktop() {
     }
     
     function addItemBrowser(aData) {
-        var itemPanel = document.createElement('div');
-        var itemDesc = document.createElement('h4');
-        var itemCost = document.createElement('h1');
-        var itemType = document.createElement('p');
-        
-        itemPanel.className = "itemDescription col-md-2 col-sm-4 tc_" 
-                + aData.trade_item_type_id + (aData.classtag ? " " + aData.classtag : "");
-        itemDesc.className = "itemDesc";
-        itemCost.className = "itemCost";
-        itemType.className = "itemType";
+        var itemContainer = cmn.createElement("div", "itemDescription col-xs-4 col-sm-3 col-lg-2 tt_" 
+                + aData.trade_item_type_id + (aData.classtag ? " " + aData.classtag : ""), "mainArea");
+        var itemPanel = cmn.createElement("div", "panel panel-primary", itemContainer);
+        var itemHeading = cmn.createElement("div", "panel-heading", itemPanel);
+        var itemDesc = cmn.createElement("h3", "panel-title itemDesc", itemHeading);
+        var itemContent = cmn.createElement("div", "panel-body", itemPanel);
+        var itemCost = cmn.createElement("h1", "itemCost", itemContent);
+        var itemType = cmn.createElement("p", "itemType", itemContent);
         
         itemDesc.innerHTML = aData.item_name;
         itemType.innerHTML = aData.type_name;
-        itemCost.innerHTML = aData.item_cost;
-        
-        itemPanel.appendChild(itemDesc);
-        itemPanel.appendChild(itemType);
-        itemPanel.appendChild(itemCost);
+        itemCost.innerHTML = aData.item_cost + 'р.';
         
         itemPanel.onclick = function() {
             self.orderList.addItem(aData);
         };
-        
-        document.getElementById("mainArea").appendChild(itemPanel);
     }
 
     function tradeItemsByTradePointWithCostOnRequeried(evt) {//GEN-FIRST:event_tradeItemsByTradePointWithCostOnRequeried
@@ -146,7 +134,9 @@ function BaristaDesktop() {
 
     function btnSessionCloseActionPerformed(evt) {//GEN-FIRST:event_btnSessionCloseActionPerformed
         self.whSession.closeSession();
-        logout();
+        //var serverMod = new PlatypusServer();
+        //serverMod.
+                logout();
     }//GEN-LAST:event_btnSessionCloseActionPerformed
 
     function btnWarehouseAddActionPerformed(evt) {//GEN-FIRST:event_btnWarehouseAddActionPerformed
@@ -158,7 +148,7 @@ function BaristaDesktop() {
     }//GEN-LAST:event_btnWarehouseAddActionPerformed
 
     if (self.browser) {
-        common.addTopRightControl("Прием товара", "plus-sign", btnWarehouseAddActionPerformed);
-        common.addTopRightControl("Закрыть смену", "log-out", btnSessionCloseActionPerformed);
+        cmn.addTopRightControl("Прием товара", "plus-sign", btnWarehouseAddActionPerformed);
+        cmn.addTopRightControl("Закрыть смену", "log-out", btnSessionCloseActionPerformed);
     }
 }

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?><datamodel>
+  <parameters>
+    <parameter description="" name="franchazi_id" nullable="true" parameterMode="1" precision="0" scale="0" selectionForm="null" signed="true" size="0" type="2" typeName="NUMERIC"/>
+  </parameters>
+  <parametersEntity entityHeight="200" entityIconified="false" entityLocationX="8" entityLocationY="7" entityWidth="150"/>
+  <entity Title="" entityHeight="200" entityIconified="false" entityId="140750840795407" entityLocationX="211" entityLocationY="8" entityWidth="150" tableAlias="t1" tableName="org_session" tableSchemaName=""/>
+  <entity Title="" entityHeight="200" entityIconified="false" entityId="140753694955085" entityLocationX="565" entityLocationY="10" entityWidth="150" queryId="listTradePoints" tableAlias="q" tableName="" tableSchemaName=""/>
+  <relation leftEntityFieldName="org_trade_point_id" leftEntityId="140753694955085" rightEntityFieldName="trade_point" rightEntityId="140750840795407"/>
+  <relation leftEntityId="-1" leftEntityParameterName="franchazi_id" rightEntityId="140753694955085" rightEntityParameterName="franchazi_id"/>
+</datamodel>

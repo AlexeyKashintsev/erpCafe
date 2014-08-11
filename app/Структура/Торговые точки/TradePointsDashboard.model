@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?><datamodel>
+  <parameters>
+    <parameter description="" name="franchaziId" nullable="true" parameterMode="1" precision="0" scale="0" selectionForm="null" signed="true" size="0" type="2" typeName="NUMERIC"/>
+  </parameters>
+  <parametersEntity entityHeight="200" entityIconified="false" entityLocationX="12" entityLocationY="12" entityWidth="150"/>
+  <entity Name="listTradePoints" Title="" entityHeight="200" entityIconified="false" entityId="140750592213848" entityLocationX="192" entityLocationY="12" entityWidth="150" onRequeried="listTradePointsOnRequeried" queryId="listTPwAdI" tableName="" tableSchemaName=""/>
+</datamodel>

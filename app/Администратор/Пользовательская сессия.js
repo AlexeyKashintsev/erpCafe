@@ -55,7 +55,7 @@ function UserSession() {
             }
         } else {
             model.params.franchaziId = null;
-            alert(self.msg[MSG_ERROR_NO_FRANCHAZI_4USER]);
+            //alert(self.msg[MSG_ERROR_NO_FRANCHAZI_4USER]);
             ep.addEvent('userNotActive', {username : model.params.userName});
             self.close();
         }

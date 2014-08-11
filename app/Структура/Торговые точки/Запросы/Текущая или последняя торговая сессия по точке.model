@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?><datamodel>
+  <parameters>
+    <parameter description="" name="trade_point" nullable="true" parameterMode="1" precision="0" scale="0" selectionForm="null" signed="true" size="0" type="2" typeName="NUMERIC"/>
+  </parameters>
+  <parametersEntity entityHeight="200" entityIconified="false" entityLocationX="8" entityLocationY="7" entityWidth="150"/>
+  <entity Title="" entityHeight="200" entityIconified="false" entityId="140753721198286" entityLocationX="432" entityLocationY="56" entityWidth="150" tableAlias="t2" tableName="org_session" tableSchemaName=""/>
+  <entity Title="" entityHeight="200" entityIconified="false" entityId="140753721198201" entityLocationX="220" entityLocationY="62" entityWidth="150" tableAlias="t1" tableName="org_session" tableSchemaName=""/>
+  <relation leftEntityId="-1" leftEntityParameterName="trade_point" rightEntityFieldName="trade_point" rightEntityId="140753721198201"/>
+  <relation leftEntityFieldName="trade_point" leftEntityId="140753721198286" rightEntityId="-1" rightEntityParameterName="trade_point"/>
+</datamodel>

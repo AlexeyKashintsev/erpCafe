@@ -18,7 +18,7 @@ function FranchaziUsers() {
     model.params.trade_point_id = null;
     
     
-    self.setFranchaziId = function(aFranchaziId) {
+    self.setFranchazi = function(aFranchaziId) {
         model.params.franchazi_id = aFranchaziId;
     };
 
@@ -26,7 +26,7 @@ function FranchaziUsers() {
         model.params.trade_point_id = aTradePointId;
     };
     
-    self.setFranchaziId(1);
+    self.setFranchazi(1);
 
 function btnReqActionPerformed(evt) {//GEN-FIRST:event_btnReqActionPerformed
     if (self.model.modified&&confirm('Сохранить изменения?')){
@@ -55,7 +55,7 @@ function formWindowClosing(evt) {//GEN-FIRST:event_formWindowClosing
     }//GEN-LAST:event_btnSelectActionPerformed
 
     function btnAddActionPerformed(evt) {//GEN-FIRST:event_btnAddActionPerformed
-        createFrancahziUser.setFranchaziId(model.params.franchazi_id);
+        createFrancahziUser.setFranchazi(model.params.franchazi_id);
         createFrancahziUser.setUserName(undefined);
         createFrancahziUser.showModal(function(){
                 model.requery();
@@ -64,7 +64,7 @@ function formWindowClosing(evt) {//GEN-FIRST:event_formWindowClosing
 
     function modelGridMouseClicked(evt) {//GEN-FIRST:event_modelGridMouseClicked
         if (evt.clickCount === 2) {
-            createFrancahziUser.setFranchaziId(model.params.franchazi_id);
+            createFrancahziUser.setFranchazi(model.params.franchazi_id);
             createFrancahziUser.setUserName(model.listTradePointUsers.usr_name);
             createFrancahziUser.showModal(function(){
                     model.requery();
@@ -75,7 +75,7 @@ function formWindowClosing(evt) {//GEN-FIRST:event_formWindowClosing
     }//GEN-LAST:event_modelGridMouseClicked
 
     function btnSetPointsActionPerformed(evt) {//GEN-FIRST:event_btnSetPointsActionPerformed
-        baristaTP.setFranchaziId(model.params.franchazi_id);
+        baristaTP.setFranchazi(model.params.franchazi_id);
         baristaTP.setUserName(model.listTradePointUsers.usr_name);
         baristaTP.showModal();
     }//GEN-LAST:event_btnSetPointsActionPerformed
