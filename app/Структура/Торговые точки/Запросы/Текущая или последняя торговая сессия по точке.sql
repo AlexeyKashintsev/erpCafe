@@ -1,0 +1,11 @@
+/**
+ *
+ * @author Alexey
+ * @name qOpenedOrLastSession
+ * @public
+ */ 
+Select *
+From org_session t1
+where :trade_point = t1.trade_point and (end_date is null or
+t1.end_date in
+(select max(t2.end_date) from org_session t2 where t2.trade_point = :trade_point))

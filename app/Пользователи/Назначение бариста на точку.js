@@ -6,7 +6,7 @@ function AddBaristaToTradePoint() {
     var self = this, model = this.model, form = this;
     
     //model.params.franchazi_id = 3;
-    self.setFranchaziId = function(aFranchaziId){
+    self.setFranchazi = function(aFranchaziId){
          model.params.franchazi_id = aFranchaziId;
     };
         

@@ -15,7 +15,7 @@ function UserCreateAndEditForm() {
     model.params.franchazi_id = null;
     model.params.user_name = "barista";
     
-    self.setFranchaziId = function(aFranchaziId){
+    self.setFranchazi = function(aFranchaziId){
         model.params.franchazi_id = aFranchaziId;
     };
     

@@ -3,6 +3,64 @@
 @font-face { font-family: 'Segoe UI'; src: url('webFonts/segoe_ui_light.eot'); src: url('webFonts/segoe_ui_light.eot?#iefix') format('embedded-opentype'), url('webFonts/segoe_ui_light.svg#Segoe UI Semibold') format('svg'), url('webFonts/segoe_ui_light.woff') format('woff'), url('webFonts/segoe_ui_light.ttf') format('truetype'); font-weight: normal; font-style: normal;}
 
 /* ### COMMON ### */
+* {
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+*[class*="GMD"] {
+  -webkit-box-sizing: content-box;
+     -moz-box-sizing: content-box;
+          box-sizing: content-box;
+}
+*:before,
+*:after {
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body {
+  margin-top: 50px!important;
+  margin-bottom: 50px!important;
+}
+
+div.actionPanel {
+  background-color: #633611;
+}
+
+div.mainArea {
+  background-color: #FFECDB;
+}
+
+@media (min-width: 768px) {
+  div.actionPanel {
+    margin-top: 50px;
+    padding-bottom: 50px;
+    padding-top: 15px;
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    top: 0px;
+    height: 100%;
+    padding-right: 0px;
+    overflow-y: scroll;
+  }
+  
+  div.mainArea {
+    margin-top: 50px;
+    padding-bottom: 50px;
+    padding-top: 15px;
+    position: fixed;
+    bottom: 0px;
+    right: 0px;
+    top: 0px;
+    height: 100%;
+    overflow-y: scroll;
+  }
+}
+
+/* ### BARISTA ### */
 button {
   border: none;
   margin: 5px;
@@ -12,75 +70,35 @@ button {
 button.btnOk {
   background-color: #26A65B;
   color: white;
+  width: 75%;
 }
 
 button.btnCancel {
   background-color: #E74C3C;
   color: white;
+  width: 25%;
 }
 
-body {
-  margin-top: 50px;
+.itemDescription {
+    cursor: pointer;
+    max-height: 180px;
+    margin-bottom: 20px;
 }
 
-div.actionPanel {
-  background-color: #633611;
-  margin-top: 50px;
-  position: fixed;
-  bottom: 0px;
-  left: 0px;
-  top: 0px;
-  height: 100%;
-  padding-right: 0px;
+.itemDescription > div.panel {
+  height: 170px;
 }
 
-div.mainArea {
-  background-color: #FFECDB;
-  margin-top: 50px;
-  position: fixed;
-  bottom: 0px;
-  right: 0px;
-  top: 0px;
-  height: 100%;
-  overflow-y: scroll;
+h1.itemCost {
+  margin-top: 0px!important;
 }
 
-/* ### BARISTA ### */
-div.baristaOrder {
+.orderItems {
   background-color: #D2D7D3;
   text-align: center;
   position: relative;
   right: 0px;
-  padding: 10px 0px;
-}
-
-.itemDescription {
-    display: inline-block;
-    padding: 10px;
-    margin: 10px;
-    background-color: #049372;
-    cursor: pointer;
-}
-
-.itemDescription h4 {
-  
-}
-
-.orderItem h4 {
-  display: inline-block;
-  padding-right: 5px;
-  position: relative;
-  font-family: Segoe UI;
-}
-
-.orderItem h4.itemName {
-  position: absolute;
-  left: 5px;
-}
-
-.orderItem h4.itemCount {
-  position: absolute;
-  right: 50px;
+  padding: 10px 10px;
 }
 
 .orderItem  {
@@ -97,6 +115,22 @@ div.baristaOrder {
   color: #26A65B;
 }
 
+.orderItem h4 {
+  display: inline-block;
+  padding-right: 5px;
+  position: relative;
+  font-family: Segoe UI;
+}
+
+.orderItem h4.itemName {
+  position: absolute;
+  left: 20px;
+}
+
+/*.orderItem h4.itemCount {
+  position: absolute;
+  right: 50px;
+}*/
 
 .orderItem button {
   padding: 0px;
@@ -120,4 +154,14 @@ div.baristaOrder {
 
 #orderDetails {
   margin-left: 5px;
+}
+
+/* ### FRANCHAZI ### */
+.trade_point > .panel-heading > * {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.trade_point > .panel > .label {
+  width: 100%;
 }

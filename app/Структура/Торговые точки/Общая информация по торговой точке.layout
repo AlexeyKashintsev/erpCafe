@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?><layout defaultCloseOperation="2" name="Form" prefHeight="145px" prefWidth="395px">
+  <widget name="modelFormattedField" parent="Form" prefHeight="36px" prefWidth="372px" type="DbLabelDesignInfo">
+    <datamodelElement entityId="140751435211686" fieldName="tp_name"/>
+    <constraints height="36px" left="12px" right="11px" top="0px" type="MarginConstraintsDesignInfo"/>
+  </widget>
+  <widget name="label" parent="Form" prefHeight="16px" prefWidth="60px" text="Адрес:" type="LabelDesignInfo">
+    <constraints height="16px" left="12px" top="42px" type="MarginConstraintsDesignInfo" width="60px"/>
+  </widget>
+  <widget name="modelFormattedField1" parent="Form" prefHeight="28px" prefWidth="312px" type="DbLabelDesignInfo">
+    <datamodelElement entityId="140751435211686" fieldName="tp_address"/>
+    <constraints height="28px" left="72px" right="11px" top="36px" type="MarginConstraintsDesignInfo"/>
+  </widget>
+  <widget name="pnlTime" parent="Form" prefHeight="72px" prefWidth="192px" type="PanelDesignInfo">
+    <layout type="MarginLayoutDesignInfo"/>
+    <constraints height="72px" left="12px" top="72px" type="MarginConstraintsDesignInfo" width="192px"/>
+  </widget>
+  <widget name="lbCloseTime" parent="pnlTime" prefHeight="16px" prefWidth="108px" text="Время закрытия" type="LabelDesignInfo">
+    <constraints height="16px" left="12px" top="36px" type="MarginConstraintsDesignInfo" width="108px"/>
+  </widget>
+  <widget editable="false" list="false" name="mcCloseTime" parent="pnlTime" prefHeight="28px" prefWidth="192px" type="DbComboDesignInfo">
+    <datamodelElement entityId="140751237008700" fieldName="start_date"/>
+    <constraints height="28px" left="0px" top="48px" type="MarginConstraintsDesignInfo" width="192px"/>
+  </widget>
+  <widget name="lbOpenTime" parent="pnlTime" prefHeight="16px" prefWidth="108px" text="Время открытия" type="LabelDesignInfo">
+    <constraints height="16px" left="12px" top="0px" type="MarginConstraintsDesignInfo" width="108px"/>
+  </widget>
+  <widget editable="false" list="false" name="mcOpenTime" parent="pnlTime" prefHeight="28px" prefWidth="192px" type="DbComboDesignInfo">
+    <datamodelElement entityId="140751237008700" fieldName="start_date"/>
+    <constraints height="28px" left="0px" top="12px" type="MarginConstraintsDesignInfo" width="192px"/>
+  </widget>
+  <layout type="MarginLayoutDesignInfo"/>
+</layout>

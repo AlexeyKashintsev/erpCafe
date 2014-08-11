@@ -9,7 +9,7 @@ function ItemsForTrade() {
     var contentTradeItem = new ContentTradeItem();
 
     
-    self.setFranchaziId = function(aFranchazi) {
+    self.setFranchazi = function(aFranchazi) {
         self.model.params.franchazi_id = aFranchazi;
     };
 

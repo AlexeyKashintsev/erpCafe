@@ -37,10 +37,10 @@ function AdminStartForm() {
         
         if (!self.browser) {
             workShop = new FranchaziWorkShop();
-            workShop.setFranchaziId(aFaranchazi);
+            workShop.setFranchazi(aFaranchazi);
 
             usersView = new FranchaziUsers();
-            usersView.setFranchaziId(aFaranchazi)
+            usersView.setFranchazi(aFaranchazi)
         }
      /*   ;*/
     };
@@ -73,7 +73,8 @@ self.showFormAsInternal = function(aForm) {
     self.actionList = {
         common   :   {
             display     :   "Общая информация",
-            dispForm    :   ""
+            dispForm    :   "TradePointsDashboard",
+            selfGeneration  :   true
         },
         franchazi   :   {
             display     :   "Франчази",
@@ -102,7 +103,7 @@ self.showFormAsInternal = function(aForm) {
     };
     
     if (self.browser) {
-        self.actionListDisplay = new common.ActionList(self.actionList, document.getElementById("actionPanel"));
-        common.addTopRightControl("Выход", "log-out", logout);
+        self.actionListDisplay = new cmn.ActionList(self.actionList, document.getElementById("actionPanel"));
+        cmn.addTopRightControl("Выход", "log-out", logout);
     }
 }

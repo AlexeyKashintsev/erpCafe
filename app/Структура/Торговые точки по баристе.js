@@ -12,7 +12,7 @@ var self = this, model = this.model, form = this;
 model.params.franchazi_id = 1;
 model.params.usr_name = "barista";
 
-self.setFranchaziId = function(aFranchaziId){
+self.setFranchazi = function(aFranchaziId){
     model.params.franchazi_id = aFranchaziId;
 };
 
