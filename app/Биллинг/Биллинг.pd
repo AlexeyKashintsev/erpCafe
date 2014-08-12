@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?><datamodel datamodelDbId="null">
+  <fieldsEntity entityHeight="200" entityIconified="false" entityId="140783408624612" entityLocationX="20" entityLocationY="247" entityWidth="150" tableName="bill_services"/>
   <fieldsEntity entityHeight="200" entityIconified="false" entityId="140776434172822" entityLocationX="37" entityLocationY="32" entityWidth="150" tableName="bill_operations_type"/>
-  <fieldsEntity entityHeight="200" entityIconified="false" entityId="140448308377715" entityLocationX="229" entityLocationY="36" entityWidth="150" tableName="bill_operations"/>
-  <fieldsEntity entityHeight="200" entityIconified="false" entityId="140448280227678" entityLocationX="403" entityLocationY="247" entityWidth="150" tableName="bill_account_types"/>
-  <fieldsEntity entityHeight="200" entityIconified="false" entityId="140448268097366" entityLocationX="229" entityLocationY="246" entityWidth="150" tableName="bill_accounts"/>
+  <fieldsEntity entityHeight="200" entityIconified="false" entityId="140448308377715" entityLocationX="229" entityLocationY="36" entityWidth="178" tableName="bill_operations"/>
+  <fieldsEntity entityHeight="200" entityIconified="false" entityId="140448280227678" entityLocationX="528" entityLocationY="245" entityWidth="150" tableName="bill_account_types"/>
+  <fieldsEntity entityHeight="200" entityIconified="false" entityId="140783434683757" entityLocationX="446" entityLocationY="37" entityWidth="210" tableName="bill_operations_status"/>
+  <fieldsEntity entityHeight="201" entityIconified="false" entityId="140448268097366" entityLocationX="347" entityLocationY="246" entityWidth="162" tableName="bill_accounts"/>
+  <fieldsEntity entityHeight="200" entityIconified="false" entityId="140784307977567" entityLocationX="187" entityLocationY="248" entityWidth="150" tableName="bill_services_accounts"/>
 </datamodel>

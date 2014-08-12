@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?><datamodel>
+  <parametersEntity entityHeight="200" entityIconified="false" entityLocationX="8" entityLocationY="7" entityWidth="150"/>
+  <entity Title="" entityHeight="200" entityIconified="false" entityId="140784667760050" entityLocationX="298" entityLocationY="16" entityWidth="150" tableAlias="t1" tableName="bill_operations" tableSchemaName=""/>
+  <entity Title="" entityHeight="200" entityIconified="false" entityId="140784669167197" entityLocationX="110" entityLocationY="13" entityWidth="150" tableAlias="t" tableName="bill_operations_type" tableSchemaName=""/>
+  <relation leftEntityFieldName="bill_operations_type_id" leftEntityId="140784669167197" rightEntityFieldName="operation_type" rightEntityId="140784667760050"/>
+</datamodel>

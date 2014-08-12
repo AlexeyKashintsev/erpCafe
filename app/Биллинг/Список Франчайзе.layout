@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?><layout defaultCloseOperation="2" name="Form" prefHeight="300px" prefWidth="275px">
+  <widget deletable="false" editable="false" insertable="false" name="modelGrid" parent="Form" prefHeight="240px" prefWidth="275px" type="DbGridDesignInfo">
+    <column name="colF_name">
+      <cellDesignInfo>
+        <cellValueField/>
+        <columnsKeyField/>
+        <rowsKeyField/>
+      </cellDesignInfo>
+      <cellsDatasource/>
+      <columnsDatasource/>
+      <columnsDisplayField/>
+      <headerStyle>
+        <nativeFont name="Ubuntu" size="15"/>
+      </headerStyle>
+      <datamodelElement entityId="140783089452985" fieldName="f_name"/>
+      <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
+    </column>
+    <rowsColumnsDesignInfo>
+      <rowsDatasource entityId="140783089452985" field="false"/>
+    </rowsColumnsDesignInfo>
+    <treeDesignInfo/>
+    <constraints height="240px" left="0px" right="0px" top="0px" type="MarginConstraintsDesignInfo"/>
+  </widget>
+  <widget actionPerformed="buttonActionPerformed" name="button" parent="Form" prefHeight="41px" prefWidth="168px" text="Выбрать" type="ButtonDesignInfo">
+    <constraints bottom="7px" height="41px" left="96px" type="MarginConstraintsDesignInfo" width="168px"/>
+  </widget>
+  <layout type="MarginLayoutDesignInfo"/>
+</layout>

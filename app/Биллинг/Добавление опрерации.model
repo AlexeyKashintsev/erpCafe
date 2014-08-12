@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?><datamodel>
+  <parameters>
+    <parameter description="" name="franchazi_id" nullable="true" parameterMode="1" precision="0" scale="0" selectionForm="null" signed="true" size="0" type="2" typeName="NUMERIC"/>
+  </parameters>
+  <parametersEntity entityHeight="200" entityIconified="false" entityLocationX="12" entityLocationY="12" entityWidth="150"/>
+  <entity Name="qAddBillAccount" Title="" entityHeight="200" entityIconified="false" entityId="140784923977648" entityLocationX="209" entityLocationY="12" entityWidth="150" queryId="qAddBillAccount" tableName="" tableSchemaName=""/>
+  <relation leftEntityId="-1" leftEntityParameterName="franchazi_id" rightEntityId="140784923977648" rightEntityParameterName="franchazi_id"/>
+</datamodel>
