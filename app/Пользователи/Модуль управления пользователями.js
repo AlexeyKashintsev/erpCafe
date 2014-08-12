@@ -14,7 +14,7 @@ function UserModule() {
         model.usersByName.usr_name = anUserName;
         model.usersByName.usr_passwd = aPasswordMD5;
         model.usersByName.usr_form = model.queryRoles.role_form;
-        model.usersByName.usr_email = anEmail;
+        model.usersByName.usr_email = anEmail ? anEmail : null;
         model.usersByName.usr_phone = aPhone;
         model.save();
         addRole(anUserName, aRoleName);
@@ -41,7 +41,7 @@ function UserModule() {
     
     self.checkIfLoginExists = function(aLogin) {
         model.params.user_name = aLogin;
-        if (model.usersByName.find(model.usersByName.schema.usr_name, aLogin).length > 0){
+        if (model.usersByName.length > 0){
             return true;
         } else return false;
     };

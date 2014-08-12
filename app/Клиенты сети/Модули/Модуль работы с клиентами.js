@@ -16,7 +16,7 @@ function ClientServerModule() {
     
     self.setPass = function (aPass){
         pass = aPass;
-    }
+    };
     
     
     self.createUser = function(anUserName, anEmail, aFirstName, aRoleName){
@@ -37,5 +37,25 @@ function ClientServerModule() {
         var Msg = "Уважаемый " + aName + "! Для входа в личный кабинет кофейни пройдите по ссылке: http://www.ru/ Ваш логин: "
         + aPhone + ", Ваш пароль: " + aPass;
         smsSender.sendSms(aPhone, Msg, null);
+    }
+    
+     self.checkIfPhoneExist = function(aPhone){
+        model.qPersonalData.params.phone = aPhone;
+        model.qPersonalData.params.email = null;
+        model.qPersonalData.params.user_name = aPhone;
+        model.qPersonalData.requery();
+        if (model.qPersonalData.length > 0){
+            return true;
+        } else return false;
+    }
+    
+    self.checkIfEmailExist = function(anEmail){
+        model.qPersonalData.params.phone = null;
+        model.qPersonalData.params.email = anEmail;
+        model.qPersonalData.params.user_name = null;
+        model.qPersonalData.requery();
+        if (model.qPersonalData.length > 0){
+            return true;
+        } else return false;
     }
 }
