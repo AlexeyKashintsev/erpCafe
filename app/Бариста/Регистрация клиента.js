@@ -11,9 +11,7 @@ function ClientRegistrationByBarist() {
     
     function buttonActionPerformed(evt) {//GEN-FIRST:event_buttonActionPerformed
         var genPass = Math.random().toString(36);
-        alert('Ваш пароль: ' + genPass);
-        userModule.createUser(form.phoneField.text, adminFunctions.MD5(genPass), 
-                              roleName, form.emailField.text, form.phoneField.text);
+        userModule.createUser(form.phoneField.text, null,roleName, form.emailField.text, form.phoneField.text);
         clientModule.createUser(form.phoneField.text, form.emailField.text, form.firstnameField.text);
     }//GEN-LAST:event_buttonActionPerformed
 }
