@@ -6,7 +6,6 @@
 function UserModule() {
     var self = this, model = this.model;
     var adminFunctions = new ServerModule("AdminFunctions");
-    var clientModule = new ServerModule("ClientServerModule");
     //TODO сделать проверку может ли пользователь создавать пользователя с такой ролью
     
     self.createUser = function(anUserName, aPasswordMD5, aRoleName, anEmail, aPhone){

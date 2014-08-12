@@ -6,7 +6,7 @@
 function ClientServerModule() {
     var self = this, model = this.model;
     var smsSender = new ServerModule("SmsSender");
-    var userModule = new ServerModule("UserModule");
+    var userModule = new UserModule();
     var adminFunctions = new ServerModule("AdminFunctions");
     var pass = null;
     
@@ -21,6 +21,8 @@ function ClientServerModule() {
     
     self.createUser = function(anUserName, anEmail, aFirstName, aRoleName){
         //У клиентов в качестве username используется номер телефона
+        self.setPass(genPass()); //Генерим пароль в переменную pass
+        userModule.createUser(anUserName, adminFunctions.MD5(pass), aRoleName, anEmail, anUserName);
         model.qPersonalData.insert();
         model.qPersonalData.cursor.first_name = aFirstName;
         model.qPersonalData.cursor.phone = anUserName;
@@ -28,8 +30,6 @@ function ClientServerModule() {
         model.qPersonalData.cursor.usr_name = anUserName;
         model.qPersonalData.cursor.reg_date = new Date();
         model.save();
-        self.setPass(genPass()); //Генерим пароль в переменную pass
-        userModule.createUser(anUserName, adminFunctions.MD5(pass), aRoleName, anEmail, anUserName);
         sendSMS(aFirstName, anUserName, pass);
     };
     
