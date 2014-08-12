@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><layout defaultCloseOperation="2" name="Form" prefHeight="475px" prefWidth="400px">
+<?xml version="1.0" encoding="UTF-8"?><layout defaultCloseOperation="2" name="Form" prefHeight="475px" prefWidth="400px" windowOpened="formWindowOpened">
   <widget name="label6" parent="Form" prefHeight="17px" prefWidth="108px" text="Адрес" type="LabelDesignInfo">
     <constraints height="17px" left="24px" top="312px" type="MarginConstraintsDesignInfo" width="108px"/>
   </widget>

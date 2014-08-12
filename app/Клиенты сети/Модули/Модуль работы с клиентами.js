@@ -21,7 +21,8 @@ function ClientServerModule() {
     
     self.createUser = function(anUserName, anEmail, aFirstName, aRoleName){
         //У клиентов в качестве username используется номер телефона
-        self.setPass(genPass()); //Генерим пароль в переменную pass
+        self.setPass(genPass());
+        alert(pass);//Генерим пароль в переменную pass
         userModule.createUser(anUserName, adminFunctions.MD5(pass), aRoleName, anEmail, anUserName);
         model.qPersonalData.insert();
         model.qPersonalData.cursor.first_name = aFirstName;
@@ -47,7 +48,7 @@ function ClientServerModule() {
         if (model.qPersonalData.length > 0){
             return true;
         } else return false;
-    }
+    };
     
     self.checkIfEmailExist = function(anEmail){
         model.qPersonalData.params.phone = null;
@@ -57,5 +58,5 @@ function ClientServerModule() {
         if (model.qPersonalData.length > 0){
             return true;
         } else return false;
-    }
+    };
 }
