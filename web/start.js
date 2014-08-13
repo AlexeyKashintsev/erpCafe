@@ -5,8 +5,8 @@ if (!platypus) {
 	var platypus = {};
 }
 platypus.ready = function() {
-	require(['TradePoints'], function(){
-		var f = new TradePoints();
+	require(['RolesForm'], function(){
+		var f = new RolesForm();
 		f.show();
 	});
 };

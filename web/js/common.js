@@ -134,16 +134,19 @@ platypus.ready = function() {
                 units.userSession.franchaziId = units.userSession.getFranchazi();
                 switch (anUserRole) {
                     case 'admin':
+                        require(['StartMasterAdminForm'], function() {
+                            units.asf = new StartMasterAdminForm();
+                        })
                         break;
                     case 'franchazi':
-                        require(['AdminStartForm'], function(){
+                        require(['AdminStartForm'], function() {
                             units.asf = new AdminStartForm();
                         })
                         break;
                     case 'barista':
                         require(['BaristaDesktop'], function(){
                                 units.bd = new BaristaDesktop();
-                            });
+                        });
                         break;
                 }
             });
