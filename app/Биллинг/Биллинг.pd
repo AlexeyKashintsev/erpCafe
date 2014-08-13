@@ -5,5 +5,7 @@
   <fieldsEntity entityHeight="200" entityIconified="false" entityId="140448280227678" entityLocationX="528" entityLocationY="245" entityWidth="150" tableName="bill_account_types"/>
   <fieldsEntity entityHeight="200" entityIconified="false" entityId="140783434683757" entityLocationX="446" entityLocationY="37" entityWidth="210" tableName="bill_operations_status"/>
   <fieldsEntity entityHeight="201" entityIconified="false" entityId="140448268097366" entityLocationX="347" entityLocationY="246" entityWidth="162" tableName="bill_accounts"/>
+  <fieldsEntity entityHeight="200" entityIconified="false" entityId="140793170515931" entityLocationX="856" entityLocationY="36" entityWidth="150" tableName="wh_items"/>
+  <fieldsEntity entityHeight="200" entityIconified="false" entityId="140793162241022" entityLocationX="680" entityLocationY="36" entityWidth="150" tableName="bill_operations_items"/>
   <fieldsEntity entityHeight="200" entityIconified="false" entityId="140784307977567" entityLocationX="187" entityLocationY="248" entityWidth="150" tableName="bill_services_accounts"/>
 </datamodel>

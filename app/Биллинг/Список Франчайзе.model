@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?><datamodel>
   <parametersEntity entityHeight="200" entityIconified="false" entityLocationX="12" entityLocationY="12" entityWidth="150"/>
-  <entity Name="qFranchaziList" Title="" entityHeight="200" entityIconified="false" entityId="140783089452985" entityLocationX="208" entityLocationY="12" entityWidth="219" queryId="qFranchaziList" tableName="" tableSchemaName=""/>
+  <entity Name="qFranchaziList" Title="" entityHeight="200" entityIconified="false" entityId="140783089452985" entityLocationX="208" entityLocationY="12" entityWidth="219" onAfterScroll="qFranchaziListOnScrolled" queryId="qFranchaziList" tableName="" tableSchemaName=""/>
 </datamodel>

@@ -1,8 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?><layout defaultCloseOperation="2" name="Form" prefHeight="451px" prefWidth="566px" windowOpened="formWindowOpened">
+<?xml version="1.0" encoding="UTF-8"?><layout defaultCloseOperation="2" name="Form" prefHeight="451px" prefWidth="717px" windowOpened="formWindowOpened">
   <nonvisual name="buttonGroup" type="ButtonGroupDesignInfo"/>
-  <widget name="label" parent="Form" prefHeight="17px" prefWidth="120px" text="Тип операции" type="LabelDesignInfo">
-    <constraints height="17px" left="36px" top="300px" type="MarginConstraintsDesignInfo" width="120px"/>
-  </widget>
   <widget buttonGroup="buttonGroup" name="rbDel" parent="Form" prefHeight="24px" prefWidth="110px" text="Списание" type="RadioDesignInfo">
     <constraints bottom="103px" height="24px" left="36px" type="MarginConstraintsDesignInfo" width="110px"/>
   </widget>
@@ -15,31 +12,16 @@
   <widget name="tfSum" parent="Form" prefHeight="27px" prefWidth="132px" type="TextFieldDesignInfo">
     <constraints bottom="64px" height="27px" left="156px" type="MarginConstraintsDesignInfo" width="132px"/>
   </widget>
-  <widget actionPerformed="buttonActionPerformed" name="button" parent="Form" prefHeight="41px" prefWidth="168px" text="Сохранить" type="ButtonDesignInfo">
-    <constraints bottom="14px" height="41px" right="14px" type="MarginConstraintsDesignInfo" width="168px"/>
+  <widget actionPerformed="buttonActionPerformed" name="button" parent="Form" prefHeight="41px" prefWidth="252px" text="Сохранить" type="ButtonDesignInfo">
+    <constraints bottom="14px" height="41px" left="36px" type="MarginConstraintsDesignInfo" width="252px"/>
   </widget>
-  <widget deletable="false" editable="false" insertable="false" name="modelGrid" parent="Form" prefHeight="288px" prefWidth="564px" type="DbGridDesignInfo">
+  <widget deletable="false" editable="false" insertable="false" mouseClicked="modelGridMouseClicked" name="modelGrid" parent="Form" prefHeight="288px" prefWidth="372px" type="DbGridDesignInfo">
     <rowsColumnsDesignInfo>
-      <rowsDatasource entityId="140784923977648" field="false"/>
+      <rowsDatasource entityId="140791227991520" field="false"/>
     </rowsColumnsDesignInfo>
     <treeDesignInfo/>
     <column name="colBill_accounts_id">
-      <datamodelElement entityId="140784923977648" fieldName="bill_accounts_id"/>
-      <cellDesignInfo>
-        <cellValueField/>
-        <columnsKeyField/>
-        <rowsKeyField/>
-      </cellDesignInfo>
-      <cellsDatasource/>
-      <columnsDatasource/>
-      <columnsDisplayField/>
-      <headerStyle>
-        <nativeFont name="Ubuntu" size="15"/>
-      </headerStyle>
-      <controlInfo classHint="DbSpinDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
-    </column>
-    <column name="colFranchazi_id">
-      <datamodelElement entityId="140784923977648" fieldName="franchazi_id"/>
+      <datamodelElement entityId="140791227991520" fieldName="bill_accounts_id"/>
       <cellDesignInfo>
         <cellValueField/>
         <columnsKeyField/>
@@ -54,7 +36,7 @@
       <controlInfo classHint="DbSpinDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
     </column>
     <column name="colAccount_type">
-      <datamodelElement entityId="140784923977648" fieldName="account_type"/>
+      <datamodelElement entityId="140791227991520" fieldName="account_type"/>
       <cellDesignInfo>
         <cellValueField/>
         <columnsKeyField/>
@@ -69,7 +51,7 @@
       <controlInfo classHint="DbSpinDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
     </column>
     <column name="colCurrnt_sum">
-      <datamodelElement entityId="140784923977648" fieldName="currnt_sum"/>
+      <datamodelElement entityId="140791227991520" fieldName="currnt_sum"/>
       <cellDesignInfo>
         <cellValueField/>
         <columnsKeyField/>
@@ -83,10 +65,65 @@
       </headerStyle>
       <controlInfo classHint="DbSpinDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
     </column>
-    <constraints height="288px" left="0px" right="2px" top="0px" type="MarginConstraintsDesignInfo"/>
+    <constraints height="288px" left="0px" top="36px" type="MarginConstraintsDesignInfo" width="372px"/>
   </widget>
   <widget actionPerformed="button1ActionPerformed" name="button1" parent="Form" prefHeight="24px" prefWidth="168px" text="+ Создать счет" type="ButtonDesignInfo">
-    <constraints height="24px" right="14px" top="300px" type="MarginConstraintsDesignInfo" width="168px"/>
+    <constraints height="24px" left="0px" top="0px" type="MarginConstraintsDesignInfo" width="168px"/>
+  </widget>
+  <widget name="modelGrid1" parent="Form" prefHeight="288px" prefWidth="324px" type="DbGridDesignInfo">
+    <rowsColumnsDesignInfo>
+      <rowsDatasource entityId="140791634411137" field="false"/>
+    </rowsColumnsDesignInfo>
+    <treeDesignInfo/>
+    <column name="colService_days">
+      <datamodelElement entityId="140791634411137" fieldName="service_days"/>
+      <cellDesignInfo>
+        <cellValueField/>
+        <columnsKeyField/>
+        <rowsKeyField/>
+      </cellDesignInfo>
+      <cellsDatasource/>
+      <columnsDatasource/>
+      <columnsDisplayField/>
+      <headerStyle>
+        <nativeFont name="Ubuntu" size="15"/>
+      </headerStyle>
+      <controlInfo classHint="DbSpinDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
+    </column>
+    <column name="colService_name">
+      <datamodelElement entityId="140791634411137" fieldName="service_name"/>
+      <cellDesignInfo>
+        <cellValueField/>
+        <columnsKeyField/>
+        <rowsKeyField/>
+      </cellDesignInfo>
+      <cellsDatasource/>
+      <columnsDatasource/>
+      <columnsDisplayField/>
+      <headerStyle>
+        <nativeFont name="Ubuntu" size="15"/>
+      </headerStyle>
+      <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
+    </column>
+    <column name="colService_sum">
+      <datamodelElement entityId="140791634411137" fieldName="service_sum"/>
+      <cellDesignInfo>
+        <cellValueField/>
+        <columnsKeyField/>
+        <rowsKeyField/>
+      </cellDesignInfo>
+      <cellsDatasource/>
+      <columnsDatasource/>
+      <columnsDisplayField/>
+      <headerStyle>
+        <nativeFont name="Ubuntu" size="15"/>
+      </headerStyle>
+      <controlInfo classHint="DbSpinDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
+    </column>
+    <constraints height="288px" left="396px" top="36px" type="MarginConstraintsDesignInfo" width="324px"/>
+  </widget>
+  <widget actionPerformed="button2ActionPerformed" name="button2" parent="Form" prefHeight="24px" prefWidth="180px" text="+ Добавить услугу" type="ButtonDesignInfo">
+    <constraints height="24px" left="192px" top="0px" type="MarginConstraintsDesignInfo" width="180px"/>
   </widget>
   <layout type="MarginLayoutDesignInfo"/>
 </layout>

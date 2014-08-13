@@ -1,9 +1,9 @@
 /**
  *
  * @author minya92
- * @name qAddBillAccount
+ * @name qBillAccount
  */ 
 Select * 
 From bill_accounts t1
- Where (:franchazi_id = t1.franchazi_id or :franchazi_id is null)
- and (:account_type = t1.account_type or :account_type is null)
+ Where ((:franchazi_id = t1.franchazi_id or :franchazi_id is null) and t1.active = true)
+ and ((:account_id = t1.bill_accounts_id or :account_id is null) and t1.active = true)

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?><layout defaultCloseOperation="2" name="Form" prefHeight="163px" prefWidth="295px">
+  <widget name="modelCombo" parent="Form" prefHeight="27px" prefWidth="252px" type="DbComboDesignInfo">
+    <displayField entityId="140791502942460" fieldName="service_name"/>
+    <valueField entityId="140791502942460" fieldName="bill_services_id"/>
+    <datamodelElement entityId="-1" fieldName="service_id"/>
+    <constraints height="27px" left="24px" top="48px" type="MarginConstraintsDesignInfo" width="252px"/>
+  </widget>
+  <widget actionPerformed="buttonActionPerformed" name="button" parent="Form" prefHeight="36px" prefWidth="252px" text="Сохранить" type="ButtonDesignInfo">
+    <constraints height="36px" left="24px" top="96px" type="MarginConstraintsDesignInfo" width="252px"/>
+  </widget>
+  <widget name="label" parent="Form" prefHeight="17px" prefWidth="252px" text="Выберите услугу для добавления" type="LabelDesignInfo">
+    <constraints height="17px" left="24px" top="12px" type="MarginConstraintsDesignInfo" width="252px"/>
+  </widget>
+  <layout type="MarginLayoutDesignInfo"/>
+</layout>

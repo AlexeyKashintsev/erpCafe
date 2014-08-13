@@ -14,9 +14,9 @@ function CreateBillAccount() {
     function buttonActionPerformed(evt) {//GEN-FIRST:event_buttonActionPerformed
         var type;
         if(form.rbDefault.selected) 
-            type = billModule.TYPE_DEFAULT;
+            type = billModule.ACCOUNT_TYPE_DEFAULT;
         else
-            type = billModule.TYPE_CREDIT;
+            type = billModule.ACCOUNT_TYPE_CREDIT;
         billModule.createBillAccount(self.FranchaziId, type, form.tfSum.text);
         form.close(true);
     }//GEN-LAST:event_buttonActionPerformed
