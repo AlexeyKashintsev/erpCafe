@@ -15,6 +15,7 @@ model.params.franchazi_id = null;
 
 self.setFranchazi = function(aFranchaziId){
     model.params.franchazi_id = aFranchaziId;
+    model.listTradePoints.requery();
 };
 function btnReqActionPerformed(evt) {//GEN-FIRST:event_btnReqActionPerformed
     if (self.model.modified&&confirm('Сохранить изменения?')){

@@ -9,20 +9,72 @@ function OrderList(aParent) {
     self.tradeSession = null;
     var lastDiv = null;
     
-    function putAcceptedOrderAlert(aSum) {
-        var divEl = cmn.createElement("div", "alert alert-success", "actionPanel", null, lastDiv ? lastDiv : false);
-        divEl.role = "alert";
-        divEl.innerHTML = "<h4>Заказ успешно проведен</h4>Сумма заказа: <strong>"
-                + aSum + " рублей </strong";
-        lastDiv = divEl;
+    function alerter(anAlert, aType, aText, aClosable, aCloseTimeOut) {
+        if (!anAlert) {
+            var divEl = cmn.createElement("div", "alert " + aType, "actionPanel", null, lastDiv ? lastDiv : false);
+            divEl.role = "alert";
+            lastDiv = divEl;
+        } else {
+            divEl = anAlert;
+            if (aType)
+                divEl.className = "alert " + aType;
+        }
+        
+        divEl.innerHTML = aText;
         
         function closeIt(){
             divEl.parentNode.removeChild(divEl);
             if (lastDiv===divEl) lastDiv = null;
         }
         
-        divEl.onclick = closeIt;
-        setTimeout(closeIt, 15000);
+        if (aClosable)
+            divEl.onclick = closeIt;
+        
+        if (aCloseTimeOut) 
+            setTimeout(closeIt, aCloseTimeOut);
+        
+        return divEl;
+    }
+    
+    function UnprocessedOrders() {
+        var orders = [];
+        var divEl = null;
+        
+        function processOrders() {
+            for (var j in orders) {
+                processOrder(orders[j]);
+            }
+            orders = [];
+            alerter(divEl, false, "", false, 1);
+            divEl = null;
+        }
+        
+        this.addOrder = function(anOrderDetails) {
+            orders.push(anOrderDetails);
+            divEl = alerter(divEl, "alert-warning", "<h4>Нажмите, чтобы отправить снова</h4>Не обработано заказов: " + orders.length, false, false);
+            divEl.onclick = processOrders;
+        };
+    };
+    
+    var unprocessedOrders = new UnprocessedOrders();
+    
+    function processOrder(anOrderDetails, anAlert, anAttempt) {
+        var attempt = anAttempt ? anAttempt : 0;
+        attempt++;
+        Logger.info(attempt);
+        var alert = alerter(anAlert, "alert-info", "<h4>Обработка заказа</h4>Попытка № " + attempt, false);
+        
+        self.tradeSession.processOrder(anOrderDetails, function() {
+            alerter(alert, "alert-success", "<h4>Заказ успешно проведен</h4>Сумма заказа: <strong>"
+                + anOrderDetails.orderSum + " рублей </strong>", true, 15000);
+        }, function() {
+            if (attempt < 5)
+                processOrder(anOrderDetails, alert, attempt);
+            else {
+                alerter(alert, "alert-danger", "<h4>Заказ не проведен</h4>Проверьте связь с сервером", true, 15000);
+                unprocessedOrders.addOrder(anOrderDetails);
+            }
+        });
     }
     
     function orderItem(anItemData) {
@@ -149,6 +201,7 @@ function OrderList(aParent) {
             orderSum : 0,
             orderItems : []
         };
+        var ic = 0;
         
         if (self.orderDetails){
             for (var i in self.orderDetails) {
@@ -157,11 +210,15 @@ function OrderList(aParent) {
                     itemId : self.orderDetails[i].itemId,
                     quantity : self.orderDetails[i].orderQuantity
                 });
+                ic++;
             }
         }
-        self.tradeSession.processOrder(anOrderDetails);
-        putAcceptedOrderAlert(anOrderDetails.orderSum);
-        self.deleteOrder();
+        if (ic > 0) {
+            processOrder(anOrderDetails);
+            self.deleteOrder();
+        } else {
+            alert("Ничего не выбрано");
+        }
     };
     
     if (self.browser) {
