@@ -5,49 +5,37 @@
  */ 
 function ClientServerModule() {
     var self = this, model = this.model;
-    //TODO Исправить под логику работы с клиентами
+    var smsSender = new ServerModule("SmsSender");
+    var userModule = new UserModule();
+    var adminFunctions = new ServerModule("AdminFunctions");
+    var pass = null;
+    
+    function genPass(){
+        return Math.random().toString(36).slice(2,8);
+    }
+    
+    self.setPass = function (aPass){
+        pass = aPass;
+    }
     
     
-    self.createUser = function(anUserName, aPasswordMD5, aRoleName, anEmail){
-        model.usersByName.insert();
-        model.params.user_role = aRoleName;
-        model.usersByName.usr_name = anUserName;
-        model.usersByName.usr_passwd = aPasswordMD5;
-        model.usersByName.usr_form = model.queryRoles.role_form;
+    self.createUser = function(anUserName, anEmail, aFirstName, aRoleName){
+        //У клиентов в качестве username используется номер телефона
+        self.setPass(genPass()); //Генерим пароль в переменную pass
+        userModule.createUser(anUserName, adminFunctions.MD5(pass), aRoleName, anEmail, anUserName);
         model.qPersonalData.insert();
+        model.qPersonalData.cursor.first_name = aFirstName;
         model.qPersonalData.cursor.phone = anUserName;
         model.qPersonalData.cursor.email = anEmail;
         model.qPersonalData.cursor.usr_name = anUserName;
         model.qPersonalData.cursor.reg_date = new Date();
         model.save();
-        addRole(anUserName, aRoleName);
+        sendSMS(aFirstName, anUserName, pass);
     };
     
-    self.editUser = function(anUserName, aEmail, aPhone){
-        model.params.user_name = anUserName;
-        model.usersByName.usr_email = aEmail;
-        model.usersByName.usr_phone = aPhone;
-        model.save();
-    };
-    
-    function addRole(anUserName, aRoleName){
-        model.qUserAddRole.params.usr_name = anUserName;
-        model.qUserAddRole.params.usr_role = aRoleName;
-        model.qUserAddRole.executeUpdate();
+    function sendSMS(aName, aPhone, aPass){
+        var Msg = "Уважаемый " + aName + "! Для входа в личный кабинет кофейни пройдите по ссылке: http://www.ru/ Ваш логин: "
+        + aPhone + ", Ваш пароль: " + aPass;
+        smsSender.sendSms(aPhone, Msg, null);
     }
-    
-    self.setPassword = function(anUserName, aNewPasswordMD5) {
-        model.params.user_name = anUserName;
-        model.usersByName.usr_passwd = aNewPasswordMD5;
-        model.save();
-    };
-    
-    self.checkIfLoginExists = function(aLogin) {
-        model.params.user_name = aLogin;
-        if (model.usersByName.find(model.usersByName.schema.usr_name, aLogin).length > 0){
-            return true;
-        } else return false;
-    };
-    
-   
 }

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?><layout defaultCloseOperation="2" name="Form" prefHeight="475px" prefWidth="400px">
+  <widget name="label6" parent="Form" prefHeight="17px" prefWidth="108px" text="Адрес" type="LabelDesignInfo">
+    <constraints height="17px" left="24px" top="312px" type="MarginConstraintsDesignInfo" width="108px"/>
+  </widget>
+  <widget name="label5" parent="Form" prefHeight="17px" prefWidth="108px" text="Е-mail" type="LabelDesignInfo">
+    <constraints height="17px" left="24px" top="276px" type="MarginConstraintsDesignInfo" width="108px"/>
+  </widget>
+  <widget name="label4" parent="Form" prefHeight="17px" prefWidth="108px" text="Телефон" type="LabelDesignInfo">
+    <constraints height="17px" left="24px" top="228px" type="MarginConstraintsDesignInfo" width="108px"/>
+  </widget>
+  <widget name="label3" parent="Form" prefHeight="17px" prefWidth="120px" text="Дата рождения" type="LabelDesignInfo">
+    <constraints height="17px" left="24px" top="168px" type="MarginConstraintsDesignInfo" width="120px"/>
+  </widget>
+  <widget name="label2" parent="Form" prefHeight="17px" prefWidth="108px" text="Фамилия" type="LabelDesignInfo">
+    <constraints height="17px" left="24px" top="132px" type="MarginConstraintsDesignInfo" width="108px"/>
+  </widget>
+  <widget name="label1" parent="Form" prefHeight="17px" prefWidth="108px" text="Отчество" type="LabelDesignInfo">
+    <constraints height="17px" left="24px" top="84px" type="MarginConstraintsDesignInfo" width="108px"/>
+  </widget>
+  <widget name="tfFirstName" parent="Form" prefHeight="27px" prefWidth="100px" type="DbLabelDesignInfo">
+    <datamodelElement entityId="140774292977581" fieldName="first_name"/>
+    <constraints height="27px" left="156px" top="36px" type="MarginConstraintsDesignInfo" width="100px"/>
+  </widget>
+  <widget name="tfMiddleName" parent="Form" prefHeight="27px" prefWidth="100px" type="DbLabelDesignInfo">
+    <datamodelElement entityId="140774292977581" fieldName="middle_name"/>
+    <constraints height="27px" left="156px" top="84px" type="MarginConstraintsDesignInfo" width="100px"/>
+  </widget>
+  <widget name="tfLastName" parent="Form" prefHeight="27px" prefWidth="100px" type="DbLabelDesignInfo">
+    <datamodelElement entityId="140774292977581" fieldName="last_name"/>
+    <constraints height="27px" left="156px" top="132px" type="MarginConstraintsDesignInfo" width="100px"/>
+  </widget>
+  <widget dateFormat="dd.MM.yyyy" name="modelDate" parent="Form" prefHeight="27px" prefWidth="121px" type="DbDateDesignInfo">
+    <datamodelElement entityId="140774292977581" fieldName="birthday"/>
+    <constraints height="27px" left="156px" top="168px" type="MarginConstraintsDesignInfo" width="121px"/>
+  </widget>
+  <widget name="tfPhone" parent="Form" prefHeight="27px" prefWidth="100px" type="DbLabelDesignInfo">
+    <datamodelElement entityId="140774292977581" fieldName="phone"/>
+    <constraints height="27px" left="156px" top="228px" type="MarginConstraintsDesignInfo" width="100px"/>
+  </widget>
+  <widget name="tfEmail" parent="Form" prefHeight="27px" prefWidth="100px" type="DbLabelDesignInfo">
+    <datamodelElement entityId="140774292977581" fieldName="email"/>
+    <constraints height="27px" left="156px" top="276px" type="MarginConstraintsDesignInfo" width="100px"/>
+  </widget>
+  <widget name="tfAddress" parent="Form" prefHeight="84px" prefWidth="300px" type="DbTextDesignInfo">
+    <datamodelElement entityId="140774292977581" fieldName="address"/>
+    <constraints bottom="55px" height="84px" left="48px" type="MarginConstraintsDesignInfo" width="300px"/>
+  </widget>
+  <widget name="label" parent="Form" prefHeight="17px" prefWidth="108px" text="Имя" type="LabelDesignInfo">
+    <constraints height="17px" left="24px" top="36px" type="MarginConstraintsDesignInfo" width="108px"/>
+  </widget>
+  <widget actionPerformed="btnSaveActionPerformed" name="btnSave" parent="Form" prefHeight="29px" prefWidth="108px" text="Сохранить" type="ButtonDesignInfo">
+    <constraints bottom="14px" height="29px" left="252px" type="MarginConstraintsDesignInfo" width="108px"/>
+  </widget>
+  <layout type="MarginLayoutDesignInfo"/>
+</layout>

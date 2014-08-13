@@ -1,18 +1,24 @@
-<?xml version="1.0" encoding="UTF-8"?><layout defaultCloseOperation="2" name="Form" prefHeight="155px" prefWidth="400px">
-  <widget name="label" parent="Form" prefHeight="24px" prefWidth="144px" text="Номер телефона" type="LabelDesignInfo">
+<?xml version="1.0" encoding="UTF-8"?><layout defaultCloseOperation="2" name="Form" prefHeight="216px" prefWidth="400px">
+  <widget name="firstnameField" parent="Form" prefHeight="27px" prefWidth="180px" type="TextFieldDesignInfo">
+    <constraints height="27px" left="204px" top="24px" type="MarginConstraintsDesignInfo" width="180px"/>
+  </widget>
+  <widget name="label2" parent="Form" prefHeight="24px" prefWidth="144px" text="Имя" type="LabelDesignInfo">
     <constraints height="24px" left="36px" top="24px" type="MarginConstraintsDesignInfo" width="144px"/>
   </widget>
+  <widget name="label" parent="Form" prefHeight="24px" prefWidth="144px" text="Номер телефона" type="LabelDesignInfo">
+    <constraints height="24px" left="36px" top="72px" type="MarginConstraintsDesignInfo" width="144px"/>
+  </widget>
   <widget name="label1" parent="Form" prefHeight="24px" prefWidth="156px" text="E-mail" type="LabelDesignInfo">
-    <constraints height="24px" left="36px" top="72px" type="MarginConstraintsDesignInfo" width="156px"/>
+    <constraints height="24px" left="36px" top="120px" type="MarginConstraintsDesignInfo" width="156px"/>
   </widget>
   <widget actionPerformed="buttonActionPerformed" name="button" parent="Form" prefHeight="29px" prefWidth="144px" text="Добавить" type="ButtonDesignInfo">
     <constraints bottom="18px" height="29px" right="16px" type="MarginConstraintsDesignInfo" width="144px"/>
   </widget>
-  <widget name="phoneField" parent="Form" prefHeight="27px" prefWidth="72px" type="TextFieldDesignInfo">
-    <constraints height="27px" left="204px" top="24px" type="MarginConstraintsDesignInfo" width="72px"/>
+  <widget name="phoneField" parent="Form" prefHeight="27px" prefWidth="180px" type="TextFieldDesignInfo">
+    <constraints height="27px" left="204px" top="72px" type="MarginConstraintsDesignInfo" width="180px"/>
   </widget>
-  <widget name="emailField" parent="Form" prefHeight="27px" prefWidth="80px" type="TextFieldDesignInfo">
-    <constraints height="27px" left="204px" top="72px" type="MarginConstraintsDesignInfo" width="80px"/>
+  <widget name="emailField" parent="Form" prefHeight="27px" prefWidth="180px" type="TextFieldDesignInfo">
+    <constraints height="27px" left="204px" top="120px" type="MarginConstraintsDesignInfo" width="180px"/>
   </widget>
   <layout type="MarginLayoutDesignInfo"/>
 </layout>
