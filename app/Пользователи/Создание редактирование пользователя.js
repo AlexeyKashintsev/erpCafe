@@ -210,4 +210,8 @@ function UserCreateAndEditForm() {
         }
         if (validateEmail() && validatePhone()) form.btnSave.enabled = true;
     }//GEN-LAST:event_tfPhoneKeyReleased
+
+    function tfPhoneActionPerformed(evt) {//GEN-FIRST:event_tfPhoneActionPerformed
+        // TODO Добавьте свой код:
+    }//GEN-LAST:event_tfPhoneActionPerformed
 }
