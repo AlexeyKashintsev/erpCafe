@@ -1,4 +1,65 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<layout defaultCloseOperation="2" name="Form" prefHeight="300px" prefWidth="400px">
-    <layout type="MarginLayoutDesignInfo"/>
+<?xml version="1.0" encoding="UTF-8"?><layout defaultCloseOperation="2" name="Form" prefHeight="300px" prefWidth="587px">
+  <widget name="grdBonusRate" parent="Form" prefHeight="252px" prefWidth="372px" type="DbGridDesignInfo">
+    <rowsColumnsDesignInfo>
+      <rowsDatasource entityId="140801425518902" field="false"/>
+    </rowsColumnsDesignInfo>
+    <treeDesignInfo/>
+    <column name="category">
+      <datamodelElement entityId="140801425518902" fieldName="client_bonus_category"/>
+      <columnsDatasource/>
+      <columnsDisplayField/>
+      <cellsDatasource/>
+      <cellDesignInfo>
+        <rowsKeyField/>
+        <columnsKeyField/>
+        <cellValueField/>
+      </cellDesignInfo>
+      <headerStyle>
+        <nativeFont name="Ubuntu" size="15"/>
+      </headerStyle>
+      <controlInfo classHint="DbComboDesignInfo" name="view" prefHeight="0px" prefWidth="0px">
+        <valueField entityId="140801425518902" fieldName="client_bonus_category"/>
+        <displayField entityId="140801425518902" fieldName="category_description"/>
+      </controlInfo>
+    </column>
+    <column name="bonus_rate">
+      <datamodelElement entityId="140801425518902" fieldName="bonus_rate"/>
+      <columnsDatasource/>
+      <columnsDisplayField/>
+      <cellsDatasource/>
+      <cellDesignInfo>
+        <rowsKeyField/>
+        <columnsKeyField/>
+        <cellValueField/>
+      </cellDesignInfo>
+      <headerStyle>
+        <nativeFont name="Ubuntu" size="15"/>
+      </headerStyle>
+      <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
+    </column>
+    <constraints height="252px" left="204px" top="24px" type="MarginConstraintsDesignInfo" width="372px"/>
+  </widget>
+  <widget deletable="false" editable="false" insertable="false" name="grdItemList" parent="Form" prefHeight="252px" prefWidth="180px" type="DbGridDesignInfo">
+    <rowsColumnsDesignInfo>
+      <rowsDatasource entityId="140801471027679" field="false"/>
+    </rowsColumnsDesignInfo>
+    <treeDesignInfo/>
+    <column name="column">
+      <datamodelElement entityId="140801471027679" fieldName="item_name"/>
+      <columnsDatasource/>
+      <columnsDisplayField/>
+      <cellsDatasource/>
+      <cellDesignInfo>
+        <rowsKeyField/>
+        <columnsKeyField/>
+        <cellValueField/>
+      </cellDesignInfo>
+      <headerStyle>
+        <nativeFont name="Ubuntu" size="15"/>
+      </headerStyle>
+      <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
+    </column>
+    <constraints height="252px" left="12px" top="24px" type="MarginConstraintsDesignInfo" width="180px"/>
+  </widget>
+  <layout type="MarginLayoutDesignInfo"/>
 </layout>

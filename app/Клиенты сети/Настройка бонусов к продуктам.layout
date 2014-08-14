@@ -1,9 +1,11 @@
-<?xml version="1.0" encoding="UTF-8"?><layout defaultCloseOperation="2" name="Form" prefHeight="449px" prefWidth="743px">
+<?xml version="1.0" encoding="UTF-8"?><layout defaultCloseOperation="2" name="Form" prefHeight="358px" prefWidth="590px">
   <widget name="modelGrid" parent="Form" prefHeight="324px" prefWidth="552px" type="DbGridDesignInfo">
     <rowsColumnsDesignInfo>
       <rowsDatasource entityId="140801391864084" field="false"/>
     </rowsColumnsDesignInfo>
-    <treeDesignInfo/>
+    <treeDesignInfo>
+      <unaryLinkField entityId="140801391864084" fieldName="trade_item"/>
+    </treeDesignInfo>
     <column name="item_name">
       <datamodelElement entityId="140801391864084" fieldName="item_name"/>
       <columnsDatasource/>
@@ -49,7 +51,7 @@
       </headerStyle>
       <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
     </column>
-    <constraints height="324px" left="24px" top="72px" type="MarginConstraintsDesignInfo" width="552px"/>
+    <constraints height="324px" left="24px" top="24px" type="MarginConstraintsDesignInfo" width="552px"/>
   </widget>
   <layout type="MarginLayoutDesignInfo"/>
 </layout>
