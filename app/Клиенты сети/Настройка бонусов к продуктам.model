@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?><datamodel>
-  <parametersEntity entityHeight="200" entityIconified="false" entityLocationX="12" entityLocationY="12" entityWidth="150"/>
-  <entity Name="qBonusRateForItemsEdit" Title="" entityHeight="200" entityIconified="false" entityId="140801391864084" entityLocationX="186" entityLocationY="13" entityWidth="150" queryId="qBonusRateForItemsEdit" tableName="" tableSchemaName=""/>
-</datamodel>
