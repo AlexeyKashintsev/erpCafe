@@ -51,16 +51,15 @@ function AddBillOperation() {
         });
     }//GEN-LAST:event_button2ActionPerformed
 
-    function modelGridMouseClicked(evt) {//GEN-FIRST:event_modelGridMouseClicked
-       
-    }//GEN-LAST:event_modelGridMouseClicked
-
-    function qServiceListByAccountOnScrolled(evt) {//GEN-FIRST:event_qServiceListByAccountOnScrolled
-        
-    }//GEN-LAST:event_qServiceListByAccountOnScrolled
-
     function qBillAccountOnScrolled(evt) {//GEN-FIRST:event_qBillAccountOnScrolled
         model.params.account_id = model.qBillAccount.cursor.bill_accounts_id;
         model.qServiceListByAccount.requery();
     }//GEN-LAST:event_qBillAccountOnScrolled
+
+    function qBillAccountOnRequeried(evt) {//GEN-FIRST:event_qBillAccountOnRequeried
+        if(model.qBillAccount.length > 0){
+            model.params.account_id = model.qBillAccount.cursor.bill_accounts_id;
+            model.qServiceListByAccount.requery();
+        }
+    }//GEN-LAST:event_qBillAccountOnRequeried
 }

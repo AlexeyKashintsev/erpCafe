@@ -11,4 +11,10 @@ function FranchaziList() {
         addBillOperation.setFranchaziId(model.qFranchaziList.cursor.org_franchazi_id);
         addBillOperation.showOnPanel(form.panel);
     }//GEN-LAST:event_qFranchaziListOnScrolled
+
+    function qFranchaziListOnRequeried(evt) {//GEN-FIRST:event_qFranchaziListOnRequeried
+        addBillOperation.close();
+        addBillOperation.setFranchaziId(model.qFranchaziList.cursor.org_franchazi_id);
+        addBillOperation.showOnPanel(form.panel);
+    }//GEN-LAST:event_qFranchaziListOnRequeried
 }
