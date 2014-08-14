@@ -1,9 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?><layout defaultCloseOperation="2" name="Form" prefHeight="533px" prefWidth="893px">
+<?xml version="1.0" encoding="UTF-8"?><layout defaultCloseOperation="2" name="Form" prefHeight="470px" prefWidth="893px">
   <widget deletable="false" editable="false" insertable="false" name="modelGrid" parent="Form" prefHeight="468px" prefWidth="276px" type="DbGridDesignInfo">
-    <rowsColumnsDesignInfo>
-      <rowsDatasource entityId="140783089452985" field="false"/>
-    </rowsColumnsDesignInfo>
-    <treeDesignInfo/>
     <column name="colF_name">
       <datamodelElement entityId="140783089452985" fieldName="f_name"/>
       <cellDesignInfo>
@@ -19,10 +15,11 @@
       </headerStyle>
       <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
     </column>
+    <rowsColumnsDesignInfo>
+      <rowsDatasource entityId="140783089452985" field="false"/>
+    </rowsColumnsDesignInfo>
+    <treeDesignInfo/>
     <constraints height="468px" left="0px" top="0px" type="MarginConstraintsDesignInfo" width="276px"/>
-  </widget>
-  <widget actionPerformed="buttonActionPerformed" name="button" parent="Form" prefHeight="41px" prefWidth="168px" text="Выбрать" type="ButtonDesignInfo">
-    <constraints bottom="7px" height="41px" left="96px" type="MarginConstraintsDesignInfo" width="168px"/>
   </widget>
   <widget name="panel" parent="Form" prefHeight="468px" prefWidth="612px" type="PanelDesignInfo">
     <layout type="MarginLayoutDesignInfo"/>

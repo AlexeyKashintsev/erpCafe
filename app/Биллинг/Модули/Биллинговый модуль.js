@@ -16,9 +16,13 @@ function BillModule() {
     self.OP_STATUS_FAIL = 2;
     self.OP_STATUS_PRICE = 3;
     self.OP_STATUS_LOADING = 4;
-    
+    self.ERROR_LOST_MONEY = false;
     /*
      * Создает новый биллинговый аккаунт и возвращает его ID
+     * @param {type} aFrancId
+     * @param {type} aType
+     * @param {type} aSum
+     * @returns {@this;@pro;model.qBillAccount.cursor.bill_accounts_id}
      */
     self.createBillAccount = function(aFrancId,aType,aSum){
         if(!aType) aType = self.ACCOUNT_TYPE_DEFAULT;
@@ -38,7 +42,11 @@ function BillModule() {
         return model.qBillAccount.cursor.bill_accounts_id;
        // Logger.info('Аккаунт для франчайзе уже существует'); 
     };
-    
+    /*
+     * Удаление лицеовго счета
+     * @param {type} anAccountId
+     * @returns {undefined}
+     */
     self.delBillAccount = function(anAccountId){
         model.params.account_id = anAccountId;
         model.qBillAccount.requery(function(){
@@ -53,14 +61,15 @@ function BillModule() {
             }
         });
     };
-    
     /*
      * Добавление новой опреции по счету
      * anAccountId - Id франчайзе
      * aType - тип операции (списание или пополнение)
      * aSum - сумма денежных средств
+     * aStatus - статус операции (успешно, провалено, выставлен счет, в обработке)
      */
     self.addBillOperation = function(anAccountId, anOperationType, aSum, aStatus){
+        self.ERROR_LOST_MONEY = false;
         var obj = {
             account_id : anAccountId,
             operation_sum: aSum,
@@ -72,28 +81,35 @@ function BillModule() {
             model.params.account_id = anAccountId;
             model.qBillAccount.requery(function(){
                 if(model.qBillAccount.cursor.currnt_sum < aSum){
-                    aStatus = self.OP_STATUS_FAIL;
-                    Logger.info('Недостаточно средств на счету');
-                }
+                    self.ERROR_LOST_MONEY = true;
+                } 
             });  
         } 
-        model.qAddBillOperations.push(obj);
-        if(aStatus === self.OP_STATUS_SUCCESS){
-            var multipler;
-            switch (anOperationType){
-                case self.OPERATION_ADD: multipler = 1.0; break;
-                case self.OPERATION_DEL: multipler = -1.0; break;
+        if(self.ERROR_LOST_MONEY){
+            Logger.info('Недостаточно средств на счету');
+            eventProcessor.addEvent('errorLostMoney',obj);
+            return false;
+        } else {
+            model.qAddBillOperations.push(obj);
+            if(aStatus === self.OP_STATUS_SUCCESS){
+                var multipler;
+                switch (anOperationType){
+                    case self.OPERATION_ADD: multipler = 1.0; break;
+                    case self.OPERATION_DEL: multipler = -1.0; break;
+                }
+                model.params.account_id = anAccountId;
+                model.qBillAccount.requery(function(){
+                    model.qBillAccount.cursor.currnt_sum = model.qBillAccount.cursor.currnt_sum + aSum * multipler; 
+                });    
             }
-            model.params.account_id = anAccountId;
-            model.qBillAccount.requery(function(){
-                model.qBillAccount.cursor.currnt_sum = model.qBillAccount.cursor.currnt_sum + aSum * multipler; 
-            });    
-        }
-        model.save();
-        eventProcessor.addEvent('addBillOperation', obj);
+            model.save();
+            eventProcessor.addEvent('addBillOperation', obj);
             return model.qAddBillOperations.cursor.bill_operations_id;    
+        }
     };
-    
+    /*
+     * Добавление услуги на лицевой счет 
+     */
     self.AddService = function(anAccountId, aServiceId){
         var obj ={
             account_id: anAccountId,
@@ -102,7 +118,9 @@ function BillModule() {
         model.qAddService.push(obj);
         model.save();
     };
-    
+    /*
+     * Создание новой услуги
+     */
     self.CreateService = function(aName, aDays, aSum){
         var obj = {
             service_name: aName,
@@ -111,7 +129,7 @@ function BillModule() {
         };
         model.qServiceList.push(obj);
         model.save();
-        eventProcessor.addEvent('errorDelBillAccount',obj);
+        eventProcessor.addEvent('serviceCreated',obj);
         return true;
     };
     

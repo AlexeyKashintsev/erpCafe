@@ -18,10 +18,17 @@ function AddBillOperation() {
         if(form.rbAdd.selected) operation = billModule.OPERATION_ADD;
         else operation = billModule.OPERATION_DEL;
         if(!billModule.addBillOperation(model.qBillAccount.cursor.bill_accounts_id,
-                                    operation,
-                                    form.tfSum.text,
-                                    billModule.OP_STATUS_SUCCESS))
-                                        alert("Errror!");
+                                        operation,
+                                        form.tfSum.text,
+                                        billModule.OP_STATUS_SUCCESS))
+        {
+            if(confirm("У вас недосточно средств на счете!\nСохранить заказ?")){
+                billModule.addBillOperation(model.qBillAccount.cursor.bill_accounts_id,
+                                        operation,
+                                        form.tfSum.text,
+                                        billModule.OP_STATUS_FAIL);
+            }
+        }
         model.requery();
     }//GEN-LAST:event_buttonActionPerformed
 
