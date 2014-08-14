@@ -3,7 +3,7 @@
  * @author stipjey
  * @name qPersonalData
  */ 
-Select client_personal_data_id, usr_name, first_name
+Select client_id, usr_name, first_name
 , middle_name, last_name, birthday
 , address, phone, email
 , reg_date 
