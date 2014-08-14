@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?><datamodel datamodelDbId="null">
   <fieldsEntity entityHeight="200" entityIconified="false" entityId="140776449086523" entityLocationX="897" entityLocationY="320" entityWidth="150" tableName="trade_items"/>
-  <fieldsEntity entityHeight="200" entityIconified="false" entityId="140776459742255" entityLocationX="448" entityLocationY="229" entityWidth="150" tableName="bonus_bill_info"/>
   <fieldsEntity entityHeight="200" entityIconified="false" entityId="140740324295851" entityLocationX="9" entityLocationY="225" entityWidth="150" tableName="mtd_groups"/>
+  <fieldsEntity entityHeight="200" entityIconified="false" entityId="140776459742255" entityLocationX="499" entityLocationY="235" entityWidth="150" tableName="bonus_bill_info"/>
   <fieldsEntity entityHeight="200" entityIconified="false" entityId="140776430873952" entityLocationX="727" entityLocationY="318" entityWidth="150" tableName="bonus_rate_for_trade_items"/>
   <fieldsEntity entityHeight="200" entityIconified="false" entityId="140740488097055" entityLocationX="714" entityLocationY="19" entityWidth="150" tableName="trade_cash_box_operation"/>
   <fieldsEntity entityHeight="200" entityIconified="false" entityId="140740511305702" entityLocationX="893" entityLocationY="19" entityWidth="150" tableName="trade_operations"/>
-  <fieldsEntity entityHeight="200" entityIconified="false" entityId="140740452222728" entityLocationX="446" entityLocationY="19" entityWidth="230" tableName="client_bonus_operations"/>
-  <fieldsEntity entityHeight="290" entityIconified="false" entityId="140740346128201" entityLocationX="213" entityLocationY="20" entityWidth="189" tableName="client_personal_data"/>
-  <fieldsEntity entityHeight="200" entityIconified="false" entityId="140740323163330" entityLocationX="10" entityLocationY="20" entityWidth="150" tableName="mtd_users"/>
   <fieldsEntity entityHeight="200" entityIconified="false" entityId="140776288796211" entityLocationX="219" entityLocationY="326" entityWidth="150" tableName="client_bonus_category"/>
+  <fieldsEntity entityHeight="200" entityIconified="false" entityId="140740323163330" entityLocationX="10" entityLocationY="20" entityWidth="150" tableName="mtd_users"/>
+  <fieldsEntity entityHeight="290" entityIconified="false" entityId="140740346128201" entityLocationX="213" entityLocationY="20" entityWidth="189" tableName="client_personal_data"/>
 </datamodel>
