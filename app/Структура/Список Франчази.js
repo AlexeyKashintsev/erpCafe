@@ -28,4 +28,10 @@ function formWindowClosing(evt) {//GEN-FIRST:event_formWindowClosing
     function btnSelectActionPerformed(evt) {//GEN-FIRST:event_btnSelectActionPerformed
         close(model.listFranchazi.org_franchazi_id);
     }//GEN-LAST:event_btnSelectActionPerformed
+
+    function listFranchaziOnScrolled(evt) {//GEN-FIRST:event_listFranchaziOnScrolled
+        if (self.parent) {
+            self.parent.setFranchazi(model.listFranchazi.org_franchazi_id);
+        }
+    }//GEN-LAST:event_listFranchaziOnScrolled
 }

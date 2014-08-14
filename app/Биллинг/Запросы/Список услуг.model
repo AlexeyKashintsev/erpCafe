@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?><datamodel>
+  <parametersEntity entityHeight="200" entityIconified="false" entityLocationX="7" entityLocationY="8" entityWidth="150"/>
+  <entity Title="" entityHeight="200" entityIconified="false" entityId="140791363951617" entityLocationX="380" entityLocationY="8" entityWidth="150" tableAlias="t1" tableName="bill_services" tableSchemaName=""/>
+</datamodel>

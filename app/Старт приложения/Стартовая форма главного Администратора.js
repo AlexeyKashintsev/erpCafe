@@ -9,15 +9,15 @@ function StartMasterAdminForm() {
     self.actionList = {
         franchazi   :   {
             display     :   "Франчази и торговые точки",
-            dispForm    :   "SelectFranchaziAdminForm"
+            dispForm    :   "FranchaziAndTradePoints"
         },
         users   :   {
             display     :   "Пользователи",
-            dispForm    :   "FranchaziUsers"
+            dispForm    :   "FranchaziAndUsers"
         },
         warehouse   :   {
             display     :   "Склад",
-            dispForm    :   "SelectItemsInWH",
+            dispForm    :   "WarehouseItemList",
             inner   :   {
                 display     :   "Типы товаров",
                 dispForm    :   "ItemTypesForm"
