@@ -8,14 +8,16 @@ function BillModule() {
     var self = this, model = this.model;
     var eventProcessor = new ServerModule("EventProcessor");
     
-    self.OPERATION_ADD = 1; //Добавление средств на счет
-    self.OPERATION_DEL = 2; //Списание средств
+    self.OPERATION_ADD_CASH = 1; //Добавление средств на счет
+    self.OPERATION_ADD_BONUS = 2; //Списание средств
+    self.OPERATION_DEL_BUY = 3; //Списание средств
+    self.OPERATION_DEL_SERVICE = 4; //Списание средств
     self.ACCOUNT_TYPE_DEFAULT = 1; //Основной 
     self.ACCOUNT_TYPE_CREDIT = 2; //Кредитный
     self.OP_STATUS_SUCCESS = 1;
     self.OP_STATUS_FAIL = 2;
-    self.OP_STATUS_PRICE = 3;
-    self.OP_STATUS_LOADING = 4;
+    self.OP_STATUS_BILL = 3;
+    self.OP_STATUS_PROCESSING = 4;
     self.ERROR_LOST_MONEY = false;
     /*
      * Создает новый биллинговый аккаунт и возвращает его ID
@@ -75,9 +77,18 @@ function BillModule() {
             operation_sum: aSum,
             operation_date: new Date(),
             operation_type: anOperationType,
-            operation_status: aStatus
+            operation_status: aStatus,
+            //user_name_perfomed: units.userSession.getUserName()
+            user_name_perfomed: self.principal.name
         };
-        if((anOperationType === self.OPERATION_DEL) && (aStatus === self.OP_STATUS_SUCCESS)){
+        var multiplier;
+        switch (anOperationType){
+            case self.OPERATION_ADD_CASH: multiplier = 1.0; break;
+            case self.OPERATION_ADD_BONUS: multiplier = 1.0; break;
+            case self.OPERATION_DEL_BUY: multiplier = -1.0; break;
+            case self.OPERATION_DEL_SERVICE: multiplier = -1.0; break;
+        }
+        if((multiplier === -1) && (aStatus === self.OP_STATUS_SUCCESS)){
             model.params.account_id = anAccountId;
             model.qBillAccount.requery(function(){
                 if(model.qBillAccount.cursor.currnt_sum < aSum){
@@ -90,23 +101,42 @@ function BillModule() {
             eventProcessor.addEvent('errorLostMoney',obj);
             return false;
         } else {
-            model.qAddBillOperations.push(obj);
+            model.qBillOperationsList.push(obj);
             if(aStatus === self.OP_STATUS_SUCCESS){
-                var multipler;
-                switch (anOperationType){
-                    case self.OPERATION_ADD: multipler = 1.0; break;
-                    case self.OPERATION_DEL: multipler = -1.0; break;
-                }
                 model.params.account_id = anAccountId;
                 model.qBillAccount.requery(function(){
-                    model.qBillAccount.cursor.currnt_sum = model.qBillAccount.cursor.currnt_sum + aSum * multipler; 
+                    model.qBillAccount.cursor.currnt_sum = model.qBillAccount.cursor.currnt_sum + aSum * multiplier; 
                 });    
             }
             model.save();
             eventProcessor.addEvent('addBillOperation', obj);
-            return model.qAddBillOperations.cursor.bill_operations_id;    
+            return model.qBillOperationsList.cursor.bill_operations_id;    
         }
     };
+    
+    self.setStatusBillOperation= function(anOperationId, aStatus){
+        model.params.operation_id = anOperationId;
+        model.qBillOperationsList.requery(function(){
+            if(model.qBillOperationsList.length > 0){
+                model.qBillOperationsList.cursor.operation_status = aStatus;
+                model.save();
+                eventProcessor.addEvent('setStatusBillOperation', {
+                    operation_id: model.qBillOperationsList.cursor.bill_operations_id,
+                    status: aStatus,
+                    set_date: new Date()
+                });
+                return true;
+            } else {
+                eventProcessor.addEvent('errorSetStatusBillOperation', {
+                    operation_id: model.qBillOperationsList.cursor.bill_operations_id,
+                    status: aStatus,
+                    set_date: new Date()
+                });
+                return false;
+            }
+        });
+    };
+    
     /*
      * Добавление услуги на лицевой счет 
      */
@@ -132,6 +162,4 @@ function BillModule() {
         eventProcessor.addEvent('serviceCreated',obj);
         return true;
     };
-    
-    
 }
