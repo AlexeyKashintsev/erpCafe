@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?><layout defaultCloseOperation="2" name="Form" prefHeight="449px" prefWidth="743px">
+  <widget name="modelGrid" parent="Form" prefHeight="324px" prefWidth="552px" type="DbGridDesignInfo">
+    <rowsColumnsDesignInfo>
+      <rowsDatasource entityId="140801391864084" field="false"/>
+    </rowsColumnsDesignInfo>
+    <treeDesignInfo/>
+    <column name="item_name">
+      <datamodelElement entityId="140801391864084" fieldName="item_name"/>
+      <columnsDatasource/>
+      <columnsDisplayField/>
+      <cellsDatasource/>
+      <cellDesignInfo>
+        <rowsKeyField/>
+        <columnsKeyField/>
+        <cellValueField/>
+      </cellDesignInfo>
+      <headerStyle>
+        <nativeFont name="Ubuntu" size="15"/>
+      </headerStyle>
+      <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
+    </column>
+    <column name="category">
+      <datamodelElement entityId="140801391864084" fieldName="category_description"/>
+      <columnsDatasource/>
+      <columnsDisplayField/>
+      <cellsDatasource/>
+      <cellDesignInfo>
+        <rowsKeyField/>
+        <columnsKeyField/>
+        <cellValueField/>
+      </cellDesignInfo>
+      <headerStyle>
+        <nativeFont name="Ubuntu" size="15"/>
+      </headerStyle>
+      <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
+    </column>
+    <column name="rate">
+      <datamodelElement entityId="140801391864084" fieldName="bonus_rate"/>
+      <columnsDatasource/>
+      <columnsDisplayField/>
+      <cellsDatasource/>
+      <cellDesignInfo>
+        <rowsKeyField/>
+        <columnsKeyField/>
+        <cellValueField/>
+      </cellDesignInfo>
+      <headerStyle>
+        <nativeFont name="Ubuntu" size="15"/>
+      </headerStyle>
+      <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
+    </column>
+    <constraints height="324px" left="24px" top="72px" type="MarginConstraintsDesignInfo" width="552px"/>
+  </widget>
+  <layout type="MarginLayoutDesignInfo"/>
+</layout>
