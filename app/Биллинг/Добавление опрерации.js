@@ -15,8 +15,8 @@ function AddBillOperation() {
     function buttonActionPerformed(evt) {//GEN-FIRST:event_buttonActionPerformed
         //alert(model.qBillAccount.cursor.bill_accounts_id.toString());
         var operation;
-        if(form.rbAdd.selected) operation = billModule.OPERATION_ADD;
-        else operation = billModule.OPERATION_DEL;
+        if(form.rbAdd.selected) operation = billModule.OPERATION_ADD_CASH;
+        else operation = billModule.OPERATION_DEL_BUY;
         if(!billModule.addBillOperation(model.qBillAccount.cursor.bill_accounts_id,
                                         operation,
                                         form.tfSum.text,
