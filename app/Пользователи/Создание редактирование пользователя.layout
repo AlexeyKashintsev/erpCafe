@@ -2,7 +2,7 @@
   <widget foregroundColor="#ff0000" name="lbPhone" parent="Form" prefHeight="24px" prefWidth="192px" type="LabelDesignInfo">
     <constraints height="24px" left="96px" top="180px" type="MarginConstraintsDesignInfo" width="192px"/>
   </widget>
-  <widget focusLost="tfPhoneFocusLost" keyPressed="tfPhoneKeyPressed" keyReleased="tfPhoneKeyReleased" name="tfPhone" parent="Form" prefHeight="27px" prefWidth="192px" type="TextFieldDesignInfo">
+  <widget actionPerformed="tfPhoneActionPerformed" focusLost="tfPhoneFocusLost" keyPressed="tfPhoneKeyPressed" keyReleased="tfPhoneKeyReleased" name="tfPhone" parent="Form" prefHeight="27px" prefWidth="192px" type="TextFieldDesignInfo">
     <constraints height="27px" left="96px" top="156px" type="MarginConstraintsDesignInfo" width="192px"/>
   </widget>
   <widget focusLost="tfEmailFocusLost" keyPressed="tfEmailKeyPressed" keyReleased="tfEmailKeyReleased" name="tfEmail" parent="Form" prefHeight="27px" prefWidth="192px" type="TextFieldDesignInfo">

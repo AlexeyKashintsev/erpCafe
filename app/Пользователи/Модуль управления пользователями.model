@@ -4,10 +4,10 @@
     <parameter description="" name="user_role" nullable="true" parameterMode="1" precision="0" scale="0" selectionForm="null" signed="true" size="100" type="12" typeName="VARCHAR"/>
   </parameters>
   <parametersEntity entityHeight="200" entityIconified="false" entityLocationX="12" entityLocationY="12" entityWidth="150"/>
-  <entity Name="qUserAddRole" Title="" entityHeight="200" entityIconified="false" entityId="140748074182683" entityLocationX="545" entityLocationY="36" entityWidth="150" queryId="qUserAddRole" tableName="" tableSchemaName=""/>
+  <entity Name="qUserAddRole" Title="" entityHeight="200" entityIconified="false" entityId="140748074182683" entityLocationX="505" entityLocationY="13" entityWidth="150" queryId="qUserAddRole" tableName="" tableSchemaName=""/>
   <entity Name="queryRoles" Title="" entityHeight="200" entityIconified="false" entityId="140750567080665" entityLocationX="19" entityLocationY="241" entityWidth="150" queryId="queryRoles" tableName="" tableSchemaName=""/>
   <entity Name="usersByName" Title="" entityHeight="200" entityIconified="false" entityId="140748070629425" entityLocationX="270" entityLocationY="12" entityWidth="150" queryId="usersByName" tableName="" tableSchemaName=""/>
-  <relation leftEntityId="-1" leftEntityParameterName="user_name" rightEntityId="140748070629425" rightEntityParameterName="usr_name"/>
   <relation leftEntityId="-1" leftEntityParameterName="user_role" rightEntityFieldName="role_name" rightEntityId="140750567080665"/>
+  <relation leftEntityId="-1" leftEntityParameterName="user_name" rightEntityId="140748070629425" rightEntityParameterName="usr_name"/>
   <referenceRelation leftEntityFieldName="usr_name" leftEntityId="140748074182683" rightEntityFieldName="usr_name" rightEntityId="140748070629425"/>
 </datamodel>

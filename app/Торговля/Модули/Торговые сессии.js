@@ -58,6 +58,8 @@ function TradeSessions() {
                         trade_item : anOrderDetails.orderItems[i].itemId,
                         items_quantity : anOrderDetails.orderItems[i].quantity
                     });
+                    
+                            //TODO в отдельную функцию раcсчет о потребленном товаре
                     model.qContents.params.trade_item_id = anOrderDetails.orderItems[i].itemId;
                     model.qContents.execute();
                     model.qContents.beforeFirst();
@@ -74,6 +76,7 @@ function TradeSessions() {
             }
             
             //TODO посчитать расходники, а не торговые позиции
+            //TODO удалить TODO
             
             if (whSession.whMovement(anWH_items, whSession.WH_PRODUCE_ITEMS)){
             } else {
@@ -81,6 +84,7 @@ function TradeSessions() {
             }
         }
         
+                //TODO 
         
         model.save();
     };
