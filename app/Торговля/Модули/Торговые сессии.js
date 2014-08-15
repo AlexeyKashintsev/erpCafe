@@ -74,7 +74,15 @@ function TradeSessions() {
         model.qBonusRateForItemsEdit.params.bonus_category = clientModule.getBonusCategory(ClientPhone);
         if (model.qBonusRateForItemsEdit.cursor.bonus_rate){
             return model.qBonusRateForItemsEdit.cursor.bonus_rate;
-        } else return //По дефолту че там стоит :)
+        } else {
+            // Продумать логику!
+            getCountBonusesByCategory(model.qBonusRateForItemsEdit.params.bonus_category) / 100;
+        }
+    }
+    
+    function getCountBonusesByCategory(aCatId){
+        model.qGetBonusCategories.params.category_id = aCatId;
+        return model.qGetBonusCategories.cursor.category_bonus_rate;
     }
     
     //Запись прихода по кассе
