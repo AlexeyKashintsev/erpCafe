@@ -17,5 +17,7 @@ function clientDesktop() {
     }//GEN-LAST:event_buttonActionPerformed
 
     function formWindowOpened(evt) {//GEN-FIRST:event_formWindowOpened
+        model.qBillAccount.params.user_id = self.principal.name;
+        form.lblBonusBillCount.text = "На вашем бонусном счету " + model.qBillAccount.cursor.currnt_sum + " баллов";
     }//GEN-LAST:event_formWindowOpened
 }

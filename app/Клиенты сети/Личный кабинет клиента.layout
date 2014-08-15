@@ -2,5 +2,8 @@
   <widget actionPerformed="buttonActionPerformed" name="button" parent="Form" prefHeight="36px" prefWidth="372px" text="Редактирование информации" type="ButtonDesignInfo">
     <constraints height="36px" left="12px" top="24px" type="MarginConstraintsDesignInfo" width="372px"/>
   </widget>
+  <widget name="lblBonusBillCount" parent="Form" prefHeight="17px" prefWidth="264px" type="LabelDesignInfo">
+    <constraints height="17px" left="60px" top="96px" type="MarginConstraintsDesignInfo" width="264px"/>
+  </widget>
   <layout type="MarginLayoutDesignInfo"/>
 </layout>

@@ -8,6 +8,7 @@ function ClientServerModule() {
     var smsSender = new ServerModule("SmsSender");
     var userModule = new UserModule();
     var adminFunctions = new ServerModule("AdminFunctions");
+    var billModule = new BillModule();
     var pass = null;
     
     function genPass(){
@@ -21,10 +22,13 @@ function ClientServerModule() {
     
     self.createUser = function(anUserName, anEmail, aFirstName, aRoleName){
         //У клиентов в качестве username используется номер телефона
+        
+        
         self.setPass(genPass());
         alert(pass);//Генерим пароль в переменную pass
         userModule.createUser(anUserName, adminFunctions.MD5(pass), aRoleName, anEmail, anUserName);
         model.qPersonalData.insert();
+        model.qPersonalData.cursor.client_id = billModule.createBillAccount(anUserName, billModule.ACCOUNT_TYPE_CLIENT, null);
         model.qPersonalData.cursor.first_name = aFirstName;
         model.qPersonalData.cursor.phone = anUserName;
         model.qPersonalData.cursor.email = anEmail;

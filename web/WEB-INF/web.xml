@@ -6,7 +6,7 @@
   </context-param>
   <context-param>
     <param-name>url</param-name>
-    <param-value>file:/home/stipjey/erpcafe/</param-value>
+    <param-value>file:/C:/Users/%D0%90%D0%BB%D0%B5%D0%BA%D1%81%D0%B5%D0%B9/Documents/NetBeansProjects/erpcafe/</param-value>
   </context-param>
   <listener>
     <listener-class>com.eas.server.httpservlet.PlatypusSessionsSynchronizer</listener-class>
@@ -16,7 +16,7 @@
     <servlet-class>com.eas.server.httpservlet.PlatypusHttpServlet</servlet-class>
     <load-on-startup>1</load-on-startup>
     <multipart-config>
-      <location>/home/stipjey/erpcafe/web/pub</location>
+      <location>C:/Users/Алексей/Documents/NetBeansProjects/erpcafe/web/pub</location>
       <max-file-size>2097152</max-file-size>
       <max-request-size>2165824</max-request-size>
       <file-size-threshold>1048576</file-size-threshold>
@@ -33,7 +33,19 @@
     <res-auth>Container</res-auth>
   </resource-ref>
   <resource-ref>
-    <description>jdbc:postgresql://192.168.10.119:5432/cafeErp [cafeErp на cafeErp]</description>
+    <description>jdbc:postgresql://localhost:5432/postgres [postgres на POSTGRES]</description>
+    <res-ref-name>postgres_local</res-ref-name>
+    <res-type>javax.sql.DataSource</res-type>
+    <res-auth>Container</res-auth>
+  </resource-ref>
+  <resource-ref>
+    <description>jdbc:postgresql://localhost:5432/rcErp [rcErp на rcErp]</description>
+    <res-ref-name>rcErp</res-ref-name>
+    <res-type>javax.sql.DataSource</res-type>
+    <res-auth>Container</res-auth>
+  </resource-ref>
+  <resource-ref>
+    <description>jdbc:postgresql://localhost:5432/cafeErp [cafeErp на cafeErp]</description>
     <res-ref-name>cafeErp</res-ref-name>
     <res-type>javax.sql.DataSource</res-type>
     <res-auth>Container</res-auth>
