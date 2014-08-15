@@ -9,11 +9,12 @@ function BillModule() {
     var eventProcessor = new ServerModule("EventProcessor");
     
     self.OPERATION_ADD_CASH = 1; //Добавление средств на счет
-    self.OPERATION_ADD_BONUS = 2; //Списание средств
+    self.OPERATION_ADD_BONUS = 2; //
     self.OPERATION_DEL_BUY = 3; //Списание средств
-    self.OPERATION_DEL_SERVICE = 4; //Списание средств
+    self.OPERATION_DEL_SERVICE = 4; //
     self.ACCOUNT_TYPE_DEFAULT = 1; //Основной 
     self.ACCOUNT_TYPE_CREDIT = 2; //Кредитный
+    self.ACCOUNT_TYPE_CLIENT = 3; //Клиентский
     self.OP_STATUS_SUCCESS = 1;
     self.OP_STATUS_FAIL = 2;
     self.OP_STATUS_BILL = 3;
@@ -26,18 +27,19 @@ function BillModule() {
      * @param {type} aSum
      * @returns {@this;@pro;model.qBillAccount.cursor.bill_accounts_id}
      */
-    self.createBillAccount = function(aFrancId,aType,aSum){
+    self.createBillAccount = function(aUserId,aType,aSum){
         if(!aType) aType = self.ACCOUNT_TYPE_DEFAULT;
-        if(!aSum) aSum = 0;
         model.qBillAccount.push({
-                franchazi_id: aFrancId,
+                user_id: aUserId,
                 account_type: aType,
-                currnt_sum: aSum,
+                currnt_sum: 0,
                 active: true
         });
         model.save();
+        if(aSum)
+            self.addBillOperation(model.qBillAccount.cursor.bill_accounts_id, self.OPERATION_ADD_CASH, aSum, self.OP_STATUS_SUCCESS);
         eventProcessor.addEvent('billCreated', {
-                franchazi_id: aFrancId,
+                user_id: aUserId,
                 account_type: aType,
                 currnt_sum: aSum
         });
@@ -113,7 +115,12 @@ function BillModule() {
             return model.qBillOperationsList.cursor.bill_operations_id;    
         }
     };
-    
+    /*
+     * Изменение статуса операции
+     * @param {type} anOperationId
+     * @param {type} aStatus
+     * @returns {undefined}
+     */
     self.setStatusBillOperation= function(anOperationId, aStatus){
         model.params.operation_id = anOperationId;
         model.qBillOperationsList.requery(function(){
