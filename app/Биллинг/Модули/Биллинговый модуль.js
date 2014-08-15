@@ -90,7 +90,7 @@ function BillModule() {
             case self.OPERATION_DEL_BUY: multiplier = -1.0; break;
             case self.OPERATION_DEL_SERVICE: multiplier = -1.0; break;
         }
-        if((multiplier === -1) && (aStatus === self.OP_STATUS_SUCCESS)){
+        if((multiplier === -1) && (aStatus === self.OP_STATUS_SUCCESS) && (anOperationType != self.OPERATION_DEL_SERVICE)){
             model.params.account_id = anAccountId;
             model.qBillAccount.requery(function(){
                 if(model.qBillAccount.cursor.currnt_sum < aSum){
@@ -148,12 +148,29 @@ function BillModule() {
      * Добавление услуги на лицевой счет 
      */
     self.AddService = function(anAccountId, aServiceId){
-        var obj ={
-            account_id: anAccountId,
-            service_id: aServiceId
-        };
-        model.qAddService.push(obj);
-        model.save();
+        model.params.service_id = aServiceId;
+        model.params.account_id = anAccountId;
+        model.requery(function(){
+            if(model.qServiceList.length > 0){
+                if(model.qBillAccount.length > 0){
+                    var payDate = new Date();
+                    payDate.setDate(payDate.getDate() + model.qServiceList.cursor.service_days);
+                    var obj ={
+                        account_id: anAccountId,
+                        service_id: aServiceId,
+                        payment_date: payDate
+                    };
+                    model.qAddService.push(obj);
+                    model.save();
+                } else {
+                    Logger.info('Аккаунт с таким ID не найден!');
+                    return false;
+                } 
+            } else {
+                Logger.info('Услуга с таким ID не найдена!');
+                return false;
+            }
+        });
     };
     /*
      * Создание новой услуги
@@ -168,5 +185,24 @@ function BillModule() {
         model.save();
         eventProcessor.addEvent('serviceCreated',obj);
         return true;
+    };
+    
+    self.paymentForServices = function(){
+        model.qAddService.requery(function(){
+            if(model.qAddService.length > 0){
+                model.qAddService.beforeFirst();
+                while(model.qAddService.next()){
+                    model.params.service_id = model.qAddService.cursor.service_id;
+                    model.qServiceList.requery(function(){
+                        var pDate = new Date();
+                        pDate.setDate(pDate.getDate() + model.qServiceList.cursor.service_days);
+                        model.qAddService.cursor.payment_date = pDate;
+                        self.addBillOperation(model.qAddService.cursor.account_id, self.OPERATION_DEL_SERVICE, model.qServiceList.cursor.service_sum, self.OP_STATUS_SUCCESS);               
+                    });
+                }
+                Logger.info("Списание денег за услуги прошло успешно!");
+                model.save();
+            }
+        });
     };
 }

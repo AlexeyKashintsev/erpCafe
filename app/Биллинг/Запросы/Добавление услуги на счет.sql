@@ -5,4 +5,4 @@
  */ 
 Select * 
 From bill_services_accounts t1
-where t1.bill_services_accounts_id is null
+where to_char(t1.payment_date, 'YY:MM:DD') = to_char(now(), 'YY:MM:DD')

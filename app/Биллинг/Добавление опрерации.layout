@@ -16,114 +16,117 @@
     <constraints bottom="14px" height="41px" left="36px" type="MarginConstraintsDesignInfo" width="252px"/>
   </widget>
   <widget deletable="false" editable="false" insertable="false" name="modelGrid" parent="Form" prefHeight="288px" prefWidth="372px" type="DbGridDesignInfo">
+    <column name="colBill_accounts_id">
+      <columnsDatasource/>
+      <columnsDisplayField/>
+      <headerStyle>
+        <nativeFont name="Ubuntu" size="15"/>
+      </headerStyle>
+      <cellDesignInfo>
+        <columnsKeyField/>
+        <rowsKeyField/>
+        <cellValueField/>
+      </cellDesignInfo>
+      <cellsDatasource/>
+      <datamodelElement entityId="140791227991520" fieldName="bill_accounts_id"/>
+      <controlInfo classHint="DbSpinDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
+    </column>
+    <column name="colAccount_type">
+      <columnsDatasource/>
+      <columnsDisplayField/>
+      <headerStyle>
+        <nativeFont name="Ubuntu" size="15"/>
+      </headerStyle>
+      <cellDesignInfo>
+        <columnsKeyField/>
+        <rowsKeyField/>
+        <cellValueField/>
+      </cellDesignInfo>
+      <cellsDatasource/>
+      <datamodelElement entityId="140791227991520" fieldName="account_type"/>
+      <controlInfo classHint="DbSpinDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
+    </column>
+    <column name="colCurrnt_sum">
+      <columnsDatasource/>
+      <columnsDisplayField/>
+      <headerStyle>
+        <nativeFont name="Ubuntu" size="15"/>
+      </headerStyle>
+      <cellDesignInfo>
+        <columnsKeyField/>
+        <rowsKeyField/>
+        <cellValueField/>
+      </cellDesignInfo>
+      <cellsDatasource/>
+      <datamodelElement entityId="140791227991520" fieldName="currnt_sum"/>
+      <controlInfo classHint="DbSpinDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
+    </column>
     <rowsColumnsDesignInfo>
       <rowsDatasource entityId="140791227991520" field="false"/>
     </rowsColumnsDesignInfo>
     <treeDesignInfo/>
-    <column name="colBill_accounts_id">
-      <datamodelElement entityId="140791227991520" fieldName="bill_accounts_id"/>
-      <cellDesignInfo>
-        <cellValueField/>
-        <columnsKeyField/>
-        <rowsKeyField/>
-      </cellDesignInfo>
-      <cellsDatasource/>
-      <columnsDatasource/>
-      <columnsDisplayField/>
-      <headerStyle>
-        <nativeFont name="Ubuntu" size="15"/>
-      </headerStyle>
-      <controlInfo classHint="DbSpinDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
-    </column>
-    <column name="colAccount_type">
-      <datamodelElement entityId="140791227991520" fieldName="account_type"/>
-      <cellDesignInfo>
-        <cellValueField/>
-        <columnsKeyField/>
-        <rowsKeyField/>
-      </cellDesignInfo>
-      <cellsDatasource/>
-      <columnsDatasource/>
-      <columnsDisplayField/>
-      <headerStyle>
-        <nativeFont name="Ubuntu" size="15"/>
-      </headerStyle>
-      <controlInfo classHint="DbSpinDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
-    </column>
-    <column name="colCurrnt_sum">
-      <datamodelElement entityId="140791227991520" fieldName="currnt_sum"/>
-      <cellDesignInfo>
-        <cellValueField/>
-        <columnsKeyField/>
-        <rowsKeyField/>
-      </cellDesignInfo>
-      <cellsDatasource/>
-      <columnsDatasource/>
-      <columnsDisplayField/>
-      <headerStyle>
-        <nativeFont name="Ubuntu" size="15"/>
-      </headerStyle>
-      <controlInfo classHint="DbSpinDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
-    </column>
     <constraints height="288px" left="0px" top="36px" type="MarginConstraintsDesignInfo" width="372px"/>
   </widget>
   <widget actionPerformed="button1ActionPerformed" name="button1" parent="Form" prefHeight="24px" prefWidth="168px" text="+ Создать счет" type="ButtonDesignInfo">
     <constraints height="24px" left="0px" top="0px" type="MarginConstraintsDesignInfo" width="168px"/>
   </widget>
   <widget name="modelGrid1" parent="Form" prefHeight="288px" prefWidth="324px" type="DbGridDesignInfo">
+    <column name="colService_days">
+      <columnsDatasource/>
+      <columnsDisplayField/>
+      <headerStyle>
+        <nativeFont name="Ubuntu" size="15"/>
+      </headerStyle>
+      <cellDesignInfo>
+        <columnsKeyField/>
+        <rowsKeyField/>
+        <cellValueField/>
+      </cellDesignInfo>
+      <cellsDatasource/>
+      <datamodelElement entityId="140791634411137" fieldName="service_days"/>
+      <controlInfo classHint="DbSpinDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
+    </column>
+    <column name="colService_name">
+      <columnsDatasource/>
+      <columnsDisplayField/>
+      <headerStyle>
+        <nativeFont name="Ubuntu" size="15"/>
+      </headerStyle>
+      <cellDesignInfo>
+        <columnsKeyField/>
+        <rowsKeyField/>
+        <cellValueField/>
+      </cellDesignInfo>
+      <cellsDatasource/>
+      <datamodelElement entityId="140791634411137" fieldName="service_name"/>
+      <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
+    </column>
+    <column name="colService_sum">
+      <columnsDatasource/>
+      <columnsDisplayField/>
+      <headerStyle>
+        <nativeFont name="Ubuntu" size="15"/>
+      </headerStyle>
+      <cellDesignInfo>
+        <columnsKeyField/>
+        <rowsKeyField/>
+        <cellValueField/>
+      </cellDesignInfo>
+      <cellsDatasource/>
+      <datamodelElement entityId="140791634411137" fieldName="service_sum"/>
+      <controlInfo classHint="DbSpinDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
+    </column>
     <rowsColumnsDesignInfo>
       <rowsDatasource entityId="140791634411137" field="false"/>
     </rowsColumnsDesignInfo>
     <treeDesignInfo/>
-    <column name="colService_days">
-      <datamodelElement entityId="140791634411137" fieldName="service_days"/>
-      <cellDesignInfo>
-        <cellValueField/>
-        <columnsKeyField/>
-        <rowsKeyField/>
-      </cellDesignInfo>
-      <cellsDatasource/>
-      <columnsDatasource/>
-      <columnsDisplayField/>
-      <headerStyle>
-        <nativeFont name="Ubuntu" size="15"/>
-      </headerStyle>
-      <controlInfo classHint="DbSpinDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
-    </column>
-    <column name="colService_name">
-      <datamodelElement entityId="140791634411137" fieldName="service_name"/>
-      <cellDesignInfo>
-        <cellValueField/>
-        <columnsKeyField/>
-        <rowsKeyField/>
-      </cellDesignInfo>
-      <cellsDatasource/>
-      <columnsDatasource/>
-      <columnsDisplayField/>
-      <headerStyle>
-        <nativeFont name="Ubuntu" size="15"/>
-      </headerStyle>
-      <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
-    </column>
-    <column name="colService_sum">
-      <datamodelElement entityId="140791634411137" fieldName="service_sum"/>
-      <cellDesignInfo>
-        <cellValueField/>
-        <columnsKeyField/>
-        <rowsKeyField/>
-      </cellDesignInfo>
-      <cellsDatasource/>
-      <columnsDatasource/>
-      <columnsDisplayField/>
-      <headerStyle>
-        <nativeFont name="Ubuntu" size="15"/>
-      </headerStyle>
-      <controlInfo classHint="DbSpinDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
-    </column>
     <constraints height="288px" left="396px" top="36px" type="MarginConstraintsDesignInfo" width="324px"/>
   </widget>
   <widget actionPerformed="button2ActionPerformed" name="button2" parent="Form" prefHeight="24px" prefWidth="180px" text="+ Добавить услугу" type="ButtonDesignInfo">
     <constraints height="24px" left="192px" top="0px" type="MarginConstraintsDesignInfo" width="180px"/>
+  </widget>
+  <widget actionPerformed="button3ActionPerformed" name="button3" parent="Form" prefHeight="29px" prefWidth="68px" text="CRON" type="ButtonDesignInfo">
+    <constraints bottom="14px" height="29px" right="157px" type="MarginConstraintsDesignInfo" width="68px"/>
   </widget>
   <layout type="MarginLayoutDesignInfo"/>
 </layout>

@@ -62,4 +62,8 @@ function AddBillOperation() {
             model.qServiceListByAccount.requery();
         }
     }//GEN-LAST:event_qBillAccountOnRequeried
+
+    function button3ActionPerformed(evt) {//GEN-FIRST:event_button3ActionPerformed
+        billModule.paymentForServices();
+    }//GEN-LAST:event_button3ActionPerformed
 }
