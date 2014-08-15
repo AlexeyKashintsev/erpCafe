@@ -77,35 +77,30 @@ function formWindowClosing(evt) {//GEN-FIRST:event_formWindowClosing
     }//GEN-LAST:event_btnReq1ActionPerformed
 
     function btnItemSelActionPerformed(evt) {//GEN-FIRST:event_btnItemSelActionPerformed
-        if(model.qTradeItems.length > 0){
+        if(model.qTradeItems.length > 0) {
             if (self.model.modified&&confirm('Сохранить изменения?')){
                 self.model.save();
-                contentTradeItem.setTradeItem(model.qTradeItems.cursor.trade_items_id);
-                contentTradeItem.showModal(function(){
-                    model.qTradeItemContents.requery();
-                    model.qTradeItems.requery();
-                });
             }
+            contentTradeItem.setTradeItem(model.qTradeItems.cursor.trade_items_id);
+            contentTradeItem.showModal(function(){
+                model.qTradeItemContents.requery();
+                model.qTradeItems.requery();
+            });
         } else {
             alert('Вы не выбрали товар!');
         }
     }//GEN-LAST:event_btnItemSelActionPerformed
 
     function modelGrid1MouseClicked(evt) {//GEN-FIRST:event_modelGrid1MouseClicked
-        if(evt.clickCount === 2){
-            if(model.qTradeItems.length > 0){
-                if (model.modified&&confirm('Сохранить изменения?')){
-                    model.save();
-                }
+       
+    }//GEN-LAST:event_modelGrid1MouseClicked
+
+    function selectOnSelect(aEditor) {//GEN-FIRST:event_selectOnSelect
+        self.model.save();
                 contentTradeItem.setTradeItem(model.qTradeItems.cursor.trade_items_id);
-                contentTradeItem.productName = model.qTradeItems.cursor.item_name;
                 contentTradeItem.showModal(function(){
                     model.qTradeItemContents.requery();
                     model.qTradeItems.requery();
                 });
-            } else {
-                alert('Вы не выбрали товар!');
-            }
-        }
-    }//GEN-LAST:event_modelGrid1MouseClicked
+    }//GEN-LAST:event_selectOnSelect
 }

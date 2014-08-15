@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><layout defaultCloseOperation="2" name="Form" prefHeight="448px" prefWidth="303px" windowClosed="formWindowClosed" windowOpened="formWindowOpened">
-  <nonvisual name="buttonGroup" type="ButtonGroupDesignInfo"/>
-  <nonvisual name="buttonGroup1" type="ButtonGroupDesignInfo"/>
+<?xml version="1.0" encoding="UTF-8"?><layout defaultCloseOperation="2" name="Form" prefHeight="505px" prefWidth="303px" windowClosed="formWindowClosed" windowOpened="formWindowOpened">
   <widget foregroundColor="#ff0000" name="lbPhone" parent="Form" prefHeight="24px" prefWidth="192px" type="LabelDesignInfo">
     <constraints height="24px" left="96px" top="180px" type="MarginConstraintsDesignInfo" width="192px"/>
   </widget>
@@ -63,12 +61,12 @@
   </widget>
   <widget name="panelBarist" parent="Form" prefHeight="36px" prefWidth="300px" type="PanelDesignInfo">
     <layout type="MarginLayoutDesignInfo"/>
-    <constraints height="36px" left="0px" top="358px" type="MarginConstraintsDesignInfo" width="300px"/>
+    <constraints bottom="74px" height="36px" left="0px" type="MarginConstraintsDesignInfo" width="300px"/>
   </widget>
-  <widget buttonGroup="buttonGroup" name="rbAdmin" parent="panelBarist" prefHeight="23px" prefWidth="144px" text="Администратор" type="RadioDesignInfo">
+  <widget buttonGroup="buttonGroup" name="rbAdmin" parent="panelBarist" prefHeight="23px" prefWidth="144px" selected="true" text="Администратор" type="RadioDesignInfo">
     <constraints height="23px" left="24px" top="0px" type="MarginConstraintsDesignInfo" width="144px"/>
   </widget>
-  <widget buttonGroup="buttonGroup" name="rbBarista" parent="panelBarist" prefHeight="23px" prefWidth="113px" selected="true" text="Бариста" type="RadioDesignInfo">
+  <widget buttonGroup="buttonGroup" name="rbBarista" parent="panelBarist" prefHeight="23px" prefWidth="113px" text="Бариста" type="RadioDesignInfo">
     <constraints height="23px" left="168px" top="0px" type="MarginConstraintsDesignInfo" width="113px"/>
   </widget>
   <widget name="tfAdditional" parent="Form" prefHeight="60px" prefWidth="264px" type="DbTextDesignInfo">
@@ -84,5 +82,7 @@
   <widget foregroundColor="#ff0000" name="lbEmail" parent="Form" prefHeight="24px" prefWidth="192px" type="LabelDesignInfo">
     <constraints height="24px" left="96px" top="132px" type="MarginConstraintsDesignInfo" width="192px"/>
   </widget>
+  <nonvisual name="buttonGroup" type="ButtonGroupDesignInfo"/>
+  <nonvisual name="buttonGroup1" type="ButtonGroupDesignInfo"/>
   <layout type="MarginLayoutDesignInfo"/>
 </layout>
