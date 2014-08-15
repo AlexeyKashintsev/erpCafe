@@ -7,6 +7,7 @@
 function TradeSessions() {
     var self = this, model = this.model;
     var whSession = new WhSessionModule();
+    var clientModule = new ClientServerModule();
     var ep = new EventProcessor();
     
     self.initializeSession = function(aSession, aStartBalance) {
@@ -67,16 +68,33 @@ function TradeSessions() {
         }
         return WhItems;
     }
+    
+    function getCountBonusesByItem(anItem){
+        model.qBonusRateForItemsEdit.params.item_id = anItem;
+        model.qBonusRateForItemsEdit.params.bonus_category = clientModule.getBonusCategory(ClientPhone);
+        if (model.qBonusRateForItemsEdit.cursor.bonus_rate){
+            return model.qBonusRateForItemsEdit.cursor.bonus_rate;
+        } else return //По дефолту че там стоит :)
+    }
+    
     //Запись прихода по кассе
     self.processOrder = function(anOrderDetails){
         if (!model.params.session_id){
             model.params.session_id = getCurrentSession();
         }
+        // Если мы в сессии,то
         if (model.params.session_id){
+            var BonusCount = 0;
+            // для всех товаров
             for (var i in anOrderDetails.orderItems) {
                 if (anOrderDetails.orderItems[i].itemId && anOrderDetails.orderItems[i].quantity){
+                    // записать проданные товары в тороговую операцию. При этом добавив приход в кассу.
                     TradeItemsPushInTradeOperation(TradeOperationPushInCashBox(anOrderDetails.orderSum), anOrderDetails.orderItems[i].itemId, anOrderDetails.orderItems[i].quantity);
+                    // TODO Добавить добавление бонусов клиенту на его счет.
+                    BonusCount += getCountBonusesByItem(anOrderDetails.orderItems[i].itemId) * anOrderDetails.orderItems[i].quantity;
+                    // затем написать уход элементов состава товара со склада. 
                     if (!whSession.whMovement(WhItemsCalculation(anOrderDetails.orderItems[i].itemId, anOrderDetails.orderItems[i].quantity), whSession.WH_PRODUCE_ITEMS)){
+                        //если не получилось - вывести ошибку.
                         ep.addEvent('errorAddTradeOperation', anOrderDetails);
                     }
                 }

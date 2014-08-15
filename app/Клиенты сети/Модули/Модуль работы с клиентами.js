@@ -63,4 +63,14 @@ function ClientServerModule() {
             return true;
         } else return false;
     };
+    
+    self.getClientId = function(anUserName){
+        model.qPersonalData.params.user_name = anUserName;
+        return model.qPersonalData.cursor.client_id;
+    }
+    
+    self.getBonusCategory = function(anUserName){
+        model.qPersonalData.params.user_name = anUserName;
+        return model.qPersonalData.cursor.bonus_category;
+    }
 }
