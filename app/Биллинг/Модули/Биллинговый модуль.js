@@ -73,6 +73,7 @@ function BillModule() {
      * aStatus - статус операции (успешно, провалено, выставлен счет, в обработке)
      */
     self.addBillOperation = function(anAccountId, anOperationType, aSum, aStatus){
+        if(!aStatus) aStatus = self.OP_STATUS_SUCCESS;
         self.ERROR_LOST_MONEY = false;
         var obj = {
             account_id : anAccountId,
@@ -122,22 +123,44 @@ function BillModule() {
      * @returns {undefined}
      */
     self.setStatusBillOperation= function(anOperationId, aStatus){
+        self.ERROR_LOST_MONEY = false;
         model.params.operation_id = anOperationId;
         model.qBillOperationsList.requery(function(){
             if(model.qBillOperationsList.length > 0){
-                model.qBillOperationsList.cursor.operation_status = aStatus;
-                model.save();
-                eventProcessor.addEvent('setStatusBillOperation', {
-                    operation_id: model.qBillOperationsList.cursor.bill_operations_id,
-                    status: aStatus,
-                    set_date: new Date()
-                });
-                return true;
+                if(aStatus == self.OP_STATUS_SUCCESS){
+                    model.params.account_id = model.qBillOperationsList.cursor.account_id;
+                    model.qBillAccount.requery(function(){
+                        if(model.qBillAccount.cursor.currnt_sum >= model.qBillOperationsList.cursor.operation_sum){
+                            model.qBillAccount.cursor.currnt_sum = model.qBillAccount.cursor.currnt_sum + model.qBillOperationsList.cursor.operation_sum * model.qBillOperationsList.cursor.multiplier;
+                        } else {
+                            self.ERROR_LOST_MONEY = true;
+                        }
+                    });
+                }
+                if(!self.ERROR_LOST_MONEY){
+                    model.qBillOperationsList.cursor.operation_status = aStatus;
+                    model.save();
+                    eventProcessor.addEvent('setStatusBillOperation', {
+                        operation_id: model.qBillOperationsList.cursor.bill_operations_id,
+                        status: aStatus,
+                        set_date: new Date()
+                    });
+                    return true;
+                } else {
+                    eventProcessor.addEvent('errorSetStatusBillOperation', {
+                        operation_id: model.qBillOperationsList.cursor.bill_operations_id,
+                        status: aStatus,
+                        set_date: new Date(),
+                        comment: "Lost Money on the Bill Account"
+                    });
+                    return false;
+                }  
             } else {
                 eventProcessor.addEvent('errorSetStatusBillOperation', {
                     operation_id: model.qBillOperationsList.cursor.bill_operations_id,
                     status: aStatus,
-                    set_date: new Date()
+                    set_date: new Date(),
+                    comment: "No matches on operation list with this ID"
                 });
                 return false;
             }
@@ -188,8 +211,10 @@ function BillModule() {
     };
     
     self.paymentForServices = function(){
+        var services_id = [];        
         model.qAddService.requery(function(){
             if(model.qAddService.length > 0){
+                var i = 0;
                 model.qAddService.beforeFirst();
                 while(model.qAddService.next()){
                     model.params.service_id = model.qAddService.cursor.service_id;
@@ -198,11 +223,17 @@ function BillModule() {
                         pDate.setDate(pDate.getDate() + model.qServiceList.cursor.service_days);
                         model.qAddService.cursor.payment_date = pDate;
                         self.addBillOperation(model.qAddService.cursor.account_id, self.OPERATION_DEL_SERVICE, model.qServiceList.cursor.service_sum, self.OP_STATUS_SUCCESS);               
+                        services_id[i]=model.qAddService.cursor.bill_services_accounts_id;
+                        i++;
                     });
                 }
-                Logger.info("Списание денег за услуги прошло успешно!");
+                Logger.info("Количество обратонных счетов: " + i);
                 model.save();
             }
+            eventProcessor.addEvent('paymentForServices', {
+                date: new Date(),
+                services_id: services_id
+            });
         });
     };
 }
