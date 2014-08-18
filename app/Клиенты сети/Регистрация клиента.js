@@ -13,6 +13,7 @@ function ClientRegistrationByBarist() {
         if (validateForm()){
             clientModule.createUser(form.phoneField.text, form.emailField.text, form.firstnameField.text, roleName);
         }
+        form.close(form.phoneField.text);
     }//GEN-LAST:event_btnAddActionPerformed
 
     function validateForm(){

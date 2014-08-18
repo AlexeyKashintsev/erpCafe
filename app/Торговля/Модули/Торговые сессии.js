@@ -8,8 +8,13 @@ function TradeSessions() {
     var self = this, model = this.model;
     var whSession = new WhSessionModule();
     var clientModule = new ClientServerModule();
-    var session = new UserSession();
+    var billing = new BillModule();
     var ep = new EventProcessor();
+    var ClientPhone = null;
+    
+    self.setClientPhone = function(aPhone){
+        ClientPhone = aPhone;
+    };
     
     self.initializeSession = function(aSession, aStartBalance) {
         model.qTradeSessionBalance.push({
@@ -111,6 +116,7 @@ function TradeSessions() {
                     }
                 }
             }
+            billing.addBillOperation(clientModule.getBonusBill(ClientPhone), billing.OPERATION_ADD_BONUS, BonusCount);
             model.save();
         }
     };
