@@ -8,6 +8,6 @@
   <entity Name="qBillAccount" Title="" entityHeight="200" entityIconified="false" entityId="140791227991520" entityLocationX="226" entityLocationY="12" entityWidth="150" onAfterScroll="qBillAccountOnScrolled" onRequeried="qBillAccountOnRequeried" queryId="qBillAccount" tableName="" tableSchemaName=""/>
   <relation leftEntityId="-1" leftEntityParameterName="account_id" rightEntityId="140791634411137" rightEntityParameterName="account_id"/>
   <relation leftEntityId="-1" leftEntityParameterName="franchazi_id" rightEntityId="140791227991520" rightEntityParameterName="user_id"/>
-  <referenceRelation leftEntityFieldName="service_id" leftEntityId="140791634411137" rightEntityFieldName="bill_services_id" rightEntityId="140791634411137"/>
   <referenceRelation leftEntityFieldName="account_id" leftEntityId="140791634411137" rightEntityFieldName="bill_accounts_id" rightEntityId="140791227991520"/>
+  <referenceRelation leftEntityFieldName="service_id" leftEntityId="140791634411137" rightEntityFieldName="bill_services_id" rightEntityId="140791634411137"/>
 </datamodel>

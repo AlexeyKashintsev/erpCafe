@@ -8,18 +8,29 @@ function BillModule() {
     var self = this, model = this.model;
     var eventProcessor = new ServerModule("EventProcessor");
     
+    self.ERROR_LOST_MONEY = false;
+    // Типы операций
     self.OPERATION_ADD_CASH = 1; //Добавление средств на счет
     self.OPERATION_ADD_BONUS = 2; //
     self.OPERATION_DEL_BUY = 3; //Списание средств
     self.OPERATION_DEL_SERVICE = 4; //
+    // Типы аккаунтов
     self.ACCOUNT_TYPE_DEFAULT = 1; //Основной 
     self.ACCOUNT_TYPE_CREDIT = 2; //Кредитный
     self.ACCOUNT_TYPE_CLIENT = 3; //Клиентский
+    //Статусы операций
     self.OP_STATUS_SUCCESS = 1;
     self.OP_STATUS_FAIL = 2;
     self.OP_STATUS_BILL = 3;
     self.OP_STATUS_PROCESSING = 4;
-    self.ERROR_LOST_MONEY = false;
+    
+    var ERRORS ={
+        FIND_ACCOUNT_ID: "Аккаунт с таким ID не найден",
+        FIND_SERVICE_ID: "Услуга с таким ID не найдена",
+        LOST_MONEY:      "Недостаточно средств на счету",
+        INVALID_OP_ID:   "Неверный ID операции"
+    };
+    
     /*
      * Создает новый биллинговый аккаунт и возвращает его ID
      * @param {type} aFrancId
@@ -100,7 +111,7 @@ function BillModule() {
             });  
         } 
         if(self.ERROR_LOST_MONEY){
-            Logger.info('Недостаточно средств на счету');
+            Logger.info(ERRORS.LOST_MONEY);
             eventProcessor.addEvent('errorLostMoney',obj);
             return false;
         } else {
@@ -151,7 +162,7 @@ function BillModule() {
                         operation_id: model.qBillOperationsList.cursor.bill_operations_id,
                         status: aStatus,
                         set_date: new Date(),
-                        comment: "Lost Money on the Bill Account"
+                        comment: ERRORS.LOST_MONEY
                     });
                     return false;
                 }  
@@ -160,7 +171,7 @@ function BillModule() {
                     operation_id: model.qBillOperationsList.cursor.bill_operations_id,
                     status: aStatus,
                     set_date: new Date(),
-                    comment: "No matches on operation list with this ID"
+                    comment: ERRORS.INVALID_OP_ID
                 });
                 return false;
             }
@@ -176,33 +187,105 @@ function BillModule() {
         model.requery(function(){
             if(model.qServiceList.length > 0){
                 if(model.qBillAccount.length > 0){
-                    var payDate = new Date();
-                    payDate.setDate(payDate.getDate() + model.qServiceList.cursor.service_days);
-                    var obj ={
+                    if(model.qBillAccount.cursor.currnt_sum >=model.qServiceList.cursor.service_sum){
+                        var payDate = new Date();
+                        self.addBillOperation(anAccountId, self.OPERATION_DEL_SERVICE, model.qServiceList.cursor.service_sum);
+                        if(model.qServiceList.cursor.service_month){
+                            payDate.setMonth(payDate.getMonth()+1);
+                        }else{
+                            payDate.setDate(payDate.getDate() + model.qServiceList.cursor.service_days);
+                        }
+                        var obj ={
+                            account_id: anAccountId,
+                            service_id: aServiceId,
+                            payment_date: payDate
+                        };
+                        model.qAddService.push(obj);
+                        model.save();
+                        eventProcessor.addEvent('addServiceOnAccount',obj);
+                        return true;
+                    } else {
+                        Logger.info(ERRORS.LOST_MONEY);
+                        eventProcessor.addEvent('errorAddServiceOnAccount',{
+                            account_id: anAccountId,
+                            service_id: aServiceId,
+                            error: ERRORS.LOST_MONEY
+                        });
+                        return false;
+                    }  
+                } else {
+                    Logger.info(ERRORS.FIND_ACCOUNT_ID);
+                    eventProcessor.addEvent('errorAddServiceOnAccount',{
                         account_id: anAccountId,
                         service_id: aServiceId,
-                        payment_date: payDate
-                    };
-                    model.qAddService.push(obj);
-                    model.save();
-                } else {
-                    Logger.info('Аккаунт с таким ID не найден!');
+                        error: ERRORS.FIND_ACCOUNT_ID
+                    });
                     return false;
                 } 
             } else {
-                Logger.info('Услуга с таким ID не найдена!');
+                Logger.info(ERRORS.FIND_SERVICE_ID);
+                eventProcessor.addEvent('errorAddServiceOnAccount',{
+                        account_id: anAccountId,
+                        service_id: aServiceId,
+                        error: ERRORS.FIND_SERVICE_ID
+                    });
                 return false;
             }
         });
     };
     /*
-     * Создание новой услуги
+     * Удаление услуги с лицевого счета
+     * @param {type} anAccountId
+     * @param {type} aServiceId
+     * @returns {undefined}
      */
-    self.CreateService = function(aName, aDays, aSum){
+    self.delServiceFromAccount = function(anAccountId, aServiceId){
+        model.params.service_id = aServiceId;
+        model.params.account_id = anAccountId;
+        model.requery(function(){
+            if(model.qServiceList.length > 0){
+                if(model.qBillAccount.length > 0){
+                    model.qDelServiceFromAccount.executeUpdate();
+                    model.save();
+                    eventProcessor.addEvent('delServiceFromAccount', {
+                        account_id: anAccountId,
+                        service_id: aServiceId
+                    });
+                    return true;
+                } else {
+                    Logger.info(ERRORS.FIND_ACCOUNT_ID);
+                    eventProcessor.addEvent('errorDelServiceFromAccount',{
+                        account_id: anAccountId,
+                        service_id: aServiceId,
+                        error: ERRORS.FIND_ACCOUNT_ID
+                    });
+                    return false;
+                }
+            } else {
+                Logger.info(ERRORS.FIND_SERVICE_ID);
+                eventProcessor.addEvent('errorDelServiceFromAccount',{
+                        account_id: anAccountId,
+                        service_id: aServiceId,
+                        error: ERRORS.FIND_SERVICE_ID
+                 });
+                return false;
+            }    
+        });
+    };
+    
+    /*
+     * Создание новой услуги
+     * aDays - промежуток дней для снятия абонентской платы
+     * aDays (null) - ежемесячное списание абонентской платы
+     */
+    self.CreateService = function(aName, aSum, aDays){
+        var aMonth = false;
+        if(!aDays) aMonth = true;
         var obj = {
             service_name: aName,
             service_days: aDays,
-            sevice_sum:   aSum
+            sevice_sum:   aSum,
+            service_month: aMonth
         };
         model.qServiceList.push(obj);
         model.save();
@@ -210,30 +293,5 @@ function BillModule() {
         return true;
     };
     
-    self.paymentForServices = function(){
-        var services_id = [];        
-        model.qAddService.requery(function(){
-            if(model.qAddService.length > 0){
-                var i = 0;
-                model.qAddService.beforeFirst();
-                while(model.qAddService.next()){
-                    model.params.service_id = model.qAddService.cursor.service_id;
-                    model.qServiceList.requery(function(){
-                        var pDate = new Date();
-                        pDate.setDate(pDate.getDate() + model.qServiceList.cursor.service_days);
-                        model.qAddService.cursor.payment_date = pDate;
-                        self.addBillOperation(model.qAddService.cursor.account_id, self.OPERATION_DEL_SERVICE, model.qServiceList.cursor.service_sum, self.OP_STATUS_SUCCESS);               
-                        services_id[i]=model.qAddService.cursor.bill_services_accounts_id;
-                        i++;
-                    });
-                }
-                Logger.info("Количество обратонных счетов: " + i);
-                model.save();
-            }
-            eventProcessor.addEvent('paymentForServices', {
-                date: new Date(),
-                services_id: services_id
-            });
-        });
-    };
+    
 }

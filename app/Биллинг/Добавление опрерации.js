@@ -5,6 +5,7 @@
 function AddBillOperation() {
     var self = this, model = this.model, form = this;
     var billModule = new ServerModule("BillModule");
+    var billServerModule = new ServerModule("BillServerModule");
     var createBillAccount = new CreateBillAccount();
     var addServiceForm = new AddServiceForm();
     self.FranchaziId = null;
@@ -22,7 +23,7 @@ function AddBillOperation() {
                                         form.tfSum.text,
                                         billModule.OP_STATUS_SUCCESS))
         {
-            if(confirm("У вас недосточно средств на счете!\nСохранить заказ?")){
+            if(confirm("У вас недосточно средств на счету!\nСохранить заказ?")){
                 billModule.addBillOperation(model.qBillAccount.cursor.bill_accounts_id,
                                         operation,
                                         form.tfSum.text,
@@ -46,24 +47,32 @@ function AddBillOperation() {
 
     function button2ActionPerformed(evt) {//GEN-FIRST:event_button2ActionPerformed
         addServiceForm.setAccountId(model.qBillAccount.cursor.bill_accounts_id);
-        addServiceForm.showModal(function(aResult){
-            if(aResult) model.qServiceListByAccount.requery();
+        addServiceForm.showModal(function(aResult){        
         });
+        model.qBillAccount.requery();
     }//GEN-LAST:event_button2ActionPerformed
 
     function qBillAccountOnScrolled(evt) {//GEN-FIRST:event_qBillAccountOnScrolled
-        model.params.account_id = model.qBillAccount.cursor.bill_accounts_id;
+        if(model.qBillAccount.length > 0)
+            model.params.account_id = model.qBillAccount.cursor.bill_accounts_id;
+         else 
+            model.params.account_id = null;
         model.qServiceListByAccount.requery();
     }//GEN-LAST:event_qBillAccountOnScrolled
 
     function qBillAccountOnRequeried(evt) {//GEN-FIRST:event_qBillAccountOnRequeried
-        if(model.qBillAccount.length > 0){
+        if(model.qBillAccount.length > 0)
             model.params.account_id = model.qBillAccount.cursor.bill_accounts_id;
-            model.qServiceListByAccount.requery();
-        }
+         else 
+            model.params.account_id = null;
+        model.qServiceListByAccount.requery();
     }//GEN-LAST:event_qBillAccountOnRequeried
 
     function button3ActionPerformed(evt) {//GEN-FIRST:event_button3ActionPerformed
-        billModule.paymentForServices();
+        billServerModule.paymentForServices();
     }//GEN-LAST:event_button3ActionPerformed
+
+    function button4ActionPerformed(evt) {//GEN-FIRST:event_button4ActionPerformed
+        billModule.delServiceFromAccount(model.qServiceListByAccount, model.qServiceListByAccount.cursor.bill_services_id)
+    }//GEN-LAST:event_button4ActionPerformed
 }

@@ -13,7 +13,6 @@ function AddServiceForm() {
     }; 
 
     function buttonActionPerformed(evt) {//GEN-FIRST:event_buttonActionPerformed
-        billModule.AddService(self.accountId, model.params.service_id);
-        form.close(true);
+        form.close(billModule.AddService(self.accountId, model.params.service_id));
     }//GEN-LAST:event_buttonActionPerformed
 }
