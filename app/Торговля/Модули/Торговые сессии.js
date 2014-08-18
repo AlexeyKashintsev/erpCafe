@@ -8,6 +8,7 @@ function TradeSessions() {
     var self = this, model = this.model;
     var whSession = new WhSessionModule();
     var clientModule = new ClientServerModule();
+    var session = new UserSession();
     var ep = new EventProcessor();
     
     self.initializeSession = function(aSession, aStartBalance) {
@@ -75,8 +76,11 @@ function TradeSessions() {
         if (model.qBonusRateForItemsEdit.cursor.bonus_rate){
             return model.qBonusRateForItemsEdit.cursor.bonus_rate;
         } else {
-            // Продумать логику!
-            getCountBonusesByCategory(model.qBonusRateForItemsEdit.params.bonus_category) / 100;
+            model.qOpenedSession.params.user_name = self.principal.name;
+            model.tradeItemCost.params.date_id = new Date();
+            model.tradeItemCost.params.item_id = anItem;
+            model.tradeItemCost.params.trade_point_id = model.qOpenedSession.cursor.trade_point;
+            model.tradeItemCost.cursor.item_cost * getCountBonusesByCategory(model.qBonusRateForItemsEdit.params.bonus_category) / 100;
         }
     }
     
