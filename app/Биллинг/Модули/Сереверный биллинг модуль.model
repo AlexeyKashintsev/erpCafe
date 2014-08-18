@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?><datamodel>
+  <parameters>
+    <parameter description="" name="service_id" nullable="true" parameterMode="1" precision="0" scale="0" selectionForm="null" signed="true" size="0" type="2" typeName="NUMERIC"/>
+  </parameters>
+  <parametersEntity entityHeight="200" entityIconified="false" entityLocationX="12" entityLocationY="12" entityWidth="150"/>
+  <entity Name="qAddService" Title="" entityHeight="200" entityIconified="false" entityId="140834846981496" entityLocationX="197" entityLocationY="15" entityWidth="150" queryId="qAddService" tableName="" tableSchemaName=""/>
+  <entity Name="qServiceList" Title="" entityHeight="200" entityIconified="false" entityId="140834848437040" entityLocationX="196" entityLocationY="228" entityWidth="150" queryId="qServiceList" tableName="" tableSchemaName=""/>
+  <relation leftEntityId="-1" leftEntityParameterName="service_id" rightEntityId="140834848437040" rightEntityParameterName="service_id"/>
+  <referenceRelation leftEntityFieldName="service_id" leftEntityId="140834846981496" rightEntityFieldName="bill_services_id" rightEntityId="140834848437040"/>
+</datamodel>
