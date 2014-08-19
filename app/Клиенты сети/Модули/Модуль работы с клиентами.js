@@ -35,6 +35,7 @@ function ClientServerModule() {
         model.qPersonalData.cursor.usr_name = anUserName;
         model.qPersonalData.cursor.reg_date = new Date();
         model.save();
+        self.setBonusCategory(anUserName, 1);
         sendSMS(aFirstName, anUserName, pass);
     };
     
@@ -67,6 +68,13 @@ function ClientServerModule() {
     self.getClientId = function(anUserName){
         model.qPersonalData.params.user_name = anUserName;
         return model.qPersonalData.cursor.client_id;
+    };
+    
+    self.setBonusCategory = function(anUserName, aCategoryId){
+        model.qPersonalData.params.user_name = anUserName;
+        model.qPersonalData.requery();
+        model.qPersonalData.cursor.bonus_category = aCategoryId;
+        model.save();
     };
     
     self.getBonusCategory = function(anUserName){

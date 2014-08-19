@@ -78,7 +78,8 @@ function TradeSessions() {
     function getCountBonusesByItem(anItem){
         model.qBonusRateForItemsEdit.params.item_id = anItem;
         model.qBonusRateForItemsEdit.params.bonus_category = clientModule.getBonusCategory(ClientPhone);
-        if (model.qBonusRateForItemsEdit.cursor.bonus_rate){
+        model.qBonusRateForItemsEdit.requery();
+        if (model.qBonusRateForItemsEdit.length > 0){
             return model.qBonusRateForItemsEdit.cursor.bonus_rate;
         } else {
             model.qOpenedSession.params.user_name = self.principal.name;
@@ -104,11 +105,12 @@ function TradeSessions() {
         // Если мы в сессии,то
         if (model.params.session_id){
             var BonusCount = 0;
+            var TradeOperationId = TradeOperationPushInCashBox(anOrderDetails.orderSum);
             // для всех товаров
             for (var i in anOrderDetails.orderItems) {
                 if (anOrderDetails.orderItems[i].itemId && anOrderDetails.orderItems[i].quantity){
                     // записать проданные товары в тороговую операцию. При этом добавив приход в кассу.
-                    TradeItemsPushInTradeOperation(TradeOperationPushInCashBox(anOrderDetails.orderSum), anOrderDetails.orderItems[i].itemId, anOrderDetails.orderItems[i].quantity);
+                    TradeItemsPushInTradeOperation(TradeOperationId, anOrderDetails.orderItems[i].itemId, anOrderDetails.orderItems[i].quantity);
                     // TODO Добавить добавление бонусов клиенту на его счет.
                     BonusCount += getCountBonusesByItem(anOrderDetails.orderItems[i].itemId) * anOrderDetails.orderItems[i].quantity;
                     // затем написать уход элементов состава товара со склада. 

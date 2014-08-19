@@ -7,8 +7,8 @@
   <entity Title="" entityHeight="200" entityIconified="false" entityId="140801344054452" entityLocationX="470" entityLocationY="11" entityWidth="150" tableAlias="t" tableName="bonus_rate_for_trade_items" tableSchemaName=""/>
   <entity Title="" entityHeight="200" entityIconified="false" entityId="140801369247990" entityLocationX="689" entityLocationY="14" entityWidth="150" tableAlias="t2" tableName="client_bonus_category" tableSchemaName=""/>
   <entity Title="" entityHeight="200" entityIconified="false" entityId="140801342160795" entityLocationX="232" entityLocationY="5" entityWidth="150" tableAlias="t1" tableName="trade_items" tableSchemaName=""/>
-  <relation leftEntityFieldName="client_bonus_category" leftEntityId="140801344054452" rightEntityFieldName="client_bonus_category_id" rightEntityId="140801369247990"/>
-  <relation leftEntityId="-1" leftEntityParameterName="bonus_category" rightEntityFieldName="client_bonus_category" rightEntityId="140801344054452"/>
-  <relation leftEntityId="-1" leftEntityParameterName="item_id" rightEntityFieldName="trade_items_id" rightEntityId="140801342160795"/>
   <relation leftEntityFieldName="trade_item" leftEntityId="140801344054452" rightEntityFieldName="trade_items_id" rightEntityId="140801342160795"/>
+  <relation leftEntityFieldName="client_bonus_category" leftEntityId="140801344054452" rightEntityFieldName="client_bonus_category_id" rightEntityId="140801369247990"/>
+  <relation leftEntityId="-1" leftEntityParameterName="item_id" rightEntityFieldName="trade_item" rightEntityId="140801344054452"/>
+  <relation leftEntityId="-1" leftEntityParameterName="bonus_category" rightEntityFieldName="client_bonus_category" rightEntityId="140801344054452"/>
 </datamodel>
