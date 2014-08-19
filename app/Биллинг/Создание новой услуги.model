@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?><datamodel>
+  <parametersEntity entityHeight="200" entityIconified="false" entityLocationX="12" entityLocationY="12" entityWidth="150"/>
+  <entity Name="qServiceList" Title="" entityHeight="200" entityIconified="false" entityId="140843172475827" entityLocationX="189" entityLocationY="8" entityWidth="150" queryId="qServiceList" tableName="" tableSchemaName=""/>
+</datamodel>

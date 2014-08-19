@@ -11,15 +11,14 @@
   <entity Name="qBillAccount" Title="" entityHeight="200" entityIconified="false" entityId="140791225424245" entityLocationX="210" entityLocationY="12" entityWidth="150" queryId="qBillAccount" tableName="" tableSchemaName=""/>
   <entity Name="qServiceList" Title="" entityHeight="200" entityIconified="false" entityId="140792486627128" entityLocationX="576" entityLocationY="7" entityWidth="150" queryId="qServiceList" tableName="" tableSchemaName=""/>
   <entity Name="qDelServiceFromAccount" Title="" entityHeight="191" entityIconified="false" entityId="140836207636677" entityLocationX="397" entityLocationY="236" entityWidth="150" queryId="qDelServiceFromAccount" tableName="" tableSchemaName=""/>
+  <entity Name="qDelService" Title="" entityHeight="200" entityIconified="false" entityId="140844695091513" entityLocationX="574" entityLocationY="234" entityWidth="150" queryId="qDelService" tableName="" tableSchemaName=""/>
   <entity Name="qBillOperationsList" Title="" entityHeight="200" entityIconified="false" entityId="140802119915363" entityLocationX="15" entityLocationY="233" entityWidth="252" queryId="qBillOperationsList" tableName="" tableSchemaName=""/>
-  <relation leftEntityId="-1" leftEntityParameterName="account_id" rightEntityId="140791225424245" rightEntityParameterName="account_id"/>
-  <relation leftEntityId="-1" leftEntityParameterName="service_id" rightEntityId="140836207636677" rightEntityParameterName="service_id"/>
-  <relation leftEntityId="-1" leftEntityParameterName="user_id" rightEntityId="140791225424245" rightEntityParameterName="user_id"/>
   <relation leftEntityId="-1" leftEntityParameterName="operation_id" rightEntityId="140802119915363" rightEntityParameterName="operation_id"/>
   <relation leftEntityId="-1" leftEntityParameterName="service_id" rightEntityId="140792486627128" rightEntityParameterName="service_id"/>
-  <relation leftEntityId="-1" leftEntityParameterName="account_id" rightEntityId="140836207636677" rightEntityParameterName="account_id"/>
-  <referenceRelation leftEntityFieldName="account_id" leftEntityId="140802119915363" rightEntityFieldName="bill_accounts_id" rightEntityId="140791225424245"/>
+  <relation leftEntityId="-1" leftEntityParameterName="account_id" rightEntityId="140791225424245" rightEntityParameterName="account_id"/>
+  <relation leftEntityId="-1" leftEntityParameterName="user_id" rightEntityId="140791225424245" rightEntityParameterName="user_id"/>
   <referenceRelation leftEntityFieldName="service_id" leftEntityId="140791429774197" rightEntityFieldName="bill_services_id" rightEntityId="140792486627128"/>
-  <referenceRelation leftEntityFieldName="operation_type" leftEntityId="140802119915363" rightEntityFieldName="bill_operations_type_id" rightEntityId="140802119915363"/>
+  <referenceRelation leftEntityFieldName="account_id" leftEntityId="140802119915363" rightEntityFieldName="bill_accounts_id" rightEntityId="140791225424245"/>
   <referenceRelation leftEntityFieldName="account_id" leftEntityId="140791429774197" rightEntityFieldName="bill_accounts_id" rightEntityId="140791225424245"/>
+  <referenceRelation leftEntityFieldName="operation_type" leftEntityId="140802119915363" rightEntityFieldName="bill_operations_type_id" rightEntityId="140802119915363"/>
 </datamodel>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?><layout defaultCloseOperation="2" name="Form" prefHeight="416px" prefWidth="881px">
+  <widget deletable="false" editable="false" insertable="false" name="modelGrid" parent="Form" prefHeight="420px" prefWidth="276px" type="DbGridDesignInfo">
+    <column name="colF_name" title="Выберите франчайзе">
+      <datamodelElement entityId="140783089452985" fieldName="f_name"/>
+      <columnsDatasource/>
+      <columnsDisplayField/>
+      <cellsDatasource/>
+      <cellDesignInfo>
+        <columnsKeyField/>
+        <cellValueField/>
+        <rowsKeyField/>
+      </cellDesignInfo>
+      <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
+      <headerStyle>
+        <nativeFont name="Tahoma" size="11"/>
+      </headerStyle>
+    </column>
+    <rowsColumnsDesignInfo>
+      <rowsDatasource entityId="140783089452985" field="false"/>
+    </rowsColumnsDesignInfo>
+    <treeDesignInfo/>
+    <constraints bottom="-4px" left="0px" top="0px" type="MarginConstraintsDesignInfo" width="276px"/>
+  </widget>
+  <widget name="panel" parent="Form" prefHeight="420px" prefWidth="612px" type="PanelDesignInfo">
+    <layout type="MarginLayoutDesignInfo"/>
+    <constraints bottom="-4px" left="276px" right="-7px" top="0px" type="MarginConstraintsDesignInfo"/>
+  </widget>
+  <layout type="MarginLayoutDesignInfo"/>
+</layout>

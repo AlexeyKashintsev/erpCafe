@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?><layout defaultCloseOperation="2" name="Form" prefHeight="178px" prefWidth="278px">
+  <widget actionPerformed="btnSaveActionPerformed" name="btnSave" parent="Form" prefHeight="41px" prefWidth="252px" text="Сохранить" type="ButtonDesignInfo">
+    <constraints bottom="17px" height="41px" left="12px" type="MarginConstraintsDesignInfo" width="252px"/>
+  </widget>
+  <widget name="tfSum" parent="Form" prefHeight="24px" prefWidth="132px" type="TextFieldDesignInfo">
+    <constraints height="24px" left="132px" top="48px" type="MarginConstraintsDesignInfo" width="132px"/>
+  </widget>
+  <widget name="label1" parent="Form" prefHeight="12px" prefWidth="108px" text="Сумма" type="LabelDesignInfo">
+    <constraints height="12px" left="12px" top="54px" type="MarginConstraintsDesignInfo" width="108px"/>
+  </widget>
+  <widget buttonGroup="buttonGroup" name="rbAdd" parent="Form" prefHeight="24px" prefWidth="118px" selected="true" text="Пополнение" type="RadioDesignInfo">
+    <constraints height="24px" left="144px" top="12px" type="MarginConstraintsDesignInfo" width="118px"/>
+  </widget>
+  <widget buttonGroup="buttonGroup" name="rbDel" parent="Form" prefHeight="24px" prefWidth="110px" text="Списание" type="RadioDesignInfo">
+    <constraints height="24px" left="12px" top="12px" type="MarginConstraintsDesignInfo" width="110px"/>
+  </widget>
+  <nonvisual name="buttonGroup" type="ButtonGroupDesignInfo"/>
+  <layout type="MarginLayoutDesignInfo"/>
+</layout>

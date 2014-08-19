@@ -245,6 +245,8 @@ function BillModule() {
         model.requery(function(){
             if(model.qServiceList.length > 0){
                 if(model.qBillAccount.length > 0){
+                    model.qDelServiceFromAccount.params.account_id = anAccountId;
+                    model.qDelServiceFromAccount.params.service_id = aServiceId;
                     model.qDelServiceFromAccount.executeUpdate();
                     model.save();
                     eventProcessor.addEvent('delServiceFromAccount', {
@@ -280,11 +282,11 @@ function BillModule() {
      */
     self.CreateService = function(aName, aSum, aDays){
         var aMonth = false;
-        if(!aDays) aMonth = true;
+        if(aDays == false || aDays == 0 || aDays == null || aDays === undefined) aMonth = true;
         var obj = {
             service_name: aName,
             service_days: aDays,
-            sevice_sum:   aSum,
+            service_sum:   aSum,
             service_month: aMonth
         };
         model.qServiceList.push(obj);
@@ -293,5 +295,40 @@ function BillModule() {
         return true;
     };
     
-    
+    /*
+     * Удаление услуги
+     */
+    self.delService = function(aServiceId){
+        model.params.service_id = aServiceId;
+        model.qServiceList.requery(function (){
+            if(model.qServiceList.length > 0){
+                 model.qDelService.params.service_id = aServiceId;
+                 model.qDelService.executeUpdate();
+                 model.save();
+                 eventProcessor.addEvent('delService', {
+                     service_id: aServiceId
+                 });
+                 return true;
+            } else {
+                 eventProcessor.addEvent('errorDelService',{
+                     service_id: aServiceId,
+                     error: ERRORS.FIND_SERVICE_ID
+                 });
+                 return false;
+            }
+        });
+    };
+    //TODO Включить журнал, создать запрос
+    self.editService = function(aServiceId, aName, aSum, aDays){
+        var aMonth = false;
+        if(aDays == false || aDays == 0 || aDays == null || aDays === undefined) aMonth = true;
+        model.params.service_id = aServiceId;
+        if(model.qServiceList.length > 0){
+            model.qServiceList.cursor.service_name = aName;
+            model.qServiceList.cursor.service_sum = aSum;
+            model.qServiceList.cursor.service_days = aDays;
+            model.qServiceList.cursor.service_month = aMonth;
+            model.save();
+        }
+    };
 }
