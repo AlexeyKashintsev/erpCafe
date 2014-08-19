@@ -17,11 +17,11 @@ function StartMasterAdminForm() {
         },
         warehouse   :   {
             display     :   "Склад",
-            dispForm    :   "WarehouseItemList",
-            inner   :   {
-                display     :   "Типы товаров",
-                dispForm    :   "ItemTypesForm"
-            }
+            dispForm    :   "WarehouseItemList"
+        },
+        warehouseTypes  :   {
+            display     :   "Типы продуктов",
+            dispForm    :   "ItemTypesForm"
         },
         tradePositions  :   {
             display     :   "Торговые позиции",

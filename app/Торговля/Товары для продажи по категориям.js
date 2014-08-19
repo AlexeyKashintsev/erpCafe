@@ -10,14 +10,14 @@ function ItemsForTrade() {
 
     
     self.setFranchazi = function(aFranchazi) {
-        self.model.params.franchazi_id = aFranchazi;
+        model.params.franchazi_id = aFranchazi;
     };
 
 function btnReqActionPerformed(evt) {//GEN-FIRST:event_btnReqActionPerformed
-        if (self.model.modified && confirm('Сохранить изменения?')) {
-            self.model.save();
+        if (model.modified && confirm('Сохранить изменения?')) {
+            model.save();
         }
-        self.model.qTradeItems.requery();
+        model.qTradeItems.requery();
 }//GEN-LAST:event_btnReqActionPerformed
 
 function formWindowOpened(evt) {//GEN-FIRST:event_formWindowOpened
@@ -25,8 +25,8 @@ function formWindowOpened(evt) {//GEN-FIRST:event_formWindowOpened
 }//GEN-LAST:event_formWindowOpened
 
 function formWindowClosing(evt) {//GEN-FIRST:event_formWindowClosing
-        if (self.model.modified && confirm('Сохранить изменения?')) {
-           self.model.save();
+        if (model.modified && confirm('Сохранить изменения?')) {
+           model.save();
         }
 }//GEN-LAST:event_formWindowClosing
 
@@ -70,16 +70,16 @@ function formWindowClosing(evt) {//GEN-FIRST:event_formWindowClosing
     }//GEN-LAST:event_btnDel1ActionPerformed
 
     function btnReq1ActionPerformed(evt) {//GEN-FIRST:event_btnReq1ActionPerformed
-    if (self.model.modified&&confirm('Сохранить изменения?')){
-        self.model.save();
+    if (model.modified&&confirm('Сохранить изменения?')){
+        model.save();
     }
-    self.model.qTradeItemTypes.requery();
+    model.qTradeItemTypes.requery();
     }//GEN-LAST:event_btnReq1ActionPerformed
 
     function btnItemSelActionPerformed(evt) {//GEN-FIRST:event_btnItemSelActionPerformed
         if(model.qTradeItems.length > 0) {
-            if (self.model.modified&&confirm('Сохранить изменения?')){
-                self.model.save();
+            if (model.modified&&confirm('Сохранить изменения?')){
+                model.save();
             }
             contentTradeItem.setTradeItem(model.qTradeItems.cursor.trade_items_id);
             contentTradeItem.showModal(function(){
@@ -96,7 +96,7 @@ function formWindowClosing(evt) {//GEN-FIRST:event_formWindowClosing
     }//GEN-LAST:event_modelGrid1MouseClicked
 
     function selectOnSelect(aEditor) {//GEN-FIRST:event_selectOnSelect
-        self.model.save();
+        model.save();
                 contentTradeItem.setTradeItem(model.qTradeItems.cursor.trade_items_id);
                 contentTradeItem.showModal(function(){
                     model.qTradeItemContents.requery();

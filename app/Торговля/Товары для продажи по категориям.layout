@@ -13,21 +13,18 @@
   <widget dividerLocation="230" leftComponent="panel" name="splitPane" parent="pnlWorkSpace" prefHeight="298px" prefWidth="697px" rightComponent="panel1" type="SplitDesignInfo">
     <constraints bottom="0px" left="0px" right="0px" top="0px" type="MarginConstraintsDesignInfo"/>
   </widget>
-  <widget name="panel1" parent="splitPane" prefHeight="296px" prefWidth="461px" type="PanelDesignInfo">
+  <widget name="panel1" parent="splitPane" prefHeight="294px" prefWidth="460px" type="PanelDesignInfo">
     <layout type="MarginLayoutDesignInfo"/>
   </widget>
-  <widget floatable="false" name="toolBar" parent="panel1" prefHeight="36px" prefWidth="467px" rollover="true" type="ToolbarDesignInfo">
+  <widget floatable="false" name="toolBar" parent="panel1" prefHeight="36px" prefWidth="466px" rollover="true" type="ToolbarDesignInfo">
     <constraints height="36px" left="0px" right="-6px" top="0px" type="MarginConstraintsDesignInfo"/>
   </widget>
-  <widget actionPerformed="btnAddActionPerformed" focusable="false" horizontalTextPosition="0" icon="icons/22x22/actions/list-add.png" name="btnAdd" parent="toolBar" prefHeight="29px" prefWidth="29px" toolTipText="Добавить" type="ButtonDesignInfo" verticalTextPosition="3"/>
-  <widget actionPerformed="btnDelActionPerformed" focusable="false" horizontalTextPosition="0" icon="icons/22x22/actions/list-remove.png" name="btnDel" parent="toolBar" prefHeight="29px" prefWidth="29px" toolTipText="Удалить" type="ButtonDesignInfo" verticalTextPosition="3"/>
-  <widget actionPerformed="btnReqActionPerformed" focusable="false" horizontalTextPosition="0" icon="icons/22x22/actions/new-view-refresh.png" name="btnReq" parent="toolBar" prefHeight="29px" prefWidth="29px" toolTipText="Обновить" type="ButtonDesignInfo" verticalTextPosition="3"/>
-  <widget actionPerformed="btnItemSelActionPerformed" focusable="false" horizontalTextPosition="0" icon="icons/22x22/actions/document-properties.png" name="btnItemSel" parent="toolBar" prefHeight="29px" prefWidth="29px" toolTipText="Состав товара" type="ButtonDesignInfo" verticalTextPosition="3"/>
-  <widget mouseClicked="modelGrid1MouseClicked" name="modelGrid1" parent="panel1" prefHeight="260px" prefWidth="461px" type="DbGridDesignInfo">
+  <widget actionPerformed="btnAddActionPerformed" focusable="false" horizontalTextPosition="0" icon="icons/22x22/actions/list-add.png" name="btnAdd" parent="toolBar" prefHeight="26px" prefWidth="34px" toolTipText="Добавить" type="ButtonDesignInfo" verticalTextPosition="3"/>
+  <widget actionPerformed="btnDelActionPerformed" focusable="false" horizontalTextPosition="0" icon="icons/22x22/actions/list-remove.png" name="btnDel" parent="toolBar" prefHeight="26px" prefWidth="34px" toolTipText="Удалить" type="ButtonDesignInfo" verticalTextPosition="3"/>
+  <widget actionPerformed="btnReqActionPerformed" focusable="false" horizontalTextPosition="0" icon="icons/22x22/actions/new-view-refresh.png" name="btnReq" parent="toolBar" prefHeight="26px" prefWidth="34px" toolTipText="Обновить" type="ButtonDesignInfo" verticalTextPosition="3"/>
+  <widget actionPerformed="btnItemSelActionPerformed" focusable="false" horizontalTextPosition="0" icon="icons/22x22/actions/document-properties.png" name="btnItemSel" parent="toolBar" prefHeight="26px" prefWidth="34px" toolTipText="Состав товара" type="ButtonDesignInfo" verticalTextPosition="3"/>
+  <widget mouseClicked="modelGrid1MouseClicked" name="modelGrid1" parent="panel1" prefHeight="258px" prefWidth="460px" type="DbGridDesignInfo">
     <column name="colItem_name" title="Название">
-      <headerStyle>
-        <nativeFont name="Dialog" size="15"/>
-      </headerStyle>
       <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
       <datamodelElement entityId="140566813019746" fieldName="item_name"/>
       <columnsDatasource/>
@@ -38,11 +35,11 @@
         <columnsKeyField/>
         <cellValueField/>
       </cellDesignInfo>
-    </column>
-    <column name="select" readonly="true" selectFunction="selectOnSelect" selectOnly="true" title="Состав">
       <headerStyle>
         <nativeFont name="Dialog" size="15"/>
       </headerStyle>
+    </column>
+    <column name="select" readonly="true" selectFunction="selectOnSelect" selectOnly="true" title="Состав">
       <controlInfo classHint="DbComboDesignInfo" list="false" name="view" prefHeight="0px" prefWidth="0px">
         <valueField entityId="140568805648895" fieldName="trade_items_id"/>
         <displayField entityId="140568805648895" fieldName="contents"/>
@@ -56,6 +53,9 @@
         <columnsKeyField/>
         <cellValueField/>
       </cellDesignInfo>
+      <headerStyle>
+        <nativeFont name="Dialog" size="15"/>
+      </headerStyle>
     </column>
     <rowsColumnsDesignInfo>
       <rowsDatasource entityId="140566813019746" field="false"/>
@@ -63,21 +63,18 @@
     <treeDesignInfo/>
     <constraints bottom="0px" left="0px" right="0px" top="36px" type="MarginConstraintsDesignInfo"/>
   </widget>
-  <widget name="panel" parent="splitPane" prefHeight="296px" prefWidth="229px" type="PanelDesignInfo">
+  <widget name="panel" parent="splitPane" prefHeight="294px" prefWidth="228px" type="PanelDesignInfo">
     <layout type="MarginLayoutDesignInfo"/>
   </widget>
   <widget floatable="false" name="toolBar1" parent="panel" prefHeight="36px" prefWidth="697px" rollover="true" type="ToolbarDesignInfo">
     <constraints height="36px" left="0px" top="0px" type="MarginConstraintsDesignInfo" width="697px"/>
   </widget>
-  <widget actionPerformed="btnAdd1ActionPerformed" focusable="false" horizontalTextPosition="0" icon="icons/22x22/actions/list-add.png" name="btnAdd1" parent="toolBar1" prefHeight="29px" prefWidth="29px" toolTipText="Добавить" type="ButtonDesignInfo" verticalTextPosition="3"/>
-  <widget actionPerformed="btnAddParentActionPerformed" focusable="false" horizontalTextPosition="0" icon="icons/22x22/actions/human-folder-new.png" name="btnAddParent" parent="toolBar1" prefHeight="29px" prefWidth="29px" toolTipText="Добавить вложенный элемент" type="ButtonDesignInfo" verticalTextPosition="3"/>
-  <widget actionPerformed="btnDel1ActionPerformed" focusable="false" horizontalTextPosition="0" icon="icons/22x22/actions/list-remove.png" name="btnDel1" parent="toolBar1" prefHeight="29px" prefWidth="29px" toolTipText="Удалить" type="ButtonDesignInfo" verticalTextPosition="3"/>
-  <widget actionPerformed="btnReq1ActionPerformed" focusable="false" horizontalTextPosition="0" icon="icons/22x22/actions/new-view-refresh.png" name="btnReq1" parent="toolBar1" prefHeight="29px" prefWidth="29px" toolTipText="Обновить" type="ButtonDesignInfo" verticalTextPosition="3"/>
-  <widget mouseClicked="modelGridMouseClicked" name="modelGrid" parent="panel" prefHeight="260px" prefWidth="229px" type="DbGridDesignInfo">
+  <widget actionPerformed="btnAdd1ActionPerformed" focusable="false" horizontalTextPosition="0" icon="icons/22x22/actions/list-add.png" name="btnAdd1" parent="toolBar1" prefHeight="26px" prefWidth="34px" toolTipText="Добавить" type="ButtonDesignInfo" verticalTextPosition="3"/>
+  <widget actionPerformed="btnAddParentActionPerformed" focusable="false" horizontalTextPosition="0" icon="icons/22x22/actions/human-folder-new.png" name="btnAddParent" parent="toolBar1" prefHeight="26px" prefWidth="34px" toolTipText="Добавить вложенный элемент" type="ButtonDesignInfo" verticalTextPosition="3"/>
+  <widget actionPerformed="btnDel1ActionPerformed" focusable="false" horizontalTextPosition="0" icon="icons/22x22/actions/list-remove.png" name="btnDel1" parent="toolBar1" prefHeight="26px" prefWidth="34px" toolTipText="Удалить" type="ButtonDesignInfo" verticalTextPosition="3"/>
+  <widget actionPerformed="btnReq1ActionPerformed" focusable="false" horizontalTextPosition="0" icon="icons/22x22/actions/new-view-refresh.png" name="btnReq1" parent="toolBar1" prefHeight="26px" prefWidth="34px" toolTipText="Обновить" type="ButtonDesignInfo" verticalTextPosition="3"/>
+  <widget mouseClicked="modelGridMouseClicked" name="modelGrid" parent="panel" prefHeight="258px" prefWidth="228px" type="DbGridDesignInfo">
     <column name="colType_description" title="Категория">
-      <headerStyle>
-        <nativeFont name="Dialog" size="15"/>
-      </headerStyle>
       <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
       <datamodelElement entityId="140566820113240" fieldName="type_name"/>
       <columnsDatasource/>
@@ -88,6 +85,9 @@
         <columnsKeyField/>
         <cellValueField/>
       </cellDesignInfo>
+      <headerStyle>
+        <nativeFont name="Dialog" size="15"/>
+      </headerStyle>
     </column>
     <rowsColumnsDesignInfo>
       <rowsDatasource entityId="140566820113240" field="false"/>
