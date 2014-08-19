@@ -8,6 +8,7 @@ function OrderList(aParent) {
     self.orderDetails = {};
     self.tradeSession = null;
     var lastDiv = null;
+    var setPhone = new SetUserPhoneForm();
     
     function alerter(anAlert, aType, aText, aClosable, aCloseTimeOut) {
 //        if (!anAlert) {
@@ -249,6 +250,7 @@ function OrderList(aParent) {
     }
 
     function btnOkActionPerformed(evt) {//GEN-FIRST:event_btnOkActionPerformed
+        setPhone.showModal();
         self.acceptOrder();
     }//GEN-LAST:event_btnOkActionPerformed
 
