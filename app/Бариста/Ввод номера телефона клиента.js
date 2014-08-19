@@ -12,10 +12,14 @@ function SetUserPhoneForm() {
     function buttonActionPerformed(evt) {//GEN-FIRST:event_buttonActionPerformed
         if (clientModule.checkIfPhoneExist(form.tfPhone.text)){
             self.tradeSession.setClientPhone(form.tfPhone.text);
-        } else clientReg.showModal(function(aResult){
-            self.tradeSession.setClientPhone(aResult);
-        });
-       form.close();
+            form.close();
+        } else {
+            clientReg.phoneField.text = form.tfPhone.text;
+            clientReg.showModal(function(aResult){
+                self.tradeSession.setClientPhone(aResult);
+                form.close();
+            });
+        }
     }//GEN-LAST:event_buttonActionPerformed
 
     function tfPhoneKeyReleased(evt) {//GEN-FIRST:event_tfPhoneKeyReleased
