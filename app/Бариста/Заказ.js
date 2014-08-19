@@ -250,6 +250,7 @@ function OrderList(aParent) {
     }
 
     function btnOkActionPerformed(evt) {//GEN-FIRST:event_btnOkActionPerformed
+        setPhone.tradeSession = self.tradeSession;
         setPhone.showModal();
         self.acceptOrder();
     }//GEN-LAST:event_btnOkActionPerformed

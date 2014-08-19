@@ -4,16 +4,16 @@
  */
 function SetUserPhoneForm() {
     var self = this, model = this.model, form = this;
-    var tradeSession = new TradeSessions();
+    self.tradeSession = null;
     var clientModule = new ClientServerModule();
     var clientReg = new ClientRegistrationByBarist();
     // TODO : place your code here
 
     function buttonActionPerformed(evt) {//GEN-FIRST:event_buttonActionPerformed
         if (clientModule.checkIfPhoneExist(form.tfPhone.text)){
-            tradeSession.setClientPhone(form.tfPhone.text);
+            self.tradeSession.setClientPhone(form.tfPhone.text);
         } else clientReg.showModal(function(aResult){
-            tradeSession.setClientPhone(aResult);
+            self.tradeSession.setClientPhone(aResult);
         });
        form.close();
     }//GEN-LAST:event_buttonActionPerformed

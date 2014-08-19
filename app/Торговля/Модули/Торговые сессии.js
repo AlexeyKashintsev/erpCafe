@@ -85,12 +85,14 @@ function TradeSessions() {
             model.tradeItemCost.params.date_id = new Date();
             model.tradeItemCost.params.item_id = anItem;
             model.tradeItemCost.params.trade_point_id = model.qOpenedSession.cursor.trade_point;
-            model.tradeItemCost.cursor.item_cost * getCountBonusesByCategory(model.qBonusRateForItemsEdit.params.bonus_category) / 100;
+            model.tradeItemCost.requery();
+            return model.tradeItemCost.cursor.item_cost * getCountBonusesByCategory(model.qBonusRateForItemsEdit.params.bonus_category) / 100;
         }
     }
     
     function getCountBonusesByCategory(aCatId){
         model.qGetBonusCategories.params.category_id = aCatId;
+        model.qGetBonusCategories.requery();
         return model.qGetBonusCategories.cursor.category_bonus_rate;
     }
     
