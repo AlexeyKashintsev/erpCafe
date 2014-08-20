@@ -5,6 +5,7 @@
 function CreateServiceForm() {
     var self = this, model = this.model, form = this;
     var billModule = new ServerModule("BillModule");
+    var editServiceForm = new EditServiceForm;
     // TODO : place your code here
 
     function btnSaveActionPerformed(evt) {//GEN-FIRST:event_btnSaveActionPerformed
@@ -27,4 +28,10 @@ function CreateServiceForm() {
             model.requery();
         }
     }//GEN-LAST:event_btnDelActionPerformed
+
+    function btnEditActionPerformed(evt) {//GEN-FIRST:event_btnEditActionPerformed
+        editServiceForm.setServiceId(model.qServiceList.cursor.bill_services_id);
+        editServiceForm.showModal();
+        model.requery();
+    }//GEN-LAST:event_btnEditActionPerformed
 }

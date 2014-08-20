@@ -199,6 +199,7 @@ function BillModule() {
     self.AddService = function(anAccountId, aServiceId){
         model.params.service_id = aServiceId;
         model.params.account_id = anAccountId;
+        model.qAddService.params.account_id = anAccountId;
         model.qAddService.params.service_id = aServiceId;
         model.requery(function(){
             if(model.qServiceList.length > 0){
@@ -325,12 +326,38 @@ function BillModule() {
         var aMonth = false;
         if(aDays == false || aDays == 0 || aDays == null || aDays === undefined) aMonth = true;
         model.params.service_id = aServiceId;
-        if(model.qServiceList.length > 0){
-            model.qServiceList.cursor.service_name = aName;
-            model.qServiceList.cursor.service_sum = aSum;
-            model.qServiceList.cursor.service_days = aDays;
-            model.qServiceList.cursor.service_month = aMonth;
-            model.save();
-        }
+        model.qServiceList.requery(function(){
+            if(model.qServiceList.length > 0){
+                var oldData = {
+                    name: model.qServiceList.cursor.service_name,
+                    sum: model.qServiceList.cursor.service_sum,
+                    days: model.qServiceList.cursor.service_days,
+                    month: model.qServiceList.cursor.service_month
+                }; 
+                var newData = {
+                    name: aName,
+                    sum: aSum,
+                    days: aDays,
+                    month: aMonth
+                }; 
+                eventProcessor.addEvent('changeService',{
+                    service_id: aServiceId,
+                    old: oldData,
+                    new: newData
+                });
+                model.qServiceList.cursor.service_name = aName;
+                model.qServiceList.cursor.service_sum = aSum;
+                model.qServiceList.cursor.service_days = aDays;
+                model.qServiceList.cursor.service_month = aMonth;
+                model.qChangedService.params.service_id = aServiceId;
+                model.qChangedService.executeUpdate();
+                model.save();
+                return true;
+            } else {
+                eventProcessor.addEvent('errorChangeService',{service_id: aServiceId});
+                return false;
+            }
+        });
+            
     };
 }
