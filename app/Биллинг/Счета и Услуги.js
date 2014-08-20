@@ -5,11 +5,11 @@
 function ListBillAndServices() {
     var self = this, model = this.model, form = this;
     var billModule = new ServerModule("BillModule");
-    var billServerModule = new ServerModule("BillServerModule");
     var createBillAccount = new CreateBillAccount();
     var addServiceForm = new AddServiceForm();
     var createServiceForm = new CreateServiceForm();
     var addBillOperation = new AddBillOperation();
+    var historyOperations = new HistoryOperations();
     self.FranchaziId = null;
     self.setFranchaziId = function(aFranchaziId){
         self.FranchaziId = aFranchaziId;
@@ -50,9 +50,10 @@ function ListBillAndServices() {
         model.qServiceListByAccount.requery();
     }//GEN-LAST:event_qBillAccountOnRequeried
 
-    function btnCronActionPerformed(evt) {//GEN-FIRST:event_btnCronActionPerformed
-        billServerModule.paymentForServices();
-    }//GEN-LAST:event_btnCronActionPerformed
+    function btnOperationsActionPerformed(evt) {//GEN-FIRST:event_btnOperationsActionPerformed
+        historyOperations.setAccountId(model.qBillAccount.cursor.bill_accounts_id);
+        historyOperations.showModal();
+    }//GEN-LAST:event_btnOperationsActionPerformed
 
     function button4ActionPerformed(evt) {//GEN-FIRST:event_button4ActionPerformed
         billModule.delServiceFromAccount(model.qServiceListByAccount.cursor.account_id, model.qServiceListByAccount.cursor.bill_services_id)

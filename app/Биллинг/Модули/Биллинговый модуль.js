@@ -28,7 +28,8 @@ function BillModule() {
         FIND_ACCOUNT_ID: "Аккаунт с таким ID не найден",
         FIND_SERVICE_ID: "Услуга с таким ID не найдена",
         LOST_MONEY:      "Недостаточно средств на счету",
-        INVALID_OP_ID:   "Неверный ID операции"
+        INVALID_OP_ID:   "Неверный ID операции",
+        SERVICE_ADDED:   "Услуга уже добавлена на лицевой счет"
     };
     
     /*
@@ -177,59 +178,60 @@ function BillModule() {
             }
         });
     };
-    
+    /*
+     * Вспомогательная функция для избежания дублирования кода
+     * @param {type} aEvent
+     * @param {type} aObj
+     * @param {type} aError
+     * @returns {Boolean}
+     */
+    function addErrorToLogger(aEvent, aObj, aError){
+        Logger.info(aError);
+        eventProcessor.addEvent(aEvent, {
+            info: aObj,
+            error: aError
+        });
+        return false;
+    }
     /*
      * Добавление услуги на лицевой счет 
      */
     self.AddService = function(anAccountId, aServiceId){
         model.params.service_id = aServiceId;
         model.params.account_id = anAccountId;
+        model.qAddService.params.service_id = aServiceId;
         model.requery(function(){
             if(model.qServiceList.length > 0){
                 if(model.qBillAccount.length > 0){
-                    if(model.qBillAccount.cursor.currnt_sum >=model.qServiceList.cursor.service_sum){
-                        var payDate = new Date();
-                        self.addBillOperation(anAccountId, self.OPERATION_DEL_SERVICE, model.qServiceList.cursor.service_sum);
-                        if(model.qServiceList.cursor.service_month){
-                            payDate.setMonth(payDate.getMonth()+1);
-                        }else{
-                            payDate.setDate(payDate.getDate() + model.qServiceList.cursor.service_days);
-                        }
-                        var obj ={
-                            account_id: anAccountId,
-                            service_id: aServiceId,
-                            payment_date: payDate
-                        };
-                        model.qAddService.push(obj);
-                        model.save();
-                        eventProcessor.addEvent('addServiceOnAccount',obj);
-                        return true;
+                    if(model.qAddService.length == 0) {
+                        if(model.qBillAccount.cursor.currnt_sum >=model.qServiceList.cursor.service_sum){
+                            var payDate = new Date();
+                            self.addBillOperation(anAccountId, self.OPERATION_DEL_SERVICE, model.qServiceList.cursor.service_sum);
+                            if(model.qServiceList.cursor.service_month){
+                                payDate.setMonth(payDate.getMonth()+1);
+                            }else{
+                                payDate.setDate(payDate.getDate() + model.qServiceList.cursor.service_days);
+                            }
+                            var obj ={
+                                account_id: anAccountId,
+                                service_id: aServiceId,
+                                payment_date: payDate
+                            };
+                            model.qAddService.push(obj);
+                            model.save();
+                            eventProcessor.addEvent('addServiceOnAccount',obj);
+                            return true;
+                        } else {
+                            return addErrorToLogger('errorAddServiceOnAccount', obj, ERRORS.LOST_MONEY);
+                        }  
                     } else {
-                        Logger.info(ERRORS.LOST_MONEY);
-                        eventProcessor.addEvent('errorAddServiceOnAccount',{
-                            account_id: anAccountId,
-                            service_id: aServiceId,
-                            error: ERRORS.LOST_MONEY
-                        });
-                        return false;
-                    }  
+                        return addErrorToLogger('errorAddServiceOnAccount', obj, ERRORS.SERVICE_ADDED);
+                    }   
                 } else {
-                    Logger.info(ERRORS.FIND_ACCOUNT_ID);
-                    eventProcessor.addEvent('errorAddServiceOnAccount',{
-                        account_id: anAccountId,
-                        service_id: aServiceId,
-                        error: ERRORS.FIND_ACCOUNT_ID
-                    });
-                    return false;
+                    return addErrorToLogger('errorAddServiceOnAccount', obj, ERRORS.FIND_ACCOUNT_ID);
                 } 
             } else {
-                Logger.info(ERRORS.FIND_SERVICE_ID);
-                eventProcessor.addEvent('errorAddServiceOnAccount',{
-                        account_id: anAccountId,
-                        service_id: aServiceId,
-                        error: ERRORS.FIND_SERVICE_ID
-                    });
-                return false;
+                return addErrorToLogger('errorAddServiceOnAccount', obj, ERRORS.FIND_SERVICE_ID);
             }
         });
     };

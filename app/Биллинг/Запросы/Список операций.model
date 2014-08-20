@@ -1,10 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?><datamodel>
   <parameters>
     <parameter description="" name="operation_id" nullable="true" parameterMode="1" precision="0" scale="0" selectionForm="null" signed="true" size="0" type="2" typeName="NUMERIC"/>
+    <parameter description="" name="account_id" nullable="true" parameterMode="1" precision="0" scale="0" selectionForm="null" signed="true" size="0" type="2" typeName="NUMERIC"/>
+    <parameter description="" name="status" nullable="true" parameterMode="1" precision="0" scale="0" selectionForm="null" signed="true" size="0" type="2" typeName="NUMERIC"/>
   </parameters>
   <parametersEntity entityHeight="200" entityIconified="false" entityLocationX="20" entityLocationY="7" entityWidth="150"/>
   <entity Title="" entityHeight="200" entityIconified="false" entityId="140784667760050" entityLocationX="259" entityLocationY="7" entityWidth="150" tableAlias="t1" tableName="bill_operations" tableSchemaName=""/>
   <entity Title="" entityHeight="200" entityIconified="false" entityId="140784669167197" entityLocationX="490" entityLocationY="6" entityWidth="150" tableAlias="t" tableName="bill_operations_type" tableSchemaName=""/>
+  <entity Title="" entityHeight="200" entityIconified="false" entityId="140852002294749" entityLocationX="708" entityLocationY="21" entityWidth="150" tableAlias="t2" tableName="bill_operations_status" tableSchemaName=""/>
+  <relation leftEntityId="-1" leftEntityParameterName="status" rightEntityFieldName="operation_status" rightEntityId="140784667760050"/>
+  <relation leftEntityId="-1" leftEntityParameterName="account_id" rightEntityFieldName="account_id" rightEntityId="140784667760050"/>
   <relation leftEntityId="-1" leftEntityParameterName="operation_id" rightEntityFieldName="bill_operations_id" rightEntityId="140784667760050"/>
   <relation leftEntityFieldName="bill_operations_type_id" leftEntityId="140784669167197" rightEntityFieldName="operation_type" rightEntityId="140784667760050"/>
+  <relation leftEntityFieldName="bill_operations_status_id" leftEntityId="140852002294749" rightEntityFieldName="operation_status" rightEntityId="140784667760050"/>
 </datamodel>
