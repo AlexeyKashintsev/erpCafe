@@ -9,7 +9,7 @@ function WarehouseItemList() {
 
     var self = this, model = this.model, form = this;
     model.params.item_type = null;
-    
+   // model.params.franchazi_id = 1;
     self.setFranchazi = function(aFranchazi) {
         self.model.params.franchazi_id = aFranchazi;
     };
@@ -33,7 +33,7 @@ function btnSaveActionPerformed(evt) {//GEN-FIRST:event_btnSaveActionPerformed
 }//GEN-LAST:event_btnSaveActionPerformed
 
 function formWindowOpened(evt) {//GEN-FIRST:event_formWindowOpened
-        form.pnlSelLock.visible = self.selectForm;
+        //form.pnlSelLock.visible = self.selectForm;
 }//GEN-LAST:event_formWindowOpened
 
 function formWindowClosing(evt) {//GEN-FIRST:event_formWindowClosing
