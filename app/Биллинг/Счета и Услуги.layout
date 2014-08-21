@@ -1,33 +1,13 @@
-<?xml version="1.0" encoding="UTF-8"?><layout defaultCloseOperation="2" name="Form" prefHeight="447px" prefWidth="600px" windowOpened="formWindowOpened">
+<?xml version="1.0" encoding="UTF-8"?><layout defaultCloseOperation="2" name="Form" prefHeight="501px" prefWidth="600px" windowOpened="formWindowOpened">
   <widget deletable="false" editable="false" insertable="false" name="modelGrid" parent="Form" prefHeight="354px" prefWidth="264px" type="DbGridDesignInfo">
-    <rowsColumnsDesignInfo>
-      <rowsDatasource entityId="140791227991520" field="false"/>
-    </rowsColumnsDesignInfo>
-    <treeDesignInfo/>
     <column name="colAccount_type" title="Тип счета">
-      <headerStyle>
-        <nativeFont name="Tahoma" size="11"/>
-      </headerStyle>
       <controlInfo classHint="DbComboDesignInfo" name="view" prefHeight="0px" prefWidth="0px">
         <valueField entityId="140791227991520" fieldName="account_type"/>
         <displayField entityId="140844547933838" fieldName="type_name"/>
       </controlInfo>
-      <datamodelElement entityId="140791227991520" fieldName="account_type"/>
-      <columnsDatasource/>
-      <columnsDisplayField/>
-      <cellsDatasource/>
-      <cellDesignInfo>
-        <rowsKeyField/>
-        <columnsKeyField/>
-        <cellValueField/>
-      </cellDesignInfo>
-    </column>
-    <column name="colCurrnt_sum" title="Сумма">
       <headerStyle>
         <nativeFont name="Tahoma" size="11"/>
       </headerStyle>
-      <controlInfo classHint="DbSpinDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
-      <datamodelElement entityId="140791227991520" fieldName="currnt_sum"/>
       <columnsDatasource/>
       <columnsDisplayField/>
       <cellsDatasource/>
@@ -36,78 +16,101 @@
         <columnsKeyField/>
         <cellValueField/>
       </cellDesignInfo>
+      <datamodelElement entityId="140791227991520" fieldName="account_type"/>
     </column>
-    <constraints bottom="94px" left="0px" top="-1px" type="MarginConstraintsDesignInfo" width="264px"/>
+    <column name="colCurrnt_sum" title="Сумма">
+      <controlInfo classHint="DbSpinDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
+      <headerStyle>
+        <nativeFont name="Tahoma" size="11"/>
+      </headerStyle>
+      <columnsDatasource/>
+      <columnsDisplayField/>
+      <cellsDatasource/>
+      <cellDesignInfo>
+        <rowsKeyField/>
+        <columnsKeyField/>
+        <cellValueField/>
+      </cellDesignInfo>
+      <datamodelElement entityId="140791227991520" fieldName="currnt_sum"/>
+    </column>
+    <rowsColumnsDesignInfo>
+      <rowsDatasource entityId="140791227991520" field="false"/>
+    </rowsColumnsDesignInfo>
+    <treeDesignInfo/>
+    <constraints height="354px" left="0px" top="-1px" type="MarginConstraintsDesignInfo" width="264px"/>
   </widget>
   <widget actionPerformed="btnCreateBillActionPerformed" name="btnCreateBill" parent="Form" prefHeight="24px" prefWidth="264px" text="+ Создать счет" type="ButtonDesignInfo">
-    <constraints bottom="64px" height="24px" left="0px" type="MarginConstraintsDesignInfo" width="264px"/>
+    <constraints height="24px" left="0px" top="359px" type="MarginConstraintsDesignInfo" width="264px"/>
   </widget>
   <widget deletable="false" editable="false" insertable="false" name="modelGrid1" parent="Form" prefHeight="354px" prefWidth="337px" type="DbGridDesignInfo">
+    <column name="colService_name" title="Название услуги">
+      <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
+      <headerStyle>
+        <nativeFont name="Tahoma" size="11"/>
+      </headerStyle>
+      <columnsDatasource/>
+      <columnsDisplayField/>
+      <cellsDatasource/>
+      <cellDesignInfo>
+        <rowsKeyField/>
+        <columnsKeyField/>
+        <cellValueField/>
+      </cellDesignInfo>
+      <datamodelElement entityId="140791634411137" fieldName="service_name"/>
+    </column>
+    <column name="colService_sum" title="Сумма">
+      <controlInfo classHint="DbSpinDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
+      <headerStyle>
+        <nativeFont name="Tahoma" size="11"/>
+      </headerStyle>
+      <columnsDatasource/>
+      <columnsDisplayField/>
+      <cellsDatasource/>
+      <cellDesignInfo>
+        <rowsKeyField/>
+        <columnsKeyField/>
+        <cellValueField/>
+      </cellDesignInfo>
+      <datamodelElement entityId="140791634411137" fieldName="service_sum"/>
+    </column>
+    <column name="colPayment_date" title="Дата списания">
+      <controlInfo classHint="DbDateDesignInfo" dateFormat="dd.MM.yyyy HH:mm:ss" name="view" prefHeight="0px" prefWidth="0px"/>
+      <headerStyle>
+        <nativeFont name="Tahoma" size="11"/>
+      </headerStyle>
+      <columnsDatasource/>
+      <columnsDisplayField/>
+      <cellsDatasource/>
+      <cellDesignInfo>
+        <rowsKeyField/>
+        <columnsKeyField/>
+        <cellValueField/>
+      </cellDesignInfo>
+      <datamodelElement entityId="140791634411137" fieldName="payment_date"/>
+    </column>
     <rowsColumnsDesignInfo>
       <rowsDatasource entityId="140791634411137" field="false"/>
     </rowsColumnsDesignInfo>
     <treeDesignInfo/>
-    <column name="colService_name" title="Название услуги">
-      <headerStyle>
-        <nativeFont name="Tahoma" size="11"/>
-      </headerStyle>
-      <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
-      <datamodelElement entityId="140791634411137" fieldName="service_name"/>
-      <columnsDatasource/>
-      <columnsDisplayField/>
-      <cellsDatasource/>
-      <cellDesignInfo>
-        <rowsKeyField/>
-        <columnsKeyField/>
-        <cellValueField/>
-      </cellDesignInfo>
-    </column>
-    <column name="colService_sum" title="Сумма">
-      <headerStyle>
-        <nativeFont name="Tahoma" size="11"/>
-      </headerStyle>
-      <controlInfo classHint="DbSpinDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
-      <datamodelElement entityId="140791634411137" fieldName="service_sum"/>
-      <columnsDatasource/>
-      <columnsDisplayField/>
-      <cellsDatasource/>
-      <cellDesignInfo>
-        <rowsKeyField/>
-        <columnsKeyField/>
-        <cellValueField/>
-      </cellDesignInfo>
-    </column>
-    <column name="colPayment_date" title="Дата списания">
-      <headerStyle>
-        <nativeFont name="Tahoma" size="11"/>
-      </headerStyle>
-      <controlInfo classHint="DbDateDesignInfo" dateFormat="dd.MM.yyyy HH:mm:ss" name="view" prefHeight="0px" prefWidth="0px"/>
-      <datamodelElement entityId="140791634411137" fieldName="payment_date"/>
-      <columnsDatasource/>
-      <columnsDisplayField/>
-      <cellsDatasource/>
-      <cellDesignInfo>
-        <rowsKeyField/>
-        <columnsKeyField/>
-        <cellValueField/>
-      </cellDesignInfo>
-    </column>
-    <constraints bottom="94px" left="264px" right="-1px" top="-1px" type="MarginConstraintsDesignInfo"/>
+    <constraints height="354px" left="264px" right="-1px" top="-1px" type="MarginConstraintsDesignInfo"/>
   </widget>
   <widget actionPerformed="btnAddServiceActionPerformed" name="btnAddService" parent="Form" prefHeight="24px" prefWidth="252px" text="+ Добавить услугу на счет" type="ButtonDesignInfo">
-    <constraints bottom="64px" height="24px" right="0px" type="MarginConstraintsDesignInfo" width="252px"/>
+    <constraints height="24px" right="0px" top="359px" type="MarginConstraintsDesignInfo" width="252px"/>
   </widget>
   <widget actionPerformed="btnOperationsActionPerformed" name="btnOperations" parent="Form" prefHeight="24px" prefWidth="264px" text="История операций по счету" type="ButtonDesignInfo">
-    <constraints bottom="16px" height="24px" left="0px" type="MarginConstraintsDesignInfo" width="264px"/>
+    <constraints height="24px" left="0px" top="407px" type="MarginConstraintsDesignInfo" width="264px"/>
   </widget>
   <widget actionPerformed="button4ActionPerformed" name="button4" parent="Form" prefHeight="23px" prefWidth="252px" text="- Убрать услугу с выбранного счета" type="ButtonDesignInfo">
-    <constraints bottom="41px" height="23px" right="0px" type="MarginConstraintsDesignInfo" width="252px"/>
+    <constraints height="23px" right="0px" top="383px" type="MarginConstraintsDesignInfo" width="252px"/>
   </widget>
-  <widget actionPerformed="btnAddOperationActionPerformed" name="btnAddOperation" parent="Form" prefHeight="23px" prefWidth="264px" text="Провести операцию по счету" type="ButtonDesignInfo">
-    <constraints bottom="41px" height="23px" left="0px" type="MarginConstraintsDesignInfo" width="264px"/>
+  <widget actionPerformed="btnAddOperationActionPerformed" name="btnAddOperation" parent="Form" prefHeight="23px" prefWidth="264px" text="Провести операцию по счету(demo)" type="ButtonDesignInfo">
+    <constraints height="23px" left="0px" top="383px" type="MarginConstraintsDesignInfo" width="264px"/>
   </widget>
   <widget actionPerformed="btnCreateServiceActionPerformed" name="btnCreateService" parent="Form" prefHeight="23px" prefWidth="252px" text="* Управление услугами" type="ButtonDesignInfo">
-    <constraints bottom="17px" height="23px" right="0px" type="MarginConstraintsDesignInfo" width="252px"/>
+    <constraints height="23px" right="0px" top="407px" type="MarginConstraintsDesignInfo" width="252px"/>
+  </widget>
+  <widget actionPerformed="btnAddBalanceActionPerformed" name="btnAddBalance" parent="Form" prefHeight="23px" prefWidth="264px" text="Пополнить баланс" type="ButtonDesignInfo">
+    <constraints bottom="46px" height="23px" left="0px" type="MarginConstraintsDesignInfo" width="264px"/>
   </widget>
   <nonvisual name="buttonGroup" type="ButtonGroupDesignInfo"/>
   <layout type="MarginLayoutDesignInfo"/>

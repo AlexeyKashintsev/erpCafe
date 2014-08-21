@@ -10,6 +10,7 @@ function ListBillAndServices() {
     var createServiceForm = new CreateServiceForm();
     var addBillOperation = new AddBillOperation();
     var historyOperations = new HistoryOperations();
+    var addBalanceForm = new AddBalanceForm();
     self.FranchaziId = null;
     self.setFranchaziId = function(aFranchaziId){
         self.FranchaziId = aFranchaziId;
@@ -69,4 +70,10 @@ function ListBillAndServices() {
     function btnCreateServiceActionPerformed(evt) {//GEN-FIRST:event_btnCreateServiceActionPerformed
         createServiceForm.showModal();
     }//GEN-LAST:event_btnCreateServiceActionPerformed
+
+    function btnAddBalanceActionPerformed(evt) {//GEN-FIRST:event_btnAddBalanceActionPerformed
+        addBalanceForm.setAccountId(model.qBillAccount.cursor.bill_accounts_id);
+        addBalanceForm.showModal();
+        model.qBillAccount.requery();
+    }//GEN-LAST:event_btnAddBalanceActionPerformed
 }
