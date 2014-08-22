@@ -3,41 +3,40 @@
  * @author minya92
  */
 function BillItems() {
-    var self = this, model = this.model, form = this;
-    
+   var self = this, model = this.model, form = this;
+   
    function saveItemsCost(){
        model.qBillItems.beforeFirst();
        while(model.qBillItems.next()){
            if(model.qBillItems.cursor.item_cost != model.qBillItems.cursor.new_cost){
-               //model.qDelBillCost.params.item_id = model.qBillItems.cursor.wh_items_id;
+               var new_cost = model.qBillItems.cursor.new_cost;
+               model.qBillItems.cursor.new_cost = model.qBillItems.cursor.item_cost;
+               // Удаление записей с пустыми ценами
+               model.qDelBillCost.params.item_id = model.qBillItems.cursor.wh_items_id;
+               model.qDelBillCost.executeUpdate();
+               // Закрытие всех цен по товару (end_date)
                model.qCloseItemCost.params.item_id = model.qBillItems.cursor.wh_items_id;
-               //model.qDelBillCost.executeUpdate();
-               model.save();
                model.qCloseItemCost.executeUpdate();
-               model.save();
-               if(model.qBillItems.cursor.new_cost){
-                   //ВОТ ТУТ НЕЕБИЧЕСКОЕ ЗЛО! ОН МЕНЯЕТ ЦЕНУ ПРЕД ЗАПИСИ
-                  model.qAddItemCost2.insert(
-                      model.qAddItemCost2.schema.item_id, model.qBillItems.cursor.wh_items_id,
-                      model.qAddItemCost2.schema.item_cost, model.qBillItems.cursor.new_cost,
-                      model.qAddItemCost2.schema.start_date, new Date()
-                  );
-                  model.save();
+               if(new_cost){
+                    model.qItemBillCost.insert();
+                    model.qItemBillCost.cursor.item_id = model.qBillItems.cursor.wh_items_id;
+                    model.qItemBillCost.cursor.item_cost = new_cost;
+                    model.qItemBillCost.cursor.start_date= new Date();
                } else {
-                  model.qAddItemCost2.push({
-                      item_id: model.qBillItems.cursor.wh_items_id,
-                      start_date: new Date(),
-                      end_date: new Date()
-                  });
-                  model.save();
+                    model.qItemBillCost.insert();
+                    model.qItemBillCost.cursor.item_id = model.qBillItems.cursor.wh_items_id;
+                    model.qItemBillCost.cursor.start_date= new Date();
+                    model.qItemBillCost.cursor.end_date = new Date();
                }
-
-               
+               model.save();
            }
        }
    }
 
     function itemTypeOnScrolled(evt) {//GEN-FIRST:event_itemTypeOnScrolled
+        if (model.modified&&confirm('Сохранить изменения?')){
+            saveItemsCost();
+        }
         model.params.item_type = model.itemType.cursor.wh_item_types_id;
         model.qBillItems.requery();
     }//GEN-LAST:event_itemTypeOnScrolled

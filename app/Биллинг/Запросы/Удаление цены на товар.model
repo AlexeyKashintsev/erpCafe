@@ -3,6 +3,6 @@
     <parameter description="" name="item_id" nullable="true" parameterMode="1" precision="0" scale="0" selectionForm="null" signed="true" size="0" type="2" typeName="NUMERIC"/>
   </parameters>
   <parametersEntity entityHeight="200" entityIconified="false" entityLocationX="8" entityLocationY="7" entityWidth="150"/>
-  <entity Title="" entityHeight="200" entityIconified="false" entityId="140862587916797" entityLocationX="198" entityLocationY="20" entityWidth="150" tableAlias="" tableName="bill_item_cost" tableSchemaName=""/>
+  <entity Title="" entityHeight="200" entityIconified="false" entityId="140862587916797" entityLocationX="202" entityLocationY="5" entityWidth="150" tableAlias="" tableName="bill_item_cost" tableSchemaName=""/>
   <relation leftEntityFieldName="item_id" leftEntityId="140862587916797" rightEntityId="-1" rightEntityParameterName="item_id"/>
 </datamodel>

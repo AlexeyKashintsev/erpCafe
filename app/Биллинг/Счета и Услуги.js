@@ -11,6 +11,8 @@ function ListBillAndServices() {
     var addBillOperation = new AddBillOperation();
     var historyOperations = new HistoryOperations();
     var addBalanceForm = new AddBalanceForm();
+    var billItems = new BillItems();
+    
     self.FranchaziId = null;
     self.setFranchaziId = function(aFranchaziId){
         self.FranchaziId = aFranchaziId;
@@ -76,4 +78,8 @@ function ListBillAndServices() {
         addBalanceForm.showModal();
         model.qBillAccount.requery();
     }//GEN-LAST:event_btnAddBalanceActionPerformed
+
+    function buttonActionPerformed(evt) {//GEN-FIRST:event_buttonActionPerformed
+        billItems.showModal();
+    }//GEN-LAST:event_buttonActionPerformed
 }
