@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><layout defaultCloseOperation="2" name="Form" prefHeight="209px" prefWidth="257px">
+<?xml version="1.0" encoding="UTF-8"?><layout defaultCloseOperation="2" name="Form" prefHeight="209px" prefWidth="257px" windowOpened="formWindowOpened">
   <widget name="label" parent="Form" prefHeight="14px" prefWidth="216px" text="Варианты оплаты:" type="LabelDesignInfo">
     <constraints height="14px" left="24px" top="72px" type="MarginConstraintsDesignInfo" width="216px"/>
   </widget>
@@ -8,17 +8,11 @@
   <widget buttonGroup="buttonGroup" name="radioButton1" parent="Form" prefHeight="23px" prefWidth="216px" selected="true" text="Через банк (Выставление счета)" type="RadioDesignInfo">
     <constraints height="23px" left="24px" top="120px" type="MarginConstraintsDesignInfo" width="216px"/>
   </widget>
-  <widget name="label1" parent="Form" prefHeight="14px" prefWidth="48px" text="Сумма:" type="LabelDesignInfo">
-    <constraints height="14px" left="24px" top="27px" type="MarginConstraintsDesignInfo" width="48px"/>
-  </widget>
-  <widget name="label2" parent="Form" prefHeight="14px" prefWidth="28px" text="руб." type="LabelDesignInfo">
-    <constraints height="14px" right="37px" top="27px" type="MarginConstraintsDesignInfo" width="28px"/>
+  <widget name="tfSum" parent="Form" prefHeight="14px" prefWidth="216px" text="Сумма платежа:" type="LabelDesignInfo">
+    <constraints height="14px" left="24px" top="27px" type="MarginConstraintsDesignInfo" width="216px"/>
   </widget>
   <widget actionPerformed="buttonActionPerformed" name="button" parent="Form" prefHeight="23px" prefWidth="96px" text="Оплатить" type="ButtonDesignInfo">
     <constraints height="23px" left="144px" top="156px" type="MarginConstraintsDesignInfo" width="96px"/>
-  </widget>
-  <widget name="textField" parent="Form" prefHeight="20px" prefWidth="108px" type="TextFieldDesignInfo">
-    <constraints height="20px" left="72px" top="24px" type="MarginConstraintsDesignInfo" width="108px"/>
   </widget>
   <nonvisual name="buttonGroup" type="ButtonGroupDesignInfo"/>
   <layout type="MarginLayoutDesignInfo"/>

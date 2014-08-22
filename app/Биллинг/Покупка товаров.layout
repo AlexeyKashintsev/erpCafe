@@ -1,15 +1,11 @@
-<?xml version="1.0" encoding="UTF-8"?><layout defaultCloseOperation="2" name="Form" prefHeight="327px" prefWidth="405px">
-  <widget deletable="false" insertable="false" name="modelGrid" parent="Form" prefHeight="252px" prefWidth="408px" type="DbGridDesignInfo">
-    <rowsColumnsDesignInfo>
-      <rowsDatasource entityId="140869374329850" field="false"/>
-    </rowsColumnsDesignInfo>
-    <treeDesignInfo/>
+<?xml version="1.0" encoding="UTF-8"?><layout defaultCloseOperation="2" name="Form" prefHeight="341px" prefWidth="611px" windowOpened="formWindowOpened">
+  <widget deletable="false" insertable="false" name="modelGrid" parent="Form" prefHeight="252px" prefWidth="614px" type="DbGridDesignInfo">
     <column name="colItem_name" readonly="true" title="Товар">
-      <datamodelElement entityId="140869374329850" fieldName="item_name"/>
-      <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
       <headerStyle>
         <nativeFont name="Tahoma" size="11"/>
       </headerStyle>
+      <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
+      <datamodelElement entityId="140869374329850" fieldName="item_name"/>
       <columnsDatasource/>
       <columnsDisplayField/>
       <cellsDatasource/>
@@ -20,11 +16,11 @@
       </cellDesignInfo>
     </column>
     <column name="colItem_cost" readonly="true" title="Цена">
-      <datamodelElement entityId="140869374329850" fieldName="item_cost"/>
-      <controlInfo classHint="DbSpinDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
       <headerStyle>
         <nativeFont name="Tahoma" size="11"/>
       </headerStyle>
+      <controlInfo classHint="DbSpinDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
+      <datamodelElement entityId="140869374329850" fieldName="item_cost"/>
       <columnsDatasource/>
       <columnsDisplayField/>
       <cellsDatasource/>
@@ -35,11 +31,11 @@
       </cellDesignInfo>
     </column>
     <column name="colSelected" title="Купить">
-      <datamodelElement entityId="140869374329850" fieldName="selected"/>
-      <controlInfo classHint="DbCheckDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
       <headerStyle>
         <nativeFont name="Tahoma" size="11"/>
       </headerStyle>
+      <controlInfo classHint="DbCheckDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
+      <datamodelElement entityId="140869374329850" fieldName="selected"/>
       <columnsDatasource/>
       <columnsDisplayField/>
       <cellsDatasource/>
@@ -50,11 +46,11 @@
       </cellDesignInfo>
     </column>
     <column name="colItem_count" title="Кол-во">
-      <datamodelElement entityId="140869374329850" fieldName="item_count"/>
-      <controlInfo classHint="DbSpinDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
       <headerStyle>
         <nativeFont name="Tahoma" size="11"/>
       </headerStyle>
+      <controlInfo classHint="DbSpinDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
+      <datamodelElement entityId="140869374329850" fieldName="item_count"/>
       <columnsDatasource/>
       <columnsDisplayField/>
       <cellsDatasource/>
@@ -64,10 +60,23 @@
         <cellValueField/>
       </cellDesignInfo>
     </column>
-    <constraints height="252px" left="0px" top="0px" type="MarginConstraintsDesignInfo" width="408px"/>
+    <rowsColumnsDesignInfo>
+      <rowsDatasource entityId="140869374329850" field="false"/>
+    </rowsColumnsDesignInfo>
+    <treeDesignInfo/>
+    <constraints height="252px" left="0px" right="-3px" top="0px" type="MarginConstraintsDesignInfo"/>
   </widget>
-  <widget name="tfCost" parent="Form" prefHeight="14px" prefWidth="144px" text="label" type="LabelDesignInfo">
-    <constraints bottom="49px" height="14px" left="12px" type="MarginConstraintsDesignInfo" width="144px"/>
+  <widget name="tfCost" parent="Form" prefHeight="14px" prefWidth="144px" text="Сумма заказа: " type="LabelDesignInfo">
+    <constraints bottom="39px" height="14px" left="12px" type="MarginConstraintsDesignInfo" width="144px"/>
+  </widget>
+  <widget name="tfSum" parent="Form" prefHeight="14px" prefWidth="168px" text="Сумма на  счету: " type="LabelDesignInfo">
+    <constraints bottom="63px" height="14px" left="12px" type="MarginConstraintsDesignInfo" width="168px"/>
+  </widget>
+  <widget name="tfLost" parent="Form" prefHeight="14px" prefWidth="132px" text="Остаток на счету:" type="LabelDesignInfo">
+    <constraints bottom="15px" height="14px" left="12px" type="MarginConstraintsDesignInfo" width="132px"/>
+  </widget>
+  <widget actionPerformed="buttonActionPerformed" name="button" parent="Form" prefHeight="23px" prefWidth="156px" text="Заказать товар" type="ButtonDesignInfo">
+    <constraints bottom="18px" height="23px" right="23px" type="MarginConstraintsDesignInfo" width="156px"/>
   </widget>
   <layout type="MarginLayoutDesignInfo"/>
 </layout>

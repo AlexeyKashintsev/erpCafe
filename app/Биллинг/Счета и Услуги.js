@@ -10,8 +10,9 @@ function ListBillAndServices() {
     var createServiceForm = new CreateServiceForm();
     var addBillOperation = new AddBillOperation();
     var historyOperations = new HistoryOperations();
-    var addBalanceForm = new AddBalanceForm();
+    //var addBalanceForm = new AddBalanceForm();
     var billItems = new BillItems();
+    var billBuyItems = new BillBuyItems();
     
     self.FranchaziId = null;
     self.setFranchaziId = function(aFranchaziId){
@@ -62,22 +63,20 @@ function ListBillAndServices() {
         billModule.delServiceFromAccount(model.qServiceListByAccount.cursor.account_id, model.qServiceListByAccount.cursor.bill_services_id)
     }//GEN-LAST:event_button4ActionPerformed
 
-    function btnAddOperationActionPerformed(evt) {//GEN-FIRST:event_btnAddOperationActionPerformed
-        addBillOperation.setAccountId(model.qBillAccount.cursor.bill_accounts_id);
-        addBillOperation.showModal(function (aResult){
-            if(aResult) model.qBillAccount.requery();
-        });
-    }//GEN-LAST:event_btnAddOperationActionPerformed
+    function btnBuyItemsActionPerformed(evt) {//GEN-FIRST:event_btnBuyItemsActionPerformed
+        billBuyItems.setAccountId(model.qBillAccount.cursor.bill_accounts_id);
+        billBuyItems.showModal();
+    }//GEN-LAST:event_btnBuyItemsActionPerformed
 
     function btnCreateServiceActionPerformed(evt) {//GEN-FIRST:event_btnCreateServiceActionPerformed
         createServiceForm.showModal();
     }//GEN-LAST:event_btnCreateServiceActionPerformed
 
-    function btnAddBalanceActionPerformed(evt) {//GEN-FIRST:event_btnAddBalanceActionPerformed
-        addBalanceForm.setAccountId(model.qBillAccount.cursor.bill_accounts_id);
-        addBalanceForm.showModal();
+    function btnAddOperationActionPerformed(evt) {//GEN-FIRST:event_btnAddOperationActionPerformed
+        addBillOperation.setAccountId(model.qBillAccount.cursor.bill_accounts_id);
+        addBillOperation.showModal();
         model.qBillAccount.requery();
-    }//GEN-LAST:event_btnAddBalanceActionPerformed
+    }//GEN-LAST:event_btnAddOperationActionPerformed
 
     function buttonActionPerformed(evt) {//GEN-FIRST:event_buttonActionPerformed
         billItems.showModal();
