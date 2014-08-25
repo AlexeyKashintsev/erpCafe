@@ -87,4 +87,8 @@ function ClientServerModule() {
         model.qPersonalData.params.phone = aPhone;
         return model.qPersonalData.cursor.client_id;
     };
+    
+    self.getBonusCount = function(aPhone){
+        billModule.
+    }
 }

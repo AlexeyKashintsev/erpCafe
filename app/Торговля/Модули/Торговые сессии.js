@@ -11,10 +11,15 @@ function TradeSessions() {
     var billing = new BillModule();
     var ep = new EventProcessor();
     var ClientPhone = null;
+    var tradeOperationType = "money";
     
     self.setClientPhone = function(aPhone){
         ClientPhone = aPhone;
     };
+    
+    self.setTradeOperationType = function(aType){
+        tradeOperationType = aType;
+    }
     
     self.initializeSession = function(aSession, aStartBalance) {
         model.qTradeSessionBalance.push({
@@ -104,24 +109,53 @@ function TradeSessions() {
         }
         // Если мы в сессии,то
         if (model.params.session_id){
-            var BonusCount = 0;
-            var TradeOperationId = TradeOperationPushInCashBox(anOrderDetails.orderSum);
-            // для всех товаров
-            for (var i in anOrderDetails.orderItems) {
-                if (anOrderDetails.orderItems[i].itemId && anOrderDetails.orderItems[i].quantity){
-                    // записать проданные товары в тороговую операцию. При этом добавив приход в кассу.
-                    TradeItemsPushInTradeOperation(TradeOperationId, anOrderDetails.orderItems[i].itemId, anOrderDetails.orderItems[i].quantity);
-                    // TODO Добавить добавление бонусов клиенту на его счет.
-                    BonusCount += getCountBonusesByItem(anOrderDetails.orderItems[i].itemId) * anOrderDetails.orderItems[i].quantity;
-                    // затем написать уход элементов состава товара со склада. 
-                    if (!whSession.whMovement(WhItemsCalculation(anOrderDetails.orderItems[i].itemId, anOrderDetails.orderItems[i].quantity), whSession.WH_PRODUCE_ITEMS)){
-                        //если не получилось - вывести ошибку.
-                        ep.addEvent('errorAddTradeOperation', anOrderDetails);
+            if (tradeOperationType == "money"){
+                var BonusCount = 0;
+                var TradeOperationId = TradeOperationPushInCashBox(anOrderDetails.orderSum);
+                // для всех товаров
+                for (var i in anOrderDetails.orderItems) {
+                    if (anOrderDetails.orderItems[i].itemId && anOrderDetails.orderItems[i].quantity){
+                        // записать проданные товары в тороговую операцию. При этом добавив приход в кассу.
+                        TradeItemsPushInTradeOperation(TradeOperationId, anOrderDetails.orderItems[i].itemId, anOrderDetails.orderItems[i].quantity);
+                        // TODO Добавить добавление бонусов клиенту на его счет.
+                        BonusCount += getCountBonusesByItem(anOrderDetails.orderItems[i].itemId) * anOrderDetails.orderItems[i].quantity;
+                        // затем написать уход элементов состава товара со склада. 
+                        if (!whSession.whMovement(WhItemsCalculation(anOrderDetails.orderItems[i].itemId, anOrderDetails.orderItems[i].quantity), whSession.WH_PRODUCE_ITEMS)){
+                            //если не получилось - вывести ошибку.
+                            ep.addEvent('errorAddTradeOperation', anOrderDetails);
+                        }
+                    }
+                }
+                billing.addBillOperation(clientModule.getBonusBill(ClientPhone), billing.OPERATION_ADD_BONUS, BonusCount);
+                model.save();
+            } else if (tradeOperationType == "bonus"){ //Оплата бонусами
+                //Получаем информацию о состоянии бунусного счета клиента
+                model.qBillAccount.params.user_id = ClientPhone;
+                model.qBillAccount.requery();
+                if (model.qBillAccount.length > 0){
+                    //Если на счету достаточно бонусов
+                    if (model.qBillAccount.cursor.currnt_sum >= anOrderDetails.orderSum){
+                        //Добавляем нулевой приход в кассу
+                        var TradeOperationId = TradeOperationPushInCashBox(0);
+                        //Списываем все товары. Выполняем продажу.
+                        for (var i in anOrderDetails.orderItems) {
+                            if (anOrderDetails.orderItems[i].itemId && anOrderDetails.orderItems[i].quantity){
+                                // записать проданные товары в тороговую операцию.
+                                TradeItemsPushInTradeOperation(TradeOperationId, anOrderDetails.orderItems[i].itemId, anOrderDetails.orderItems[i].quantity);
+                                // затем написать уход элементов состава товара со склада. 
+                                if (!whSession.whMovement(WhItemsCalculation(anOrderDetails.orderItems[i].itemId, anOrderDetails.orderItems[i].quantity), whSession.WH_PRODUCE_ITEMS)){
+                                    //если не получилось - вывести ошибку.
+                                    ep.addEvent('errorAddTradeOperation', anOrderDetails);
+                                }
+                            }
+                        }
+                        //Снимаем бонусы со счета
+                        billing.addBillOperation(clientModule.getBonusBill(ClientPhone), billing.OPERATION_DEL_BUY, anOrderDetails.orderSum);
+                        //TODO !!Дописать добавление бонусов на счет франчайзи.!!!!
+                        model.save();
                     }
                 }
             }
-            billing.addBillOperation(clientModule.getBonusBill(ClientPhone), billing.OPERATION_ADD_BONUS, BonusCount);
-            model.save();
         }
     };
 }

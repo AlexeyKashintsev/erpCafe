@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><layout defaultCloseOperation="2" name="Form" prefHeight="105px" prefWidth="400px">
+<?xml version="1.0" encoding="UTF-8"?><layout defaultCloseOperation="2" name="Form" prefHeight="140px" prefWidth="400px">
   <widget keyReleased="tfPhoneKeyReleased" name="tfPhone" parent="Form" prefHeight="24px" prefWidth="348px" type="TextFieldDesignInfo">
     <constraints height="24px" left="24px" top="24px" type="MarginConstraintsDesignInfo" width="348px"/>
   </widget>
@@ -7,6 +7,9 @@
   </widget>
   <widget name="label" parent="Form" prefHeight="24px" prefWidth="204px" text="Это новый клиент" type="LabelDesignInfo">
     <constraints height="24px" left="24px" top="60px" type="MarginConstraintsDesignInfo" width="204px"/>
+  </widget>
+  <widget actionPerformed="btnAnonimActionActionPerformed" name="btnAnonimAction" parent="Form" prefHeight="29px" prefWidth="132px" text="Аноним" type="ButtonDesignInfo">
+    <constraints bottom="15px" height="29px" left="240px" type="MarginConstraintsDesignInfo" width="132px"/>
   </widget>
   <layout type="MarginLayoutDesignInfo"/>
 </layout>
