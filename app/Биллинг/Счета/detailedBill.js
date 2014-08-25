@@ -169,7 +169,7 @@ function DetailedBill() {
      * @param evt Event object.
      */
     function onBeforeRender(evt){//GEN-FIRST:event_onBeforeRender
-        self.bd = self.bd[0];//где-то здесь зло!
+       // self.bd = self.bd[0];//где-то здесь зло!
         var supplier = billApi.getSupplierDetails;
         for (var j in supplier) {
             self.bd[j] = supplier[j];

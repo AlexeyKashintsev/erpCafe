@@ -1,18 +1,21 @@
-<?xml version="1.0" encoding="UTF-8"?><layout defaultCloseOperation="2" name="Form" prefHeight="209px" prefWidth="257px" windowOpened="formWindowOpened">
+<?xml version="1.0" encoding="UTF-8"?><layout defaultCloseOperation="2" name="Form" prefHeight="486px" prefWidth="332px" windowOpened="formWindowOpened">
   <widget name="label" parent="Form" prefHeight="14px" prefWidth="216px" text="Варианты оплаты:" type="LabelDesignInfo">
-    <constraints height="14px" left="24px" top="72px" type="MarginConstraintsDesignInfo" width="216px"/>
+    <constraints bottom="112px" height="14px" left="24px" type="MarginConstraintsDesignInfo" width="216px"/>
   </widget>
   <widget buttonGroup="buttonGroup" name="radioButton" parent="Form" prefHeight="23px" prefWidth="216px" text="Интрнет банкинг (onPay)" type="RadioDesignInfo">
-    <constraints height="23px" left="24px" top="96px" type="MarginConstraintsDesignInfo" width="216px"/>
+    <constraints bottom="79px" height="23px" left="24px" type="MarginConstraintsDesignInfo" width="216px"/>
   </widget>
   <widget buttonGroup="buttonGroup" name="radioButton1" parent="Form" prefHeight="23px" prefWidth="216px" selected="true" text="Через банк (Выставление счета)" type="RadioDesignInfo">
-    <constraints height="23px" left="24px" top="120px" type="MarginConstraintsDesignInfo" width="216px"/>
+    <constraints bottom="55px" height="23px" left="24px" type="MarginConstraintsDesignInfo" width="216px"/>
   </widget>
   <widget name="tfSum" parent="Form" prefHeight="14px" prefWidth="216px" text="Сумма платежа:" type="LabelDesignInfo">
-    <constraints height="14px" left="24px" top="27px" type="MarginConstraintsDesignInfo" width="216px"/>
+    <constraints height="14px" left="24px" top="324px" type="MarginConstraintsDesignInfo" width="216px"/>
   </widget>
   <widget actionPerformed="buttonActionPerformed" name="button" parent="Form" prefHeight="23px" prefWidth="96px" text="Оплатить" type="ButtonDesignInfo">
-    <constraints height="23px" left="144px" top="156px" type="MarginConstraintsDesignInfo" width="96px"/>
+    <constraints bottom="19px" height="23px" left="144px" type="MarginConstraintsDesignInfo" width="96px"/>
+  </widget>
+  <widget name="lbItems" parent="Form" prefHeight="288px" prefWidth="276px" text="Заказанные товары:" type="LabelDesignInfo">
+    <constraints height="288px" left="24px" top="12px" type="MarginConstraintsDesignInfo" width="276px"/>
   </widget>
   <nonvisual name="buttonGroup" type="ButtonGroupDesignInfo"/>
   <layout type="MarginLayoutDesignInfo"/>

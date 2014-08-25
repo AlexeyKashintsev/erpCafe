@@ -4,7 +4,7 @@
  */
 function BillBuyItems() {
     var self = this, model = this.model, form = this;
-    var addBalanceForm = new AddBalanceForm();
+    var detalizeBillForm = new DetalizeBillForm();
     self.cost = 0; self.items = [];
     model.params.account_id = 0;
     
@@ -43,8 +43,10 @@ function BillBuyItems() {
     }//GEN-LAST:event_qItemBillCostOnChanged
 
     function buttonActionPerformed(evt) {//GEN-FIRST:event_buttonActionPerformed
-        addBalanceForm.setSum(self.cost);
-        addBalanceForm.showModal();
+        detalizeBillForm.setSum(self.cost);
+        detalizeBillForm.setItems(self.items);
+        detalizeBillForm.setAccountId(model.params.account_id);
+        detalizeBillForm.showModal();
     }//GEN-LAST:event_buttonActionPerformed
 
     function formWindowOpened(evt) {//GEN-FIRST:event_formWindowOpened

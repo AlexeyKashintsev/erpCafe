@@ -59,6 +59,32 @@ function BillModule() {
        // Logger.info('Аккаунт для франчайзе уже существует'); 
     };
     /*
+     * Получить баланс счета пользователя
+     * @param {type} anUserId
+     * @returns {undefined}
+     */
+    self.getSumFromUserId = function(anUserId){
+        model.params.user_id = anUserId;
+        model.qBillAccount.requery(function(){
+            if(model.qBillAccount.length > 0)
+                return model.qBillAccount.cursor.currnt_sum;
+            else return false;
+        });
+    };
+    /*
+     * Получить баланс счета по ID
+     * @param {type} anAccountId
+     * @returns {undefined}
+     */
+    self.getSumFromAccountId = function(anAccountId){
+        model.params.account_id = anAccountId;
+        model.qBillAccount.requery(function(){
+            if(model.qBillAccount.length > 0)
+                return model.qBillAccount.cursor.currnt_sum;
+            else return false;
+        });
+    };
+    /*
      * Удаление лицеовго счета
      * @param {type} anAccountId
      * @returns {undefined}
@@ -106,9 +132,11 @@ function BillModule() {
         if((multiplier === -1) && (aStatus === self.OP_STATUS_SUCCESS) && (anOperationType != self.OPERATION_DEL_SERVICE)){
             model.params.account_id = anAccountId;
             model.qBillAccount.requery(function(){
-                if(model.qBillAccount.cursor.currnt_sum < aSum){
-                    self.ERROR_LOST_MONEY = true;
-                } 
+                if(model.qBillAccount.length > 0){
+                    if(model.qBillAccount.cursor.currnt_sum < aSum){
+                        self.ERROR_LOST_MONEY = true;
+                    } 
+                }
             });  
         } 
         if(self.ERROR_LOST_MONEY){
@@ -120,13 +148,37 @@ function BillModule() {
             if(aStatus === self.OP_STATUS_SUCCESS){
                 model.params.account_id = anAccountId;
                 model.qBillAccount.requery(function(){
-                    model.qBillAccount.cursor.currnt_sum = model.qBillAccount.cursor.currnt_sum + aSum * multiplier; 
+                    if(model.qBillAccount.length > 0)
+                        model.qBillAccount.cursor.currnt_sum = model.qBillAccount.cursor.currnt_sum + aSum * multiplier; 
                 });    
             }
             model.save();
             eventProcessor.addEvent('addBillOperation', obj);
             return model.qBillOperationsList.cursor.bill_operations_id;    
         }
+    };
+    /*
+     * Добавление товаров на счет
+     * @param {type} anOpId
+     * @param {type} anItems
+     * @returns {undefined}
+     */
+    self.addItemsOnOperation = function(anOpId, anItems){
+        model.params.operation_id = anOpId;
+        model.qBillOperationsList.requery(function(){
+            if(model.qBillOperationsList.length > 0){
+                for(var id in anItems){
+                    model.qItemBillCost.params.item_id = anItems[id].item_id;
+                    model.qItemBillCost.requery(function(){
+                        model.qAddItemsOnOperation.push({
+                            operation_id: model.qBillOperationsList.cursor.bill_operations_id,
+                            cost_id: model.qItemBillCost.cursor.bill_item_cost_id
+                        });
+                    });
+                }
+                model.save();
+            }
+        });
     };
     /*
      * Изменение статуса операции
@@ -277,11 +329,14 @@ function BillModule() {
             }    
         });
     };
-    
     /*
      * Создание новой услуги
      * aDays - промежуток дней для снятия абонентской платы
      * aDays (null) - ежемесячное списание абонентской платы
+     * @param {type} aName
+     * @param {type} aSum
+     * @param {type} aDays
+     * @returns {Boolean}
      */
     self.CreateService = function(aName, aSum, aDays){
         var aMonth = false;
