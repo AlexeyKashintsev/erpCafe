@@ -89,6 +89,6 @@ function ClientServerModule() {
     };
     
     self.getBonusCount = function(aPhone){
-        billModule.
+        return billModule.getSumFromUserId(aPhone);
     }
 }
