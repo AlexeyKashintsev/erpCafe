@@ -31,4 +31,9 @@ function SetUserPhoneForm() {
              form.button.text = "Зарегистрировать";
          }
     }//GEN-LAST:event_tfPhoneKeyReleased
+
+    function btnAnonimActionActionPerformed(evt) {//GEN-FIRST:event_btnAnonimActionActionPerformed
+        self.tradeSession.setClientPhone("79206738064");
+        form.close();
+    }//GEN-LAST:event_btnAnonimActionActionPerformed
 }
