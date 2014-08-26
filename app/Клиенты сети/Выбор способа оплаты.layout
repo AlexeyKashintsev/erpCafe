@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?><layout defaultCloseOperation="2" name="Form" prefHeight="105px" prefWidth="400px">
+  <widget actionPerformed="btnChoiceMoneyActionPerformed" name="btnChoiceMoney" parent="Form" prefHeight="29px" prefWidth="180px" text="деньгами" type="ButtonDesignInfo">
+    <constraints height="29px" left="204px" top="60px" type="MarginConstraintsDesignInfo" width="180px"/>
+  </widget>
+  <widget actionPerformed="btnChoiceBonusActionPerformed" name="btnChoiceBonus" parent="Form" prefHeight="29px" prefWidth="168px" text="бонусами" type="ButtonDesignInfo">
+    <constraints height="29px" left="24px" top="60px" type="MarginConstraintsDesignInfo" width="168px"/>
+  </widget>
+  <widget name="label" parent="Form" prefHeight="17px" prefWidth="144px" text="Оплатить" type="LabelDesignInfo">
+    <constraints height="17px" left="156px" top="24px" type="MarginConstraintsDesignInfo" width="144px"/>
+  </widget>
+  <layout type="MarginLayoutDesignInfo"/>
+</layout>

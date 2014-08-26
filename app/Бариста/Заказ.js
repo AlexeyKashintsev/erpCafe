@@ -9,6 +9,7 @@ function OrderList(aParent) {
     self.tradeSession = null;
     var lastDiv = null;
     var setPhone = new SetUserPhoneForm();
+    var choiceMethodOfPayment = new ChoiceMethodOfPayment();
     
     function alerter(anAlert, aType, aText, aClosable, aCloseTimeOut) {
 //        if (!anAlert) {
@@ -64,6 +65,13 @@ function OrderList(aParent) {
         attempt++;
         Logger.info(attempt);
         var alert = alerter(anAlert, "alert-info", "<h4>Обработка заказа</h4>Попытка № " + attempt, false);
+        //Если сумма заказа покрывается бонусами на счету, то предложить оплату бонусами
+        if (anOrderDetails.orderSum <= self.tradeSession.getBonusCount()){
+            choiceMethodOfPayment.tradeSession = self.tradeSession;
+            choiceMethodOfPayment.showModal(function (aResult){
+                self.tradeSession.setTradeOperationType(aResult);
+            });
+        }
         
         self.tradeSession.processOrder(anOrderDetails, function() {
             alerter(alert, "alert-success", "<h4>Заказ успешно проведен</h4>Сумма заказа: <strong>"

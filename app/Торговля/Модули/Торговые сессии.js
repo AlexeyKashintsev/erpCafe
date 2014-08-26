@@ -21,6 +21,11 @@ function TradeSessions() {
         tradeOperationType = aType;
     }
     
+    self.getBonusCount = function(){
+        var perem = billing.getSumFromUserId(ClientPhone);
+        return billing.getSumFromUserId(ClientPhone);
+    }
+    
     self.initializeSession = function(aSession, aStartBalance) {
         model.qTradeSessionBalance.push({
             session_id  :   aSession,

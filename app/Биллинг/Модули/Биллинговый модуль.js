@@ -65,11 +65,10 @@ function BillModule() {
      */
     self.getSumFromUserId = function(anUserId){
         model.params.user_id = anUserId;
-        model.qBillAccount.requery(function(){
-            if(model.qBillAccount.length > 0)
-                return model.qBillAccount.cursor.currnt_sum;
-            else return false;
-        });
+        model.qBillAccount.requery();
+        if(model.qBillAccount.length > 0)
+            return model.qBillAccount.cursor.currnt_sum;
+        else return false;
     };
     /*
      * Получить баланс счета по ID
