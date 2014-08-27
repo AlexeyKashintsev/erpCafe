@@ -23,6 +23,6 @@ function BonusRateForItemsAdd() {
     }//GEN-LAST:event_qTradeItemsOnScrolled
 
     function qBonusRateForItemsEditOnChanged(evt) {//GEN-FIRST:event_qBonusRateForItemsEditOnChanged
-        model.save();
+        model.save();//TODO Кнопка сохранить. Вообще, для таких форм есть шаблон
     }//GEN-LAST:event_qBonusRateForItemsEditOnChanged
 }

@@ -5,9 +5,10 @@
  */ 
 function ClientServerModule() {
     var self = this, model = this.model;
-    var smsSender = new ServerModule("SmsSender");
+    var smsSender = new ServerModule("SmsSender"); //TODO внутри серверного модуля нельзя делать такие объявления,
+                                                   //При попытке запустить не в двухзвенке все нахрен сломается
     var userModule = new UserModule();
-    var adminFunctions = new ServerModule("AdminFunctions");
+    var adminFunctions = new ServerModule("AdminFunctions");//TODO тоже самое проверить во всех остальных модулях
     var billModule = new BillModule();
     var pass = null;
     
@@ -40,6 +41,11 @@ function ClientServerModule() {
     };
     
     function sendSMS(aName, aPhone, aPass){
+        //TODO Текст СМС сообщений должен генериться в SMS сендере, он так же должен там настраиваться
+        //Уважаемый  %ClientName%! Для входа в личный кабинет кофейни пройдите по ссылке: http://www.ru/ Ваш логин: %ClientLogin%
+        //И передавать объект вида {ClientName : "Вася", ClientLogin : "12345", ...}
+        //Потом аккуратненько поменять ;)
+        + aPhone + ", Ваш пароль: " + aPass;
         var Msg = "Уважаемый " + aName + "! Для входа в личный кабинет кофейни пройдите по ссылке: http://www.ru/ Ваш логин: "
         + aPhone + ", Ваш пароль: " + aPass;
         smsSender.sendSms(aPhone, Msg, null);
@@ -91,5 +97,5 @@ function ClientServerModule() {
     
     self.getBonusCount = function(aPhone){
         return billModule.getSumFromUserId(aPhone);
-    }
+    };
 }

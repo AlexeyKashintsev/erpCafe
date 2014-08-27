@@ -7,25 +7,18 @@
     <parameter description="" name="service_id" nullable="true" parameterMode="1" precision="0" scale="0" selectionForm="null" signed="true" size="0" type="2" typeName="NUMERIC"/>
   </parameters>
   <parametersEntity entityHeight="200" entityIconified="false" entityLocationX="12" entityLocationY="12" entityWidth="150"/>
-  <entity Name="qAddItemsOnOperation" Title="" entityHeight="95" entityIconified="false" entityId="140896477010156" entityLocationX="411" entityLocationY="346" entityWidth="150" queryId="qAddItemsOnOperation" tableName="" tableSchemaName=""/>
-  <entity Name="qChangedService" Title="" entityHeight="28" entityIconified="true" entityId="140853752113738" entityLocationX="410" entityLocationY="308" entityWidth="150" queryId="qChangedService" tableName="" tableSchemaName=""/>
-  <entity Name="qBillAccount" Title="" entityHeight="200" entityIconified="false" entityId="140791225424245" entityLocationX="210" entityLocationY="12" entityWidth="150" queryId="qBillAccount" tableName="" tableSchemaName=""/>
-  <entity Name="qItemBillCost" Title="" entityHeight="218" entityIconified="false" entityId="140896463679793" entityLocationX="575" entityLocationY="223" entityWidth="150" queryId="qItemBillCost" tableName="" tableSchemaName=""/>
-  <entity Name="qServiceList" Title="" entityHeight="200" entityIconified="false" entityId="140792486627128" entityLocationX="576" entityLocationY="7" entityWidth="150" queryId="qServiceList" tableName="" tableSchemaName=""/>
-  <entity Name="qDelServiceFromAccount" Title="" entityHeight="28" entityIconified="true" entityId="140836207636677" entityLocationX="409" entityLocationY="234" entityWidth="150" queryId="qDelServiceFromAccount" tableName="" tableSchemaName=""/>
-  <entity Name="qDelService" Title="" entityHeight="28" entityIconified="true" entityId="140844695091513" entityLocationX="409" entityLocationY="271" entityWidth="150" queryId="qDelService" tableName="" tableSchemaName=""/>
   <entity Name="qAddService" Title="" entityHeight="200" entityIconified="false" entityId="140791429774197" entityLocationX="394" entityLocationY="9" entityWidth="150" queryId="qAddService" tableName="" tableSchemaName=""/>
+  <entity Name="qBillAccount" Title="" entityHeight="200" entityIconified="false" entityId="140791225424245" entityLocationX="210" entityLocationY="12" entityWidth="150" queryId="qBillAccount" tableName="" tableSchemaName=""/>
+  <entity Name="qServiceList" Title="" entityHeight="200" entityIconified="false" entityId="140792486627128" entityLocationX="576" entityLocationY="7" entityWidth="150" queryId="qServiceList" tableName="" tableSchemaName=""/>
+  <entity Name="qDelServiceFromAccount" Title="" entityHeight="61" entityIconified="true" entityId="140836207636677" entityLocationX="408" entityLocationY="209" entityWidth="150" queryId="qDelServiceFromAccount" tableName="" tableSchemaName=""/>
+  <entity Name="qDelService" Title="" entityHeight="44" entityIconified="true" entityId="140844695091513" entityLocationX="403" entityLocationY="270" entityWidth="150" queryId="qDelService" tableName="" tableSchemaName=""/>
   <entity Name="qBillOperationsList" Title="" entityHeight="200" entityIconified="false" entityId="140802119915363" entityLocationX="14" entityLocationY="233" entityWidth="252" queryId="qBillOperationsList" tableName="" tableSchemaName=""/>
+  <entity Name="qChangedService" Title="" entityHeight="47" entityIconified="true" entityId="140853752113738" entityLocationX="407" entityLocationY="342" entityWidth="150" queryId="qChangedService" tableName="" tableSchemaName=""/>
+  <entity Name="qItemBillCost" Title="" entityHeight="218" entityIconified="false" entityId="140896463679793" entityLocationX="575" entityLocationY="223" entityWidth="150" queryId="qItemBillCost" tableName="" tableSchemaName=""/>
+  <entity Name="qAddItemsOnOperation" Title="" entityHeight="95" entityIconified="false" entityId="140896477010156" entityLocationX="410" entityLocationY="394" entityWidth="150" queryId="qAddItemsOnOperation" tableName="" tableSchemaName=""/>
   <relation leftEntityId="-1" leftEntityParameterName="user_id" rightEntityId="140791225424245" rightEntityParameterName="user_id"/>
   <relation leftEntityId="-1" leftEntityParameterName="service_id" rightEntityId="140792486627128" rightEntityParameterName="service_id"/>
   <relation leftEntityId="-1" leftEntityParameterName="account_id" rightEntityId="140791225424245" rightEntityParameterName="account_id"/>
   <relation leftEntityId="-1" leftEntityParameterName="operation_id" rightEntityId="140802119915363" rightEntityParameterName="operation_id"/>
-  <referenceRelation leftEntityFieldName="account_id" leftEntityId="140791429774197" rightEntityFieldName="bill_accounts_id" rightEntityId="140791225424245"/>
-  <referenceRelation leftEntityFieldName="item_id" leftEntityId="140896463679793" rightEntityFieldName="wh_items_id" rightEntityId="140896463679793"/>
-  <referenceRelation leftEntityFieldName="operation_type" leftEntityId="140802119915363" rightEntityFieldName="bill_operations_type_id" rightEntityId="140802119915363"/>
-  <referenceRelation leftEntityFieldName="service_id" leftEntityId="140791429774197" rightEntityFieldName="bill_services_id" rightEntityId="140792486627128"/>
-  <referenceRelation leftEntityFieldName="cost_id" leftEntityId="140896477010156" rightEntityFieldName="bill_item_cost_id" rightEntityId="140896463679793"/>
-  <referenceRelation leftEntityFieldName="operation_status" leftEntityId="140802119915363" rightEntityFieldName="bill_operations_status_id" rightEntityId="140802119915363"/>
-  <referenceRelation leftEntityFieldName="operation_id" leftEntityId="140896477010156" rightEntityFieldName="bill_operations_id" rightEntityId="140802119915363"/>
   <referenceRelation leftEntityFieldName="account_id" leftEntityId="140802119915363" rightEntityFieldName="bill_accounts_id" rightEntityId="140791225424245"/>
 </datamodel>
