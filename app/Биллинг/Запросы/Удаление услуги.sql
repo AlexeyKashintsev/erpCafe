@@ -3,6 +3,7 @@
  * @author minya92
  * @name qDelService
  * @manual
+ * @public
  */ 
 Delete
 From bill_services t1

@@ -4,6 +4,7 @@
  * @author minya92
  * @name qBillOperationsList
  * @writable bill_operations
+ * @public
  */ 
 Select * 
 From bill_operations t1

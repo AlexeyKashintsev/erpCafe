@@ -3,6 +3,7 @@
  * @author minya92
  * @name qDelBillCost
  * @manual
+ * @public
  */
 Delete 
 From bill_item_cost

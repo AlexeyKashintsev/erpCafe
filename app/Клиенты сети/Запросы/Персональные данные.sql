@@ -2,6 +2,7 @@
  *
  * @author stipjey
  * @name qPersonalData
+ * @public
  */ 
 Select client_id, usr_name, first_name
 , middle_name, last_name, birthday

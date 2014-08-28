@@ -10,7 +10,7 @@ function ListBillAndServices() {
     var createServiceForm = new CreateServiceForm();
     var addBillOperation = new AddBillOperation();
     var historyOperations = new HistoryOperations();
-    //var addBalanceForm = new AddBalanceForm();
+    var billMeasures = new BillMeasures();
     var billItems = new BillItems();
     var billBuyItems = new BillBuyItems();
     
@@ -81,4 +81,8 @@ function ListBillAndServices() {
     function buttonActionPerformed(evt) {//GEN-FIRST:event_buttonActionPerformed
         billItems.showModal();
     }//GEN-LAST:event_buttonActionPerformed
+
+    function btnBillMeasuresActionPerformed(evt) {//GEN-FIRST:event_btnBillMeasuresActionPerformed
+        billMeasures.showModal();
+    }//GEN-LAST:event_btnBillMeasuresActionPerformed
 }

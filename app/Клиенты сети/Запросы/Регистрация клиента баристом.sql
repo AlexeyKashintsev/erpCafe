@@ -3,6 +3,7 @@
  * @author stipjey
  * @name qClientRegistration
  * @writable client_personal_data
+ * @public
  */ 
 Select t.client_id, t.usr_name, t.email
 , t.reg_date 

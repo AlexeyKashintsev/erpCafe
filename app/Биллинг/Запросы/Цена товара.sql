@@ -3,6 +3,7 @@
  * @author minya92
  * @name qItemBillCost
  * @writable bill_item_cost
+ * @public
  */ 
 Select * ,
 false as selected, 1 as item_count

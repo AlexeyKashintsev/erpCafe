@@ -2,6 +2,7 @@
  *
  * @author minya92
  * @name qAccountType
+ * @public
  */ 
 Select * 
 From bill_account_types t1

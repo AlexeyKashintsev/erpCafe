@@ -2,6 +2,7 @@
  *
  * @author stipjey
  * @name qGetBonusCategories
+ * @public
  */ 
 Select * 
 From client_bonus_category t1

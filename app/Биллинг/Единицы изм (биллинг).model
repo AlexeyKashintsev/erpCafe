@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?><datamodel>
+  <parametersEntity entityHeight="200" entityIconified="false" entityLocationX="12" entityLocationY="12" entityWidth="150"/>
+  <entity Name="queryMeasures" Title="" entityHeight="200" entityIconified="false" entityId="140922741380046" entityLocationX="379" entityLocationY="18" entityWidth="150" queryId="queryMeasures" tableName="" tableSchemaName=""/>
+  <entity Name="qBillMeasures" Title="" entityHeight="200" entityIconified="false" entityId="140922668354368" entityLocationX="184" entityLocationY="13" entityWidth="150" queryId="qBillMeasures" tableName="" tableSchemaName=""/>
+  <referenceRelation leftEntityFieldName="item_measure" leftEntityId="140922668354368" rightEntityFieldName="wh_measures_id" rightEntityId="140922741380046"/>
+</datamodel>

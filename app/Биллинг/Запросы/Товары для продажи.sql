@@ -2,6 +2,7 @@
  *
  * @author minya92
  * @name qBillItems
+ * @public
  */ 
 Select * ,
 t2.item_cost as new_cost

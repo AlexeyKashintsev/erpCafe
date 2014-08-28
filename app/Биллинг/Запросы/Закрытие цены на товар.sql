@@ -3,6 +3,7 @@
  * @author minya92
  * @name qCloseItemCost
  * @manual
+ * @public
  */ 
 
 UPDATE bill_item_cost

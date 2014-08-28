@@ -2,6 +2,7 @@
  *
  * @author minya92
  * @name qServiceListByAccount
+ * @public
  */ 
 Select * 
 From bill_services t1

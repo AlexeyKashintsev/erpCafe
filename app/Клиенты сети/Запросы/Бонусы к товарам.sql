@@ -3,6 +3,7 @@
  * @author stipjey
  * @name qBonusRateForItemsEdit
  * @writable bonus_rate_for_trade_items
+ * @public
  */ 
 Select t.bonus_rate_for_trade_items_id, t2.category_description, t.bonus_rate
 , t1.item_name, t.trade_item, t.client_bonus_category 
