@@ -5,5 +5,54 @@
   <widget name="lblBonusBillCount" parent="Form" prefHeight="17px" prefWidth="264px" type="LabelDesignInfo">
     <constraints height="17px" left="60px" top="96px" type="MarginConstraintsDesignInfo" width="264px"/>
   </widget>
+  <widget name="modelGrid" parent="Form" prefHeight="132px" prefWidth="324px" type="DbGridDesignInfo">
+    <treeDesignInfo/>
+    <rowsColumnsDesignInfo>
+      <rowsDatasource/>
+    </rowsColumnsDesignInfo>
+    <column name="colDate" title="Дата">
+      <columnsDatasource/>
+      <columnsDisplayField/>
+      <cellsDatasource/>
+      <cellDesignInfo>
+        <rowsKeyField/>
+        <columnsKeyField/>
+        <cellValueField/>
+      </cellDesignInfo>
+      <headerStyle>
+        <nativeFont name="Ubuntu" size="15"/>
+      </headerStyle>
+      <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
+    </column>
+    <column name="colSum" title="Сумма">
+      <columnsDatasource/>
+      <columnsDisplayField/>
+      <cellsDatasource/>
+      <cellDesignInfo>
+        <rowsKeyField/>
+        <columnsKeyField/>
+        <cellValueField/>
+      </cellDesignInfo>
+      <headerStyle>
+        <nativeFont name="Ubuntu" size="15"/>
+      </headerStyle>
+      <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
+    </column>
+    <column name="colBonus" title="Бонусов">
+      <columnsDatasource/>
+      <columnsDisplayField/>
+      <cellsDatasource/>
+      <cellDesignInfo>
+        <rowsKeyField/>
+        <columnsKeyField/>
+        <cellValueField/>
+      </cellDesignInfo>
+      <headerStyle>
+        <nativeFont name="Ubuntu" size="15"/>
+      </headerStyle>
+      <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
+    </column>
+    <constraints height="132px" left="36px" top="144px" type="MarginConstraintsDesignInfo" width="324px"/>
+  </widget>
   <layout type="MarginLayoutDesignInfo"/>
 </layout>

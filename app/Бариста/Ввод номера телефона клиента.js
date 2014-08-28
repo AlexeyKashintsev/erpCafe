@@ -13,6 +13,9 @@ function SetUserPhoneForm() {
         if (clientModule.checkIfPhoneExist(form.tfPhone.text)){
             self.tradeSession.setClientPhone(form.tfPhone.text);
             form.close();
+        } else if (clientReg.phoneField.text == ""){
+            self.tradeSession.setClientPhone(null);
+            form.close();
         } else {
             clientReg.phoneField.text = form.tfPhone.text;
             clientReg.showModal(function(aResult){

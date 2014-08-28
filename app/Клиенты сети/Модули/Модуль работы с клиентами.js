@@ -5,10 +5,10 @@
  */ 
 function ClientServerModule() {
     var self = this, model = this.model;
-    var smsSender = new ServerModule("SmsSender"); //TODO внутри серверного модуля нельзя делать такие объявления,
-                                                   //При попытке запустить не в двухзвенке все нахрен сломается
+    var smsSender = new SmsSender(); 
+                                                 
     var userModule = new UserModule();
-    var adminFunctions = new ServerModule("AdminFunctions");//TODO тоже самое проверить во всех остальных модулях
+    var adminFunctions = new AdminFunctions();
     var billModule = new BillModule();
     var pass = null;
     
