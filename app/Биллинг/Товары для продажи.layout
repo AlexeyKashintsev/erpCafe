@@ -1,20 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?><layout defaultCloseOperation="2" name="Form" prefHeight="360px" prefWidth="572px">
   <widget deletable="false" editable="false" insertable="false" name="modelGrid" parent="Form" prefHeight="300px" prefWidth="204px" type="DbGridDesignInfo">
-    <column name="colType_description" title="Тип товара">
-      <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
-      <columnsDatasource/>
-      <columnsDisplayField/>
-      <cellsDatasource/>
-      <cellDesignInfo>
-        <rowsKeyField/>
-        <columnsKeyField/>
-        <cellValueField/>
-      </cellDesignInfo>
-      <headerStyle>
-        <nativeFont name="Tahoma" size="11"/>
-      </headerStyle>
-      <datamodelElement entityId="140861160037845" fieldName="type_description"/>
-    </column>
     <rowsColumnsDesignInfo>
       <rowsDatasource entityId="140861160037845" field="false"/>
     </rowsColumnsDesignInfo>
@@ -22,43 +7,76 @@
       <unaryLinkField entityId="140861160037845" fieldName="parent_type"/>
       <paramSourceField entityId="140861160037845" fieldName="wh_item_types_id"/>
     </treeDesignInfo>
+    <column name="colType_description" title="Тип товара">
+      <headerStyle>
+        <nativeFont name="Tahoma" size="11"/>
+      </headerStyle>
+      <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
+      <datamodelElement entityId="140861160037845" fieldName="type_description"/>
+      <columnsDatasource/>
+      <columnsDisplayField/>
+      <cellsDatasource/>
+      <cellDesignInfo>
+        <rowsKeyField/>
+        <columnsKeyField/>
+        <cellValueField/>
+      </cellDesignInfo>
+    </column>
     <constraints height="300px" left="0px" top="0px" type="MarginConstraintsDesignInfo" width="204px"/>
   </widget>
   <widget deletable="false" insertable="false" name="modelGrid1" parent="Form" prefHeight="300px" prefWidth="372px" type="DbGridDesignInfo">
-    <column name="colItem_name" readonly="true" title="Название">
-      <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
-      <columnsDatasource/>
-      <columnsDisplayField/>
-      <cellsDatasource/>
-      <cellDesignInfo>
-        <rowsKeyField/>
-        <columnsKeyField/>
-        <cellValueField/>
-      </cellDesignInfo>
-      <headerStyle>
-        <nativeFont name="Tahoma" size="11"/>
-      </headerStyle>
-      <datamodelElement entityId="140861205200288" fieldName="item_name"/>
-    </column>
-    <column name="colNew_cost" title="Цена">
-      <controlInfo classHint="DbSpinDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
-      <columnsDatasource/>
-      <columnsDisplayField/>
-      <cellsDatasource/>
-      <cellDesignInfo>
-        <rowsKeyField/>
-        <columnsKeyField/>
-        <cellValueField/>
-      </cellDesignInfo>
-      <headerStyle>
-        <nativeFont name="Tahoma" size="11"/>
-      </headerStyle>
-      <datamodelElement entityId="140861205200288" fieldName="new_cost"/>
-    </column>
     <rowsColumnsDesignInfo>
       <rowsDatasource entityId="140861205200288" field="false"/>
     </rowsColumnsDesignInfo>
     <treeDesignInfo/>
+    <column name="colItem_name" readonly="true" title="Название">
+      <headerStyle>
+        <nativeFont name="Tahoma" size="11"/>
+      </headerStyle>
+      <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
+      <datamodelElement entityId="140861205200288" fieldName="item_name"/>
+      <columnsDatasource/>
+      <columnsDisplayField/>
+      <cellsDatasource/>
+      <cellDesignInfo>
+        <rowsKeyField/>
+        <columnsKeyField/>
+        <cellValueField/>
+      </cellDesignInfo>
+    </column>
+    <column name="billMeasure" title="Тип товара">
+      <headerStyle>
+        <nativeFont name="Tahoma" size="11"/>
+      </headerStyle>
+      <controlInfo classHint="DbComboDesignInfo" name="view" prefHeight="0px" prefWidth="0px">
+        <valueField entityId="140956834906939" fieldName="bill_measures_id"/>
+        <displayField entityId="140956834906939" fieldName="bill_measure_desc"/>
+      </controlInfo>
+      <datamodelElement entityId="140861205200288" fieldName="billMeasure"/>
+      <columnsDatasource/>
+      <columnsDisplayField/>
+      <cellsDatasource/>
+      <cellDesignInfo>
+        <rowsKeyField/>
+        <columnsKeyField/>
+        <cellValueField/>
+      </cellDesignInfo>
+    </column>
+    <column name="colNew_cost" title="Цена">
+      <headerStyle>
+        <nativeFont name="Tahoma" size="11"/>
+      </headerStyle>
+      <controlInfo classHint="DbSpinDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
+      <datamodelElement entityId="140861205200288" fieldName="new_cost"/>
+      <columnsDatasource/>
+      <columnsDisplayField/>
+      <cellsDatasource/>
+      <cellDesignInfo>
+        <rowsKeyField/>
+        <columnsKeyField/>
+        <cellValueField/>
+      </cellDesignInfo>
+    </column>
     <constraints height="300px" left="204px" top="0px" type="MarginConstraintsDesignInfo" width="372px"/>
   </widget>
   <widget actionPerformed="buttonActionPerformed" name="button" parent="Form" prefHeight="23px" prefWidth="204px" text="Сохранить" type="ButtonDesignInfo">

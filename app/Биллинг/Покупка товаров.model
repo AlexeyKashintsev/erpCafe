@@ -5,6 +5,8 @@
   <parametersEntity entityHeight="200" entityIconified="false" entityLocationX="12" entityLocationY="12" entityWidth="150"/>
   <entity Name="qItemBillCost" Title="" entityHeight="230" entityIconified="false" entityId="140869374329850" entityLocationX="223" entityLocationY="7" entityWidth="150" onAfterChange="qItemBillCostOnChanged" queryId="qItemBillCost" tableName="" tableSchemaName=""/>
   <entity Name="qBillAccount" Title="" entityHeight="200" entityIconified="false" entityId="140871115333228" entityLocationX="11" entityLocationY="228" entityWidth="150" queryId="qBillAccount" tableName="" tableSchemaName=""/>
+  <entity Name="qBillMeasures" Title="" entityHeight="200" entityIconified="false" entityId="140956941526179" entityLocationX="234" entityLocationY="286" entityWidth="150" queryId="qBillMeasures" tableName="" tableSchemaName=""/>
   <relation leftEntityId="-1" leftEntityParameterName="account_id" rightEntityId="140871115333228" rightEntityParameterName="account_id"/>
+  <referenceRelation leftEntityFieldName="bill_measure" leftEntityId="140869374329850" rightEntityFieldName="bill_measures_id" rightEntityId="140956941526179"/>
   <referenceRelation leftEntityFieldName="item_id" leftEntityId="140869374329850" rightEntityFieldName="wh_items_id" rightEntityId="140869374329850"/>
 </datamodel>

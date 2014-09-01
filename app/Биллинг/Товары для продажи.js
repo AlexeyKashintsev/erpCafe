@@ -22,11 +22,13 @@ function BillItems() {
                     model.qItemBillCost.cursor.item_id = model.qBillItems.cursor.wh_items_id;
                     model.qItemBillCost.cursor.item_cost = new_cost;
                     model.qItemBillCost.cursor.start_date= new Date();
+                    model.qItemBillCost.cursor.bill_measure = model.qBillItems.cursor.billMeasure;
                } else {
                     model.qItemBillCost.insert();
                     model.qItemBillCost.cursor.item_id = model.qBillItems.cursor.wh_items_id;
                     model.qItemBillCost.cursor.start_date= new Date();
                     model.qItemBillCost.cursor.end_date = new Date();
+                     model.qItemBillCost.cursor.bill_measure = model.qBillItems.cursor.billMeasure;
                }
                model.save();
            }

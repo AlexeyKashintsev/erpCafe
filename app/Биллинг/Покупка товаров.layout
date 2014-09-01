@@ -5,64 +5,82 @@
     </rowsColumnsDesignInfo>
     <treeDesignInfo/>
     <column name="colItem_name" readonly="true" title="Товар">
-      <columnsDatasource/>
-      <columnsDisplayField/>
-      <cellsDatasource/>
-      <cellDesignInfo>
-        <columnsKeyField/>
-        <cellValueField/>
-        <rowsKeyField/>
-      </cellDesignInfo>
+      <headerStyle>
+        <nativeFont name="Tahoma" size="11"/>
+      </headerStyle>
       <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
       <datamodelElement entityId="140869374329850" fieldName="item_name"/>
+      <columnsDatasource/>
+      <columnsDisplayField/>
+      <cellsDatasource/>
+      <cellDesignInfo>
+        <rowsKeyField/>
+        <columnsKeyField/>
+        <cellValueField/>
+      </cellDesignInfo>
+    </column>
+    <column name="billMeasure" readonly="true" title="Ед. изм">
       <headerStyle>
         <nativeFont name="Tahoma" size="11"/>
       </headerStyle>
+      <controlInfo classHint="DbComboDesignInfo" name="view" prefHeight="0px" prefWidth="0px">
+        <valueField entityId="140956941526179" fieldName="bill_measures_id"/>
+        <displayField entityId="140956941526179" fieldName="bill_measure_desc"/>
+      </controlInfo>
+      <datamodelElement entityId="140869374329850" fieldName="bill_measure"/>
+      <columnsDatasource/>
+      <columnsDisplayField/>
+      <cellsDatasource/>
+      <cellDesignInfo>
+        <rowsKeyField/>
+        <columnsKeyField/>
+        <cellValueField/>
+      </cellDesignInfo>
     </column>
     <column name="colItem_cost" readonly="true" title="Цена">
-      <columnsDatasource/>
-      <columnsDisplayField/>
-      <cellsDatasource/>
-      <cellDesignInfo>
-        <columnsKeyField/>
-        <cellValueField/>
-        <rowsKeyField/>
-      </cellDesignInfo>
+      <headerStyle>
+        <nativeFont name="Tahoma" size="11"/>
+      </headerStyle>
       <controlInfo classHint="DbSpinDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
       <datamodelElement entityId="140869374329850" fieldName="item_cost"/>
-      <headerStyle>
-        <nativeFont name="Tahoma" size="11"/>
-      </headerStyle>
+      <columnsDatasource/>
+      <columnsDisplayField/>
+      <cellsDatasource/>
+      <cellDesignInfo>
+        <rowsKeyField/>
+        <columnsKeyField/>
+        <cellValueField/>
+      </cellDesignInfo>
     </column>
     <column name="colSelected" title="Купить">
-      <columnsDatasource/>
-      <columnsDisplayField/>
-      <cellsDatasource/>
-      <cellDesignInfo>
-        <columnsKeyField/>
-        <cellValueField/>
-        <rowsKeyField/>
-      </cellDesignInfo>
+      <headerStyle>
+        <nativeFont name="Tahoma" size="11"/>
+      </headerStyle>
       <controlInfo classHint="DbCheckDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
       <datamodelElement entityId="140869374329850" fieldName="selected"/>
-      <headerStyle>
-        <nativeFont name="Tahoma" size="11"/>
-      </headerStyle>
-    </column>
-    <column name="colItem_count" title="Кол-во">
       <columnsDatasource/>
       <columnsDisplayField/>
       <cellsDatasource/>
       <cellDesignInfo>
+        <rowsKeyField/>
         <columnsKeyField/>
         <cellValueField/>
-        <rowsKeyField/>
       </cellDesignInfo>
-      <controlInfo classHint="DbSpinDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
-      <datamodelElement entityId="140869374329850" fieldName="item_count"/>
+    </column>
+    <column name="colItem_count" title="Кол-во">
       <headerStyle>
         <nativeFont name="Tahoma" size="11"/>
       </headerStyle>
+      <controlInfo classHint="DbSpinDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
+      <datamodelElement entityId="140869374329850" fieldName="item_count"/>
+      <columnsDatasource/>
+      <columnsDisplayField/>
+      <cellsDatasource/>
+      <cellDesignInfo>
+        <rowsKeyField/>
+        <columnsKeyField/>
+        <cellValueField/>
+      </cellDesignInfo>
     </column>
     <constraints bottom="89px" left="0px" right="-3px" top="0px" type="MarginConstraintsDesignInfo"/>
   </widget>

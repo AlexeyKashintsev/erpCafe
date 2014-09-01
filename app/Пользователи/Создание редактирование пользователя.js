@@ -6,6 +6,7 @@
 function UserCreateAndEditForm() {
     var self = this, model = this.model, form = this;
     var adminFunctions = new ServerModule("AdminFunctions");
+    var billModule = new ServerModule("BillModule");
     var changePassView = new ChangePassView();
     var userModule = new UserModule();
     var userNew = false;
@@ -44,7 +45,9 @@ function UserCreateAndEditForm() {
             model.createFrancizerUser.franchazi_id = model.params.franchazi_id;
             model.createFrancizerUser.user_name = form.tfLogin.text;
             model.createFrancizerUser.franc_users_active = true;
-            
+            //Создание счетов для франчайзе
+            //billModule.createBillAccount(model.params.franchazi_id, billModule.ACCOUNT_TYPE_DEFAULT, 0);
+            //billModule.createBillAccount(model.params.franchazi_id, billModule.ACCOUNT_TYPE_CREDIT, 0);
             model.save(function(){
                 form.close(true);
             });
