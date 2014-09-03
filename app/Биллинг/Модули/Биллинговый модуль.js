@@ -64,6 +64,7 @@ function BillModule() {
      * @returns {undefined}
      */
     self.getSumFromUserId = function(anUserId){
+        if (!anUserId) return 0;
         model.params.user_id = anUserId;
         model.qBillAccount.requery();
         if(model.qBillAccount.length > 0)

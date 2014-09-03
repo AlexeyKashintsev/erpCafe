@@ -19,12 +19,12 @@ function TradeSessions() {
     
     self.setTradeOperationType = function(aType){
         tradeOperationType = aType;
-    }
+    };
     
     self.getBonusCount = function(){
         var perem = billing.getSumFromUserId(ClientPhone);
         return billing.getSumFromUserId(ClientPhone);
-    }
+    };
     
     self.initializeSession = function(aSession, aStartBalance) {
         model.qTradeSessionBalance.push({
@@ -115,7 +115,7 @@ function TradeSessions() {
         }
         // Если мы в сессии,то
         if (model.params.session_id){
-            if (tradeOperationType == "money"){
+            if (tradeOperationType === "money"){
                 var BonusCount = 0;
                 var TradeOperationId = TradeOperationPushInCashBox(anOrderDetails.orderSum, clientModule.getBonusBill(ClientPhone));
                 // для всех товаров
@@ -137,7 +137,7 @@ function TradeSessions() {
                     billing.addBillOperation(clientModule.getBonusBill(ClientPhone), billing.OPERATION_ADD_BONUS, BonusCount);
                 }
             model.save();
-            } else if (tradeOperationType == "bonus"){ //Оплата бонусами
+            } else if (tradeOperationType === "bonus"){ //Оплата бонусами
                 //Получаем информацию о состоянии бунусного счета клиента
                 model.qBillAccount.params.user_id = ClientPhone;
                 model.qBillAccount.requery();

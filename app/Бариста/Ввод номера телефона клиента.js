@@ -10,11 +10,11 @@ function SetUserPhoneForm() {
     // TODO : place your code here
 
     function buttonActionPerformed(evt) {//GEN-FIRST:event_buttonActionPerformed
-        if (clientModule.checkIfPhoneExist(form.tfPhone.text)){
-            self.tradeSession.setClientPhone(form.tfPhone.text);
-            form.close();
-        } else if (clientReg.phoneField.text == ""){
+        if (form.tfPhone.text === ""){
             self.tradeSession.setClientPhone(null);
+            form.close();
+        } else if (clientModule.checkIfPhoneExist(form.tfPhone.text)){
+            self.tradeSession.setClientPhone(form.tfPhone.text);
             form.close();
         } else {
             clientReg.phoneField.text = form.tfPhone.text;
