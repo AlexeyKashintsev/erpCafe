@@ -76,10 +76,6 @@ self.showFormAsInternal = function(aForm) {
             dispForm    :   "TradePointsDashboard",
             selfGeneration  :   true
         },
-        franchazi   :   {
-            display     :   "Франчази",
-            dispForm    :   "SelectFranchaziAdminForm"
-        },
         users   :   {
             display     :   "Пользователи",
             dispForm    :   "FranchaziUsers"
