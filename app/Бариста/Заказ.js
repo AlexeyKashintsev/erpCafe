@@ -8,34 +8,34 @@ function OrderList(aParent) {
     self.orderDetails = {};
     self.tradeSession = null;
     var lastDiv = null;
-    var setPhone = new SetUserPhoneForm();
-    var choiceMethodOfPayment = new ChoiceMethodOfPayment();
+    //var setPhone = new Set-UserPhoneForm();
+    //var choiceMethodOfPayment = new Choice-MethodOfPayment();
     
     function alerter(anAlert, aType, aText, aClosable, aCloseTimeOut) {
-//        if (!anAlert) {
-//            var divEl = cmn.createElement("div", "alert " + aType, "actionPanel", null, lastDiv ? lastDiv : false);
-//            divEl.role = "alert";
-//            lastDiv = divEl;
-//        } else {
-//            divEl = anAlert;
-//            if (aType)
-//                divEl.className = "alert " + aType;
-//        }
-//        
-//        divEl.innerHTML = aText;
-//        
-//        function closeIt(){
-//            divEl.parentNode.removeChild(divEl);
-//            if (lastDiv===divEl) lastDiv = null;
-//        }
-//        
-//        if (aClosable)
-//            divEl.onclick = closeIt;
-//        
-//        if (aCloseTimeOut) 
-//            setTimeout(closeIt, aCloseTimeOut);
-//        
-//        return divEl;
+        if (!anAlert) {
+            var divEl = cmn.createElement("div", "alert " + aType, "actionPanel", null, lastDiv ? lastDiv : false);
+            divEl.role = "alert";
+            lastDiv = divEl;
+        } else {
+            divEl = anAlert;
+            if (aType)
+                divEl.className = "alert " + aType;
+        }
+        
+        divEl.innerHTML = aText;
+        
+        function closeIt(){
+            divEl.parentNode.removeChild(divEl);
+            if (lastDiv===divEl) lastDiv = null;
+        }
+        
+        if (aClosable)
+            divEl.onclick = closeIt;
+        
+        if (aCloseTimeOut) 
+            setTimeout(closeIt, aCloseTimeOut);
+        
+        return divEl;
     }
     
     function UnprocessedOrders() {

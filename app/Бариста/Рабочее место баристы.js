@@ -5,8 +5,7 @@
 function BaristaDesktop() {
     var self = this, model = this.model, form = this;
     self.tradeItems = {};
-    
-    self.session = new ServerModule('UserSession');
+    self.session = units.userSession;
     self.whSession = new ServerModule("WhSessionModule");
     self.tradeSession = new ServerModule("TradeSessions");
     self.userName = self.session.getUserName();    

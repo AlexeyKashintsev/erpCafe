@@ -5,6 +5,17 @@
 function BillItems() {
    var self = this, model = this.model, form = this;
    
+   /* !!! Пример управления
+   function addNewItem(aaa) {}
+   
+   self.actions = [
+       {    title   :   'Добавить товар',
+            glyph   :   'icon-add3',
+            action  :   addNewItem
+       }
+   ];
+   */
+   
    function saveItemsCost(){
        model.qBillItems.beforeFirst();
        while(model.qBillItems.next()){

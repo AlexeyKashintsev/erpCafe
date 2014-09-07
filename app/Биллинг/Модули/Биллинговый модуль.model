@@ -16,9 +16,9 @@
   <entity Name="qChangedService" Title="" entityHeight="47" entityIconified="true" entityId="140853752113738" entityLocationX="407" entityLocationY="342" entityWidth="150" queryId="qChangedService" tableName="" tableSchemaName=""/>
   <entity Name="qItemBillCost" Title="" entityHeight="218" entityIconified="false" entityId="140896463679793" entityLocationX="575" entityLocationY="223" entityWidth="150" queryId="qItemBillCost" tableName="" tableSchemaName=""/>
   <entity Name="qAddItemsOnOperation" Title="" entityHeight="95" entityIconified="false" entityId="140896477010156" entityLocationX="410" entityLocationY="394" entityWidth="150" queryId="qAddItemsOnOperation" tableName="" tableSchemaName=""/>
+  <relation leftEntityId="-1" leftEntityParameterName="operation_id" rightEntityId="140802119915363" rightEntityParameterName="operation_id"/>
   <relation leftEntityId="-1" leftEntityParameterName="user_id" rightEntityId="140791225424245" rightEntityParameterName="user_id"/>
   <relation leftEntityId="-1" leftEntityParameterName="service_id" rightEntityId="140792486627128" rightEntityParameterName="service_id"/>
   <relation leftEntityId="-1" leftEntityParameterName="account_id" rightEntityId="140791225424245" rightEntityParameterName="account_id"/>
-  <relation leftEntityId="-1" leftEntityParameterName="operation_id" rightEntityId="140802119915363" rightEntityParameterName="operation_id"/>
   <referenceRelation leftEntityFieldName="account_id" leftEntityId="140802119915363" rightEntityFieldName="bill_accounts_id" rightEntityId="140791225424245"/>
 </datamodel>

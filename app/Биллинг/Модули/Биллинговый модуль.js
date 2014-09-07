@@ -6,7 +6,7 @@
  */ 
 function BillModule() {
     var self = this, model = this.model;
-    var eventProcessor = new ServerModule("EventProcessor");
+    var eventProcessor = new EventProcessor();
     
     self.ERROR_LOST_MONEY = false;
     // Типы операций

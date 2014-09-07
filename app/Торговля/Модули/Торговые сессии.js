@@ -13,16 +13,16 @@ function TradeSessions() {
     var ClientPhone = null;
     var tradeOperationType = "money";
     
-    self.setClientPhone = function(aPhone){
+    self.setClientPhone = function(aPhone){//TODO Убрать в модуль работы с клиентами
         ClientPhone = aPhone;
     };
     
-    self.setTradeOperationType = function(aType){
+    self.setTradeOperationType = function(aType){//TODO Зло^ использовать меч света
         tradeOperationType = aType;
     };
     
-    self.getBonusCount = function(){
-        var perem = billing.getSumFromUserId(ClientPhone);
+    self.getBonusCount = function(){//TODO Тоже самое
+        var perem = billing.getSumFromUserId(ClientPhone);//Сонный индус писал?
         return billing.getSumFromUserId(ClientPhone);
     };
     
@@ -52,7 +52,7 @@ function TradeSessions() {
         return model.qOpenedSession.org_session_id;
     }
     
-    function TradeOperationPushInCashBox(anOrderSum, aClientId){
+    function TradeOperationAddToCashBox(anOrderSum, aClientId){
         model.qTradeOperationBySession.push({
             operation_sum    : anOrderSum,
             operation_date   : new Date(),
@@ -71,20 +71,27 @@ function TradeSessions() {
         });
     }
     
+    
+    /*
+     * Расчет потребления складских позиций
+     */
     function WhItemsCalculation (anItemId, aQuantity){
         var WhItems = [];
         model.qContents.params.trade_item_id = anItemId;
         model.qContents.execute();
         model.qContents.beforeFirst();
         while (model.qContents.next()){
-            if (WhItems[model.qContents.cursor.wh_item]){
-                anWH_items[model.qContents.cursor.wh_item] += model.qContents.cursor.usage_quantity * aQuantity;
+            if (WhItems[model.qContents.cursor.wh_item]){///Что-то здесь поправил!!!!! TODO Проверить
+                WhItems[model.qContents.cursor.wh_item] += model.qContents.cursor.usage_quantity * aQuantity;
             } else {
                 WhItems[model.qContents.cursor.wh_item] = model.qContents.cursor.usage_quantity * aQuantity;
             }
         }
         return WhItems;
     }
+    
+    //TODO Написать функцию возвращающую список всех товаров на точке со всем и возможными бонусами
+    //Обращение к БД всего один раз + передача списка доступных товаров на сторону клента (см tradeItemsByTradePointWithCost)
     
     function getCountBonusesByItem(anItem){
         model.qBonusRateForItemsEdit.params.item_id = anItem;
@@ -113,11 +120,12 @@ function TradeSessions() {
         if (!model.params.session_id){
             model.params.session_id = getCurrentSession();
         }
+        //TODO написать всю программу на русском языке, убрать все что не начинается с //
         // Если мы в сессии,то
         if (model.params.session_id){
             if (tradeOperationType === "money"){
                 var BonusCount = 0;
-                var TradeOperationId = TradeOperationPushInCashBox(anOrderDetails.orderSum, clientModule.getBonusBill(ClientPhone));
+                var TradeOperationId = TradeOperationAddToCashBox(anOrderDetails.orderSum, clientModule.getBonusBill(ClientPhone));
                 // для всех товаров
                 for (var i in anOrderDetails.orderItems) {
                     if (anOrderDetails.orderItems[i].itemId && anOrderDetails.orderItems[i].quantity){
@@ -145,7 +153,7 @@ function TradeSessions() {
                     //Если на счету достаточно бонусов
                     if (model.qBillAccount.cursor.currnt_sum >= anOrderDetails.orderSum){
                         //Добавляем нулевой приход в кассу
-                        var TradeOperationId = TradeOperationPushInCashBox(0);
+                        var TradeOperationId = TradeOperationAddToCashBox(0);
                         //Списываем все товары. Выполняем продажу.
                         for (var i in anOrderDetails.orderItems) {
                             if (anOrderDetails.orderItems[i].itemId && anOrderDetails.orderItems[i].quantity){
