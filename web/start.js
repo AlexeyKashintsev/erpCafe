@@ -5,8 +5,8 @@ if (!platypus) {
 	var platypus = {};
 }
 platypus.ready = function() {
-	require(['AutoEventsForm'], function(){
-		var f = new AutoEventsForm();
+	require(['DetalizeBillForm'], function(){
+		var f = new DetalizeBillForm();
 		f.show();
 	});
 };
