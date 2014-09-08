@@ -6,4 +6,4 @@
  * @public
  */ 
 Update bill_services_accounts SET changed = true 
-Where :service_id = bill_services_accounts.service_id
+Where :service_id = bill_services_accounts.account_id /* ПЕРЕДЕЛАТЬ */

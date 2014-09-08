@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?><Context path="/erpCafe">
-  <Realm className="org.apache.catalina.realm.DataSourceRealm" dataSourceName="cafeErp" digest="MD5" localDataSource="true" roleNameCol="GROUP_NAME" userCredCol="USR_PASSWD" userNameCol="USR_NAME" userRoleTable="MTD_GROUPS" userTable="MTD_USERS"/>
-  <Resource driverClassName="org.postgresql.Driver" name="TSG_home" password="tsgpswd" schema="tsg_main" type="javax.sql.DataSource" url="jdbc:postgresql://akashintsev.no-ip.biz:5432/TSG" username="tsg_main"/>
-  <Resource driverClassName="org.postgresql.Driver" name="cafeErp" password="cafeErp" schema="cafeErp" type="javax.sql.DataSource" url="jdbc:postgresql://localhost:5432/cafeErp" username="cafeErp"/>
-</Context>
