@@ -5,7 +5,7 @@
  * @public
  */ 
 function BillModule() {
-    var self = this, model = this.model;
+    var self = this, model = P.loadModel(this.constructor.name);
     var eventProcessor = new EventProcessor();
     
     self.ERROR_LOST_MONEY = false;

@@ -6,7 +6,7 @@
  */
 
 function template() {
-var self = this, model = this.model, form = this; 
+var self = this, model = P.loadModel(this.constructor.name), form = P.loadForm(this.constructor.name, model); 
 
 function btnReqActionPerformed(evt) {//GEN-FIRST:event_btnReqActionPerformed
     if (self.model.modified&&confirm('Сохранить изменения?')){

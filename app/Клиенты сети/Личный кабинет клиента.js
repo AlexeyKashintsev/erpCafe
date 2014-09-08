@@ -3,7 +3,7 @@
  * @author stipjey
  */
 function clientDesktop() {
-    var self = this, model = this.model, form = this;
+    var self = this, model = P.loadModel(this.constructor.name), form = P.loadForm(this.constructor.name, model);
     var ClientEditPersonalInfo = new clientEditPersonalInfo();
     var UserName = null;
     // TODO : place your code here

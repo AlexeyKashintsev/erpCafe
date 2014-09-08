@@ -3,7 +3,7 @@
  * @author minya92
  */
 function AddServiceForm() {
-    var self = this, model = this.model, form = this;
+    var self = this, model = P.loadModel(this.constructor.name), form = P.loadForm(this.constructor.name, model);
     var billModule = new ServerModule("BillModule");
     model.params.service_id = null;
     

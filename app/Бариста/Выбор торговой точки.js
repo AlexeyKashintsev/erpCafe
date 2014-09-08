@@ -3,7 +3,7 @@
  * @author Alexey
  */
 function TradePointSelector() {
-    var self = this, model = this.model, form = this;
+    var self = this, model = P.loadModel(this.constructor.name), form = P.loadForm(this.constructor.name, model);
 
     function buttonActionPerformed(evt) {//GEN-FIRST:event_buttonActionPerformed
         self.close(model.qTradeItemsByUser.org_trade_point_id);

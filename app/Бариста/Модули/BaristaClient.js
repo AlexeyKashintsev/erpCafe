@@ -4,7 +4,7 @@
  * @module
  */ 
 function BaristaClient() {
-    var self = this, model = this.model;
+    var self = this, model = P.loadModel(this.constructor.name);
     self.userSession = new ServerModule('UserSession');   
     
     function setSession(aSession) {

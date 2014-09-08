@@ -8,7 +8,7 @@
 function WhRevisionByBarista(aWhSessionModule) {
     var MSG_RESET_VALUES = "Cбросить значения?";
     var MSG_FAIL_VALIDATE_FORM_ERROR = "Вы заполнили не все поля!";
-    var self = this, model = this.model, form = this;
+    var self = this, model = P.loadModel(this.constructor.name), form = P.loadForm(this.constructor.name, model);
     var whSessionModule = aWhSessionModule ? aWhSessionModule : new ServerModule("WhSessionModule");
     
     //model.params.trade_point_id = 3;

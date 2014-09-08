@@ -5,7 +5,7 @@
  * @module
  */ 
 function EventProcessor() {
-    var self = this, model = this.model;
+    var self = this, model = P.loadModel(this.constructor.name);
     
     function success(aEventType, aEventData) {
         

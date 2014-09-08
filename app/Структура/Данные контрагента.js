@@ -4,7 +4,7 @@
  * @author Alexey
  */
 function ContragentDetailsForm() {
-    var self = this, model = this.model, form = this;
+    var self = this, model = P.loadModel(this.constructor.name), form = P.loadForm(this.constructor.name, model);
     model.params.contragent_id = 0;
     
     self.setContragentId = function(aContragentId){

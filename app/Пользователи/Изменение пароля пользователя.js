@@ -2,7 +2,7 @@
  * @name ChangePassView
 */
 function ChangePassView(){
-    var self = this, model = self.model, form = this;
+    var self = this, model = self.model, form = P.loadForm(this.constructor.name, model);
     var adminFunctions = new ServerModule("AdminFunctions");
     var userModule = new UserModule();
     var userName = null;

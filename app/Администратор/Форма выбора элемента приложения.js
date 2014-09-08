@@ -2,7 +2,7 @@
  * @name 132134455025048
  */
 function SelectElementAppView() {
-    var self = this, model = self.model, form = this;
+    var self = this, model = self.model, form = P.loadForm(this.constructor.name, model);
     var parentStyle = new Style();
     var entitiesStyles = new Array();
     entitiesStyles[10] = new Style(parentStyle);

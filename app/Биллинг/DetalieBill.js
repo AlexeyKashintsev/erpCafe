@@ -3,7 +3,7 @@
  * @author minya92
  */
 function DetalieBill() {
-    var self = this, model = this.model;
+    var self = this, model = P.loadModel(this.constructor.name);
     
     /**
      * Report's before render event handler.

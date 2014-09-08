@@ -7,7 +7,7 @@
 
 function SelectItemsInWH() {
 
-    var self = this, model = this.model, form = this;
+    var self = this, model = P.loadModel(this.constructor.name), form = P.loadForm(this.constructor.name, model);
 
     self.changes = [];
     self.autoChange = true;

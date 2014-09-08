@@ -3,7 +3,7 @@
  * @author stipjey
  */
 function SetUserPhoneForm() {
-    var self = this, model = this.model, form = this;
+    var self = this, model = P.loadModel(this.constructor.name), form = P.loadForm(this.constructor.name, model);
     self.tradeSession = null;
     var clientModule = new ClientServerModule();
     var clientReg = new ClientRegistrationByBarist();

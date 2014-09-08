@@ -4,7 +4,7 @@
  * @module
  */ 
 function UserModule() {
-    var self = this, model = this.model;
+    var self = this, model = P.loadModel(this.constructor.name);
     var adminFunctions = new ServerModule("AdminFunctions");
     //TODO сделать проверку может ли пользователь создавать пользователя с такой ролью
     

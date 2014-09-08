@@ -3,7 +3,7 @@
  * @author minya92
  */
 function FranchaziList() {
-    var self = this, model = this.model, form = this;
+    var self = this, model = P.loadModel(this.constructor.name), form = P.loadForm(this.constructor.name, model);
     var listBillAndServices = new ListBillAndServices();
     
     function qFranchaziListOnScrolled(evt) {//GEN-FIRST:event_qFranchaziListOnScrolled

@@ -3,7 +3,7 @@
  * @author minya92
  */
 function HistoryOperations() {
-    var self = this, model = this.model, form = this;
+    var self = this, model = P.loadModel(this.constructor.name), form = P.loadForm(this.constructor.name, model);
     
     self.account_id = 0;
     

@@ -2,7 +2,7 @@
  * @name UserView
 */
 function UserView(){
-    var self = this, model = self.model, form = this;
+    var self = this, model = self.model, form = P.loadForm(this.constructor.name, model);
     var changePassView = new ChangePassView();
     var rolesForm = new RolesForm();
     

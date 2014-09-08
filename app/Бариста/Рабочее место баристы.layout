@@ -9,14 +9,17 @@
   <widget name="pnlLeft" parent="splitPane" prefHeight="413px" prefWidth="348px" type="PanelDesignInfo">
     <layout type="MarginLayoutDesignInfo"/>
   </widget>
-  <widget actionPerformed="btnSessionCloseActionPerformed" name="btnSessionClose" parent="Form" prefHeight="48px" prefWidth="158px" text="Закрыть смену" type="ButtonDesignInfo">
+  <widget name="btnSessionClose" parent="Form" prefHeight="48px" prefWidth="158px" text="Закрыть смену" type="ButtonDesignInfo">
     <constraints height="48px" right="8px" top="0px" type="MarginConstraintsDesignInfo" width="158px"/>
   </widget>
-  <widget actionPerformed="btnWarehouseAddActionPerformed" name="btnWarehouseAdd" parent="Form" prefHeight="48px" prefWidth="158px" text="Пополнить склад" type="ButtonDesignInfo">
+  <widget name="btnWarehouseAdd" parent="Form" prefHeight="48px" prefWidth="158px" text="Пополнить склад" type="ButtonDesignInfo">
     <constraints height="48px" right="164px" top="0px" type="MarginConstraintsDesignInfo" width="158px"/>
   </widget>
-  <widget actionPerformed="btnNewClientActionPerformed" name="btnNewClient" parent="Form" prefHeight="48px" prefWidth="216px" text="Зарегистрировать клиента" type="ButtonDesignInfo">
+  <widget name="btnNewClient" parent="Form" prefHeight="48px" prefWidth="216px" text="Зарегистрировать клиента" type="ButtonDesignInfo">
     <constraints height="48px" left="0px" top="0px" type="MarginConstraintsDesignInfo" width="216px"/>
+  </widget>
+  <widget name="label" parent="Form" prefHeight="16px" prefWidth="30px" text="label" type="LabelDesignInfo">
+    <constraints height="16px" left="300px" top="12px" type="MarginConstraintsDesignInfo" width="30px"/>
   </widget>
   <layout type="MarginLayoutDesignInfo"/>
 </layout>

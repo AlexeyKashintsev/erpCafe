@@ -3,7 +3,7 @@
  * @author minya92
  */
 function BillBuyItems() {
-    var self = this, model = this.model, form = this;
+    var self = this, model = P.loadModel(this.constructor.name), form = P.loadForm(this.constructor.name, model);
     var detalizeBillForm = new DetalizeBillForm();
     self.cost = 0; self.items = [];
     model.params.account_id = 0;

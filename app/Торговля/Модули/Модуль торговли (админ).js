@@ -5,7 +5,7 @@
  * @public
  */ 
 function TradeAdminModule() {
-    var self = this, model = this.model;
+    var self = this, model = P.loadModel(this.constructor.name);
     var franchazi = null;
     
     //Возвращает true, если на точке или франшизе есть записи

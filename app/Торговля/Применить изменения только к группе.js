@@ -3,7 +3,7 @@
  * @author Alexey
  */
 function AskForChangesApplying() {
-    var self = this, model = this.model, form = this;
+    var self = this, model = P.loadModel(this.constructor.name), form = P.loadForm(this.constructor.name, model);
 
     function btnTPActionPerformed(evt) {//GEN-FIRST:event_btnTPActionPerformed
         self.close(1);

@@ -7,7 +7,7 @@
 
 function WarehouseItemList() {
 
-    var self = this, model = this.model, form = this;
+    var self = this, model = P.loadModel(this.constructor.name), form = P.loadForm(this.constructor.name, model);
     model.params.item_type = null;
    // model.params.franchazi_id = 1;
     self.setFranchazi = function(aFranchazi) {

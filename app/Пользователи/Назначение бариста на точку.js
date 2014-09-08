@@ -3,7 +3,7 @@
  * @author mike
  */
 function AddBaristaToTradePoint() {
-    var self = this, model = this.model, form = this;
+    var self = this, model = P.loadModel(this.constructor.name), form = P.loadForm(this.constructor.name, model);
     
     //model.params.franchazi_id = 3;
     self.setFranchazi = function(aFranchaziId){

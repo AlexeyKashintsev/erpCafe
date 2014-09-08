@@ -9,7 +9,7 @@ function WHSetAddMovement() {
 var MSG_SESSION_CLOSED_ERROR = "Сначала нужно открыть смену!";
 var MSG_SET_MOVEMENTS_ERROR  = "Произошла ошибка при добавлении товара!";
 
-var self = this, model = this.model, form = this;
+var self = this, model = P.loadModel(this.constructor.name), form = P.loadForm(this.constructor.name, model);
 
 var whSessionModule = new ServerModule("WhSessionModule");
 

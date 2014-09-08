@@ -1,3 +1,5 @@
 private.properties
 project.properties
-
+WEB-INF
+META-INF
+web/pwc

@@ -3,7 +3,8 @@
  * @author Alexey
  */
 function BaristaDesktop() {
-    var self = this, model = this.model, form = this;
+    var self = this, model = P.loadModel(this.constructor.name), form = P.loadForm(this.constructor.name, model);
+
     self.tradeItems = {};
     self.session = units.userSession;
     self.whSession = new ServerModule("WhSessionModule");
@@ -82,7 +83,7 @@ function BaristaDesktop() {
         setFranchazi(self.session.getFranchazi());
     }
     
-    function addItemSE(anItemData) {
+    /*function addItemSE(anItemData) {
        //requery(['ProductItem'],function(){
             var itemForm = new ProductItem(self);
             var itemPanel = new AnchorsPane();
@@ -91,7 +92,7 @@ function BaristaDesktop() {
             itemForm.showOnPanel(itemPanel);
             form.pnlRigth.add(itemPanel);
         //});
-    }
+    }*/
     
     function addItemBrowser(aData) {
         var itemContainer = cmn.createElement("div", "itemDescription col-xs-4 col-sm-3 col-lg-2 tt_" 
@@ -112,7 +113,7 @@ function BaristaDesktop() {
         };
     }
 
-    function tradeItemsByTradePointWithCostOnRequeried(evt) {//GEN-FIRST:event_tradeItemsByTradePointWithCostOnRequeried
+    model.tradeItemsByTradePointWithCost.onRequeried = function(evt) {
         model.tradeItemsByTradePointWithCost.beforeFirst();
         while (model.tradeItemsByTradePointWithCost.next()) {             
              if (self.browser) {
@@ -120,34 +121,36 @@ function BaristaDesktop() {
              } else
                  addItemSE(model.tradeItemsByTradePointWithCost.cursor);
         }
-    }//GEN-LAST:event_tradeItemsByTradePointWithCostOnRequeried
+    };
 
-    function getSessionsOnRequeried(evt) {//GEN-FIRST:event_getSessionsOnRequeried
+    model.getSessions.onRequeried = function(evt) {
         if (!model.getSessions.empty){
             model.tradeItemsByTradePointWithCost.params.trade_point_id =
                     model.getSessions.trade_point;
             //self.orderList.showOnPanel(self.browser ? "actionPanel" : form.pnlLeft);
             model.tradeItemsByTradePointWithCost.execute();
         }
-    }//GEN-LAST:event_getSessionsOnRequeried
+    }
 
-    function btnSessionCloseActionPerformed(evt) {//GEN-FIRST:event_btnSessionCloseActionPerformed
+    form.btnSessionClose.onActionPerformed = function(evt) {
         self.whSession.closeSession();
-        //var serverMod = new PlatypusServer();
-        //serverMod.
-                logout();
-    }//GEN-LAST:event_btnSessionCloseActionPerformed
+            logout();
+    };
 
-    function btnWarehouseAddActionPerformed(evt) {//GEN-FIRST:event_btnWarehouseAddActionPerformed
+    form.btnWarehouseAdd.onActionPerformed = function(event) {
         if (!whAdd) {
             whAdd = new WHSetAddMovement();
             whAdd.setTradePointId(model.getSessions.trade_point);
         }
         whAdd.show();
-    }//GEN-LAST:event_btnWarehouseAddActionPerformed
+    };
 
     if (self.browser) {
-        cmn.addTopRightControl("Прием товара", "plus-sign", btnWarehouseAddActionPerformed);
-        cmn.addTopRightControl("Закрыть смену", "log-out", btnSessionCloseActionPerformed);
+        cmn.addTopRightControl("Прием товара", "plus-sign", form.btnWarehouseAdd.onActionPerformed);
+        cmn.addTopRightControl("Закрыть смену", "log-out", form.btnSessionClose.onActionPerformed);
     }
+    
+    self.show = function() {
+        form.show();
+    };
 }

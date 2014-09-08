@@ -4,7 +4,7 @@
  * @rolesAllowed admin franchazi
  */
 function UserCreateAndEditForm() {
-    var self = this, model = this.model, form = this;
+    var self = this, model = P.loadModel(this.constructor.name), form = P.loadForm(this.constructor.name, model);
     var adminFunctions = new ServerModule("AdminFunctions");
     var billModule = new ServerModule("BillModule");
     var changePassView = new ChangePassView();

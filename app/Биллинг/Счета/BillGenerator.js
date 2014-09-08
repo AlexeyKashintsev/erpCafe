@@ -4,7 +4,7 @@
  * @public
  */
 function BillGenerator() {
-    var self = this, model = this.model;
+    var self = this, model = P.loadModel(this.constructor.name);
 
     units.billApi = new ServerModule('BillApi');
     function createBill() {

@@ -5,7 +5,7 @@
  * @public
  */ 
 function getUserSession() {
-    var self = this, model = this.model;
+    var self = this, model = P.loadModel(this.constructor.name);
     
     return new ServerModule('UserSession');
 }
