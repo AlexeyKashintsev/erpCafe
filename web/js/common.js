@@ -145,7 +145,7 @@ platypus.ready = function() {
                         break;
                     case 'barista':
                         require(['BaristaDesktop'], function(){
-                                units.bd = new BaristaDesktop();
+                            units.bd = new BaristaDesktop();
                         });
                         break;
                 }
