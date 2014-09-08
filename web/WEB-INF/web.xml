@@ -6,7 +6,7 @@
   </context-param>
   <context-param>
     <param-name>url</param-name>
-    <param-value>file:/C:/Users/minya92/cafeErp/</param-value>
+    <param-value>file:/Users/Alexey/NetBeansProjects/erpcafe/</param-value>
   </context-param>
   <listener>
     <listener-class>com.eas.server.httpservlet.PlatypusSessionsSynchronizer</listener-class>
@@ -16,7 +16,7 @@
     <servlet-class>com.eas.server.httpservlet.PlatypusHttpServlet</servlet-class>
     <load-on-startup>1</load-on-startup>
     <multipart-config>
-      <location>C:/Users/minya92/cafeErp/web/pub</location>
+      <location>/Users/Alexey/NetBeansProjects/erpcafe/web/pub</location>
       <max-file-size>2097152</max-file-size>
       <max-request-size>2165824</max-request-size>
       <file-size-threshold>1048576</file-size-threshold>
@@ -27,13 +27,13 @@
     <url-pattern>/application/*</url-pattern>
   </servlet-mapping>
   <resource-ref>
-    <description>jdbc:h2:tcp://localhost/~/test_db [sa на PUBLIC]</description>
-    <res-ref-name>test_db</res-ref-name>
+    <description>jdbc:postgresql://akashintsev.no-ip.biz:5432/TSG [tsg_main на tsg_main]</description>
+    <res-ref-name>TSG_home</res-ref-name>
     <res-type>javax.sql.DataSource</res-type>
     <res-auth>Container</res-auth>
   </resource-ref>
   <resource-ref>
-    <description>jdbc:postgresql://192.168.10.119:5432/cafeErp [cafeErp на cafeErp]</description>
+    <description>jdbc:postgresql://localhost:5432/cafeErp [cafeErp на cafeErp]</description>
     <res-ref-name>cafeErp</res-ref-name>
     <res-type>javax.sql.DataSource</res-type>
     <res-auth>Container</res-auth>

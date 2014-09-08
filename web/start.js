@@ -5,8 +5,8 @@ if (!platypus) {
 	var platypus = {};
 }
 platypus.ready = function() {
-	require(['BillMeasures'], function(){
-		var f = new BillMeasures();
+	require(['AutoEventsForm'], function(){
+		var f = new AutoEventsForm();
 		f.show();
 	});
 };
