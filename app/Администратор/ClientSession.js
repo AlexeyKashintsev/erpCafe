@@ -7,5 +7,5 @@
 function getUserSession() {
     var self = this, model = P.loadModel(this.constructor.name);
     
-    return new ServerModule('UserSession');
+    return new P.ServerModule('UserSession');
 }

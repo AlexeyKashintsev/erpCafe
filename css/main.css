@@ -1,0 +1,167 @@
+/* ### FONTS ### */
+@font-face { font-family: 'Segoe UI'; src: url('webFonts/segoe_ui_semibold.eot'); src: url('webFonts/segoe_ui_semibold.eot?#iefix') format('embedded-opentype'), url('webFonts/segoe_ui_semibold.svg#Segoe UI Semibold') format('svg'), url('webFonts/segoe_ui_semibold.woff') format('woff'), url('webFonts/segoe_ui_semibold.ttf') format('truetype'); font-weight: bold; font-style: normal;}
+@font-face { font-family: 'Segoe UI'; src: url('webFonts/segoe_ui_light.eot'); src: url('webFonts/segoe_ui_light.eot?#iefix') format('embedded-opentype'), url('webFonts/segoe_ui_light.svg#Segoe UI Semibold') format('svg'), url('webFonts/segoe_ui_light.woff') format('woff'), url('webFonts/segoe_ui_light.ttf') format('truetype'); font-weight: normal; font-style: normal;}
+
+/* ### COMMON ### */
+* {
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+*[class*="GMD"] {
+  -webkit-box-sizing: content-box;
+     -moz-box-sizing: content-box;
+          box-sizing: content-box;
+}
+*:before,
+*:after {
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body {
+  margin-top: 50px!important;
+  margin-bottom: 50px!important;
+}
+
+div.actionPanel {
+  background-color: #633611;
+}
+
+div.mainArea {
+  background-color: #FFECDB;
+}
+
+@media (min-width: 768px) {
+  div.actionPanel {
+    margin-top: 50px;
+    padding-bottom: 50px;
+    padding-top: 15px;
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    top: 0px;
+    height: 100%;
+    padding-right: 0px;
+    overflow-y: scroll;
+  }
+  
+  div.mainArea {
+    margin-top: 50px;
+    padding-bottom: 50px;
+    padding-top: 15px;
+    position: fixed;
+    bottom: 0px;
+    right: 0px;
+    top: 0px;
+    height: 100%;
+    overflow-y: scroll;
+  }
+}
+
+/* ### BARISTA ### */
+button {
+  border: none;
+  margin: 5px;
+  padding:  10px;
+}
+
+button.btnOk {
+  background-color: #26A65B;
+  color: white;
+  width: 75%;
+}
+
+button.btnCancel {
+  background-color: #E74C3C;
+  color: white;
+  width: 25%;
+}
+
+.itemDescription {
+    cursor: pointer;
+    max-height: 180px;
+    margin-bottom: 20px;
+}
+
+.itemDescription > div.panel {
+  height: 170px;
+}
+
+h1.itemCost {
+  margin-top: 0px!important;
+}
+
+.orderItems {
+  background-color: #D2D7D3;
+  text-align: center;
+  position: relative;
+  right: 0px;
+  padding: 10px 10px;
+}
+
+.orderItem  {
+  text-align: right;
+  background-color: white;
+  margin: 2px;
+  padding-bottom: 4px;
+  padding-right: 2px;
+  cursor: pointer;
+}
+
+.orderItem:hover  {
+  background-color: #E4F1FE;
+  color: #26A65B;
+}
+
+.orderItem h4 {
+  display: inline-block;
+  padding-right: 5px;
+  position: relative;
+  font-family: Segoe UI;
+}
+
+.orderItem h4.itemName {
+  position: absolute;
+  left: 20px;
+}
+
+/*.orderItem h4.itemCount {
+  position: absolute;
+  right: 50px;
+}*/
+
+.orderItem button {
+  padding: 0px;
+  margin: 0px;
+  top:  2px;
+  position: relative;
+  width:  25px;
+  height: 30px;
+  border: none;
+  background-color: rgba(0,0,0,0);
+}
+
+.orderItem button:hover {
+  color: #E74C3C;
+}
+
+.orderItem button > span {
+  font-size: large;
+  padding-top: 5px;
+}
+
+#orderDetails {
+  margin-left: 5px;
+}
+
+/* ### FRANCHAZI ### */
+.trade_point > .panel-heading > * {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.trade_point > .panel > .label {
+  width: 100%;
+}

@@ -22,7 +22,7 @@ function EventProcessor() {
     self.addEvent = function(aEventType, aEventData){
         model.eventById.push({
             event_type  :   aEventType,
-            event_user  :   self.principal.name,
+            event_user  :   P.principal.name,
             event_data  :   JSON.stringify(aEventData),
             event_date  :   new Date()
         });

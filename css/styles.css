@@ -1,0 +1,170 @@
+/* ### FONTS ### */
+@import "http://webfonts.ru/import/osans.css";
+@import "http://webfonts.ru/import/intro.css";
+@font-face {
+  font-family: 'Futura';
+  src: url("../fonts/FuturaLT.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal; 
+}
+/* ### BASIC ### */
+
+body {
+    font-family: 'Futura', "Trebuchet MS", Arial, sans-serif;
+}
+.succ_message {
+text-align: center;
+font-size: 24px;
+cursor: pointer;
+padding: 10px;
+position: absolute;
+width: 402px;
+background: #fff;
+top: 50%;
+left: 50%;
+z-index: 999;
+margin-left: -221px;
+margin-top: -100px;
+height: 248px;
+font-family: Open Sans;
+-webkit-box-shadow: 0 0 15px #000;
+        box-shadow: 0 0 15px #000;
+}
+.fancybox-inner .get_form{
+    margin-right: 0px!important;
+}
+.succ_message span {
+font-weight: bold;
+color: #F76809;
+display: block;
+font-size: 28px;
+padding-top: 66px;
+}
+.succ_message p {
+font-size: 18px;
+color: #422623;
+padding-top: 17px;
+line-height: 23px;
+}
+.succ_message p a{
+color: #422623;
+text-decoration: none;
+}
+.succ_message p a:hover{
+text-decoration: underline;
+}
+#wrapper {
+    background: #fff;
+    width: 100%;
+    font-size: 16px;
+    min-width: 1190px;
+}
+.main {
+    width: 1190px;
+    min-width: 1190px;
+    margin: 0 auto;
+}
+
+/* ### HEADER ### */
+header {
+    height: 100px;
+    background: #54312d;
+    color: #d4b596;
+    -webkit-box-shadow: 0px 2px 2px rgba(50, 50, 50, 0.75);
+    -moz-box-shadow:    0px 2px 2px rgba(50, 50, 50, 0.75);
+    box-shadow:         0px 2px 2px rgba(50, 50, 50, 0.75);
+}
+.header_inner {
+    height: 100%;
+}
+.header_logo, .header_title, .header_desc {
+    float: left;
+}
+.header_logo {
+    height: 166px;
+}
+.header_title p {
+    font-family: 'Intro', Arial, sans-serif;
+    font-size: 30px;
+    letter-spacing: 0;
+}
+.header_title {
+font-family: 'Open Sans', Arial, sans-serif;
+font-size: 13px;
+margin-left: 23px;
+margin-top: 26px;
+width: 300px;
+letter-spacing: .1px;
+}
+.header_desc {
+text-align: center;
+margin-left: 100px;
+color: #fff;
+font-family: 'Futura', 'Trebuchet MS', Arial, sans-serif;
+font-size: 22px;
+margin-top: 29px;
+letter-spacing: .7px;
+}
+.header_callback {
+float: right;
+text-align: right;
+}
+.header_phone {
+color: #fff;
+font-family: 'Futura', 'Trebuchet MS', Arial, sans-serif;
+font-size: 22px;
+margin-top: 29px;
+letter-spacing: .7px;
+}
+
+/* ### ORDER ITEMS ### */
+.order_title {
+  font-family: 'Futura', 'Trebuchet MS', Arial, sans-serif;
+  font-size: 22px;
+  margin-top: 29px;
+  letter-spacing: .7px;
+  text-align:align:  center;
+}
+
+.order {
+  margin-left: 300px;
+  max-width: 750px;
+}
+
+.items_4add {
+  margin: 20px 0px;
+}
+
+.listItem {
+  border-bottom: 1px solid #501000
+}
+
+.selection_result > button {
+  margin: 20px 0px;
+  border: none;
+  padding: 15px 30px;
+  font-size: 16px;
+}
+
+.selection_result > button.active {
+  background-color: #DC3E00;
+  color: #fff;  
+}
+
+.selection_result > button.active:hover {
+  background-color: #D03A00;
+}
+
+/* ### ORDER DETAILS ### */
+.question {
+  margin: 10px 20px;
+}
+
+.question > div {
+  margin:  10px 0px;
+}
+
+input.question {
+  font-size: 16px;
+  width: 400px;
+}

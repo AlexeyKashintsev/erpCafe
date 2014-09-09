@@ -130,7 +130,7 @@ function BaristaDesktop() {
             //self.orderList.showOnPanel(self.browser ? "actionPanel" : form.pnlLeft);
             model.tradeItemsByTradePointWithCost.execute();
         }
-    }
+    };
 
     form.btnSessionClose.onActionPerformed = function(evt) {
         self.whSession.closeSession();

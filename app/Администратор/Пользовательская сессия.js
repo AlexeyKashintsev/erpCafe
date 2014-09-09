@@ -14,7 +14,9 @@ function UserSession() {
     };
     
     self.login = function() {
-        model.params.userName = self.principal.name;
+        P.Logger.info('Try to login');
+        model.params.userName = P.principal.name;
+        P.Logger.info('User name: ' + model.params.userName);
         model.qFrancByUserName.requery();
         ep.addEvent('userLogin', null);
         return self.getUserRole();//model.params.franchaziId;
@@ -34,11 +36,14 @@ function UserSession() {
     };
     
     self.getUserRole = function() {
-        var roles = ['admin', 'franchazi', 'barista'];
+        /*var roles = ['admin', 'franchazi', 'barista'];
         for (var j in roles)
-            if (self.principal.hasRole(roles[j]))
-                break;
-        return roles[j];
+            if (P.principal.hasRole(roles[j]))
+                break;*/
+//        /return roles[j];
+        model.qRolesByUserName.requery();
+        P.Logger.info("Role: " + model.qRolesByUserName.cursor.group_name);
+        return model.qRolesByUserName.cursor.group_name;
     };
 
     function qFrancByUserNameOnRequeried(evt) {//GEN-FIRST:event_qFrancByUserNameOnRequeried
