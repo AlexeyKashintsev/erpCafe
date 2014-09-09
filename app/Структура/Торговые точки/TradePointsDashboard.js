@@ -92,8 +92,8 @@ function TradePointsDashboard() {
         //this.form.showOnPanel(this.commonData);
         
     };
-
-    function listTradePointsOnRequeried(evt) {//GEN-FIRST:event_listTradePointsOnRequeried
-        
-    }//GEN-LAST:event_listTradePointsOnRequeried
+    
+    self.show = function() {
+        form.show();
+    };
 }

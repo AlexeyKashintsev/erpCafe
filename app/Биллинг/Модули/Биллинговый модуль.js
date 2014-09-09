@@ -140,7 +140,7 @@ function BillModule() {
             });  
         } 
         if(self.ERROR_LOST_MONEY){
-            Logger.info(ERRORS.LOST_MONEY);
+            P.Logger.info(ERRORS.LOST_MONEY);
             eventProcessor.addEvent('errorLostMoney',obj);
             return false;
         } else {
@@ -238,7 +238,7 @@ function BillModule() {
      * @returns {Boolean}
      */
     function addErrorToLogger(aEvent, aObj, aError){
-        Logger.info(aError);
+        P.Logger.info(aError);
         eventProcessor.addEvent(aEvent, {
             info: aObj,
             error: aError
@@ -319,7 +319,7 @@ function BillModule() {
                     return false;
                 }
             } else {
-                Logger.info(ERRORS.FIND_SERVICE_ID);
+                P.Logger.info(ERRORS.FIND_SERVICE_ID);
                 eventProcessor.addEvent('errorDelServiceFromAccount',{
                         account_id: anAccountId,
                         service_id: aServiceId,

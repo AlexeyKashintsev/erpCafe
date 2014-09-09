@@ -5,8 +5,8 @@
  */
 function UserCreateAndEditForm() {
     var self = this, model = P.loadModel(this.constructor.name), form = P.loadForm(this.constructor.name, model);
-    var adminFunctions = new ServerModule("AdminFunctions");
-    var billModule = new ServerModule("BillModule");
+    var adminFunctions = new P.ServerModule("AdminFunctions");
+    var billModule = new P.ServerModule("BillModule");
     var changePassView = new ChangePassView();
     var userModule = new UserModule();
     var userNew = false;
@@ -28,9 +28,7 @@ function UserCreateAndEditForm() {
     /**
     * @rolesAllowed barista
     */   
-   
-
-    function btnSaveActionPerformed(evt) {//GEN-FIRST:event_btnSaveActionPerformed
+    form.btnSave.onActionPerformed = function(evt) {//GEN-FIRST:event_btnSaveActionPerformed
         if (userNew) { //Если создан новый пользователь...
             if (form.rbAdmin.selected){
                var roleName = "franchazi";
@@ -59,9 +57,9 @@ function UserCreateAndEditForm() {
             userModule.editUser(form.tfLogin.text, form.tfEmail.text, form.tfPhone.text);
             model.save(function(){form.close(true);});                
         }
-    }//GEN-LAST:event_btnSaveActionPerformed
+    };//GEN-LAST:event_btnSaveActionPerformed
 
-    function formWindowOpened(evt) {//GEN-FIRST:event_formWindowOpened
+    form.onWindowOpened = function(evt) {//GEN-FIRST:event_formWindowOpened
         if(model.params.user_name){
             userNew = false; //говорим что это не новый пользователь
             form.tfLogin.enabled = false;
@@ -83,13 +81,13 @@ function UserCreateAndEditForm() {
             form.btnSave.enabled = true;
             model.createFrancizerUser.insert();
         }
-    }//GEN-LAST:event_formWindowOpened
+    };//GEN-LAST:event_formWindowOpened
 
-    function formWindowClosed(evt) {//GEN-FIRST:event_formWindowClosed
+    form.onWindowClosed = function(evt) {//GEN-FIRST:event_formWindowClosed
         model.requery();
-    }//GEN-LAST:event_formWindowClosed
+    };//GEN-LAST:event_formWindowClosed
 
-    function tfPassMouseClicked(evt) {//GEN-FIRST:event_tfPassMouseClicked
+    form.tfPass.onMouseClicked = function(evt) {//GEN-FIRST:event_tfPassMouseClicked
         
         if(model.params.user_name && !form.tfLogin.enabled){
             changePassView.setUserName(model.params.user_name);
@@ -97,7 +95,7 @@ function UserCreateAndEditForm() {
                 model.requery();
             });
         }
-    }//GEN-LAST:event_tfPassMouseClicked
+    };//GEN-LAST:event_tfPassMouseClicked
 
     function ValidateForm(){
         if(validateLogin && validatePass){
@@ -114,7 +112,7 @@ function UserCreateAndEditForm() {
         form.tfAdditional.enabled = state;
     }
     
-    function tfLoginFocusLost(evt) {//GEN-FIRST:event_tfLoginFocusLost
+    form.tfLogin.onFocusLost = function(evt) {//GEN-FIRST:event_tfLoginFocusLost
         if(userModule.checkIfLoginExists(form.tfLogin.text)){
                 form.lbInfo.text = "Логин уже занят!";
                 form.lbInfo.foreground = Color.RED;
@@ -126,9 +124,9 @@ function UserCreateAndEditForm() {
                 validateLogin = true;
             }
           ValidateForm(); 
-    }//GEN-LAST:event_tfLoginFocusLost
+    };//GEN-LAST:event_tfLoginFocusLost
 
-    function tfPassKeyPressed(evt) {//GEN-FIRST:event_tfPassKeyPressed
+    form.tfPass.onKeyPressed = function(evt) {//GEN-FIRST:event_tfPassKeyPressed
         if(form.tfPass.text.length < 5){
             form.lbPass.text = "Пароль меньше 5 символов!";
             form.lbPass.foreground = Color.RED;
@@ -138,13 +136,13 @@ function UserCreateAndEditForm() {
             validatePass = true;
         }
         ValidateForm();
-    }//GEN-LAST:event_tfPassKeyPressed
+    };//GEN-LAST:event_tfPassKeyPressed
     /**
     * @rolesAllowed barista
     */   
-    function btnCancelActionPerformed(evt) {//GEN-FIRST:event_btnCancelActionPerformed
+    form.btnCancel.onActionPerformed = function(evt) {//GEN-FIRST:event_btnCancelActionPerformed
         form.close();
-    }//GEN-LAST:event_btnCancelActionPerformed
+    };//GEN-LAST:event_btnCancelActionPerformed
 
     function tfLoginKeyPressed(evt) {//GEN-FIRST:event_tfLoginKeyPressed
 //        TODO Асинхронный код
@@ -171,23 +169,7 @@ function UserCreateAndEditForm() {
         } else return false;
     }
 
-    function tfEmailFocusLost(evt) {//GEN-FIRST:event_tfEmailFocusLost
-        // TODO Добавьте свой код:
-    }//GEN-LAST:event_tfEmailFocusLost
-
-    function tfEmailKeyPressed(evt) {//GEN-FIRST:event_tfEmailKeyPressed
-        // TODO Добавьте свой код:
-    }//GEN-LAST:event_tfEmailKeyPressed
-
-    function tfPhoneFocusLost(evt) {//GEN-FIRST:event_tfPhoneFocusLost
-        // TODO Добавьте свой код:
-    }//GEN-LAST:event_tfPhoneFocusLost
-
-    function tfPhoneKeyPressed(evt) {//GEN-FIRST:event_tfPhoneKeyPressed
-        // TODO Добавьте свой код:
-    }//GEN-LAST:event_tfPhoneKeyPressed
-
-    function tfEmailKeyReleased(evt) {//GEN-FIRST:event_tfEmailKeyReleased
+    form.tfEmail.onKeyReleased = function(evt) {//GEN-FIRST:event_tfEmailKeyReleased
         if (validateEmail()){
             form.lbEmail.text = '';
         } else {
@@ -195,7 +177,7 @@ function UserCreateAndEditForm() {
             form.btnSave.enabled = false;
         }
         if (validateEmail() && validatePhone()) form.btnSave.enabled = true;
-    }//GEN-LAST:event_tfEmailKeyReleased
+    };//GEN-LAST:event_tfEmailKeyReleased
 
     function validatePhone(){
         var re = new RegExp("");  //TODO Написать регулярку для телефонов.
@@ -204,7 +186,7 @@ function UserCreateAndEditForm() {
         } else return false;
     }
 
-    function tfPhoneKeyReleased(evt) {//GEN-FIRST:event_tfPhoneKeyReleased
+    form.tfPhone.onKeyReleased = function(evt) {//GEN-FIRST:event_tfPhoneKeyReleased
         if (validatePhone()){
             form.lbPhone.text = '';
         } else {
@@ -212,9 +194,9 @@ function UserCreateAndEditForm() {
             form.btnSave.enabled = false;
         }
         if (validateEmail() && validatePhone()) form.btnSave.enabled = true;
-    }//GEN-LAST:event_tfPhoneKeyReleased
-
-    function tfPhoneActionPerformed(evt) {//GEN-FIRST:event_tfPhoneActionPerformed
-        // TODO Добавьте свой код:
-    }//GEN-LAST:event_tfPhoneActionPerformed
+    };//GEN-LAST:event_tfPhoneKeyReleased
+    
+    self.show = function() {
+        form.show();
+    };
 }

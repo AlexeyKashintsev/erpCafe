@@ -18,16 +18,16 @@ function UserView(){
        
     }
 
-    function formWindowOpened(evt) {//GEN-FIRST:event_formWindowOpened
+    form.onWindowOpened = function(evt) {//GEN-FIRST:event_formWindowOpened
         setControlsEnabled();
-    }//GEN-LAST:event_formWindowOpened
+    };//GEN-LAST:event_formWindowOpened
 
-    function formWindowClosing(evt) {//GEN-FIRST:event_formWindowClosing
+    form.onWindowClosing = function(evt) {//GEN-FIRST:event_formWindowClosing
         if(model.modified && confirm("Сохранить?", self.title))
             model.save();
-    }//GEN-LAST:event_formWindowClosing
+    };//GEN-LAST:event_formWindowClosing
 
-    function USR_ROLESelectValue(aEditor) {//GEN-FIRST:event_USR_ROLESelectValue
+    form.USR_ROLE.onSelectValue = function(aEditor) {//GEN-FIRST:event_USR_ROLESelectValue
         model.save();
         rolesForm.setUserName(model.dsMtdUsers.cursor.usr_name);
         rolesForm.showModal(function(user){
@@ -38,9 +38,9 @@ function UserView(){
                 model.requery();
            }
         });
-    }//GEN-LAST:event_USR_ROLESelectValue
+    };//GEN-LAST:event_USR_ROLESelectValue
 
-    function USR_PASSWDOnSelect(aEditor) {//GEN-FIRST:event_USR_PASSWDOnSelect
+    form.USR_PASSWD.onSelect = function(aEditor) {//GEN-FIRST:event_USR_PASSWDOnSelect
         model.save();
         changePassView.setUserId(self.dsMtdUsers.usr_name);
         changePassView.showModal(function(aResult){
@@ -49,41 +49,45 @@ function UserView(){
                 setControlsEnabled();
             }	
         });   
-    }//GEN-LAST:event_USR_PASSWDOnSelect
+    };//GEN-LAST:event_USR_PASSWDOnSelect
 
-    function btnReqActionPerformed(evt) {//GEN-FIRST:event_btnReqActionPerformed
+    form.btnReq.onActionPerformed = function(evt) {//GEN-FIRST:event_btnReqActionPerformed
        refreshUsers();
        setControlsEnabled();
-    }//GEN-LAST:event_btnReqActionPerformed
+    };//GEN-LAST:event_btnReqActionPerformed
 
-    function btnSaveActionPerformed(evt) {//GEN-FIRST:event_btnSaveActionPerformed
+    form.btnSave.onActionPerformed = function(evt) {//GEN-FIRST:event_btnSaveActionPerformed
         model.save();
         refreshUsers();
         setControlsEnabled();	
-    }//GEN-LAST:event_btnSaveActionPerformed
+    };//GEN-LAST:event_btnSaveActionPerformed
 
-    function tbSetEditActionPerformed(evt) {//GEN-FIRST:event_tbSetEditActionPerformed
-        isEditable = self.tbSetEdit.selected;
+    form.tbSetEdit.onActionPerformed = function(evt) {//GEN-FIRST:event_tbSetEditActionPerformed
+        //isEditable = self.tbSetEdit.selected;
         setEdit();
-    }//GEN-LAST:event_tbSetEditActionPerformed
+    };//GEN-LAST:event_tbSetEditActionPerformed
 
-    function dsMtdUsersOnChanged(evt) {//GEN-FIRST:event_dsMtdUsersOnChanged
+    model.dsMtdUsers.onChanged = function(evt) {//GEN-FIRST:event_dsMtdUsersOnChanged
         setControlsEnabled();
-    }//GEN-LAST:event_dsMtdUsersOnChanged
+    };//GEN-LAST:event_dsMtdUsersOnChanged
 
-    function btnAddActionPerformed(evt) {//GEN-FIRST:event_btnAddActionPerformed
+    form.btnAdd.onActionPerformed = function(evt) {//GEN-FIRST:event_btnAddActionPerformed
         model.dsMtdUsers.insert();
-    }//GEN-LAST:event_btnAddActionPerformed
+    };//GEN-LAST:event_btnAddActionPerformed
 
-    function btnDelActionPerformed(evt) {//GEN-FIRST:event_btnDelActionPerformed
+    form.btnDel.onActionPerformed = function(evt) {//GEN-FIRST:event_btnDelActionPerformed
         if (confirm("Удалить текущего пользователя")){
             model.dsMtdUsers.usr_passwd = 'false';
             model.save();
             refreshUsers();
         }
-    }//GEN-LAST:event_btnDelActionPerformed
+    };//GEN-LAST:event_btnDelActionPerformed
 
-    function btnFindActionPerformed(evt) {//GEN-FIRST:event_btnFindActionPerformed
+    form.btnFind.onActionPerformed = function(evt) {//GEN-FIRST:event_btnFindActionPerformed
         form.grdUsers.findSomething();
-    }//GEN-LAST:event_btnFindActionPerformed
+    };//GEN-LAST:event_btnFindActionPerformed
+    
+    self.show = function() {
+        form.show();
+    };
 }

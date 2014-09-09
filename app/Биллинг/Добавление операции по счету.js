@@ -4,13 +4,13 @@
  */
 function AddBillOperation() {
     var self = this, model = P.loadModel(this.constructor.name), form = P.loadForm(this.constructor.name, model);
-    var billModule = new ServerModule("BillModule");
+    var billModule = new P.ServerModule("BillModule");
     self.account_id = 0;
     self.setAccountId = function(anAccountId){
         self.account_id = anAccountId;
     };
     
-    function btnSaveActionPerformed(evt) {//GEN-FIRST:event_btnSaveActionPerformed
+    form.btnSave.onActionPerformed = function(evt) {//GEN-FIRST:event_btnSaveActionPerformed
         //alert(model.qBillAccount.cursor.bill_accounts_id.toString());
         var operation;
         if(form.rbAdd.selected) operation = billModule.OPERATION_ADD_CASH;
@@ -23,4 +23,8 @@ function AddBillOperation() {
         }
         form.close(true);
     }//GEN-LAST:event_btnSaveActionPerformed
+    
+    self.show = function() {
+        form.show();
+    };
 }

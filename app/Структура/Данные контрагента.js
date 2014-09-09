@@ -11,19 +11,23 @@ function ContragentDetailsForm() {
         model.params.contragent_id = aContragentId;
     };
     
-    function btnSaveActionPerformed(evt) {//GEN-FIRST:event_btnSaveActionPerformed
+    form.btnSave.onActionPerformed = function(evt) {//GEN-FIRST:event_btnSaveActionPerformed
         model.save();
         form.close(true);
-    }//GEN-LAST:event_btnSaveActionPerformed
+    };//GEN-LAST:event_btnSaveActionPerformed
 
-    function formWindowOpened(evt) {//GEN-FIRST:event_formWindowOpened
+    form.onWindowOpened = function(evt) {//GEN-FIRST:event_formWindowOpened
         if(model.params.contragent_id === 0){
             model.requery();
             model.listContragent.insert();
         }
-    }//GEN-LAST:event_formWindowOpened
+    };//GEN-LAST:event_formWindowOpened
 
-    function formWindowClosed(evt) {//GEN-FIRST:event_formWindowClosed
+    form.onWindowClosed = function(evt) {//GEN-FIRST:event_formWindowClosed
         model.params.contragent_id = 0;
-    }//GEN-LAST:event_formWindowClosed
+    };//GEN-LAST:event_formWindowClosed
+    
+    self.show = function() {
+        form.show();
+    };
 }

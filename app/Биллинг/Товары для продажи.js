@@ -4,7 +4,7 @@
  */
 function BillItems() {
    var self = this, model = P.loadModel(this.constructor.name), form = P.loadForm(this.constructor.name, model);
-   
+
    /* !!! Пример управления
    function addNewItem(aaa) {}
    
@@ -15,7 +15,6 @@ function BillItems() {
        }
    ];
    */
-   
    function saveItemsCost(){
        model.qBillItems.beforeFirst();
        while(model.qBillItems.next()){
@@ -46,21 +45,25 @@ function BillItems() {
        }
    }
 
-    function itemTypeOnScrolled(evt) {//GEN-FIRST:event_itemTypeOnScrolled
+    model.itemType.onScrolled = function(evt) {//GEN-FIRST:event_itemTypeOnScrolled
         if (model.modified&&confirm('Сохранить изменения?')){
             saveItemsCost();
         }
         model.params.item_type = model.itemType.cursor.wh_item_types_id;
         model.qBillItems.requery();
-    }//GEN-LAST:event_itemTypeOnScrolled
+    };//GEN-LAST:event_itemTypeOnScrolled
 
-    function itemTypeOnRequeried(evt) {//GEN-FIRST:event_itemTypeOnRequeried
+    model.itemTypeOnRequeried=function(evt) {//GEN-FIRST:event_itemTypeOnRequeried
         model.params.item_type = model.itemType.cursor.wh_item_types_id;
         model.qBillItems.requery();
-    }//GEN-LAST:event_itemTypeOnRequeried
+    };//GEN-LAST:event_itemTypeOnRequeried
 
-    function buttonActionPerformed(evt) {//GEN-FIRST:event_buttonActionPerformed
+    form.button.onActionPerformed = function(evt) {//GEN-FIRST:event_buttonActionPerformed
         saveItemsCost();
         model.qBillItems.requery();
     }//GEN-LAST:event_buttonActionPerformed
+    
+    self.show = function() {
+        form.show();
+    };
 }

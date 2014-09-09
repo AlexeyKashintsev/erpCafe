@@ -10,11 +10,15 @@ function RolesForm() {
     };
     
 
-    function buttonActionPerformed(evt) {//GEN-FIRST:event_buttonActionPerformed
+    form.button.onActionPerformed = function(evt) {//GEN-FIRST:event_buttonActionPerformed
         var user = {
             usr_role:model.queryRoles.cursor.role_name,
             usr_form:model.queryRoles.cursor.role_form
         };
         form.close(user);
-    }//GEN-LAST:event_buttonActionPerformed
+    };//GEN-LAST:event_buttonActionPerformed
+    
+    self.show = function() {
+        form.show();
+    };
 }

@@ -17,4 +17,8 @@ function ProductItem(aParent) {
     function addToOrder(evt) {//GEN-FIRST:event_addToOrder
         self.parent.orderList.addItem(self.data);
     }//GEN-LAST:event_addToOrder
+    
+    self.show = function() {
+        form.show();
+    };
 }

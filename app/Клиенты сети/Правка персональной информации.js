@@ -7,13 +7,17 @@ function clientEditPersonalInfo() {
     
     
 
-    function btnSaveActionPerformed(evt) {//GEN-FIRST:event_btnSaveActionPerformed
+    form.btnSave.onActionPerformed = function(evt) {//GEN-FIRST:event_btnSaveActionPerformed
         model.save();
         form.close();
-    }//GEN-LAST:event_btnSaveActionPerformed
+    };//GEN-LAST:event_btnSaveActionPerformed
 
-    function formWindowOpened(evt) {//GEN-FIRST:event_formWindowOpened
+    form.onWindowOpened = function(evt) {//GEN-FIRST:event_formWindowOpened
         model.qPersonalData.params.user_name = self.principal.name;
         model.qPersonalData.requery();
-    }//GEN-LAST:event_formWindowOpened
+    };//GEN-LAST:event_formWindowOpened
+    
+    self.show = function() {
+        form.show();
+    };
 }

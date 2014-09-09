@@ -9,7 +9,7 @@ function ClientRegistrationByBarist() {
     var validateEmail = false;
     var validatePhone = false;
     
-    function btnAddActionPerformed(evt) {//GEN-FIRST:event_btnAddActionPerformed
+    form.btnAdd.onActionPerformed = function(evt) {//GEN-FIRST:event_btnAddActionPerformed
         if (validateForm()){
             clientModule.createUser(form.phoneField.text, form.emailField.text, form.firstnameField.text, roleName);
         }
@@ -28,21 +28,25 @@ function ClientRegistrationByBarist() {
         }
     }
 
-    function phoneFieldKeyReleased(evt) {//GEN-FIRST:event_phoneFieldKeyReleased
+    form.phoneField.onKeyReleased = function(evt) {//GEN-FIRST:event_phoneFieldKeyReleased
         if (clientModule.checkIfPhoneExist(form.phoneField.text)){
             validatePhone = false;
         } else {
             validatePhone = true;
         }
         validateForm();
-    }//GEN-LAST:event_phoneFieldKeyReleased
+    };//GEN-LAST:event_phoneFieldKeyReleased
 
-    function emailFieldKeyReleased(evt) {//GEN-FIRST:event_emailFieldKeyReleased
+    form.emailField.onKeyReleased = function(evt) {//GEN-FIRST:event_emailFieldKeyReleased
         if (clientModule.checkIfEmailExist(form.emailField.text)){
             validateEmail = false;
         } else {
             validateEmail = true;
         }
         validateForm();
-    }//GEN-LAST:event_emailFieldKeyReleased
+    };//GEN-LAST:event_emailFieldKeyReleased
+    
+    self.show = function() {
+        form.show();
+    };
 }

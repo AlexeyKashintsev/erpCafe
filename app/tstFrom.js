@@ -10,5 +10,12 @@ function tstFrom() {
     self.show = function() {
         form.show();
     };
-    // TODO : place your code here
+    form.onWindowOpened = function(evt) {
+        
+    }
+    form.button.onActionPerformed = function(event) {
+        alert(P.principal.name);
+        P.Logger.info(1);
+    };
+
 }

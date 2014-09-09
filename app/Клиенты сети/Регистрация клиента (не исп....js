@@ -7,11 +7,15 @@ function clientRegForm() {
     
     // TODO : place your code here
 
-    function last_nameActionPerformed(evt) {//GEN-FIRST:event_last_nameActionPerformed
+    form.last_name.onActionPerformed = function(evt) {//GEN-FIRST:event_last_nameActionPerformed
         // TODO Добавьте свой код:
     }//GEN-LAST:event_last_nameActionPerformed
 
-    function last_name1ActionPerformed(evt) {//GEN-FIRST:event_last_name1ActionPerformed
+    form.last_name1.onActionPerformed = function(evt) {//GEN-FIRST:event_last_name1ActionPerformed
         // TODO Добавьте свой код:
     }//GEN-LAST:event_last_name1ActionPerformed
+    
+    self.show = function() {
+        form.show();
+    };
 }
