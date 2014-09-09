@@ -12,12 +12,16 @@ function clientDesktop() {
         UserName = anUserName;
     };
     
-    function buttonActionPerformed(evt) {//GEN-FIRST:event_buttonActionPerformed
+    form.buttonActionPerformed = function(evt) {//GEN-FIRST:event_buttonActionPerformed
          ClientEditPersonalInfo.showModal();
-    }//GEN-LAST:event_buttonActionPerformed
+    };//GEN-LAST:event_buttonActionPerformed
 
-    function formWindowOpened(evt) {//GEN-FIRST:event_formWindowOpened
+    form.onWindowOpened = function(evt) {//GEN-FIRST:event_formWindowOpened
         model.qBillAccount.params.user_id = self.principal.name;
         form.lblBonusBillCount.text = "На вашем бонусном счету " + model.qBillAccount.cursor.currnt_sum + " баллов";
-    }//GEN-LAST:event_formWindowOpened
+    };//GEN-LAST:event_formWindowOpened
+    
+    self.show = function() {
+        form.show();
+    };
 }

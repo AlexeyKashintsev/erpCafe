@@ -4,7 +4,7 @@
  */
 function BillBuyItems() {
     var self = this, model = P.loadModel(this.constructor.name), form = P.loadForm(this.constructor.name, model);
-    var detalizeBillForm = new DetalizeBillForm();
+    //var detalizeBillForm = new _DetalizeBillForm();
     self.cost = 0; self.items = [];
     model.params.account_id = 0;
     
@@ -13,7 +13,7 @@ function BillBuyItems() {
         model.requery();
     };
     
-    function qItemBillCostOnChanged(evt) {//GEN-FIRST:event_qItemBillCostOnChanged
+    model.qItemBillCost.onChanged = function(evt) {//GEN-FIRST:event_qItemBillCostOnChanged
         if(evt.propertyName == "selected"){
             if(evt.newValue){
                 self.items[evt.source.wh_items_id] = {
@@ -42,17 +42,21 @@ function BillBuyItems() {
         form.tfLost.text = "Остаток на счету: " + lost;
     }//GEN-LAST:event_qItemBillCostOnChanged
 
-    function buttonActionPerformed(evt) {//GEN-FIRST:event_buttonActionPerformed
-        detalizeBillForm.setSum(self.cost);
-        detalizeBillForm.setItems(self.items);
-        detalizeBillForm.setAccountId(model.params.account_id);
-        detalizeBillForm.showModal();
+    form.button.onActionPerformed = function(evt) {//GEN-FIRST:event_buttonActionPerformed
+//        detalizeBillForm.setSum(self.cost);
+//        detalizeBillForm.setItems(self.items);
+//        detalizeBillForm.setAccountId(model.params.account_id);
+//        detalizeBillForm.showModal();
     }//GEN-LAST:event_buttonActionPerformed
 
-    function formWindowOpened(evt) {//GEN-FIRST:event_formWindowOpened
+    form.onWindowOpened = function(evt) {//GEN-FIRST:event_formWindowOpened
         form.tfSum.text = "Сумма на счету: " + model.qBillAccount.cursor.currnt_sum;
         form.tfCost.text = "Сумма заказа: " + self.cost; 
         var lost = model.qBillAccount.cursor.currnt_sum * 1 - self.cost * 1;
         form.tfLost.text = "Остаток на счету: " + lost;
     }//GEN-LAST:event_formWindowOpened
+    
+    self.show = function() {
+        form.show();
+    };
 }

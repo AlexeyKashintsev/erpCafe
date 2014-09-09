@@ -12,4 +12,8 @@ function TradePointCommonDetails(aTPDetails) {
     self.setTradePoint = function(aTradePoint) {
         model.params.tradePointID = aTradePoint;
     };
+    
+    self.show = function() {
+        form.show();
+    };
 }

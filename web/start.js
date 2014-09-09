@@ -19,8 +19,8 @@
     }
 })();
 window.P.ready = function() {
-    window.P.require(['AutoEventsForm'], function(){
-        var f = new AutoEventsForm();
+    window.P.require(['tstFrom'], function(){
+        var f = new tstFrom();
         f.show();
     });
 };

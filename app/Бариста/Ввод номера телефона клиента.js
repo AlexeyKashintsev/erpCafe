@@ -9,7 +9,7 @@ function SetUserPhoneForm() {
     var clientReg = new ClientRegistrationByBarist();
     // TODO : place your code here
 
-    function buttonActionPerformed(evt) {//GEN-FIRST:event_buttonActionPerformed
+    form.button.onActionPerformed = function(evt) {//GEN-FIRST:event_buttonActionPerformed
         if (form.tfPhone.text === ""){
             self.tradeSession.setClientPhone(null);
             form.close();
@@ -25,7 +25,7 @@ function SetUserPhoneForm() {
         }
     }//GEN-LAST:event_buttonActionPerformed
 
-    function tfPhoneKeyReleased(evt) {//GEN-FIRST:event_tfPhoneKeyReleased
+    form.tfPhone.onKeyReleased = function(evt) {//GEN-FIRST:event_tfPhoneKeyReleased
          if (clientModule.checkIfPhoneExist(form.tfPhone.text)){
              form.label.visible = false;
              form.button.text = "Подтвердить";
@@ -35,8 +35,12 @@ function SetUserPhoneForm() {
          }
     }//GEN-LAST:event_tfPhoneKeyReleased
 
-    function btnAnonimActionActionPerformed(evt) {//GEN-FIRST:event_btnAnonimActionActionPerformed
+    form.btnAnonimAction.onActionPerformed = function(evt) {//GEN-FIRST:event_btnAnonimActionActionPerformed
         self.tradeSession.setClientPhone("79206738064");
         form.close();
     }//GEN-LAST:event_btnAnonimActionActionPerformed
+    
+    self.show = function() {
+        form.show();
+    };
 }

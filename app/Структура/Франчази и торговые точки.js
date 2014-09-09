@@ -16,4 +16,8 @@ function FranchaziAndTradePoints() {
     self.setFranchazi = function(aFranchazi) {
         self.tradePoints.setFranchazi(aFranchazi);
     };
+    
+    self.show = function() {
+        form.show();
+    };
 }

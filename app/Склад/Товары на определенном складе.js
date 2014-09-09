@@ -25,12 +25,12 @@ function SelectItemsInWH() {
         model.params.trade_point_id = aTradePoint;
     };
 
-function btnReqActionPerformed(evt) {//GEN-FIRST:event_btnReqActionPerformed
-        if (self.model.modified && confirm('Сохранить изменения?')) {
-            self.model.save();
-        }
-        self.model.requery();
-}//GEN-LAST:event_btnReqActionPerformed
+    form.btnReq.onActionPerformed = function(evt) {//GEN-FIRST:event_btnReqActionPerformed
+            if (self.model.modified && confirm('Сохранить изменения?')) {
+                self.model.save();
+            }
+            self.model.requery();
+    };//GEN-LAST:event_btnReqActionPerformed
 
     function ModelSave() {
         model.queryItems.beforeFirst();
@@ -50,39 +50,39 @@ function btnReqActionPerformed(evt) {//GEN-FIRST:event_btnReqActionPerformed
         model.save();
     }
 
-function btnSaveActionPerformed(evt) {//GEN-FIRST:event_btnSaveActionPerformed
-        ModelSave();
-}//GEN-LAST:event_btnSaveActionPerformed
-
-function formWindowOpened(evt) {//GEN-FIRST:event_formWindowOpened
-        form.pnlSelLock.visible = self.selectForm;
-}//GEN-LAST:event_formWindowOpened
-
-function formWindowClosing(evt) {//GEN-FIRST:event_formWindowClosing
-        if (self.model.modified && confirm('Сохранить изменения?')) {
+    form.btnSave.onActionPerformed = function(evt) {//GEN-FIRST:event_btnSaveActionPerformed
             ModelSave();
-            self.model.save();
-        }
-}//GEN-LAST:event_formWindowClosing
+    };//GEN-LAST:event_btnSaveActionPerformed
 
-    function btnAddActionPerformed(evt) {//GEN-FIRST:event_btnAddActionPerformed
+    form.onWindowOpened = function(evt) {//GEN-FIRST:event_formWindowOpened
+            form.pnlSelLock.visible = self.selectForm;
+    };//GEN-LAST:event_formWindowOpened
+
+    form.onWindowClosing = function(evt) {//GEN-FIRST:event_formWindowClosing
+            if (self.model.modified && confirm('Сохранить изменения?')) {
+                ModelSave();
+                self.model.save();
+            }
+    };//GEN-LAST:event_formWindowClosing
+
+    form.btnAdd.onActionPerformed = function(evt) {//GEN-FIRST:event_btnAddActionPerformed
         model.queryItems.insert(model.queryItems.schema.item_type, model.itemType.cursor.wh_item_types_id,
                                 model.queryItems.schema.franchazi_id, model.params.franchazi_id,
                                 model.queryItems.schema.warehouse, model.params.trade_point_id
                                 );
         model.queryItems.cursor.item_id = model.queryItems.cursor.wh_items_id;
-    }//GEN-LAST:event_btnAddActionPerformed
+    };//GEN-LAST:event_btnAddActionPerformed
 
-    function btnDelActionPerformed(evt) {//GEN-FIRST:event_btnDelActionPerformed
+    form.btnDel.onActionPerformed = function(evt) {//GEN-FIRST:event_btnDelActionPerformed
         if (confirm('Вы уверены что хотите удалить этот товар?'))
             model.queryItems.deleteRow();
-    }//GEN-LAST:event_btnDelActionPerformed
+    };//GEN-LAST:event_btnDelActionPerformed
 
-    function modelGridMouseClicked(evt) {//GEN-FIRST:event_modelGridMouseClicked
+    form.modelGrid.onMouseClicked = function(evt) {//GEN-FIRST:event_modelGridMouseClicked
         self.autoChange = false;
-    }//GEN-LAST:event_modelGridMouseClicked
+    };//GEN-LAST:event_modelGridMouseClicked
 
-    function btnSelectActionPerformed(evt) {//GEN-FIRST:event_btnSelectActionPerformed
+    form.btnSelect.onActionPerformed = function(evt) {//GEN-FIRST:event_btnSelectActionPerformed
 //        var items = [];
 //        var i = 0;
 //        model.queryItems.beforeFirst();
@@ -102,9 +102,9 @@ function formWindowClosing(evt) {//GEN-FIRST:event_formWindowClosing
         } else {
             alert('Вы ничего не выбрали!');
         }
-    }//GEN-LAST:event_btnSelectActionPerformed
+    };//GEN-LAST:event_btnSelectActionPerformed
 
-    function queryItemsOnChanged(evt) {//GEN-FIRST:event_queryItemsOnChanged
+    model.queryItems.onChanged = function(evt) {//GEN-FIRST:event_queryItemsOnChanged
         if (!self.autoChange) {
             var i = 0;
             model.queryItems.beforeFirst();
@@ -118,14 +118,18 @@ function formWindowClosing(evt) {//GEN-FIRST:event_formWindowClosing
                     delete self.changes[model.queryItems.cursor.wh_items_id]
             }
         }
-    }//GEN-LAST:event_queryItemsOnChanged
+    };//GEN-LAST:event_queryItemsOnChanged
 
-    function queryItemsOnRequeried(evt) {//GEN-FIRST:event_queryItemsOnRequeried
+    model.queryItems.onRequeried = function(evt) {//GEN-FIRST:event_queryItemsOnRequeried
         self.autoChange = true;
         model.queryItems.beforeFirst();
         while (model.queryItems.next()){
             if (self.changes[model.queryItems.cursor.wh_items_id] !== undefined)
                 model.queryItems.cursor.selectItem = self.changes[model.queryItems.cursor.wh_items_id];
         }
-    }//GEN-LAST:event_queryItemsOnRequeried
+    };//GEN-LAST:event_queryItemsOnRequeried
+    
+    self.show = function() {
+        form.show();
+    };
 }

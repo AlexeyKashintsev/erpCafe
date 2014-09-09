@@ -7,17 +7,21 @@ function BillMeasures() {
     
     // TODO : place your code here
 
-    function buttonActionPerformed(evt) {//GEN-FIRST:event_buttonActionPerformed
+    form.button.onActionPerformed = function(evt) {//GEN-FIRST:event_buttonActionPerformed
         model.save();
     }//GEN-LAST:event_buttonActionPerformed
 
-    function button1ActionPerformed(evt) {//GEN-FIRST:event_button1ActionPerformed
+    form.button1.onActionPerformed = function(evt) {//GEN-FIRST:event_button1ActionPerformed
         model.qBillMeasures.insert();
     }//GEN-LAST:event_button1ActionPerformed
 
-    function formWindowClosing(evt) {//GEN-FIRST:event_formWindowClosing
+    form.onWindowClosing = function(evt) {//GEN-FIRST:event_formWindowClosing
         if (model.modified&&confirm('Сохранить изменения?')){
             model.save();
         }
     }//GEN-LAST:event_formWindowClosing
+    
+    self.show = function() {
+        form.show();
+    };
 }

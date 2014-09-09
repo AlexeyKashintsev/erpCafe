@@ -22,4 +22,8 @@ function TradePoint() {
         fmWarehouse.setTradePoint(aTradePoint);
         fmTradeItems.setTradePoint(aTradePoint);
     };
+    
+    self.show = function() {
+        form.show();
+    };
 }

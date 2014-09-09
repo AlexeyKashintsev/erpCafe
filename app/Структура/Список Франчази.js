@@ -6,32 +6,36 @@
  */
 
 function SelectFranchaziAdminForm() {
-var self = this, model = P.loadModel(this.constructor.name), form = P.loadForm(this.constructor.name, model);
+    var self = this, model = P.loadModel(this.constructor.name), form = P.loadForm(this.constructor.name, model);
 
-function btnReqActionPerformed(evt) {//GEN-FIRST:event_btnReqActionPerformed
-    if (self.model.modified&&confirm('Сохранить изменения?')){
+    form.btnReq.onActionPerformed = function(evt) {//GEN-FIRST:event_btnReqActionPerformed
+        if (self.model.modified&&confirm('Сохранить изменения?')){
+            self.model.save();
+        }
+        self.model.requery();
+    };//GEN-LAST:event_btnReqActionPerformed
+
+    form.btnSave.onActionPerformed = function(evt) {//GEN-FIRST:event_btnSaveActionPerformed
         self.model.save();
-    }
-    self.model.requery();
-}//GEN-LAST:event_btnReqActionPerformed
+    };//GEN-LAST:event_btnSaveActionPerformed
 
-function btnSaveActionPerformed(evt) {//GEN-FIRST:event_btnSaveActionPerformed
-    self.model.save();
-}//GEN-LAST:event_btnSaveActionPerformed
+    form.onWindowClosing = function(evt) {//GEN-FIRST:event_formWindowClosing
+        if (self.model.modified&&confirm('Сохранить изменения?')){
+            self.model.save();
+        }
+    };//GEN-LAST:event_formWindowClosing
 
-function formWindowClosing(evt) {//GEN-FIRST:event_formWindowClosing
-    if (self.model.modified&&confirm('Сохранить изменения?')){
-        self.model.save();
-    }
-}//GEN-LAST:event_formWindowClosing
-
-    function btnSelectActionPerformed(evt) {//GEN-FIRST:event_btnSelectActionPerformed
+    form.btnSelect.onActionPerformed = function(evt) {//GEN-FIRST:event_btnSelectActionPerformed
         close(model.listFranchazi.org_franchazi_id);
-    }//GEN-LAST:event_btnSelectActionPerformed
+    };//GEN-LAST:event_btnSelectActionPerformed
 
-    function listFranchaziOnScrolled(evt) {//GEN-FIRST:event_listFranchaziOnScrolled
+    model.listFranchazi.onScrolled = function(evt) {//GEN-FIRST:event_listFranchaziOnScrolled
         if (self.parent) {
             self.parent.setFranchazi(model.listFranchazi.org_franchazi_id);
         }
-    }//GEN-LAST:event_listFranchaziOnScrolled
+    };//GEN-LAST:event_listFranchaziOnScrolled
+    
+    self.show = function() {
+        form.show();
+    };
 }

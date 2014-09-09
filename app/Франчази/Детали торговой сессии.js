@@ -5,5 +5,7 @@
 function TradeSessionDetails() {
     var self = this, model = P.loadModel(this.constructor.name), form = P.loadForm(this.constructor.name, model);
     
-    // TODO : place your code here
+    self.show = function() {
+        form.show();
+    };
 }

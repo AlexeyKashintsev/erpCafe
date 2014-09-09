@@ -16,4 +16,8 @@ function FranchaziAndUsers() {
     self.setFranchazi = function(aFranchaziId) {
         self.franchaziUsers.setFranchazi(aFranchaziId)
     };
+    
+    self.show = function() {
+        form.show();
+    };
 }

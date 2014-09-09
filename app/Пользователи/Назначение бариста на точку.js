@@ -11,11 +11,15 @@ function AddBaristaToTradePoint() {
     };
         
 
-    function btnCreateActionPerformed(evt) {//GEN-FIRST:event_btnCreateActionPerformed
+    form.btnCreate.onActionPerformed = function(evt) {//GEN-FIRST:event_btnCreateActionPerformed
         var user = {
             user_name : form.modelComboUsrName,
             trade_point_id : form.modelComboTradePoint
         };
         form.close(user);
-    }//GEN-LAST:event_btnCreateActionPerformed
+    };//GEN-LAST:event_btnCreateActionPerformed
+    
+    self.show = function() {
+        form.show();
+    };
 }

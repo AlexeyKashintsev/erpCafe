@@ -7,8 +7,8 @@ function BaristaDesktop() {
 
     self.tradeItems = {};
     self.session = units.userSession;
-    self.whSession = new ServerModule("WhSessionModule");
-    self.tradeSession = new ServerModule("TradeSessions");
+    self.whSession = new P.ServerModule("WhSessionModule");
+    self.tradeSession = new P.ServerModule("TradeSessions");
     self.userName = self.session.getUserName();    
     var whAdd = null;
     

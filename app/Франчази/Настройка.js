@@ -23,11 +23,15 @@ function FranchaziWorkShop() {
         Logger.info('Not under browser');
     }
 
-    function listTradePointsOnScrolled(evt) {//GEN-FIRST:event_listTradePointsOnScrolled
+    model.listTradePoints.onScrolled = function(evt) {//GEN-FIRST:event_listTradePointsOnScrolled
         fmTP.setTradePoint(model.listTradePoints.org_trade_point_id);
-    }//GEN-LAST:event_listTradePointsOnScrolled
+    };//GEN-LAST:event_listTradePointsOnScrolled
 
-    function listTradePointsOnRequeried(evt) {//GEN-FIRST:event_listTradePointsOnRequeried
+    model.listTradePoints.onRequeried = function(evt) {//GEN-FIRST:event_listTradePointsOnRequeried
         fmTP.setTradePoint(model.listTradePoints.org_trade_point_id);
-    }//GEN-LAST:event_listTradePointsOnRequeried
+    };//GEN-LAST:event_listTradePointsOnRequeried
+    
+    self.show = function() {
+        form.show();
+    };
 }

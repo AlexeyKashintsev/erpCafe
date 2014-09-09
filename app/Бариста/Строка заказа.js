@@ -28,16 +28,19 @@ function OrderDetail(anItemData, aParent) {
         self.parent.calculateOrder();
     };
 
-    function btnRemoveActionPerformed(evt) {//GEN-FIRST:event_btnRemoveActionPerformed
+    form.btnRemove.onActionPerformed = function(evt) {//GEN-FIRST:event_btnRemoveActionPerformed
         self.decrease();
     }//GEN-LAST:event_btnRemoveActionPerformed
 
-    function btnAddActionPerformed(evt) {//GEN-FIRST:event_btnAddActionPerformed
+    form.btnAdd.onActionPerformed = function(evt) {//GEN-FIRST:event_btnAddActionPerformed
         self.increase();
     }//GEN-LAST:event_btnAddActionPerformed
 
-    function btnDeleteActionPerformed(evt) {//GEN-FIRST:event_btnDeleteActionPerformed
+    form.btnDelete.onActionPerformed = function(evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         self.delete();
     }//GEN-LAST:event_btnDeleteActionPerformed
     
+    self.show = function() {
+        form.show();
+    };
 }

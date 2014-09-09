@@ -257,13 +257,17 @@ function OrderList(aParent) {
         self.showOnPanel(aParent.pnlLeft);
     }
 
-    function btnOkActionPerformed(evt) {//GEN-FIRST:event_btnOkActionPerformed
+    form.btnOk.onActionPerformed = function(evt) {//GEN-FIRST:event_btnOkActionPerformed
         setPhone.tradeSession = self.tradeSession;
         setPhone.showModal();
         self.acceptOrder();
     }//GEN-LAST:event_btnOkActionPerformed
 
-    function btnCancelActionPerformed(evt) {//GEN-FIRST:event_btnCancelActionPerformed
+    form.btnCancel.onActionPerformed = function(evt) {//GEN-FIRST:event_btnCancelActionPerformed
         self.deleteOrder();
     }//GEN-LAST:event_btnCancelActionPerformed
+    
+    self.show = function() {
+        form.show();
+    };
 }
