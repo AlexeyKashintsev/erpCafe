@@ -3,11 +3,11 @@
  * @author Alexey
  */
 function BaristaDesktop() {
-    var self = this, model = P.loadModel(this.constructor.name), form = P.loadForm(this.constructor.name, model);
+    var self = this, model = P.loadModel(this.constructor.name);//, form = P.loadForm(this.constructor.name, model);
 
     self.tradeItems = {};
-    self.whSession = new P.ServerModule("WhSessionModule");
-    self.tradeSession = new P.ServerModule("TradeSessions");
+    units.whSession = new P.ServerModule("WhSessionModule");
+    units.tradeSession = new P.ServerModule("TradeSessions");
     self.userName = session.getUserName();    
     var whAdd = null;
     
@@ -23,13 +23,13 @@ function BaristaDesktop() {
     }
     
     self.orderList = new OrderList(self);
-    self.orderList.tradeSession = self.tradeSession;
+    self.orderList.tradeSession = units.tradeSession;
 
     function setSession(aSession) {
         if (aSession) {
             P.Logger.info('Сессия открыта ' + aSession);
             model.params.session_id = aSession;
-            self.whSession.setCurrentSession(aSession);
+            units.whSession.setCurrentSession(aSession);
             model.getSessions.requery();
         } else {//открываем новую сессию
             //Выбираем торговую точку
@@ -40,18 +40,18 @@ function BaristaDesktop() {
             tpSelector.userName = self.userName;
             tpSelector.showModal(function(aTradePoint){
                 if (!aTradePoint) logout();
-                var whInitializer = new WhRevisionByBarista(self.whSession);
-                //self.whSession.setTradePoint(aTradePoint);
+                var whInitializer = new WhRevisionByBarista(units.whSession);
+                //units.whSession.setTradePoint(aTradePoint);
                 whInitializer.setTradePointId(aTradePoint);
                 whInitializer.showModal(function() {
                     if (self.browser) 
                         session.getActiveTPSession(function(aSession){
-                            self.tradeSession.initializeSession(aSession, 0); // Ввести остаток по кассе, иницировать сессию
+                            units.tradeSession.initializeSession(aSession, 0); // Ввести остаток по кассе, иницировать сессию
                             setSession(aSession);
                         });
                     else {
                         var session = session.getActiveTPSession();
-                        self.tradeSession.initializeSession(session, 0);// Тоже самое
+                        units.tradeSession.initializeSession(session, 0);// Тоже самое
                         setSession(session);
                     }
                 });
@@ -133,22 +133,22 @@ function BaristaDesktop() {
         }
     };
 
-    form.btnSessionClose.onActionPerformed = function(evt) {
-        self.whSession.closeSession();
+    var btnSessionCloseClick = function(evt) {
+        units.whSession.closeSession();
             logout();
     };
 
-    form.btnWarehouseAdd.onActionPerformed = function(event) {
+    var btnWarehouseAddClick = function(event) {
         if (!whAdd) {
             whAdd = new WHSetAddMovement();
-            whAdd.setTradePointId(model.getSessions.trade_point);
+            //whAdd.setTradePointId(model.getSessions.trade_point);
         }
         whAdd.show();
     };
 
     if (self.browser) {
-        cmn.addTopRightControl("Прием товара", "plus-sign", form.btnWarehouseAdd.onActionPerformed);
-        cmn.addTopRightControl("Закрыть смену", "log-out", form.btnSessionClose.onActionPerformed);
+        cmn.addTopRightControl("Прием товара", "plus-sign", btnWarehouseAddClick);
+        cmn.addTopRightControl("Закрыть смену", "log-out", btnSessionCloseClick);
     }
     
     self.show = function() {

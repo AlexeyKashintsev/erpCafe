@@ -13,27 +13,35 @@ function WHSetAddMovement() {
             , model = P.loadModel(this.constructor.name)
             , form = P.loadForm(this.constructor.name, model);
 
-    var whSessionModule = new P.ServerModule("WhSessionModule");
+    if (!units.whSession)
+        units.whSession = new P.ServerModule("WhSessionModule");
 
     self.setTradePointId = function(aTradePointId) {
         model.params.trade_point_id = aTradePointId;
-        whSessionModule.setTradePoint(model.params.trade_point_id);
-        model.params.session_id = whSessionModule.getCurrentSession();
+        //units.whSession.setTradePoint(model.params.trade_point_id);
+        //model.params.session_id = units.whSession.getCurrentSession();
     };
 
     form.onWindowOpened = function(evt) {//GEN-FIRST:event_formWindowOpened
-        //form.btnCloseSession.enabled = true;
-        if(!model.params.session_id) {
-            alert(MSG_SESSION_CLOSED_ERROR);
-            form.close();
-        }
+        model.params.session_id = 
+        units.whSession.getCurrentSession(function(aSession){
+            if (!aSession) {
+                alert(MSG_SESSION_CLOSED_ERROR);
+                form.close();
+            } else {
+                model.params.session_id = aSession;
+                units.whSession.getTradePoint(function(aTP){
+                    self.setTradePointId(aTP);
+                });
+            }
+        });
     };
     
     self.show = function() {
         form.show();
     };
 
-    /*form.btnProceed.onActionPerformed = function(event) {
+    form.btnSave.onActionPerformed = function(event) {
         var items = {};
         model.itemsByTP.beforeFirst();
         while(model.itemsByTP.next()){
@@ -41,9 +49,9 @@ function WHSetAddMovement() {
                 items[model.itemsByTP.cursor.item_id] = model.itemsByTP.cursor.start_value;
             }
         }
-        if (whSessionModule.whMovement(items, whSessionModule.WH_ADD_ITEMS)) 
+        if (units.whSession.whMovement(items, units.whSession.WH_ADD_ITEMS)) 
            form.close();
         else
             alert(MSG_SET_MOVEMENTS_ERROR);
-    };*/
+    };
 }

@@ -27,6 +27,10 @@ function WhSessionModule() {
         return model.params.session_id;
     };
     
+    self.getTradePoint = function() {
+        return model.params.trade_point_id;
+    };
+    
     self.setCurrentSession = function(aSessionID) {
         model.params.session_id = aSessionID;
         model.params.trade_point_id = null;

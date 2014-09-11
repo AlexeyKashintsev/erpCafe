@@ -1,19 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?><layout defaultCloseOperation="2" name="Form" prefHeight="348px" prefWidth="448px">
   <widget name="pnlSelLock" parent="Form" prefHeight="50px" prefWidth="448px" type="PanelDesignInfo">
     <layout type="MarginLayoutDesignInfo"/>
-    <constraints place="South" type="BorderLayoutConstraintsDesignInfo"/>
+    <constraints height="50px" left="0px" top="298px" type="MarginConstraintsDesignInfo" width="448px"/>
   </widget>
-  <widget name="btnSave1" parent="pnlSelLock" prefHeight="25px" prefWidth="201px" text="Сохранить" type="ButtonDesignInfo">
-    <constraints bottom="14px" height="25px" right="7px" type="MarginConstraintsDesignInfo" width="201px"/>
-  </widget>
-  <widget name="btnProceed" parent="pnlSelLock" prefHeight="29px" prefWidth="86px" text="button" type="ButtonDesignInfo">
-    <constraints height="29px" left="144px" top="12px" type="MarginConstraintsDesignInfo" width="86px"/>
+  <widget name="btnSave" parent="pnlSelLock" prefHeight="25px" prefWidth="201px" text="Сохранить" type="ButtonDesignInfo">
+    <constraints height="25px" left="240px" right="7px" top="12px" type="MarginConstraintsDesignInfo"/>
   </widget>
   <widget name="pnlWorkSpace" parent="Form" prefHeight="298px" prefWidth="448px" type="PanelDesignInfo">
     <layout type="MarginLayoutDesignInfo"/>
-    <constraints place="Center" type="BorderLayoutConstraintsDesignInfo"/>
+    <constraints bottom="50px" left="0px" right="0px" top="0px" type="MarginConstraintsDesignInfo"/>
   </widget>
-  <widget name="modelGrid" parent="pnlWorkSpace" prefHeight="298px" prefWidth="448px" type="DbGridDesignInfo">
+  <widget name="modelGrid" parent="pnlWorkSpace" prefHeight="300px" prefWidth="448px" type="DbGridDesignInfo">
     <rowsColumnsDesignInfo>
       <rowsDatasource entityId="140549864254788" field="false"/>
     </rowsColumnsDesignInfo>
@@ -25,9 +22,9 @@
       <columnsDisplayField/>
       <cellsDatasource/>
       <cellDesignInfo>
-        <rowsKeyField/>
         <columnsKeyField/>
         <cellValueField/>
+        <rowsKeyField/>
       </cellDesignInfo>
       <headerStyle>
         <nativeFont name="Dialog" size="15"/>
@@ -40,15 +37,15 @@
       <columnsDisplayField/>
       <cellsDatasource/>
       <cellDesignInfo>
-        <rowsKeyField/>
         <columnsKeyField/>
         <cellValueField/>
+        <rowsKeyField/>
       </cellDesignInfo>
       <headerStyle>
         <nativeFont name="Dialog" size="15"/>
       </headerStyle>
     </column>
-    <constraints bottom="0px" left="0px" right="0px" top="0px" type="MarginConstraintsDesignInfo"/>
+    <constraints bottom="-2px" left="0px" right="0px" top="0px" type="MarginConstraintsDesignInfo"/>
   </widget>
-  <layout type="BorderLayoutDesignInfo"/>
+  <layout type="MarginLayoutDesignInfo"/>
 </layout>

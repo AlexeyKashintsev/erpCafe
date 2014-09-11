@@ -11,9 +11,9 @@ function tstFrom() {
     
     a.login();
     
-    alert(P.principal.name);
+ //   alert(P.principal.name);
     
-    P.Logger.info();
+ //   P.Logger.info();
     
     self.show = function() {
         form.show();
