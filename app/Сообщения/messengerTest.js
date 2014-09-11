@@ -6,9 +6,9 @@
 function messengerTest() {
     var self = this;
     
-    var msgM = new ServerModule('MessageSender');
-    var admUnit = new ServerModule("AdminUtils");
-    var eventsUtils = new ServerModule("EventUtils");
+    var msgM = new P.ServerModule('MessageSender');
+    var admUnit = new P.ServerModule("AdminUtils");
+    var eventsUtils = new P.ServerModule("EventUtils");
     self.model.params.aEqu = 136421761575190;
     self.model.params.date = new Date();
     admUnit.loggedInAgent(function(aAgent) {

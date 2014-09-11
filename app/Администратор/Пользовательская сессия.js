@@ -6,6 +6,8 @@
 function UserSession() {
     var self = this, model = P.loadModel(this.constructor.name);
     var ep = new EventProcessor();
+    self.userRole = null;
+    self.franchaziId = null;
     
     self.msg = {
         MSG_ERROR_INACTIVE_USER         :   'Ваша учетная запись неактивна!\nОбратитесь к администратору',
@@ -18,6 +20,7 @@ function UserSession() {
         model.params.userName = P.principal.name;
         P.Logger.info('User name: ' + model.params.userName);
         model.qFrancByUserName.requery();
+        model.params.franchaziId = model.qFrancByUserName.cursor.franchazi_id;
         ep.addEvent('userLogin', null);
         return self.getUserRole();//model.params.franchaziId;
     };
@@ -27,12 +30,12 @@ function UserSession() {
     };
     
     self.getActiveTPSession = function() {
-        model.qOpenedSession.requery();
-        return model.qOpenedSession.empty ? false : model.qOpenedSession.org_session_id;
+        model.qOpenedSession.execute();
+        return model.qOpenedSession.empty ? false : model.qOpenedSession.cursor.org_session_id;
     };
     
     self.getUserName = function() {
-        return self.principal.name;
+        return P.principal.name;
     };
     
     self.getUserRole = function() {

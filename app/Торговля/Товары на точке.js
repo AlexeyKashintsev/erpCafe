@@ -20,7 +20,7 @@ function TradeItemsOnTradePoint() {
     model.params.endUpdate();*/
     
     
-    var TradeAdminModule = new ServerModule('TradeAdminModule');
+    var TradeAdminModule = new P.ServerModule('TradeAdminModule');
     var askForChanges = new AskForChangesApplying();
     
     self.setFranchazi = function(aFranchazi) {

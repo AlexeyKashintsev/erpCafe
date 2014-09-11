@@ -5,7 +5,7 @@
 function test() {
     var self = this, model = P.loadModel(this.constructor.name), form = P.loadForm(this.constructor.name, model);
     
-    var stateModule = new ServerModule('testModule');
+    var stateModule = new P.ServerModule('testModule');
 
     function buttonActionPerformed(evt) {//GEN-FIRST:event_buttonActionPerformed
         stateModule.setState(form.textField.text);

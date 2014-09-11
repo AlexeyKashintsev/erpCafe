@@ -4,7 +4,7 @@
  * @name updateItems
  * @manual
  */ 
-select * from
+select w.wh_session_balance_id from
  wh_session_balance w
 
   Inner Join #countItems q1

@@ -5,8 +5,8 @@
  */ 
 function BillServerModule() {
     var self = this, model = P.loadModel(this.constructor.name);
-    var eventProcessor = new ServerModule("EventProcessor");
-    var billModule = new ServerModule("BillModule");
+    var eventProcessor = new P.ServerModule("EventProcessor");
+    var billModule = new P.ServerModule("BillModule");
     /*
      * Списание абонентской платы 
      */

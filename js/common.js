@@ -1,4 +1,5 @@
 var units = {};
+var session = {};
 var cmn = {};
 
 cmn.showModal = function(aForm, aCallback) {
@@ -137,10 +138,10 @@ var P = window.P;
 
 P.ready = function() {
     P.require(['getUserSession'], function(){
-        units.userSession = getUserSession();        
-        units.userSession.login(function(anUserRole){
-                units.userSession.userRole = anUserRole;
-                units.userSession.franchaziId = units.userSession.getFranchazi();
+        session = getUserSession();        
+        session.login(function(anUserRole){
+                //units.userSession.userRole = anUserRole;
+                //units.userSession.franchaziId = units.userSession.getFranchazi();
                 switch (anUserRole) {
                     case 'admin':
                         P.require(['StartMasterAdminForm'], function() {

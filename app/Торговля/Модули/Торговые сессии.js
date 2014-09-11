@@ -7,8 +7,8 @@
 function TradeSessions() {
     var self = this, model = P.loadModel(this.constructor.name);
     var whSession = new WhSessionModule();
-    var clientModule = new ClientServerModule();
-    var billing = new BillModule();
+    //var clientModule = new ClientServerModule();
+    //var billing = new BillModule();
     var ep = new EventProcessor();
     var ClientPhone = null;
     var tradeOperationType = "money";

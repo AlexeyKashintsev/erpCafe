@@ -6,7 +6,7 @@
 function BillGenerator() {
     var self = this, model = P.loadModel(this.constructor.name);
 
-    units.billApi = new ServerModule('BillApi');
+    units.billApi = new P.ServerModule('BillApi');
     function createBill() {
         $('#order_details').hide();
 	$('#thank_you').show();

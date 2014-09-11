@@ -1,10 +1,13 @@
-<?xml version="1.0" encoding="UTF-8"?><layout defaultCloseOperation="2" name="Form" prefHeight="348px" prefWidth="448px" windowClosing="formWindowClosing" windowOpened="formWindowOpened">
+<?xml version="1.0" encoding="UTF-8"?><layout defaultCloseOperation="2" name="Form" prefHeight="348px" prefWidth="448px">
   <widget name="pnlSelLock" parent="Form" prefHeight="50px" prefWidth="448px" type="PanelDesignInfo">
     <layout type="MarginLayoutDesignInfo"/>
     <constraints place="South" type="BorderLayoutConstraintsDesignInfo"/>
   </widget>
-  <widget actionPerformed="btnCloseSessionActionPerformed" name="btnCloseSession" parent="pnlSelLock" prefHeight="25px" prefWidth="201px" text="Сохранить" type="ButtonDesignInfo">
+  <widget name="btnSave1" parent="pnlSelLock" prefHeight="25px" prefWidth="201px" text="Сохранить" type="ButtonDesignInfo">
     <constraints bottom="14px" height="25px" right="7px" type="MarginConstraintsDesignInfo" width="201px"/>
+  </widget>
+  <widget name="btnProceed" parent="pnlSelLock" prefHeight="29px" prefWidth="86px" text="button" type="ButtonDesignInfo">
+    <constraints height="29px" left="144px" top="12px" type="MarginConstraintsDesignInfo" width="86px"/>
   </widget>
   <widget name="pnlWorkSpace" parent="Form" prefHeight="298px" prefWidth="448px" type="PanelDesignInfo">
     <layout type="MarginLayoutDesignInfo"/>
@@ -16,6 +19,7 @@
     </rowsColumnsDesignInfo>
     <treeDesignInfo/>
     <column name="colItem_name" title="Товар">
+      <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
       <datamodelElement entityId="140549864254788" fieldName="item_name"/>
       <columnsDatasource/>
       <columnsDisplayField/>
@@ -26,11 +30,11 @@
         <cellValueField/>
       </cellDesignInfo>
       <headerStyle>
-        <nativeFont name="Ubuntu" size="15"/>
+        <nativeFont name="Dialog" size="15"/>
       </headerStyle>
-      <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
     </column>
     <column name="colItem_id" title="Количество">
+      <controlInfo classHint="DbLabelDesignInfo" emptyText="0" name="view" prefHeight="0px" prefWidth="0px"/>
       <datamodelElement entityId="140549864254788" fieldName="start_value"/>
       <columnsDatasource/>
       <columnsDisplayField/>
@@ -41,9 +45,8 @@
         <cellValueField/>
       </cellDesignInfo>
       <headerStyle>
-        <nativeFont name="Ubuntu" size="15"/>
+        <nativeFont name="Dialog" size="15"/>
       </headerStyle>
-      <controlInfo classHint="DbLabelDesignInfo" emptyText="0" name="view" prefHeight="0px" prefWidth="0px"/>
     </column>
     <constraints bottom="0px" left="0px" right="0px" top="0px" type="MarginConstraintsDesignInfo"/>
   </widget>

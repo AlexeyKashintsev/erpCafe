@@ -8,7 +8,7 @@ function AdminStartForm() {
     try {
         self.session = units.userSession;
     } catch(e) {
-        self.session = new ServerModule('UserSession');
+        self.session = new P.ServerModule('UserSession');
     }
     var guiUtils = new guiModule();
     self.actionListDisplay = null;
