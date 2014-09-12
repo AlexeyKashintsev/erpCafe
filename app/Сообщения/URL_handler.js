@@ -25,7 +25,7 @@ function URL_handler() {
         con.setRequestMethod(aMethod?aMethod:HTTP_METHOD_GET);
         if (anUserName) con.setRequestProperty(BASIC_AUTH_HEADER_NAME, getBasicAuthHeaderValue(anUserName, aPassword));
         var responseCode = con.getResponseCode();
-        Logger.fine("Response code: " + responseCode);
+       P.Logger.fine("Response code: " + responseCode);
         return con;
     };
     

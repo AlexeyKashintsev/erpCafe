@@ -20,7 +20,7 @@ function FranchaziWorkShop() {
             self.setFranchazi(aFranchazi);
         });
     } catch (e) {
-        Logger.info('Not under browser');
+       P.Logger.info('Not under browser');
     }
 
     model.listTradePoints.onScrolled = function(evt) {//GEN-FIRST:event_listTradePointsOnScrolled

@@ -5,8 +5,8 @@ if (!platypus) {
 }
 
 function resizeMainFrame() {
-    Logger.info(units.masterForm.height);
-    Logger.info(document.getElementById('mainFrame').offsetHeight);
+   P.Logger.info(units.masterForm.height);
+   P.Logger.info(document.getElementById('mainFrame').offsetHeight);
     
     //units.masterForm.height = document.getElementById('mainFrame').clientHeight;
     //units.masterForm.width = document.getElementById('mainFrame').offsetWidth;

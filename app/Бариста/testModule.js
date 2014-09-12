@@ -10,11 +10,11 @@ function testModule() {
     
     self.setState = function(aValue) {
         stateVal = aValue;
-        Logger.info(aValue);
+       P.Logger.info(aValue);
     };
     
     self.getState = function() {
-        Logger.info(stateVal);
+       P.Logger.info(stateVal);
         return stateVal;
     };
 }

@@ -42,14 +42,15 @@ function TradeSessions() {
 
   
     function getCurrentSession(){
-        model.qOpenedSession.params.user_name = self.principal.name;
+        model.qOpenedSession.params.user_name = P.principal.name;
         model.qOpenedSession.execute();
         ep.addEvent('openSession', {
-            session :   model.qOpenedSession.org_session_id,
+            session :   model.qOpenedSession.cursor.org_session_id,
             module  :   'TradeSessions'
         });
-        whSession.setCurrentSession(model.qOpenedSession.org_session_id);
-        return model.qOpenedSession.org_session_id;
+        model.params.session_id = model.qOpenedSession.cursor.org_session_id;
+        whSession.setCurrentSession(model.params.session_id);
+        return model.params.session_id;
     }
     
     function TradeOperationAddToCashBox(anOrderSum, aClientId){
@@ -63,7 +64,7 @@ function TradeSessions() {
         return model.qTradeOperationBySession.trade_cash_box_operation_id;
     }
     
-    function TradeItemsPushInTradeOperation(aCashBoxOperationId, anItemId, aQuantity){
+    function TradeItemsAddToTradeOperation(aCashBoxOperationId, anItemId, aQuantity){
         model.qTradeOperationsWithItems.push({
             cash_box_operation : aCashBoxOperationId,
             trade_item : anItemId,
@@ -118,7 +119,7 @@ function TradeSessions() {
     //Запись прихода по кассе
     self.processOrder = function(anOrderDetails){
         if (!model.params.session_id){
-            model.params.session_id = getCurrentSession();
+            getCurrentSession();
         }
         //TODO написать всю программу на русском языке, убрать все что не начинается с //
         // Если мы в сессии,то
@@ -130,7 +131,7 @@ function TradeSessions() {
                 for (var i in anOrderDetails.orderItems) {
                     if (anOrderDetails.orderItems[i].itemId && anOrderDetails.orderItems[i].quantity){
                         // записать проданные товары в тороговую операцию. При этом добавив приход в кассу.
-                        TradeItemsPushInTradeOperation(TradeOperationId, anOrderDetails.orderItems[i].itemId, anOrderDetails.orderItems[i].quantity);
+                        TradeItemsAddToTradeOperation(TradeOperationId, anOrderDetails.orderItems[i].itemId, anOrderDetails.orderItems[i].quantity);
                         // TODO Добавить добавление бонусов клиенту на его счет.
                         if (ClientPhone){
                             BonusCount += getCountBonusesByItem(anOrderDetails.orderItems[i].itemId) * anOrderDetails.orderItems[i].quantity;
@@ -158,7 +159,7 @@ function TradeSessions() {
                         for (var i in anOrderDetails.orderItems) {
                             if (anOrderDetails.orderItems[i].itemId && anOrderDetails.orderItems[i].quantity){
                                 // записать проданные товары в тороговую операцию.
-                                TradeItemsPushInTradeOperation(TradeOperationId, anOrderDetails.orderItems[i].itemId, anOrderDetails.orderItems[i].quantity);
+                                TradeItemsAddToTradeOperation(TradeOperationId, anOrderDetails.orderItems[i].itemId, anOrderDetails.orderItems[i].quantity);
                                 // затем написать уход элементов состава товара со склада. 
                                 if (!whSession.whMovement(WhItemsCalculation(anOrderDetails.orderItems[i].itemId, anOrderDetails.orderItems[i].quantity), whSession.WH_PRODUCE_ITEMS)){
                                     //если не получилось - вывести ошибку.

@@ -41,7 +41,7 @@ function TradeItemsOnTradePoint() {
             model.qTradeItemsAndType.params.show_only_present = model.params.show_only_present;
             model.qTradeItemsAndType.params.sort_by_type = model.params.sort_by_type;
             /*Logger.info('Param show_only_present: '+ model.params.show_only_present);
-            Logger.info('Param model.params.sort_by_type: '+ model.params.sort_by_type);*/
+           P.Logger.info('Param model.params.sort_by_type: '+ model.params.sort_by_type);*/
             self.model.requery();
     };//GEN-LAST:event_btnReqActionPerformed
 

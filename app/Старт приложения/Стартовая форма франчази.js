@@ -24,7 +24,7 @@ function AdminStartForm() {
             self.setFranchazi(self.session.getFranchazi());
         }).invokeBackground();
     } catch (e) {
-        Logger.info('browser');
+       P.Logger.info('browser');
         self.browser = true;
         self.session.getFranchazi(function(anFranchaziId){
             self.setFranchazi(anFranchaziId);

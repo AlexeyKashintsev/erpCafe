@@ -31,7 +31,7 @@ function BillServerModule() {
                         i++;
                     });
                 }
-                Logger.info("Количество обработанных счетов: " + i);
+               P.Logger.info("Количество обработанных счетов: " + i);
                 model.save();
             }
             eventProcessor.addEvent('paymentForServices', {

@@ -5,7 +5,7 @@
  */ 
 function UserSession() {
     var self = this, model = P.loadModel(this.constructor.name);
-    var ep = new EventProcessor();
+    self.ep = new EventProcessor();
     self.userRole = null;
     self.franchaziId = null;
     
@@ -21,7 +21,7 @@ function UserSession() {
         P.Logger.info('User name: ' + model.params.userName);
         model.qFrancByUserName.requery();
         model.params.franchaziId = model.qFrancByUserName.cursor.franchazi_id;
-        ep.addEvent('userLogin', null);
+        self.ep.addEvent('userLogin', null);
         return self.getUserRole();//model.params.franchaziId;
     };
     
@@ -57,13 +57,13 @@ function UserSession() {
             } else {
                 model.params.franchaziId = null;
                 alert(self.msg[MSG_ERROR_INACTIVE_USER]);
-                ep.addEvent('userNotActive', {username : model.params.userName});
+                self.ep.addEvent('userNotActive', {username : model.params.userName});
                 self.close();
             }
         } else {
             model.params.franchaziId = null;
             //alert(self.msg[MSG_ERROR_NO_FRANCHAZI_4USER]);
-            ep.addEvent('userNotActive', {username : model.params.userName});
+            self.ep.addEvent('userNotActive', {username : model.params.userName});
             self.close();
         }
     }//GEN-LAST:event_qFrancByUserNameOnRequeried

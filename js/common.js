@@ -34,7 +34,7 @@ cmn.pFrameRunner = new function() {
                 try {
                     frames[aFormName].form.setFranchazi(units.userSession.franchaziId);
                 } catch (e) {
-                    Logger.warning('Невозможно задать ID франчази для '+ aFormName);
+                   P.Logger.warning('Невозможно задать ID франчази для '+ aFormName);
                 }
                 frames[aFormName].div.removeChild(Loading);
                 if (!aSelfGeneration) {

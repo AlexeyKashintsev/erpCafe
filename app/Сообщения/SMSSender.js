@@ -21,15 +21,15 @@ function SmsSender(anEmail, aPassword) {
             password : aPassword ? aPassword : '41XGMNM'
         };
         
-        Logger.finest('Авторизация на сервере ' + defUrl+', с логином '+params.email+' и паролем '+params.password);
+       P.Logger.finest('Авторизация на сервере ' + defUrl+', с логином '+params.email+' и паролем '+params.password);
         var response = sendRequest(params);
         
         if (response.msg.err_code === 0) {
             sid = response.data.sid;
-            Logger.finest('Авторизация успешна. SID: ' + sid + ' Ответ: ' + response.msg.text);
+           P.Logger.finest('Авторизация успешна. SID: ' + sid + ' Ответ: ' + response.msg.text);
         } else {
             sid = null;
-            Logger.warning('Не удалось авторизироваться на сервисе отправки СМС. Код ошибки: ' + response.msg.err_code + ' ( ' + response.msg.text + ')');
+           P.Logger.warning('Не удалось авторизироваться на сервисе отправки СМС. Код ошибки: ' + response.msg.err_code + ' ( ' + response.msg.text + ')');
         }
     };
     self.smsAuth(anEmail, aPassword);
@@ -40,19 +40,19 @@ function SmsSender(anEmail, aPassword) {
             api_v    : '1.1',
             method   : 'logout'
         };
-        Logger.finest('Logging out...');
+       P.Logger.finest('Logging out...');
         var response = sendRequest(params);
         if (response.msg.err_code === 0) {
             sid = null;
-            Logger.finest('Выход из сервиса СМС рассылки - успешно' + ' Ответ: ' + response.msg.text);
+           P.Logger.finest('Выход из сервиса СМС рассылки - успешно' + ' Ответ: ' + response.msg.text);
         } else {
-            Logger.warning('Ошибка при выходе из сервиса СМС рассылки! Код ошибки: ' + response.msg.err_code + ' ( ' + response.msg.text + ')');
+           P.Logger.warning('Ошибка при выходе из сервиса СМС рассылки! Код ошибки: ' + response.msg.err_code + ' ( ' + response.msg.text + ')');
         }
     };
     
     self.sendSms = function(aNumber, aMsg, aSign){
         if (!sid) {
-            Logger.warning('Невозможно отправить СМС! Сервис не авторизирован');
+           P.Logger.warning('Невозможно отправить СМС! Сервис не авторизирован');
             return false;
         } else {
             var params = {
@@ -69,11 +69,11 @@ function SmsSender(anEmail, aPassword) {
                 params.phones = aNumber;
             var response = sendRequest(params);
             if (response.msg.err_code === 0) {
-                Logger.finest('СМС отправлено успешно, ID СМС: ' + response.data.id + ' Ответ: ' + response.msg.text);
+               P.Logger.finest('СМС отправлено успешно, ID СМС: ' + response.data.id + ' Ответ: ' + response.msg.text);
                 sessionBalance += response.data.credits * response.data.n_raw_sms;
                 return response.data.id;
             } else {
-                Logger.warning('СМС не отправлено: Код ошибки: ' + response.msg.err_code + ' ( ' + response.msg.text + ')');
+               P.Logger.warning('СМС не отправлено: Код ошибки: ' + response.msg.err_code + ' ( ' + response.msg.text + ')');
                 return false;
             }
         };
@@ -81,7 +81,7 @@ function SmsSender(anEmail, aPassword) {
     
     self.getSmsStatus = function(aSmsId){
         if (!sid) {
-            Logger.warning('Невозможно проверить статус СМС! Сервис не авторизирован');
+           P.Logger.warning('Невозможно проверить статус СМС! Сервис не авторизирован');
             return false;
         } else {
             var params = {
@@ -94,11 +94,11 @@ function SmsSender(anEmail, aPassword) {
 
             var response = sendRequest(params);
             if (response.msg.err_code === 0) {
-                Logger.finest('Статус СМС получен успешно, номер: ' + response.data.phone
+               P.Logger.finest('Статус СМС получен успешно, номер: ' + response.data.phone
                             + ', текст: \"' + response.data.text + '\", статус: ' + response.data.state + ' Ответ: ' + response.msg.text);
                 return response.data.state;
             } else {
-                Logger.warning('Не удалось получить статус СМС , код ошибки: ' + response.msg.err_code + ' ( ' + response.msg.text + ')');
+               P.Logger.warning('Не удалось получить статус СМС , код ошибки: ' + response.msg.err_code + ' ( ' + response.msg.text + ')');
                 return false;
             }
         };       

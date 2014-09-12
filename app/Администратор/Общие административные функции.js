@@ -18,7 +18,7 @@ function AdminFunctions(){
             return dsEployees.TR_STAFF_ID;
         else
         {
-            Logger.severe("No employee for logged in user: "+parUserName);
+           P.Logger.severe("No employee for logged in user: "+parUserName);
             return null;
         }
     }
@@ -34,7 +34,7 @@ function AdminFunctions(){
             return dsEployees.AGENT;
         else
         {
-            Logger.severe("No employee for logged in user: "+parUserName);
+           P.Logger.severe("No employee for logged in user: "+parUserName);
             return null;
         }
     }

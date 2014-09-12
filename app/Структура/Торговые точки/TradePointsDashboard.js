@@ -8,11 +8,11 @@ function TradePointsDashboard() {
     var show = false;
     
     self.setFranchazi = function(aFranchaziId){
-        Logger.info("FranchaziID = " + aFranchaziId);
+       P.Logger.info("FranchaziID = " + aFranchaziId);
         model.params.franchazi_id = aFranchaziId;
         model.listTradePoints.params.franchazi_id = aFranchaziId;
         model.listTradePoints.requery(function(){
-            Logger.info("TradePoints count = " + model.listTradePoints.length);
+           P.Logger.info("TradePoints count = " + model.listTradePoints.length);
             generateDashboardInfo();
         });
     };
@@ -87,7 +87,7 @@ function TradePointsDashboard() {
             panelContent.innerHTML = 
                  '<span class="label label-warning">\n\
 <span class="glyphicon glyphicon-user"></span>   <strong>Нет данных!</strong> Возможно, эта точка еще не открывалась</span>';
-            Logger.warning(e);
+           P.Logger.warning(e);
         }
         //this.form.showOnPanel(this.commonData);
         

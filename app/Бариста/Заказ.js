@@ -63,15 +63,15 @@ function OrderList(aParent) {
     function processOrder(anOrderDetails, anAlert, anAttempt) {
         var attempt = anAttempt ? anAttempt : 0;
         attempt++;
-        Logger.info(attempt);
+       P.Logger.info(attempt);
         var alert = alerter(anAlert, "alert-info", "<h4>Обработка заказа</h4>Попытка № " + attempt, false);
         //Если сумма заказа покрывается бонусами на счету, то предложить оплату бонусами
-        if (anOrderDetails.orderSum <= self.tradeSession.getBonusCount()){
+       /* if (anOrderDetails.orderSum <= self.tradeSession.getBonusCount()){
             choiceMethodOfPayment.tradeSession = self.tradeSession;
             choiceMethodOfPayment.showModal(function (aResult){
                 self.tradeSession.setTradeOperationType(aResult);
             });
-        }
+        }*/
         
         self.tradeSession.processOrder(anOrderDetails, function() {
             alerter(alert, "alert-success", "<h4>Заказ успешно проведен</h4>Сумма заказа: <strong>"
@@ -154,7 +154,7 @@ function OrderList(aParent) {
         obj.delete = function() {
             obj.orderSum = obj.orderQuantity = 0;
             delete(obj.parent.orderDetails[obj.itemId]);
-            obj.parent.pnlOrderList.remove(obj.panel);
+            //obj.parent.pnlOrderList.remove(obj.panel);
             obj.parent.calculateOrder();
             if (self.browser)
                 obj.docDiv.removeChild(obj.divEl);

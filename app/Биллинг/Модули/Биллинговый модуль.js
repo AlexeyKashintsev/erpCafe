@@ -56,7 +56,7 @@ function BillModule() {
                 currnt_sum: aSum
         });
         return model.qBillAccount.cursor.bill_accounts_id;
-       // Logger.info('Аккаунт для франчайзе уже существует'); 
+       //P.Logger.info('Аккаунт для франчайзе уже существует'); 
     };
     /*
      * Получить баланс счета пользователя
@@ -310,7 +310,7 @@ function BillModule() {
                     });
                     return true;
                 } else {
-                    Logger.info(ERRORS.FIND_ACCOUNT_ID);
+                   P.Logger.info(ERRORS.FIND_ACCOUNT_ID);
                     eventProcessor.addEvent('errorDelServiceFromAccount',{
                         account_id: anAccountId,
                         service_id: aServiceId,

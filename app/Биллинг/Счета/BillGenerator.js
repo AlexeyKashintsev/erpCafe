@@ -26,7 +26,7 @@ function BillGenerator() {
         try {
             billCreator.show();
         } catch (e) {
-            Logger.warning(e);
+           P.Logger.warning(e);
         }
         units.billApi.sendMessages(null, billDetails, billItems, bd.sum);
     }

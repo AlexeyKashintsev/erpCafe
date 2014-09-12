@@ -55,7 +55,7 @@ function Mailer() {
      * @returns {Boolean} true if the message have sent successully
      */
     self.sendEmail = function (from, to, subject, text) {
-        Logger.info("Sending email message..");
+       P.Logger.info("Sending email message..");
         try {
             var session = constructSession();//getSession();
             var message = new MimeMessage(session);
@@ -64,10 +64,10 @@ function Mailer() {
             message.setSubject(subject);
             message.setText(text);
             Transport.send(message);
-            Logger.info("The message was sent successfully..");
+           P.Logger.info("The message was sent successfully..");
             return true;
         } catch (ex) {
-            Logger.severe("The message wasn't sent. Error: " + ex.toString());
+           P.Logger.severe("The message wasn't sent. Error: " + ex.toString());
             return false;
         }
     };

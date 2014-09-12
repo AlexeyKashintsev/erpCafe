@@ -35,7 +35,7 @@ function BaristaDesktop() {
             //Выбираем торговую точку
             //Вводим остатки по складу
             //Вводим остатки по кассе
-            Logger.info('Создание новой сессии');
+           P.Logger.info('Создание новой сессии');
             var tpSelector = new TradePointSelector();
             tpSelector.userName = self.userName;
             tpSelector.showModal(function(aTradePoint){

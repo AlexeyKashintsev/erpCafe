@@ -13,7 +13,7 @@ function messengerTest() {
     self.model.params.date = new Date();
     admUnit.loggedInAgent(function(aAgent) {
             self.params.agent = aAgent;
-            Logger.severe('ok');
+           P.Logger.severe('ok');
             self.model.requery();
         });
         
@@ -29,7 +29,7 @@ function messengerTest() {
     self.model.params.date = new Date();
     admUnit.loggedInAgent(function(aAgent) {
             self.params.agent = aAgent;
-            Logger.severe('ok');
+           P.Logger.severe('ok');
             self.model.requery();
         });
     }//GEN-LAST:event_button2ActionPerformed
