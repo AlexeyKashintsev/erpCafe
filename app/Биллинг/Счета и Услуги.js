@@ -26,14 +26,14 @@ function ListBillAndServices() {
 
     form.btnCreateBill.onActionPerformed = function(evt) {//GEN-FIRST:event_btnCreateBillActionPerformed
         createBillAccount.setFranchaziId(self.FranchaziId);
-        createBillAccount.showModal(function(aResult){
+        createBillAccount.show(function(aResult){
             if(aResult) model.qBillAccount.requery();
         });
     };//GEN-LAST:event_btnCreateBillActionPerformed
 
     form.btnAddService.onActionPerformed = function(evt) {//GEN-FIRST:event_btnAddServiceActionPerformed
         addServiceForm.setAccountId(model.qBillAccount.cursor.bill_accounts_id);
-        addServiceForm.showModal(function(aResult){        
+        addServiceForm.show(function(aResult){        
         });
         model.qBillAccount.requery();
     };//GEN-LAST:event_btnAddServiceActionPerformed
@@ -56,7 +56,7 @@ function ListBillAndServices() {
 
     form.btnOperations.onActionPerformed = function(evt) {//GEN-FIRST:event_btnOperationsActionPerformed
         historyOperations.setAccountId(model.qBillAccount.cursor.bill_accounts_id);
-        historyOperations.showModal();
+        historyOperations.show();
     };//GEN-LAST:event_btnOperationsActionPerformed
 
     form.button4.onActionPerformed = function(evt) {//GEN-FIRST:event_button4ActionPerformed
@@ -65,24 +65,24 @@ function ListBillAndServices() {
 
     form.btnBuyItems.onActionPerformed = function(evt) {//GEN-FIRST:event_btnBuyItemsActionPerformed
         billBuyItems.setAccountId(model.qBillAccount.cursor.bill_accounts_id);
-        billBuyItems.showModal();
+        billBuyItems.show();
     };//GEN-LAST:event_btnBuyItemsActionPerformed
 
     form.btnCreateService.onActionPerformed = function(evt) {//GEN-FIRST:event_btnCreateServiceActionPerformed
-        createServiceForm.showModal();
+        createServiceForm.show();
     };//GEN-LAST:event_btnCreateServiceActionPerformed
 
     form.btnAddOperation.onActionPerformed = function(evt) {//GEN-FIRST:event_btnAddOperationActionPerformed
         addBillOperation.setAccountId(model.qBillAccount.cursor.bill_accounts_id);
-        addBillOperation.showModal();
+        addBillOperation.show();
         model.qBillAccount.requery();
     };//GEN-LAST:event_btnAddOperationActionPerformed
 
     form.button.onActionPerformed = function(evt) {//GEN-FIRST:event_buttonActionPerformed
-        billItems.showModal();
+        billItems.show();
     };//GEN-LAST:event_buttonActionPerformed
 
     form.btnBillMeasures.onActionPerformed = function(evt) {//GEN-FIRST:event_btnBillMeasuresActionPerformed
-        billMeasures.showModal();
+        billMeasures.show();
     };//GEN-LAST:event_btnBillMeasuresActionPerformed
 }

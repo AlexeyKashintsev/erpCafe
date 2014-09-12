@@ -60,6 +60,7 @@ function TradeSessions() {
             session_id       : model.params.session_id,
             operation_type   : null, //TODO Поменять тип операции
             client_id        : aClientId
+        });
         return model.qTradeOperationBySession.cursor.trade_cash_box_operation_id;
     }
     

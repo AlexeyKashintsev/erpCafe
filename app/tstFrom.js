@@ -8,6 +8,7 @@ function tstFrom() {
             , form = P.loadForm(this.constructor.name, model);
     
     var a = new P.ServerModule('testServM');
+    var billItems = new BillItems();
     
  //   a.login();
     
@@ -22,5 +23,6 @@ function tstFrom() {
     form.button.onActionPerformed = function(event) {
         var d = {a  : 10, b : 'aaa'};
         a.test(d);
+        billItems.showModal(function(){});
     };
 }

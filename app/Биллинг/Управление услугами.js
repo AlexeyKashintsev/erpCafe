@@ -31,11 +31,16 @@ function CreateServiceForm() {
 
     form.btnEdit.onActionPerformed = function(evt) {//GEN-FIRST:event_btnEditActionPerformed
         editServiceForm.setServiceId(model.qServiceList.cursor.bill_services_id);
-        editServiceForm.showModal();
+        editServiceForm.show();
         model.requery();
     };//GEN-LAST:event_btnEditActionPerformed
     
     self.show = function() {
         form.show();
     };
+    
+    form.onWindowOpened = function(event) {
+         model.qServiceList.requery();
+    };
+
 }

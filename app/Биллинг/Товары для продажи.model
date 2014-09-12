@@ -10,13 +10,13 @@
   <entity Name="qDelBillCost" Title="" entityHeight="200" entityIconified="false" entityId="140862593731530" entityLocationX="380" entityLocationY="242" entityWidth="150" queryId="qDelBillCost" tableName="" tableSchemaName=""/>
   <entity Name="qCloseItemCost" Title="" entityHeight="200" entityIconified="false" entityId="140862205101682" entityLocationX="207" entityLocationY="238" entityWidth="150" queryId="qCloseItemCost" tableName="" tableSchemaName=""/>
   <relation leftEntityId="-1" leftEntityParameterName="item_type" rightEntityId="140861205200288" rightEntityParameterName="item_type"/>
-  <referenceRelation leftEntityFieldName="item_id" leftEntityId="140861205200288" rightEntityFieldName="wh_items_id" rightEntityId="140862817053289"/>
+  <referenceRelation leftEntityFieldName="bill_measure" leftEntityId="140861205200288" rightEntityFieldName="bill_measures_id" rightEntityId="140956834906939"/>
   <referenceRelation leftEntityFieldName="item_id" leftEntityId="140861205200288" rightEntityFieldName="wh_items_id" rightEntityId="140861205200288"/>
-  <referenceRelation leftEntityFieldName="item_type" leftEntityId="140861205200288" rightEntityFieldName="wh_item_types_id" rightEntityId="140861160037845"/>
+  <referenceRelation leftEntityFieldName="item_id" leftEntityId="140862817053289" rightEntityFieldName="wh_items_id" rightEntityId="140862817053289"/>
+  <referenceRelation leftEntityFieldName="item_type" leftEntityId="140862817053289" rightEntityFieldName="wh_item_types_id" rightEntityId="140861160037845"/>
+  <referenceRelation leftEntityFieldName="item_id" leftEntityId="140861205200288" rightEntityFieldName="wh_items_id" rightEntityId="140862817053289"/>
   <referenceRelation leftEntityFieldName="bill_measure" leftEntityId="140862817053289" rightEntityFieldName="bill_measures_id" rightEntityId="140956834906939"/>
   <referenceRelation leftEntityFieldName="item_id" leftEntityId="140862817053289" rightEntityFieldName="wh_items_id" rightEntityId="140861205200288"/>
-  <referenceRelation leftEntityFieldName="item_type" leftEntityId="140862817053289" rightEntityFieldName="wh_item_types_id" rightEntityId="140861160037845"/>
-  <referenceRelation leftEntityFieldName="item_id" leftEntityId="140862817053289" rightEntityFieldName="wh_items_id" rightEntityId="140862817053289"/>
-  <referenceRelation leftEntityFieldName="bill_measure" leftEntityId="140861205200288" rightEntityFieldName="bill_measures_id" rightEntityId="140956834906939"/>
   <referenceRelation leftEntityFieldName="parent_type" leftEntityId="140861160037845" rightEntityFieldName="wh_item_types_id" rightEntityId="140861160037845"/>
+  <referenceRelation leftEntityFieldName="item_type" leftEntityId="140861205200288" rightEntityFieldName="wh_item_types_id" rightEntityId="140861160037845"/>
 </datamodel>
