@@ -60,8 +60,7 @@ function TradeSessions() {
             session_id       : model.params.session_id,
             operation_type   : null, //TODO Поменять тип операции
             client_id        : aClientId
-        });
-        return model.qTradeOperationBySession.trade_cash_box_operation_id;
+        return model.qTradeOperationBySession.cursor.trade_cash_box_operation_id;
     }
     
     function TradeItemsAddToTradeOperation(aCashBoxOperationId, anItemId, aQuantity){
@@ -126,7 +125,7 @@ function TradeSessions() {
         if (model.params.session_id){
             if (tradeOperationType === "money"){
                 var BonusCount = 0;
-                var TradeOperationId = TradeOperationAddToCashBox(anOrderDetails.orderSum, clientModule.getBonusBill(ClientPhone));
+                var TradeOperationId = TradeOperationAddToCashBox(anOrderDetails.orderSum);//, clientModule.getBonusBill(ClientPhone));
                 // для всех товаров
                 for (var i in anOrderDetails.orderItems) {
                     if (anOrderDetails.orderItems[i].itemId && anOrderDetails.orderItems[i].quantity){
@@ -136,8 +135,9 @@ function TradeSessions() {
                         if (ClientPhone){
                             BonusCount += getCountBonusesByItem(anOrderDetails.orderItems[i].itemId) * anOrderDetails.orderItems[i].quantity;
                         }// затем написать уход элементов состава товара со склада. 
-                        if (!whSession.whMovement(WhItemsCalculation(anOrderDetails.orderItems[i].itemId, anOrderDetails.orderItems[i].quantity), whSession.WH_PRODUCE_ITEMS)){
-                            //если не получилось - вывести ошибку.
+                        var calculatedConsumption = WhItemsCalculation(anOrderDetails.orderItems[i].itemId, anOrderDetails.orderItems[i].quantity);
+                        var whMovementResult = whSession.whMovement(calculatedConsumption, whSession.WH_PRODUCE_ITEMS);
+                        if (!whMovementResult) {
                             ep.addEvent('errorAddTradeOperation', anOrderDetails);
                         }
                     }
@@ -146,7 +146,7 @@ function TradeSessions() {
                     billing.addBillOperation(clientModule.getBonusBill(ClientPhone), billing.OPERATION_ADD_BONUS, BonusCount);
                 }
             model.save();
-            } else if (tradeOperationType === "bonus"){ //Оплата бонусами
+            }/* else if (tradeOperationType === "bonus"){ //Оплата бонусами
                 //Получаем информацию о состоянии бунусного счета клиента
                 model.qBillAccount.params.user_id = ClientPhone;
                 model.qBillAccount.requery();
@@ -174,7 +174,7 @@ function TradeSessions() {
                         model.save();
                     }
                 }
-            }
+            }*/
         }
     };
 }

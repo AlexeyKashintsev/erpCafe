@@ -8,6 +8,7 @@ function OrderList(aParent) {
     self.orderDetails = {};
     self.tradeSession = null;
     var lastDiv = null;
+    var attempsCount = 1; //Количество попыток отправки заказа на сервер
     //var setPhone = new Set-UserPhoneForm();
     //var choiceMethodOfPayment = new Choice-MethodOfPayment();
     
@@ -77,7 +78,7 @@ function OrderList(aParent) {
             alerter(alert, "alert-success", "<h4>Заказ успешно проведен</h4>Сумма заказа: <strong>"
                 + anOrderDetails.orderSum + " рублей </strong>", true, 15000);
         }, function() {
-            if (attempt < 5)
+            if (attempt < attempsCount)
                 processOrder(anOrderDetails, alert, attempt);
             else {
                 alerter(alert, "alert-danger", "<h4>Заказ не проведен</h4>Проверьте связь с сервером", true, 15000);
@@ -257,11 +258,11 @@ function OrderList(aParent) {
         self.showOnPanel(aParent.pnlLeft);
     }
 
-    form.btnOk.onActionPerformed = function(evt) {//GEN-FIRST:event_btnOkActionPerformed
+    form.btnOk.onActionPerformed = function(evt) {
         setPhone.tradeSession = self.tradeSession;
         setPhone.showModal();
         self.acceptOrder();
-    }//GEN-LAST:event_btnOkActionPerformed
+    }
 
     form.btnCancel.onActionPerformed = function(evt) {//GEN-FIRST:event_btnCancelActionPerformed
         self.deleteOrder();

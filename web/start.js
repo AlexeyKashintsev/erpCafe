@@ -19,8 +19,8 @@
     }
 })();
 window.P.ready = function() {
-    window.P.require(['test'], function(){
-        var f = new test();
+    window.P.require(['TradeItemsOnTradePoint'], function(){
+        var f = new TradeItemsOnTradePoint();
         f.show();
     });
 };

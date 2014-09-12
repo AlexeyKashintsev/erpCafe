@@ -7,9 +7,9 @@ function tstFrom() {
             , model = P.loadModel(this.constructor.name)
             , form = P.loadForm(this.constructor.name, model);
     
-    var a = new P.ServerModule('UserSession');
+    var a = new P.ServerModule('testServM');
     
-    a.login();
+ //   a.login();
     
  //   alert(P.principal.name);
     
@@ -19,4 +19,8 @@ function tstFrom() {
         form.show();
     };
     
+    form.button.onActionPerformed = function(event) {
+        var d = {a  : 10, b : 'aaa'};
+        a.test(d);
+    };
 }
