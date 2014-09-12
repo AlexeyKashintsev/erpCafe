@@ -1,15 +1,157 @@
-<?xml version="1.0" encoding="UTF-8"?><layout defaultCloseOperation="2" name="Form" prefHeight="163px" prefWidth="295px">
+<?xml version="1.0" encoding="UTF-8"?><layout defaultCloseOperation="2" name="Form" prefHeight="415px" prefWidth="596px">
   <widget name="modelCombo" parent="Form" prefHeight="27px" prefWidth="252px" type="DbComboDesignInfo">
-    <displayField entityId="140791502942460" fieldName="service_name"/>
     <valueField entityId="140791502942460" fieldName="bill_services_id"/>
+    <displayField entityId="140791502942460" fieldName="service_name"/>
     <datamodelElement entityId="-1" fieldName="service_id"/>
     <constraints height="27px" left="24px" top="48px" type="MarginConstraintsDesignInfo" width="252px"/>
   </widget>
-  <widget actionPerformed="buttonActionPerformed" name="button" parent="Form" prefHeight="36px" prefWidth="252px" text="Сохранить" type="ButtonDesignInfo">
+  <widget name="button" parent="Form" prefHeight="36px" prefWidth="252px" text="Сохранить" type="ButtonDesignInfo">
     <constraints height="36px" left="24px" top="96px" type="MarginConstraintsDesignInfo" width="252px"/>
   </widget>
   <widget name="label" parent="Form" prefHeight="17px" prefWidth="252px" text="Выберите услугу для добавления" type="LabelDesignInfo">
     <constraints height="17px" left="24px" top="12px" type="MarginConstraintsDesignInfo" width="252px"/>
+  </widget>
+  <widget name="modelGrid" parent="Form" prefHeight="204px" prefWidth="564px" type="DbGridDesignInfo">
+    <column name="colBill_service_cost_id">
+      <controlInfo classHint="DbSpinDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
+      <headerStyle>
+        <nativeFont name="Tahoma" size="11"/>
+      </headerStyle>
+      <datamodelElement entityId="140791502942460" fieldName="bill_service_cost_id"/>
+      <columnsDatasource/>
+      <columnsDisplayField/>
+      <cellsDatasource/>
+      <cellDesignInfo>
+        <rowsKeyField/>
+        <columnsKeyField/>
+        <cellValueField/>
+      </cellDesignInfo>
+    </column>
+    <column name="colService_id">
+      <controlInfo classHint="DbSpinDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
+      <headerStyle>
+        <nativeFont name="Tahoma" size="11"/>
+      </headerStyle>
+      <datamodelElement entityId="140791502942460" fieldName="service_id"/>
+      <columnsDatasource/>
+      <columnsDisplayField/>
+      <cellsDatasource/>
+      <cellDesignInfo>
+        <rowsKeyField/>
+        <columnsKeyField/>
+        <cellValueField/>
+      </cellDesignInfo>
+    </column>
+    <column name="colService_cost">
+      <controlInfo classHint="DbSpinDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
+      <headerStyle>
+        <nativeFont name="Tahoma" size="11"/>
+      </headerStyle>
+      <datamodelElement entityId="140791502942460" fieldName="service_cost"/>
+      <columnsDatasource/>
+      <columnsDisplayField/>
+      <cellsDatasource/>
+      <cellDesignInfo>
+        <rowsKeyField/>
+        <columnsKeyField/>
+        <cellValueField/>
+      </cellDesignInfo>
+    </column>
+    <column name="colStart_date">
+      <controlInfo classHint="DbDateDesignInfo" dateFormat="dd.MM.yyyy HH:mm:ss" name="view" prefHeight="0px" prefWidth="0px"/>
+      <headerStyle>
+        <nativeFont name="Tahoma" size="11"/>
+      </headerStyle>
+      <datamodelElement entityId="140791502942460" fieldName="start_date"/>
+      <columnsDatasource/>
+      <columnsDisplayField/>
+      <cellsDatasource/>
+      <cellDesignInfo>
+        <rowsKeyField/>
+        <columnsKeyField/>
+        <cellValueField/>
+      </cellDesignInfo>
+    </column>
+    <column name="colEnd_date">
+      <controlInfo classHint="DbDateDesignInfo" dateFormat="dd.MM.yyyy HH:mm:ss" name="view" prefHeight="0px" prefWidth="0px"/>
+      <headerStyle>
+        <nativeFont name="Tahoma" size="11"/>
+      </headerStyle>
+      <datamodelElement entityId="140791502942460" fieldName="end_date"/>
+      <columnsDatasource/>
+      <columnsDisplayField/>
+      <cellsDatasource/>
+      <cellDesignInfo>
+        <rowsKeyField/>
+        <columnsKeyField/>
+        <cellValueField/>
+      </cellDesignInfo>
+    </column>
+    <column name="colService_days">
+      <controlInfo classHint="DbSpinDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
+      <headerStyle>
+        <nativeFont name="Tahoma" size="11"/>
+      </headerStyle>
+      <datamodelElement entityId="140791502942460" fieldName="service_days"/>
+      <columnsDatasource/>
+      <columnsDisplayField/>
+      <cellsDatasource/>
+      <cellDesignInfo>
+        <rowsKeyField/>
+        <columnsKeyField/>
+        <cellValueField/>
+      </cellDesignInfo>
+    </column>
+    <column name="colService_month">
+      <controlInfo classHint="DbCheckDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
+      <headerStyle>
+        <nativeFont name="Tahoma" size="11"/>
+      </headerStyle>
+      <datamodelElement entityId="140791502942460" fieldName="service_month"/>
+      <columnsDatasource/>
+      <columnsDisplayField/>
+      <cellsDatasource/>
+      <cellDesignInfo>
+        <rowsKeyField/>
+        <columnsKeyField/>
+        <cellValueField/>
+      </cellDesignInfo>
+    </column>
+    <column name="colBill_services_id">
+      <controlInfo classHint="DbSpinDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
+      <headerStyle>
+        <nativeFont name="Tahoma" size="11"/>
+      </headerStyle>
+      <datamodelElement entityId="140791502942460" fieldName="bill_services_id"/>
+      <columnsDatasource/>
+      <columnsDisplayField/>
+      <cellsDatasource/>
+      <cellDesignInfo>
+        <rowsKeyField/>
+        <columnsKeyField/>
+        <cellValueField/>
+      </cellDesignInfo>
+    </column>
+    <column name="colService_name">
+      <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
+      <headerStyle>
+        <nativeFont name="Tahoma" size="11"/>
+      </headerStyle>
+      <datamodelElement entityId="140791502942460" fieldName="service_name"/>
+      <columnsDatasource/>
+      <columnsDisplayField/>
+      <cellsDatasource/>
+      <cellDesignInfo>
+        <rowsKeyField/>
+        <columnsKeyField/>
+        <cellValueField/>
+      </cellDesignInfo>
+    </column>
+    <rowsColumnsDesignInfo>
+      <rowsDatasource entityId="140791502942460" field="false"/>
+    </rowsColumnsDesignInfo>
+    <treeDesignInfo/>
+    <constraints height="204px" left="24px" top="180px" type="MarginConstraintsDesignInfo" width="564px"/>
   </widget>
   <layout type="MarginLayoutDesignInfo"/>
 </layout>

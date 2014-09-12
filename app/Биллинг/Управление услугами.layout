@@ -11,89 +11,89 @@
   <widget name="tfSum" parent="Form" prefHeight="20px" prefWidth="120px" type="TextFieldDesignInfo">
     <constraints height="20px" left="24px" top="96px" type="MarginConstraintsDesignInfo" width="120px"/>
   </widget>
-  <widget actionPerformed="rbMonthActionPerformed" buttonGroup="buttonGroup" name="rbMonth" parent="Form" prefHeight="23px" prefWidth="120px" text="Ежемесячно" type="RadioDesignInfo">
+  <widget buttonGroup="buttonGroup" name="rbMonth" parent="Form" prefHeight="23px" prefWidth="120px" text="Ежемесячно" type="RadioDesignInfo">
     <constraints height="23px" left="24px" top="132px" type="MarginConstraintsDesignInfo" width="120px"/>
   </widget>
-  <widget actionPerformed="rbDaysActionPerformed" buttonGroup="buttonGroup" name="rbDays" parent="Form" prefHeight="23px" prefWidth="120px" text="Кол-во дней" type="RadioDesignInfo">
+  <widget buttonGroup="buttonGroup" name="rbDays" parent="Form" prefHeight="23px" prefWidth="120px" text="Кол-во дней" type="RadioDesignInfo">
     <constraints height="23px" left="24px" top="156px" type="MarginConstraintsDesignInfo" width="120px"/>
   </widget>
   <widget enabled="false" name="tfDays" parent="Form" prefHeight="20px" prefWidth="120px" text="0" type="TextFieldDesignInfo">
     <constraints height="20px" left="24px" top="180px" type="MarginConstraintsDesignInfo" width="120px"/>
   </widget>
-  <widget actionPerformed="btnSaveActionPerformed" name="btnSave" parent="Form" prefHeight="23px" prefWidth="120px" text="Сохранить" type="ButtonDesignInfo">
+  <widget name="btnSave" parent="Form" prefHeight="23px" prefWidth="120px" text="Сохранить" type="ButtonDesignInfo">
     <constraints height="23px" left="24px" top="224px" type="MarginConstraintsDesignInfo" width="120px"/>
   </widget>
   <widget deletable="false" editable="false" insertable="false" name="modelGrid" parent="Form" prefHeight="235px" prefWidth="387px" type="DbGridDesignInfo">
+    <column name="colService_name" title="Название">
+      <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
+      <columnsDatasource/>
+      <columnsDisplayField/>
+      <cellsDatasource/>
+      <cellDesignInfo>
+        <columnsKeyField/>
+        <cellValueField/>
+        <rowsKeyField/>
+      </cellDesignInfo>
+      <headerStyle>
+        <nativeFont name="Tahoma" size="11"/>
+      </headerStyle>
+      <datamodelElement entityId="140843172475827" fieldName="service_name"/>
+    </column>
+    <column name="colService_days" title="Дни">
+      <controlInfo classHint="DbSpinDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
+      <columnsDatasource/>
+      <columnsDisplayField/>
+      <cellsDatasource/>
+      <cellDesignInfo>
+        <columnsKeyField/>
+        <cellValueField/>
+        <rowsKeyField/>
+      </cellDesignInfo>
+      <headerStyle>
+        <nativeFont name="Tahoma" size="11"/>
+      </headerStyle>
+      <datamodelElement entityId="140843172475827" fieldName="service_days"/>
+    </column>
+    <column name="colService_sum1" title="Сумма">
+      <controlInfo classHint="DbSpinDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
+      <columnsDatasource/>
+      <columnsDisplayField/>
+      <cellsDatasource/>
+      <cellDesignInfo>
+        <columnsKeyField/>
+        <cellValueField/>
+        <rowsKeyField/>
+      </cellDesignInfo>
+      <headerStyle>
+        <nativeFont name="Tahoma" size="11"/>
+      </headerStyle>
+      <datamodelElement entityId="140843172475827" fieldName="service_cost"/>
+    </column>
+    <column name="colService_month" title="Ежемесячно">
+      <controlInfo classHint="DbCheckDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
+      <columnsDatasource/>
+      <columnsDisplayField/>
+      <cellsDatasource/>
+      <cellDesignInfo>
+        <columnsKeyField/>
+        <cellValueField/>
+        <rowsKeyField/>
+      </cellDesignInfo>
+      <headerStyle>
+        <nativeFont name="Tahoma" size="11"/>
+      </headerStyle>
+      <datamodelElement entityId="140843172475827" fieldName="service_month"/>
+    </column>
     <rowsColumnsDesignInfo>
       <rowsDatasource entityId="140843172475827" field="false"/>
     </rowsColumnsDesignInfo>
     <treeDesignInfo/>
-    <column name="colService_name" title="Название">
-      <headerStyle>
-        <nativeFont name="Tahoma" size="11"/>
-      </headerStyle>
-      <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
-      <datamodelElement entityId="140843172475827" fieldName="service_name"/>
-      <columnsDatasource/>
-      <columnsDisplayField/>
-      <cellsDatasource/>
-      <cellDesignInfo>
-        <rowsKeyField/>
-        <columnsKeyField/>
-        <cellValueField/>
-      </cellDesignInfo>
-    </column>
-    <column name="colService_days" title="Дни">
-      <headerStyle>
-        <nativeFont name="Tahoma" size="11"/>
-      </headerStyle>
-      <controlInfo classHint="DbSpinDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
-      <datamodelElement entityId="140843172475827" fieldName="service_days"/>
-      <columnsDatasource/>
-      <columnsDisplayField/>
-      <cellsDatasource/>
-      <cellDesignInfo>
-        <rowsKeyField/>
-        <columnsKeyField/>
-        <cellValueField/>
-      </cellDesignInfo>
-    </column>
-    <column name="colService_sum" title="Сумма">
-      <headerStyle>
-        <nativeFont name="Tahoma" size="11"/>
-      </headerStyle>
-      <controlInfo classHint="DbSpinDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
-      <datamodelElement entityId="140843172475827" fieldName="service_sum"/>
-      <columnsDatasource/>
-      <columnsDisplayField/>
-      <cellsDatasource/>
-      <cellDesignInfo>
-        <rowsKeyField/>
-        <columnsKeyField/>
-        <cellValueField/>
-      </cellDesignInfo>
-    </column>
-    <column name="colService_month" title="Ежемесячно">
-      <headerStyle>
-        <nativeFont name="Tahoma" size="11"/>
-      </headerStyle>
-      <controlInfo classHint="DbCheckDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
-      <datamodelElement entityId="140843172475827" fieldName="service_month"/>
-      <columnsDatasource/>
-      <columnsDisplayField/>
-      <cellsDatasource/>
-      <cellDesignInfo>
-        <rowsKeyField/>
-        <columnsKeyField/>
-        <cellValueField/>
-      </cellDesignInfo>
-    </column>
     <constraints bottom="37px" left="168px" right="15px" top="12px" type="MarginConstraintsDesignInfo"/>
   </widget>
-  <widget actionPerformed="btnEditActionPerformed" name="btnEdit" parent="Form" prefHeight="23px" prefWidth="125px" text="Редактировать" type="ButtonDesignInfo">
+  <widget name="btnEdit" parent="Form" prefHeight="23px" prefWidth="125px" text="Редактировать" type="ButtonDesignInfo">
     <constraints bottom="7px" height="23px" right="132px" type="MarginConstraintsDesignInfo" width="125px"/>
   </widget>
-  <widget actionPerformed="btnDelActionPerformed" name="btnDel" parent="Form" prefHeight="23px" prefWidth="108px" text="- Удалить" type="ButtonDesignInfo">
+  <widget name="btnDel" parent="Form" prefHeight="23px" prefWidth="108px" text="- Удалить" type="ButtonDesignInfo">
     <constraints bottom="7px" height="23px" right="15px" type="MarginConstraintsDesignInfo" width="108px"/>
   </widget>
   <nonvisual name="buttonGroup" type="ButtonGroupDesignInfo"/>

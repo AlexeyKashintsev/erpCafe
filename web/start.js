@@ -19,8 +19,8 @@
     }
 })();
 window.P.ready = function() {
-    window.P.require(['tstFrom'], function(){
-        var f = new tstFrom();
+    window.P.require(['CreateServiceForm'], function(){
+        var f = new CreateServiceForm();
         f.show();
     });
 };

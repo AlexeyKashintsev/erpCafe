@@ -302,7 +302,7 @@ function BillModule() {
                 if(model.qBillAccount.length > 0){
                     model.qDelServiceFromAccount.params.account_id = anAccountId;
                     model.qDelServiceFromAccount.params.service_id = aServiceId;
-                    model.qDelServiceFromAccount.executeUpdate();
+                    model.qDelServiceFromAccount.enqueueUpdate();
                     model.save();
                     eventProcessor.addEvent('delServiceFromAccount', {
                         account_id: anAccountId,
@@ -347,7 +347,14 @@ function BillModule() {
             service_sum:   aSum,
             service_month: aMonth
         };
-        model.qServiceList.push(obj);
+        //model.qServiceList.push(obj);
+        model.qServiceList.insert();
+        model.qServiceList.cursor.service_id = model.qServiceList.cursor.bill_services_id;
+        model.qServiceList.cursor.service_cost = aSum;
+        model.qServiceList.cursor.service_days = aDays;
+        model.qServiceList.cursor.service_month = aMonth;
+        model.qServiceList.cursor.service_name = aName;
+        model.qServiceList.cursor.start_date = new Date();
         model.save();
         eventProcessor.addEvent('serviceCreated',obj);
         return true;
@@ -356,12 +363,14 @@ function BillModule() {
     /*
      * Удаление услуги
      */
+    
     self.delService = function(aServiceId){
         model.params.service_id = aServiceId;
+        P.Logger.info("Del service");
         model.qServiceList.requery(function (){
             if(model.qServiceList.length > 0){
                  model.qDelService.params.service_id = aServiceId;
-                 model.qDelService.executeUpdate();
+                 model.qDelService.enqueueUpdate();
                  model.save();
                  eventProcessor.addEvent('delService', {
                      service_id: aServiceId
@@ -405,7 +414,7 @@ function BillModule() {
                 model.qServiceList.cursor.service_days = aDays;
                 model.qServiceList.cursor.service_month = aMonth;
                 model.qChangedService.params.service_id = aServiceId;
-                model.qChangedService.executeUpdate();
+                model.qChangedService.enqueueUpdate();
                 model.save();
                 return true;
             } else {
