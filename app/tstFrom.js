@@ -9,7 +9,7 @@ function tstFrom() {
     
     var a = new P.ServerModule('testServM');
     
- //   a.login();
+    a.login();
     
  //   alert(P.principal.name);
     

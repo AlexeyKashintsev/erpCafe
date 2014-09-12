@@ -8,7 +8,7 @@ function OrderList(aParent) {
     self.orderDetails = {};
     self.tradeSession = null;
     var lastDiv = null;
-    var attempsCount = 1; //Количество попыток отправки заказа на сервер
+    var attempsCount = 5; //Количество попыток отправки заказа на сервер
     //var setPhone = new Set-UserPhoneForm();
     //var choiceMethodOfPayment = new Choice-MethodOfPayment();
     
