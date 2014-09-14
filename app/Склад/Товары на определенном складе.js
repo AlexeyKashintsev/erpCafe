@@ -13,6 +13,7 @@ function SelectItemsInWH() {
     self.autoChange = true;
     self.selectForm = false;
     model.params.item_type = null;
+    model.requery();
     
     self.setFranchazi = function(aFranchazi) {
         self.model.params.franchazi_id = aFranchazi;

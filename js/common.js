@@ -29,8 +29,8 @@ cmn.pFrameRunner = new function() {
             var Loading = cmn.createElement('blockquote', '', frames[aFormName].div, '');
             Loading.innerHTML = '<p>Загрузка...</p>';
             setActiveFrame(aFormName);
-            require([aFormName], function(){
-                frames[aFormName].form = new Form(aFormName);
+            P.require([aFormName], function(){
+                frames[aFormName].form = eval('new ' + aFormName + '()');//new P.Form(aFormName);
                 try {
                     frames[aFormName].form.setFranchazi(units.userSession.franchaziId);
                 } catch (e) {
@@ -38,7 +38,7 @@ cmn.pFrameRunner = new function() {
                 }
                 frames[aFormName].div.removeChild(Loading);
                 if (!aSelfGeneration) {
-                    frames[aFormName].form.showOnPanel(frames[aFormName].div);
+                    frames[aFormName].form.show();//showOnPanel(frames[aFormName].div);
                 } else {
                     frames[aFormName].form.manualShow(frames[aFormName].div);
                 }

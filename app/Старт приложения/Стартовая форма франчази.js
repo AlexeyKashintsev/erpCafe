@@ -5,16 +5,16 @@
  */
 function AdminStartForm() {
     var self = this, model = P.loadModel(this.constructor.name);//, form = P.loadForm(this.constructor.name, model);
-    try {
+    /*try {
         self.session = units.userSession;
     } catch(e) {
         self.session = new P.ServerModule('UserSession');
-    }
+    }*/
     self.actionListDisplay = null;
     var usersView = null;
     var workShop = null;
     
-    self.session.getFranchazi(function(anFranchaziId){
+    session.getFranchazi(function(anFranchaziId){
         self.setFranchazi(anFranchaziId);
     });
     
@@ -40,7 +40,7 @@ function AdminStartForm() {
         },
         warehouse   :   {
             display     :   "Склад",
-            dispForm    :   "SelectItemsInWH",
+            dispForm    :   "WarehouseItemList",
             inner   :   {
                 display     :   "Типы товаров",
                 dispForm    :   "ItemTypesForm"
@@ -57,5 +57,5 @@ function AdminStartForm() {
     };
 
     self.actionListDisplay = new cmn.ActionList(self.actionList, document.getElementById("actionPanel"));
-    cmn.addTopRightControl("Выход", "log-out", logout);
+    cmn.addTopRightControl("Выход", "log-out", P.logout);
 }

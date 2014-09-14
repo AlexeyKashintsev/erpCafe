@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><layout defaultCloseOperation="2" name="Form" prefHeight="300px" prefWidth="652px" windowClosing="formWindowClosing" windowOpened="formWindowOpened">
+<?xml version="1.0" encoding="UTF-8"?><layout defaultCloseOperation="2" name="Form" prefHeight="300px" prefWidth="652px">
   <widget name="pnlSelLock" parent="Form" prefHeight="48px" prefWidth="648px" type="PanelDesignInfo">
     <layout type="MarginLayoutDesignInfo"/>
     <constraints bottom="0px" height="48px" left="0px" right="4px" type="MarginConstraintsDesignInfo"/>
@@ -6,18 +6,63 @@
   <widget icon="icons/22x22/actions/dialog-apply.png" name="btnSelect" parent="pnlSelLock" prefHeight="35px" prefWidth="125px" text="Выбрать" type="ButtonDesignInfo">
     <constraints bottom="7px" height="35px" right="7px" type="MarginConstraintsDesignInfo" width="125px"/>
   </widget>
-  <widget actionPerformed="tbSetEditActionPerformed" icon="icons/22x22/stock/stock_lock.png" name="tbSetEdit" parent="pnlSelLock" prefHeight="35px" prefWidth="35px" toolTipText="Открыть форму для редактирования" type="ToggleButtonDesignInfo">
+  <widget icon="icons/22x22/stock/stock_lock.png" name="tbSetEdit" parent="pnlSelLock" prefHeight="35px" prefWidth="35px" toolTipText="Открыть форму для редактирования" type="ToggleButtonDesignInfo">
     <constraints bottom="7px" height="35px" left="7px" type="MarginConstraintsDesignInfo" width="35px"/>
   </widget>
   <widget floatable="false" name="toolBar" parent="Form" prefHeight="37px" prefWidth="648px" rollover="true" type="ToolbarDesignInfo">
     <constraints height="37px" left="0px" right="4px" top="0px" type="MarginConstraintsDesignInfo"/>
   </widget>
-  <widget actionPerformed="btnAddActionPerformed" focusable="false" horizontalTextPosition="0" icon="icons/22x22/actions/list-add.png" name="btnAdd" parent="toolBar" prefHeight="29px" prefWidth="29px" toolTipText="Добавить" type="ButtonDesignInfo" verticalTextPosition="3"/>
-  <widget actionPerformed="btnDelActionPerformed" focusable="false" horizontalTextPosition="0" icon="icons/22x22/actions/list-remove.png" name="btnDel" parent="toolBar" prefHeight="29px" prefWidth="29px" toolTipText="Удалить" type="ButtonDesignInfo" verticalTextPosition="3"/>
-  <widget actionPerformed="btnReqActionPerformed" focusable="false" horizontalTextPosition="0" icon="icons/22x22/actions/new-view-refresh.png" name="btnReq" parent="toolBar" prefHeight="29px" prefWidth="29px" toolTipText="Обновить" type="ButtonDesignInfo" verticalTextPosition="3"/>
-  <widget actionPerformed="btnSaveActionPerformed" focusable="false" horizontalTextPosition="0" icon="icons/22x22/actions/document-save.png" name="btnSave" parent="toolBar" prefHeight="29px" prefWidth="29px" toolTipText="Сохранить" type="ButtonDesignInfo" verticalTextPosition="3"/>
-  <widget actionPerformed="btnFindActionPerformed" focusable="false" horizontalTextPosition="0" icon="icons/22x22/actions/new-edit-find.png" name="btnFind" parent="toolBar" prefHeight="29px" prefWidth="29px" toolTipText="Сохранить" type="ButtonDesignInfo" verticalTextPosition="3"/>
-  <widget name="grdUsers" parent="Form" prefHeight="204px" prefWidth="653px" type="DbGridDesignInfo">
+  <widget focusable="false" horizontalTextPosition="0" icon="icons/22x22/actions/list-add.png" name="btnAdd" parent="toolBar" prefHeight="26px" prefWidth="34px" toolTipText="Добавить" type="ButtonDesignInfo" verticalTextPosition="3"/>
+  <widget focusable="false" horizontalTextPosition="0" icon="icons/22x22/actions/list-remove.png" name="btnDel" parent="toolBar" prefHeight="26px" prefWidth="34px" toolTipText="Удалить" type="ButtonDesignInfo" verticalTextPosition="3"/>
+  <widget focusable="false" horizontalTextPosition="0" icon="icons/22x22/actions/new-view-refresh.png" name="btnReq" parent="toolBar" prefHeight="26px" prefWidth="34px" toolTipText="Обновить" type="ButtonDesignInfo" verticalTextPosition="3"/>
+  <widget focusable="false" horizontalTextPosition="0" icon="icons/22x22/actions/document-save.png" name="btnSave" parent="toolBar" prefHeight="26px" prefWidth="34px" toolTipText="Сохранить" type="ButtonDesignInfo" verticalTextPosition="3"/>
+  <widget focusable="false" horizontalTextPosition="0" icon="icons/22x22/actions/new-edit-find.png" name="btnFind" parent="toolBar" prefHeight="26px" prefWidth="34px" toolTipText="Сохранить" type="ButtonDesignInfo" verticalTextPosition="3"/>
+  <widget name="grdUsers" parent="Form" prefHeight="216px" prefWidth="653px" type="DbGridDesignInfo">
+    <column name="USR_NAME" title="Пользователь">
+      <controlInfo classHint="DbTextDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
+      <columnsDatasource/>
+      <columnsDisplayField/>
+      <cellsDatasource/>
+      <cellDesignInfo>
+        <rowsKeyField/>
+        <columnsKeyField/>
+        <cellValueField/>
+      </cellDesignInfo>
+      <headerStyle>
+        <nativeFont name="Dialog" size="11"/>
+      </headerStyle>
+      <datamodelElement entityId="132137124678162" fieldName="usr_name"/>
+    </column>
+    <column name="USR_ROLE" selectOnly="true" title="Роль">
+      <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
+      <columnsDatasource/>
+      <columnsDisplayField/>
+      <cellsDatasource/>
+      <cellDesignInfo>
+        <rowsKeyField/>
+        <columnsKeyField/>
+        <cellValueField/>
+      </cellDesignInfo>
+      <headerStyle>
+        <nativeFont name="Dialog" size="11"/>
+      </headerStyle>
+      <datamodelElement entityId="132137124678162" fieldName="usr_roles"/>
+    </column>
+    <column name="USR_PASSWD" selectOnly="true" title="Пароль" width="30">
+      <controlInfo classHint="DbComboDesignInfo" emptyText="Не установлен" list="false" name="view" prefHeight="0px" prefWidth="0px"/>
+      <columnsDatasource/>
+      <columnsDisplayField/>
+      <cellsDatasource/>
+      <cellDesignInfo>
+        <rowsKeyField/>
+        <columnsKeyField/>
+        <cellValueField/>
+      </cellDesignInfo>
+      <headerStyle>
+        <nativeFont name="Dialog" size="11"/>
+      </headerStyle>
+      <datamodelElement entityId="132137124678162" fieldName="pswSet"/>
+    </column>
     <rowsColumnsDesignInfo>
       <rowsDatasource entityId="132137124678162" field="false"/>
     </rowsColumnsDesignInfo>
@@ -26,52 +71,7 @@
       <param2GetChildren/>
       <paramSourceField/>
     </treeDesignInfo>
-    <column name="USR_NAME" title="Пользователь">
-      <controlInfo classHint="DbTextDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
-      <datamodelElement entityId="132137124678162" fieldName="usr_name"/>
-      <columnsDatasource/>
-      <columnsDisplayField/>
-      <cellsDatasource/>
-      <cellDesignInfo>
-        <columnsKeyField/>
-        <cellValueField/>
-        <rowsKeyField/>
-      </cellDesignInfo>
-      <headerStyle>
-        <nativeFont name="Dialog" size="11"/>
-      </headerStyle>
-    </column>
-    <column name="USR_ROLE" selectFunction="USR_ROLESelectValue" selectOnly="true" title="Роль">
-      <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
-      <datamodelElement entityId="132137124678162" fieldName="usr_roles"/>
-      <columnsDatasource/>
-      <columnsDisplayField/>
-      <cellsDatasource/>
-      <cellDesignInfo>
-        <columnsKeyField/>
-        <cellValueField/>
-        <rowsKeyField/>
-      </cellDesignInfo>
-      <headerStyle>
-        <nativeFont name="Dialog" size="11"/>
-      </headerStyle>
-    </column>
-    <column name="USR_PASSWD" selectFunction="USR_PASSWDOnSelect" selectOnly="true" title="Пароль" width="30">
-      <controlInfo classHint="DbComboDesignInfo" emptyText="Не установлен" list="false" name="view" prefHeight="0px" prefWidth="0px"/>
-      <datamodelElement entityId="132137124678162" fieldName="pswSet"/>
-      <columnsDatasource/>
-      <columnsDisplayField/>
-      <cellsDatasource/>
-      <cellDesignInfo>
-        <columnsKeyField/>
-        <cellValueField/>
-        <rowsKeyField/>
-      </cellDesignInfo>
-      <headerStyle>
-        <nativeFont name="Dialog" size="11"/>
-      </headerStyle>
-    </column>
-    <constraints bottom="60px" left="0px" right="-1px" top="36px" type="MarginConstraintsDesignInfo"/>
+    <constraints bottom="48px" left="0px" right="-1px" top="36px" type="MarginConstraintsDesignInfo"/>
   </widget>
   <layout type="MarginLayoutDesignInfo"/>
 </layout>
