@@ -11,7 +11,7 @@
   <widget actionPerformed="rbMonthActionPerformed" buttonGroup="buttonGroup" name="rbMonth" parent="Form" prefHeight="23px" prefWidth="120px" selected="true" text="Ежемесячно" type="RadioDesignInfo">
     <constraints height="23px" left="34px" top="142px" type="MarginConstraintsDesignInfo" width="120px"/>
   </widget>
-  <widget name="tfSum" parent="Form" prefHeight="20px" prefWidth="120px" type="TextFieldDesignInfo">
+  <widget actionPerformed="tfSumActionPerformed" name="tfSum" parent="Form" prefHeight="20px" prefWidth="120px" type="TextFieldDesignInfo">
     <constraints height="20px" left="34px" top="106px" type="MarginConstraintsDesignInfo" width="120px"/>
   </widget>
   <widget name="label1" parent="Form" prefHeight="14px" prefWidth="120px" text="Сумма" type="LabelDesignInfo">

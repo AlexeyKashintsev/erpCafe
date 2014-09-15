@@ -24,70 +24,70 @@
     <constraints height="23px" left="24px" top="224px" type="MarginConstraintsDesignInfo" width="120px"/>
   </widget>
   <widget deletable="false" editable="false" insertable="false" name="modelGrid" parent="Form" prefHeight="235px" prefWidth="387px" type="DbGridDesignInfo">
-    <rowsColumnsDesignInfo>
-      <rowsDatasource entityId="140843172475827" field="false"/>
-    </rowsColumnsDesignInfo>
-    <treeDesignInfo/>
     <column name="colService_name" title="Название">
-      <headerStyle>
-        <nativeFont name="Tahoma" size="11"/>
-      </headerStyle>
       <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
       <datamodelElement entityId="140843172475827" fieldName="service_name"/>
       <columnsDatasource/>
       <columnsDisplayField/>
       <cellsDatasource/>
       <cellDesignInfo>
-        <rowsKeyField/>
         <columnsKeyField/>
         <cellValueField/>
+        <rowsKeyField/>
       </cellDesignInfo>
-    </column>
-    <column name="colService_days" title="Дни">
       <headerStyle>
         <nativeFont name="Tahoma" size="11"/>
       </headerStyle>
+    </column>
+    <column name="colService_days" title="Дни">
       <controlInfo classHint="DbSpinDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
       <datamodelElement entityId="140843172475827" fieldName="service_days"/>
       <columnsDatasource/>
       <columnsDisplayField/>
       <cellsDatasource/>
       <cellDesignInfo>
-        <rowsKeyField/>
         <columnsKeyField/>
         <cellValueField/>
+        <rowsKeyField/>
       </cellDesignInfo>
-    </column>
-    <column name="colService_sum" title="Сумма">
       <headerStyle>
         <nativeFont name="Tahoma" size="11"/>
       </headerStyle>
+    </column>
+    <column name="colService_sum" title="Сумма">
       <controlInfo classHint="DbSpinDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
-      <datamodelElement entityId="140843172475827" fieldName="service_sum"/>
+      <datamodelElement entityId="140843172475827" fieldName="item_cost"/>
       <columnsDatasource/>
       <columnsDisplayField/>
       <cellsDatasource/>
       <cellDesignInfo>
-        <rowsKeyField/>
         <columnsKeyField/>
         <cellValueField/>
+        <rowsKeyField/>
       </cellDesignInfo>
-    </column>
-    <column name="colService_month" title="Ежемесячно">
       <headerStyle>
         <nativeFont name="Tahoma" size="11"/>
       </headerStyle>
+    </column>
+    <column name="colService_month" title="Ежемесячно">
       <controlInfo classHint="DbCheckDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
       <datamodelElement entityId="140843172475827" fieldName="service_month"/>
       <columnsDatasource/>
       <columnsDisplayField/>
       <cellsDatasource/>
       <cellDesignInfo>
-        <rowsKeyField/>
         <columnsKeyField/>
         <cellValueField/>
+        <rowsKeyField/>
       </cellDesignInfo>
+      <headerStyle>
+        <nativeFont name="Tahoma" size="11"/>
+      </headerStyle>
     </column>
+    <rowsColumnsDesignInfo>
+      <rowsDatasource entityId="140843172475827" field="false"/>
+    </rowsColumnsDesignInfo>
+    <treeDesignInfo/>
     <constraints bottom="37px" left="168px" right="15px" top="12px" type="MarginConstraintsDesignInfo"/>
   </widget>
   <widget actionPerformed="btnEditActionPerformed" name="btnEdit" parent="Form" prefHeight="23px" prefWidth="125px" text="Редактировать" type="ButtonDesignInfo">

@@ -12,5 +12,4 @@
   <relation leftEntityFieldName="account_type" leftEntityId="140791227991520" rightEntityId="140844547933838" rightEntityParameterName="type_id"/>
   <referenceRelation leftEntityFieldName="account_type" leftEntityId="140791227991520" rightEntityFieldName="bill_account_types_id" rightEntityId="140844547933838"/>
   <referenceRelation leftEntityFieldName="account_id" leftEntityId="140791634411137" rightEntityFieldName="bill_accounts_id" rightEntityId="140791227991520"/>
-  <referenceRelation leftEntityFieldName="service_id" leftEntityId="140791634411137" rightEntityFieldName="bill_services_id" rightEntityId="140791634411137"/>
 </datamodel>

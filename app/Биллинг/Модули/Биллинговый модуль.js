@@ -257,9 +257,9 @@ function BillModule() {
             if(model.qServiceList.length > 0){
                 if(model.qBillAccount.length > 0){
                     if(model.qAddService.length == 0) {
-                        if(model.qBillAccount.cursor.currnt_sum >=model.qServiceList.cursor.service_cost){
+                        if(model.qBillAccount.cursor.currnt_sum >=model.qServiceList.cursor.item_cost){
                             var payDate = new Date();
-                            self.addBillOperation(anAccountId, self.OPERATION_DEL_SERVICE, model.qServiceList.cursor.service_cost);
+                            self.addBillOperation(anAccountId, self.OPERATION_DEL_SERVICE, model.qServiceList.cursor.item_cost);
                             if(model.qServiceList.cursor.service_month){
                                 payDate.setMonth(payDate.getMonth()+1);
                             }else{
@@ -267,7 +267,7 @@ function BillModule() {
                             }
                             var obj ={
                                 account_id: anAccountId,
-                                service_id: aServiceId,
+                                service_cost_id: model.qServiceList.cursor.bill_item_cost_id,
                                 payment_date: payDate
                             };
                             model.qAddService.push(obj);
@@ -344,7 +344,7 @@ function BillModule() {
         var obj = {
             service_name: aName,
             service_days: aDays,
-            service_cost:   aSum,
+            item_cost:   aSum,
             service_month: aMonth
         };
         //model.qServiceList.push(obj);
@@ -367,13 +367,11 @@ function BillModule() {
         model.params.service_id = aServiceId;
         model.qServiceList.requery(function (){
             if(model.qServiceList.length > 0){
-                 model.qDelService.params.service_id = aServiceId;
-                 model.qDelService.executeUpdate();
-                 model.save();
-                 eventProcessor.addEvent('delService', {
-                     service_id: aServiceId
-                 });
-                 return true;
+                model.qCloseItemCost.params.item_id = aServiceId;
+                model.qCloseItemCost.executeUpdate();
+                model.save();
+                eventProcessor.addEvent('delService',{service_id:aServiceId});
+                return true;
             } else {
                  eventProcessor.addEvent('errorDelService',{
                      service_id: aServiceId,
@@ -393,10 +391,10 @@ function BillModule() {
                 model.qCloseItemCost.params.item_id = aServiceId;
                 model.qCloseItemCost.executeUpdate();
                 var obj = {
-                    service_id: aServiceId,
-                    service_cost: aSum,
+                    item_id: aServiceId,
+                    item_cost: aSum,
                     service_days: aDays,
-                    month: aMonth,
+                    service_month: aMonth,
                     start_date: new Date()
                 }; 
                 model.qServiseCostAdd.push(obj);
