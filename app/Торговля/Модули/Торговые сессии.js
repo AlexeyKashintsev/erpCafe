@@ -11,18 +11,17 @@ function TradeSessions() {
     var billing = new BillModule();
     var ep = new EventProcessor();
     var ClientPhone = null;
-    var tradeOperationType = "money";
+    //var tradeOperationType = "money";
     
     self.setClientPhone = function(aPhone){//TODO Убрать в модуль работы с клиентами
         ClientPhone = aPhone;
     };
     
-    self.setTradeOperationType = function(aType){//TODO Зло^ использовать меч света
-        tradeOperationType = aType;
-    };
+//    self.setTradeOperationType = function(aType){//TODO Зло^ использовать меч света
+//        tradeOperationType = aType;
+//    };
     
     self.getBonusCount = function(){//TODO Тоже самое
-        var perem = billing.getSumFromUserId(ClientPhone);//Сонный индус писал?
         return billing.getSumFromUserId(ClientPhone);
     };
     
@@ -123,20 +122,25 @@ function TradeSessions() {
         //TODO написать всю программу на русском языке, убрать все что не начинается с //
         // Если мы в сессии,то
         if (model.params.session_id){
-            if (tradeOperationType === "money"){
+            if (anOrderDetails.methodOfPayment === "money"){
                 var BonusCount = 0;
-                var TradeOperationId = TradeOperationAddToCashBox(anOrderDetails.orderSum, clientModule.getBonusBill(ClientPhone));
+                var TradeOperationId = TradeOperationAddToCashBox(  anOrderDetails.orderSum, 
+                                                                    clientModule.getBonusBill(ClientPhone));
                 // для всех товаров
                 for (var i in anOrderDetails.orderItems) {
                     if (anOrderDetails.orderItems[i].itemId && anOrderDetails.orderItems[i].quantity){
+                       
                         // записать проданные товары в тороговую операцию. При этом добавив приход в кассу.
-                        TradeItemsPushInTradeOperation(TradeOperationId, anOrderDetails.orderItems[i].itemId, anOrderDetails.orderItems[i].quantity);
-                        // TODO Добавить добавление бонусов клиенту на его счет.
+                        TradeItemsPushInTradeOperation( TradeOperationId, 
+                                                        anOrderDetails.orderItems[i].itemId, 
+                                                        anOrderDetails.orderItems[i].quantity);
                         if (ClientPhone){
                             BonusCount += getCountBonusesByItem(anOrderDetails.orderItems[i].itemId) * anOrderDetails.orderItems[i].quantity;
-                        }// затем написать уход элементов состава товара со склада. 
-                        if (!whSession.whMovement(WhItemsCalculation(anOrderDetails.orderItems[i].itemId, anOrderDetails.orderItems[i].quantity), whSession.WH_PRODUCE_ITEMS)){
-                            //если не получилось - вывести ошибку.
+                        }
+                        var calculationConsumption = WhItemsCalculation(anOrderDetails.orderItems[i].itemId, 
+                                                                        anOrderDetails.orderItems[i].quantity);
+                        
+                        if (!whSession.whMovement(calculationConsumption, whSession.WH_PRODUCE_ITEMS)){
                             ep.addEvent('errorAddTradeOperation', anOrderDetails);
                         }
                     }
@@ -144,8 +148,8 @@ function TradeSessions() {
                 if (ClientPhone){
                     billing.addBillOperation(clientModule.getBonusBill(ClientPhone), billing.OPERATION_ADD_BONUS, BonusCount);
                 }
-            model.save();
-            } else if (tradeOperationType === "bonus"){ //Оплата бонусами
+                model.save();
+            } else if (anOrderDetails.methodOfPayment === "bonus"){ //Оплата бонусами
                 //Получаем информацию о состоянии бунусного счета клиента
                 model.qBillAccount.params.user_id = ClientPhone;
                 model.qBillAccount.requery();
@@ -176,4 +180,23 @@ function TradeSessions() {
             }
         }
     };
+        
+    function ObjectConstructor(aValue) {
+        var a = getAFromValue(aValue);
+        
+        this.getB = function() {
+            return a+3;
+        };
+        
+        this.setA = function(newA) {
+            a = getAFromValue(newA);
+        };
+        
+        function getAFromValue(aValue) {
+            return aValue*153;
+        }
+    }
+    
+    var obj = new ObjectConstructor(123);
+    alert(obj.getB());
 }

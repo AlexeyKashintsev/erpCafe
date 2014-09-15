@@ -99,4 +99,19 @@ function ClientServerModule() {
     self.getBonusCount = function(aPhone){
         return billModule.getSumFromUserId(aPhone);
     };
+    
+    self.getClientData = function(aPhone){
+        model.qPersonalData.params.phone = aPhone;
+        model.qPersonalData.requery();
+        var client = {};
+        client.bonusBill = model.qPersonalData.cursor.client_id;
+        client.firstName = model.qPersonalData.cursor.first_name;
+        client.middleName = model.qPersonalData.cursor.middle_name;
+        client.lastName = model.qPersonalData.cursor.last_name;
+        client.birthday = model.qPersonalData.cursor.birthday;
+        client.email = model.qPersonalData.cursor.email;
+        client.registrationDate = model.qPersonalData.cursor.reg_date;
+        client.bonusCategory = model.qPersonalData.cursor.bonus_category;
+        return client;
+    };
 }
