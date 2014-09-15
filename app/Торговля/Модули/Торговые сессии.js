@@ -51,12 +51,12 @@ function TradeSessions() {
         return model.qOpenedSession.org_session_id;
     }
     
-    function TradeOperationAddToCashBox(anOrderSum, aClientId){
+    function TradeOperationAddToCashBox(anOrderSum, anOperationType, aClientId){
         model.qTradeOperationBySession.push({
             operation_sum    : anOrderSum,
             operation_date   : new Date(),
             session_id       : model.params.session_id,
-            operation_type   : null, //TODO Поменять тип операции
+            operation_type   : anOperationType,
             client_id        : aClientId
         });
         return model.qTradeOperationBySession.trade_cash_box_operation_id;
@@ -124,7 +124,8 @@ function TradeSessions() {
         if (model.params.session_id){
             if (anOrderDetails.methodOfPayment === "money"){
                 var BonusCount = 0;
-                var TradeOperationId = TradeOperationAddToCashBox(  anOrderDetails.orderSum, 
+                var TradeOperationId = TradeOperationAddToCashBox(  anOrderDetails.orderSum,
+                                                                    anOrderDetails.methodOfPayment,
                                                                     clientModule.getBonusBill(ClientPhone));
                 // для всех товаров
                 for (var i in anOrderDetails.orderItems) {
@@ -157,7 +158,7 @@ function TradeSessions() {
                     //Если на счету достаточно бонусов
                     if (model.qBillAccount.cursor.currnt_sum >= anOrderDetails.orderSum){
                         //Добавляем нулевой приход в кассу
-                        var TradeOperationId = TradeOperationAddToCashBox(0);
+                        var TradeOperationId = TradeOperationAddToCashBox(anOrderDetails.orderSum, anOrderDetails.methodOfPayment);
                         //Списываем все товары. Выполняем продажу.
                         for (var i in anOrderDetails.orderItems) {
                             if (anOrderDetails.orderItems[i].itemId && anOrderDetails.orderItems[i].quantity){

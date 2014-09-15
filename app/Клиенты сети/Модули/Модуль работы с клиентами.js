@@ -12,6 +12,22 @@ function ClientServerModule() {
     var billModule = new BillModule();
     var pass = null;
     
+    self.getClientData = function(aPhone){
+        model.qPersonalData.params.phone = aPhone;
+        model.qPersonalData.requery();
+        var client = {};
+        client.bonusBill = model.qPersonalData.cursor.client_id;
+        client.firstName = model.qPersonalData.cursor.first_name;
+        client.middleName = model.qPersonalData.cursor.middle_name;
+        client.lastName = model.qPersonalData.cursor.last_name;
+        client.birthday = model.qPersonalData.cursor.birthday;
+        client.email = model.qPersonalData.cursor.email;
+        client.registrationDate = model.qPersonalData.cursor.reg_date;
+        client.bonusCategory = model.qPersonalData.cursor.bonus_category;
+        client.bonusCount = self.getBonusCount(aPhone);
+        return client;
+    };
+    
     function genPass(){
         return Math.random().toString(36).slice(2,8);
     }
@@ -100,18 +116,5 @@ function ClientServerModule() {
         return billModule.getSumFromUserId(aPhone);
     };
     
-    self.getClientData = function(aPhone){
-        model.qPersonalData.params.phone = aPhone;
-        model.qPersonalData.requery();
-        var client = {};
-        client.bonusBill = model.qPersonalData.cursor.client_id;
-        client.firstName = model.qPersonalData.cursor.first_name;
-        client.middleName = model.qPersonalData.cursor.middle_name;
-        client.lastName = model.qPersonalData.cursor.last_name;
-        client.birthday = model.qPersonalData.cursor.birthday;
-        client.email = model.qPersonalData.cursor.email;
-        client.registrationDate = model.qPersonalData.cursor.reg_date;
-        client.bonusCategory = model.qPersonalData.cursor.bonus_category;
-        return client;
-    };
+    
 }
