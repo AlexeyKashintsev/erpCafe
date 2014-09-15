@@ -121,7 +121,6 @@ function TradeSessions() {
         }
 
         if (model.params.session_id){
-            
             switch (anOrderDetails.methodOfPayment){
                 case "money":
                     var BonusCount = 0;
@@ -144,7 +143,6 @@ function TradeSessions() {
             var TradeOperationId = TradeOperationAddToCashBox(  anOrderDetails.orderSum,
                                                                     anOrderDetails.methodOfPayment,
                                                                     clientModule.getBonusBill(ClientPhone));
-            
             for (var i in anOrderDetails.orderItems) {
                 if (anOrderDetails.orderItems[i].itemId && anOrderDetails.orderItems[i].quantity){
                     TradeItemsPushInTradeOperation( TradeOperationId, 
@@ -161,7 +159,6 @@ function TradeSessions() {
                     }
                 }
             }
-            
             switch (anOrderDetails.methodOfPayment){
                 case "money":
                     if (ClientPhone){
@@ -183,7 +180,8 @@ function TradeSessions() {
            //TODO Досписать добавление бонусов на счет франчайзи
         }
     };
-        
+    
+    //TODO Стереть то что ниже
     function ObjectConstructor(aValue) {
         var a = getAFromValue(aValue);
         
