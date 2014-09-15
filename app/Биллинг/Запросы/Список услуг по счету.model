@@ -4,9 +4,9 @@
   </parameters>
   <parametersEntity entityHeight="200" entityIconified="false" entityLocationX="8" entityLocationY="7" entityWidth="150"/>
   <entity Title="" entityHeight="200" entityIconified="false" entityId="141024256699347" entityLocationX="583" entityLocationY="3" entityWidth="150" tableAlias="t2" tableName="bill_services" tableSchemaName=""/>
-  <entity Title="" entityHeight="200" entityIconified="false" entityId="141024255753474" entityLocationX="406" entityLocationY="4" entityWidth="150" tableAlias="t" tableName="bill_service_cost" tableSchemaName=""/>
   <entity Title="" entityHeight="200" entityIconified="false" entityId="141024253442617" entityLocationX="204" entityLocationY="5" entityWidth="150" tableAlias="t1" tableName="bill_services_accounts" tableSchemaName=""/>
+  <entity Title="" entityHeight="200" entityIconified="false" entityId="141078905598975" entityLocationX="406" entityLocationY="4" entityWidth="150" tableAlias="t" tableName="bill_item_cost" tableSchemaName=""/>
   <relation leftEntityId="-1" leftEntityParameterName="account_id" rightEntityFieldName="account_id" rightEntityId="141024253442617"/>
-  <relation leftEntityFieldName="service_id" leftEntityId="141024255753474" rightEntityFieldName="bill_services_id" rightEntityId="141024256699347"/>
-  <relation leftEntityFieldName="service_cost_id" leftEntityId="141024253442617" rightEntityFieldName="bill_service_cost_id" rightEntityId="141024255753474"/>
+  <relation leftEntityFieldName="service_cost_id" leftEntityId="141024253442617" rightEntityFieldName="bill_item_cost_id" rightEntityId="141078905598975"/>
+  <relation leftEntityFieldName="item_id" leftEntityId="141078905598975" rightEntityFieldName="bill_services_id" rightEntityId="141024256699347"/>
 </datamodel>
