@@ -53,6 +53,10 @@ function AdminStartForm() {
         tradePoints :   {
             display     :   "Торговые точки",
             dispForm    :   "FranchaziWorkShop"
+        },
+        test    :   {
+            display     :   "Test",
+            dispForm    :   "tstFrom"
         }
     };
 

@@ -63,4 +63,8 @@ function TradePointsbaristForm() {
     self.show = function() {
         form.show();
     };
+    
+    self.showModal = function(aCallback) {
+        form.showModal(aCallback);
+    };
 }

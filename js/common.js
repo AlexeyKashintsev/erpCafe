@@ -13,15 +13,15 @@ cmn.pFrameRunner = new function() {
     var activeFrame = null;
     
     function setActiveFrame(aFormName) {
-        $('#' + activeFrame).hide();
-        $('#' + aFormName).show();
+        $('#' + activeFrame  + '_container').hide();
+        $('#' + aFormName  + '_container').show();
         activeFrame = aFormName;
     }
     
     this.show = function(aFormName, aCaption, aSelfGeneration) {
         if (!frames[aFormName]) {
             frames[aFormName] = {};
-            frames[aFormName].div = cmn.createElement('div', 'formContainer', 'mainArea', aFormName);
+            frames[aFormName].div = cmn.createElement('div', 'formContainer', 'mainArea', aFormName + '_container');
             if (aCaption) {
                 var header = cmn.createElement('div', 'navbar navbar-default navbar-static-top', frames[aFormName].div, '');
                 header.innerHTML = '<div class="container"><h2>' + aCaption + '</h2></div>';
@@ -38,7 +38,11 @@ cmn.pFrameRunner = new function() {
                 }
                 frames[aFormName].div.removeChild(Loading);
                 if (!aSelfGeneration) {
-                    frames[aFormName].form.show();//showOnPanel(frames[aFormName].div);
+                    //var view = frames[aFormName].form.getView();
+                    //view.add(frames[aFormName].div);
+                    frames[aFormName].form.showOn(frames[aFormName].div);
+                    //var divElForm = document.getElementById(aFormName);
+                    //frames[aFormName].div.appendChild(divElForm);
                 } else {
                     frames[aFormName].form.manualShow(frames[aFormName].div);
                 }

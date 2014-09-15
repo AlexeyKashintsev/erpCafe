@@ -40,7 +40,7 @@ function UserView(){
         });
     };//GEN-LAST:event_USR_ROLESelectValue
 
-    form.USR_PASSWD.onSelect = function(aEditor) {//GEN-FIRST:event_USR_PASSWDOnSelect
+    form.USR_PASSWD.onSelect = function(aEditor) {
         model.save();
         changePassView.setUserId(self.dsMtdUsers.usr_name);
         changePassView.showModal(function(aResult){
@@ -49,45 +49,49 @@ function UserView(){
                 setControlsEnabled();
             }	
         });   
-    };//GEN-LAST:event_USR_PASSWDOnSelect
+    };
 
-    form.btnReq.onActionPerformed = function(evt) {//GEN-FIRST:event_btnReqActionPerformed
+    form.btnReq.onActionPerformed = function(evt) {
        refreshUsers();
        setControlsEnabled();
-    };//GEN-LAST:event_btnReqActionPerformed
+    };
 
-    form.btnSave.onActionPerformed = function(evt) {//GEN-FIRST:event_btnSaveActionPerformed
+    form.btnSave.onActionPerformed = function(evt) {
         model.save();
         refreshUsers();
         setControlsEnabled();	
-    };//GEN-LAST:event_btnSaveActionPerformed
+    };
 
-    form.tbSetEdit.onActionPerformed = function(evt) {//GEN-FIRST:event_tbSetEditActionPerformed
+    form.tbSetEdit.onActionPerformed = function(evt) {
         //isEditable = self.tbSetEdit.selected;
         setEdit();
-    };//GEN-LAST:event_tbSetEditActionPerformed
+    };
 
-    model.dsMtdUsers.onChanged = function(evt) {//GEN-FIRST:event_dsMtdUsersOnChanged
+    model.dsMtdUsers.onChanged = function(evt) {
         setControlsEnabled();
-    };//GEN-LAST:event_dsMtdUsersOnChanged
+    };
 
-    form.btnAdd.onActionPerformed = function(evt) {//GEN-FIRST:event_btnAddActionPerformed
+    form.btnAdd.onActionPerformed = function(evt) {
         model.dsMtdUsers.insert();
-    };//GEN-LAST:event_btnAddActionPerformed
+    };
 
-    form.btnDel.onActionPerformed = function(evt) {//GEN-FIRST:event_btnDelActionPerformed
+    form.btnDel.onActionPerformed = function(evt) {
         if (confirm("Удалить текущего пользователя")){
             model.dsMtdUsers.usr_passwd = 'false';
             model.save();
             refreshUsers();
         }
-    };//GEN-LAST:event_btnDelActionPerformed
+    };
 
-    form.btnFind.onActionPerformed = function(evt) {//GEN-FIRST:event_btnFindActionPerformed
+    form.btnFind.onActionPerformed = function(evt) {
         form.grdUsers.findSomething();
-    };//GEN-LAST:event_btnFindActionPerformed
+    };
     
     self.show = function() {
         form.show();
+    };
+    
+    self.getView = function(){
+      return form.view;  
     };
 }

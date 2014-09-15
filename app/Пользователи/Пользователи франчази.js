@@ -53,7 +53,7 @@ function FranchaziUsers() {
         form.close(model.listTradePointUsers.usr_name);
     };//GEN-LAST:event_btnSelectActionPerformed
 
-    form.btnAddA.onActionPerformed = function(evt) {//GEN-FIRST:event_btnAddActionPerformed
+    form.btnAdd.onActionPerformed = function(evt) {//GEN-FIRST:event_btnAddActionPerformed
         createFrancahziUser.setFranchazi(model.params.franchazi_id);
         createFrancahziUser.setUserName(undefined);
         createFrancahziUser.showModal(function(){
@@ -76,18 +76,14 @@ function FranchaziUsers() {
     form.btnSetPoints.onActionPerformed = function(evt) {//GEN-FIRST:event_btnSetPointsActionPerformed
         baristaTP.setFranchazi(model.params.franchazi_id);
         baristaTP.setUserName(model.listTradePointUsers.usr_name);
-        baristaTP.showModal();
+        baristaTP.showModal(function(){});
     };//GEN-LAST:event_btnSetPointsActionPerformed
 
-    form.modelGrid.MousePressed = function(evt) {//GEN-FIRST:event_modelGridMousePressed
-        // TODO add your handling code here:
-    };//GEN-LAST:event_modelGridMousePressed
-
-    form.btnDel1.onActionPerformed = function(evt) {//GEN-FIRST:event_btnDel1ActionPerformed
-        // TODO add your handling code here:
-    };//GEN-LAST:event_btnDel1ActionPerformed
-    
     self.show = function() {
         form.show();
+    };
+        
+    self.getView = function(){
+      return form.view;  
     };
 }

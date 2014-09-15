@@ -29,7 +29,7 @@ function FranchaziWorkShop() {
 
     model.listTradePoints.onRequeried = function(evt) {//GEN-FIRST:event_listTradePointsOnRequeried
         fmTP.setTradePoint(model.listTradePoints.org_trade_point_id);
-    };//GEN-LAST:event_listTradePointsOnRequeried
+    };
     
     self.show = function() {
         form.show();
