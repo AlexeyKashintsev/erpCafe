@@ -91,10 +91,6 @@ function formWindowClosing(evt) {//GEN-FIRST:event_formWindowClosing
         }
     }//GEN-LAST:event_btnItemSelActionPerformed
 
-    function modelGrid1MouseClicked(evt) {//GEN-FIRST:event_modelGrid1MouseClicked
-       
-    }//GEN-LAST:event_modelGrid1MouseClicked
-
     function selectOnSelect(aEditor) {//GEN-FIRST:event_selectOnSelect
         model.save();
                 contentTradeItem.setTradeItem(model.qTradeItems.cursor.trade_items_id);

@@ -16,7 +16,7 @@ function FranchaziWorkShop() {
     };
     
     try {
-        units.userSession.getFranchazi(function(aFranchazi){
+        session.getFranchazi(function(aFranchazi){
             self.setFranchazi(aFranchazi);
         });
     } catch (e) {

@@ -119,7 +119,7 @@ function BillModule() {
             operation_date: new Date(),
             operation_type: anOperationType,
             operation_status: aStatus,
-            //user_name_perfomed: units.userSession.getUserName()
+            //user_name_perfomed: session.getUserName()
             user_name_perfomed: self.principal.name
         };
         var multiplier;

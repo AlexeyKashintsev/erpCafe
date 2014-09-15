@@ -5,7 +5,7 @@
 function BaristaDesktop() {
     var self = this, model = this.model, form = this;
     self.tradeItems = {};
-    self.session = units.userSession;
+    self.session = session;
     self.whSession = new ServerModule("WhSessionModule");
     self.tradeSession = new ServerModule("TradeSessions");
     self.userName = self.session.getUserName();    
@@ -39,7 +39,7 @@ function BaristaDesktop() {
             var tpSelector = new TradePointSelector();
             tpSelector.userName = self.userName;
             tpSelector.showModal(function(aTradePoint){
-                if (!aTradePoint) logout();
+                if (!aTradePoint) Logout();
                 var whInitializer = new WhRevisionByBarista(self.whSession);
                 //self.whSession.setTradePoint(aTradePoint);
                 whInitializer.setTradePointId(aTradePoint);
@@ -60,7 +60,7 @@ function BaristaDesktop() {
     }
     
     function setFranchazi(aFranchazi) {
-        if (!aFranchazi) logout();
+        if (!aFranchazi) Logout();
         
         model.tradeItemsByTradePointWithCost.params.franchazi_id = aFranchazi;
         model.tradeItemsByTradePointWithCost.params.actual_date = new Date();
@@ -133,9 +133,7 @@ function BaristaDesktop() {
 
     function btnSessionCloseActionPerformed(evt) {//GEN-FIRST:event_btnSessionCloseActionPerformed
         self.whSession.closeSession();
-        //var serverMod = new PlatypusServer();
-        //serverMod.
-                logout();
+        Logout();
     }//GEN-LAST:event_btnSessionCloseActionPerformed
 
     function btnWarehouseAddActionPerformed(evt) {//GEN-FIRST:event_btnWarehouseAddActionPerformed
@@ -149,5 +147,6 @@ function BaristaDesktop() {
     if (self.browser) {
         cmn.addTopRightControl("Прием товара", "plus-sign", btnWarehouseAddActionPerformed);
         cmn.addTopRightControl("Закрыть смену", "log-out", btnSessionCloseActionPerformed);
+        cmn.addTopRightControl("Logout", "log-out", Logout);
     }
 }

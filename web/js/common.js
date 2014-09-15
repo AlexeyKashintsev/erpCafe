@@ -1,5 +1,11 @@
 var units = {};
 var cmn = {};
+var session = {};
+
+var Logout = function() {
+    logout();
+    location.reload();
+}
 
 cmn.showModal = function(aForm, aCallback) {
     aForm.showOnPanel('modalFormContent');
@@ -31,7 +37,7 @@ cmn.pFrameRunner = new function() {
             require([aFormName], function(){
                 frames[aFormName].form = new Form(aFormName);
                 try {
-                    frames[aFormName].form.setFranchazi(units.userSession.franchaziId);
+                    frames[aFormName].form.setFranchazi(session.franchaziId);
                 } catch (e) {
                     Logger.warning('Невозможно задать ID франчази для '+ aFormName);
                 }
@@ -128,10 +134,10 @@ if (!platypus) {
 
 platypus.ready = function() {
     require(['getUserSession'], function(){
-        units.userSession = getUserSession();        
-        units.userSession.login(function(anUserRole){
-                units.userSession.userRole = anUserRole;
-                units.userSession.franchaziId = units.userSession.getFranchazi();
+        session = getUserSession();        
+        session.login(function(anUserRole){
+                session.userRole = anUserRole;
+                session.franchaziId = session.getFranchazi();
                 switch (anUserRole) {
                     case 'admin':
                         require(['StartMasterAdminForm'], function() {

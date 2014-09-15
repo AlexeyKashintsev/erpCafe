@@ -22,8 +22,8 @@
   <widget actionPerformed="btnAddActionPerformed" focusable="false" horizontalTextPosition="0" icon="icons/22x22/actions/list-add.png" name="btnAdd" parent="toolBar" prefHeight="26px" prefWidth="34px" toolTipText="Добавить" type="ButtonDesignInfo" verticalTextPosition="3"/>
   <widget actionPerformed="btnDelActionPerformed" focusable="false" horizontalTextPosition="0" icon="icons/22x22/actions/list-remove.png" name="btnDel" parent="toolBar" prefHeight="26px" prefWidth="34px" toolTipText="Удалить" type="ButtonDesignInfo" verticalTextPosition="3"/>
   <widget actionPerformed="btnReqActionPerformed" focusable="false" horizontalTextPosition="0" icon="icons/22x22/actions/new-view-refresh.png" name="btnReq" parent="toolBar" prefHeight="26px" prefWidth="34px" toolTipText="Обновить" type="ButtonDesignInfo" verticalTextPosition="3"/>
-  <widget actionPerformed="btnItemSelActionPerformed" focusable="false" horizontalTextPosition="0" icon="icons/22x22/actions/document-properties.png" name="btnItemSel" parent="toolBar" prefHeight="26px" prefWidth="34px" toolTipText="Состав товара" type="ButtonDesignInfo" verticalTextPosition="3"/>
-  <widget mouseClicked="modelGrid1MouseClicked" name="modelGrid1" parent="panel1" prefHeight="258px" prefWidth="460px" type="DbGridDesignInfo">
+  <widget actionPerformed="btnItemSelActionPerformed" focusable="false" horizontalTextPosition="4" icon="icons/22x22/actions/manilla-document-open.png" name="btnItemSel" parent="toolBar" prefHeight="26px" prefWidth="157px" text="Редактировать состав" toolTipText="Состав товара" type="ButtonDesignInfo" verticalTextPosition="3"/>
+  <widget name="modelGrid1" parent="panel1" prefHeight="258px" prefWidth="460px" type="DbGridDesignInfo">
     <column name="colItem_name" title="Название">
       <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
       <datamodelElement entityId="140566813019746" fieldName="item_name"/>

@@ -6,7 +6,7 @@
 function AdminStartForm() {
     var self = this, model = this.model, form = this;
     try {
-        self.session = units.userSession;
+        self.session = session;
     } catch(e) {
         self.session = new ServerModule('UserSession');
     }
@@ -82,7 +82,7 @@ self.showFormAsInternal = function(aForm) {
         },
         warehouse   :   {
             display     :   "Склад",
-            dispForm    :   "SelectItemsInWH",
+            dispForm    :   "WarehouseItemList",
             inner   :   {
                 display     :   "Типы товаров",
                 dispForm    :   "ItemTypesForm"
