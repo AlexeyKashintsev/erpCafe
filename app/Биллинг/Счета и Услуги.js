@@ -60,7 +60,14 @@ function ListBillAndServices() {
     }//GEN-LAST:event_btnOperationsActionPerformed
 
     function button4ActionPerformed(evt) {//GEN-FIRST:event_button4ActionPerformed
-        billModule.delServiceFromAccount(model.qServiceListByAccount.cursor.account_id, model.qServiceListByAccount.cursor.bill_services_id)
+       if(confirm("Удалить услугу с лицевого счета?")){
+           if(billModule.delServiceFromAccount(model.qServiceListByAccount.cursor.account_id, model.qServiceListByAccount.cursor.bill_services_id) === false){
+               alert("ошибка удаления услуги!");
+           } else {
+               model.requery();
+           }
+       }
+        
     }//GEN-LAST:event_button4ActionPerformed
 
     function btnBuyItemsActionPerformed(evt) {//GEN-FIRST:event_btnBuyItemsActionPerformed
