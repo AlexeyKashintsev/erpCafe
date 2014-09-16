@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?><datamodel>
+  <parameters>
+    <parameter description="" name="account_id" nullable="true" parameterMode="1" precision="0" scale="0" selectionForm="null" signed="true" size="0" type="2" typeName="NUMERIC"/>
+  </parameters>
+  <parametersEntity entityHeight="200" entityIconified="false" entityLocationX="8" entityLocationY="7" entityWidth="150"/>
+  <entity Title="" entityHeight="200" entityIconified="false" entityId="141086815037613" entityLocationX="392" entityLocationY="29" entityWidth="150" tableAlias="t2" tableName="bill_operation_trade_operations_connect" tableSchemaName=""/>
+  <entity Title="" entityHeight="200" entityIconified="false" entityId="141087176136358" entityLocationX="193" entityLocationY="24" entityWidth="150" tableAlias="t1" tableName="bill_operations" tableSchemaName=""/>
+  <entity Title="" entityHeight="200" entityIconified="false" entityId="141086813987587" entityLocationX="572" entityLocationY="27" entityWidth="222" tableAlias="t" tableName="trade_cash_box_operation" tableSchemaName=""/>
+  <relation leftEntityFieldName="account_id" leftEntityId="141087176136358" rightEntityId="-1" rightEntityParameterName="account_id"/>
+  <relation leftEntityFieldName="trade_cashbox_operation" leftEntityId="141086815037613" rightEntityFieldName="trade_cash_box_operation_id" rightEntityId="141086813987587"/>
+  <relation leftEntityFieldName="bill_operation" leftEntityId="141086815037613" rightEntityFieldName="bill_operations_id" rightEntityId="141087176136358"/>
+</datamodel>
