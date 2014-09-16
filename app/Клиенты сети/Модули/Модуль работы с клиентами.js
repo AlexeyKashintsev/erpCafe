@@ -14,7 +14,7 @@ function ClientServerModule() {
     
     self.ClientConstructor = function(aPhone){
         model.qPersonalData.params.phone = aPhone;
-        model.qPersonalData.requery();
+        model.qPersonalData.execute();
         this.bonusBill = model.qPersonalData.cursor.client_id;
         this.firstName = model.qPersonalData.cursor.first_name;
         this.middleName = model.qPersonalData.cursor.middle_name;
@@ -23,7 +23,7 @@ function ClientServerModule() {
         this.email = model.qPersonalData.cursor.email;
         this.registrationDate = model.qPersonalData.cursor.reg_date;
         this.bonusCategory = model.qPersonalData.cursor.bonus_category;
-        this.bonusCount = self.getBonusCount(aPhone);
+        this.bonusCount = self.getSumFromAccountId(this.bonusBill);
     }
     
     
@@ -70,7 +70,7 @@ function ClientServerModule() {
         model.qPersonalData.params.phone = aPhone;
         model.qPersonalData.params.email = null;
         model.qPersonalData.params.user_name = aPhone;
-        model.qPersonalData.requery();
+        model.qPersonalData.execute();
         if (model.qPersonalData.length > 0){
             return true;
         } else return false;
@@ -80,39 +80,30 @@ function ClientServerModule() {
         model.qPersonalData.params.phone = null;
         model.qPersonalData.params.email = anEmail;
         model.qPersonalData.params.user_name = null;
-        model.qPersonalData.requery();
+        model.qPersonalData.execute();
         if (model.qPersonalData.length > 0){
             return true;
         } else return false;
     };
     
-    self.getClientId = function(anUserName){
-        model.qPersonalData.params.user_name = anUserName;
-        return model.qPersonalData.cursor.client_id;
-    };
-    
     self.setBonusCategory = function(anUserName, aCategoryId){
         model.qPersonalData.params.user_name = anUserName;
-        model.qPersonalData.requery();
+        model.qPersonalData.execute();
         model.qPersonalData.cursor.bonus_category = aCategoryId;
         model.save();
     };
     
     self.getBonusCategory = function(anUserName){
         model.qPersonalData.params.user_name = anUserName;
-        model.qPersonalData.requery();
+        model.qPersonalData.execute();
         return model.qPersonalData.cursor.bonus_category;
     };
     
     self.getBonusBill = function(aPhone){
         if (!aPhone) return 0;
         model.qPersonalData.params.phone = aPhone;
-        model.qPersonalData.requery();
+        model.qPersonalData.execute();
         return model.qPersonalData.cursor.client_id;
-    };
-    
-    self.getBonusCount = function(aPhone){
-        return billModule.getSumFromUserId(aPhone);
     };
     
     

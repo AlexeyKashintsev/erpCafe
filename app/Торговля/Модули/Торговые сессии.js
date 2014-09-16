@@ -10,22 +10,13 @@ function TradeSessions() {
     var clientModule = new ClientServerModule();
     var billing = new BillModule();
     var ep = new EventProcessor();
-    var ClientPhone = null; //УДалить
-    //var tradeOperationType = "money";
-    
-    self.setClientPhone = function(aPhone){//TODO Убрать в модуль работы с клиентами, удалить
-        ClientPhone = aPhone;
-    };
-    
+
     self.setClient = function (aPhone){
         client = new clientModule.ClientConstructor(aPhone);
     }
-//    self.setTradeOperationType = function(aType){//TODO Зло^ использовать меч света
-//        tradeOperationType = aType;
-//    };
     
     self.getBonusCount = function(){//TODO Тоже самое
-        return billing.getSumFromUserId(ClientPhone);
+        return client.bonusCount;
     };
     
     self.initializeSession = function(aSession, aStartBalance) {
@@ -41,7 +32,6 @@ function TradeSessions() {
         });
         model.save();
     };
-
   
     function getCurrentSession(){
         model.qOpenedSession.params.user_name = self.principal.name;
