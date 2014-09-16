@@ -1,7 +1,7 @@
 /**
  * 
  * @author stipjey
- * @module
+ * @public
  */ 
 function ClientServerModule() {
     var self = this, model = this.model;
@@ -12,9 +12,10 @@ function ClientServerModule() {
     var billModule = new BillModule();
     var pass = null;
     
-    self.ClientConstructor = function(aPhone){
+    function ClientConstructor(aPhone){
         model.qPersonalData.params.phone = aPhone;
         model.qPersonalData.execute();
+        Logger.info(model.qPersonalData);
         this.bonusBill = model.qPersonalData.cursor.client_id;
         this.firstName = model.qPersonalData.cursor.first_name;
         this.middleName = model.qPersonalData.cursor.middle_name;
@@ -23,9 +24,20 @@ function ClientServerModule() {
         this.email = model.qPersonalData.cursor.email;
         this.registrationDate = model.qPersonalData.cursor.reg_date;
         this.bonusCategory = model.qPersonalData.cursor.bonus_category;
-        this.bonusCount = self.getSumFromAccountId(this.bonusBill);
-    }
+        this.bonusCount = billModule.getSumFromAccountId(this.bonusBill);
+        Logger.info(billModule.getSumFromAccountId(this.bonusBill));
+    };
     
+    self.getClientData = function() {
+        return new ClientConstructor(self.principal.name);
+    };
+    
+    /*
+     * @rolesallowed admin franchazi
+     */
+    self.getClientDataByPhone = function(aPhone) {
+        return new ClientConstructor(aPhone);
+    };
     
     function genPass(){
         return Math.random().toString(36).slice(2,8);
