@@ -12,21 +12,20 @@ function ClientServerModule() {
     var billModule = new BillModule();
     var pass = null;
     
-    self.getClientData = function(aPhone){
+    self.ClientConstructor = function(aPhone){
         model.qPersonalData.params.phone = aPhone;
         model.qPersonalData.requery();
-        var client = {};
-        client.bonusBill = model.qPersonalData.cursor.client_id;
-        client.firstName = model.qPersonalData.cursor.first_name;
-        client.middleName = model.qPersonalData.cursor.middle_name;
-        client.lastName = model.qPersonalData.cursor.last_name;
-        client.birthday = model.qPersonalData.cursor.birthday;
-        client.email = model.qPersonalData.cursor.email;
-        client.registrationDate = model.qPersonalData.cursor.reg_date;
-        client.bonusCategory = model.qPersonalData.cursor.bonus_category;
-        client.bonusCount = self.getBonusCount(aPhone);
-        return client;
-    };
+        this.bonusBill = model.qPersonalData.cursor.client_id;
+        this.firstName = model.qPersonalData.cursor.first_name;
+        this.middleName = model.qPersonalData.cursor.middle_name;
+        this.lastName = model.qPersonalData.cursor.last_name;
+        this.birthday = model.qPersonalData.cursor.birthday;
+        this.email = model.qPersonalData.cursor.email;
+        this.registrationDate = model.qPersonalData.cursor.reg_date;
+        this.bonusCategory = model.qPersonalData.cursor.bonus_category;
+        this.bonusCount = self.getBonusCount(aPhone);
+    }
+    
     
     function genPass(){
         return Math.random().toString(36).slice(2,8);

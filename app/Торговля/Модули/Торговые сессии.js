@@ -10,13 +10,16 @@ function TradeSessions() {
     var clientModule = new ClientServerModule();
     var billing = new BillModule();
     var ep = new EventProcessor();
-    var ClientPhone = null;
+    var ClientPhone = null; //УДалить
     //var tradeOperationType = "money";
     
-    self.setClientPhone = function(aPhone){//TODO Убрать в модуль работы с клиентами
+    self.setClientPhone = function(aPhone){//TODO Убрать в модуль работы с клиентами, удалить
         ClientPhone = aPhone;
     };
     
+    self.setClient = function (aPhone){
+        client = new clientModule.ClientConstructor(aPhone);
+    }
 //    self.setTradeOperationType = function(aType){//TODO Зло^ использовать меч света
 //        tradeOperationType = aType;
 //    };
@@ -126,9 +129,10 @@ function TradeSessions() {
                     var BonusCount = 0;
                     break;
                 case "bonus":
-                    model.qBillAccount.params.user_id = ClientPhone;
-                    model.qBillAccount.requery();
-                    if (model.qBillAccount.length > 0){
+//                    model.qBillAccount.params.user_id = ClientPhone;
+//                    model.qBillAccount.requery();
+//                    if (model.qBillAccount.length > 0){
+                      if (client.bonusBill.length > 0){
                         if (model.qBillAccount.cursor.currnt_sum < anOrderDetails.orderSum){
                             ep.addEvent('errorNotEnoughBonuses', anOrderDetails);
                             return "error";
@@ -142,13 +146,14 @@ function TradeSessions() {
             
             var TradeOperationId = TradeOperationAddToCashBox(  anOrderDetails.orderSum,
                                                                     anOrderDetails.methodOfPayment,
-                                                                    clientModule.getBonusBill(ClientPhone));
+                                                                    //clientModule.getBonusBill(ClientPhone));
+                                                                    client.bonusBill);
             for (var i in anOrderDetails.orderItems) {
                 if (anOrderDetails.orderItems[i].itemId && anOrderDetails.orderItems[i].quantity){
                     TradeItemsPushInTradeOperation( TradeOperationId, 
                                                     anOrderDetails.orderItems[i].itemId, 
                                                     anOrderDetails.orderItems[i].quantity);
-                    if (ClientPhone){
+                    if (client.bonusBill){
                         BonusCount += getCountBonusesByItem(anOrderDetails.orderItems[i].itemId) * anOrderDetails.orderItems[i].quantity;
                     }
                     var calculationConsumption = WhItemsCalculation(anOrderDetails.orderItems[i].itemId, 
@@ -161,16 +166,18 @@ function TradeSessions() {
             }
             switch (anOrderDetails.methodOfPayment){
                 case "money":
-                    if (ClientPhone){
-                        billing.addBillOperation(clientModule.getBonusBill(ClientPhone), 
+                    if (client.bonusBill){
+                        billing.addBillOperation(client.bonusBill, 
                                                  billing.OPERATION_ADD_BONUS, 
                                                  BonusCount);
                     }
                     break;
                 case "bonus":
-                    billing.addBillOperation(clientModule.getBonusBill(ClientPhone), 
-                                             billing.OPERATION_DEL_BUY, 
-                                             anOrderDetails.orderSum);
+                    if (client.bonusBill){
+                        billing.addBillOperation(client.bonusBill, 
+                                                 billing.OPERATION_DEL_BUY, 
+                                                 anOrderDetails.orderSum);
+                    }
                     break;
                 default:
                     ep.addEvent('errorMethodOfPaymentIsNull', anOrderDetails);
@@ -180,24 +187,4 @@ function TradeSessions() {
            //TODO Досписать добавление бонусов на счет франчайзи
         }
     };
-    
-    //TODO Стереть то что ниже
-    function ObjectConstructor(aValue) {
-        var a = getAFromValue(aValue);
-        
-        this.getB = function() {
-            return a+3;
-        };
-        
-        this.setA = function(newA) {
-            a = getAFromValue(newA);
-        };
-        
-        function getAFromValue(aValue) {
-            return aValue*153;
-        }
-    }
-    
-    var obj = new ObjectConstructor(123);
-    alert(obj.getB());
 }
