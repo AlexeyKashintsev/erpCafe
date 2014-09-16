@@ -12,7 +12,7 @@ function WhRevisionByBarista(aWhSessionModule) {
     var whSessionModule = aWhSessionModule ? aWhSessionModule : new ServerModule("WhSessionModule");
     
     //model.params.trade_point_id = 3;
-    self.setTradePointId = function(aTradePointId) {
+    self.setTradePoint = function(aTradePointId) {
         model.params.trade_point_id = aTradePointId;
         model.params.session_id = whSessionModule.setTradePoint(model.params.trade_point_id);/*, function(){
             model.params.session_id = whSessionModule.createSession();

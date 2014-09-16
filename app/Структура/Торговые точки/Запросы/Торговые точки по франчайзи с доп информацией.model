@@ -3,12 +3,10 @@
     <parameter description="" name="franchazi_id" nullable="true" parameterMode="1" precision="0" scale="0" selectionForm="null" signed="true" size="0" type="2" typeName="NUMERIC"/>
   </parameters>
   <parametersEntity entityHeight="200" entityIconified="false" entityLocationX="8" entityLocationY="7" entityWidth="150"/>
-  <entity Title="" entityHeight="200" entityIconified="false" entityId="140753734372981" entityLocationX="551" entityLocationY="44" entityWidth="150" tableAlias="t3" tableName="trade_operations" tableSchemaName=""/>
-  <entity Title="" entityHeight="200" entityIconified="false" entityId="140753738615348" entityLocationX="178" entityLocationY="20" entityWidth="150" queryId="qOpenedOrLastSessionFranchazi" tableAlias="q" tableName="" tableSchemaName=""/>
+  <entity Title="" entityHeight="230" entityIconified="false" entityId="140753738615348" entityLocationX="178" entityLocationY="20" entityWidth="150" queryId="qOpenedOrLastSessionFranchazi" tableAlias="q" tableName="" tableSchemaName=""/>
   <entity Title="" entityHeight="200" entityIconified="false" entityId="140753734372930" entityLocationX="709" entityLocationY="2" entityWidth="150" tableAlias="t" tableName="trade_cash_box_balance" tableSchemaName=""/>
   <entity Title="" entityHeight="200" entityIconified="false" entityId="140753819796518" entityLocationX="367" entityLocationY="43" entityWidth="150" tableAlias="t2" tableName="trade_cash_box_operation" tableSchemaName=""/>
+  <relation leftEntityId="-1" leftEntityParameterName="franchazi_id" rightEntityId="140753738615348" rightEntityParameterName="franchazi_id"/>
   <relation leftEntityFieldName="session_id" leftEntityId="140753734372930" rightEntityFieldName="org_session_id" rightEntityId="140753738615348"/>
   <relation leftEntityFieldName="session_id" leftEntityId="140753819796518" rightEntityFieldName="org_session_id" rightEntityId="140753738615348"/>
-  <relation leftEntityId="-1" leftEntityParameterName="franchazi_id" rightEntityId="140753738615348" rightEntityParameterName="franchazi_id"/>
-  <relation leftEntityFieldName="cash_box_operation" leftEntityId="140753734372981" rightEntityFieldName="trade_cash_box_operation_id" rightEntityId="140753819796518"/>
 </datamodel>

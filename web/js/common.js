@@ -23,7 +23,7 @@ cmn.pFrameRunner = new function() {
         activeFrame = aFormName;
     }
     
-    this.show = function(aFormName, aCaption, aSelfGeneration) {
+    this.show = function(aFormName, aCaption) {
         if (!frames[aFormName]) {
             frames[aFormName] = {};
             frames[aFormName].div = cmn.createElement('div', 'formContainer', 'mainArea', aFormName);
@@ -42,7 +42,7 @@ cmn.pFrameRunner = new function() {
                     Logger.warning('Невозможно задать ID франчази для '+ aFormName);
                 }
                 frames[aFormName].div.removeChild(Loading);
-                if (!aSelfGeneration) {
+                if (!frames[aFormName].form.manualShow) {
                     frames[aFormName].form.showOnPanel(frames[aFormName].div);
                 } else {
                     frames[aFormName].form.manualShow(frames[aFormName].div);
@@ -102,7 +102,7 @@ cmn.ActionList = function(anActions, aParentContainer) {
         this.element.innerHTML = '<h4 class="list-group-item-heading">' + anAction.display + '</h4>';
         var ale = this.element;
         this.element.onclick = function() {
-            cmn.pFrameRunner.show(anAction.dispForm, anAction.display, anAction.selfGeneration);
+            cmn.pFrameRunner.show(anAction.dispForm, anAction.display);
             $('.list-group-item').removeClass('active');
             ale.className += ' active';
         }
@@ -157,4 +157,17 @@ platypus.ready = function() {
                 }
             });
         });
+
+   /* Highcharts.setOptions({
+	global: {
+		useUTC: false
+	}
+    });
+    
+    Highcharts.setOptions({
+	lang: {
+		months: ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin',  'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'],
+		weekdays: ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi']
+	}
+    });*/
 };

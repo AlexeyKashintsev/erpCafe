@@ -32,7 +32,7 @@ function AdminStartForm() {
     }
     
     self.setFranchazi = function(aFaranchazi) {
-        if (!aFaranchazi) logout();
+        if (!aFaranchazi) Logout();
         model.params.franchaziId = aFaranchazi;
         
         if (!self.browser) {
@@ -100,6 +100,6 @@ self.showFormAsInternal = function(aForm) {
     
     if (self.browser) {
         self.actionListDisplay = new cmn.ActionList(self.actionList, document.getElementById("actionPanel"));
-        cmn.addTopRightControl("Выход", "log-out", logout);
+        cmn.addTopRightControl("Выход", "log-out", Logout);
     }
 }

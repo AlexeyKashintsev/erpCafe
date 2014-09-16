@@ -22,7 +22,7 @@ function FranchaziUsers() {
         model.params.franchazi_id = aFranchaziId;
     };
 
-    self.setTradePointId = function(aTradePointId) {
+    self.setTradePoint = function(aTradePointId) {
         model.params.trade_point_id = aTradePointId;
     };
     

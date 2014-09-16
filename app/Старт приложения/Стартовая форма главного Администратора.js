@@ -31,5 +31,5 @@ function StartMasterAdminForm() {
     
     
     self.actionListDisplay = new cmn.ActionList(self.actionList, document.getElementById("actionPanel"));
-    cmn.addTopRightControl("Выход", "log-out", logout);
+    cmn.addTopRightControl("Выход", "log-out", Logout);
 }

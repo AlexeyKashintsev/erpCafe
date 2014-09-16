@@ -1,0 +1,8 @@
+Select to_timestamp(period_v, :g_value) as d_value, period_v, sum(q.operation_sum) as sm from
+(Select to_char(t.operation_date, :g_value) as period_v, t.operation_sum
+From org_session t2
+Inner Join trade_cash_box_operation t on t2.org_session_id = t.session_id
+ Where :begDate < t.operation_date
+ and :trade_point_id = t2.trade_point or :trade_point_id is null) q
+group by q.period_v
+order by q.period_v

@@ -8,8 +8,8 @@
 function WarehouseItemList() {
 
     var self = this, model = this.model, form = this;
-    model.params.item_type = null;
-   // model.params.franchazi_id = 1;
+    model.params.item_type = 0;
+   
     self.setFranchazi = function(aFranchazi) {
         self.model.params.franchazi_id = aFranchazi;
     };
@@ -65,4 +65,8 @@ function formWindowClosing(evt) {//GEN-FIRST:event_formWindowClosing
             alert('Вы ничего не выбрали!');
         }
     }//GEN-LAST:event_btnSelectActionPerformed
+
+    function itemTypeOnScrolled(evt) {//GEN-FIRST:event_itemTypeOnScrolled
+        model.params.item_type = model.itemType.cursor.wh_item_types_id;
+    }//GEN-LAST:event_itemTypeOnScrolled
 }

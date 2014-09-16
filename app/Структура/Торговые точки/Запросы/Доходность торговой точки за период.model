@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?><datamodel>
+  <parameters>
+    <parameter description="" name="g_value" nullable="true" parameterMode="1" precision="0" scale="0" selectionForm="null" signed="true" size="0" type="12" typeName="VARCHAR"/>
+    <parameter description="" name="begDate" nullable="true" parameterMode="1" precision="0" scale="0" selectionForm="null" signed="true" size="100" type="93" typeName="TIMESTAMP"/>
+    <parameter description="" name="trade_point_id" nullable="true" parameterMode="1" precision="0" scale="0" selectionForm="null" signed="true" size="0" type="2" typeName="NUMERIC"/>
+  </parameters>
+  <parametersEntity entityHeight="200" entityIconified="false" entityLocationX="8" entityLocationY="7" entityWidth="150"/>
+  <entity Title="" entityHeight="200" entityIconified="false" entityId="141088113773029" entityLocationX="193" entityLocationY="46" entityWidth="150" tableAlias="t2" tableName="org_session" tableSchemaName=""/>
+  <entity Title="" entityHeight="200" entityIconified="false" entityId="141079313473577" entityLocationX="386" entityLocationY="26" entityWidth="150" tableAlias="t" tableName="trade_cash_box_operation" tableSchemaName=""/>
+  <relation leftEntityId="-1" leftEntityParameterName="begDate" rightEntityFieldName="operation_date" rightEntityId="141079313473577"/>
+  <relation leftEntityFieldName="org_session_id" leftEntityId="141088113773029" rightEntityFieldName="session_id" rightEntityId="141079313473577"/>
+  <relation leftEntityId="-1" leftEntityParameterName="g_value" rightEntityFieldName="user_name" rightEntityId="141088113773029"/>
+  <relation leftEntityId="-1" leftEntityParameterName="trade_point_id" rightEntityFieldName="trade_point" rightEntityId="141088113773029"/>
+</datamodel>

@@ -42,7 +42,7 @@ function BaristaDesktop() {
                 if (!aTradePoint) Logout();
                 var whInitializer = new WhRevisionByBarista(self.whSession);
                 //self.whSession.setTradePoint(aTradePoint);
-                whInitializer.setTradePointId(aTradePoint);
+                whInitializer.setTradePoint(aTradePoint);
                 whInitializer.showModal(function() {
                     if (self.browser) 
                         self.session.getActiveTPSession(function(aSession){
@@ -139,7 +139,7 @@ function BaristaDesktop() {
     function btnWarehouseAddActionPerformed(evt) {//GEN-FIRST:event_btnWarehouseAddActionPerformed
         if (!whAdd) {
             whAdd = new WHSetAddMovement();
-            whAdd.setTradePointId(model.getSessions.trade_point);
+            whAdd.setTradePoint(model.getSessions.trade_point);
         }
         whAdd.show();
     }//GEN-LAST:event_btnWarehouseAddActionPerformed

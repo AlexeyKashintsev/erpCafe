@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?><outputFields>
+  <field bindedColumn="period_v" sqlType="12"/>
+  <field bindedColumn="d_value" sqlType="93"/>
+</outputFields>

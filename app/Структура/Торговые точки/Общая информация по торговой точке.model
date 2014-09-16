@@ -1,15 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?><datamodel>
   <parameters>
-    <parameter description="" name="sessionID" nullable="true" parameterMode="1" precision="0" scale="0" selectionForm="null" signed="true" size="0" type="2" typeName="NUMERIC"/>
-    <parameter description="" name="tradePointID" nullable="true" parameterMode="1" precision="0" scale="0" selectionForm="null" signed="true" size="0" type="2" typeName="NUMERIC"/>
+    <parameter description="" name="franchaziId" nullable="true" parameterMode="1" precision="0" scale="0" selectionForm="null" signed="true" size="0" type="2" typeName="NUMERIC"/>
+    <parameter description="" name="tradePointId" nullable="true" parameterMode="1" precision="0" scale="0" selectionForm="null" signed="true" size="0" type="2" typeName="NUMERIC"/>
   </parameters>
-  <parametersEntity entityHeight="200" entityIconified="false" entityLocationX="12" entityLocationY="11" entityWidth="150"/>
-  <entity Name="qOpenedOrLastSession" Title="" entityHeight="200" entityIconified="false" entityId="140751237008700" entityLocationX="12" entityLocationY="250" entityWidth="150" queryId="qOpenedOrLastSession" tableName="" tableSchemaName=""/>
-  <entity Name="qTradePoint" Title="" entityHeight="200" entityIconified="false" entityId="140751435211686" entityLocationX="191" entityLocationY="250" entityWidth="150" queryId="qTradePoint" tableName="" tableSchemaName=""/>
-  <entity Name="tradeSessionDetails" Title="" entityHeight="236" entityIconified="false" entityId="140750821188847" entityLocationX="191" entityLocationY="11" entityWidth="150" queryId="tradeSessionDetails" tableName="" tableSchemaName=""/>
-  <relation leftEntityId="-1" leftEntityParameterName="tradePointID" rightEntityId="140751237008700" rightEntityParameterName="trade_point"/>
-  <relation leftEntityId="-1" leftEntityParameterName="tradePointID" rightEntityId="140751435211686" rightEntityParameterName="trade_point_id"/>
-  <relation leftEntityId="-1" leftEntityParameterName="sessionID" rightEntityId="140750821188847" rightEntityParameterName="session_id"/>
-  <referenceRelation leftEntityFieldName="trade_point" leftEntityId="140751237008700" rightEntityFieldName="org_trade_point_id" rightEntityId="140751435211686"/>
-  <referenceRelation leftEntityFieldName="trade_point" leftEntityId="140750821188847" rightEntityFieldName="org_trade_point_id" rightEntityId="140751435211686"/>
+  <parametersEntity entityHeight="200" entityIconified="false" entityLocationX="12" entityLocationY="12" entityWidth="150"/>
+  <entity Name="qTradePointIncomeByPeriod" Title="" entityHeight="200" entityIconified="false" entityId="141081014886573" entityLocationX="182" entityLocationY="12" entityWidth="150" queryId="qTradePointIncomeByPeriod" tableName="" tableSchemaName=""/>
 </datamodel>
