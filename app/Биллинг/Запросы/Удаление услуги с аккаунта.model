@@ -2,7 +2,11 @@
   <parameters>
     <parameter description="" name="account_id" nullable="true" parameterMode="1" precision="0" scale="0" selectionForm="null" signed="true" size="0" type="2" typeName="NUMERIC"/>
     <parameter description="" name="service_id" nullable="true" parameterMode="1" precision="0" scale="0" selectionForm="null" signed="true" size="0" type="2" typeName="NUMERIC"/>
+    <parameter description="" name="service_account_id" nullable="true" parameterMode="1" precision="0" scale="0" selectionForm="null" signed="true" size="0" type="2" typeName="NUMERIC"/>
   </parameters>
-  <parametersEntity entityHeight="183" entityIconified="false" entityLocationX="12" entityLocationY="22" entityWidth="150"/>
-  <entity Title="" entityHeight="200" entityIconified="false" entityId="140836209955684" entityLocationX="214" entityLocationY="5" entityWidth="150" tableAlias="t1" tableName="bill_services_accounts" tableSchemaName=""/>
+  <parametersEntity entityHeight="183" entityIconified="false" entityLocationX="11" entityLocationY="9" entityWidth="150"/>
+  <entity Title="" entityHeight="200" entityIconified="false" entityId="140836209955684" entityLocationX="206" entityLocationY="12" entityWidth="150" tableAlias="t1" tableName="bill_services_accounts" tableSchemaName=""/>
+  <relation leftEntityId="-1" leftEntityParameterName="service_account_id" rightEntityFieldName="bill_services_accounts_id" rightEntityId="140836209955684"/>
+  <relation leftEntityId="-1" leftEntityParameterName="account_id" rightEntityFieldName="account_id" rightEntityId="140836209955684"/>
+  <relation leftEntityId="-1" leftEntityParameterName="service_id" rightEntityFieldName="service_cost_id" rightEntityId="140836209955684"/>
 </datamodel>

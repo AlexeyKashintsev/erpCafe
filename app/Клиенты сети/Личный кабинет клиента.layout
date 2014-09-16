@@ -6,11 +6,12 @@
     <constraints height="17px" left="60px" top="96px" type="MarginConstraintsDesignInfo" width="264px"/>
   </widget>
   <widget name="modelGrid" parent="Form" prefHeight="132px" prefWidth="324px" type="DbGridDesignInfo">
-    <treeDesignInfo/>
-    <rowsColumnsDesignInfo>
-      <rowsDatasource/>
-    </rowsColumnsDesignInfo>
     <column name="colDate" title="Дата">
+      <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
+      <headerStyle>
+        <nativeFont name="Dialog" size="15"/>
+      </headerStyle>
+      <datamodelElement entityId="141086850975736" fieldName="opDate"/>
       <columnsDatasource/>
       <columnsDisplayField/>
       <cellsDatasource/>
@@ -19,12 +20,13 @@
         <columnsKeyField/>
         <cellValueField/>
       </cellDesignInfo>
-      <headerStyle>
-        <nativeFont name="Ubuntu" size="15"/>
-      </headerStyle>
-      <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
     </column>
     <column name="colSum" title="Сумма">
+      <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
+      <headerStyle>
+        <nativeFont name="Dialog" size="15"/>
+      </headerStyle>
+      <datamodelElement entityId="141086850975736" fieldName="moneyCount"/>
       <columnsDatasource/>
       <columnsDisplayField/>
       <cellsDatasource/>
@@ -33,12 +35,13 @@
         <columnsKeyField/>
         <cellValueField/>
       </cellDesignInfo>
-      <headerStyle>
-        <nativeFont name="Ubuntu" size="15"/>
-      </headerStyle>
-      <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
     </column>
     <column name="colBonus" title="Бонусов">
+      <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
+      <headerStyle>
+        <nativeFont name="Dialog" size="15"/>
+      </headerStyle>
+      <datamodelElement entityId="141086850975736" fieldName="bonusCount"/>
       <columnsDatasource/>
       <columnsDisplayField/>
       <cellsDatasource/>
@@ -47,11 +50,11 @@
         <columnsKeyField/>
         <cellValueField/>
       </cellDesignInfo>
-      <headerStyle>
-        <nativeFont name="Ubuntu" size="15"/>
-      </headerStyle>
-      <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
     </column>
+    <rowsColumnsDesignInfo>
+      <rowsDatasource entityId="141086850975736" field="false"/>
+    </rowsColumnsDesignInfo>
+    <treeDesignInfo/>
     <constraints height="132px" left="36px" top="144px" type="MarginConstraintsDesignInfo" width="324px"/>
   </widget>
   <layout type="MarginLayoutDesignInfo"/>

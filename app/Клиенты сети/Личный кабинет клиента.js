@@ -5,11 +5,14 @@
 function clientDesktop() {
     var self = this, model = this.model, form = this;
     var ClientEditPersonalInfo = new clientEditPersonalInfo();
-    var UserName = null;
-    // TODO : place your code here
+    var clientModule = new ServerModule('ClientServerModule');
+    var UserName = session.userName;
+    var clientData = clientModule.getClientData();
+
 
     self.SetUserName = function (anUserName){
         UserName = anUserName;
+        model.qBillAccount.params.user_id = UserName;
     };
     
     function buttonActionPerformed(evt) {//GEN-FIRST:event_buttonActionPerformed
@@ -17,7 +20,8 @@ function clientDesktop() {
     }//GEN-LAST:event_buttonActionPerformed
 
     function formWindowOpened(evt) {//GEN-FIRST:event_formWindowOpened
-        model.qBillAccount.params.user_id = self.principal.name;
-        form.lblBonusBillCount.text = "На вашем бонусном счету " + model.qBillAccount.cursor.currnt_sum + " баллов";
+        model.qGetSumAndBonusesFromTradeOperation.params.account_id = clientData.bonusBill;
+        model.qGetSumAndBonusesFromTradeOperation.requery();
+        form.lblBonusBillCount.text = "На вашем бонусном счету " + clientData.bonusCount + " баллов";
     }//GEN-LAST:event_formWindowOpened
 }

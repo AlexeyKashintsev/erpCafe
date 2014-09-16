@@ -15,7 +15,8 @@ function UserSession() {
     
     self.login = function() {
         model.params.userName = self.principal.name;
-        model.qFrancByUserName.requery();
+        if (!self.principal.hasRole('client'))
+            model.qFrancByUserName.requery();
         ep.addEvent('userLogin', null);
         return self.getUserRole();//model.params.franchaziId;
     };
@@ -34,7 +35,7 @@ function UserSession() {
     };
     
     self.getUserRole = function() {
-        var roles = ['admin', 'franchazi', 'barista'];
+        var roles = ['admin', 'franchazi', 'barista', 'client'];
         for (var j in roles)
             if (self.principal.hasRole(roles[j]))
                 break;

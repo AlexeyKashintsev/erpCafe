@@ -5,8 +5,8 @@
  */ 
 function BillServerModule() {
     var self = this, model = this.model;
-    var eventProcessor = new ServerModule("EventProcessor");
-    var billModule = new ServerModule("BillModule");
+    var eventProcessor = new EventProcessor();
+    var billModule = new BillModule();
     /*
      * Списание абонентской платы 
      */
@@ -26,7 +26,7 @@ function BillServerModule() {
                             pDate.setDate(pDate.getDate() + model.qServiceList.cursor.service_days);
                         }
                         model.qPaymentService.cursor.payment_date = pDate;
-                        billModule.addBillOperation(model.qPaymentService.cursor.account_id, billModule.OPERATION_DEL_SERVICE, model.qServiceList.cursor.service_sum, billModule.OP_STATUS_SUCCESS);               
+                        billModule.addBillOperation(model.qPaymentService.cursor.account_id, billModule.OPERATION_DEL_SERVICE, model.qServiceList.cursor.item_cost, billModule.OP_STATUS_SUCCESS);               
                         services_id[i]=model.qPaymentService.cursor.bill_services_accounts_id;
                         i++;
                     });

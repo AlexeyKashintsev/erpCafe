@@ -69,7 +69,7 @@ function OrderList(aParent) {
         if (anOrderDetails.orderSum <= self.tradeSession.getBonusCount()){
             choiceMethodOfPayment.tradeSession = self.tradeSession;
             choiceMethodOfPayment.showModal(function (aResult){
-                self.tradeSession.setTradeOperationType(aResult);
+                anOrderDetails.methodOfPayment = aResult;
             });
         }
         
@@ -208,7 +208,8 @@ function OrderList(aParent) {
     self.acceptOrder = function() {
         var anOrderDetails = {
             orderSum : 0,
-            orderItems : []
+            orderItems : [],
+            clientData: {}
         };
         var ic = 0;
         

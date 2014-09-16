@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?><datamodel>
   <parametersEntity entityHeight="200" entityIconified="false" entityLocationX="12" entityLocationY="12" entityWidth="150"/>
   <entity Name="qBillAccount" Title="" entityHeight="200" entityIconified="false" entityId="140809301298868" entityLocationX="185" entityLocationY="11" entityWidth="150" queryId="qBillAccount" tableName="" tableSchemaName=""/>
+  <entity Name="qGetSumAndBonusesFromTradeOperation" Title="" entityHeight="200" entityIconified="false" entityId="141086850975736" entityLocationX="364" entityLocationY="22" entityWidth="150" queryId="qGetSumAndBonusesFromTradeOperation" tableName="" tableSchemaName=""/>
 </datamodel>

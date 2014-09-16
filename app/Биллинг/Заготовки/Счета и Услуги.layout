@@ -5,7 +5,6 @@
         <valueField entityId="140791227991520" fieldName="account_type"/>
         <displayField entityId="140844547933838" fieldName="type_name"/>
       </controlInfo>
-      <datamodelElement entityId="140791227991520" fieldName="account_type"/>
       <columnsDatasource/>
       <columnsDisplayField/>
       <cellsDatasource/>
@@ -17,10 +16,10 @@
       <headerStyle>
         <nativeFont name="Tahoma" size="11"/>
       </headerStyle>
+      <datamodelElement entityId="140791227991520" fieldName="account_type"/>
     </column>
     <column name="colCurrnt_sum" title="Сумма">
       <controlInfo classHint="DbSpinDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
-      <datamodelElement entityId="140791227991520" fieldName="currnt_sum"/>
       <columnsDatasource/>
       <columnsDisplayField/>
       <cellsDatasource/>
@@ -32,6 +31,7 @@
       <headerStyle>
         <nativeFont name="Tahoma" size="11"/>
       </headerStyle>
+      <datamodelElement entityId="140791227991520" fieldName="currnt_sum"/>
     </column>
     <rowsColumnsDesignInfo>
       <rowsDatasource entityId="140791227991520" field="false"/>
@@ -45,7 +45,6 @@
   <widget deletable="false" editable="false" insertable="false" name="modelGrid1" parent="Form" prefHeight="354px" prefWidth="337px" type="DbGridDesignInfo">
     <column name="colService_name" title="Название услуги">
       <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
-      <datamodelElement entityId="140791634411137" fieldName="service_name"/>
       <columnsDatasource/>
       <columnsDisplayField/>
       <cellsDatasource/>
@@ -57,10 +56,10 @@
       <headerStyle>
         <nativeFont name="Tahoma" size="11"/>
       </headerStyle>
+      <datamodelElement entityId="140791634411137" fieldName="service_name"/>
     </column>
     <column name="colService_sum" title="Сумма">
       <controlInfo classHint="DbSpinDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
-      <datamodelElement entityId="140791634411137" fieldName="service_sum"/>
       <columnsDatasource/>
       <columnsDisplayField/>
       <cellsDatasource/>
@@ -72,10 +71,10 @@
       <headerStyle>
         <nativeFont name="Tahoma" size="11"/>
       </headerStyle>
+      <datamodelElement entityId="140791634411137" fieldName="item_cost"/>
     </column>
     <column name="colPayment_date" title="Дата списания">
       <controlInfo classHint="DbDateDesignInfo" dateFormat="dd.MM.yyyy HH:mm:ss" name="view" prefHeight="0px" prefWidth="0px"/>
-      <datamodelElement entityId="140791634411137" fieldName="payment_date"/>
       <columnsDatasource/>
       <columnsDisplayField/>
       <cellsDatasource/>
@@ -87,6 +86,22 @@
       <headerStyle>
         <nativeFont name="Tahoma" size="11"/>
       </headerStyle>
+      <datamodelElement entityId="140791634411137" fieldName="payment_date"/>
+    </column>
+    <column name="column" readonly="true" title="Изменена(удалена)">
+      <controlInfo classHint="DbCheckDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
+      <columnsDatasource/>
+      <columnsDisplayField/>
+      <cellsDatasource/>
+      <cellDesignInfo>
+        <columnsKeyField/>
+        <cellValueField/>
+        <rowsKeyField/>
+      </cellDesignInfo>
+      <headerStyle>
+        <nativeFont name="Tahoma" size="11"/>
+      </headerStyle>
+      <datamodelElement entityId="140791634411137" fieldName="modifyd"/>
     </column>
     <rowsColumnsDesignInfo>
       <rowsDatasource entityId="140791634411137" field="false"/>
@@ -116,7 +131,7 @@
     <constraints bottom="22px" height="23px" left="0px" type="MarginConstraintsDesignInfo" width="264px"/>
   </widget>
   <widget actionPerformed="btnBillMeasuresActionPerformed" name="btnBillMeasures" parent="Form" prefHeight="23px" prefWidth="252px" text="Единицы измерения" type="ButtonDesignInfo">
-    <constraints bottom="46px" height="23px" left="348px" type="MarginConstraintsDesignInfo" width="252px"/>
+    <constraints bottom="46px" height="23px" right="0px" type="MarginConstraintsDesignInfo" width="252px"/>
   </widget>
   <nonvisual name="buttonGroup" type="ButtonGroupDesignInfo"/>
   <layout type="MarginLayoutDesignInfo"/>

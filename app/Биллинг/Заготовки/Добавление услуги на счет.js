@@ -15,4 +15,8 @@ function AddServiceForm() {
     function buttonActionPerformed(evt) {//GEN-FIRST:event_buttonActionPerformed
         form.close(billModule.AddService(self.accountId, model.params.service_id));
     }//GEN-LAST:event_buttonActionPerformed
+
+    function formWindowOpened(evt) {//GEN-FIRST:event_formWindowOpened
+        model.requery();
+    }//GEN-LAST:event_formWindowOpened
 }

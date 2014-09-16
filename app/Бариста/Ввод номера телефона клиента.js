@@ -14,12 +14,12 @@ function SetUserPhoneForm() {
             self.tradeSession.setClientPhone(null);
             form.close();
         } else if (clientModule.checkIfPhoneExist(form.tfPhone.text)){
-            self.tradeSession.setClientPhone(form.tfPhone.text);
+            self.tradeSession.setClient(form.tfPhone.text);
             form.close();
         } else {
             clientReg.phoneField.text = form.tfPhone.text;
-            clientReg.showModal(function(aResult){
-                self.tradeSession.setClientPhone(aResult);
+            clientReg.showModal(function(aPhone){
+                self.tradeSession.setClient(aPhone);
                 form.close();
             });
         }
@@ -34,9 +34,4 @@ function SetUserPhoneForm() {
              form.button.text = "Зарегистрировать";
          }
     }//GEN-LAST:event_tfPhoneKeyReleased
-
-    function btnAnonimActionActionPerformed(evt) {//GEN-FIRST:event_btnAnonimActionActionPerformed
-        self.tradeSession.setClientPhone("79206738064");
-        form.close();
-    }//GEN-LAST:event_btnAnonimActionActionPerformed
 }

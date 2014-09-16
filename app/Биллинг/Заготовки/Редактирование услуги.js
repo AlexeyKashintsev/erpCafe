@@ -29,7 +29,11 @@ function EditServiceForm() {
         model.params.service_id = self.serviceId;
         model.requery();
         form.tfName.text = model.qServiceList.cursor.service_name;
-        form.tfSum.text = model.qServiceList.cursor.service_sum;
+        form.tfSum.text = model.qServiceList.cursor.item_cost;
         form.tfDays.text = model.qServiceList.cursor.service_days;
     }//GEN-LAST:event_formWindowOpened
+
+    function tfSumActionPerformed(evt) {//GEN-FIRST:event_tfSumActionPerformed
+        // TODO Добавьте свой код:
+    }//GEN-LAST:event_tfSumActionPerformed
 }
