@@ -7,8 +7,7 @@
 function BillModule() {
     var self = this, model = this.model;
     var eventProcessor = new EventProcessor();
-
-    self.ERROR_SHORTAGE_MONEY = false;
+    
     // Типы операций
     self.OPERATION_ADD_CASH = 1; //Добавление средств на счет
     self.OPERATION_ADD_BONUS = 2; //
@@ -32,7 +31,19 @@ function BillModule() {
         SERVICE_ADDED: "Услуга уже добавлена на лицевой счет",
         SERVICE_LOCKED: "Ошибка удаления услуги с аккаунта. Услуга заблокирована для удаления!"
     };
-
+    
+    /*
+     * Проверка суммы на лицевом счете
+     * @param {type} anAccountId
+     * @param {type} aSum
+     * @returns: false - сумма есть; true - недостаточно средств
+     */
+    function checkMoneyOnAccount(anAccountId, aSum){
+        var sum = self.getSumFromAccountId(anAccountId);
+        if(sum >= aSum) return false;
+        else return true;
+    }
+    
     /*
      * Создает новый биллинговый аккаунт и возвращает его ID
      * @param {type} aFrancId
@@ -40,7 +51,7 @@ function BillModule() {
      * @param {type} aSum
      * @returns {@this;@pro;model.qBillAccount.cursor.bill_accounts_id}
      */
-    self.createBillAccount = function(aUserId, aType, aSum) {
+    self.createBillAccount = function(aUserId, aType) {
         if (!aType)
             aType = self.ACCOUNT_TYPE_DEFAULT;
         model.qBillAccount.push({
@@ -50,44 +61,34 @@ function BillModule() {
             active: true
         });
         model.save();
-      /*  if (aSum)
-            self.addBillOperation(model.qBillAccount.cursor.bill_accounts_id, self.OPERATION_ADD_CASH, aSum, self.OP_STATUS_SUCCESS);
         eventProcessor.addEvent('billCreated', {
             user_id: aUserId,
-            account_type: aType,
-            currnt_sum: aSum
-        });*/
+            account_type: aType
+        });
         return model.qBillAccount.cursor.bill_accounts_id;
-        // Logger.info('Аккаунт для франчайзе уже существует'); 
     };
     /*
-     * Получить баланс счета пользователя(клиента)
-     * @param {type} anUserId
-     * @returns {undefined} TODO убрать
-     */
-    self.getSumFromUserId = function(anUserId) {
-        if (!anUserId)
-            return 0;
-        model.params.user_id = anUserId;
-        model.qBillAccount.requery();
-        if (model.qBillAccount.length > 0)
-            return model.qBillAccount.cursor.currnt_sum;
-        else
-            return false;
-    };
-    /*
-     * Получить баланс счета по ID
+     * Получить быстрый баланс счета по ID
+     * Использовать ТОЛЬКО для быстрого отображения!!!
      * @param {type} anAccountId
      * @returns {undefined}
      */
-    self.getSumFromAccountId = function(anAccountId) {
+    self.getQuickSumFromAccountId = function(anAccountId) {
         model.params.account_id = anAccountId;
-        model.qBillAccount.requery(function() {
-            if (model.qBillAccount.length > 0)
-                return model.qBillAccount.cursor.currnt_sum;
-            else
-                return false;
-        });
+        model.qBillAccount.requery();
+        if (model.qBillAccount.length > 0) return model.qBillAccount.cursor.currnt_sum;
+        else return false;
+    };
+     /*
+     * Получить баланс счета по ID
+     * @param {type} anAccountId
+     * @returns {undefined} 
+     */
+    self.getSumFromAccountId = function(anAccountId) {
+        model.qGetAccountBalance.params.account_id = anAccountId;
+        model.qGetAccountBalance.requery();
+        if (model.qGetAccountBalance.length > 0) return model.qGetAccountBalance.cursor.account_balance;
+        else return false;
     };
     /*
      * Удаление лицеовго счета
@@ -95,18 +96,11 @@ function BillModule() {
      * @returns {undefined}
      */
     self.delBillAccount = function(anAccountId) {
-        model.params.account_id = anAccountId;
-        model.qBillAccount.requery(function() {//TODO переделать update
-            if (model.qBillAccount.length > 0) {
-                model.qBillAccount.cursor.active = false;
-                model.save();
-                eventProcessor.addEvent('delBillAccount', anAccountId);
-                return true;
-            } else {
-                eventProcessor.addEvent('errorDelBillAccount', anAccountId);
-                return false;
-            }
-        });
+        model.qDeleteBillAccount.params.account_id = anAccountId;
+        model.qDeleteBillAccount.executeUpdate();
+        model.save();
+        eventProcessor.addEvent('delBillAccount', anAccountId);
+        return true;
     };
     /*
      * Добавление новой опреции по счету
@@ -118,7 +112,7 @@ function BillModule() {
     self.addBillOperation = function(anAccountId, anOperationType, aSum, aStatus) {
         if (!aStatus)
             aStatus = self.OP_STATUS_SUCCESS;
-        ERROR_SHORTAGE_MONEY = false;
+        var ERROR_SHORTAGE_MONEY = false;
         var obj = {
             account_id: anAccountId,
             operation_sum: aSum,
@@ -144,16 +138,9 @@ function BillModule() {
                 break;
         }
         if ((multiplier === -1) && (aStatus === self.OP_STATUS_SUCCESS) && (anOperationType != self.OPERATION_DEL_SERVICE)) {
-            model.params.account_id = anAccountId;
-            model.qBillAccount.requery(function() {
-                if (model.qBillAccount.length > 0) {
-                    if (model.qBillAccount.cursor.currnt_sum < aSum) {
-                        self.ERROR_SHORTAGE_MONEY = true;
-                    }
-                }
-            });
+            ERROR_SHORTAGE_MONEY = checkMoneyOnAccount(anAccountId, aSum);
         }
-        if (self.ERROR_SHORTAGE_MONEY) {
+        if (ERROR_SHORTAGE_MONEY) {
             Logger.info(ERRORS.LOST_MONEY);
             eventProcessor.addEvent('errorLostMoney', obj);
             return false;
@@ -201,19 +188,17 @@ function BillModule() {
      * @returns {undefined}
      */
     self.setStatusBillOperation = function(anOperationId, aStatus) {
-        self.ERROR_SHORTAGE_MONEY = false;
+        var ERROR_SHORTAGE_MONEY = false;
         model.params.operation_id = anOperationId;
         model.qBillOperationsList.requery(function() {
             if (model.qBillOperationsList.length > 0) {
                 if (aStatus == self.OP_STATUS_SUCCESS) {
                     model.params.account_id = model.qBillOperationsList.cursor.account_id;
                     model.qBillAccount.requery(function() {
-                        if (model.qBillAccount.cursor.currnt_sum >= model.qBillOperationsList.cursor.operation_sum) {
+                        ERROR_SHORTAGE_MONEY = checkMoneyOnAccount(model.qBillOperationsList.cursor.account_id, model.qBillOperationsList.cursor.operation_sum);
+                        if(!ERROR_SHORTAGE_MONEY)
                             model.qBillAccount.cursor.currnt_sum = model.qBillAccount.cursor.currnt_sum + model.qBillOperationsList.cursor.operation_sum * model.qBillOperationsList.cursor.multiplier;
-                        } else {
-                            self.ERROR_SHORTAGE_MONEY = true;
-                        }
-                    });
+                    }); 
                 }
                 if (!self.ERROR_SHORTAGE_MONEY) {
                     model.qBillOperationsList.cursor.operation_status = aStatus;
@@ -221,26 +206,19 @@ function BillModule() {
                     eventProcessor.addEvent('setStatusBillOperation', {
                         operation_id: model.qBillOperationsList.cursor.bill_operations_id,
                         status: aStatus,
-                        set_date: new Date()
                     });
                     return true;
                 } else {
-                    eventProcessor.addEvent('errorSetStatusBillOperation', {
+                    return addErrorToLogger('errorSetStatusBillOperation', {
                         operation_id: model.qBillOperationsList.cursor.bill_operations_id,
-                        status: aStatus,
-                        set_date: new Date(),
-                        comment: ERRORS.LOST_MONEY
-                    });
-                    return false;
+                        status: aStatus
+                    }, ERRORS.LOST_MONEY);
                 }
             } else {
-                eventProcessor.addEvent('errorSetStatusBillOperation', {
-                    operation_id: model.qBillOperationsList.cursor.bill_operations_id,
-                    status: aStatus,
-                    set_date: new Date(),
-                    comment: ERRORS.INVALID_OP_ID
-                });
-                return false;
+                return addErrorToLogger('errorSetStatusBillOperation', {
+                        operation_id: model.qBillOperationsList.cursor.bill_operations_id,
+                        status: aStatus
+                    }, ERRORS.INVALID_OP_ID);
             }
         });
     };
@@ -271,7 +249,7 @@ function BillModule() {
             if (model.qServiceList.length > 0) {
                 if (model.qBillAccount.length > 0) {
                     if (model.qAddService.length == 0) {
-                        if (model.qBillAccount.cursor.currnt_sum >= model.qServiceList.cursor.item_cost) {
+                        if (self.getSumFromAccountId(model.qBillAccount.cursor.bill_accounts_id) >= model.qServiceList.cursor.item_cost) {
                             var payDate = new Date();
                             self.addBillOperation(anAccountId, self.OPERATION_DEL_SERVICE, model.qServiceList.cursor.item_cost);
                             if (model.qServiceList.cursor.service_month) {
@@ -325,22 +303,16 @@ function BillModule() {
                     });
                     return true;
                 } else {
-                    Logger.info(ERRORS.SERVICE_LOCKED);
-                    eventProcessor.addEvent('errorDelServiceFromAccount', {
+                    return addErrorToLogger('errorDelServiceFromAccount', {
                         account_id: anAccountId,
-                        service_id: aServiceId,
-                        error: ERRORS.SERVICE_LOCKED
-                    });
-                    return false;
+                        service_id: aServiceId
+                    }, ERRORS.SERVICE_LOCKED);
                 }
             } else {
-                Logger.info(ERRORS.FIND_SERVICE_ID);
-                eventProcessor.addEvent('errorDelServiceFromAccount', {
+                return addErrorToLogger('errorDelServiceFromAccount', {
                     account_id: anAccountId,
-                    service_id: aServiceId,
-                    error: ERRORS.FIND_SERVICE_ID
-                });
-                return false;
+                    service_id: aServiceId
+                }, ERRORS.FIND_SERVICE_ID);
             }
         });
     };
@@ -375,7 +347,6 @@ function BillModule() {
         eventProcessor.addEvent('serviceCreated', obj);
         return true;
     };
-
     /*
      * Удаление услуги
      */
@@ -397,7 +368,9 @@ function BillModule() {
             }
         });
     };
-    //TODO Включить журнал, создать запрос
+    /*
+     * Редактирование услуги
+     */
     self.editService = function(aServiceId, aName, aSum, aDays) {
         var aMonth = false;
         if (aDays == false || aDays == 0 || aDays == null || aDays === undefined)

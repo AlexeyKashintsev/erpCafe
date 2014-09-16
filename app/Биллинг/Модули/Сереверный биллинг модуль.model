@@ -6,5 +6,4 @@
   <entity Name="qServiceList" Title="" entityHeight="200" entityIconified="false" entityId="140834848437040" entityLocationX="196" entityLocationY="228" entityWidth="150" queryId="qServiceList" tableName="" tableSchemaName=""/>
   <entity Name="qPaymentService" Title="" entityHeight="200" entityIconified="false" entityId="140851590775868" entityLocationX="199" entityLocationY="13" entityWidth="150" queryId="qPaymentService" tableName="" tableSchemaName=""/>
   <relation leftEntityId="-1" leftEntityParameterName="service_id" rightEntityId="140834848437040" rightEntityParameterName="service_id"/>
-  <referenceRelation leftEntityFieldName="service_id" leftEntityId="140851590775868" rightEntityFieldName="bill_services_id" rightEntityId="140834848437040"/>
 </datamodel>

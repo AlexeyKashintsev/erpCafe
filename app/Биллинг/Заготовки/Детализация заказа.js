@@ -5,7 +5,6 @@
 function DetalizeBillForm() {
     var self = this, model = this.model, form = this;
     var bm = new ServerModule("BillModule");
-    var detalieBill = new Report("DetalieBill");
     
     self.account_id = 0;
     self.setAccountId = function(anAccountId) {
