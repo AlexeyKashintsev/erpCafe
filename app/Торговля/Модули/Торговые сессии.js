@@ -11,14 +11,8 @@ function TradeSessions() {
     var billing = new BillModule();
     var ep = new EventProcessor();
 
-    self.setClient = function (aPhone){
-        client = new clientModule.ClientConstructor(aPhone);
-    }
-    
-    self.getBonusCount = function(){//TODO Тоже самое
-        return client.bonusCount;
-    };
-    
+    var client = {};
+
     self.initializeSession = function(aSession, aStartBalance) {
         model.qTradeSessionBalance.push({
             session_id  :   aSession,
@@ -107,21 +101,40 @@ function TradeSessions() {
         return model.qGetBonusCategories.cursor.category_bonus_rate;
     }
     
+    function processOrderItem(anOrderItem, aTradeOperationId) {
+        if (anOrderItem.itemId && anOrderItem.quantity){
+            TradeItemsPushInTradeOperation( aTradeOperationId, 
+                                            anOrderItem.itemId, 
+                                            anOrderItem.quantity);
+                                            
+            var calculatedConsumption = WhItemsCalculation(anOrderItem.itemId, 
+                                                            anOrderItem.quantity);
+
+            if (whSession.whMovement(calculatedConsumption, whSession.WH_PRODUCE_ITEMS)){
+                return true;
+            } else
+                return false;
+        }
+    }
+    
     //Запись прихода по кассе
     self.processOrder = function(anOrderDetails){
+        var client = {};
         if (!model.params.session_id){
             model.params.session_id = getCurrentSession();
         }
+        
+        if (anOrderDetails.client)
+            client = new clientModule.ClientConstructor(anOrderDetails.client);
 
         if (model.params.session_id){
             switch (anOrderDetails.methodOfPayment){
                 case "money":
                     var BonusCount = 0;
+                    var BonusOperation = billing.OPERATION_ADD_BONUS;
                     break;
                 case "bonus":
-//                    model.qBillAccount.params.user_id = ClientPhone;
-//                    model.qBillAccount.requery();
-//                    if (model.qBillAccount.length > 0){
+                    BonusOperation = billing.OPERATION_DEL_BUY;
                       if (client.bonusBill.length > 0){
                         if (model.qBillAccount.cursor.currnt_sum < anOrderDetails.orderSum){
                             ep.addEvent('errorNotEnoughBonuses', anOrderDetails);
@@ -135,46 +148,24 @@ function TradeSessions() {
             }
             
             var TradeOperationId = TradeOperationAddToCashBox(  anOrderDetails.orderSum,
-                                                                    anOrderDetails.methodOfPayment,
-                                                                    //clientModule.getBonusBill(ClientPhone));
-                                                                    client.bonusBill);
+                                                                anOrderDetails.methodOfPayment,
+                                                                //clientModule.getBonusBill(ClientPhone));
+                                                                client.bonusBill);
             for (var i in anOrderDetails.orderItems) {
-                if (anOrderDetails.orderItems[i].itemId && anOrderDetails.orderItems[i].quantity){
-                    TradeItemsPushInTradeOperation( TradeOperationId, 
-                                                    anOrderDetails.orderItems[i].itemId, 
-                                                    anOrderDetails.orderItems[i].quantity);
-                    if (client.bonusBill){
-                        BonusCount += getCountBonusesByItem(anOrderDetails.orderItems[i].itemId) * anOrderDetails.orderItems[i].quantity;
-                    }
-                    var calculationConsumption = WhItemsCalculation(anOrderDetails.orderItems[i].itemId, 
-                                                                    anOrderDetails.orderItems[i].quantity);
-
-                    if (!whSession.whMovement(calculationConsumption, whSession.WH_PRODUCE_ITEMS)){
-                        ep.addEvent('errorAddTradeOperation', anOrderDetails);
-                    }
-                }
+                if (!processOrderItem(anOrderDetails.orderItems[i], TradeOperationId)) {
+                    ep.addEvent('errorAddTradeOperation', anOrderDetails);
+                } else
+                    BonusCount += getCountBonusesByItem(anOrderDetails.orderItems[i].itemId)
+                                * anOrderDetails.orderItems[i].quantity;
             }
-            switch (anOrderDetails.methodOfPayment){
-                case "money":
-                    if (client.bonusBill){
-                        billing.addBillOperation(client.bonusBill, 
-                                                 billing.OPERATION_ADD_BONUS, 
-                                                 BonusCount);
-                    }
-                    break;
-                case "bonus":
-                    if (client.bonusBill){
-                        billing.addBillOperation(client.bonusBill, 
-                                                 billing.OPERATION_DEL_BUY, 
-                                                 anOrderDetails.orderSum);
-                    }
-                    break;
-                default:
-                    ep.addEvent('errorMethodOfPaymentIsNull', anOrderDetails);
-                    return "error";
+            
+            if (client.bonusBill){
+                billing.addBillOperation(client.bonusBill, 
+                                         BonusOperation, 
+                                         BonusCount);
+           //TODO Досписать добавление бонусов на счет франчайзи
             }
             model.save();
-           //TODO Досписать добавление бонусов на счет франчайзи
-        }
+        };
     };
 }
