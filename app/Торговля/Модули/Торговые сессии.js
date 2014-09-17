@@ -10,6 +10,7 @@ function TradeSessions() {
     var clientModule = new ClientServerModule();
     var billing = new BillModule();
     var ep = new EventProcessor();
+    var session = Modules.get("UserSession");
 
     var client = {};
 
@@ -43,7 +44,7 @@ function TradeSessions() {
             operation_sum    : anOrderSum,
             operation_date   : new Date(),
             session_id       : model.params.session_id,
-            operation_type   : anOperationType,
+            operation_type   : null,//anOperationType,
             client_id        : aClientId
         });
         return model.qTradeOperationBySession.trade_cash_box_operation_id;
@@ -81,7 +82,7 @@ function TradeSessions() {
     
     function getCountBonusesByItem(anItem){
         model.qBonusRateForItemsEdit.params.item_id = anItem;
-        model.qBonusRateForItemsEdit.params.bonus_category = clientModule.getBonusCategory(ClientPhone);
+       // model.qBonusRateForItemsEdit.params.bonus_category = clientModule.getBonusCategory(ClientPhone);
         model.qBonusRateForItemsEdit.requery();
         if (model.qBonusRateForItemsEdit.length > 0){
             return model.qBonusRateForItemsEdit.cursor.bonus_rate;
@@ -150,12 +151,13 @@ function TradeSessions() {
             var TradeOperationId = TradeOperationAddToCashBox(  anOrderDetails.orderSum,
                                                                 anOrderDetails.methodOfPayment,
                                                                 //clientModule.getBonusBill(ClientPhone));
-                                                                client.bonusBill);
+                                                                client ? client.bonusBill : null);
             for (var i in anOrderDetails.orderItems) {
                 if (!processOrderItem(anOrderDetails.orderItems[i], TradeOperationId)) {
                     ep.addEvent('errorAddTradeOperation', anOrderDetails);
                 } else
-                    BonusCount += getCountBonusesByItem(anOrderDetails.orderItems[i].itemId)
+                    if (client)
+                        BonusCount += getCountBonusesByItem(anOrderDetails.orderItems[i].itemId)
                                 * anOrderDetails.orderItems[i].quantity;
             }
             

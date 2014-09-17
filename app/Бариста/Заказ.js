@@ -65,13 +65,14 @@ function OrderList(aParent) {
         attempt++;
         Logger.info(attempt);
         var alert = alerter(anAlert, "alert-info", "<h4>Обработка заказа</h4>Попытка № " + attempt, false);
+        anOrderDetails.methodOfPayment = "money";
         //Если сумма заказа покрывается бонусами на счету, то предложить оплату бонусами
-        if (anOrderDetails.orderSum <= self.tradeSession.getBonusCount()){
+       /* if (anOrderDetails.orderSum <= self.tradeSession.getBonusCount()){
             choiceMethodOfPayment.tradeSession = self.tradeSession;
             choiceMethodOfPayment.showModal(function (aResult){
                 anOrderDetails.methodOfPayment = aResult;
             });
-        }
+        }*/
         
         self.tradeSession.processOrder(anOrderDetails, function() {
             alerter(alert, "alert-success", "<h4>Заказ успешно проведен</h4>Сумма заказа: <strong>"

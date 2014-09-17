@@ -21,7 +21,19 @@ function UserSession() {
         return self.getUserRole();//model.params.franchaziId;
     };
     
+    function sync() {
+        Logger.info('Synchronizing');
+        model.params.userName = self.principal.name;
+        if (!self.principal.hasRole('client'))
+            model.qFrancByUserName.requery();
+        if (model.qFrancByUserName.cursor.franc_users_active){
+                model.params.franchaziId = model.qFrancByUserName.franchazi_id;
+            }
+    }
+    
     self.getFranchazi = function() {
+        if (!model.params.franchaziId)
+            sync();
         return model.params.franchaziId;
     };
     
