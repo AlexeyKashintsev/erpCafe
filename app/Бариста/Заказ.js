@@ -8,6 +8,8 @@ function OrderList(aParent) {
     self.orderDetails = {};
     self.tradeSession = null;
     var lastDiv = null;
+    session.clientModule = new ServerModule("ClientServerModule");
+    var setPhone = new SetUserPhoneForm();
     
     function selectClient() {
         alert('Выбор!');
@@ -187,7 +189,7 @@ function OrderList(aParent) {
             orderSum += self.orderDetails[i].orderSum;
         }
         if (self.browser) {
-            document.getElementById("orderSum").innerHTML = '<h3>Итого: <b>' + orderSum + '</b> рублей</h3>';
+            document.getElementById("orderSum").innerHTML = '<h3>�?того: <b>' + orderSum + '</b> рублей</h3>';
         }
         else
             form.lbOrderSum.text = orderSum + ' р.';
@@ -250,7 +252,7 @@ function OrderList(aParent) {
 "<div class='panel-heading'><h3 class='panel-title'>Заказ</h3></div>\
 <div id='orderItems'></div><div id='orderDetails'>\
 <div class='panel-body'>\
-<div id='orderSum'>Итого: 0 рублей</div>\
+<div id='orderSum'>�?того: 0 рублей</div>\
 </div>";
         dockElement.appendChild(newHTMLElement);
 
@@ -274,6 +276,10 @@ function OrderList(aParent) {
         //setPhone.tradeSession = self.tradeSession;
         //setPhone.showModal();
         self.acceptOrder();
+    }
+    
+    function btnOkActionPerformed(evt) {//GEN-FIRST:event_btnOkActionPerformed
+        goAcceptOrder();
     }//GEN-LAST:event_btnOkActionPerformed
 
     function btnCancelActionPerformed(evt) {//GEN-FIRST:event_btnCancelActionPerformed
