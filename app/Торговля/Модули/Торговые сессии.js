@@ -168,7 +168,7 @@ function TradeSessions() {
         }
         
         if (anOrderDetails.clientData)
-            client = new clientModule.ClientConstructor(anOrderDetails.clientData);
+            client = clientModule.getClientDataByPhone(anOrderDetails.clientData.phone);
 
         if (model.params.session_id){
             switch (anOrderDetails.methodOfPayment){

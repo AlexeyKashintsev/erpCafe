@@ -2,7 +2,7 @@
  * 
  * @author stipjey
  */
-function SetUserPhoneForm() {
+function GetUserPhoneForm() {
     var self = this, model = this.model, form = this;
     self.tradeSession = null;
     var clientReg = new ClientRegistrationByBarist();
@@ -10,16 +10,13 @@ function SetUserPhoneForm() {
 
     function buttonActionPerformed(evt) {//GEN-FIRST:event_buttonActionPerformed
         if (form.tfPhone.text === ""){
-            self.tradeSession.setClientPhone(null);
             form.close();
         } else if (session.clientModule.checkIfPhoneExist(form.tfPhone.text)){
-            self.tradeSession.setClient(form.tfPhone.text);
-            form.close();
+            form.close(form.tfPhone.text);
         } else {
             clientReg.phoneField.text = form.tfPhone.text;
             clientReg.showModal(function(aPhone){
-                self.tradeSession.setClient(aPhone);
-                form.close();
+                form.close(aPhone);
             });
         }
     }//GEN-LAST:event_buttonActionPerformed

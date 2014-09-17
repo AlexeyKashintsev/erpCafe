@@ -16,6 +16,7 @@ function ClientServerModule() {
         model.qPersonalData.params.phone = aPhone;
         model.qPersonalData.execute();
         Logger.info(model.qPersonalData);
+        this.phone = aPhone;
         this.bonusBill = model.qPersonalData.cursor.client_id;
         this.firstName = model.qPersonalData.cursor.first_name;
         this.middleName = model.qPersonalData.cursor.middle_name;
@@ -26,6 +27,10 @@ function ClientServerModule() {
         this.bonusCategory = model.qPersonalData.cursor.bonus_category;
         this.bonusCount = billModule.getQuickSumFromAccountId(this.bonusBill);
         Logger.info(billModule.getQuickSumFromAccountId(this.bonusBill));
+    };
+    
+    self.getClientDataByPhone = function(aPhone) {
+        return new ClientConstructor(aPhone);
     };
     
     self.getClientData = function() {
