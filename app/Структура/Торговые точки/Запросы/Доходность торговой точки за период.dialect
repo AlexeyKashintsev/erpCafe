@@ -1,4 +1,4 @@
-Select to_timestamp(period_v, :g_value) as d_value, period_v, sum(q.operation_sum) as sm from
+Select to_timestamp(period_v, :g_value) as d_value, sum(q.operation_sum) as sm from
 (Select to_char(t.operation_date, :g_value) as period_v, t.operation_sum
 From org_session t2
 Inner Join trade_cash_box_operation t on t2.org_session_id = t.session_id

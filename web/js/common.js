@@ -13,6 +13,13 @@ cmn.showModal = function(aForm, aCallback) {
     $('#modalForm').modal({});
 }
 
+cmn.setActiveButton = function(aBtnArray, aBtn) {    
+    for (var j in aBtnArray) {
+        $(aBtnArray[j]).removeClass('active');
+    }
+    $(aBtn).addClass('active');
+}
+
 cmn.pFrameRunner = new function() {
     var frames = {};
     var activeFrame = null;
@@ -99,7 +106,9 @@ cmn.ActionList = function(anActions, aParentContainer) {
     function ActionListElement(anAction, dock) {
         this.element = document.createElement('a');
         this.element.className = 'list-group-item';
-        this.element.innerHTML = '<h4 class="list-group-item-heading">' + anAction.display + '</h4>';
+        this.element.innerHTML = '<h4 class="list-group-item-heading">'
+            + (anAction.glyph ? '<span class="' + anAction.glyph + '"></span> ' : '')
+            + anAction.display + '</h4>';
         var ale = this.element;
         this.element.onclick = function() {
             cmn.pFrameRunner.show(anAction.dispForm, anAction.display);
@@ -165,16 +174,22 @@ platypus.ready = function() {
             });
         });
 
-   /* Highcharts.setOptions({
-	global: {
-		useUTC: false
-	}
+Highcharts.setOptions({
+            lang: {
+                loading: 'Загрузка...',
+                months: ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'],
+                weekdays: ['Воскресенье', 'Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота'],
+                shortMonths: ['Янв', 'Фев', 'Март', 'Апр', 'Май', 'Июнь', 'Июль', 'Авг', 'Сент', 'Окт', 'Нояб', 'Дек'],
+                exportButtonTitle: "Экспорт",
+                printButtonTitle: "Печать",
+                rangeSelectorFrom: "С",
+                rangeSelectorTo: "По",
+                rangeSelectorZoom: "Период",
+                downloadPNG: 'Скачать PNG',
+                downloadJPEG: 'Скачать JPEG',
+                downloadPDF: 'Скачать PDF',
+                downloadSVG: 'Скачать SVG',
+                printChart: 'Напечатать график'
+            }
     });
-    
-    Highcharts.setOptions({
-	lang: {
-		months: ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin',  'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'],
-		weekdays: ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi']
-	}
-    });*/
 };

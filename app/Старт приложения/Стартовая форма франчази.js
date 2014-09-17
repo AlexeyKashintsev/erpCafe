@@ -94,6 +94,7 @@ self.showFormAsInternal = function(aForm) {
         },
         tradePoints :   {
             display     :   "Торговые точки",
+          //  glyph       :   "glyphicon glyphicon-cog",
             dispForm    :   "FranchaziWorkShop"
         }
     };
