@@ -1,12 +1,16 @@
-<?xml version="1.0" encoding="UTF-8"?><layout defaultCloseOperation="2" name="Form" prefHeight="620px" prefWidth="897px">
-  <widget dividerLocation="350" leftComponent="pnlFranchazi" name="splitPane" parent="Form" prefHeight="620px" prefWidth="897px" rightComponent="pnlTradePoints" type="SplitDesignInfo">
-    <constraints bottom="0px" left="0px" right="0px" top="0px" type="MarginConstraintsDesignInfo"/>
+<?xml version="1.0" encoding="UTF-8"?><layout defaultCloseOperation="2" name="Form" prefHeight="620px" prefWidth="915px">
+  <widget dividerLocation="350" leftComponent="pnlFranchazi" name="splitPane" parent="Form" prefHeight="620px" prefWidth="840px" rightComponent="pnlTradePoints" type="SplitDesignInfo">
+    <constraints bottom="0px" left="0px" right="75px" top="0px" type="MarginConstraintsDesignInfo"/>
   </widget>
-  <widget name="pnlFranchazi" parent="splitPane" prefHeight="616px" prefWidth="348px" type="PanelDesignInfo">
+  <widget name="pnlFranchazi" parent="splitPane" prefHeight="618px" prefWidth="349px" type="PanelDesignInfo">
     <layout type="MarginLayoutDesignInfo"/>
   </widget>
-  <widget name="pnlTradePoints" parent="splitPane" prefHeight="616px" prefWidth="536px" type="PanelDesignInfo">
+  <widget name="pnlTradePoints" parent="splitPane" prefHeight="618px" prefWidth="484px" type="PanelDesignInfo">
     <layout type="MarginLayoutDesignInfo"/>
+  </widget>
+  <widget name="pnlBills" parent="Form" prefHeight="288px" prefWidth="516px" type="PanelDesignInfo">
+    <layout type="MarginLayoutDesignInfo"/>
+    <constraints height="288px" left="540px" top="324px" type="MarginConstraintsDesignInfo" width="516px"/>
   </widget>
   <layout type="MarginLayoutDesignInfo"/>
 </layout>

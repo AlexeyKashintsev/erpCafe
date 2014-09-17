@@ -1,4 +1,4 @@
-3/**
+/**
  * @name BillGenerator
  * @author Alexey
  * @public
