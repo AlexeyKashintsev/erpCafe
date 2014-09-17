@@ -24,8 +24,8 @@ function ClientServerModule() {
         this.email = model.qPersonalData.cursor.email;
         this.registrationDate = model.qPersonalData.cursor.reg_date;
         this.bonusCategory = model.qPersonalData.cursor.bonus_category;
-        this.bonusCount = billModule.getSumFromAccountId(this.bonusBill);
-        Logger.info(billModule.getSumFromAccountId(this.bonusBill));
+        this.bonusCount = billModule.getQuickSumFromAccountId(this.bonusBill);
+        Logger.info(billModule.getQuickSumFromAccountId(this.bonusBill));
     };
     
     self.getClientData = function() {

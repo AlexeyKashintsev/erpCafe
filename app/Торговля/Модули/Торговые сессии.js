@@ -11,9 +11,21 @@ function TradeSessions() {
     var billing = new BillModule();
     var ep = new EventProcessor();
     var session = Modules.get("UserSession");
-
-    var client = {};
-
+    
+    /*
+     * Типы операций
+     * Деньги: 0
+     * Бонусы: 1
+     */
+    var MONEY = 0;
+    var BONUS = 1;
+    
+    /*
+     * �?нициализация сессии
+     * @param {type} aSession
+     * @param {type} aStartBalance
+     * @returns {undefined}
+     */
     self.initializeSession = function(aSession, aStartBalance) {
         model.qTradeSessionBalance.push({
             session_id  :   aSession,
@@ -27,7 +39,11 @@ function TradeSessions() {
         });
         model.save();
     };
-  
+    
+  /*
+   * Получение текущей сессии
+   * @returns {@this;@pro;model.qOpenedSession.org_session_id}
+   */
     function getCurrentSession(){
         model.qOpenedSession.params.user_name = self.principal.name;
         model.qOpenedSession.execute();
@@ -44,12 +60,18 @@ function TradeSessions() {
             operation_sum    : anOrderSum,
             operation_date   : new Date(),
             session_id       : model.params.session_id,
-            operation_type   : null,//anOperationType,
+            operation_type   : anOperationType,
             client_id        : aClientId
         });
         return model.qTradeOperationBySession.trade_cash_box_operation_id;
     }
     
+    /*
+     * @param {type} aCashBoxOperationId
+     * @param {type} anItemId
+     * @param {type} aQuantity
+     * @returns {undefined}
+     */
     function TradeItemsPushInTradeOperation(aCashBoxOperationId, anItemId, aQuantity){
         model.qTradeOperationsWithItems.push({
             cash_box_operation : aCashBoxOperationId,
@@ -61,6 +83,9 @@ function TradeSessions() {
     
     /*
      * Расчет потребления складских позиций
+     * @param {type} anItemId
+     * @param {type} aQuantity
+     * @returns {Array}
      */
     function WhItemsCalculation (anItemId, aQuantity){
         var WhItems = [];
@@ -80,9 +105,14 @@ function TradeSessions() {
     //TODO Написать функцию возвращающую список всех товаров на точке со всем и возможными бонусами
     //Обращение к БД всего один раз + передача списка доступных товаров на сторону клента (см tradeItemsByTradePointWithCost)
     
-    function getCountBonusesByItem(anItem){
+    /*
+     * Получение количества бонусов за товар
+     * @param {type} anItem
+     * @returns {Number|@this;@pro;model.tradeItemCost.cursor.item_cost|@this;@pro;model.qBonusRateForItemsEdit.cursor.bonus_rate|@this;@pro;model.qGetBonusCategories.cursor.category_bonus_rate}
+     */
+    function getCountBonusesByItem(anItem, aBonusCategory){
         model.qBonusRateForItemsEdit.params.item_id = anItem;
-       // model.qBonusRateForItemsEdit.params.bonus_category = clientModule.getBonusCategory(ClientPhone);
+        model.qBonusRateForItemsEdit.params.bonus_category = aBonusCategory;
         model.qBonusRateForItemsEdit.requery();
         if (model.qBonusRateForItemsEdit.length > 0){
             return model.qBonusRateForItemsEdit.cursor.bonus_rate;
@@ -95,13 +125,23 @@ function TradeSessions() {
             return model.tradeItemCost.cursor.item_cost * getCountBonusesByCategory(model.qBonusRateForItemsEdit.params.bonus_category) / 100;
         }
     }
-    
+    /*
+     * Получение количества бонусов за товар в зависимости от категории пользователя.
+     * @param {type} aCatId
+     * @returns {@this;@pro;model.qGetBonusCategories.cursor.category_bonus_rate}
+     */
     function getCountBonusesByCategory(aCatId){
         model.qGetBonusCategories.params.category_id = aCatId;
         model.qGetBonusCategories.requery();
         return model.qGetBonusCategories.cursor.category_bonus_rate;
     }
     
+    /*
+     * Запись проданных товаров в торговую операцию
+     * @param {type} anOrderItem
+     * @param {type} aTradeOperationId
+     * @returns {Boolean}
+     */
     function processOrderItem(anOrderItem, aTradeOperationId) {
         if (anOrderItem.itemId && anOrderItem.quantity){
             TradeItemsPushInTradeOperation( aTradeOperationId, 
@@ -118,7 +158,9 @@ function TradeSessions() {
         }
     }
     
-    //Запись прихода по кассе
+    /*
+     * Процесс продажи
+     */
     self.processOrder = function(anOrderDetails){
         var client = false;
         if (!model.params.session_id){
@@ -133,9 +175,11 @@ function TradeSessions() {
                 case "money":
                     var BonusCount = 0;
                     var BonusOperation = billing.OPERATION_ADD_BONUS;
+                    var OperationType = MONEY;
                     break;
                 case "bonus":
                     BonusOperation = billing.OPERATION_DEL_BUY;
+                    OperationType = BONUS;
                       if (client.bonusBill.length > 0){
                         if (model.qBillAccount.cursor.currnt_sum < anOrderDetails.orderSum){
                             ep.addEvent('errorNotEnoughBonuses', anOrderDetails);
@@ -149,15 +193,14 @@ function TradeSessions() {
             }
             
             var TradeOperationId = TradeOperationAddToCashBox(  anOrderDetails.orderSum,
-                                                                anOrderDetails.methodOfPayment,
-                                                                //clientModule.getBonusBill(ClientPhone));
+                                                                OperationType,
                                                                 client ? client.bonusBill : null);
             for (var i in anOrderDetails.orderItems) {
                 if (!processOrderItem(anOrderDetails.orderItems[i], TradeOperationId)) {
                     ep.addEvent('errorAddTradeOperation', anOrderDetails);
                 } else
                     if (client)
-                        BonusCount += getCountBonusesByItem(anOrderDetails.orderItems[i].itemId)
+                    BonusCount += getCountBonusesByItem(anOrderDetails.orderItems[i].itemId, client.bonusCategory)
                                 * anOrderDetails.orderItems[i].quantity;
             }
             
