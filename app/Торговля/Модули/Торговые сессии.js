@@ -11,9 +11,17 @@ function TradeSessions() {
     var billing = new BillModule();
     var ep = new EventProcessor();
     var session = Modules.get("UserSession");
-
+    
     /*
-     * �?нициализация сессии
+     * Типы операций
+     * Деньги: 0
+     * Бонусы: 1
+     */
+    var MONEY = 0;
+    var BONUS = 1;
+    
+    /*
+     * �?нициализация сессии
      * @param {type} aSession
      * @param {type} aStartBalance
      * @returns {undefined}
@@ -52,7 +60,7 @@ function TradeSessions() {
             operation_sum    : anOrderSum,
             operation_date   : new Date(),
             session_id       : model.params.session_id,
-            operation_type   : null,//anOperationType,
+            operation_type   : anOperationType,
             client_id        : aClientId
         });
         return model.qTradeOperationBySession.trade_cash_box_operation_id;
@@ -154,7 +162,7 @@ function TradeSessions() {
      * Процесс продажи
      */
     self.processOrder = function(anOrderDetails){
-        var client = {};
+        var client = false;
         if (!model.params.session_id){
             model.params.session_id = getCurrentSession();
         }
@@ -167,9 +175,11 @@ function TradeSessions() {
                 case "money":
                     var BonusCount = 0;
                     var BonusOperation = billing.OPERATION_ADD_BONUS;
+                    var OperationType = MONEY;
                     break;
                 case "bonus":
                     BonusOperation = billing.OPERATION_DEL_BUY;
+                    OperationType = BONUS;
                       if (client.bonusBill.length > 0){
                         if (model.qBillAccount.cursor.currnt_sum < anOrderDetails.orderSum){
                             ep.addEvent('errorNotEnoughBonuses', anOrderDetails);
@@ -183,8 +193,7 @@ function TradeSessions() {
             }
             
             var TradeOperationId = TradeOperationAddToCashBox(  anOrderDetails.orderSum,
-                                                                anOrderDetails.methodOfPayment,
-                                                                //clientModule.getBonusBill(ClientPhone));
+                                                                OperationType,
                                                                 client ? client.bonusBill : null);
             for (var i in anOrderDetails.orderItems) {
                 if (!processOrderItem(anOrderDetails.orderItems[i], TradeOperationId)) {
