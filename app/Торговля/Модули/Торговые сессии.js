@@ -120,13 +120,13 @@ function TradeSessions() {
     
     //Запись прихода по кассе
     self.processOrder = function(anOrderDetails){
-        var client = {};
+        var client = false;
         if (!model.params.session_id){
             model.params.session_id = getCurrentSession();
         }
         
-        if (anOrderDetails.client)
-            client = new clientModule.ClientConstructor(anOrderDetails.client);
+        if (anOrderDetails.clientData)
+            client = new clientModule.ClientConstructor(anOrderDetails.clientData);
 
         if (model.params.session_id){
             switch (anOrderDetails.methodOfPayment){

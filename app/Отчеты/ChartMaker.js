@@ -75,20 +75,21 @@ function ChartMaker() {
         var timeAxis = [];
         var cDate = new Date(aPeriod.startDate);
         var chartData = [];
-        for (var j = 0; j < aPeriod.days * 24 / aPeriod.interval; j++) {
+        for (var j = 0; j <= aPeriod.days * 24 / aPeriod.interval; j++) {
             timeAxis.push(new Date(cDate));
             var endDate = new Date(cDate);
             endDate.setHours(endDate.getHours() + aPeriod.interval);
             var value = 0;
             aDataSource.beforeFirst();
             while (aDataSource.next()) {
-                if (aDataSource.cursor.d_value <= endDate &&
-                        aDataSource.cursor.d_value > cDate)
+                var dt = new Date(aDataSource.cursor.d_value);
+                if (dt <= endDate && dt > cDate)
                     value += aDataSource.cursor.sm;
             }
             chartData.push(value ? value : null);
             cDate.setHours(cDate.getHours() + aPeriod.interval);
         }
+        Logger.info(chartData);
         return chartData;
     }
 
@@ -127,7 +128,7 @@ function ChartMaker() {
                     pointStart: Date.UTC(aPeriod.startDate.getFullYear()
                         , aPeriod.startDate.getMonth()
                         , aPeriod.startDate.getDate()
-                        , aPeriod.startDate.getHours()),
+                        , aPeriod.startDate.getHours()+1),
                     pointInterval: 3600 * 1000 * aPeriod.interval
                 }]
         });

@@ -48,7 +48,7 @@ div.mainArea {
     top: 0px;
     height: 100%;
     padding-right: 0px;
-    overflow-y: scroll;
+    overflow-y: auto;
   }
   
   div.mainArea {

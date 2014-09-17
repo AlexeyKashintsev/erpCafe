@@ -8,8 +8,10 @@ function OrderList(aParent) {
     self.orderDetails = {};
     self.tradeSession = null;
     var lastDiv = null;
-    //var setPhone = new Set-UserPhoneForm();
-    //var choiceMethodOfPayment = new Choice-MethodOfPayment();
+    
+    function selectClient() {
+        alert('Выбор!');
+    }
     
     function alerter(anAlert, aType, aText, aClosable, aCloseTimeOut) {
         if (!anAlert) {
@@ -210,7 +212,7 @@ function OrderList(aParent) {
         var anOrderDetails = {
             orderSum : 0,
             orderItems : [],
-            clientData: {}
+            clientData: null
         };
         var ic = 0;
         
@@ -232,8 +234,16 @@ function OrderList(aParent) {
         }
     };
     
-    if (self.browser) {
-        var dockElement = cmn.createElement("div", 'baristaOrder panel panel-primary', "actionPanel")
+    function createClientSelectPane() {
+        var dockElement = cmn.createElement("div", 'baristaOrder panel panel-primary', "actionPanel");
+        var clientPane = cmn.createElement("div", 'clientInfo panel panel-primary', dockElement);
+        var btnSelect = cmn.createElement("button", 'btnOk', dockElement);
+        btnSelect.onclick = selectClient;
+        btnSelect.innerHTML = 'Выбрать';
+    }
+    
+    function createOrderListPane() {
+        var dockElement = cmn.createElement("div", 'baristaOrder panel panel-primary', "actionPanel");
         
         var newHTMLElement = document.createElement('div');
         newHTMLElement.innerHTML = 
@@ -255,13 +265,14 @@ function OrderList(aParent) {
         newHTMLElement.className = 'btnOk';
         dockElement.appendChild(newHTMLElement);
         newHTMLElement.onclick = self.acceptOrder;
-    } else {
-        self.showOnPanel(aParent.pnlLeft);
-    }
-
+    } 
+    
+    createClientSelectPane();
+    createOrderListPane();
+    
     function btnOkActionPerformed(evt) {//GEN-FIRST:event_btnOkActionPerformed
-        setPhone.tradeSession = self.tradeSession;
-        setPhone.showModal();
+        //setPhone.tradeSession = self.tradeSession;
+        //setPhone.showModal();
         self.acceptOrder();
     }//GEN-LAST:event_btnOkActionPerformed
 

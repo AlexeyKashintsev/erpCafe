@@ -1,5 +1,5 @@
 Update wh_session_balance
- Set end_value = start_value + (select q1.sum_value
-                                from #countItems q1
-                                where wh_session_balance.item_id = q1.item_id)
+ Set end_value = (select q1.final_value
+                    from #countItems q1
+                    where wh_session_balance.item_id = q1.item_id)
 where :session_id = session_id
