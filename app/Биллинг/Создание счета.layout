@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?><layout defaultCloseOperation="2" name="Form" prefHeight="217px" prefWidth="162px">
+  <widget buttonGroup="buttonGroup" name="rbDefault" parent="Form" prefHeight="24px" prefWidth="110px" selected="true" text="Основной" type="RadioDesignInfo">
+    <constraints height="24px" left="24px" top="36px" type="MarginConstraintsDesignInfo" width="110px"/>
+  </widget>
+  <widget buttonGroup="buttonGroup" name="rbCredit" parent="Form" prefHeight="24px" prefWidth="118px" text="Кредитный" type="RadioDesignInfo">
+    <constraints height="24px" left="24px" top="72px" type="MarginConstraintsDesignInfo" width="118px"/>
+  </widget>
+  <widget name="label" parent="Form" prefHeight="17px" prefWidth="108px" text="Тип счета" type="LabelDesignInfo">
+    <constraints height="17px" left="24px" top="12px" type="MarginConstraintsDesignInfo" width="108px"/>
+  </widget>
+  <widget actionPerformed="buttonActionPerformed" name="button" parent="Form" prefHeight="24px" prefWidth="132px" text="Создать счет" type="ButtonDesignInfo">
+    <constraints height="24px" left="12px" top="156px" type="MarginConstraintsDesignInfo" width="132px"/>
+  </widget>
+  <nonvisual name="buttonGroup" type="ButtonGroupDesignInfo"/>
+  <layout type="MarginLayoutDesignInfo"/>
+</layout>

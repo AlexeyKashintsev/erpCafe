@@ -1,13 +1,22 @@
 /**
  * 
  * @author Алексей
- * @name SelectFranchaziAdminForm
+ * @name TradePoints
  * @public
  */
 
-function SelectFranchaziAdminForm() {
+function ServicesOnAccount() {
 var self = this, model = this.model, form = this;
 
+var isSelectForm = false;
+self.addButtons = false;
+
+model.params.account_id = null;
+
+self.setAccountId = function(aAccountId){
+    model.params.franchazi_id = aAccountId;
+    model.listTradePoints.requery();
+};
 function btnReqActionPerformed(evt) {//GEN-FIRST:event_btnReqActionPerformed
     if (self.model.modified&&confirm('Сохранить изменения?')){
         self.model.save();
@@ -19,6 +28,13 @@ function btnSaveActionPerformed(evt) {//GEN-FIRST:event_btnSaveActionPerformed
     self.model.save();
 }//GEN-LAST:event_btnSaveActionPerformed
 
+function formWindowOpened(evt) {//GEN-FIRST:event_formWindowOpened
+    if (!isSelectForm){
+        self.pnlSelLock.visible = false;
+        form.btnAdd.visible = form.btnDel.visible = self.addButtons;
+    }
+}//GEN-LAST:event_formWindowOpened
+
 function formWindowClosing(evt) {//GEN-FIRST:event_formWindowClosing
     if (self.model.modified&&confirm('Сохранить изменения?')){
         self.model.save();
@@ -26,18 +42,6 @@ function formWindowClosing(evt) {//GEN-FIRST:event_formWindowClosing
 }//GEN-LAST:event_formWindowClosing
 
     function btnSelectActionPerformed(evt) {//GEN-FIRST:event_btnSelectActionPerformed
-        close(model.listFranchazi.org_franchazi_id);
+        close(model.listTradePoints.org_trade_point_id);
     }//GEN-LAST:event_btnSelectActionPerformed
-
-    function listFranchaziOnScrolled(evt) {//GEN-FIRST:event_listFranchaziOnScrolled
-        if (self.parent) {
-            self.parent.setFranchazi(model.listFranchazi.org_franchazi_id);
-        }
-    }//GEN-LAST:event_listFranchaziOnScrolled
-
-    function listFranchaziOnRequeried(evt) {//GEN-FIRST:event_listFranchaziOnRequeried
-        if (self.parent) {
-            self.parent.setFranchazi(model.listFranchazi.org_franchazi_id);
-        }
-    }//GEN-LAST:event_listFranchaziOnRequeried
 }
