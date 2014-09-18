@@ -208,9 +208,12 @@ function TradeSessions() {
                 if (!processOrderItem(anOrderDetails.orderItems[i], TradeOperationId)) {
                     ep.addEvent('errorAddTradeOperation', anOrderDetails);
                 } else
-                    if (client)
-                    BonusCount += getCountBonusesByItem(anOrderDetails.orderItems[i].itemId, client.bonusCategory)
+                    if (client && anOrderDetails.methodOfPayment === "money") {
+                        BonusCount += getCountBonusesByItem(anOrderDetails.orderItems[i].itemId, client.bonusCategory)
                                 * anOrderDetails.orderItems[i].quantity;
+                    } else if (client && anOrderDetails.methodOfPayment === "bonus"){
+                        BonusCount = anOrderDetails.orderSum;
+                    }
             }
             
             if (client.bonusBill){

@@ -9,6 +9,7 @@ function OrderList(aParent) {
     self.tradeSession = null;
     var lastDiv = null;
     session.clientModule = new ServerModule("ClientServerModule");
+    var choiceMethodOfPayment = new ChoiceMethodOfPayment();
     var getPhone = new GetUserPhoneForm();
     var client = false;
     
@@ -71,23 +72,11 @@ function OrderList(aParent) {
     
     var unprocessedOrders = new UnprocessedOrders();
     
-    function processOrder(anOrderDetails, anAlert, anAttempt) {
-        var attempt = anAttempt ? anAttempt : 0;
-        attempt++;
-        Logger.info("Отправка данных заказа на сервер попытка №" + attempt);
-        var alert = alerter(anAlert, "alert-info", "<h4>Обработка заказа</h4>Попытка № " + attempt, false);
-        anOrderDetails.methodOfPayment = "money";
-        //Если сумма заказа покрывается бонусами на счету, то предложить оплату бонусами
-       /* if (anOrderDetails.orderSum <= self.tradeSession.getBonusCount()){
-            choiceMethodOfPayment.tradeSession = self.tradeSession;
-            choiceMethodOfPayment.showModal(function (aResult){
-                anOrderDetails.methodOfPayment = aResult;
-            });
-        }*/
-        
+    self.tradeSessionProcessOrder = function(anOrderDetails){
         self.tradeSession.processOrder(anOrderDetails, function() {
             alerter(alert, "alert-success", "<h4>Заказ успешно проведен</h4>Сумма заказа: <strong>"
                 + anOrderDetails.orderSum + " рублей </strong>", true, 15000);
+            document.getElementById("clientPane").innerHTML = "";
         }, function() {
             if (attempt < 5)
                 processOrder(anOrderDetails, alert, attempt);
@@ -96,6 +85,35 @@ function OrderList(aParent) {
                 unprocessedOrders.addOrder(anOrderDetails);
             }
         });
+    }
+    
+    function processOrder(anOrderDetails, anAlert, anAttempt) {
+        var attempt = anAttempt ? anAttempt : 0;
+        attempt++;
+        Logger.info("Отправка данных заказа на сервер попытка №" + attempt);
+        var alert = alerter(anAlert, "alert-info", "<h4>Обработка заказа</h4>Попытка № " + attempt, false);
+        anOrderDetails.methodOfPayment = "money";
+        //Если сумма заказа покрывается бонусами на счету, то предложить оплату бонусами
+        if (anOrderDetails.orderSum <= client.bonusCount){
+            choiceMethodOfPayment.showModal(function (aResult){
+                anOrderDetails.methodOfPayment = aResult;
+                self.tradeSessionProcessOrder(anOrderDetails);
+            });
+        } else {
+            self.tradeSessionProcessOrder(anOrderDetails);
+        }
+//        self.tradeSession.processOrder(anOrderDetails, function() {
+//            alerter(alert, "alert-success", "<h4>Заказ успешно проведен</h4>Сумма заказа: <strong>"
+//                + anOrderDetails.orderSum + " рублей </strong>", true, 15000);
+//            document.getElementById("clientPane").innerHTML = "";
+//        }, function() {
+//            if (attempt < 5)
+//                processOrder(anOrderDetails, alert, attempt);
+//            else {
+//                alerter(alert, "alert-danger", "<h4>Заказ не проведен</h4>Проверьте связь с сервером", true, 15000);
+//                unprocessedOrders.addOrder(anOrderDetails);
+//            }
+//        });
     }
     
     function orderItem(anItemData) {
