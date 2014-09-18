@@ -13,12 +13,12 @@ function AddBillOperation() {
     function btnSaveActionPerformed(evt) {//GEN-FIRST:event_btnSaveActionPerformed
         //alert(model.qBillAccount.cursor.bill_accounts_id.toString());
         var operation;
-        if(form.rbAdd.selected) operation = billModule.OPERATION_ADD_CASH;
-        else operation = billModule.OPERATION_DEL_BUY;
-        if(!billModule.addBillOperation(self.account_id, operation, form.tfSum.text, billModule.OP_STATUS_SUCCESS))
+        if(form.rbAdd.selected) operation = "OPERATION_ADD_CASH";
+        else operation = "OPERATION_DEL_BUY";
+        if(!billModule.addBillOperation(self.account_id, billModule.getSelfPropertyValue(operation), form.tfSum.text, billModule.getSelfPropertyValue("OP_STATUS_SUCCESS")))
         {
             if(confirm("У вас недосточно средств на счету!\nСохранить заказ?")){
-                billModule.addBillOperation(self.account_id, operation, form.tfSum.text, billModule.OP_STATUS_FAIL);
+                billModule.addBillOperation(self.account_id, operation, form.tfSum.text, billModule.getSelfPropertyValue("OP_STATUS_FAIL"));
             }
         }
         form.close(true);

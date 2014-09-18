@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?><layout defaultCloseOperation="2" name="Form" prefHeight="311px" prefWidth="241px" windowClosing="formWindowClosing" windowOpened="formWindowOpened">
+  <widget actionPerformed="btnSaveActionPerformed" name="btnSave" parent="Form" prefHeight="23px" prefWidth="192px" text="Сохранить" type="ButtonDesignInfo">
+    <constraints bottom="16px" height="23px" left="24px" type="MarginConstraintsDesignInfo" width="192px"/>
+  </widget>
+  <widget enabled="false" name="tfDays" parent="Form" prefHeight="20px" prefWidth="192px" text="0" type="TextFieldDesignInfo">
+    <constraints height="20px" left="24px" top="190px" type="MarginConstraintsDesignInfo" width="192px"/>
+  </widget>
+  <widget actionPerformed="rbDaysActionPerformed" buttonGroup="buttonGroup" name="rbDays" parent="Form" prefHeight="23px" prefWidth="192px" text="Кол-во дней" type="RadioDesignInfo">
+    <constraints height="23px" left="24px" top="166px" type="MarginConstraintsDesignInfo" width="192px"/>
+  </widget>
+  <widget actionPerformed="rbMonthActionPerformed" buttonGroup="buttonGroup" name="rbMonth" parent="Form" prefHeight="23px" prefWidth="192px" selected="true" text="Ежемесячно" type="RadioDesignInfo">
+    <constraints height="23px" left="24px" top="142px" type="MarginConstraintsDesignInfo" width="192px"/>
+  </widget>
+  <widget actionPerformed="tfSumActionPerformed" name="tfSum" parent="Form" prefHeight="20px" prefWidth="192px" type="TextFieldDesignInfo">
+    <constraints height="20px" left="24px" top="106px" type="MarginConstraintsDesignInfo" width="192px"/>
+  </widget>
+  <widget name="label1" parent="Form" prefHeight="14px" prefWidth="192px" text="Сумма" type="LabelDesignInfo">
+    <constraints height="14px" left="24px" top="82px" type="MarginConstraintsDesignInfo" width="192px"/>
+  </widget>
+  <widget name="label" parent="Form" prefHeight="14px" prefWidth="192px" text="Название услуги" type="LabelDesignInfo">
+    <constraints height="14px" left="24px" top="22px" type="MarginConstraintsDesignInfo" width="192px"/>
+  </widget>
+  <widget name="tfName" parent="Form" prefHeight="24px" prefWidth="192px" type="TextFieldDesignInfo">
+    <constraints height="24px" left="24px" top="46px" type="MarginConstraintsDesignInfo" width="192px"/>
+  </widget>
+  <widget name="checkBox" parent="Form" prefHeight="23px" prefWidth="192px" text="Заблокировать" type="CheckDesignInfo">
+    <constraints bottom="60px" height="23px" left="24px" type="MarginConstraintsDesignInfo" width="192px"/>
+  </widget>
+  <nonvisual name="buttonGroup" type="ButtonGroupDesignInfo"/>
+  <layout type="MarginLayoutDesignInfo"/>
+</layout>

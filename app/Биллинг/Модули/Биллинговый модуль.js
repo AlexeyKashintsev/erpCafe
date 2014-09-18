@@ -90,7 +90,18 @@ function BillModule() {
      */
     self.getSumFromAccountId = function(anAccountId) {
         model.qGetAccountBalance.params.account_id = anAccountId;
+        model.qBillAccount.params.account_id = anAccountId;
         model.qGetAccountBalance.requery();
+        model.qBillAccount.requery();
+        if(model.qBillAccount.cursor.currnt_sum != model.qGetAccountBalance.cursor.account_balance){
+            eventProcessor.addEvent("accountCurrentSumChanged", {
+                account_id: anAccountId,
+                old_sum: model.qBillAccount.cursor.currnt_sum,
+                new_sum: model.qGetAccountBalance.cursor.account_balance
+            });
+            model.qBillAccount.cursor.currnt_sum = model.qGetAccountBalance.cursor.account_balance;
+            model.save();
+        }
         if (model.qGetAccountBalance.length > 0) return model.qGetAccountBalance.cursor.account_balance;
         else return false;
     };
@@ -141,7 +152,12 @@ function BillModule() {
                 multiplier = -1.0;
                 break;
         }
-        if ((multiplier === -1) && (aStatus === self.OP_STATUS_SUCCESS) && (anOperationType != self.OPERATION_DEL_SERVICE)) {
+        var accountType;
+        model.params.account_id = anAccountId;
+        model.qBillAccount.requery(function(){
+            accountType = model.qBillAccount.cursor.account_type;
+        });
+        if ((multiplier === -1) && (aStatus === self.OP_STATUS_SUCCESS) && (anOperationType != self.OPERATION_DEL_SERVICE) && (accountType != self.ACCOUNT_TYPE_CREDIT)) {
             ERROR_SHORTAGE_MONEY = checkMoneyOnAccount(anAccountId, aSum);
         }
         if (ERROR_SHORTAGE_MONEY) {
@@ -329,7 +345,7 @@ function BillModule() {
      * @param {type} aDays
      * @returns {Boolean}
      */
-    self.CreateService = function(aName, aSum, aDays) {
+    self.CreateService = function(aName, aSum, aDays, aLock) {
         var aMonth = false;
         if (aDays == false || aDays == 0 || aDays == null || aDays === undefined)
             aMonth = true;
@@ -346,6 +362,7 @@ function BillModule() {
         model.qServiceList.cursor.service_days = aDays;
         model.qServiceList.cursor.service_month = aMonth;
         model.qServiceList.cursor.service_name = aName;
+        model.qServiceList.cursor.locked = aLock;
         model.qServiceList.cursor.start_date = new Date();
         model.save();
         eventProcessor.addEvent('serviceCreated', obj);
@@ -375,11 +392,13 @@ function BillModule() {
     /*
      * Редактирование услуги
      */
-    self.editService = function(aServiceId, aName, aSum, aDays) {
+    self.editService = function(aServiceId, aName, aSum, aDays, aLock) {
         var aMonth = false;
         if (aDays == false || aDays == 0 || aDays == null || aDays === undefined)
             aMonth = true;
         model.params.service_id = aServiceId;
+        model.qService.params.service_id = aServiceId;
+        model.qService.requery();
         model.qServiceList.requery(function() {
             if (model.qServiceList.length > 0) {
                 model.qCloseItemCost.params.item_id = aServiceId;
@@ -392,6 +411,8 @@ function BillModule() {
                     start_date: new Date()
                 };
                 model.qServiseCostAdd.push(obj);
+                model.qService.cursor.service_name = aName;
+                model.qService.cursor.locked = aLock;
                 model.save();
                 eventProcessor.addEvent('changeService', obj);
                 return true;

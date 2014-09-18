@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?><layout defaultCloseOperation="2" name="Form" prefHeight="329px" prefWidth="249px">
+  <widget actionPerformed="btnSave1ActionPerformed" name="btnSave1" parent="Form" prefHeight="23px" prefWidth="218px" text="Сохранить" type="ButtonDesignInfo">
+    <constraints height="23px" left="12px" top="216px" type="MarginConstraintsDesignInfo" width="218px"/>
+  </widget>
+  <widget enabled="false" name="tfDays" parent="Form" prefHeight="20px" prefWidth="218px" text="0" type="TextFieldDesignInfo">
+    <constraints height="20px" left="12px" top="180px" type="MarginConstraintsDesignInfo" width="218px"/>
+  </widget>
+  <widget actionPerformed="rbDaysActionPerformed" buttonGroup="buttonGroup" name="rbDays" parent="Form" prefHeight="23px" prefWidth="218px" text="Кол-во дней" type="RadioDesignInfo">
+    <constraints height="23px" left="12px" top="156px" type="MarginConstraintsDesignInfo" width="218px"/>
+  </widget>
+  <widget actionPerformed="rbMonthActionPerformed" buttonGroup="buttonGroup" name="rbMonth" parent="Form" prefHeight="23px" prefWidth="218px" text="Ежемесячно" type="RadioDesignInfo">
+    <constraints height="23px" left="12px" top="132px" type="MarginConstraintsDesignInfo" width="218px"/>
+  </widget>
+  <widget name="tfSum" parent="Form" prefHeight="20px" prefWidth="218px" type="TextFieldDesignInfo">
+    <constraints height="20px" left="12px" top="96px" type="MarginConstraintsDesignInfo" width="218px"/>
+  </widget>
+  <widget name="label1" parent="Form" prefHeight="14px" prefWidth="218px" text="Сумма" type="LabelDesignInfo">
+    <constraints height="14px" left="12px" top="72px" type="MarginConstraintsDesignInfo" width="218px"/>
+  </widget>
+  <widget name="label" parent="Form" prefHeight="14px" prefWidth="218px" text="Название услуги" type="LabelDesignInfo">
+    <constraints height="14px" left="12px" top="12px" type="MarginConstraintsDesignInfo" width="218px"/>
+  </widget>
+  <widget name="tfName" parent="Form" prefHeight="24px" prefWidth="218px" type="TextFieldDesignInfo">
+    <constraints height="24px" left="12px" top="36px" type="MarginConstraintsDesignInfo" width="218px"/>
+  </widget>
+  <widget actionPerformed="btnSaveActionPerformed" name="btnSave" parent="Form" prefHeight="23px" prefWidth="108px" text="Сохранить" type="ButtonDesignInfo">
+    <constraints bottom="6px" height="23px" left="156px" type="MarginConstraintsDesignInfo" width="108px"/>
+  </widget>
+  <layout type="MarginLayoutDesignInfo"/>
+</layout>

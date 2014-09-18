@@ -3,9 +3,10 @@
     <constraints place="North" type="BorderLayoutConstraintsDesignInfo"/>
   </widget>
   <widget actionPerformed="btnAddActionPerformed" focusable="false" horizontalTextPosition="0" icon="icons/22x22/actions/list-add.png" name="btnAdd" parent="toolBar" prefHeight="29px" prefWidth="29px" toolTipText="Добавить" type="ButtonDesignInfo" verticalTextPosition="3"/>
-  <widget focusable="false" horizontalTextPosition="0" icon="icons/22x22/actions/list-remove.png" name="btnDel" parent="toolBar" prefHeight="29px" prefWidth="29px" toolTipText="Удалить" type="ButtonDesignInfo" verticalTextPosition="3"/>
+  <widget actionPerformed="btnDelActionPerformed" focusable="false" horizontalTextPosition="0" icon="icons/22x22/actions/list-remove.png" name="btnDel" parent="toolBar" prefHeight="29px" prefWidth="29px" toolTipText="Удалить" type="ButtonDesignInfo" verticalTextPosition="3"/>
   <widget actionPerformed="btnReqActionPerformed" focusable="false" horizontalTextPosition="0" icon="icons/22x22/actions/new-view-refresh.png" name="btnReq" parent="toolBar" prefHeight="29px" prefWidth="29px" toolTipText="Обновить" type="ButtonDesignInfo" verticalTextPosition="3"/>
-  <widget actionPerformed="btnSaveActionPerformed" focusable="false" horizontalTextPosition="0" icon="icons/22x22/actions/document-save.png" name="btnSave" parent="toolBar" prefHeight="29px" prefWidth="29px" toolTipText="Сохранить" type="ButtonDesignInfo" verticalTextPosition="3"/>
+  <widget actionPerformed="btnSaveActionPerformed" focusable="false" horizontalTextPosition="0" icon="icons/22x22/actions/edit-select-all.png" name="btnSave" parent="toolBar" prefHeight="29px" prefWidth="29px" toolTipText="Пополнить баланс" type="ButtonDesignInfo" verticalTextPosition="3"/>
+  <widget actionPerformed="btnSave1ActionPerformed" focusable="false" horizontalTextPosition="0" icon="icons/22x22/actions/new-edit-find.png" name="btnSave1" parent="toolBar" prefHeight="29px" prefWidth="29px" toolTipText="Операции по счету" type="ButtonDesignInfo" verticalTextPosition="3"/>
   <widget name="pnlWorkSpace" parent="Form" prefHeight="541px" prefWidth="752px" type="PanelDesignInfo">
     <layout type="MarginLayoutDesignInfo"/>
     <constraints place="Center" type="BorderLayoutConstraintsDesignInfo"/>
@@ -16,145 +17,151 @@
   <widget name="panel" parent="splitPane" prefHeight="249px" prefWidth="754px" type="PanelDesignInfo">
     <layout type="MarginLayoutDesignInfo"/>
   </widget>
-  <widget name="modelGrid" parent="panel" prefHeight="250px" prefWidth="756px" type="DbGridDesignInfo">
-    <rowsColumnsDesignInfo>
-      <rowsDatasource entityId="141095450421562" field="false"/>
-    </rowsColumnsDesignInfo>
-    <treeDesignInfo/>
+  <widget deletable="false" editable="false" insertable="false" name="modelGrid" parent="panel" prefHeight="250px" prefWidth="756px" type="DbGridDesignInfo">
     <column name="colTp_number" readonly="true" title="Номер счета" width="30">
-      <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
-      <headerStyle>
-        <nativeFont name="Dialog" size="15"/>
-      </headerStyle>
-      <datamodelElement entityId="141095450421562" fieldName="bill_accounts_id"/>
       <columnsDatasource/>
       <columnsDisplayField/>
       <cellsDatasource/>
       <cellDesignInfo>
-        <rowsKeyField/>
         <columnsKeyField/>
         <cellValueField/>
+        <rowsKeyField/>
       </cellDesignInfo>
+      <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
+      <datamodelElement entityId="141095450421562" fieldName="bill_accounts_id"/>
+      <headerStyle>
+        <nativeFont name="Dialog" size="15"/>
+      </headerStyle>
     </column>
     <column name="colTp_sum" readonly="true" title="Сумма" width="30">
-      <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
-      <headerStyle>
-        <nativeFont name="Dialog" size="15"/>
-      </headerStyle>
-      <datamodelElement entityId="141095450421562" fieldName="currnt_sum"/>
       <columnsDatasource/>
       <columnsDisplayField/>
       <cellsDatasource/>
       <cellDesignInfo>
-        <rowsKeyField/>
         <columnsKeyField/>
         <cellValueField/>
+        <rowsKeyField/>
       </cellDesignInfo>
+      <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
+      <datamodelElement entityId="141095450421562" fieldName="currnt_sum"/>
+      <headerStyle>
+        <nativeFont name="Dialog" size="15"/>
+      </headerStyle>
     </column>
     <column name="colTp_type" readonly="true" title="Тип счета" width="30">
+      <columnsDatasource/>
+      <columnsDisplayField/>
+      <cellsDatasource/>
+      <cellDesignInfo>
+        <columnsKeyField/>
+        <cellValueField/>
+        <rowsKeyField/>
+      </cellDesignInfo>
       <controlInfo classHint="DbComboDesignInfo" list="false" name="view" prefHeight="0px" prefWidth="0px">
         <valueField entityId="141095471990432" fieldName="bill_account_types_id"/>
         <displayField entityId="141095471990432" fieldName="type_name"/>
       </controlInfo>
+      <datamodelElement entityId="141095450421562" fieldName="account_type"/>
       <headerStyle>
         <nativeFont name="Dialog" size="15"/>
       </headerStyle>
-      <datamodelElement entityId="141095450421562" fieldName="account_type"/>
-      <columnsDatasource/>
-      <columnsDisplayField/>
-      <cellsDatasource/>
-      <cellDesignInfo>
-        <rowsKeyField/>
-        <columnsKeyField/>
-        <cellValueField/>
-      </cellDesignInfo>
     </column>
+    <rowsColumnsDesignInfo>
+      <rowsDatasource entityId="141095450421562" field="false"/>
+    </rowsColumnsDesignInfo>
+    <treeDesignInfo/>
     <constraints bottom="-1px" left="0px" right="-2px" top="0px" type="MarginConstraintsDesignInfo"/>
   </widget>
   <widget name="panel1" parent="splitPane" prefHeight="284px" prefWidth="754px" type="PanelDesignInfo">
     <layout type="MarginLayoutDesignInfo"/>
   </widget>
-  <widget name="modelGrid1" parent="panel1" prefHeight="288px" prefWidth="756px" type="DbGridDesignInfo">
+  <widget name="toolBar1" parent="panel1" prefHeight="36px" prefWidth="756px" rollover="true" type="ToolbarDesignInfo">
+    <constraints height="36px" left="0px" top="0px" type="MarginConstraintsDesignInfo" width="756px"/>
+  </widget>
+  <widget actionPerformed="btnAdd1ActionPerformed" focusable="false" horizontalTextPosition="0" icon="icons/22x22/actions/list-add.png" name="btnAdd1" parent="toolBar1" prefHeight="29px" prefWidth="29px" toolTipText="Добавить" type="ButtonDesignInfo" verticalTextPosition="3"/>
+  <widget actionPerformed="btnDel1ActionPerformed" focusable="false" horizontalTextPosition="0" icon="icons/22x22/actions/list-remove.png" name="btnDel1" parent="toolBar1" prefHeight="29px" prefWidth="29px" toolTipText="Удалить" type="ButtonDesignInfo" verticalTextPosition="3"/>
+  <widget actionPerformed="btnReq1ActionPerformed" focusable="false" horizontalTextPosition="0" icon="icons/22x22/actions/new-view-refresh.png" name="btnReq1" parent="toolBar1" prefHeight="29px" prefWidth="29px" toolTipText="Обновить" type="ButtonDesignInfo" verticalTextPosition="3"/>
+  <widget deletable="false" editable="false" insertable="false" name="modelGrid1" parent="panel1" prefHeight="252px" prefWidth="756px" type="DbGridDesignInfo">
+    <column name="colService_name" title="Название услуги">
+      <columnsDatasource/>
+      <columnsDisplayField/>
+      <cellsDatasource/>
+      <cellDesignInfo>
+        <columnsKeyField/>
+        <cellValueField/>
+        <rowsKeyField/>
+      </cellDesignInfo>
+      <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
+      <datamodelElement entityId="141095893247393" fieldName="service_name"/>
+      <headerStyle>
+        <nativeFont name="Tahoma" size="11"/>
+      </headerStyle>
+    </column>
+    <column name="colItem_cost" title="Абонетская плата">
+      <columnsDatasource/>
+      <columnsDisplayField/>
+      <cellsDatasource/>
+      <cellDesignInfo>
+        <columnsKeyField/>
+        <cellValueField/>
+        <rowsKeyField/>
+      </cellDesignInfo>
+      <controlInfo classHint="DbSpinDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
+      <datamodelElement entityId="141095893247393" fieldName="item_cost"/>
+      <headerStyle>
+        <nativeFont name="Tahoma" size="11"/>
+      </headerStyle>
+    </column>
+    <column name="colPayment_date" title="Дата след. списания">
+      <columnsDatasource/>
+      <columnsDisplayField/>
+      <cellsDatasource/>
+      <cellDesignInfo>
+        <columnsKeyField/>
+        <cellValueField/>
+        <rowsKeyField/>
+      </cellDesignInfo>
+      <controlInfo classHint="DbDateDesignInfo" dateFormat="dd.MM.yyyy HH:mm:ss" name="view" prefHeight="0px" prefWidth="0px"/>
+      <datamodelElement entityId="141095893247393" fieldName="payment_date"/>
+      <headerStyle>
+        <nativeFont name="Tahoma" size="11"/>
+      </headerStyle>
+    </column>
+    <column name="colModifyd" title="Изменена">
+      <columnsDatasource/>
+      <columnsDisplayField/>
+      <cellsDatasource/>
+      <cellDesignInfo>
+        <columnsKeyField/>
+        <cellValueField/>
+        <rowsKeyField/>
+      </cellDesignInfo>
+      <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
+      <datamodelElement entityId="141095893247393" fieldName="modifyd"/>
+      <headerStyle>
+        <nativeFont name="Tahoma" size="11"/>
+      </headerStyle>
+    </column>
+    <column name="colLocked" title="Заблокирована">
+      <columnsDatasource/>
+      <columnsDisplayField/>
+      <cellsDatasource/>
+      <cellDesignInfo>
+        <columnsKeyField/>
+        <cellValueField/>
+        <rowsKeyField/>
+      </cellDesignInfo>
+      <controlInfo classHint="DbCheckDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
+      <datamodelElement entityId="141095893247393" fieldName="locked"/>
+      <headerStyle>
+        <nativeFont name="Tahoma" size="11"/>
+      </headerStyle>
+    </column>
     <rowsColumnsDesignInfo>
       <rowsDatasource entityId="141095893247393" field="false"/>
     </rowsColumnsDesignInfo>
     <treeDesignInfo/>
-    <column name="colService_name" title="Название услуги">
-      <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
-      <headerStyle>
-        <nativeFont name="Tahoma" size="11"/>
-      </headerStyle>
-      <datamodelElement entityId="141095893247393" fieldName="service_name"/>
-      <columnsDatasource/>
-      <columnsDisplayField/>
-      <cellsDatasource/>
-      <cellDesignInfo>
-        <rowsKeyField/>
-        <columnsKeyField/>
-        <cellValueField/>
-      </cellDesignInfo>
-    </column>
-    <column name="colItem_cost" title="Абонетская плата">
-      <controlInfo classHint="DbSpinDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
-      <headerStyle>
-        <nativeFont name="Tahoma" size="11"/>
-      </headerStyle>
-      <datamodelElement entityId="141095893247393" fieldName="item_cost"/>
-      <columnsDatasource/>
-      <columnsDisplayField/>
-      <cellsDatasource/>
-      <cellDesignInfo>
-        <rowsKeyField/>
-        <columnsKeyField/>
-        <cellValueField/>
-      </cellDesignInfo>
-    </column>
-    <column name="colPayment_date" title="Дата след. списания">
-      <controlInfo classHint="DbDateDesignInfo" dateFormat="dd.MM.yyyy HH:mm:ss" name="view" prefHeight="0px" prefWidth="0px"/>
-      <headerStyle>
-        <nativeFont name="Tahoma" size="11"/>
-      </headerStyle>
-      <datamodelElement entityId="141095893247393" fieldName="payment_date"/>
-      <columnsDatasource/>
-      <columnsDisplayField/>
-      <cellsDatasource/>
-      <cellDesignInfo>
-        <rowsKeyField/>
-        <columnsKeyField/>
-        <cellValueField/>
-      </cellDesignInfo>
-    </column>
-    <column name="colModifyd" title="Изменена">
-      <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
-      <headerStyle>
-        <nativeFont name="Tahoma" size="11"/>
-      </headerStyle>
-      <datamodelElement entityId="141095893247393" fieldName="modifyd"/>
-      <columnsDatasource/>
-      <columnsDisplayField/>
-      <cellsDatasource/>
-      <cellDesignInfo>
-        <rowsKeyField/>
-        <columnsKeyField/>
-        <cellValueField/>
-      </cellDesignInfo>
-    </column>
-    <column name="colLocked" title="Заблокирована">
-      <controlInfo classHint="DbCheckDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
-      <headerStyle>
-        <nativeFont name="Tahoma" size="11"/>
-      </headerStyle>
-      <datamodelElement entityId="141095893247393" fieldName="locked"/>
-      <columnsDatasource/>
-      <columnsDisplayField/>
-      <cellsDatasource/>
-      <cellDesignInfo>
-        <rowsKeyField/>
-        <columnsKeyField/>
-        <cellValueField/>
-      </cellDesignInfo>
-    </column>
-    <constraints bottom="-4px" left="0px" right="-2px" top="0px" type="MarginConstraintsDesignInfo"/>
+    <constraints height="252px" left="0px" top="36px" type="MarginConstraintsDesignInfo" width="756px"/>
   </widget>
   <layout type="BorderLayoutDesignInfo"/>
 </layout>

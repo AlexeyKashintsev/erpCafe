@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?><layout defaultCloseOperation="2" name="Form" prefHeight="384px" prefWidth="632px" windowOpened="formWindowOpened">
+  <widget name="modelCombo" parent="Form" prefHeight="36px" prefWidth="204px" type="DbComboDesignInfo">
+    <valueField entityId="140851879970268" fieldName="bill_operations_status_id"/>
+    <displayField entityId="140851879970268" fieldName="status_name"/>
+    <datamodelElement entityId="-1" fieldName="op_status"/>
+    <constraints height="36px" left="192px" top="12px" type="MarginConstraintsDesignInfo" width="204px"/>
+  </widget>
+  <widget name="label" parent="Form" prefHeight="14px" prefWidth="168px" text="Выберите статус операции" type="LabelDesignInfo">
+    <constraints height="14px" left="12px" top="23px" type="MarginConstraintsDesignInfo" width="168px"/>
+  </widget>
+  <widget name="modelGrid" parent="Form" prefHeight="324px" prefWidth="635px" type="DbGridDesignInfo">
+    <column name="OpType" title="Тип операции">
+      <columnsDatasource/>
+      <columnsDisplayField/>
+      <cellsDatasource/>
+      <cellDesignInfo>
+        <columnsKeyField/>
+        <cellValueField/>
+        <rowsKeyField/>
+      </cellDesignInfo>
+      <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
+      <datamodelElement entityId="140851905975976" fieldName="type_name"/>
+      <headerStyle>
+        <nativeFont name="Tahoma" size="11"/>
+      </headerStyle>
+    </column>
+    <column name="colStatus_name" title="Статус">
+      <columnsDatasource/>
+      <columnsDisplayField/>
+      <cellsDatasource/>
+      <cellDesignInfo>
+        <columnsKeyField/>
+        <cellValueField/>
+        <rowsKeyField/>
+      </cellDesignInfo>
+      <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
+      <datamodelElement entityId="140851905975976" fieldName="status_name"/>
+      <headerStyle>
+        <nativeFont name="Tahoma" size="11"/>
+      </headerStyle>
+    </column>
+    <column name="colOperation_sum" title="Сумма">
+      <columnsDatasource/>
+      <columnsDisplayField/>
+      <cellsDatasource/>
+      <cellDesignInfo>
+        <columnsKeyField/>
+        <cellValueField/>
+        <rowsKeyField/>
+      </cellDesignInfo>
+      <controlInfo classHint="DbSpinDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
+      <datamodelElement entityId="140851905975976" fieldName="operation_sum"/>
+      <headerStyle>
+        <nativeFont name="Tahoma" size="11"/>
+      </headerStyle>
+    </column>
+    <column name="colOperation_date" title="Дата">
+      <columnsDatasource/>
+      <columnsDisplayField/>
+      <cellsDatasource/>
+      <cellDesignInfo>
+        <columnsKeyField/>
+        <cellValueField/>
+        <rowsKeyField/>
+      </cellDesignInfo>
+      <controlInfo classHint="DbDateDesignInfo" dateFormat="dd.MM.yyyy HH:mm:ss" name="view" prefHeight="0px" prefWidth="0px"/>
+      <datamodelElement entityId="140851905975976" fieldName="operation_date"/>
+      <headerStyle>
+        <nativeFont name="Tahoma" size="11"/>
+      </headerStyle>
+    </column>
+    <rowsColumnsDesignInfo>
+      <rowsDatasource entityId="140851905975976" field="false"/>
+    </rowsColumnsDesignInfo>
+    <treeDesignInfo/>
+    <constraints height="324px" left="0px" top="60px" type="MarginConstraintsDesignInfo" width="635px"/>
+  </widget>
+  <widget actionPerformed="btnSelectActionPerformed" name="btnSelect" parent="Form" prefHeight="36px" prefWidth="168px" text="Показать" type="ButtonDesignInfo">
+    <constraints height="36px" right="8px" top="12px" type="MarginConstraintsDesignInfo" width="168px"/>
+  </widget>
+  <nonvisual name="buttonGroup" type="ButtonGroupDesignInfo"/>
+  <layout type="MarginLayoutDesignInfo"/>
+</layout>
