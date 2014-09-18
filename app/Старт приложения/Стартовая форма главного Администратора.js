@@ -26,7 +26,12 @@ function StartMasterAdminForm() {
         tradePositions  :   {
             display     :   "Торговые позиции",
             dispForm    :   "ItemsForTrade"
+        },
+        incomePlan      :   {
+            display     :   "Настройка доходности",
+            dispForm    :   "PlannedIncomeSettings"
         }
+        
     };
     
     

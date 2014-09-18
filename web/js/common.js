@@ -1,10 +1,36 @@
 var units = {};
 var cmn = {};
 var session = {};
+var sessionTimeout = 15 * 60 * 1000;
 
 var Logout = function() {
     logout();
     location.reload();
+}
+
+var keepSession = function(aCallBack) {
+    Logger.info('Проверка сессии...');
+    session.keepAlive(session.userName, function(aResult) {
+        if (!aResult) {    
+            if (aCallBack)
+                aCallBack(1)
+            else {
+                alert('Сессия истекла!');
+                location.reload();
+            }
+        } else {
+            Logger.info('Ok!');
+            if (aCallBack) aCallBack(0);
+        }
+    }, function(){
+        Logger.severe('Нет связи с сервером!');
+        if (aCallBack)
+                aCallBack(2)
+            else {
+                alert('Нет связи с сервером!');
+                location.reload();
+            }
+        });
 }
 
 cmn.showModal = function(aForm, aCallback) {
@@ -143,11 +169,11 @@ if (!platypus) {
 
 platypus.ready = function() {
     require(['getUserSession'], function(){
-        session = getUserSession();        
+        session = getUserSession();
         session.login(function(anUserRole){
                 session.userRole = anUserRole;
                 session.userName = session.getUserName();
-                session.franchaziId = session.getFranchazi();
+                setInterval(keepSession, sessionTimeout);
                 switch (anUserRole) {
                     case 'admin':
                         require(['StartMasterAdminForm'], function() {
@@ -155,11 +181,13 @@ platypus.ready = function() {
                         });
                         break;
                     case 'franchazi':
+                        session.franchaziId = session.getFranchazi();
                         require(['AdminStartForm'], function() {
                             units.asf = new AdminStartForm();
                         });
                         break;
                     case 'barista':
+                        session.franchaziId = session.getFranchazi();
                         require(['BaristaDesktop'], function(){
                             units.bd = new BaristaDesktop();
                         });

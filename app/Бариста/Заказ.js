@@ -65,7 +65,7 @@ function OrderList(aParent) {
     function processOrder(anOrderDetails, anAlert, anAttempt) {
         var attempt = anAttempt ? anAttempt : 0;
         attempt++;
-        Logger.info(attempt);
+        Logger.info("Отправка данных заказа на сервер попытка №" + attempt);
         var alert = alerter(anAlert, "alert-info", "<h4>Обработка заказа</h4>Попытка № " + attempt, false);
         anOrderDetails.methodOfPayment = "money";
         //Если сумма заказа покрывается бонусами на счету, то предложить оплату бонусами

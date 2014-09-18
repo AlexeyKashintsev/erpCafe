@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?><datamodel>
+  <parametersEntity entityHeight="200" entityIconified="false" entityLocationX="12" entityLocationY="12" entityWidth="150"/>
+  <entity Name="qTradePointType" Title="" entityHeight="200" entityIconified="false" entityId="141103032251723" entityLocationX="199" entityLocationY="13" entityWidth="150" queryId="qTradePointType" tableName="" tableSchemaName=""/>
+  <entity Name="qIncomePlan" Title="" entityHeight="200" entityIconified="false" entityId="141103035807560" entityLocationX="410" entityLocationY="9" entityWidth="150" queryId="qIncomePlan" tableName="" tableSchemaName=""/>
+  <relation leftEntityFieldName="type_id" leftEntityId="141103032251723" rightEntityId="141103035807560" rightEntityParameterName="trade_point_group"/>
+</datamodel>

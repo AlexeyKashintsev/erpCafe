@@ -21,14 +21,18 @@ function UserSession() {
         return self.getUserRole();//model.params.franchaziId;
     };
     
+    self.keepAlive = function(aUserName) {
+        return (aUserName == self.principal.name);
+    };
+    
     function sync() {
         Logger.info('Synchronizing');
         model.params.userName = self.principal.name;
         if (!self.principal.hasRole('client'))
-            model.qFrancByUserName.requery();
-        if (model.qFrancByUserName.cursor.franc_users_active){
-                model.params.franchaziId = model.qFrancByUserName.franchazi_id;
-            }
+            model.qFrancByUserName.execute();
+        if (model.qFrancByUserName.cursor){
+            model.params.franchaziId = model.qFrancByUserName.franchazi_id;
+        }
     }
     
     self.getFranchazi = function() {
@@ -55,21 +59,23 @@ function UserSession() {
     };
 
     function qFrancByUserNameOnRequeried(evt) {//GEN-FIRST:event_qFrancByUserNameOnRequeried
-        var franchazi = model.qFrancByUserName.franchazi_id;
-        if (franchazi) {
-            if (model.qFrancByUserName.cursor.franc_users_active){
-                model.params.franchaziId = franchazi;
+        if (self.principal.hasRole('barista')||self.principal.hasRole('franchazi')) {
+            var franchazi = model.qFrancByUserName.franchazi_id;
+            if (franchazi) {
+                if (model.qFrancByUserName.cursor.franc_users_active){
+                    model.params.franchaziId = franchazi;
+                } else {
+                    model.params.franchaziId = null;
+                    alert(self.msg[MSG_ERROR_INACTIVE_USER]);
+                    ep.addEvent('userNotActive', {username : model.params.userName});
+                    self.close();
+                }
             } else {
                 model.params.franchaziId = null;
-                alert(self.msg[MSG_ERROR_INACTIVE_USER]);
+                //alert(self.msg[MSG_ERROR_NO_FRANCHAZI_4USER]);
                 ep.addEvent('userNotActive', {username : model.params.userName});
                 self.close();
             }
-        } else {
-            model.params.franchaziId = null;
-            //alert(self.msg[MSG_ERROR_NO_FRANCHAZI_4USER]);
-            ep.addEvent('userNotActive', {username : model.params.userName});
-            self.close();
         }
     }//GEN-LAST:event_qFrancByUserNameOnRequeried
 }

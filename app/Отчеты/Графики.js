@@ -71,10 +71,10 @@ function ChartMaker() {
         return periods;
     };
     
-    function generateData4Chart(aDataSource, aPeriod) {
+    function generateContiniousDataArray(aDataSource, aPeriod) {
         var timeAxis = [];
         var cDate = new Date(aPeriod.startDate);
-        var chartData = [];
+        var dataArray = [];
         for (var j = 0; j <= aPeriod.days * 24 / aPeriod.interval; j++) {
             timeAxis.push(new Date(cDate));
             var endDate = new Date(cDate);
@@ -86,19 +86,52 @@ function ChartMaker() {
                 if (dt <= endDate && dt > cDate)
                     value += aDataSource.cursor.sm;
             }
-            chartData.push(value ? value : null);
+            if (value) {
+                dataArray.push(value);
+            }
             cDate.setHours(cDate.getHours() + aPeriod.interval);
         }
-        Logger.info(chartData);
-        return chartData;
+        Logger.info(dataArray);
+        return dataArray;
+    }
+    
+    function getSeries(aData, aPeriod) {
+        var series = [];
+        for (var j in aData) {
+            var data = aData[j];
+            var seria = data.options ? aData[j].options : {};
+            seria.name = data.chartName;
+            if (data.chartType) seria.type = data.chartType;
+            switch (data.dataType) {
+                case 'continious' : {
+                        seria.data = generateContiniousDataArray(aData.dataSource);
+                        seria.pointStart = Date.UTC(aPeriod.startDate.getFullYear()
+                                                    , aPeriod.startDate.getMonth()
+                                                    , aPeriod.startDate.getDate()
+                                                    , aPeriod.startDate.getHours()+1),
+                        seria.pointInterval = 3600 * 1000 * aPeriod.interval;
+                        break
+                }
+            }
+            series.push[seria];
+        }
+        return series;
     }
 
-    self.Chart = function(aDataSource, aChartOptions, aPeriod) {
-        var chartData = generateData4Chart(aDataSource, aPeriod);
+//    var aData = {
+//        dataSource  :   dataSource,
+//        dataType    :   dataType,
+//        chartType   :   chartType,
+//        chartName   :   chartName,
+//        options     :   {}
+//    };
+    self.Chart = function(aData, aChartOptions, aPeriod) {
+        //var chartData = generateContiniousDataArray(aData, aPeriod);
         return new Highcharts.Chart({
             chart: {
                 renderTo: aChartOptions.container,
-                type: 'column'
+                type: 'column',
+                height: aChartOptions.height ? aChartOptions.height : null
             },
             legend: {
                 enabled: false,
@@ -122,7 +155,7 @@ function ChartMaker() {
             xAxis: {
                 type: 'datetime'
             },
-            series: [{
+            series: getSeries(aData, aPeriod)/*[{
                     name: aChartOptions.dataName,
                     data: chartData,
                     pointStart: Date.UTC(aPeriod.startDate.getFullYear()
@@ -130,7 +163,7 @@ function ChartMaker() {
                         , aPeriod.startDate.getDate()
                         , aPeriod.startDate.getHours()+1),
                     pointInterval: 3600 * 1000 * aPeriod.interval
-                }]
+                }]*/
         });
     };
 }

@@ -70,6 +70,10 @@ span.label-bw {
   cursor: pointer;
 }
 
+div.navbar.navbar-fixed-top {
+  background-color: #54312d;
+}
+
 /* ### BARISTA ### */
 button {
   border: none;

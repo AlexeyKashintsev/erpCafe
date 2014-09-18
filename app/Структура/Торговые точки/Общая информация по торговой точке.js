@@ -69,7 +69,8 @@ function TradePointCommonInfo(aTradePointDetails, aContainer) {
                             + selectedPeriod.startDate.getFullYear() + "/"
                             + (selectedPeriod.startDate.getMonth() + 1) + "/"
                             + selectedPeriod.startDate.getDate(),
-                    dataName        :   selectedChart.name
+                    dataName        :   selectedChart.name,
+                    height          :   200
                 };
                 chart = chartMaker.Chart(selectedChart.data_s, chartOptions, selectedPeriod);
             });
