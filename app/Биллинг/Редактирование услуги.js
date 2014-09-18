@@ -30,11 +30,12 @@ function EditServiceForm() {
     function formWindowOpened(evt) {//GEN-FIRST:event_formWindowOpened
         if(self.serviceId){
             model.params.service_id = self.serviceId;
-            model.requery();
-            form.tfName.text = model.qServiceList.cursor.service_name;
-            form.tfSum.text = model.qServiceList.cursor.item_cost;
-            form.tfDays.text = model.qServiceList.cursor.service_days;
-            form.checkBox.selected = model.qServiceList.cursor.locked;
+            model.requery(function(){
+                form.tfName.text = model.qServiceList.cursor.service_name;
+                form.tfSum.text = model.qServiceList.cursor.item_cost;
+                form.tfDays.text = model.qServiceList.cursor.service_days;
+                form.checkBox.selected = model.qServiceList.cursor.locked;                
+            });
         }
     }//GEN-LAST:event_formWindowOpened
 

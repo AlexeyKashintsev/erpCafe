@@ -71,7 +71,7 @@ function OrderList(aParent) {
     
     var unprocessedOrders = new UnprocessedOrders();
     
-    self.tradeSessionProcessOrder = function(anOrderDetails, alert){
+    function tradeSessionProcessOrder(anOrderDetails, alert){
         session.tradeSession.processOrder(anOrderDetails, function() {
             alerter(alert, "alert-success", "<h4>Заказ успешно проведен</h4>Сумма заказа: <strong>"
                 + anOrderDetails.orderSum + " рублей </strong>", true, 15000);
@@ -96,10 +96,10 @@ function OrderList(aParent) {
         if (anOrderDetails.orderSum <= client.bonusCount){
             choiceMethodOfPayment.showModal(function (aResult){
                 anOrderDetails.methodOfPayment = aResult;
-                self.tradeSessionProcessOrder(anOrderDetails, alert);
+                tradeSessionProcessOrder(anOrderDetails, alert);
             });
         } else {
-            self.tradeSessionProcessOrder(anOrderDetails, alert);
+            tradeSessionProcessOrder(anOrderDetails, alert);
         }
 //        self.tradeSession.processOrder(anOrderDetails, function() {
 //            alerter(alert, "alert-success", "<h4>Заказ успешно проведен</h4>Сумма заказа: <strong>"
