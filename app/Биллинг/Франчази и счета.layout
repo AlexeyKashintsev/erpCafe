@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?><layout defaultCloseOperation="2" name="Form" prefHeight="620px" prefWidth="806px">
+  <widget dividerLocation="350" leftComponent="pnlFranchazi" name="splitPane" parent="Form" prefHeight="620px" prefWidth="804px" rightComponent="pnlBills" type="SplitDesignInfo">
+    <constraints bottom="0px" left="0px" right="2px" top="0px" type="MarginConstraintsDesignInfo"/>
+  </widget>
+  <widget name="pnlFranchazi" parent="splitPane" prefHeight="618px" prefWidth="349px" type="PanelDesignInfo">
+    <layout type="MarginLayoutDesignInfo"/>
+  </widget>
+  <widget name="pnlBills" parent="splitPane" prefHeight="618px" prefWidth="448px" type="PanelDesignInfo">
+    <layout type="MarginLayoutDesignInfo"/>
+  </widget>
+  <layout type="MarginLayoutDesignInfo"/>
+</layout>

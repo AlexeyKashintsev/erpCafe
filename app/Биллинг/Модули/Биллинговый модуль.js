@@ -22,7 +22,11 @@ function BillModule() {
     self.OP_STATUS_FAIL = 2;
     self.OP_STATUS_BILL = 3;
     self.OP_STATUS_PROCESSING = 4;
-
+    
+    self.getSelfPropertyValue = function(aPropertyName) {
+        return self[aPropertyName];
+    };
+    
     var ERRORS = {
         FIND_ACCOUNT_ID: "Аккаунт с таким ID не найден",
         FIND_SERVICE_ID: "Услуга с таким ID не найдена",

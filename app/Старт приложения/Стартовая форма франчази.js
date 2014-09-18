@@ -96,6 +96,10 @@ self.showFormAsInternal = function(aForm) {
             display     :   "Торговые точки",
           //  glyph       :   "glyphicon glyphicon-cog",
             dispForm    :   "FranchaziWorkShop"
+        },
+        billAndServices :   {
+            display     :   "Счета и услуги",
+            dispForm    :   "ListBillAndServices"
         }
     };
     

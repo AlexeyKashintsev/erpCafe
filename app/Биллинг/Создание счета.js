@@ -14,10 +14,10 @@ function CreateBillAccount() {
     function buttonActionPerformed(evt) {//GEN-FIRST:event_buttonActionPerformed
         var type;
         if(form.rbDefault.selected) 
-            type = billModule.ACCOUNT_TYPE_DEFAULT;
+            type = 'ACCOUNT_TYPE_DEFAULT';
         else
-            type = billModule.ACCOUNT_TYPE_CREDIT;
-        billModule.createBillAccount(self.FranchaziId, type, form.tfSum.text);
+            type = 'ACCOUNT_TYPE_CREDIT';
+        billModule.createBillAccount(self.FranchaziId, billModule.getSelfPropertyValue(type));
         form.close(true);
     }//GEN-LAST:event_buttonActionPerformed
 }
