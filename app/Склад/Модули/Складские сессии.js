@@ -3,7 +3,7 @@
  * Сессия - промежуток времени в котором происходят операции со складом, такие как
  * добавление товаров, удаление товаров, списание товаров.
  * По одной торговой точке может быть открыта только одна сессия
- * @author mike 
+ * @author mike, ak
  * @module
  * @public
  */
@@ -26,7 +26,7 @@ function WhSessionModule() {
         self.getCurrentSession();
         return model.params.session_id;
     };
-    
+
     self.setCurrentSession = function(aSessionID) {
         model.params.session_id = aSessionID;
         model.params.trade_point_id = null;
@@ -39,14 +39,18 @@ function WhSessionModule() {
      * Иначе false 
      */
     self.getCurrentSession = function() {
-        model.qOpenedSession.requery();
+        model.qOpenedSession.execute();
         if (model.qOpenedSession.length > 0) {
-            model.params.trade_point_id = model.qOpenedSession.cursor.trade_point;
-            model.params.session_id = model.qOpenedSession.cursor.org_session_id;
-            ep.addEvent('openSession', {
-                session :   model.qOpenedSession.org_session_id,
-                module  :   'whSessions'
-            });
+            if (model.params.trade_point_id !== model.qOpenedSession.cursor.trade_point
+                    && model.params.session_id !== model.qOpenedSession.cursor.org_session_id)
+            {
+                model.params.trade_point_id = model.qOpenedSession.cursor.trade_point;
+                model.params.session_id = model.qOpenedSession.cursor.org_session_id;
+                ep.addEvent('openSession', {
+                    session: model.qOpenedSession.org_session_id,
+                    module: 'whSessions'
+                });
+            }
             return model.params.session_id;
         } else {
             model.params.session_id = null;
@@ -64,7 +68,7 @@ function WhSessionModule() {
             model.querySessionBalance.insert(
                     model.querySessionBalance.schema.session_id, model.params.session_id,
                     model.querySessionBalance.schema.item_id, model.itemsByTP.cursor.item_id
-                );
+                    );
         }
     }
 
@@ -84,13 +88,14 @@ function WhSessionModule() {
             model.qOpenedSession.cursor.user_name = self.principal.name;
             initSession();
             ep.addEvent('newSession', {
-                session :   model.params.session_id,
-                module  :   'whSessions'
+                session: model.params.session_id,
+                module: 'whSessions'
             });
             model.save();
             return model.params.session_id;
         }
     };
+    
     /*
      * Закрытие сессии
      */
@@ -99,25 +104,44 @@ function WhSessionModule() {
             model.qOpenedSession.cursor.end_date = new Date();
             model.save();
             ep.addEvent('closeSession', {
-                session :   model.params.session_id,
-                module  :   'whSessions'
+                session: model.params.session_id,
+                module: 'whSessions'
             });
+            model.updateItems.params.session_id = model.params.session_id;
             model.updateItems.executeUpdate();
             return true;
         } else
             return false;
     };
+    
+    /*
+     * Автоматически заполняет стартовые значения для текущей сессии из последней
+     * @param {type} aTradePoint
+     * @returns {undefined}
+     */
+    self.setStartValuesAuto = function(aTradePoint) {
+        self.setTradePoint(aTradePoint);
+        model.qLastSessionOnTradePoint.requery();
+        var lastSession = model.qLastSessionOnTradePoint.cursor.org_session_id;
+        model.updateItems.params.session_id = lastSession;
+        model.updateItems.executeUpdate();
+        var lastResult = getValuesBySession(lastSession, true);
+        self.setStartValues(lastResult);
+    };
+    
     /*
      * Изменение стартовых значений Баланса Сессии по каждому товару торговой
      * точки
      */
     self.setStartValues = function(anItems, aTradePoint) {
-        self.setTradePoint(aTradePoint);
-        
+        if (aTradePoint)
+            self.setTradePoint(aTradePoint);
+
         if (!self.getCurrentSession()) {
             self.createSession();
         }
 
+        model.querySessionBalance.params.session_id = model.params.session_id;
         model.querySessionBalance.requery();
         model.querySessionBalance.beforeFirst();
         while (model.querySessionBalance.next()) {
@@ -127,23 +151,35 @@ function WhSessionModule() {
         return true;
     };
     /*
-     * Получение старотовых значений Баланса Сессии по каждому товару торговой
+     * Получение стартовых значений текущей Баланса Сессии по каждому товару торговой
      * точки
      */
-    self.getStartValues = function() {
+    self.getCurrentStartValues = function() {
         if (self.getCurrentSession()) {
-            var items = [];
-            model.querySessionBalance.params.session_id = model.params.session_id;
-            model.querySessionBalance.requery();
-            model.querySessionBalance.beforeFirst();
-            while (model.querySessionBalance.next()) {
-                items[model.querySessionBalance.cursor.item_id] = model.querySessionBalance.cursor.start_value;
-            }
-            return items;
+            return getValuesBySession(model.params.session_id);
         }
         else
             return false;
     };
+
+    /*
+     * Возвращает начальные или конечные значения баланса Item в сессии
+     * @param {type} aSession
+     * @param {type} aEndValue - если true, то возвращает конечные значения
+     * @returns {Array}
+     */
+    function getValuesBySession(aSession, aEndValue) {
+        var values = [];
+        model.querySessionBalance.params.session_id = aSession;
+        model.querySessionBalance.requery();
+        model.querySessionBalance.beforeFirst();
+        while (model.querySessionBalance.next()) {
+            values[model.querySessionBalance.cursor.item_id] = aEndValue ?
+                    model.querySessionBalance.cursor.end_value
+                    : model.querySessionBalance.cursor.start_value;
+        }
+        return values;
+    }
 
     /*
      * Добавление товаров на склад

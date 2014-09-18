@@ -3,7 +3,7 @@
     <layout type="MarginLayoutDesignInfo"/>
     <constraints place="South" type="BorderLayoutConstraintsDesignInfo"/>
   </widget>
-  <widget actionPerformed="btnCloseSessionActionPerformed" name="btnCloseSession" parent="pnlSelLock" prefHeight="25px" prefWidth="201px" text="Сохранить" type="ButtonDesignInfo">
+  <widget actionPerformed="btnProceedActionPerformed" name="btnProceed" parent="pnlSelLock" prefHeight="25px" prefWidth="201px" text="Сохранить" type="ButtonDesignInfo">
     <constraints bottom="14px" height="25px" right="7px" type="MarginConstraintsDesignInfo" width="201px"/>
   </widget>
   <widget name="pnlWorkSpace" parent="Form" prefHeight="298px" prefWidth="448px" type="PanelDesignInfo">
@@ -11,40 +11,40 @@
     <constraints place="Center" type="BorderLayoutConstraintsDesignInfo"/>
   </widget>
   <widget name="modelGrid" parent="pnlWorkSpace" prefHeight="298px" prefWidth="448px" type="DbGridDesignInfo">
+    <column name="colItem_name" title="Товар">
+      <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
+      <cellDesignInfo>
+        <rowsKeyField/>
+        <columnsKeyField/>
+        <cellValueField/>
+      </cellDesignInfo>
+      <columnsDatasource/>
+      <columnsDisplayField/>
+      <cellsDatasource/>
+      <headerStyle>
+        <nativeFont name="Dialog" size="15"/>
+      </headerStyle>
+      <datamodelElement entityId="140549864254788" fieldName="item_name"/>
+    </column>
+    <column name="colItem_id" title="Количество">
+      <controlInfo classHint="DbLabelDesignInfo" emptyText="0" name="view" prefHeight="0px" prefWidth="0px"/>
+      <cellDesignInfo>
+        <rowsKeyField/>
+        <columnsKeyField/>
+        <cellValueField/>
+      </cellDesignInfo>
+      <columnsDatasource/>
+      <columnsDisplayField/>
+      <cellsDatasource/>
+      <headerStyle>
+        <nativeFont name="Dialog" size="15"/>
+      </headerStyle>
+      <datamodelElement entityId="140549864254788" fieldName="start_value"/>
+    </column>
     <rowsColumnsDesignInfo>
       <rowsDatasource entityId="140549864254788" field="false"/>
     </rowsColumnsDesignInfo>
     <treeDesignInfo/>
-    <column name="colItem_name" title="Товар">
-      <datamodelElement entityId="140549864254788" fieldName="item_name"/>
-      <columnsDatasource/>
-      <columnsDisplayField/>
-      <cellsDatasource/>
-      <cellDesignInfo>
-        <rowsKeyField/>
-        <columnsKeyField/>
-        <cellValueField/>
-      </cellDesignInfo>
-      <headerStyle>
-        <nativeFont name="Ubuntu" size="15"/>
-      </headerStyle>
-      <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
-    </column>
-    <column name="colItem_id" title="Количество">
-      <datamodelElement entityId="140549864254788" fieldName="start_value"/>
-      <columnsDatasource/>
-      <columnsDisplayField/>
-      <cellsDatasource/>
-      <cellDesignInfo>
-        <rowsKeyField/>
-        <columnsKeyField/>
-        <cellValueField/>
-      </cellDesignInfo>
-      <headerStyle>
-        <nativeFont name="Ubuntu" size="15"/>
-      </headerStyle>
-      <controlInfo classHint="DbLabelDesignInfo" emptyText="0" name="view" prefHeight="0px" prefWidth="0px"/>
-    </column>
     <constraints bottom="0px" left="0px" right="0px" top="0px" type="MarginConstraintsDesignInfo"/>
   </widget>
   <layout type="BorderLayoutDesignInfo"/>

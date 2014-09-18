@@ -6,7 +6,6 @@ function OrderList(aParent) {
     var self = this, model = this.model, form = this;
     self.browser = aParent.browser;
     self.orderDetails = {};
-    self.tradeSession = null;
     var lastDiv = null;
     session.clientModule = new ServerModule("ClientServerModule");
     var getPhone = new GetUserPhoneForm();
@@ -75,14 +74,14 @@ function OrderList(aParent) {
         var alert = alerter(anAlert, "alert-info", "<h4>Обработка заказа</h4>Попытка № " + attempt, false);
         anOrderDetails.methodOfPayment = "money";
         //Если сумма заказа покрывается бонусами на счету, то предложить оплату бонусами
-       /* if (anOrderDetails.orderSum <= self.tradeSession.getBonusCount()){
-            choiceMethodOfPayment.tradeSession = self.tradeSession;
+       /* if (anOrderDetails.orderSum <= session.tradeSession.getBonusCount()){
+            choiceMethodOfPayment.tradeSession = session.tradeSession;
             choiceMethodOfPayment.showModal(function (aResult){
                 anOrderDetails.methodOfPayment = aResult;
             });
         }*/
         
-        self.tradeSession.processOrder(anOrderDetails, function() {
+        session.tradeSession.processOrder(anOrderDetails, function() {
             alerter(alert, "alert-success", "<h4>Заказ успешно проведен</h4>Сумма заказа: <strong>"
                 + anOrderDetails.orderSum + " рублей </strong>", true, 15000);
         }, function() {
@@ -277,7 +276,7 @@ function OrderList(aParent) {
     createOrderListPane();
     
     function btnOkActionPerformed(evt) {                                      
-        //setPhone.tradeSession = self.tradeSession;
+        //setPhone.tradeSession = session.tradeSession;
         //setPhone.showModal();
         self.acceptOrder();
     }

@@ -1,51 +1,51 @@
-<?xml version="1.0" encoding="UTF-8"?><layout defaultCloseOperation="2" name="Form" prefHeight="348px" prefWidth="448px" windowClosing="formWindowClosing" windowOpened="formWindowOpened">
-  <widget name="pnlSelLock" parent="Form" prefHeight="50px" prefWidth="448px" type="PanelDesignInfo">
+<?xml version="1.0" encoding="UTF-8"?><layout defaultCloseOperation="2" name="Form" prefHeight="375px" prefWidth="530px" windowClosing="formWindowClosing" windowOpened="formWindowOpened">
+  <widget name="pnlSelLock" parent="Form" prefHeight="50px" prefWidth="530px" type="PanelDesignInfo">
     <layout type="MarginLayoutDesignInfo"/>
     <constraints place="South" type="BorderLayoutConstraintsDesignInfo"/>
   </widget>
-  <widget actionPerformed="btnCloseSessionActionPerformed" name="btnCloseSession" parent="pnlSelLock" prefHeight="25px" prefWidth="201px" text="Начать работу" type="ButtonDesignInfo">
-    <constraints bottom="14px" height="25px" right="7px" type="MarginConstraintsDesignInfo" width="201px"/>
+  <widget actionPerformed="btnStartSessionActionPerformed" name="btnStartSession" parent="pnlSelLock" prefHeight="25px" prefWidth="201px" text="Начать работу" type="ButtonDesignInfo">
+    <constraints bottom="10px" height="25px" right="7px" type="MarginConstraintsDesignInfo" width="201px"/>
   </widget>
-  <widget actionPerformed="btnReqActionPerformed" focusable="false" horizontalTextPosition="0" name="btnReq" parent="pnlSelLock" prefHeight="24px" prefWidth="120px" text="Сбросить" toolTipText="Обновить" type="ButtonDesignInfo" verticalTextPosition="3">
-    <constraints height="24px" left="12px" top="12px" type="MarginConstraintsDesignInfo" width="120px"/>
+  <widget actionPerformed="btnReqActionPerformed" focusable="false" horizontalTextPosition="0" name="btnReq" parent="pnlSelLock" prefHeight="24px" prefWidth="96px" text="Сбросить" toolTipText="Обновить" type="ButtonDesignInfo" verticalTextPosition="3">
+    <constraints height="24px" left="12px" top="15px" type="MarginConstraintsDesignInfo" width="96px"/>
   </widget>
-  <widget actionPerformed="buttonActionPerformed" name="button" parent="pnlSelLock" prefHeight="29px" prefWidth="86px" text="LazyGen" type="ButtonDesignInfo">
-    <constraints height="29px" left="144px" top="12px" type="MarginConstraintsDesignInfo" width="86px"/>
+  <widget actionPerformed="btnWORevisionActionPerformed" name="btnWORevision" parent="pnlSelLock" prefHeight="25px" prefWidth="180px" text="Без ревизии" type="ButtonDesignInfo">
+    <constraints bottom="10px" height="25px" right="206px" type="MarginConstraintsDesignInfo" width="180px"/>
   </widget>
-  <widget name="pnlWorkSpace" parent="Form" prefHeight="298px" prefWidth="448px" type="PanelDesignInfo">
+  <widget name="pnlWorkSpace" parent="Form" prefHeight="325px" prefWidth="530px" type="PanelDesignInfo">
     <layout type="MarginLayoutDesignInfo"/>
     <constraints place="Center" type="BorderLayoutConstraintsDesignInfo"/>
   </widget>
-  <widget name="modelGrid" parent="pnlWorkSpace" prefHeight="298px" prefWidth="448px" type="DbGridDesignInfo">
+  <widget name="modelGrid" parent="pnlWorkSpace" prefHeight="325px" prefWidth="530px" type="DbGridDesignInfo">
     <column name="colItem_name" title="Товар">
       <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
-      <datamodelElement entityId="140549864254788" fieldName="item_name"/>
       <cellDesignInfo>
-        <cellValueField/>
-        <columnsKeyField/>
         <rowsKeyField/>
+        <columnsKeyField/>
+        <cellValueField/>
       </cellDesignInfo>
-      <cellsDatasource/>
       <columnsDatasource/>
       <columnsDisplayField/>
+      <cellsDatasource/>
       <headerStyle>
         <nativeFont name="Dialog" size="15"/>
       </headerStyle>
+      <datamodelElement entityId="140549864254788" fieldName="item_name"/>
     </column>
     <column name="colItem_id" title="Количество">
       <controlInfo classHint="DbLabelDesignInfo" emptyText="0" name="view" prefHeight="0px" prefWidth="0px"/>
-      <datamodelElement entityId="140549864254788" fieldName="start_value"/>
       <cellDesignInfo>
-        <cellValueField/>
-        <columnsKeyField/>
         <rowsKeyField/>
+        <columnsKeyField/>
+        <cellValueField/>
       </cellDesignInfo>
-      <cellsDatasource/>
       <columnsDatasource/>
       <columnsDisplayField/>
+      <cellsDatasource/>
       <headerStyle>
         <nativeFont name="Dialog" size="15"/>
       </headerStyle>
+      <datamodelElement entityId="140549864254788" fieldName="start_value"/>
     </column>
     <rowsColumnsDesignInfo>
       <rowsDatasource entityId="140549864254788" field="false"/>

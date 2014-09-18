@@ -11,16 +11,19 @@ var MSG_SET_MOVEMENTS_ERROR  = "Произошла ошибка при доба�
 
 var self = this, model = this.model, form = this;
 
-var whSessionModule = new ServerModule("WhSessionModule");
-
 self.setTradePoint = function(aTradePointId) {
     model.params.trade_point_id = aTradePointId;
-    whSessionModule.setTradePoint(model.params.trade_point_id);
-    model.params.session_id = whSessionModule.getCurrentSession();
+    if (aTradePointId !== session.tradePoint) {
+        //TODO Дописать
+    } else {
+        model.params.session_id = session.activeSession;
+    }
+    //session.whSession.setTradePoint(model.params.trade_point_id);
+    //model.params.session_id = session.whSession.getCurrentSession();
 };
 
 function formWindowOpened(evt) {//GEN-FIRST:event_formWindowOpened
-    form.btnCloseSession.enabled = true;
+    form.btnProceed.enabled = true;
     if(!model.params.session_id) {
         alert(MSG_SESSION_CLOSED_ERROR);
         form.close();
@@ -31,7 +34,7 @@ function formWindowClosing(evt) {//GEN-FIRST:event_formWindowClosing
 
 }//GEN-LAST:event_formWindowClosing
 
-    function btnCloseSessionActionPerformed(evt) {//GEN-FIRST:event_btnCloseSessionActionPerformed
+    function btnProceedActionPerformed(evt) {//GEN-FIRST:event_btnProceedActionPerformed
          var items = {};
          model.itemsByTP.beforeFirst();
          while(model.itemsByTP.next()){
@@ -39,9 +42,9 @@ function formWindowClosing(evt) {//GEN-FIRST:event_formWindowClosing
                  items[model.itemsByTP.cursor.item_id] = model.itemsByTP.cursor.start_value;
              }
          }
-         if (whSessionModule.whMovement(items, whSessionModule.WH_ADD_ITEMS)) 
+         if (session.whSession.whMovement(items, session.whSession.WH_ADD_ITEMS)) 
             form.close();
          else
              alert(MSG_SET_MOVEMENTS_ERROR);
-    }//GEN-LAST:event_btnCloseSessionActionPerformed
+    }//GEN-LAST:event_btnProceedActionPerformed
 }

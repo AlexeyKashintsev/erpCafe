@@ -75,7 +75,7 @@ function ChartMaker() {
         var timeAxis = [];
         var cDate = new Date(aPeriod.startDate);
         var dataArray = [];
-        for (var j = 0; j <= aPeriod.days * 24 / aPeriod.interval; j++) {
+        for (var j = 0; j < aPeriod.days * 24 / aPeriod.interval; j++) {
             timeAxis.push(new Date(cDate));
             var endDate = new Date(cDate);
             endDate.setHours(endDate.getHours() + aPeriod.interval);
@@ -86,9 +86,9 @@ function ChartMaker() {
                 if (dt <= endDate && dt > cDate)
                     value += aDataSource.cursor.sm;
             }
-            if (value) {
-                dataArray.push(value);
-            }
+            //if (value) {
+            dataArray.push(value ? value : 0);
+            //}
             cDate.setHours(cDate.getHours() + aPeriod.interval);
         }
         Logger.info(dataArray);
@@ -99,12 +99,12 @@ function ChartMaker() {
         var series = [];
         for (var j in aData) {
             var data = aData[j];
-            var seria = data.options ? aData[j].options : {};
+            var seria = data.options ? data.options : {};
             seria.name = data.chartName;
             if (data.chartType) seria.type = data.chartType;
             switch (data.dataType) {
                 case 'continious' : {
-                        seria.data = generateContiniousDataArray(aData.dataSource);
+                        seria.data = generateContiniousDataArray(data.dataSource, aPeriod);
                         seria.pointStart = Date.UTC(aPeriod.startDate.getFullYear()
                                                     , aPeriod.startDate.getMonth()
                                                     , aPeriod.startDate.getDate()
@@ -113,7 +113,7 @@ function ChartMaker() {
                         break
                 }
             }
-            series.push[seria];
+            series.push(seria);
         }
         return series;
     }
@@ -150,20 +150,13 @@ function ChartMaker() {
             yAxis: {
                 title: {
                     text: aChartOptions.chartName
-                }
+                },
+                floor:  0
             },
             xAxis: {
                 type: 'datetime'
             },
-            series: getSeries(aData, aPeriod)/*[{
-                    name: aChartOptions.dataName,
-                    data: chartData,
-                    pointStart: Date.UTC(aPeriod.startDate.getFullYear()
-                        , aPeriod.startDate.getMonth()
-                        , aPeriod.startDate.getDate()
-                        , aPeriod.startDate.getHours()+1),
-                    pointInterval: 3600 * 1000 * aPeriod.interval
-                }]*/
+            series: getSeries(aData, aPeriod)
         });
     };
 }

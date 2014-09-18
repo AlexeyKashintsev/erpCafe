@@ -21,16 +21,7 @@ function TradePointCommonInfo(aTradePointDetails, aContainer) {
         income      :   {
             name    :   'Доход',
             data_s  :   model.qTradePointIncomeByPeriod
-        }/*,
-        visitors    :   {
-            name    :   'Визиты',
-        },
-        value       :   {
-            name    :   'Объем',
-        },
-        avCheck     :   {
-            name    :   'Средний чек',
-        }*/
+        }
     };
     
     var selectedPeriod  = null;
@@ -72,7 +63,15 @@ function TradePointCommonInfo(aTradePointDetails, aContainer) {
                     dataName        :   selectedChart.name,
                     height          :   200
                 };
-                chart = chartMaker.Chart(selectedChart.data_s, chartOptions, selectedPeriod);
+                var data = [{
+                    dataSource  :   selectedChart.data_s,
+                    dataType    :   'continious',
+                    chartType   :   'column',
+                    chartName   :   selectedChart.name,
+                    options     :   {}
+                }];
+                
+                chart = chartMaker.Chart(data, chartOptions, selectedPeriod);
             });
         }
     }

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?><outputFields>
+  <field bindedColumn="used_value" sqlType="2"/>
+  <field bindedColumn="final_value" sqlType="2"/>
+</outputFields>

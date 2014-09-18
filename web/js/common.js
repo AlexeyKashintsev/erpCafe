@@ -218,6 +218,9 @@ Highcharts.setOptions({
                 downloadPDF: 'Скачать PDF',
                 downloadSVG: 'Скачать SVG',
                 printChart: 'Напечатать график'
+            },
+            global: {
+                useUTC: true
             }
     });
 };

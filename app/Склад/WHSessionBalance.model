@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?><datamodel>
+  <parameters>
+    <parameter description="" name="trade_point_id" nullable="true" parameterMode="1" precision="0" scale="0" selectionForm="null" signed="true" size="0" type="2" typeName="NUMERIC"/>
+  </parameters>
+  <parametersEntity entityHeight="200" entityIconified="false" entityLocationX="12" entityLocationY="12" entityWidth="150"/>
+  <entity Name="itemsByTP" Title="" entityHeight="215" entityIconified="false" entityId="141104844547669" entityLocationX="201" entityLocationY="12" entityWidth="150" onRequeried="itemsByTPOnRequeried" queryId="itemsByTP" tableName="" tableSchemaName=""/>
+  <entity Name="queryOpenedSession" Title="" entityHeight="200" entityIconified="false" entityId="141105013593905" entityLocationX="377" entityLocationY="240" entityWidth="150" queryId="queryOpenedSession" tableName="" tableSchemaName=""/>
+  <entity Name="qLastSessionOnTradePoint" Title="" entityHeight="200" entityIconified="false" entityId="141104998127576" entityLocationX="201" entityLocationY="241" entityWidth="150" queryId="qLastSessionOnTradePoint" tableName="" tableSchemaName=""/>
+  <entity Name="qWHSessionBalance" Title="" entityHeight="200" entityIconified="false" entityId="141104997139589" entityLocationX="391" entityLocationY="13" entityWidth="150" queryId="qWHSessionBalance" tableName="" tableSchemaName=""/>
+  <relation leftEntityId="-1" leftEntityParameterName="trade_point_id" rightEntityId="141105013593905" rightEntityParameterName="trade_point_id"/>
+  <relation leftEntityId="-1" leftEntityParameterName="trade_point_id" rightEntityId="141104998127576" rightEntityParameterName="trade_point_id"/>
+  <relation leftEntityId="-1" leftEntityParameterName="trade_point_id" rightEntityId="141104844547669" rightEntityParameterName="trade_point_id"/>
+  <referenceRelation leftEntityFieldName="item_id" leftEntityId="141104997139589" rightEntityFieldName="wh_items_id" rightEntityId="141104844547669"/>
+  <referenceRelation leftEntityFieldName="item_id" leftEntityId="141104844547669" rightEntityFieldName="wh_items_id" rightEntityId="141104844547669"/>
+</datamodel>

@@ -66,7 +66,7 @@ function UserSession() {
                     model.params.franchaziId = franchazi;
                 } else {
                     model.params.franchaziId = null;
-                    alert(self.msg[MSG_ERROR_INACTIVE_USER]);
+                   // alert(self.msg.MSG_ERROR_INACTIVE_USER);
                     ep.addEvent('userNotActive', {username : model.params.userName});
                     self.close();
                 }
