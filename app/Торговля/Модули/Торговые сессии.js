@@ -162,7 +162,7 @@ function TradeSessions() {
         model.qConnectTradeAndBillOperations.push({
             trade_cashbox_operation: aTradeOperation,
             bill_operation: aBillOperation
-        })
+        });
     }
     
     /*

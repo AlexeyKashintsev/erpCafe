@@ -15,7 +15,10 @@ function OrderList(aParent) {
     function selectClient() {
         getPhone.showModal(function (aPhone){
             client = session.clientModule.getClientDataByPhone(aPhone);
-            alert(client);
+            var clientPhoneDiv = cmn.createElement("div", '', "clientPane");
+            clientPhoneDiv.innerHTML = "Клиент: " + client.phone;
+            var clientBonusDiv = cmn.createElement("div", '', "clientPane");
+            clientBonusDiv.innerHTML = "Бонусов: " + client.bonusCount;
         });
     }
     
@@ -242,7 +245,7 @@ function OrderList(aParent) {
     
     function createClientSelectPane() {
         var dockElement = cmn.createElement("div", 'baristaOrder panel panel-primary', "actionPanel");
-        var clientPane = cmn.createElement("div", 'clientInfo panel panel-primary', dockElement);
+        var clientPane = cmn.createElement("div", 'clientInfo panel panel-primary', dockElement, "clientPane");
         var btnSelect = cmn.createElement("button", 'btnOk', dockElement);
         btnSelect.onclick = selectClient;
         btnSelect.innerHTML = 'Выбрать';
