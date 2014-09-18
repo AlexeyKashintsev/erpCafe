@@ -5,7 +5,11 @@
   <widget name="lblBonusBillCount" parent="Form" prefHeight="17px" prefWidth="264px" type="LabelDesignInfo">
     <constraints height="17px" left="60px" top="96px" type="MarginConstraintsDesignInfo" width="264px"/>
   </widget>
-  <widget name="modelGrid" parent="Form" prefHeight="132px" prefWidth="324px" type="DbGridDesignInfo">
+  <widget deletable="false" editable="false" insertable="false" name="modelGrid" parent="Form" prefHeight="132px" prefWidth="324px" type="DbGridDesignInfo">
+    <rowsColumnsDesignInfo>
+      <rowsDatasource entityId="141086850975736" field="false"/>
+    </rowsColumnsDesignInfo>
+    <treeDesignInfo/>
     <column name="colDate" title="Дата">
       <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
       <headerStyle>
@@ -51,10 +55,6 @@
         <cellValueField/>
       </cellDesignInfo>
     </column>
-    <rowsColumnsDesignInfo>
-      <rowsDatasource entityId="141086850975736" field="false"/>
-    </rowsColumnsDesignInfo>
-    <treeDesignInfo/>
     <constraints height="132px" left="36px" top="144px" type="MarginConstraintsDesignInfo" width="324px"/>
   </widget>
   <layout type="MarginLayoutDesignInfo"/>

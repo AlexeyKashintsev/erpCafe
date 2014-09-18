@@ -5,7 +5,6 @@
 function AddServiceForm() {
     var self = this, model = this.model, form = this;
     var billModule = new ServerModule("BillModule");
-    model.params.service_id = null;
     
     self.accountId = null;
     self.setAccountId = function(anAccountId){
@@ -13,7 +12,13 @@ function AddServiceForm() {
     }; 
 
     function buttonActionPerformed(evt) {//GEN-FIRST:event_buttonActionPerformed
-        form.close(billModule.AddService(self.accountId, model.params.service_id));
+        
+        if(billModule.AddService(self.accountId, model.qServiceList.cursor.bill_services_id)){
+            form.close(true);
+        } else {
+            alert("На счету недостаточно средств для добавления данной услуги!");
+            //form.close(false);
+        }
     }//GEN-LAST:event_buttonActionPerformed
 
     function formWindowOpened(evt) {//GEN-FIRST:event_formWindowOpened

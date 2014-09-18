@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?><layout defaultCloseOperation="2" name="Form" prefHeight="344px" prefWidth="360px" windowOpened="formWindowOpened">
+  <widget actionPerformed="buttonActionPerformed" name="button" parent="Form" prefHeight="24px" prefWidth="192px" text="Добавить услугу" type="ButtonDesignInfo">
+    <constraints bottom="8px" height="24px" left="156px" type="MarginConstraintsDesignInfo" width="192px"/>
+  </widget>
+  <widget deletable="false" editable="false" insertable="false" name="modelGrid" parent="Form" prefHeight="288px" prefWidth="336px" type="DbGridDesignInfo">
+    <column name="colService_name" title="Название">
+      <columnsDatasource/>
+      <columnsDisplayField/>
+      <cellsDatasource/>
+      <cellDesignInfo>
+        <columnsKeyField/>
+        <cellValueField/>
+        <rowsKeyField/>
+      </cellDesignInfo>
+      <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
+      <datamodelElement entityId="140791502942460" fieldName="service_name"/>
+      <headerStyle>
+        <nativeFont name="Tahoma" size="11"/>
+      </headerStyle>
+    </column>
+    <column name="colItem_cost" title="Абонентская плата">
+      <columnsDatasource/>
+      <columnsDisplayField/>
+      <cellsDatasource/>
+      <cellDesignInfo>
+        <columnsKeyField/>
+        <cellValueField/>
+        <rowsKeyField/>
+      </cellDesignInfo>
+      <controlInfo classHint="DbSpinDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
+      <datamodelElement entityId="140791502942460" fieldName="item_cost"/>
+      <headerStyle>
+        <nativeFont name="Tahoma" size="11"/>
+      </headerStyle>
+    </column>
+    <rowsColumnsDesignInfo>
+      <rowsDatasource entityId="140791502942460" field="false"/>
+    </rowsColumnsDesignInfo>
+    <treeDesignInfo/>
+    <constraints height="288px" left="12px" top="12px" type="MarginConstraintsDesignInfo" width="336px"/>
+  </widget>
+  <layout type="MarginLayoutDesignInfo"/>
+</layout>

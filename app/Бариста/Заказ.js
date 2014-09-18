@@ -8,13 +8,17 @@ function OrderList(aParent) {
     self.orderDetails = {};
     var lastDiv = null;
     session.clientModule = new ServerModule("ClientServerModule");
+    var choiceMethodOfPayment = new ChoiceMethodOfPayment();
     var getPhone = new GetUserPhoneForm();
     var client = false;
     
     function selectClient() {
         getPhone.showModal(function (aPhone){
             client = session.clientModule.getClientDataByPhone(aPhone);
-            alert(client);
+            var clientPhoneDiv = cmn.createElement("div", '', "clientPane");
+            clientPhoneDiv.innerHTML = "Клиент: " + client.phone;
+            var clientBonusDiv = cmn.createElement("div", '', "clientPane");
+            clientBonusDiv.innerHTML = "Бонусов: " + client.bonusCount;
         });
     }
     
@@ -67,23 +71,11 @@ function OrderList(aParent) {
     
     var unprocessedOrders = new UnprocessedOrders();
     
-    function processOrder(anOrderDetails, anAlert, anAttempt) {
-        var attempt = anAttempt ? anAttempt : 0;
-        attempt++;
-        Logger.info("Отправка данных заказа на сервер попытка №" + attempt);
-        var alert = alerter(anAlert, "alert-info", "<h4>Обработка заказа</h4>Попытка № " + attempt, false);
-        anOrderDetails.methodOfPayment = "money";
-        //Если сумма заказа покрывается бонусами на счету, то предложить оплату бонусами
-       /* if (anOrderDetails.orderSum <= session.tradeSession.getBonusCount()){
-            choiceMethodOfPayment.tradeSession = session.tradeSession;
-            choiceMethodOfPayment.showModal(function (aResult){
-                anOrderDetails.methodOfPayment = aResult;
-            });
-        }*/
-        
+    self.tradeSessionProcessOrder = function(anOrderDetails, alert){
         session.tradeSession.processOrder(anOrderDetails, function() {
             alerter(alert, "alert-success", "<h4>Заказ успешно проведен</h4>Сумма заказа: <strong>"
                 + anOrderDetails.orderSum + " рублей </strong>", true, 15000);
+            document.getElementById("clientPane").innerHTML = "";
         }, function() {
             if (attempt < 5)
                 processOrder(anOrderDetails, alert, attempt);
@@ -92,6 +84,35 @@ function OrderList(aParent) {
                 unprocessedOrders.addOrder(anOrderDetails);
             }
         });
+    }
+    
+    function processOrder(anOrderDetails, anAlert, anAttempt) {
+        var attempt = anAttempt ? anAttempt : 0;
+        attempt++;
+        Logger.info("Отправка данных заказа на сервер попытка №" + attempt);
+        var alert = alerter(anAlert, "alert-info", "<h4>Обработка заказа</h4>Попытка № " + attempt, false);
+        anOrderDetails.methodOfPayment = "money";
+        //Если сумма заказа покрывается бонусами на счету, то предложить оплату бонусами
+        if (anOrderDetails.orderSum <= client.bonusCount){
+            choiceMethodOfPayment.showModal(function (aResult){
+                anOrderDetails.methodOfPayment = aResult;
+                self.tradeSessionProcessOrder(anOrderDetails, alert);
+            });
+        } else {
+            self.tradeSessionProcessOrder(anOrderDetails, alert);
+        }
+//        self.tradeSession.processOrder(anOrderDetails, function() {
+//            alerter(alert, "alert-success", "<h4>Заказ успешно проведен</h4>Сумма заказа: <strong>"
+//                + anOrderDetails.orderSum + " рублей </strong>", true, 15000);
+//            document.getElementById("clientPane").innerHTML = "";
+//        }, function() {
+//            if (attempt < 5)
+//                processOrder(anOrderDetails, alert, attempt);
+//            else {
+//                alerter(alert, "alert-danger", "<h4>Заказ не проведен</h4>Проверьте связь с сервером", true, 15000);
+//                unprocessedOrders.addOrder(anOrderDetails);
+//            }
+//        });
     }
     
     function orderItem(anItemData) {
@@ -241,7 +262,7 @@ function OrderList(aParent) {
     
     function createClientSelectPane() {
         var dockElement = cmn.createElement("div", 'baristaOrder panel panel-primary', "actionPanel");
-        var clientPane = cmn.createElement("div", 'clientInfo panel panel-primary', dockElement);
+        var clientPane = cmn.createElement("div", 'clientInfo panel panel-primary', dockElement, "clientPane");
         var btnSelect = cmn.createElement("button", 'btnOk', dockElement);
         btnSelect.onclick = selectClient;
         btnSelect.innerHTML = 'Выбрать';

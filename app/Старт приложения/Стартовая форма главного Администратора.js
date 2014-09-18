@@ -11,9 +11,13 @@ function StartMasterAdminForm() {
             display     :   "Франчази и торговые точки",
             dispForm    :   "FranchaziAndTradePoints"
         },
-        bills   :   {
+        bills           :   {
             display     :   "Франчази и счета",
             dispForm    :   "FranchaziAndBills"
+        },
+        services        :   {
+            display     :   "Управление услугами",
+            dispForm    :   "ManageServices"
         },
         users   :   {
             display     :   "Пользователи",

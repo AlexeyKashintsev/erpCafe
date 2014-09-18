@@ -158,8 +158,17 @@ function TradeSessions() {
         }
     }
     
+    function connectBillAndTradeOperation(aTradeOperation, aBillOperation){
+        model.qConnectTradeAndBillOperations.push({
+            trade_cashbox_operation: aTradeOperation,
+            bill_operation: aBillOperation
+        });
+    }
+    
     /*
      * Процесс продажи
+     * @param {type} anOrderDetails
+     * @returns {String}
      */
     self.processOrder = function(anOrderDetails){
         var client = false;
@@ -199,15 +208,19 @@ function TradeSessions() {
                 if (!processOrderItem(anOrderDetails.orderItems[i], TradeOperationId)) {
                     ep.addEvent('errorAddTradeOperation', anOrderDetails);
                 } else
-                    if (client)
-                    BonusCount += getCountBonusesByItem(anOrderDetails.orderItems[i].itemId, client.bonusCategory)
+                    if (client && anOrderDetails.methodOfPayment === "money") {
+                        BonusCount += getCountBonusesByItem(anOrderDetails.orderItems[i].itemId, client.bonusCategory)
                                 * anOrderDetails.orderItems[i].quantity;
+                    } else if (client && anOrderDetails.methodOfPayment === "bonus"){
+                        BonusCount = anOrderDetails.orderSum;
+                    }
             }
             
             if (client.bonusBill){
-                billing.addBillOperation(client.bonusBill, 
+                var BillOperationId = billing.addBillOperation(client.bonusBill, 
                                          BonusOperation, 
                                          BonusCount);
+                connectBillAndTradeOperation(TradeOperationId, BillOperationId);    
            //TODO Досписать добавление бонусов на счет франчайзи
             }
             model.save();

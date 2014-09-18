@@ -5,7 +5,7 @@
   <parametersEntity entityHeight="200" entityIconified="false" entityLocationX="12" entityLocationY="12" entityWidth="150"/>
   <entity Name="qBillOperationsList" Title="" entityHeight="200" entityIconified="false" entityId="140851905975976" entityLocationX="199" entityLocationY="10" entityWidth="150" queryId="qBillOperationsList" tableName="" tableSchemaName=""/>
   <entity Name="qOperationStatus" Title="" entityHeight="200" entityIconified="false" entityId="140851879970268" entityLocationX="414" entityLocationY="5" entityWidth="150" queryId="qOperationStatus" tableName="" tableSchemaName=""/>
-  <referenceRelation leftEntityFieldName="operation_type" leftEntityId="140851905975976" rightEntityFieldName="bill_operations_type_id" rightEntityId="140851905975976"/>
   <referenceRelation leftEntityFieldName="operation_status" leftEntityId="140851905975976" rightEntityFieldName="bill_operations_status_id" rightEntityId="140851879970268"/>
+  <referenceRelation leftEntityFieldName="operation_type" leftEntityId="140851905975976" rightEntityFieldName="bill_operations_type_id" rightEntityId="140851905975976"/>
   <referenceRelation leftEntityFieldName="operation_status" leftEntityId="140851905975976" rightEntityFieldName="bill_operations_status_id" rightEntityId="140851905975976"/>
 </datamodel>

@@ -58,7 +58,7 @@ function ClientServerModule() {
         
         
         self.setPass(genPass());
-        alert(pass);//Генерим пароль в переменную pass
+        //alert(pass);//Генерим пароль в переменную pass
         userModule.createUser(anUserName, adminFunctions.MD5(pass), aRoleName, anEmail, anUserName);
         model.qPersonalData.insert();
         model.qPersonalData.cursor.client_id = billModule.createBillAccount(anUserName, billModule.ACCOUNT_TYPE_CLIENT, null);

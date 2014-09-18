@@ -21,19 +21,29 @@ function EditServiceForm() {
     }//GEN-LAST:event_rbDaysActionPerformed
 
     function btnSaveActionPerformed(evt) {//GEN-FIRST:event_btnSaveActionPerformed
-        billModule.editService(self.serviceId, form.tfName.text, form.tfSum.text, form.tfDays.text);
-        form.close();
+        if(self.serviceId)
+            billModule.editService(self.serviceId, form.tfName.text, form.tfSum.text, form.tfDays.text, form.checkBox.text);
+        else billModule.CreateService(self.serviceId, form.tfName.text, form.tfSum.text, form.tfDays.text, form.checkBox.text);
+        form.close(true);
     }//GEN-LAST:event_btnSaveActionPerformed
 
     function formWindowOpened(evt) {//GEN-FIRST:event_formWindowOpened
-        model.params.service_id = self.serviceId;
-        model.requery();
-        form.tfName.text = model.qServiceList.cursor.service_name;
-        form.tfSum.text = model.qServiceList.cursor.item_cost;
-        form.tfDays.text = model.qServiceList.cursor.service_days;
+        if(self.serviceId){
+            model.params.service_id = self.serviceId;
+            model.requery();
+            form.tfName.text = model.qServiceList.cursor.service_name;
+            form.tfSum.text = model.qServiceList.cursor.item_cost;
+            form.tfDays.text = model.qServiceList.cursor.service_days;
+            form.checkBox.selected = model.qServiceList.cursor.locked;
+        }
     }//GEN-LAST:event_formWindowOpened
 
     function tfSumActionPerformed(evt) {//GEN-FIRST:event_tfSumActionPerformed
         // TODO Добавьте свой код:
     }//GEN-LAST:event_tfSumActionPerformed
+
+    function formWindowClosing(evt) {//GEN-FIRST:event_formWindowClosing
+        self.serviceId = 0;
+        model.requery();
+    }//GEN-LAST:event_formWindowClosing
 }
