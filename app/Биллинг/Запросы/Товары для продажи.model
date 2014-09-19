@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?><datamodel>
   <parameters>
     <parameter description="" name="item_type" nullable="true" parameterMode="1" precision="0" scale="0" selectionForm="null" signed="true" size="0" type="2" typeName="NUMERIC"/>
+    <parameter description="" name="item_id" nullable="true" parameterMode="1" precision="0" scale="0" selectionForm="null" signed="true" size="0" type="2" typeName="NUMERIC"/>
   </parameters>
   <parametersEntity entityHeight="200" entityIconified="false" entityLocationX="8" entityLocationY="6" entityWidth="150"/>
   <entity Title="" entityHeight="200" entityIconified="false" entityId="140861539529352" entityLocationX="197" entityLocationY="6" entityWidth="152" tableAlias="t1" tableName="wh_items" tableSchemaName=""/>
   <entity Title="" entityHeight="200" entityIconified="false" entityId="140861540368073" entityLocationX="390" entityLocationY="8" entityWidth="150" tableAlias="t2" tableName="bill_item_cost" tableSchemaName=""/>
-  <relation leftEntityId="-1" leftEntityParameterName="item_type" rightEntityFieldName="item_type" rightEntityId="140861539529352"/>
   <relation leftEntityFieldName="wh_items_id" leftEntityId="140861539529352" rightEntityFieldName="item_id" rightEntityId="140861540368073"/>
+  <relation leftEntityId="-1" leftEntityParameterName="item_type" rightEntityFieldName="item_type" rightEntityId="140861539529352"/>
+  <relation leftEntityId="-1" leftEntityParameterName="item_id" rightEntityFieldName="wh_items_id" rightEntityId="140861539529352"/>
 </datamodel>

@@ -1,5 +1,14 @@
-<?xml version="1.0" encoding="UTF-8"?><layout defaultCloseOperation="2" name="Form" prefHeight="360px" prefWidth="572px">
-  <widget deletable="false" editable="false" insertable="false" name="modelGrid" parent="Form" prefHeight="300px" prefWidth="204px" type="DbGridDesignInfo">
+<?xml version="1.0" encoding="UTF-8"?><layout defaultCloseOperation="2" name="Form" prefHeight="456px" prefWidth="739px" windowClosed="formWindowClosed" windowOpened="formWindowOpened">
+  <widget actionPerformed="buttonActionPerformed" name="button" parent="Form" prefHeight="23px" prefWidth="204px" text="Сохранить" type="ButtonDesignInfo">
+    <constraints bottom="16px" height="23px" right="7px" type="MarginConstraintsDesignInfo" width="204px"/>
+  </widget>
+  <widget dividerLocation="200" leftComponent="panel" name="splitPane" parent="Form" prefHeight="412px" prefWidth="744px" rightComponent="panel1" type="SplitDesignInfo">
+    <constraints bottom="44px" left="0px" right="-5px" top="0px" type="MarginConstraintsDesignInfo"/>
+  </widget>
+  <widget name="panel" parent="splitPane" prefHeight="410px" prefWidth="199px" type="PanelDesignInfo">
+    <layout type="MarginLayoutDesignInfo"/>
+  </widget>
+  <widget deletable="false" editable="false" insertable="false" name="modelGrid" parent="panel" prefHeight="408px" prefWidth="204px" type="DbGridDesignInfo">
     <rowsColumnsDesignInfo>
       <rowsDatasource entityId="140861160037845" field="false"/>
     </rowsColumnsDesignInfo>
@@ -8,10 +17,10 @@
       <paramSourceField entityId="140861160037845" fieldName="wh_item_types_id"/>
     </treeDesignInfo>
     <column name="colType_description" title="Тип товара">
+      <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
       <headerStyle>
         <nativeFont name="Tahoma" size="11"/>
       </headerStyle>
-      <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
       <datamodelElement entityId="140861160037845" fieldName="type_description"/>
       <columnsDatasource/>
       <columnsDisplayField/>
@@ -22,18 +31,21 @@
         <cellValueField/>
       </cellDesignInfo>
     </column>
-    <constraints height="300px" left="0px" top="0px" type="MarginConstraintsDesignInfo" width="204px"/>
+    <constraints bottom="2px" left="0px" right="-5px" top="0px" type="MarginConstraintsDesignInfo"/>
   </widget>
-  <widget deletable="false" insertable="false" name="modelGrid1" parent="Form" prefHeight="300px" prefWidth="372px" type="DbGridDesignInfo">
+  <widget name="panel1" parent="splitPane" prefHeight="410px" prefWidth="538px" type="PanelDesignInfo">
+    <layout type="MarginLayoutDesignInfo"/>
+  </widget>
+  <widget deletable="false" insertable="false" name="modelGrid1" parent="panel1" prefHeight="408px" prefWidth="528px" type="DbGridDesignInfo">
     <rowsColumnsDesignInfo>
       <rowsDatasource entityId="140861205200288" field="false"/>
     </rowsColumnsDesignInfo>
     <treeDesignInfo/>
     <column name="colItem_name" readonly="true" title="Название">
+      <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
       <headerStyle>
         <nativeFont name="Tahoma" size="11"/>
       </headerStyle>
-      <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
       <datamodelElement entityId="140861205200288" fieldName="item_name"/>
       <columnsDatasource/>
       <columnsDisplayField/>
@@ -45,13 +57,13 @@
       </cellDesignInfo>
     </column>
     <column name="billMeasure" title="Тип товара">
-      <headerStyle>
-        <nativeFont name="Tahoma" size="11"/>
-      </headerStyle>
       <controlInfo classHint="DbComboDesignInfo" name="view" prefHeight="0px" prefWidth="0px">
         <valueField entityId="140956834906939" fieldName="bill_measures_id"/>
         <displayField entityId="140956834906939" fieldName="bill_measure_desc"/>
       </controlInfo>
+      <headerStyle>
+        <nativeFont name="Tahoma" size="11"/>
+      </headerStyle>
       <datamodelElement entityId="140861205200288" fieldName="billMeasure"/>
       <columnsDatasource/>
       <columnsDisplayField/>
@@ -63,10 +75,10 @@
       </cellDesignInfo>
     </column>
     <column name="colNew_cost" title="Цена">
+      <controlInfo classHint="DbSpinDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
       <headerStyle>
         <nativeFont name="Tahoma" size="11"/>
       </headerStyle>
-      <controlInfo classHint="DbSpinDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
       <datamodelElement entityId="140861205200288" fieldName="new_cost"/>
       <columnsDatasource/>
       <columnsDisplayField/>
@@ -77,10 +89,7 @@
         <cellValueField/>
       </cellDesignInfo>
     </column>
-    <constraints height="300px" left="204px" top="0px" type="MarginConstraintsDesignInfo" width="372px"/>
-  </widget>
-  <widget actionPerformed="buttonActionPerformed" name="button" parent="Form" prefHeight="23px" prefWidth="204px" text="Сохранить" type="ButtonDesignInfo">
-    <constraints bottom="25px" height="23px" left="360px" type="MarginConstraintsDesignInfo" width="204px"/>
+    <constraints bottom="2px" left="0px" right="10px" top="0px" type="MarginConstraintsDesignInfo"/>
   </widget>
   <layout type="MarginLayoutDesignInfo"/>
 </layout>

@@ -19,11 +19,15 @@ function StartMasterAdminForm() {
             display     :   "Управление услугами",
             dispForm    :   "ManageServices"
         },
-        users   :   {
+        items           :   {
+            display     :   "Товары для продажи",
+            dispForm    :   "BillItems"
+        },
+        users           :   {
             display     :   "Пользователи",
             dispForm    :   "FranchaziAndUsers"
         },
-        warehouse   :   {
+        warehouse       :   {
             display     :   "Склад",
             dispForm    :   "WarehouseItemList"
         },

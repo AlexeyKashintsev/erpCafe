@@ -9,6 +9,7 @@ function BillMeasures() {
 
     function buttonActionPerformed(evt) {//GEN-FIRST:event_buttonActionPerformed
         model.save();
+        form.close(true);
     }//GEN-LAST:event_buttonActionPerformed
 
     function button1ActionPerformed(evt) {//GEN-FIRST:event_button1ActionPerformed

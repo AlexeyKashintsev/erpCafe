@@ -71,16 +71,20 @@ self.showFormAsInternal = function(aForm) {
     }//GEN-LAST:event_button2ActionPerformed
     
     self.actionList = {
-        common   :   {
+        common          :   {
             display     :   "Общая информация",
             dispForm    :   "TradePointsDashboard",
             selfGeneration  :   true
         },
-        users   :   {
+        users           :   {
             display     :   "Пользователи",
             dispForm    :   "FranchaziUsers"
         },
-        warehouse   :   {
+        buyItems        :   {
+            display     :   "Заказ товаров",
+            dispForm    :   "BuyItemsForm"
+        },
+        warehouse       :   {
             display     :   "Склад",
             dispForm    :   "WarehouseItemList",
             inner   :   {

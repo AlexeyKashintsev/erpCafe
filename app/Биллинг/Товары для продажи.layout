@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?><layout defaultCloseOperation="2" name="Form" prefHeight="341px" prefWidth="728px" windowOpened="formWindowOpened">
+  <widget name="toolBar1" parent="Form" prefHeight="36px" prefWidth="732px" rollover="true" type="ToolbarDesignInfo">
+    <constraints height="36px" left="0px" top="0px" type="MarginConstraintsDesignInfo" width="732px"/>
+  </widget>
+  <widget actionPerformed="btnAdd1ActionPerformed" focusable="false" horizontalTextPosition="0" icon="icons/22x22/actions/list-add.png" name="btnAdd1" parent="toolBar1" prefHeight="29px" prefWidth="29px" toolTipText="Добавить" type="ButtonDesignInfo" verticalTextPosition="3"/>
+  <widget actionPerformed="btnDel1ActionPerformed" focusable="false" horizontalTextPosition="0" icon="icons/22x22/actions/list-remove.png" name="btnDel1" parent="toolBar1" prefHeight="29px" prefWidth="29px" toolTipText="Удалить" type="ButtonDesignInfo" verticalTextPosition="3"/>
+  <widget actionPerformed="btnReqActionPerformed" focusable="false" horizontalTextPosition="0" icon="icons/22x22/actions/new-view-refresh.png" name="btnReq" parent="toolBar1" prefHeight="29px" prefWidth="29px" toolTipText="Обновить" type="ButtonDesignInfo" verticalTextPosition="3"/>
+  <widget actionPerformed="btnReq1ActionPerformed" focusable="false" horizontalTextPosition="0" icon="icons/22x22/actions/gtk-edit.png" name="btnReq1" parent="toolBar1" prefHeight="29px" prefWidth="29px" toolTipText="Редактировать" type="ButtonDesignInfo" verticalTextPosition="3"/>
+  <widget deletable="false" insertable="false" name="modelGrid" parent="Form" prefHeight="252px" prefWidth="732px" type="DbGridDesignInfo">
+    <rowsColumnsDesignInfo>
+      <rowsDatasource entityId="140869374329850" field="false"/>
+    </rowsColumnsDesignInfo>
+    <treeDesignInfo/>
+    <column name="colItem_name" readonly="true" title="Товар">
+      <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
+      <headerStyle>
+        <nativeFont name="Tahoma" size="11"/>
+      </headerStyle>
+      <datamodelElement entityId="140869374329850" fieldName="item_name"/>
+      <columnsDatasource/>
+      <columnsDisplayField/>
+      <cellsDatasource/>
+      <cellDesignInfo>
+        <rowsKeyField/>
+        <columnsKeyField/>
+        <cellValueField/>
+      </cellDesignInfo>
+    </column>
+    <column name="billMeasure" readonly="true" title="Ед. изм">
+      <controlInfo classHint="DbComboDesignInfo" name="view" prefHeight="0px" prefWidth="0px">
+        <valueField entityId="140956941526179" fieldName="bill_measures_id"/>
+        <displayField entityId="140956941526179" fieldName="bill_measure_desc"/>
+      </controlInfo>
+      <headerStyle>
+        <nativeFont name="Tahoma" size="11"/>
+      </headerStyle>
+      <datamodelElement entityId="140869374329850" fieldName="bill_measure"/>
+      <columnsDatasource/>
+      <columnsDisplayField/>
+      <cellsDatasource/>
+      <cellDesignInfo>
+        <rowsKeyField/>
+        <columnsKeyField/>
+        <cellValueField/>
+      </cellDesignInfo>
+    </column>
+    <column name="colItem_cost" readonly="true" title="Цена">
+      <controlInfo classHint="DbSpinDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
+      <headerStyle>
+        <nativeFont name="Tahoma" size="11"/>
+      </headerStyle>
+      <datamodelElement entityId="140869374329850" fieldName="item_cost"/>
+      <columnsDatasource/>
+      <columnsDisplayField/>
+      <cellsDatasource/>
+      <cellDesignInfo>
+        <rowsKeyField/>
+        <columnsKeyField/>
+        <cellValueField/>
+      </cellDesignInfo>
+    </column>
+    <constraints height="252px" left="0px" top="36px" type="MarginConstraintsDesignInfo" width="732px"/>
+  </widget>
+  <widget actionPerformed="buttonActionPerformed" name="button" parent="Form" prefHeight="23px" prefWidth="156px" text="Заказать товар" type="ButtonDesignInfo">
+    <constraints bottom="18px" height="23px" right="23px" type="MarginConstraintsDesignInfo" width="156px"/>
+  </widget>
+  <layout type="MarginLayoutDesignInfo"/>
+</layout>
