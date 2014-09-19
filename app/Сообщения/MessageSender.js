@@ -7,6 +7,7 @@
  */
 function MessageSender() {
     var self = this;
+    var model = this.model;
     var email = null;
     var phone = null;
     var smsSender = new SmsSender();
@@ -19,7 +20,27 @@ function MessageSender() {
     self.BONUS_ADD = 2;
     self.BONUS_REMOVE = 3;
     
-    
+    function sendMessage(anEventType, aParams){
+        model.qGetSendParams.params.eventType = anEventType;
+        model.qGetSendParams.requery();
+        var textMessage = model.qGetSendParams.cursor.message;
+        //TODO Сделать замену с помощью регулярки %perem% на значения из массива параметров aParams
+        
+        if (model.qGetSendParams.cursor.sms){
+            if (aParams.phone){
+                smsSender.sendSms(aParams.phone, textMessage, aParams.sign);
+            }
+        }
+        if (model.qGetSendParams.cursor.email){
+            if (aParams.email){
+                //TODO настроить отправку писем.
+                emailSender.sendEmail(from, to, subject, text);
+            }
+        }
+        if (model.qGetSendParams.cursor.display){
+            //TODO Сделать показ сообщения на экран
+        }
+    }
     
     
     function sendSMS(aMsg, aPhone){
