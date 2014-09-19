@@ -63,7 +63,7 @@ function SmsSender(anEmail, aPassword) {
                 text       : aMsg,
                 sender_name: aSign ? aSign : defSign
             };
-            if (typeof aNumber == 'number')
+            if (typeof aNumber === 'string')
                 params.phone = aNumber;
             else
                 params.phones = aNumber;
