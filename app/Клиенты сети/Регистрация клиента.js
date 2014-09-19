@@ -28,20 +28,33 @@ function ClientRegistrationByBarist() {
     }
 
     function phoneFieldKeyReleased(evt) {//GEN-FIRST:event_phoneFieldKeyReleased
+        ValidatePhone();
+    }//GEN-LAST:event_phoneFieldKeyReleased
+
+    function emailFieldKeyReleased(evt) {//GEN-FIRST:event_emailFieldKeyReleased
+        ValidateEmail();
+    }//GEN-LAST:event_emailFieldKeyReleased
+
+    function formWindowOpened(evt) {//GEN-FIRST:event_formWindowOpened
+        ValidatePhone();
+        ValidateEmail();
+    }//GEN-LAST:event_formWindowOpened
+    
+    function ValidatePhone(){
         if (session.clientModule.checkIfPhoneExist(form.phoneField.text)){
             validatePhone = false;
         } else {
             validatePhone = true;
         }
         validateForm();
-    }//GEN-LAST:event_phoneFieldKeyReleased
-
-    function emailFieldKeyReleased(evt) {//GEN-FIRST:event_emailFieldKeyReleased
+    }
+    
+    function ValidateEmail(){
         if (session.clientModule.checkIfEmailExist(form.emailField.text)){
             validateEmail = false;
         } else {
             validateEmail = true;
         }
         validateForm();
-    }//GEN-LAST:event_emailFieldKeyReleased
+    }    
 }
