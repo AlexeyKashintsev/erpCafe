@@ -20,7 +20,7 @@ function MessageSender() {
     self.BONUS_ADD = 2;
     self.BONUS_REMOVE = 3;
     
-    function sendMessage(anEventType, aParams){
+    self.sendMessage = function(anEventType, aParams){
         model.qGetSendParams.params.eventType = anEventType;
         model.qGetSendParams.requery();
         var textMessage = model.qGetSendParams.cursor.message;
@@ -40,7 +40,7 @@ function MessageSender() {
         if (model.qGetSendParams.cursor.display){
             //TODO Сделать показ сообщения на экран
         }
-    }
+    };
     
     
     function sendSMS(aMsg, aPhone){
