@@ -76,6 +76,7 @@ function OrderList(aParent) {
             alerter(alert, "alert-success", "<h4>Заказ успешно проведен</h4>Сумма заказа: <strong>"
                 + anOrderDetails.orderSum + " рублей </strong>", true, 15000);
             document.getElementById("clientPane").innerHTML = "";
+            client = null;
         }, function() {
             if (attempt < 5)
                 processOrder(anOrderDetails, alert, attempt);
