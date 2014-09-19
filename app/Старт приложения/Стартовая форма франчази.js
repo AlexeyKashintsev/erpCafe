@@ -99,7 +99,7 @@ self.showFormAsInternal = function(aForm) {
         },
         billAndServices :   {
             display     :   "Счета и услуги",
-            dispForm    :   "ListBillAndServices"
+            dispForm    :   "BillsFranchazi"
         }
     };
     

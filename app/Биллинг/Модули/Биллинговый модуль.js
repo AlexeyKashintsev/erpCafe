@@ -347,8 +347,10 @@ function BillModule() {
      */
     self.CreateService = function(aName, aSum, aDays, aLock) {
         var aMonth = false;
-        if (aDays == false || aDays == 0 || aDays == null || aDays === undefined)
+        if (aDays == false || aDays == 0 || aDays == null || aDays === undefined || !aDays){
             aMonth = true;
+            aDays = 0;
+        }
         var obj = {
             service_name: aName,
             service_days: aDays,

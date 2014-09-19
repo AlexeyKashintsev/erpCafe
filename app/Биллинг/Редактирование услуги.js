@@ -22,8 +22,8 @@ function EditServiceForm() {
 
     function btnSaveActionPerformed(evt) {//GEN-FIRST:event_btnSaveActionPerformed
         if(self.serviceId)
-            billModule.editService(self.serviceId, form.tfName.text, form.tfSum.text, form.tfDays.text, form.checkBox.text);
-        else billModule.CreateService(self.serviceId, form.tfName.text, form.tfSum.text, form.tfDays.text, form.checkBox.text);
+            billModule.editService(self.serviceId, form.tfName.text, form.tfSum.text, form.tfDays.text, form.checkBox.selected);
+        else billModule.CreateService(form.tfName.text, form.tfSum.text, form.tfDays.text, form.checkBox.selected);
         form.close(true);
     }//GEN-LAST:event_btnSaveActionPerformed
 
@@ -36,6 +36,11 @@ function EditServiceForm() {
                 form.tfDays.text = model.qServiceList.cursor.service_days;
                 form.checkBox.selected = model.qServiceList.cursor.locked;                
             });
+        } else {
+            form.tfName.text = "";
+            form.tfSum.text = "";
+            form.tfDays.text = "";
+            form.checkBox.selected = false;    
         }
     }//GEN-LAST:event_formWindowOpened
 
@@ -44,7 +49,6 @@ function EditServiceForm() {
     }//GEN-LAST:event_tfSumActionPerformed
 
     function formWindowClosing(evt) {//GEN-FIRST:event_formWindowClosing
-        self.serviceId = 0;
-        model.requery();
+
     }//GEN-LAST:event_formWindowClosing
 }

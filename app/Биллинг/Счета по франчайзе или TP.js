@@ -9,6 +9,7 @@ function BillsFranchazi() {
 var self = this, model = this.model, form = this;
 var createBillAccount = new CreateBillAccount();
 var bm = new ServerModule("BillModule");
+var us = new ServerModule("UserSession");
 var addServiceForm = new AddServiceForm();
 var addBillOperation = new AddBillOperation();
 var historyOperations = new HistoryOperations();
@@ -34,7 +35,8 @@ function btnSaveActionPerformed(evt) {//GEN-FIRST:event_btnSaveActionPerformed
 }//GEN-LAST:event_btnSaveActionPerformed
 
 function formWindowOpened(evt) {//GEN-FIRST:event_formWindowOpened
-    
+    if(!model.params.franchazi_id)
+        model.params.franchazi_id = us.getFranchazi();
 }//GEN-LAST:event_formWindowOpened
 
 function formWindowClosing(evt) {//GEN-FIRST:event_formWindowClosing
