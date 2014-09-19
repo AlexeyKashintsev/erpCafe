@@ -1,4 +1,4 @@
-/**
+ /**
  * Was resident!!!
  * @name MessageSender
  * @author Алексей
@@ -11,7 +11,17 @@ function MessageSender() {
     var phone = null;
     var smsSender = new SmsSender();
     var emailSender = new Mailer();
-            
+    
+    /*
+     * Типы отправляемых сообщений.
+     */
+    self.REGISTRATION_SUCCESS = 1;
+    self.BONUS_ADD = 2;
+    self.BONUS_REMOVE = 3;
+    
+    
+    
+    
     function sendSMS(aMsg, aPhone){
         smsSender.sendSms(aPhone, aMsg, 'Corvus');
     };

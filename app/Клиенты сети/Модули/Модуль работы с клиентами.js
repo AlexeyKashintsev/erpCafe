@@ -77,7 +77,7 @@ function ClientServerModule() {
         //Уважаемый  %ClientName%! Для входа в личный кабинет кофейни пройдите по ссылке: http://www.ru/ Ваш логин: %ClientLogin%
         //И передавать объект вида {ClientName : "Вася", ClientLogin : "12345", ...}
         //Потом аккуратненько поменять ;)
-        + aPhone + ", Ваш пароль: " + aPass;
+        //+ aPhone + ", Ваш пароль: " + aPass;
         var Msg = "Уважаемый " + aName + "! Для входа в личный кабинет кофейни пройдите по ссылке: http://www.ru/ Ваш логин: "
         + aPhone + ", Ваш пароль: " + aPass;
         smsSender.sendSms(aPhone, Msg, null);
