@@ -12,41 +12,42 @@ function ChartMaker() {
             interval: 1,
             g_value : "YY/MM/DD/HH24",
             d_format: "HH24:00",
-            d_name  : "Д",
+            d_name  : "День",
             d_title : "День",
             c_title : "сутки"
         },
         week: {
             days: 7,
             interval: 1, //Измеряется в часах
-            g_value: "YY/MM/DD/HH24",
+            g_value : "YY/MM/DD/HH24",
             d_format: "HH24:00",
-            d_name  : "Н",
+            d_name  : "Неделя",
             d_title : "Неделя",
-            c_title : "неделю"
+            c_title : "неделю",
+            active  : true
         },
         month: {
             days: 30,
             interval: 24,
-            g_value: "YY/MM/DD",
+            g_value : "YY/MM/DD",
             d_format: "HH24:00",
-            d_name  : "М",
+            d_name  : "Месяц",
             d_title : "Месяц"
         },
         quarter: {
             days: 90,
             interval: 24 * 7,
-            g_value: "YY/MM/DD",
+            g_value : "YY/MM/DD",
             d_format: "HH24:00",
-            d_name  : "К",
+            d_name  : "Квартал",
             d_title : "Квартал"
         },
         year: {
             days: 360,
             interval: 24 * 30,
-            g_value: "YY/MM/DD",
+            g_value : "YY/MM/DD",
             d_format: "HH24:00",
-            d_name  : "Г",
+            d_name  : "Год",
             d_title : "Год"
         }
     };
@@ -71,6 +72,31 @@ function ChartMaker() {
         return periods;
     };
     
+    function generateFakeData(aPeriod) {
+        var timeAxis = [];
+        var cDate = new Date(aPeriod.startDate);
+        var dataArray = [];
+        var sH = 9;
+        var eH = 21;
+        var minValue = 7000/12;
+        var rndInterval = 5000/12;
+        for (var j = 0; j < aPeriod.days * 24 / aPeriod.interval; j++) {
+            timeAxis.push(new Date(cDate));
+            var endDate = new Date(cDate);
+            endDate.setHours(endDate.getHours() + aPeriod.interval);
+            var value = 0;
+            if (aPeriod.interval === 1) {
+                if (cDate.getHours() > sH && endDate.getHours() <= eH && cDate.getHours() < endDate.getHours())
+                    value = Math.floor(minValue + rndInterval * Math.random());
+            } else 
+                value = Math.floor(minValue + rndInterval * Math.random()) * 12 * (aPeriod.interval/24);
+            dataArray.push(value ? value : 0);
+            cDate.setHours(cDate.getHours() + aPeriod.interval);
+        }
+        //Logger.info(dataArray);
+        return dataArray;
+    }
+    
     function generateContiniousDataArray(aDataSource, aPeriod) {
         var timeAxis = [];
         var cDate = new Date(aPeriod.startDate);
@@ -91,7 +117,7 @@ function ChartMaker() {
             //}
             cDate.setHours(cDate.getHours() + aPeriod.interval);
         }
-        Logger.info(dataArray);
+        //Logger.info(dataArray);
         return dataArray;
     }
     
@@ -110,8 +136,17 @@ function ChartMaker() {
                                                     , aPeriod.startDate.getDate()
                                                     , aPeriod.startDate.getHours()+1),
                         seria.pointInterval = 3600 * 1000 * aPeriod.interval;
-                        break
+                        break;
                 }
+            case 'fake' : {
+                        seria.data = generateFakeData(aPeriod);
+                        seria.pointStart = Date.UTC(aPeriod.startDate.getFullYear()
+                                                    , aPeriod.startDate.getMonth()
+                                                    , aPeriod.startDate.getDate()
+                                                    , aPeriod.startDate.getHours()+1),
+                        seria.pointInterval = 3600 * 1000 * aPeriod.interval;
+                        break;   
+            }
             }
             series.push(seria);
         }

@@ -1,3 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?><outputFields>
   <field bindedColumn="start_value" sqlType="2"/>
+  <field bindedColumn="item_measure" sqlType="12"/>
 </outputFields>

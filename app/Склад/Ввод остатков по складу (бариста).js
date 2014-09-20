@@ -72,9 +72,6 @@ function formWindowClosing(evt) {//GEN-FIRST:event_formWindowClosing
 
     function btnWORevisionActionPerformed(evt) {//GEN-FIRST:event_btnWORevisionActionPerformed
         startWORevision = true;
-        form.close();
-        /*model.itemsByTP.beforeFirst();
-        while (model.itemsByTP.next())
-            model.itemsByTP.cursor.start_value = 100;*/
+        form.close(true);
     }//GEN-LAST:event_btnWORevisionActionPerformed
 }

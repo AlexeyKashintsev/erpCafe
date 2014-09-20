@@ -18,11 +18,10 @@ self.setTradePoint = function(aTradePointId) {
     } else {
         model.params.session_id = session.activeSession;
     }
-    //session.whSession.setTradePoint(model.params.trade_point_id);
-    //model.params.session_id = session.whSession.getCurrentSession();
 };
 
 function formWindowOpened(evt) {//GEN-FIRST:event_formWindowOpened
+    self.setTradePoint(session.tradePoint);
     form.btnProceed.enabled = true;
     if(!model.params.session_id) {
         alert(MSG_SESSION_CLOSED_ERROR);

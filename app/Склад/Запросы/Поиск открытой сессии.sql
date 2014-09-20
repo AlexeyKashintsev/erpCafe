@@ -3,6 +3,7 @@
  * @author mike
  * @name queryOpenedSession
  * @manual
+ * @public
  */ 
 Select * 
 From org_session t1

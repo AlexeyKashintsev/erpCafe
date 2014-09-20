@@ -6,75 +6,30 @@
 function TradePointCommonInfo(aTradePointDetails, aContainer) {
     var self = this, model = this.model;
     var container = aContainer;
-    var graphBar = null;
-    var chartDiv = null;
+    var tradePointDetails = aTradePointDetails;
+    var buttonsSelector = null;
     
-    
-    var chartOptions = {};
-    var chartMaker = new ChartMaker();
-    var chart = null;
-    
-    var buttonsCS = {};
-    var buttonsPS = {};
-    
-    var charts = {
-        income      :   {
-            name    :   'Доход',
-            data_s  :   model.qTradePointIncomeByPeriod
+    var panels = {
+        charts  :   {
+            d_name  :   '<span class="glyphicon glyphicon-stats"></span>',
+            d_title :   'Графики',
+            active  :   true
+        },
+        wharH   :   {
+            d_name  :   '<span class="glyphicon glyphicon-book"></span>',
+            d_title :   'Склад'
         }
     };
     
-    var selectedPeriod  = null;
-    var selectedChart   = null;
-    
-    var tradePointDetails = aTradePointDetails;
-
-    self.setPeriod = function(aPeriod) {
-        cmn.setActiveButton(buttonsPS, buttonsPS[aPeriod]);
-        selectedPeriod = chartMaker.getPeriod(aPeriod);
-        createChart();
-    };
-    
-    self.setChart = function(aChartName) {
-        cmn.setActiveButton(buttonsCS, buttonsCS[aChartName]);
-        selectedChart = charts[aChartName];
-        createChart();
-    };
-
-    function createChart() {
-        if (!!selectedPeriod && !!selectedChart) {            
-            selectedChart.data_s.params.g_value = selectedPeriod.g_value;
-            selectedChart.data_s.params.begDate = selectedPeriod.startDate;
-            selectedChart.data_s.params.trade_point_id = tradePointDetails.org_trade_point_id;
-            selectedChart.data_s.requery(function() {
-                if (!!chartDiv) {
-                        graphBar.style.height = graphBar.offsetHeight + 'px';
-                        $(chartDiv).remove();
-                    }
-                chartDiv = cmn.createElement("div", "chart-area", graphBar, "chart-area-" + tradePointDetails.org_trade_point_id);
-                chartOptions = {
-                    container       :   chartDiv,
-                    chartTitle      :   selectedChart.name + " за " 
-                            + (selectedPeriod.c_title ? selectedPeriod.c_title : selectedPeriod.d_title).toLowerCase()
-                            + " с "
-                            + selectedPeriod.startDate.getFullYear() + "/"
-                            + (selectedPeriod.startDate.getMonth() + 1) + "/"
-                            + selectedPeriod.startDate.getDate(),
-                    dataName        :   selectedChart.name,
-                    height          :   200
-                };
-                var data = [{
-                    dataSource  :   selectedChart.data_s,
-                    dataType    :   'continious',
-                    chartType   :   'column',
-                    chartName   :   selectedChart.name,
-                    options     :   {}
-                }];
-                
-                chart = chartMaker.Chart(data, chartOptions, selectedPeriod);
-            });
+    function showPanel(aPanelName) {
+        $(panels[aPanelName].display.container).show();
+        for (var j in panels) {
+            if (j !== aPanelName)
+                $(panels[j].display.container).hide();
         }
     }
+    
+
 
     function showOnContainer() {
         var heading = cmn.createElement("div", "panel-heading", container);
@@ -99,33 +54,17 @@ function TradePointCommonInfo(aTradePointDetails, aContainer) {
             var btnEmptyCashBox = cmn.createElement("button", "btn btn-success btn-xs btn-block", currentSession);
             btnEmptyCashBox.innerHTML = 'Снять кассу';
             
-            graphBar = cmn.createElement("div", "col-md-9", panelContent);
-            var tbBtns = cmn.createElement("div", "btn-toolbar", graphBar);            
-            tbBtns.role = "toolbar";
-            var grpGraphBtns = cmn.createElement("div", "btn-group btn-group-xs", tbBtns);            
-            for (var j in charts) {
-                buttonsCS[j] = cmn.createElement("button", "btn btn-info btn-xs", grpGraphBtns);
-                buttonsCS[j].innerHTML = charts[j].name;
-                buttonsCS[j].chartName = j;
-                buttonsCS[j].onclick = function() {
-                    self.setChart(this.chartName);
-                };
-            }
+            var panelData = cmn.createElement("div", "col-md-8", panelContent);
+            /** !SHOW CHARTS! **/
+            panels.charts.display = new ChartsByTP(tradePointDetails, panelData);
             
-            var grpPeriodBtns = cmn.createElement("div", "btn-group btn-group-xs", tbBtns);
-            var periods = chartMaker.getPeriods();
-            for (var j in periods) {
-                buttonsPS[j] = cmn.createElement("button", "btn btn-info btn-xs", grpPeriodBtns);
-                buttonsPS[j].innerHTML = periods[j].d_name;
-                buttonsPS[j].title = periods[j].d_title;
-                buttonsPS[j].period = j;
-                buttonsPS[j].onclick = function() {
-                    self.setPeriod(this.period);
-                };
-            }
-            //addChart(graphDiv);
-            self.setChart("income");
-            self.setPeriod("week");
+            /** !SHOW WAREHOUSE! **/
+            panels.wharH.display = new WHSessionBalance(tradePointDetails.org_trade_point_id, panelData);
+            
+            /** !SHOW BUtTONS! **/
+            var tbBtns = cmn.createElement("div", "col-xs-1", panelContent);            
+            //tbBtns.role = "toolbar";
+            buttonsSelector = new cmn.ButtonGroup(panels, tbBtns, "btn btn-info", showPanel, "btn-group-vertical btn-group-md");
         } catch (e) {
             panelContent.innerHTML =
                     '<span class="label label-warning">\n\

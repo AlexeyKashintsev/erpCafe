@@ -5,7 +5,7 @@ var sessionTimeout = 15 * 60 * 1000;
 
 var Logout = function() {
     logout();
-    location.reload();
+    setTimeout(location.reload, 1000);
 }
 
 var keepSession = function(aCallBack) {
@@ -38,12 +38,43 @@ cmn.showModal = function(aForm, aCallback) {
     aForm.onClose = aCallback;
     $('#modalForm').modal({});
 }
-
-cmn.setActiveButton = function(aBtnArray, aBtn) {    
-    for (var j in aBtnArray) {
-        $(aBtnArray[j]).removeClass('active');
+/*
+ { d_name  : "День",
+   d_title : "День",
+   active  : true/false}
+*/
+cmn.ButtonGroup = function(aButtons, aContainer, aBtnClass, aFunction, aClass) {
+    var buttons = [];
+    var divBtnGroup = cmn.createElement("div", aClass ? aClass : "btn-group btn-group-xs", aContainer);
+    divBtnGroup.role = "toolbar";
+    
+    function setActiveButton(aBtn) {
+        for (var j in buttons) {
+            $(buttons[j]).removeClass('active');
+        }
+        $(aBtn).addClass('active');
     }
-    $(aBtn).addClass('active');
+    
+    function btnClick() {
+        setActiveButton(this);
+        aFunction(this.fParam);
+    }
+    
+    for (var j in aButtons) {
+        buttons[j] = cmn.createElement("button", aBtnClass, divBtnGroup);
+        buttons[j].innerHTML = aButtons[j].d_name;
+        buttons[j].title = aButtons[j].d_title;
+        buttons[j].fParam = j;
+        buttons[j].onclick = btnClick;
+        
+        if (aButtons[j].active) {
+            var active = j; 
+        }
+    }
+    if (active) {
+        setActiveButton(buttons[active]);
+        aFunction(buttons[active].fParam);
+    }
 }
 
 cmn.pFrameRunner = new function() {

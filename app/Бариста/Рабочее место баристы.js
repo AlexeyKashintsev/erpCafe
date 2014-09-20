@@ -40,20 +40,14 @@ function BaristaDesktop() {
             tpSelector.userName = self.userName;
             tpSelector.showModal(function(aTradePoint){
                 if (!aTradePoint) Logout();
-                var whInitializer = new WhRevisionByBarista();
                 session.tradePoint = aTradePoint;
+                var whInitializer = new WhRevisionByBarista();
                 whInitializer.setTradePoint(aTradePoint);
                 whInitializer.showModal(function() {
-                    if (self.browser) 
-                        session.getActiveTPSession(function(aSession){
-                            session.tradeSession.initializeSession(aSession, 0); // Ввести остаток по кассе, иницировать сессию
-                            setSession(aSession);
-                        });
-                    else {
-                        var session = session.getActiveTPSession();
-                        session.tradeSession.initializeSession(session, 0);// Тоже самое
-                        setSession(session);
-                    }
+                    session.getActiveTPSession(function(aSession){
+                        session.tradeSession.initializeSession(aSession, prompt("Введите остаток по кассе", "0")); // Ввести остаток по кассе, иницировать сессию
+                        setSession(aSession);
+                    });
                 });
             });
         }
@@ -123,9 +117,8 @@ function BaristaDesktop() {
 
     function getSessionsOnRequeried(evt) {//GEN-FIRST:event_getSessionsOnRequeried
         if (!model.getSessions.empty){
-            model.tradeItemsByTradePointWithCost.params.trade_point_id =
-                    model.getSessions.trade_point;
-            //self.orderList.showOnPanel(self.browser ? "actionPanel" : form.pnlLeft);
+            session.tradePoint = model.getSessions.trade_point
+            model.tradeItemsByTradePointWithCost.params.trade_point_id = session.tradePoint;
             model.tradeItemsByTradePointWithCost.execute();
         }
     }//GEN-LAST:event_getSessionsOnRequeried
@@ -138,7 +131,7 @@ function BaristaDesktop() {
     function btnWarehouseAddActionPerformed(evt) {//GEN-FIRST:event_btnWarehouseAddActionPerformed
         if (!whAdd) {
             whAdd = new WHSetAddMovement();
-            whAdd.setTradePoint(session.tradePoint);
+            //whAdd.setTradePoint(session.tradePoint);
         }
         whAdd.show();
     }//GEN-LAST:event_btnWarehouseAddActionPerformed

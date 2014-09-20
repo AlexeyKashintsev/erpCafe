@@ -3,6 +3,7 @@
  * @author ak
  * @name qLastSessionOnTradePoint
  * @manual
+ * @public
  */ 
 Select t1.org_session_id 
 From org_session t1

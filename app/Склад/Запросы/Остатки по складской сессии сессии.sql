@@ -2,6 +2,7 @@
  *
  * @author Alexey
  * @name qWHSessionBalance
+ * @public
  */ 
 Select t1.item_id, t1.start_value, sum(t."value" * t2.multiplier) as used_value
 , sum(t."value" * t2.multiplier) + t1.start_value as final_value

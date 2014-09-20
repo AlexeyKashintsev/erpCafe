@@ -179,3 +179,11 @@ h1.itemCost {
 .trade_point > .panel > .label {
   width: 100%;
 }
+
+.whTitleContainer > div {
+  background-color: rgb(102, 74, 55);
+  display: inline-block;
+  color: white;
+  text-align: center;
+  height: 100%;
+}

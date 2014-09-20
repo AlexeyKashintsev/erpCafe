@@ -11,9 +11,9 @@ function OrderList(aParent) {
     var choiceMethodOfPayment = new ChoiceMethodOfPayment();
     var getPhone = new GetUserPhoneForm();
     var client = false;
-    
+
     function selectClient() {
-        getPhone.showModal(function (aPhone){
+        getPhone.showModal(function(aPhone) {
             client = session.clientModule.getClientDataByPhone(aPhone);
             var clientPhoneDiv = cmn.createElement("div", '', "clientPane");
             clientPhoneDiv.innerHTML = "Клиент: " + client.phone;
@@ -21,7 +21,7 @@ function OrderList(aParent) {
             clientBonusDiv.innerHTML = "Бонусов: " + client.bonusCount;
         });
     }
-    
+
     function alerter(anAlert, aType, aText, aClosable, aCloseTimeOut) {
         if (!anAlert) {
             var divEl = cmn.createElement("div", "alert " + aType, "actionPanel", null, lastDiv ? lastDiv : false);
@@ -32,27 +32,28 @@ function OrderList(aParent) {
             if (aType)
                 divEl.className = "alert " + aType;
         }
-        
+
         divEl.innerHTML = aText;
-        
-        function closeIt(){
+
+        function closeIt() {
             divEl.parentNode.removeChild(divEl);
-            if (lastDiv===divEl) lastDiv = null;
+            if (lastDiv === divEl)
+                lastDiv = null;
         }
-        
+
         if (aClosable)
             divEl.onclick = closeIt;
-        
-        if (aCloseTimeOut) 
+
+        if (aCloseTimeOut)
             setTimeout(closeIt, aCloseTimeOut);
-        
+
         return divEl;
     }
-    
+
     function UnprocessedOrders() {
         var orders = [];
         var divEl = null;
-        
+
         function processOrders() {
             for (var j in orders) {
                 processOrder(orders[j]);
@@ -61,20 +62,21 @@ function OrderList(aParent) {
             alerter(divEl, false, "", false, 1);
             divEl = null;
         }
-        
+
         this.addOrder = function(anOrderDetails) {
             orders.push(anOrderDetails);
             divEl = alerter(divEl, "alert-warning", "<h4>Нажмите, чтобы отправить снова</h4>Не обработано заказов: " + orders.length, false, false);
             divEl.onclick = processOrders;
         };
-    };
-    
+    }
+    ;
+
     var unprocessedOrders = new UnprocessedOrders();
-    
-    function tradeSessionProcessOrder(anOrderDetails, alert){
+
+    function tradeSessionProcessOrder(anOrderDetails, alert, attempt) {
         session.tradeSession.processOrder(anOrderDetails, function() {
             alerter(alert, "alert-success", "<h4>Заказ успешно проведен</h4>Сумма заказа: <strong>"
-                + anOrderDetails.orderSum + " рублей </strong>", true, 15000);
+                    + anOrderDetails.orderSum + " рублей </strong>", true, 15000);
             document.getElementById("clientPane").innerHTML = "";
         }, function() {
             if (attempt < 5)
@@ -85,7 +87,7 @@ function OrderList(aParent) {
             }
         });
     }
-    
+
     function processOrder(anOrderDetails, anAlert, anAttempt) {
         var attempt = anAttempt ? anAttempt : 0;
         attempt++;
@@ -93,13 +95,13 @@ function OrderList(aParent) {
         var alert = alerter(anAlert, "alert-info", "<h4>Обработка заказа</h4>Попытка № " + attempt, false);
         anOrderDetails.methodOfPayment = "money";
         //Если сумма заказа покрывается бонусами на счету, то предложить оплату бонусами
-        if (anOrderDetails.orderSum <= client.bonusCount){
-            choiceMethodOfPayment.showModal(function (aResult){
+        if (anOrderDetails.orderSum <= client.bonusCount) {
+            choiceMethodOfPayment.showModal(function(aResult) {
                 anOrderDetails.methodOfPayment = aResult;
-                tradeSessionProcessOrder(anOrderDetails, alert);
+                tradeSessionProcessOrder(anOrderDetails, alert, attempt);
             });
         } else {
-            tradeSessionProcessOrder(anOrderDetails, alert);
+            tradeSessionProcessOrder(anOrderDetails, alert, attempt);
         }
 //        self.tradeSession.processOrder(anOrderDetails, function() {
 //            alerter(alert, "alert-success", "<h4>Заказ успешно проведен</h4>Сумма заказа: <strong>"
@@ -114,7 +116,7 @@ function OrderList(aParent) {
 //            }
 //        });
     }
-    
+
     function orderItem(anItemData) {
         var obj = {};
         if (self.browser) {
@@ -122,39 +124,39 @@ function OrderList(aParent) {
             obj.divEl = document.createElement("div");
             obj.divEl.className = "orderItem";
             obj.docDiv.appendChild(obj.divEl);
-            
+
             obj.label = document.createElement("h4");
             obj.divEl.appendChild(obj.label);
             obj.label.className = "itemName";
-                    
+
             obj.count = document.createElement("h4");
             obj.divEl.appendChild(obj.count);
             obj.count.className = "itemCount";
-            
-        /*    obj.sum = document.createElement("h4");
-            obj.divEl.appendChild(obj.sum);
-            obj.sum.className = "itemSum";*/
-            
+
+            /*    obj.sum = document.createElement("h4");
+             obj.divEl.appendChild(obj.sum);
+             obj.sum.className = "itemSum";*/
+
             /*obj.btnAdd = document.createElement("button");
-            obj.btnAdd.innerHTML = '<span class="glyphicon glyphicon-plus"></span>';
-            obj.btnAdd.className = "addBtn";
-            obj.divEl.appendChild(obj.btnAdd);*/
-            
+             obj.btnAdd.innerHTML = '<span class="glyphicon glyphicon-plus"></span>';
+             obj.btnAdd.className = "addBtn";
+             obj.divEl.appendChild(obj.btnAdd);*/
+
             obj.btnRemove = document.createElement("button");
             obj.btnRemove.innerHTML = '<span class="glyphicon glyphicon-minus"></span>';
             obj.btnRemove.className = "removeBtn";
-            
+
             obj.btnDelete = document.createElement("button");
             obj.btnDelete.innerHTML = '<span class="glyphicon glyphicon-remove"></span>';
             obj.btnDelete.className = "deleteBtn";
-            
+
             obj.divEl.appendChild(obj.btnRemove);
             obj.divEl.appendChild(obj.btnDelete);
-            
+
             obj.updateText = obj.show = function() {
                 obj.label.innerHTML = obj.itemName;
                 obj.count.innerHTML = obj.orderQuantity + ' шт. ' + obj.orderSum + " р.";
-              //  obj.sum.innerHTML = obj.orderSum + " р.";
+                //  obj.sum.innerHTML = obj.orderSum + " р.";
                 obj.parent.calculateOrder();
             };
         } else
@@ -166,12 +168,12 @@ function OrderList(aParent) {
         obj.orderSum = anItemData.item_cost;
         obj.parent = self;
         obj.stop = false;
-            
+
         obj.increase = function() {
             obj.orderSum = ++obj.orderQuantity * obj.itemCost;
             obj.updateText();
         };
-    
+
         obj.decrease = function() {
             if (obj.orderQuantity > 1)
                 obj.orderSum = --obj.orderQuantity * obj.itemCost;
@@ -187,26 +189,29 @@ function OrderList(aParent) {
             obj.parent.calculateOrder();
             if (self.browser)
                 obj.docDiv.removeChild(obj.divEl);
-            else this.close();
+            else
+                this.close();
         };
-        
+
         if (self.browser) {
-           // obj.btnAdd.onclick = obj.increase;
-            obj.divEl.onclick = function(){
-                if (!obj.stop) obj.increase();
-                else obj.stop = false;
+            // obj.btnAdd.onclick = obj.increase;
+            obj.divEl.onclick = function() {
+                if (!obj.stop)
+                    obj.increase();
+                else
+                    obj.stop = false;
             };
-            obj.btnRemove.onclick = function(){
+            obj.btnRemove.onclick = function() {
                 obj.decrease();
                 obj.stop = true;
             };
             obj.btnDelete.onclick = obj.delete;
         }
-        
+
         obj.show();
         return obj;
     }
-    
+
     self.calculateOrder = function() {
         var orderSum = 0;
         for (var i in self.orderDetails) {
@@ -219,35 +224,35 @@ function OrderList(aParent) {
             form.lbOrderSum.text = orderSum + ' р.';
         return orderSum;
     };
-    
+
     self.addItem = function(anItemData) {
-        if (!!self.orderDetails[anItemData.item_id]){
+        if (!!self.orderDetails[anItemData.item_id]) {
             self.orderDetails[anItemData.item_id].increase();
         } else {
             self.orderDetails[anItemData.item_id] = orderItem(anItemData);
             self.calculateOrder();
         }
     };
-    
+
     self.deleteOrder = function() {
         for (var i in self.orderDetails)
             self.orderDetails[i].delete();
     };
-    
+
     self.acceptOrder = function() {
         var anOrderDetails = {
-            orderSum : 0,
-            orderItems : [],
+            orderSum: 0,
+            orderItems: [],
             clientData: client
         };
         var ic = 0;
-        
-        if (self.orderDetails){
+
+        if (self.orderDetails) {
             for (var i in self.orderDetails) {
                 anOrderDetails.orderSum += self.orderDetails[i].orderSum;
                 anOrderDetails.orderItems.push({
-                    itemId : self.orderDetails[i].itemId,
-                    quantity : self.orderDetails[i].orderQuantity
+                    itemId: self.orderDetails[i].itemId,
+                    quantity: self.orderDetails[i].orderQuantity
                 });
                 ic++;
             }
@@ -259,7 +264,7 @@ function OrderList(aParent) {
             alert("Ничего не выбрано");
         }
     };
-    
+
     function createClientSelectPane() {
         var dockElement = cmn.createElement("div", 'baristaOrder panel panel-primary', "actionPanel");
         var clientPane = cmn.createElement("div", 'clientInfo panel panel-primary', dockElement, "clientPane");
@@ -267,13 +272,13 @@ function OrderList(aParent) {
         btnSelect.onclick = selectClient;
         btnSelect.innerHTML = 'Выбрать';
     }
-    
+
     function createOrderListPane() {
         var dockElement = cmn.createElement("div", 'baristaOrder panel panel-primary', "actionPanel");
-        
+
         var newHTMLElement = document.createElement('div');
-        newHTMLElement.innerHTML = 
-"<div class='panel-heading'><h3 class='panel-title'>Заказ</h3></div>\
+        newHTMLElement.innerHTML =
+                "<div class='panel-heading'><h3 class='panel-title'>Заказ</h3></div>\
 <div id='orderItems'></div><div id='orderDetails'>\
 <div class='panel-body'>\
 <div id='orderSum'>Итого: 0 рублей</div>\
@@ -285,18 +290,18 @@ function OrderList(aParent) {
         newHTMLElement.className = 'btnCancel';
         newHTMLElement.onclick = self.deleteOrder;
         dockElement.appendChild(newHTMLElement);
-        
+
         newHTMLElement = document.createElement('button');
         newHTMLElement.innerHTML = 'Пробить чек';
         newHTMLElement.className = 'btnOk';
         dockElement.appendChild(newHTMLElement);
         newHTMLElement.onclick = self.acceptOrder;
-    } 
-    
+    }
+
     createClientSelectPane();
     createOrderListPane();
-    
-    function btnOkActionPerformed(evt) {                                      
+
+    function btnOkActionPerformed(evt) {
         //setPhone.tradeSession = session.tradeSession;
         //setPhone.showModal();
         self.acceptOrder();
