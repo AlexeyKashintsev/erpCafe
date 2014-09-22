@@ -1,4 +1,3 @@
 <?xml version="1.0" encoding="UTF-8"?><datamodel datamodelDbId="null">
-  <fieldsEntity entityHeight="200" entityIconified="false" entityId="138840029073453" entityLocationX="259" entityLocationY="6" entityWidth="150" tableName="TR_TRACKING_EVENTS"/>
-  <fieldsEntity entityHeight="200" entityIconified="false" entityId="138840029073830" entityLocationX="468" entityLocationY="70" entityWidth="150" tableName="TR_TRACKING_EVENT_TYPES"/>
+  <fieldsEntity entityHeight="200" entityIconified="false" entityId="141112441194328" entityLocationX="0" entityLocationY="0" entityWidth="150" tableName="sms_types"/>
 </datamodel>

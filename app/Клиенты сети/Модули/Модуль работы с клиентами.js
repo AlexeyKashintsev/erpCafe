@@ -58,7 +58,7 @@ function ClientServerModule() {
         
         
         self.setPass(genPass());
-        //alert(pass);//Генерим пароль в переменную pass
+        Logger.finest("Пароль пользователя: " + pass);//Генерим пароль в переменную pass
         userModule.createUser(anUserName, adminFunctions.MD5(pass), aRoleName, anEmail, anUserName);
         model.qPersonalData.insert();
         model.qPersonalData.cursor.client_id = billModule.createBillAccount(anUserName, billModule.ACCOUNT_TYPE_CLIENT, null);
@@ -77,7 +77,7 @@ function ClientServerModule() {
         //Уважаемый  %ClientName%! Для входа в личный кабинет кофейни пройдите по ссылке: http://www.ru/ Ваш логин: %ClientLogin%
         //И передавать объект вида {ClientName : "Вася", ClientLogin : "12345", ...}
         //Потом аккуратненько поменять ;)
-        + aPhone + ", Ваш пароль: " + aPass;
+        //+ aPhone + ", Ваш пароль: " + aPass;
         var Msg = "Уважаемый " + aName + "! Для входа в личный кабинет кофейни пройдите по ссылке: http://www.ru/ Ваш логин: "
         + aPhone + ", Ваш пароль: " + aPass;
         smsSender.sendSms(aPhone, Msg, null);

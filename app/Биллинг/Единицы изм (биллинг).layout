@@ -1,72 +1,72 @@
 <?xml version="1.0" encoding="UTF-8"?><layout defaultCloseOperation="2" name="Form" prefHeight="352px" prefWidth="617px" windowClosing="formWindowClosing">
   <widget name="modelGrid" parent="Form" prefHeight="302px" prefWidth="613px" type="DbGridDesignInfo">
+    <rowsColumnsDesignInfo>
+      <rowsDatasource entityId="140922668354368" field="false"/>
+    </rowsColumnsDesignInfo>
+    <treeDesignInfo/>
     <column name="coll_Bill_measures_id" title="Величина">
       <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
+      <headerStyle>
+        <nativeFont name="Tahoma" size="11"/>
+      </headerStyle>
       <datamodelElement entityId="140922668354368" fieldName="bill_measures_id"/>
       <columnsDatasource/>
       <columnsDisplayField/>
       <cellsDatasource/>
       <cellDesignInfo>
+        <rowsKeyField/>
         <columnsKeyField/>
         <cellValueField/>
-        <rowsKeyField/>
       </cellDesignInfo>
-      <headerStyle>
-        <nativeFont name="Tahoma" size="11"/>
-      </headerStyle>
     </column>
     <column name="colBill_measure_desc" title="Описание">
       <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
+      <headerStyle>
+        <nativeFont name="Tahoma" size="11"/>
+      </headerStyle>
       <datamodelElement entityId="140922668354368" fieldName="bill_measure_desc"/>
       <columnsDatasource/>
       <columnsDisplayField/>
       <cellsDatasource/>
       <cellDesignInfo>
+        <rowsKeyField/>
         <columnsKeyField/>
         <cellValueField/>
-        <rowsKeyField/>
       </cellDesignInfo>
-      <headerStyle>
-        <nativeFont name="Tahoma" size="11"/>
-      </headerStyle>
     </column>
     <column name="colItem_measure" title="Исх величина">
       <controlInfo classHint="DbComboDesignInfo" name="view" prefHeight="0px" prefWidth="0px">
         <valueField entityId="140922741380046" fieldName="wh_measures_id"/>
         <displayField entityId="140922741380046" fieldName="measure_desc"/>
       </controlInfo>
+      <headerStyle>
+        <nativeFont name="Tahoma" size="11"/>
+      </headerStyle>
       <datamodelElement entityId="140922668354368" fieldName="item_measure"/>
       <columnsDatasource/>
       <columnsDisplayField/>
       <cellsDatasource/>
       <cellDesignInfo>
+        <rowsKeyField/>
         <columnsKeyField/>
         <cellValueField/>
-        <rowsKeyField/>
       </cellDesignInfo>
-      <headerStyle>
-        <nativeFont name="Tahoma" size="11"/>
-      </headerStyle>
     </column>
     <column name="colMultipler" title="Количество">
       <controlInfo classHint="DbSpinDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
+      <headerStyle>
+        <nativeFont name="Tahoma" size="11"/>
+      </headerStyle>
       <datamodelElement entityId="140922668354368" fieldName="multipler"/>
       <columnsDatasource/>
       <columnsDisplayField/>
       <cellsDatasource/>
       <cellDesignInfo>
+        <rowsKeyField/>
         <columnsKeyField/>
         <cellValueField/>
-        <rowsKeyField/>
       </cellDesignInfo>
-      <headerStyle>
-        <nativeFont name="Tahoma" size="11"/>
-      </headerStyle>
     </column>
-    <rowsColumnsDesignInfo>
-      <rowsDatasource entityId="140922668354368" field="false"/>
-    </rowsColumnsDesignInfo>
-    <treeDesignInfo/>
     <constraints bottom="50px" left="0px" right="4px" top="0px" type="MarginConstraintsDesignInfo"/>
   </widget>
   <widget actionPerformed="buttonActionPerformed" name="button" parent="Form" prefHeight="23px" prefWidth="132px" text="Сохранить" type="ButtonDesignInfo">

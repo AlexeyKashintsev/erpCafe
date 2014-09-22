@@ -13,7 +13,7 @@ function AddServiceForm() {
 
     function buttonActionPerformed(evt) {//GEN-FIRST:event_buttonActionPerformed
         
-        if(billModule.AddService(self.accountId, model.qServiceList.cursor.bill_services_id)){
+        if(!billModule.AddService(self.accountId, model.qServiceList.cursor.bill_services_id)){
             form.close(true);
         } else {
             alert("На счету недостаточно средств для добавления данной услуги!");

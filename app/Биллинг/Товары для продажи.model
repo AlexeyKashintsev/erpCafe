@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?><datamodel>
+  <parameters>
+    <parameter description="" name="account_id" nullable="true" parameterMode="1" precision="0" scale="0" selectionForm="null" signed="true" size="0" type="2" typeName="NUMERIC"/>
+  </parameters>
+  <parametersEntity entityHeight="200" entityIconified="false" entityLocationX="12" entityLocationY="12" entityWidth="150"/>
+  <entity Name="qItemBillCost" Title="" entityHeight="230" entityIconified="false" entityId="140869374329850" entityLocationX="223" entityLocationY="7" entityWidth="150" queryId="qItemBillCost" tableName="" tableSchemaName=""/>
+  <entity Name="qBillAccount" Title="" entityHeight="200" entityIconified="false" entityId="140871115333228" entityLocationX="11" entityLocationY="228" entityWidth="150" queryId="qBillAccount" tableName="" tableSchemaName=""/>
+  <entity Name="qBillMeasures" Title="" entityHeight="200" entityIconified="false" entityId="140956941526179" entityLocationX="234" entityLocationY="286" entityWidth="150" queryId="qBillMeasures" tableName="" tableSchemaName=""/>
+  <relation leftEntityId="-1" leftEntityParameterName="account_id" rightEntityId="140871115333228" rightEntityParameterName="account_id"/>
+</datamodel>

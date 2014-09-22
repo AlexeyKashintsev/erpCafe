@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?><datamodel>
   <parametersEntity entityHeight="200" entityIconified="false" entityLocationX="12" entityLocationY="12" entityWidth="150"/>
-  <entity Name="eventTypes" Title="Типы событий" entityHeight="200" entityIconified="false" entityId="139090637968699" entityLocationX="376" entityLocationY="11" entityWidth="150" queryId="EventTypes" tableName="" tableSchemaName=""/>
-  <entity Name="dsUser" Title="Один пользователь" entityHeight="200" entityIconified="false" entityId="138840104731070" entityLocationX="178" entityLocationY="14" entityWidth="150" queryId="132628048246005" tableName="" tableSchemaName=""/>
-  <referenceRelation leftEntityFieldName="parent_usr" leftEntityId="138840104731070" rightEntityFieldName="usr_name" rightEntityId="138840104731070"/>
+  <entity Name="dsUser" Title="Один пользователь" entityHeight="200" entityIconified="false" entityId="138840104731070" entityLocationX="176" entityLocationY="19" entityWidth="150" queryId="132628048246005" tableName="" tableSchemaName=""/>
+  <entity Name="eventTypes" Title="Типы событий" entityHeight="200" entityIconified="false" entityId="139090637968699" entityLocationX="340" entityLocationY="11" entityWidth="150" queryId="EventTypes" tableName="" tableSchemaName=""/>
+  <entity Name="qGetSendParams" Title="" entityHeight="200" entityIconified="false" entityId="141113163227676" entityLocationX="492" entityLocationY="10" entityWidth="150" queryId="qGetSendParams" tableName="" tableSchemaName=""/>
 </datamodel>

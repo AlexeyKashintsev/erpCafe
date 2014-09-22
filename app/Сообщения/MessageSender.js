@@ -1,4 +1,4 @@
-/**
+ /**
  * Was resident!!!
  * @name MessageSender
  * @author Алексей
@@ -7,11 +7,42 @@
  */
 function MessageSender() {
     var self = this;
+    var model = this.model;
     var email = null;
     var phone = null;
     var smsSender = new SmsSender();
     var emailSender = new Mailer();
-            
+    
+    /*
+     * Типы отправляемых сообщений.
+     */
+    self.REGISTRATION_SUCCESS = 1;
+    self.BONUS_ADD = 2;
+    self.BONUS_REMOVE = 3;
+    
+    self.sendMessage = function(anEventType, aParams){
+        model.qGetSendParams.params.eventType = anEventType;
+        model.qGetSendParams.requery();
+        var textMessage = model.qGetSendParams.cursor.message;
+        //TODO Сделать замену с помощью регулярки %perem% на значения из массива параметров aParams
+        
+        if (model.qGetSendParams.cursor.sms){
+            if (aParams.phone){
+                smsSender.sendSms(aParams.phone, textMessage, aParams.sign);
+            }
+        }
+        if (model.qGetSendParams.cursor.email){
+            if (aParams.email){
+                //TODO настроить отправку писем.
+                emailSender.sendEmail(from, to, subject, text);
+            }
+        }
+        if (model.qGetSendParams.cursor.display){
+            //TODO Сделать показ сообщения на экран
+        }
+    };
+    
+    
     function sendSMS(aMsg, aPhone){
         smsSender.sendSms(aPhone, aMsg, 'Corvus');
     };

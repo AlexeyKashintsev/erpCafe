@@ -30,6 +30,10 @@ div.actionPanel {
   border-right: dotted 3px;
 }
 
+a.list-group-item {
+  cursor: pointer;
+}
+
 div.mainArea {
   background-image: URL('../img/background.jpg');
   background-size: 100%;
