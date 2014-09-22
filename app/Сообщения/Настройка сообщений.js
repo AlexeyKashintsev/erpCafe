@@ -3,9 +3,9 @@
  * @name messngerSettings
  * @author Alexey
  */
-function messngerSettings() {
-    var self = this;
-    
+function messengerSettings() {
+    var self = this, model = this.model, form = this;
+    var EditMessageForm = new editMessageForm();
     // TODO : place your code here
 
     function btnSaveMouseClicked(evt) {//GEN-FIRST:event_btnSaveMouseClicked
@@ -15,4 +15,11 @@ function messngerSettings() {
     function btnExitActionPerformed(evt) {//GEN-FIRST:event_btnExitActionPerformed
         self.close();
     }//GEN-LAST:event_btnExitActionPerformed
+
+    function modelGridMouseClicked(evt) {//GEN-FIRST:event_modelGridMouseClicked
+        if (evt.clickCount >=2 ){
+            EditMessageForm.setSmsType(model.qGetSendParams.cursor.event_type);
+            EditMessageForm.showModal();
+        }
+    }//GEN-LAST:event_modelGridMouseClicked
 }

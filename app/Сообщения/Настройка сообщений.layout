@@ -1,10 +1,11 @@
-<?xml version="1.0" encoding="UTF-8"?><layout defaultCloseOperation="2" name="Form" prefHeight="311px" prefWidth="396px">
-  <widget name="modelGrid" parent="Form" prefHeight="249px" prefWidth="386px" type="DbGridDesignInfo">
+<?xml version="1.0" encoding="UTF-8"?><layout defaultCloseOperation="2" name="Form" prefHeight="311px" prefWidth="601px">
+  <widget mouseClicked="modelGridMouseClicked" name="modelGrid" parent="Form" prefHeight="249px" prefWidth="591px" type="DbGridDesignInfo">
+    <rowsColumnsDesignInfo>
+      <rowsDatasource entityId="141113272833248" field="false"/>
+    </rowsColumnsDesignInfo>
+    <treeDesignInfo/>
     <column name="colEVENT_TYPE" title="Событие" width="100">
-      <controlInfo classHint="DbComboDesignInfo" name="view" prefHeight="0px" prefWidth="0px">
-        <valueField entityId="139090927626527" fieldName="TR_TRACKING_EVENT_TYPES_ID"/>
-        <displayField entityId="139090927626527" fieldName="EVENTNAME"/>
-      </controlInfo>
+      <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
       <datamodelElement entityId="141113272833248" fieldName="event_description"/>
       <columnsDatasource/>
       <columnsDisplayField/>
@@ -77,10 +78,21 @@
         <nativeFont name="Dialog" size="13"/>
       </headerStyle>
     </column>
-    <rowsColumnsDesignInfo>
-      <rowsDatasource entityId="141113272833248" field="false"/>
-    </rowsColumnsDesignInfo>
-    <treeDesignInfo/>
+    <column name="message" title="Сообщение" width="80">
+      <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
+      <datamodelElement entityId="141113272833248" fieldName="message"/>
+      <columnsDatasource/>
+      <columnsDisplayField/>
+      <cellsDatasource/>
+      <cellDesignInfo>
+        <columnsKeyField/>
+        <cellValueField/>
+        <rowsKeyField/>
+      </cellDesignInfo>
+      <headerStyle>
+        <nativeFont name="Tahoma" size="11"/>
+      </headerStyle>
+    </column>
     <constraints bottom="57px" left="5px" right="5px" top="5px" type="MarginConstraintsDesignInfo"/>
   </widget>
   <widget mouseClicked="btnSaveMouseClicked" name="btnSave" parent="Form" prefHeight="29px" prefWidth="98px" text="Сохранить" type="ButtonDesignInfo">
