@@ -149,6 +149,14 @@ cmn.createElement = function(aType, aClass, aContainer, aID, aBeforeContainer) {
         
         return el;
     }
+    
+cmn.getElement = function(aType, aClass, aContainer, aID, aBeforeContainer) {
+    var d = document.getElementById(aID)
+    if (d) {
+        return d
+    } else
+        return cmn.createElement(aType, aClass, aContainer, aID, aBeforeContainer)
+}
 
 cmn.ActionList = function(anActions, aParentContainer) {
    /* var acExample = {

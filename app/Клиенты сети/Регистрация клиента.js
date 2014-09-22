@@ -8,6 +8,10 @@ function ClientRegistrationByBarist() {
     var validateEmail = false;
     var validatePhone = false;
     
+    self.setPhone = function(aPhone) {
+        form.phoneField.text = aPhone;
+    };
+    
     function btnAddActionPerformed(evt) {//GEN-FIRST:event_btnAddActionPerformed
         if (validateForm()){
             session.clientModule.createUser(form.phoneField.text, form.emailField.text, form.firstnameField.text, roleName);

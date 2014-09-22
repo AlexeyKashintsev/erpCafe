@@ -10,16 +10,59 @@ function OrderList(aParent) {
     session.clientModule = new ServerModule("ClientServerModule");
     var choiceMethodOfPayment = new ChoiceMethodOfPayment();
     var getPhone = new GetUserPhoneForm();
+    
     var client = false;
+    var clientPane = null;
+    var clientRegPane = null;
+    var inpPhone = null;
+    var btnSelect = null;
+    var clientReg = new ClientRegistrationByBarist();
+    
+    function checkIfClientPhoneExists() {
+        if (inpPhone.value != "") {
+            if (session.clientModule.checkIfPhoneExist(inpPhone.value)){
+                client = session.clientModule.getClientDataByPhone(inpPhone.value);
+                $(clientRegPane).hide();
+                $(clientPane).show();
+                var clientPhoneDiv = cmn.getElement("div", '', clientPane, "clientPhoneDiv");
+                clientPhoneDiv.innerHTML = "Клиент: " + client.firstName;
+                var clientBonusDiv = cmn.getElement("div", '', clientPane, "clientBonusDiv");
+                clientBonusDiv.innerHTML = "Бонусов: " + client.bonusCount;
+             } else {
+                 client = null;
+                 $(clientPane).hide();
+                 $(clientRegPane).show();
+                 clientRegPane.innerHTML = "Клиент не найден";
+                 var btnRegister = cmn.getElement("button", 'btnRegister', clientRegPane, "btnRegister");
+                 btnRegister.innerHTML = "Зарегистрировать";
+                 btnRegister.onclick = function() {
+                     clientReg.setPhone = inpPhone.value;
+                     clientReg.showModal(function(aPhone) {
+                         if (inpPhone.value === aPhone) {
+                             checkIfClientPhoneExists();
+                         } else {
+                             inpPhone.value = aPhone;
+                         }
+                     });
+                 };
+             }
+         } else {
+             $(clientPane).hide();
+             $(clientRegPane).hide();
+             clientPane.innerHTML = "";
+         }
+    }
 
-    function selectClient() {
-        getPhone.showModal(function(aPhone) {
-            client = session.clientModule.getClientDataByPhone(aPhone);
-            var clientPhoneDiv = cmn.createElement("div", '', "clientPane");
-            clientPhoneDiv.innerHTML = "Клиент: " + client.phone;
-            var clientBonusDiv = cmn.createElement("div", '', "clientPane");
-            clientBonusDiv.innerHTML = "Бонусов: " + client.bonusCount;
-        });
+    function createClientSelectPane() {
+        var dockElement = cmn.createElement("div", 'baristaOrder panel panel-primary', "actionPanel");
+        var clientLabel = cmn.createElement("h4", 'clientLabel', dockElement, 'clientLabel');
+        clientLabel.innerHTML = "Введите номер телефона клиента";
+        inpPhone = cmn.createElement("input", "client-phone-input", dockElement);
+        inpPhone.onchange = checkIfClientPhoneExists;
+        clientPane = cmn.createElement("div", 'clientInfo', dockElement, "clientPane");
+        clientRegPane = cmn.createElement("div", 'clientInfo', dockElement, "clientRegPane");
+        $(clientPane).hide();
+        $(clientRegPane).hide();
     }
 
     function alerter(anAlert, aType, aText, aClosable, aCloseTimeOut) {
@@ -265,14 +308,6 @@ function OrderList(aParent) {
             alert("Ничего не выбрано");
         }
     };
-
-    function createClientSelectPane() {
-        var dockElement = cmn.createElement("div", 'baristaOrder panel panel-primary', "actionPanel");
-        var clientPane = cmn.createElement("div", 'clientInfo panel panel-primary', dockElement, "clientPane");
-        var btnSelect = cmn.createElement("button", 'btnOk', dockElement);
-        btnSelect.onclick = selectClient;
-        btnSelect.innerHTML = 'Выбрать';
-    }
 
     function createOrderListPane() {
         var dockElement = cmn.createElement("div", 'baristaOrder panel panel-primary', "actionPanel");
