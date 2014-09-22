@@ -19,7 +19,9 @@ function messengerSettings() {
     function modelGridMouseClicked(evt) {//GEN-FIRST:event_modelGridMouseClicked
         if (evt.clickCount >=2 ){
             EditMessageForm.setSmsType(model.qGetSendParams.cursor.event_type);
-            EditMessageForm.showModal();
+            EditMessageForm.showModal(function(){
+                model.requery();
+            });
         }
     }//GEN-LAST:event_modelGridMouseClicked
 }

@@ -8,14 +8,14 @@ function editMessageForm() {
     
     self.setSmsType = function(aSmsType){
        SMSType = aSmsType;
-    }
+    };
 
     function formWindowOpened(evt) {//GEN-FIRST:event_formWindowOpened
         if (SMSType){
             model.qGetSendParams.params.eventType = SMSType;
             model.requery();
         } else {
-            //TODO добавить error
+            form.close("error");
         }
     }//GEN-LAST:event_formWindowOpened
 
@@ -27,4 +27,16 @@ function editMessageForm() {
     function btnCancelActionPerformed(evt) {//GEN-FIRST:event_btnCancelActionPerformed
         form.close(false);
     }//GEN-LAST:event_btnCancelActionPerformed
+
+    function btnAddUsernameActionPerformed(evt) {//GEN-FIRST:event_btnAddUsernameActionPerformed
+        model.qGetSendParams.cursor.message += "%username%"; 
+    }//GEN-LAST:event_btnAddUsernameActionPerformed
+
+    function btnAddCountActionPerformed(evt) {//GEN-FIRST:event_btnAddCountActionPerformed
+        model.qGetSendParams.cursor.message += "%count%"; 
+    }//GEN-LAST:event_btnAddCountActionPerformed
+
+    function btnAddPasswordActionPerformed(evt) {//GEN-FIRST:event_btnAddPasswordActionPerformed
+        model.qGetSendParams.cursor.message += "%password%"; 
+    }//GEN-LAST:event_btnAddPasswordActionPerformed
 }
