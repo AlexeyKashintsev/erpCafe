@@ -36,7 +36,7 @@ function OrderList(aParent) {
                  var btnRegister = cmn.getElement("button", 'btnRegister', clientRegPane, "btnRegister");
                  btnRegister.innerHTML = "Зарегистрировать";
                  btnRegister.onclick = function() {
-                     clientReg.setPhone = inpPhone.value;
+                     clientReg.setPhone(inpPhone.value);
                      clientReg.showModal(function(aPhone) {
                          if (inpPhone.value === aPhone) {
                              checkIfClientPhoneExists();
