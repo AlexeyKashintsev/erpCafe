@@ -91,9 +91,9 @@ function WHSessionBalance(aWarehouse, aContainer) {
         tItem.visualize = function() {
             if (container && !tItem.shown)
                 tItem.view = new ItemView();
-            tItem.view.startValue.innerHTML = tItem.startV + ' ' + tItem.item_measure;
-            tItem.view.usedValue.innerHTML = tItem.usedV + ' ' + tItem.item_measure;
-            tItem.view.currentValue.innerHTML = tItem.endV + ' ' + tItem.item_measure;
+            tItem.view.startValue.innerHTML = (tItem.startV ? tItem.startV : "--") + ' ' + tItem.item_measure;
+            tItem.view.usedValue.innerHTML = (tItem.usedV ? tItem.usedV : "--") + ' ' + tItem.item_measure;
+            tItem.view.currentValue.innerHTML = (tItem.finalV ? tItem.finalV : "--") + ' ' + tItem.item_measure;
         };
     }
 
