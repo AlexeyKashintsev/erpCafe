@@ -5,6 +5,7 @@
 function BuyItemsForm() {
     var self = this, model = this.model, form = this;
     var billItemsModule = new ServerModule("BillItemsModule");
+    var userSession = new ServerModule("UserSession");
     var list = null;
     var details = null;
     
@@ -32,11 +33,13 @@ function BuyItemsForm() {
         //units.billApi.sendMessages(null, billDetails, billItems, bd.sum);
     }
     
+    var sum;
     function List(aContainer) {
         var listItems = billItemsModule.getItemsForBill();
-        var sum = 0;
+        sum = 0;
         listItems.forEach(addItemToList);
-            
+        
+          
         function addItemToList(anItem, anItemindex) {
             anItemindex = anItemindex ? anItemindex : 0;
             var newItem = '<div id="listItem' + anItemindex + '" class="listItem"></div>';
@@ -45,14 +48,13 @@ function BuyItemsForm() {
             itemForm.setQuantity = setItemsQuantity;
             itemForm.showOnPanel("listItem" + anItemindex);
         }
-
+        //
         function setItemsQuantity(aId, aQuantity) {
             if (listItems[aId].quantity !== aQuantity) {
                 listItems[aId].quantity = aQuantity;
                 recalc();
             }
         }
-
         function recalc() {
             var ic = 0;
             var is = 0;
@@ -76,7 +78,6 @@ function BuyItemsForm() {
             }
 
         }
-
         this.getItems = function() {
             var res = [];
             for (var j in listItems)
@@ -92,67 +93,87 @@ function BuyItemsForm() {
                 }
             return res;
         };
-        
         this.getSum = function() {
             return sum;
         };
     }
     
-    
-    function Details() {
-        var questions = units.billApi.getAskedFields();
-        questions.forEach(addQuestion);
-
-        function addQuestion(aQuestion, aId) {
-            $('.questions').append('<div id="' + aQuestion.name + aId + '" class = "question"></div>');
-            $('#' + aQuestion.name + aId).append('<div><span>' + aQuestion.text + '</span></div><div><input id = "' + aQuestion.name + '" class = "question"></div>');
-            document.getElementById(aQuestion.name).onchange = validate;
-        }
-
-        function validate() {
-            var ok = true;
-            for (var j in questions) {
-                try {
-                    var val = document.getElementById(questions[j].name).value;
-                    if (!val) {
-                        if (questions[j].requied)
-                            ok = false;
-                        questions[j].value = '';
-                    } else {
-                        questions[j].value = val;
-                    }
-                } catch (e) {
-                    ok = false;
-                }
-            }
-            if (ok) {
-                if (!$('.formBill').hasClass('active')) {
-                    $('.formBill').addClass('active');
-                    document.getElementById('getBillButton').onclick = createBill;
-                }
-            } else if ($('.formBill').hasClass('active')) {
-                $('.formBill').removeClass('active');
-                document.getElementById('getBillButton').onclick = null;
-            }
-        }
-        
-        this.getDetails = function() {
-            var res = {};
-            for (var j in questions)
-                res[questions[j].name] = questions[j].value;
-            return res;
+    function ListBills(aContainer){
+        var AccountTypes = {
+            1 : "Основной",
+            2 : "Кредитный",
+            3 : "Клиентский"
         };
+        model.qBillAccount.params.user_id = userSession.getFranchazi();
+        model.qBillAccount.requery(function(){
+            model.qBillAccount.beforeFirst();
+            var i = 1, selected = '';
+            while(model.qBillAccount.next()){
+                if(i === 1) selected = 'checked'; else selected = '';
+                cmn.createElement("div", "bill"+i, aContainer);
+                $(".bill"+i).html('<p><input type="radio" \n\
+                     name="bill_radio" id="'+model.qBillAccount.cursor.currnt_sum+'"\n\
+                     value="'+ model.qBillAccount.cursor.bill_accounts_id +'" '+selected+'>'
+                        +AccountTypes[model.qBillAccount.cursor.account_type]+
+                        '   '+model.qBillAccount.cursor.currnt_sum+' руб.</p>');
+                i++;
+            }
+        });
     }
+    
     function nextButtonClick() {
-        alert('!');
+        $('.Items').hide();
+        $('#nextButton').hide();
+        $("#prevButton").show();
+        $("#doneButton").show();
+        $('.Bills').html('');
+        ListBills(document.getElementById("Bills"));
+        $('.Bills').show();
     }
+    
+    function prevButtonClick() {
+        $('.Items').show();
+        $('#nextButton').show();
+        $("#prevButton").hide();
+        $("#doneButton").hide();
+        $('.Bills').hide();
+    }
+    
+    function doneButtonClick() {
+        var account_id = $('input[name=bill_radio]:checked').val();
+        var currnt_sum = $('input[name=bill_radio]:checked').attr('id');
+        if(account_id){
+            if(currnt_sum >= sum){
+                
+            } else {
+                if(confirm("У Вас недостаточно денег!\nПерейти к странице пополнения баланса?")){
+                    var addBalance = new AddBalance(account_id);
+                    addBalance.showModal(function(){});
+                }
+            }
+        } 
+        else alert("Вы ничего не выбрали!"); 
+    }
+    
     self.manualShow = function(aContainer) {
-        list = new List(aContainer);
+        cmn.createElement("div", "Items", aContainer, "Items");
+        cmn.createElement("div", "Bills", aContainer, "Bills");
+        $('.Bills').hide();
+        var Items = document.getElementById("Items");
+        list = new List(Items);
         cmn.createElement("div", "selection_result", aContainer);
         cmn.createElement("button", "next", aContainer, "nextButton");
+        cmn.createElement("button", "prev", aContainer, "prevButton");
+        cmn.createElement("button", "done", aContainer, "doneButton");
         $("#nextButton").html("Далее");
+        $("#prevButton").html("Назад");
+        $("#doneButton").html("Оплатить");
+        $("#prevButton").hide();
+        $("#doneButton").hide();
         $('.selection_result').html("Всего выбрано позиций <span class='positions_count'>0</span> на сумму <span class='bill_sum'>0 рублей</span><br>");
         document.getElementById('nextButton').onclick = nextButtonClick;
+        document.getElementById('prevButton').onclick = prevButtonClick;
+        document.getElementById('doneButton').onclick = doneButtonClick;
         //details = new Details();
     };
     
