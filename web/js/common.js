@@ -16,7 +16,7 @@ var keepSession = function(aCallBack) {
                 aCallBack(1)
             else {
                 alert('Сессия истекла!');
-                location.reload();
+              //  location.reload();
             }
         } else {
             Logger.info('Ok!');
@@ -28,7 +28,7 @@ var keepSession = function(aCallBack) {
                 aCallBack(2)
             else {
                 alert('Нет связи с сервером!');
-                location.reload();
+              //  location.reload();
             }
         });
 }
@@ -212,7 +212,7 @@ platypus.ready = function() {
         session.login(function(anUserRole){
                 session.userRole = anUserRole;
                 session.userName = session.getUserName();
-                setInterval(keepSession, sessionTimeout);
+                session.sessionKeeper = setInterval(keepSession, sessionTimeout);
                 switch (anUserRole) {
                     case 'admin':
                         require(['StartMasterAdminForm'], function() {
