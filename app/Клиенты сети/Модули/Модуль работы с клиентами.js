@@ -13,6 +13,7 @@ function ClientServerModule() {
     var pass = null;
     
     function ClientConstructor(aPhone){
+        //TODO UserName может не быть телефоном
         model.qPersonalData.params.phone = aPhone;
         model.qPersonalData.execute();
         Logger.info(model.qPersonalData);
@@ -55,6 +56,10 @@ function ClientServerModule() {
     
     self.createUser = function(anUserName, anEmail, aFirstName, aRoleName){
         //У клиентов в качестве username используется номер телефона
+        //TODO Первое не всегда верно, иногда может использоваться другой идентификатор
+        //TODO Можно создать пользователя с ролью администратор - дырка
+        //В БД есть все поля ФИО, здесь только имя
+        //Изолировать pass в пределах одной функции
         
         
         self.setPass(genPass());

@@ -103,7 +103,7 @@ function BuyItemsForm() {
             1 : "Основной",
             2 : "Кредитный",
             3 : "Клиентский"
-        };
+        };//Зачем захардкожено?
         model.qBillAccount.params.user_id = userSession.getFranchazi();
         model.qBillAccount.requery(function(){
             model.qBillAccount.beforeFirst();
@@ -122,7 +122,7 @@ function BuyItemsForm() {
     }
     
     function nextButtonClick() {
-        $('.Items').hide();
+        $('.Items').hide();//TODO а так нельзя $('.Items', '#nextButton').hide(); ? )))
         $('#nextButton').hide();
         $("#prevButton").show();
         $("#doneButton").show();

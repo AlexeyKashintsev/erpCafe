@@ -18,21 +18,32 @@ function OrderList(aParent) {
     var btnSelect = null;
     var clientReg = new ClientRegistrationByBarist();
     
+    function clearClient() {
+        client = false;
+        inpPhone.value = "";
+        checkIfClientPhoneExists();
+    }
+    
     function checkIfClientPhoneExists() {
-        if (inpPhone.value != "") {
+        if (inpPhone.value !== "") {
+            $(".client-phone-reset").addClass("active");
             if (session.clientModule.checkIfPhoneExist(inpPhone.value)){
                 client = session.clientModule.getClientDataByPhone(inpPhone.value);
+                $(inpPhone).removeClass("red");
+                $(inpPhone).addClass("green");
                 $(clientRegPane).hide();
                 $(clientPane).show();
                 var clientPhoneDiv = cmn.getElement("div", '', clientPane, "clientPhoneDiv");
                 clientPhoneDiv.innerHTML = "Клиент: " + client.firstName;
                 var clientBonusDiv = cmn.getElement("div", '', clientPane, "clientBonusDiv");
-                clientBonusDiv.innerHTML = "Бонусов: " + client.bonusCount;
+                clientBonusDiv.innerHTML = "Бонусов: <b>" + client.bonusCount + "</b> рублей";
              } else {
-                 client = null;
+                 client = false;
+                 $(inpPhone).removeClass("green");
+                 $(inpPhone).addClass("red");
                  $(clientPane).hide();
                  $(clientRegPane).show();
-                 clientRegPane.innerHTML = "Клиент не найден";
+                 clientRegPane.innerHTML = "Клиент не найден<br>";
                  var btnRegister = cmn.getElement("button", 'btnRegister', clientRegPane, "btnRegister");
                  btnRegister.innerHTML = "Зарегистрировать";
                  btnRegister.onclick = function() {
@@ -47,6 +58,9 @@ function OrderList(aParent) {
                  };
              }
          } else {
+             $(".client-phone-reset").removeClass("active");
+             $(inpPhone).removeClass("green");
+             $(inpPhone).removeClass("red");
              $(clientPane).hide();
              $(clientRegPane).hide();
              clientPane.innerHTML = "";
@@ -59,6 +73,9 @@ function OrderList(aParent) {
         clientLabel.innerHTML = "Введите номер телефона клиента";
         inpPhone = cmn.createElement("input", "client-phone-input", dockElement);
         inpPhone.onchange = checkIfClientPhoneExists;
+        var btnDeletePhone = cmn.createElement("button", "client-phone-reset", dockElement);
+        btnDeletePhone.innerHTML = '<span class="glyphicon glyphicon-remove"></span>';
+        btnDeletePhone.onclick = clearClient;
         clientPane = cmn.createElement("div", 'clientInfo', dockElement, "clientPane");
         clientRegPane = cmn.createElement("div", 'clientInfo', dockElement, "clientRegPane");
         $(clientPane).hide();
@@ -120,8 +137,7 @@ function OrderList(aParent) {
         session.tradeSession.processOrder(anOrderDetails, function() {
             alerter(alert, "alert-success", "<h4>Заказ успешно проведен</h4>Сумма заказа: <strong>"
                     + anOrderDetails.orderSum + " рублей </strong>", true, 15000);
-            document.getElementById("clientPane").innerHTML = "";
-            client = null;
+            clearClient();
         }, function() {
             if (attempt < 5)
                 processOrder(anOrderDetails, alert, attempt);
