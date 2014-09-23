@@ -1,8 +1,6 @@
  /**
- * Was resident!!!
  * @name MessageSender
  * @author Алексей, Женя
- * @module 
  * @public
  */
 function MessageSender() {
@@ -25,7 +23,7 @@ function MessageSender() {
         model.qGetSendParams.requery();
         var textMessage = model.qGetSendParams.cursor.message;
         for (param in aParams){
-            textMessage.replace(new RegExp("%" + param + "%",'g'), aParams[param]);
+           textMessage = textMessage.replace(new RegExp("%" + param + "%",'g'), aParams[param]);
         }
         //TODO Сделать замену с помощью регулярки %perem% на значения из массива параметров aParams
         
