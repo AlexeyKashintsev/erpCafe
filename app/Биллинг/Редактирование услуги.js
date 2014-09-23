@@ -1,6 +1,7 @@
 /**
  * 
  * @author minya92
+ * TODO Добавить описание услуги
  */
 function EditServiceForm() {
     var self = this, model = this.model, form = this;
