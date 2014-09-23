@@ -121,8 +121,11 @@ function ClientServerModule() {
         return model.qPersonalData.cursor.client_id;
     };
     
-    self.setBonusCount = function(anAccountId, aCount){
+    self.addBonuses = function(anAccountId, aCount){
         billModule.addBillOperation(anAccountId, billModule.OPERATION_ADD_BONUS, aCount);
     };
     
+    self.removeBonuses = function(anAccountId, aCount){
+        billModule.addBillOperation(anAccountId, billModule.OPERATION_DEL_BUY, aCount);
+    };
 }
