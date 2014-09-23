@@ -53,17 +53,17 @@ function ClientServerModule() {
     };
     
     
-    self.createUser = function(anUserName, anEmail, aFirstName, aRoleName){
+    self.createUser = function(anUserName, anEmail, aFirstName){
         //У клиентов в качестве username используется номер телефона
         //TODO Первое не всегда верно, иногда может использоваться другой идентификатор
-        //TODO Можно создать пользователя с ролью администратор - дырка
+        //fixed Можно создать пользователя с ролью администратор - дырка 
         //В БД есть все поля ФИО, здесь только имя
         //Изолировать pass в пределах одной функции
         
         
         self.setPass(genPass());
-        Logger.finest("Пароль пользователя: " + pass);//Генерим пароль в переменную pass
-        userModule.createUser(anUserName, adminFunctions.MD5(pass), aRoleName, anEmail, anUserName);
+        Logger.info("Пароль пользователя: " + pass);//Генерим пароль в переменную pass
+        userModule.createUser(anUserName, adminFunctions.MD5(pass), 'client', anEmail, anUserName);
         model.qPersonalData.insert();
         model.qPersonalData.cursor.client_id = billModule.createBillAccount(anUserName, billModule.ACCOUNT_TYPE_CLIENT);
         model.qPersonalData.cursor.first_name = aFirstName;

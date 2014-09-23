@@ -4,7 +4,6 @@
  */
 function ClientRegistrationByBarist() {
     var self = this, model = this.model, form = this;
-    var roleName = "client";
     var validateEmail = false;
     var validatePhone = false;
     
@@ -14,7 +13,7 @@ function ClientRegistrationByBarist() {
     
     function btnAddActionPerformed(evt) {//GEN-FIRST:event_btnAddActionPerformed
         if (validateForm()){
-            session.clientModule.createUser(form.phoneField.text, form.emailField.text, form.firstnameField.text, roleName);
+            session.clientModule.createUser(form.phoneField.text, form.emailField.text, form.firstnameField.text);
         }
         form.close(form.phoneField.text);
     }//GEN-LAST:event_btnAddActionPerformed
