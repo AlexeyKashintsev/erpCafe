@@ -9,7 +9,6 @@ function ClientServerModule() {
     var userModule = new UserModule();
     var adminFunctions = new AdminFunctions();
     var billModule = new BillModule();
-    var pass = null;
     
     function ClientConstructor(aPhone){
         //TODO UserName может не быть телефоном
@@ -57,10 +56,12 @@ function ClientServerModule() {
         //В БД есть все поля ФИО, здесь только имя
         //Изолировать pass в пределах одной функции
         
-        
-        pass = genPass();
-        Logger.info("Пароль пользователя: " + pass);//Генерим пароль в переменную pass
-        userModule.createUser(anUserName ? anUserName : aPhone , adminFunctions.MD5(pass), 'client', anEmail, aPhone);
+        if (!anUserName){
+            anUserName = aPhone;
+        }
+        var pass = genPass();
+        Logger.info("Пароль пользователя: " + pass);
+        userModule.createUser(anUserName , adminFunctions.MD5(pass), 'client', anEmail, aPhone);
         model.qPersonalData.insert();
         model.qPersonalData.cursor.client_id = billModule.createBillAccount(anUserName, billModule.ACCOUNT_TYPE_CLIENT);
         model.qPersonalData.cursor.first_name = aFirstName;
@@ -70,26 +71,15 @@ function ClientServerModule() {
         model.qPersonalData.cursor.address = anAddress;
         model.qPersonalData.cursor.phone = aPhone;
         model.qPersonalData.cursor.email = anEmail;
-        model.qPersonalData.cursor.usr_name = anUserName ? anUserName : aPhone;
+        model.qPersonalData.cursor.usr_name = anUserName;
         model.qPersonalData.cursor.reg_date = new Date();
         model.save();
-        self.setBonusCategory(anUserName ? anUserName : aPhone, aBonusCategory ? aBonusCategory : 1);
+        self.setBonusCategory(anUserName, aBonusCategory ? aBonusCategory : 1);
         /*sender.sendMessage(sender.REGISTRATION_SUCCESS, {
             phone: model.qPersonalData.cursor.phone,
             username: model.qPersonalData.cursor.first_name
         });*/
     };
-    
-    function sendSMS(aName, aPhone, aPass){
-        //TODO Текст СМС сообщений должен генериться в SMS сендере, он так же должен там настраиваться
-        //Уважаемый  %ClientName%! Для входа в личный кабинет кофейни пройдите по ссылке: http://www.ru/ Ваш логин: %ClientLogin%
-        //И передавать объект вида {ClientName : "Вася", ClientLogin : "12345", ...}
-        //Потом аккуратненько поменять ;)
-        //+ aPhone + ", Ваш пароль: " + aPass;
-        var Msg = "Уважаемый " + aName + "! Для входа в личный кабинет кофейни пройдите по ссылке: http://www.ru/ Ваш логин: "
-        + aPhone + ", Ваш пароль: " + aPass;
-        smsSender.sendSms(aPhone, Msg, null);
-    }
     
      self.checkIfPhoneExist = function(aPhone){
         model.qPersonalData.params.phone = aPhone;
@@ -131,5 +121,8 @@ function ClientServerModule() {
         return model.qPersonalData.cursor.client_id;
     };
     
+    self.setBonusCount = function(anAccountId, aCount){
+        billModule.addBillOperation(anAccountId, billModule.OPERATION_ADD_BONUS, aCount);
+    };
     
 }
