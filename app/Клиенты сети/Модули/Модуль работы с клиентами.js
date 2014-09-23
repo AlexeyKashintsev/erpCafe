@@ -5,8 +5,7 @@
  */ 
 function ClientServerModule() {
     var self = this, model = this.model;
-    var smsSender = new SmsSender(); 
-                                                 
+    //var sender = new MessageSender();                                            
     var userModule = new UserModule();
     var adminFunctions = new AdminFunctions();
     var billModule = new BillModule();
@@ -66,7 +65,7 @@ function ClientServerModule() {
         Logger.finest("Пароль пользователя: " + pass);//Генерим пароль в переменную pass
         userModule.createUser(anUserName, adminFunctions.MD5(pass), aRoleName, anEmail, anUserName);
         model.qPersonalData.insert();
-        model.qPersonalData.cursor.client_id = billModule.createBillAccount(anUserName, billModule.ACCOUNT_TYPE_CLIENT, null);
+        model.qPersonalData.cursor.client_id = billModule.createBillAccount(anUserName, billModule.ACCOUNT_TYPE_CLIENT);
         model.qPersonalData.cursor.first_name = aFirstName;
         model.qPersonalData.cursor.phone = anUserName;
         model.qPersonalData.cursor.email = anEmail;
@@ -74,7 +73,10 @@ function ClientServerModule() {
         model.qPersonalData.cursor.reg_date = new Date();
         model.save();
         self.setBonusCategory(anUserName, 1);
-        sendSMS(aFirstName, anUserName, pass);
+        /*sender.sendMessage(sender.REGISTRATION_SUCCESS, {
+            phone: model.qPersonalData.cursor.phone,
+            username: model.qPersonalData.cursor.first_name
+        });*/
     };
     
     function sendSMS(aName, aPhone, aPass){
