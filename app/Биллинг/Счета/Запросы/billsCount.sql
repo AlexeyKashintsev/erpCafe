@@ -1,5 +1,5 @@
 /**
- *
+ * @public
  * @author Alexey
  * @name billsCount
  */ 

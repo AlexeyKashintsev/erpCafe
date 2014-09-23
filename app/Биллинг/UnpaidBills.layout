@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?><layout defaultCloseOperation="2" name="Form" prefHeight="437px" prefWidth="659px" windowOpened="formWindowOpened">
+  <widget deletable="false" editable="false" insertable="false" name="modelGrid" parent="Form" prefHeight="348px" prefWidth="660px" type="DbGridDesignInfo">
+    <column name="colAccount_id" title="Номер счета">
+      <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
+      <datamodelElement entityId="141147376423060" fieldName="account_id"/>
+      <columnsDatasource/>
+      <columnsDisplayField/>
+      <cellsDatasource/>
+      <cellDesignInfo>
+        <columnsKeyField/>
+        <cellValueField/>
+        <rowsKeyField/>
+      </cellDesignInfo>
+      <headerStyle>
+        <nativeFont name="Tahoma" size="11"/>
+      </headerStyle>
+    </column>
+    <column name="colOperation_sum" title="Сумма">
+      <controlInfo classHint="DbSpinDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
+      <datamodelElement entityId="141147376423060" fieldName="operation_sum"/>
+      <columnsDatasource/>
+      <columnsDisplayField/>
+      <cellsDatasource/>
+      <cellDesignInfo>
+        <columnsKeyField/>
+        <cellValueField/>
+        <rowsKeyField/>
+      </cellDesignInfo>
+      <headerStyle>
+        <nativeFont name="Tahoma" size="11"/>
+      </headerStyle>
+    </column>
+    <column name="colOperation_date" title="Дата">
+      <controlInfo classHint="DbDateDesignInfo" dateFormat="dd.MM.yyyy HH:mm:ss" name="view" prefHeight="0px" prefWidth="0px"/>
+      <datamodelElement entityId="141147376423060" fieldName="operation_date"/>
+      <columnsDatasource/>
+      <columnsDisplayField/>
+      <cellsDatasource/>
+      <cellDesignInfo>
+        <columnsKeyField/>
+        <cellValueField/>
+        <rowsKeyField/>
+      </cellDesignInfo>
+      <headerStyle>
+        <nativeFont name="Tahoma" size="11"/>
+      </headerStyle>
+    </column>
+    <rowsColumnsDesignInfo>
+      <rowsDatasource entityId="141147376423060" field="false"/>
+    </rowsColumnsDesignInfo>
+    <treeDesignInfo/>
+    <constraints height="348px" left="0px" top="36px" type="MarginConstraintsDesignInfo" width="660px"/>
+  </widget>
+  <widget name="panel" parent="Form" prefHeight="440px" prefWidth="660px" type="PanelDesignInfo">
+    <layout type="MarginLayoutDesignInfo"/>
+    <constraints bottom="-3px" left="0px" right="-1px" top="0px" type="MarginConstraintsDesignInfo"/>
+  </widget>
+  <widget name="toolBar1" parent="panel" prefHeight="36px" prefWidth="660px" rollover="true" type="ToolbarDesignInfo">
+    <constraints height="36px" left="0px" top="0px" type="MarginConstraintsDesignInfo" width="660px"/>
+  </widget>
+  <widget actionPerformed="btnReq1ActionPerformed" focusable="false" horizontalTextPosition="0" icon="icons/22x22/actions/new-view-refresh.png" name="btnReq1" parent="toolBar1" prefHeight="29px" prefWidth="29px" toolTipText="Обновить" type="ButtonDesignInfo" verticalTextPosition="3"/>
+  <widget actionPerformed="buttonActionPerformed" name="button" parent="panel" prefHeight="28px" prefWidth="156px" text="Оплатить счет" type="ButtonDesignInfo">
+    <constraints bottom="16px" height="28px" right="12px" type="MarginConstraintsDesignInfo" width="156px"/>
+  </widget>
+  <layout type="MarginLayoutDesignInfo"/>
+</layout>

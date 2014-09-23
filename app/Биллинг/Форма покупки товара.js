@@ -6,40 +6,15 @@ function BuyItemsForm() {
     var self = this, model = this.model, form = this;
     var billItemsModule = new ServerModule("BillItemsModule");
     var userSession = new ServerModule("UserSession");
-    var list = null;
-    var details = null;
-    
-     function createBill() {
-        $('#order_details').hide();
-	$('#thank_you').show();
-        var billItems = list.getItems();
-        var billDetails = details.getDetails();
-        var billCreator = new Report('DetailedBill');
-        //var bd = units.billApi.getSupplierDetails();
-        for (var j in billDetails) {
-            bd[j] = billDetails[j];
-        }
-        bd.billDate = new Date();
-        bd.sum = list.getSum();
-        bd.itemsNo = billItems.length;
-        
-        billCreator.bd = [bd];
-        billCreator.billItems = billItems;
-        try {
-            billCreator.show();
-        } catch (e) {
-            Logger.warning(e);
-        }
-        //units.billApi.sendMessages(null, billDetails, billItems, bd.sum);
-    }
-    
+
+    var list = null;  
     var sum;
+    
     function List(aContainer) {
         var listItems = billItemsModule.getItemsForBill();
         sum = 0;
         listItems.forEach(addItemToList);
-        
-          
+ 
         function addItemToList(anItem, anItemindex) {
             anItemindex = anItemindex ? anItemindex : 0;
             var newItem = '<div id="listItem' + anItemindex + '" class="listItem"></div>';
@@ -76,7 +51,6 @@ function BuyItemsForm() {
                 $('.next').removeClass('active');
                 document.getElementById('nextButton').onclick = null;
             }
-
         }
         this.getItems = function() {
             var res = [];
@@ -88,6 +62,7 @@ function BuyItemsForm() {
                         desc: listItems[j].pDef,
                         count: listItems[j].quantity,
                         cost: listItems[j].pCost,
+                        itemId: listItems[j].pItemId,
                         sum: listItems[j].pCost * listItems[j].quantity
                     });
                 }
@@ -99,11 +74,11 @@ function BuyItemsForm() {
     }
     
     function ListBills(aContainer){
-        var AccountTypes = {
-            1 : "Основной",
-            2 : "Кредитный",
-            3 : "Клиентский"
-        };//Зачем захардкожено?
+        var AccountTypes = { };
+        model.qAccountType.beforeFirst();
+        while(model.qAccountType.next()){
+            AccountTypes[model.qAccountType.cursor.bill_account_types_id] = model.qAccountType.cursor.type_name;
+        }
         model.qBillAccount.params.user_id = userSession.getFranchazi();
         model.qBillAccount.requery(function(){
             model.qBillAccount.beforeFirst();
@@ -122,21 +97,23 @@ function BuyItemsForm() {
     }
     
     function nextButtonClick() {
-        $('.Items').hide();//TODO а так нельзя $('.Items', '#nextButton').hide(); ? )))
-        $('#nextButton').hide();
-        $("#prevButton").show();
-        $("#doneButton").show();
+        $('.Items, #nextButton').hide();
+        $("#prevButton, #doneButton, .Bills").show();
         $('.Bills').html('');
         ListBills(document.getElementById("Bills"));
-        $('.Bills').show();
     }
     
     function prevButtonClick() {
-        $('.Items').show();
-        $('#nextButton').show();
-        $("#prevButton").hide();
-        $("#doneButton").hide();
-        $('.Bills').hide();
+        $(".Items, #nextButton").show();
+        $("#prevButton, #doneButton, .Bills").hide();
+    }
+    
+    function homeButtonClick() {
+        list = null;
+        $(".Items").html(" ");
+        list = new List(document.getElementById("Items"));
+        $(".Items, #nextButton").show();
+        $("#prevButton, #doneButton, #homeButton, .Bills, .Thanks").hide();
     }
     
     function doneButtonClick() {
@@ -144,7 +121,10 @@ function BuyItemsForm() {
         var currnt_sum = $('input[name=bill_radio]:checked').attr('id');
         if(account_id){
             if(currnt_sum >= sum){
-                
+                billItemsModule.buyItems(list.getItems(),account_id);
+                $(".Thanks").html("<p>Спасибо за заказ!</p>");
+                $("#prevButton, #doneButton, .Bills, .Items, .selection_result").hide();
+                $("#homeButton, .Thanks").show();
             } else {
                 if(confirm("У Вас недостаточно денег!\nПерейти к странице пополнения баланса?")){
                     var addBalance = new AddBalance(account_id);
@@ -158,24 +138,23 @@ function BuyItemsForm() {
     self.manualShow = function(aContainer) {
         cmn.createElement("div", "Items", aContainer, "Items");
         cmn.createElement("div", "Bills", aContainer, "Bills");
-        $('.Bills').hide();
+        cmn.createElement("div", "Thanks", aContainer, "Thanks");
         var Items = document.getElementById("Items");
         list = new List(Items);
         cmn.createElement("div", "selection_result", aContainer);
         cmn.createElement("button", "next", aContainer, "nextButton");
         cmn.createElement("button", "prev", aContainer, "prevButton");
         cmn.createElement("button", "done", aContainer, "doneButton");
+        cmn.createElement("button", "home", aContainer, "homeButton");
         $("#nextButton").html("Далее");
         $("#prevButton").html("Назад");
         $("#doneButton").html("Оплатить");
-        $("#prevButton").hide();
-        $("#doneButton").hide();
+        $("#homeButton").html("Завершить");
+        $('#prevButton , #doneButton, #homeButton, .Bills, .Thanks').hide();
         $('.selection_result').html("Всего выбрано позиций <span class='positions_count'>0</span> на сумму <span class='bill_sum'>0 рублей</span><br>");
         document.getElementById('nextButton').onclick = nextButtonClick;
         document.getElementById('prevButton').onclick = prevButtonClick;
         document.getElementById('doneButton').onclick = doneButtonClick;
-        //details = new Details();
+        document.getElementById('homeButton').onclick = homeButtonClick;
     };
-    
-    
 }

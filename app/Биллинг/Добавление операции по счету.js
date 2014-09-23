@@ -1,6 +1,7 @@
 /**
  * 
  * @author minya92
+ * 
  */
 function AddBillOperation() {
     var self = this, model = this.model, form = this;

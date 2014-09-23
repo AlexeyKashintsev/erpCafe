@@ -9,7 +9,6 @@ function BillsFranchazi() {
 var self = this, model = this.model, form = this;
 var createBillAccount = new CreateBillAccount();
 var bm = new ServerModule("BillModule");
-var us = new ServerModule("UserSession");
 var addServiceForm = new AddServiceForm();
 var addBillOperation = new AddBillOperation();
 var historyOperations = new HistoryOperations();
@@ -24,19 +23,28 @@ function btnReqActionPerformed(evt) {//GEN-FIRST:event_btnReqActionPerformed
     if (self.model.modified&&confirm('Сохранить изменения?')){
         self.model.save();
     }
-    self.model.requery();
+    model.requery();
 }//GEN-LAST:event_btnReqActionPerformed
 
 function btnSaveActionPerformed(evt) {//GEN-FIRST:event_btnSaveActionPerformed
-    addBillOperation.setAccountId(model.qBillAccount.cursor.bill_accounts_id);
-    addBillOperation.showModal(function(aResult){
-        model.requery();
-    });
+    //TODO Наверное так делать не безопасно, хз как правильно сделать
+    if(session.getUserRole()== "admin"){
+        addBillOperation.setAccountId(model.qBillAccount.cursor.bill_accounts_id);
+        addBillOperation.showModal(function(aResult){
+            model.requery();
+        });
+    } else {
+        var addBalance = new AddBalance(model.qBillAccount.cursor.bill_accounts_id);
+        addBalance.showModal(function(){
+            model.requery();
+        });
+    }
+    
 }//GEN-LAST:event_btnSaveActionPerformed
 
 function formWindowOpened(evt) {//GEN-FIRST:event_formWindowOpened
     if(!model.params.franchazi_id)
-        model.params.franchazi_id = us.getFranchazi();
+        model.params.franchazi_id = session.getFranchazi();
 }//GEN-LAST:event_formWindowOpened
 
 function formWindowClosing(evt) {//GEN-FIRST:event_formWindowClosing

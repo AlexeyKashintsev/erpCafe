@@ -223,9 +223,10 @@ function BillModule() {
                 if (!self.ERROR_SHORTAGE_MONEY) {
                     model.qBillOperationsList.cursor.operation_status = aStatus;
                     model.save();
+                    self.getSumFromAccountId(model.qBillOperationsList.cursor.account_id);
                     eventProcessor.addEvent('setStatusBillOperation', {
                         operation_id: model.qBillOperationsList.cursor.bill_operations_id,
-                        status: aStatus,
+                        status: aStatus
                     });
                     return true;
                 } else {

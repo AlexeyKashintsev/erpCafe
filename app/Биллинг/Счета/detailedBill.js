@@ -5,7 +5,7 @@
  */
 function DetailedBill() {
     var self = this, model = this.model;
-    var billApi = new BillApi();
+   // var _billApi = _new _BillApi();
     self.bd = null;
     self.billItems = null;
     /*self.bd = {
@@ -26,15 +26,15 @@ function DetailedBill() {
     
     self.billItems = [
             {
-                num: 0,
-                itemName: '',
-                desc: '',
-                count: 0,
-                cost: 0,
-                sum: 0
+            num: 1,
+            itemName: "Пополнение лицевого счета №",
+            desc: "руб",
+            count: "1",
+            cost: "aSum",
+            sum: "aSum"
             }
-        ];*/
-    
+        ];
+    */
     //var bd = {};
     //var billItems = [];
     
@@ -169,14 +169,13 @@ function DetailedBill() {
      * @param evt Event object.
      */
     function onBeforeRender(evt){//GEN-FIRST:event_onBeforeRender
-       // self.bd = self.bd[0];//где-то здесь зло!
-        var supplier = billApi.getSupplierDetails;
-        for (var j in supplier) {
-            self.bd[j] = supplier[j];
-        }
-        
+        //self.bd = self.bd[0];//где-то здесь зло!
+//        var supplier = billApi.getSupplierDetails;
+//        for (var j in supplier) {
+//            self.bd[j] = supplier[j];
+//        }
+        model.qBillById.requery();
         self.bd.sumDesk = number_to_string(self.bd.sum);
-        self.bd.billNumber = model.billsCount.cnt;
         var d = new Date(self.bd.billDate);
         var month = (d.getMonth() + 1).toString();
         month = month.length === 1 ? '0' + month : month;

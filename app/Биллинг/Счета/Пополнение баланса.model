@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<datamodel>
-    <parametersEntity Title="Параметры" entityHeight="200" entityIconified="false" entityLocationX="12" entityLocationY="12" entityWidth="150">
-    </parametersEntity>
+<?xml version="1.0" encoding="UTF-8"?><datamodel>
+  <parametersEntity entityHeight="200" entityIconified="false" entityLocationX="12" entityLocationY="12" entityWidth="150"/>
+  <entity Name="billsCount" Title="" entityHeight="82" entityIconified="false" entityId="141146929306425" entityLocationX="14" entityLocationY="219" entityWidth="150" queryId="billsCount" tableName="" tableSchemaName=""/>
+  <entity Name="listFranchazi" Title="" entityHeight="200" entityIconified="false" entityId="141146164176494" entityLocationX="216" entityLocationY="13" entityWidth="150" queryId="listFranchazi" tableName="" tableSchemaName=""/>
 </datamodel>

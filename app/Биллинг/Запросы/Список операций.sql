@@ -1,5 +1,4 @@
 /**
- *
  * @public
  * @author minya92
  * @name qBillOperationsList

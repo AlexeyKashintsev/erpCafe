@@ -7,8 +7,8 @@
   <entity Name="qBillAccount" Title="" entityHeight="200" entityIconified="false" entityId="141095450421562" entityLocationX="232" entityLocationY="13" entityWidth="150" onAfterScroll="qBillAccountOnScrolled" onRequeried="qBillAccountOnRequeried" queryId="qBillAccount" tableName="" tableSchemaName=""/>
   <entity Name="qServiceListByAccount" Title="" entityHeight="200" entityIconified="false" entityId="141095893247393" entityLocationX="14" entityLocationY="221" entityWidth="150" queryId="qServiceListByAccount" tableName="" tableSchemaName=""/>
   <entity Name="qAccountType" Title="" entityHeight="200" entityIconified="false" entityId="141095471990432" entityLocationX="453" entityLocationY="19" entityWidth="150" queryId="qAccountType" tableName="" tableSchemaName=""/>
-  <relation leftEntityId="-1" leftEntityParameterName="franchazi_id" rightEntityId="141095450421562" rightEntityParameterName="user_id"/>
   <relation leftEntityId="-1" leftEntityParameterName="account_id" rightEntityId="141095893247393" rightEntityParameterName="account_id"/>
+  <relation leftEntityId="-1" leftEntityParameterName="franchazi_id" rightEntityId="141095450421562" rightEntityParameterName="user_id"/>
   <referenceRelation leftEntityFieldName="account_type" leftEntityId="141095450421562" rightEntityFieldName="bill_account_types_id" rightEntityId="141095471990432"/>
   <referenceRelation leftEntityFieldName="account_id" leftEntityId="141095893247393" rightEntityFieldName="bill_accounts_id" rightEntityId="141095450421562"/>
 </datamodel>

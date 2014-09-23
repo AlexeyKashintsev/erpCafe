@@ -19,6 +19,10 @@ function StartMasterAdminForm() {
             display     :   "Управление услугами",
             dispForm    :   "ManageServices"
         },
+        unpais        :   {
+            display     :   "Неоплаченные счета",
+            dispForm    :   "UnpaidBills"
+        },
         items           :   {
             display     :   "Товары для продажи",
             dispForm    :   "BillItems"

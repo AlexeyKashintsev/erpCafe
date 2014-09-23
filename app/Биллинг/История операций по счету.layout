@@ -8,8 +8,10 @@
   <widget name="label" parent="Form" prefHeight="14px" prefWidth="168px" text="Выберите статус операции" type="LabelDesignInfo">
     <constraints height="14px" left="12px" top="23px" type="MarginConstraintsDesignInfo" width="168px"/>
   </widget>
-  <widget name="modelGrid" parent="Form" prefHeight="324px" prefWidth="635px" type="DbGridDesignInfo">
+  <widget deletable="false" editable="false" insertable="false" name="modelGrid" parent="Form" prefHeight="324px" prefWidth="635px" type="DbGridDesignInfo">
     <column name="OpType" title="Тип операции">
+      <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
+      <datamodelElement entityId="140851905975976" fieldName="type_name"/>
       <columnsDatasource/>
       <columnsDisplayField/>
       <cellsDatasource/>
@@ -18,13 +20,13 @@
         <cellValueField/>
         <rowsKeyField/>
       </cellDesignInfo>
-      <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
-      <datamodelElement entityId="140851905975976" fieldName="type_name"/>
       <headerStyle>
         <nativeFont name="Tahoma" size="11"/>
       </headerStyle>
     </column>
     <column name="colStatus_name" title="Статус">
+      <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
+      <datamodelElement entityId="140851905975976" fieldName="status_name"/>
       <columnsDatasource/>
       <columnsDisplayField/>
       <cellsDatasource/>
@@ -33,13 +35,13 @@
         <cellValueField/>
         <rowsKeyField/>
       </cellDesignInfo>
-      <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
-      <datamodelElement entityId="140851905975976" fieldName="status_name"/>
       <headerStyle>
         <nativeFont name="Tahoma" size="11"/>
       </headerStyle>
     </column>
     <column name="colOperation_sum" title="Сумма">
+      <controlInfo classHint="DbSpinDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
+      <datamodelElement entityId="140851905975976" fieldName="operation_sum"/>
       <columnsDatasource/>
       <columnsDisplayField/>
       <cellsDatasource/>
@@ -48,13 +50,13 @@
         <cellValueField/>
         <rowsKeyField/>
       </cellDesignInfo>
-      <controlInfo classHint="DbSpinDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
-      <datamodelElement entityId="140851905975976" fieldName="operation_sum"/>
       <headerStyle>
         <nativeFont name="Tahoma" size="11"/>
       </headerStyle>
     </column>
     <column name="colOperation_date" title="Дата">
+      <controlInfo classHint="DbDateDesignInfo" dateFormat="dd.MM.yyyy HH:mm:ss" name="view" prefHeight="0px" prefWidth="0px"/>
+      <datamodelElement entityId="140851905975976" fieldName="operation_date"/>
       <columnsDatasource/>
       <columnsDisplayField/>
       <cellsDatasource/>
@@ -63,8 +65,6 @@
         <cellValueField/>
         <rowsKeyField/>
       </cellDesignInfo>
-      <controlInfo classHint="DbDateDesignInfo" dateFormat="dd.MM.yyyy HH:mm:ss" name="view" prefHeight="0px" prefWidth="0px"/>
-      <datamodelElement entityId="140851905975976" fieldName="operation_date"/>
       <headerStyle>
         <nativeFont name="Tahoma" size="11"/>
       </headerStyle>
