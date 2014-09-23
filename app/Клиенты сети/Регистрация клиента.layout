@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?><layout defaultCloseOperation="2" name="Form" prefHeight="216px" prefWidth="400px" windowOpened="formWindowOpened">
+  <widget name="lblEmailMsg" parent="Form" prefHeight="24px" prefWidth="180px" text="label3" type="LabelDesignInfo">
+    <constraints height="24px" left="204px" top="144px" type="MarginConstraintsDesignInfo" width="180px"/>
+  </widget>
   <widget name="firstnameField" parent="Form" prefHeight="27px" prefWidth="180px" type="TextFieldDesignInfo">
     <constraints height="27px" left="204px" top="24px" type="MarginConstraintsDesignInfo" width="180px"/>
   </widget>
@@ -14,14 +17,14 @@
   <widget actionPerformed="btnAddActionPerformed" name="btnAdd" parent="Form" prefHeight="29px" prefWidth="144px" text="Добавить" type="ButtonDesignInfo">
     <constraints bottom="18px" height="29px" right="16px" type="MarginConstraintsDesignInfo" width="144px"/>
   </widget>
-  <widget keyReleased="phoneFieldKeyReleased" name="phoneField" parent="Form" prefHeight="27px" prefWidth="180px" type="TextFieldDesignInfo">
+  <widget focusLost="phoneFieldFocusLost" keyReleased="phoneFieldKeyReleased" name="phoneField" parent="Form" prefHeight="27px" prefWidth="180px" type="TextFieldDesignInfo">
     <constraints height="27px" left="204px" top="72px" type="MarginConstraintsDesignInfo" width="180px"/>
   </widget>
-  <widget keyReleased="emailFieldKeyReleased" name="emailField" parent="Form" prefHeight="27px" prefWidth="180px" type="TextFieldDesignInfo">
+  <widget focusLost="emailFieldFocusLost" keyReleased="emailFieldKeyReleased" name="emailField" parent="Form" prefHeight="27px" prefWidth="180px" type="TextFieldDesignInfo">
     <constraints height="27px" left="204px" top="120px" type="MarginConstraintsDesignInfo" width="180px"/>
   </widget>
-  <widget foregroundColor="#ff0000" name="lblError" parent="Form" prefHeight="36px" prefWidth="216px" type="LabelDesignInfo">
-    <constraints bottom="12px" height="36px" left="12px" type="MarginConstraintsDesignInfo" width="216px"/>
+  <widget name="lblPhoneMsg" parent="Form" prefHeight="24px" prefWidth="180px" text="label3" type="LabelDesignInfo">
+    <constraints height="24px" left="204px" top="96px" type="MarginConstraintsDesignInfo" width="180px"/>
   </widget>
   <layout type="MarginLayoutDesignInfo"/>
 </layout>

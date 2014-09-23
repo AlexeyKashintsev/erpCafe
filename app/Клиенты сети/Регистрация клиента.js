@@ -4,9 +4,6 @@
  */
 function ClientRegistrationByBarist() {
     var self = this, model = this.model, form = this;
-    var roleName = "client";
-    var validateEmail = false;
-    var validatePhone = false;
     
     self.setPhone = function(aPhone) {
         form.phoneField.text = aPhone;
@@ -14,51 +11,70 @@ function ClientRegistrationByBarist() {
     
     function btnAddActionPerformed(evt) {//GEN-FIRST:event_btnAddActionPerformed
         if (validateForm()){
-            session.clientModule.createUser(form.phoneField.text, form.emailField.text, form.firstnameField.text, roleName);
+            session.clientModule.createUser(form.phoneField.text, form.emailField.text, form.firstnameField.text);
         }
         form.close(form.phoneField.text);
     }//GEN-LAST:event_btnAddActionPerformed
 
     function validateForm(){
-        if (validateEmail && validatePhone){
+        if (ValidateEmail() && ValidatePhone()){
             form.btnAdd.enabled = true;
-            form.lblError.text = "";
             return true;
         } else {
             form.btnAdd.enabled = false;
-            form.lblError.text = "Пользователь существует";
             return false;
         }
     }
 
     function phoneFieldKeyReleased(evt) {//GEN-FIRST:event_phoneFieldKeyReleased
-        ValidatePhone();
+        validateForm();
     }//GEN-LAST:event_phoneFieldKeyReleased
 
     function emailFieldKeyReleased(evt) {//GEN-FIRST:event_emailFieldKeyReleased
-        ValidateEmail();
+        validateForm();
     }//GEN-LAST:event_emailFieldKeyReleased
 
     function formWindowOpened(evt) {//GEN-FIRST:event_formWindowOpened
-        ValidatePhone();
-        ValidateEmail();
+        validateForm();
     }//GEN-LAST:event_formWindowOpened
     
     function ValidatePhone(){
+        var reg = /^(7)\d{10}/i;
         if (session.clientModule.checkIfPhoneExist(form.phoneField.text)){
-            validatePhone = false;
+            form.lblPhoneMsg.text = "Номер уже используется";
+            return false;
         } else {
-            validatePhone = true;
+            if (reg.test(form.phoneField.text)){
+                form.lblPhoneMsg.text = "";
+                return true;
+            } else {
+                form.lblPhoneMsg.text = "Неверный формат номера";
+                return false;
+            }
         }
-        validateForm();
     }
     
     function ValidateEmail(){
+        var reg = /^([\w.-]+)@([a-zA-Z0-9.-]+[a-zA-Z]{2,6})/;
         if (session.clientModule.checkIfEmailExist(form.emailField.text)){
-            validateEmail = false;
+            form.lblEmailMsg.text = "Email уже используется";
+            return false;
         } else {
-            validateEmail = true;
+            if (reg.test(form.emailField.text)) {
+                form.lblEmailMsg.text = "";
+                return true;
+            } else {
+                form.lblEmailMsg.text = "Неверный формат Email";
+                return false;
+            }
         }
-        validateForm();
     }    
+
+    function phoneFieldFocusLost(evt) {//GEN-FIRST:event_phoneFieldFocusLost
+        validateForm();
+    }//GEN-LAST:event_phoneFieldFocusLost
+
+    function emailFieldFocusLost(evt) {//GEN-FIRST:event_emailFieldFocusLost
+        validateForm();
+    }//GEN-LAST:event_emailFieldFocusLost
 }
