@@ -47,32 +47,33 @@ function ClientServerModule() {
     function genPass(){
         return Math.random().toString(36).slice(2,8);
     }
-    
-    self.setPass = function (aPass){
-        pass = aPass;
-    };
-    
-    
-    self.createUser = function(anUserName, anEmail, aFirstName){
+
+    self.createUser = function( aPhone, anEmail, aFirstName,
+                                aMiddleName, aLastName, aBirthday, 
+                                anAddress, anUserName, aBonusCategory){
         //У клиентов в качестве username используется номер телефона
-        //TODO Первое не всегда верно, иногда может использоваться другой идентификатор
+        //fixed Первое не всегда верно, иногда может использоваться другой идентификатор
         //fixed Можно создать пользователя с ролью администратор - дырка 
         //В БД есть все поля ФИО, здесь только имя
         //Изолировать pass в пределах одной функции
         
         
-        self.setPass(genPass());
+        pass = genPass();
         Logger.info("Пароль пользователя: " + pass);//Генерим пароль в переменную pass
-        userModule.createUser(anUserName, adminFunctions.MD5(pass), 'client', anEmail, anUserName);
+        userModule.createUser(anUserName ? anUserName : aPhone , adminFunctions.MD5(pass), 'client', anEmail, aPhone);
         model.qPersonalData.insert();
         model.qPersonalData.cursor.client_id = billModule.createBillAccount(anUserName, billModule.ACCOUNT_TYPE_CLIENT);
         model.qPersonalData.cursor.first_name = aFirstName;
-        model.qPersonalData.cursor.phone = anUserName;
+        model.qPersonalData.cursor.middle_name = aMiddleName;
+        model.qPersonalData.cursor.last_name = aLastName;
+        model.qPersonalData.cursor.birthday = aBirthday;
+        model.qPersonalData.cursor.address = anAddress;
+        model.qPersonalData.cursor.phone = aPhone;
         model.qPersonalData.cursor.email = anEmail;
-        model.qPersonalData.cursor.usr_name = anUserName;
+        model.qPersonalData.cursor.usr_name = anUserName ? anUserName : aPhone;
         model.qPersonalData.cursor.reg_date = new Date();
         model.save();
-        self.setBonusCategory(anUserName, 1);
+        self.setBonusCategory(anUserName ? anUserName : aPhone, aBonusCategory ? aBonusCategory : 1);
         /*sender.sendMessage(sender.REGISTRATION_SUCCESS, {
             phone: model.qPersonalData.cursor.phone,
             username: model.qPersonalData.cursor.first_name
