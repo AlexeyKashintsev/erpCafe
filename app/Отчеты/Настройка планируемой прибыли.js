@@ -2,7 +2,6 @@
  * 
  * @author Алексей
  * @name template2
- * @public
  */
 
 function PlannedIncomeSettings() {

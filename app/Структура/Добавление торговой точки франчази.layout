@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?><layout defaultCloseOperation="2" name="Form" prefHeight="159px" prefWidth="345px" windowClosing="formWindowClosing" windowOpened="formWindowOpened">
+  <widget name="modelFormattedField" parent="Form" prefHeight="28px" prefWidth="213px" type="DbLabelDesignInfo">
+    <datamodelElement entityId="141153575254323" fieldName="tp_name"/>
+    <constraints height="28px" left="120px" right="12px" top="12px" type="MarginConstraintsDesignInfo"/>
+  </widget>
+  <widget name="label" parent="Form" prefHeight="16px" prefWidth="108px" text="Наименование" type="LabelDesignInfo">
+    <constraints height="16px" left="12px" top="18px" type="MarginConstraintsDesignInfo" width="108px"/>
+  </widget>
+  <widget name="label1" parent="Form" prefHeight="16px" prefWidth="96px" text="Адрес" type="LabelDesignInfo">
+    <constraints height="16px" left="12px" top="54px" type="MarginConstraintsDesignInfo" width="96px"/>
+  </widget>
+  <widget name="modelFormattedField1" parent="Form" prefHeight="28px" prefWidth="221px" type="DbLabelDesignInfo">
+    <datamodelElement entityId="141153575254323" fieldName="tp_address"/>
+    <constraints height="28px" left="120px" right="4px" top="48px" type="MarginConstraintsDesignInfo"/>
+  </widget>
+  <widget actionPerformed="buttonActionPerformed" name="button" parent="Form" prefHeight="29px" prefWidth="86px" text="Создать" type="ButtonDesignInfo">
+    <constraints bottom="8px" height="29px" right="7px" type="MarginConstraintsDesignInfo" width="86px"/>
+  </widget>
+  <widget name="modelCheckBox" parent="Form" prefHeight="28px" prefWidth="216px" text="Работает" type="DbCheckDesignInfo">
+    <datamodelElement entityId="141153575254323" fieldName="tp_active"/>
+    <constraints height="28px" left="120px" top="84px" type="MarginConstraintsDesignInfo" width="216px"/>
+  </widget>
+  <layout type="MarginLayoutDesignInfo"/>
+</layout>

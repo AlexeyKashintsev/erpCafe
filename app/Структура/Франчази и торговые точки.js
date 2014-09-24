@@ -9,6 +9,7 @@ function FranchaziAndTradePoints() {
     self.franchazi.parent = self;
     self.tradePoints = new TradePoints();
     self.tradePoints.parent = self;
+    self.tradePoints.addButtons = true;
     
     self.franchazi.showOnPanel(form.pnlFranchazi);
     self.tradePoints.showOnPanel(form.pnlTradePoints);

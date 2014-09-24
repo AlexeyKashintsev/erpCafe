@@ -45,4 +45,16 @@ function formWindowClosing(evt) {//GEN-FIRST:event_formWindowClosing
     function btnSelectActionPerformed(evt) {//GEN-FIRST:event_btnSelectActionPerformed
         close(model.listTradePoints.org_trade_point_id);
     }//GEN-LAST:event_btnSelectActionPerformed
+
+    function btnAddActionPerformed(evt) {//GEN-FIRST:event_btnAddActionPerformed
+        var fmAddTP = new AddTradePoint2Franchazi();
+        fmAddTP.setFranchazi(model.params.franchazi_id);
+        fmAddTP.showModal(function() {
+            model.listTradePoints.requery();
+        });
+    }//GEN-LAST:event_btnAddActionPerformed
+
+    function btnDelActionPerformed(evt) {//GEN-FIRST:event_btnDelActionPerformed
+        model.listTradePoints.cursor.tp_active = !model.listTradePoints.cursor.tp_active;
+    }//GEN-LAST:event_btnDelActionPerformed
 }
