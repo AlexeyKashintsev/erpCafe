@@ -34,7 +34,7 @@ function MessageSender() {
         if (model.qGetSendParams.cursor.email){
             if (aParams.email){
                 //TODO настроить отправку писем.
-                emailSender.sendEmail("from", aParams.email, "subject", textMessage);
+                emailSender.sendEmail("rcCoffee", aParams.email, aParams.subject, textMessage);
             }
         }
         if (model.qGetSendParams.cursor.display){
