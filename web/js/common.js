@@ -202,6 +202,15 @@ cmn.addTopRightControl = function(aText, anIcon, aFunction, aHref) {
     document.getElementById('logActionNav').appendChild(li);
 }
 
+cmn.addHeaderLeft = function(aText, anIcon, aFunction, aHref) {
+    //<li><a href="#"><span class="glyphicon glyphicon-plus-sign"></span>  Прием товара</a></li>
+    var li = document.createElement('li');
+    if (aFunction) li.onclick = aFunction;
+    li.innerHTML = '<a href="' + (aHref ? aHref : '#') + '"><span class="glyphicon glyphicon-' + anIcon +
+                    '"></span>   ' + aText + '</a>';
+    document.getElementById('leftActionNav').appendChild(li);
+}
+
 if (!platypus) {
     var platypus = {};
 }
@@ -212,6 +221,7 @@ platypus.ready = function() {
         session.login(function(anUserRole){
                 session.userRole = anUserRole;
                 session.userName = session.getUserName();
+                cmn.addHeaderLeft(session.userName, "user");
                 session.sessionKeeper = setInterval(keepSession, sessionTimeout);
                 switch (anUserRole) {
                     case 'admin':

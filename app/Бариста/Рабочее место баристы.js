@@ -117,7 +117,8 @@ function BaristaDesktop() {
 
     function getSessionsOnRequeried(evt) {//GEN-FIRST:event_getSessionsOnRequeried
         if (!model.getSessions.empty){
-            session.tradePoint = model.getSessions.trade_point
+            session.tradePoint = model.getSessions.trade_point;
+            model.params.trade_point_id = session.tradePoint;
             model.tradeItemsByTradePointWithCost.params.trade_point_id = session.tradePoint;
             model.tradeItemsByTradePointWithCost.execute();
         }
@@ -141,4 +142,11 @@ function BaristaDesktop() {
         cmn.addTopRightControl("Закрыть смену", "log-out", btnSessionCloseActionPerformed);
         cmn.addTopRightControl("Выход", "log-out", Logout);
     }
+
+    function qTradePointOnRequeried(evt) {//GEN-FIRST:event_qTradePointOnRequeried
+        if (!model.qTradePoint.empty) {
+            cmn.addHeaderLeft(model.qTradePoint.cursor.tp_name, "asterisk");
+            cmn.addHeaderLeft(model.qTradePoint.cursor.tp_address, "envelope");
+        }
+    }//GEN-LAST:event_qTradePointOnRequeried
 }
