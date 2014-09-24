@@ -428,4 +428,14 @@ function BillModule() {
         });
 
     };
+    
+    /*
+     * 
+     */
+    self.addBonusesToFranchazi = function(aFranId, aSum){
+        model.qBillAccount.params.user_id = aFranId;
+        model.qBillAccount.requery();
+        var multiplier = 0.05;
+        self.addBillOperation(model.qBillAccount.cursor.bill_accounts_id, self.OPERATION_ADD_CASH, aSum*multiplier);
+    };
 }

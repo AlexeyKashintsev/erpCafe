@@ -221,8 +221,9 @@ function TradeSessions() {
                                          BonusOperation, 
                                          BonusCount);
                 connectBillAndTradeOperation(TradeOperationId, BillOperationId);    
-           //TODO Досписать добавление бонусов на счет франчайзи
-            
+                if (BonusOperation === billing.OPERATION_DEL_BUY){
+                    billing.addBonusesToFranchazi(session.getFranchazi(), BonusCount);
+                }
             }
             model.save();
         };
