@@ -4,7 +4,6 @@
  */
 function ClientRegistrationByBarist() {
     var self = this, model = this.model, form = this;
-    
     self.setPhone = function(aPhone) {
         form.phoneField.text = aPhone;
     };

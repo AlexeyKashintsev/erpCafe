@@ -35,7 +35,7 @@
  * </resource-ref>
  * 
  * @author vv
- * @module
+ * @public
  */
 function Mailer() {
     var self = this, model = self.model;

@@ -25,7 +25,6 @@ function MessageSender() {
         for (param in aParams){
            textMessage = textMessage.replace(new RegExp("%" + param + "%",'g'), aParams[param]);
         }
-        //TODO Сделать замену с помощью регулярки %perem% на значения из массива параметров aParams
         
         if (model.qGetSendParams.cursor.sms){
             if (aParams.phone){
@@ -35,7 +34,7 @@ function MessageSender() {
         if (model.qGetSendParams.cursor.email){
             if (aParams.email){
                 //TODO настроить отправку писем.
-                emailSender.sendEmail(from, to, subject, text);
+                emailSender.sendEmail("from", aParams.email, "subject", textMessage);
             }
         }
         if (model.qGetSendParams.cursor.display){
