@@ -57,6 +57,15 @@ function UserSession() {
                 break;
         return roles[j];
     };
+    
+    self.checkSession = function(aSession) {
+        model.qSessionById.params.session_id = aSession;
+        model.qSessionById.execute();
+        if (!model.qSessionById.empty)
+            return model.qSessionById.cursor.end_date === null
+        else
+            return false;
+    };
 
     function qFrancByUserNameOnRequeried(evt) {//GEN-FIRST:event_qFrancByUserNameOnRequeried
         if (self.principal.hasRole('barista')||self.principal.hasRole('franchazi')) {

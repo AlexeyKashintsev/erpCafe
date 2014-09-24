@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?><datamodel>
-<parametersEntity entityHeight="200" entityIconified="false" entityLocationX="12" entityLocationY="12" entityWidth="150"/>
-<entity Name="dsAppVersion" Title="Версия программы" entityHeight="200" entityIconified="false" entityId="136188027157149" entityLocationX="176" entityLocationY="6" entityWidth="150" onRequeried="dsAppVersionRequeried" queryId="Версия_программы" tableName="" tableSchemaName=""/>
-</datamodel>

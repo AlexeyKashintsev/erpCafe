@@ -10,17 +10,6 @@ function BaristaDesktop() {
     self.userName = session.getUserName();
     var whAdd = null;
 
-    //Определяем как запущена программа
-   /* self.browser = false;
-    try {
-        (function() {
-            self.browser = false;
-        }).invokeBackground();
-    } catch (e) {
-        self.browser = true;
-        Logger.info('browser');
-    }*/
-
     self.orderList = new OrderList(self);
 
     function setSession(aSession) {
@@ -77,7 +66,7 @@ function BaristaDesktop() {
         });
     }
 
-    function addItemBrowser(aData) {
+    function addTradeItem(aData) {
         var itemContainer = cmn.createElement("div", "itemDescription col-xs-4 col-sm-3 col-lg-2 tt_"
                 + aData.trade_item_type_id + (aData.classtag ? " " + aData.classtag : ""), "mainArea");
         var itemPanel = cmn.createElement("div", "panel panel-primary", itemContainer);
@@ -99,7 +88,7 @@ function BaristaDesktop() {
     function tradeItemsByTradePointWithCostOnRequeried(evt) {//GEN-FIRST:event_tradeItemsByTradePointWithCostOnRequeried
         model.tradeItemsByTradePointWithCost.beforeFirst();
         while (model.tradeItemsByTradePointWithCost.next()) {
-                addItemBrowser(model.tradeItemsByTradePointWithCost.cursor);
+                addTradeItem(model.tradeItemsByTradePointWithCost.cursor);
         }
     }//GEN-LAST:event_tradeItemsByTradePointWithCostOnRequeried
 

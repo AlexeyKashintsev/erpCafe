@@ -249,3 +249,24 @@ div.clientBonusDiv {
   text-align: center;
   height: 100%;
 }
+
+/* ### ORDER ITEMS ### */
+.listItem {
+  border-bottom: 1px solid #501000
+}
+
+.selection_result > button {
+  margin: 20px 0px;
+  border: none;
+  padding: 15px 30px;
+  font-size: 16px;
+}
+
+button.active {
+  background-color: #DC3E00;
+  color: #fff;  
+}
+
+.selection_result > button.active:hover {
+  background-color: #D03A00;
+}

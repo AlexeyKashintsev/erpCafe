@@ -215,8 +215,16 @@ if (!platypus) {
     var platypus = {};
 }
 
+/*session = {
+    userRole
+    userName
+    activeSession
+    tradePoint
+    franchaziId
+}*/
+
 platypus.ready = function() {
-    require(['getUserSession'], function(){
+    require(['getUserSession'], function() {
         session = getUserSession();
         session.login(function(anUserRole){
                 session.userRole = anUserRole;
