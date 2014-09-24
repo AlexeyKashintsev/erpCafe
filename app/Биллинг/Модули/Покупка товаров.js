@@ -5,6 +5,7 @@
 function BillItemsModule() {
     var self = this, model = this.model;
     var billModule  = new BillModule();
+    
     /*
      * Добавление товара на продажу
      */
@@ -77,7 +78,7 @@ function BillItemsModule() {
             anItems[i].costId =  model.qItemBillCost.cursor.bill_item_cost_id;
         }
         Logger.info(sum);
-        var operationId = billModule.addBillOperation(anAccountId, billModule.getSelfPropertyValue("OPERATION_DEL_BUY"), sum);
+        var operationId = billModule.addBillOperation(anAccountId, billModule.getSelfPropertyValue("OPERATION_DEL_BUY"), sum, billModule.getSelfPropertyValue("OP_STATUS_PROCESSING"));
         for(var j in anItems){
             model.qBillOperationItems.insert();
             model.qBillOperationItems.cursor.operation_id = operationId;

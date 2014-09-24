@@ -84,6 +84,10 @@ self.showFormAsInternal = function(aForm) {
             display     :   "Заказ товаров",
             dispForm    :   "BuyItemsForm"
         },
+        historyOrders        :   {
+            display     :   "История заказов",
+            dispForm    :   "HistoryOrders"
+        },
         warehouse       :   {
             display     :   "Склад",
             dispForm    :   "WarehouseItemList",

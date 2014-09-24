@@ -9,19 +9,21 @@ function BillModule() {
     var eventProcessor = new EventProcessor();
     
     // Типы операций
-    self.OPERATION_ADD_CASH = 1; //Добавление средств на счет
-    self.OPERATION_ADD_BONUS = 2; //
-    self.OPERATION_DEL_BUY = 3; //Списание средств
-    self.OPERATION_DEL_SERVICE = 4; //
+    self.OPERATION_ADD_CASH     = 1; //Добавление средств на счет
+    self.OPERATION_ADD_BONUS    = 2; //
+    self.OPERATION_DEL_BUY      = 3; //Списание средств
+    self.OPERATION_DEL_SERVICE  = 4; //
     // Типы аккаунтов
-    self.ACCOUNT_TYPE_DEFAULT = 1; //Основной 
-    self.ACCOUNT_TYPE_CREDIT = 2; //Кредитный
-    self.ACCOUNT_TYPE_CLIENT = 3; //Клиентский
+    self.ACCOUNT_TYPE_DEFAULT   = 1; //Основной 
+    self.ACCOUNT_TYPE_CREDIT    = 2; //Кредитный
+    self.ACCOUNT_TYPE_CLIENT    = 3; //Клиентский
     //Статусы операций
-    self.OP_STATUS_SUCCESS = 1;
-    self.OP_STATUS_FAIL = 2;
-    self.OP_STATUS_BILL = 3;
-    self.OP_STATUS_PROCESSING = 4;
+    self.OP_STATUS_SUCCESS      = 1;
+    self.OP_STATUS_FAIL         = 2;
+    self.OP_STATUS_BILL         = 3;
+    self.OP_STATUS_PROCESSING   = 4; //Заказ в обработке
+    self.OP_STATUS_SENT         = 5; //Товар не отправлен
+    self.OP_STATUS_RECIVED      = 6; //Товар принят
     
     self.getSelfPropertyValue = function(aPropertyName) {
         return self[aPropertyName];
