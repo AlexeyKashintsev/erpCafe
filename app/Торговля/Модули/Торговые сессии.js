@@ -222,6 +222,7 @@ function TradeSessions() {
                                          BonusCount);
                 connectBillAndTradeOperation(TradeOperationId, BillOperationId);    
            //TODO Досписать добавление бонусов на счет франчайзи
+            
             }
             model.save();
         };
