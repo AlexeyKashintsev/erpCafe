@@ -4,6 +4,7 @@
  */
 function HistoryOrders() {
     var self = this, model = this.model, form = this;
+    var billModule  = new ServerModule("BillModule");
     
     // TODO : place your code here
 
@@ -44,8 +45,26 @@ function HistoryOrders() {
     
     }//GEN-LAST:event_btnSaveActionPerformed
 
-    function btnSave1ActionPerformed(evt) {//GEN-FIRST:event_btnSave1ActionPerformed
-        historyOperations.setAccountId(model.qBillAccount.cursor.bill_accounts_id);
-        historyOperations.showModal(function(){});
-    }//GEN-LAST:event_btnSave1ActionPerformed
+    function btnReciveActionPerformed(evt) {//GEN-FIRST:event_btnReciveActionPerformed
+        if(confirm("Изменить статус операции?")){
+            billModule.setStatusBillOperation(model.qHistoryOrders.cursor.bill_operations_id, billModule.getSelfPropertyValue("OP_STATUS_RECIVED"));
+            model.requery();
+        }
+    }//GEN-LAST:event_btnReciveActionPerformed
+
+    function qHistoryOrdersOnScrolled(evt) {//GEN-FIRST:event_qHistoryOrdersOnScrolled
+        if(model.qHistoryOrders.cursor.operation_status == 5){
+            form.btnRecive.enabled = true;
+        } else form.btnRecive.enabled = false;
+        model.params.operation_id = model.qHistoryOrders.cursor.bill_operations_id;
+        model.qOperationsItems.requery();
+    }//GEN-LAST:event_qHistoryOrdersOnScrolled
+
+    function qHistoryOrdersOnRequeried(evt) {//GEN-FIRST:event_qHistoryOrdersOnRequeried
+        if(model.qHistoryOrders.cursor.operation_status == 5){
+            form.btnRecive.enabled = true;
+        } else form.btnRecive.enabled = false;
+        model.params.operation_id = model.qHistoryOrders.cursor.bill_operations_id;
+        model.qOperationsItems.requery();
+    }//GEN-LAST:event_qHistoryOrdersOnRequeried
 }

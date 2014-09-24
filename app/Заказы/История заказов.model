@@ -2,11 +2,15 @@
   <parameters>
     <parameter description="" name="franchazi_id" nullable="true" parameterMode="1" precision="0" scale="0" selectionForm="null" signed="true" size="0" type="2" typeName="NUMERIC"/>
     <parameter description="" name="status" nullable="true" parameterMode="1" precision="0" scale="0" selectionForm="null" signed="true" size="0" type="2" typeName="NUMERIC"/>
+    <parameter description="" name="operation_id" nullable="true" parameterMode="1" precision="0" scale="0" selectionForm="null" signed="true" size="0" type="2" typeName="NUMERIC"/>
   </parameters>
   <parametersEntity entityHeight="200" entityIconified="false" entityLocationX="12" entityLocationY="12" entityWidth="150"/>
-  <entity Name="qHistoryOrders" Title="" entityHeight="200" entityIconified="false" entityId="141156193438016" entityLocationX="189" entityLocationY="12" entityWidth="150" queryId="qHistoryOrders" tableName="" tableSchemaName=""/>
+  <entity Name="qOperationsItems" Title="" entityHeight="200" entityIconified="false" entityId="141156478723655" entityLocationX="392" entityLocationY="10" entityWidth="150" queryId="qOperationsItems" tableName="" tableSchemaName=""/>
+  <entity Name="qHistoryOrders" Title="" entityHeight="200" entityIconified="false" entityId="141156193438016" entityLocationX="189" entityLocationY="12" entityWidth="150" onAfterScroll="qHistoryOrdersOnScrolled" onRequeried="qHistoryOrdersOnRequeried" queryId="qHistoryOrders" tableName="" tableSchemaName=""/>
   <relation leftEntityId="-1" leftEntityParameterName="status" rightEntityId="141156193438016" rightEntityParameterName="status"/>
   <relation leftEntityId="-1" leftEntityParameterName="franchazi_id" rightEntityId="141156193438016" rightEntityParameterName="franchazi_id"/>
+  <relation leftEntityId="-1" leftEntityParameterName="operation_id" rightEntityId="141156478723655" rightEntityParameterName="operation_id"/>
   <referenceRelation leftEntityFieldName="operation_status" leftEntityId="141156193438016" rightEntityFieldName="bill_operations_status_id" rightEntityId="141156193438016"/>
+  <referenceRelation leftEntityFieldName="operation_id" leftEntityId="141156478723655" rightEntityFieldName="bill_operations_id" rightEntityId="141156193438016"/>
   <referenceRelation leftEntityFieldName="account_id" leftEntityId="141156193438016" rightEntityFieldName="bill_accounts_id" rightEntityId="141156193438016"/>
 </datamodel>

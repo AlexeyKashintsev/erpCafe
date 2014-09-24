@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?><datamodel>
+  <parameters>
+    <parameter description="" name="operation_id" nullable="true" parameterMode="1" precision="0" scale="0" selectionForm="null" signed="true" size="0" type="2" typeName="NUMERIC"/>
+  </parameters>
+  <parametersEntity entityHeight="200" entityIconified="false" entityLocationX="8" entityLocationY="7" entityWidth="150"/>
+  <entity Title="" entityHeight="200" entityIconified="false" entityId="141156502080491" entityLocationX="677" entityLocationY="1" entityWidth="150" tableAlias="t2" tableName="wh_items" tableSchemaName=""/>
+  <entity Title="" entityHeight="200" entityIconified="false" entityId="141156466579873" entityLocationX="437" entityLocationY="0" entityWidth="150" tableAlias="t" tableName="bill_item_cost" tableSchemaName=""/>
+  <entity Title="" entityHeight="200" entityIconified="false" entityId="141156465143944" entityLocationX="223" entityLocationY="4" entityWidth="150" tableAlias="t1" tableName="bill_operations_items" tableSchemaName=""/>
+  <relation leftEntityFieldName="item_id" leftEntityId="141156466579873" rightEntityFieldName="wh_items_id" rightEntityId="141156502080491"/>
+  <relation leftEntityId="-1" leftEntityParameterName="operation_id" rightEntityFieldName="operation_id" rightEntityId="141156465143944"/>
+  <relation leftEntityFieldName="cost_id" leftEntityId="141156465143944" rightEntityFieldName="bill_item_cost_id" rightEntityId="141156466579873"/>
+</datamodel>

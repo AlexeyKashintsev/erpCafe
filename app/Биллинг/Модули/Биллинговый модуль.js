@@ -22,7 +22,7 @@ function BillModule() {
     self.OP_STATUS_FAIL         = 2;
     self.OP_STATUS_BILL         = 3;
     self.OP_STATUS_PROCESSING   = 4; //Заказ в обработке
-    self.OP_STATUS_SENT         = 5; //Товар не отправлен
+    self.OP_STATUS_SENT         = 5; //Товар отправлен
     self.OP_STATUS_RECIVED      = 6; //Товар принят
     
     self.getSelfPropertyValue = function(aPropertyName) {
