@@ -51,7 +51,8 @@ function TradeSessions() {
             session :   model.qOpenedSession.org_session_id,
             module  :   'TradeSessions'
         });
-        whSession.setCurrentSession(model.qOpenedSession.org_session_id);
+        if (model.qOpenedSession.org_session_id)
+            whSession.setCurrentSession(model.qOpenedSession.org_session_id);
         return model.qOpenedSession.org_session_id;
     }
     
@@ -178,7 +179,13 @@ function TradeSessions() {
         
         if (anOrderDetails.clientData)
             client = clientModule.getClientDataByPhone(anOrderDetails.clientData.phone);
-
+        
+        //При внесении операции после окончания серверной сессии
+        if (!model.params.session_id && session.checkSession(anOrderDetails.session_id)) {
+            model.params.session_id = anOrderDetails.session_id;
+            whSession.setCurrentSession(anOrderDetails.session_id);
+        }
+        
         if (model.params.session_id){
             switch (anOrderDetails.methodOfPayment){
                 case "money":

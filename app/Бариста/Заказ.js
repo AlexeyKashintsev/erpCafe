@@ -4,7 +4,6 @@
  */
 function OrderList(aParent) {
     var self = this, model = this.model, form = this;
-    self.browser = aParent.browser;
     self.orderDetails = {};
     var lastDiv = null;
     session.clientModule = new ServerModule("ClientServerModule");
@@ -150,48 +149,48 @@ function OrderList(aParent) {
 
     function orderItem(anItemData) {
         var obj = {};
-        if (self.browser) {
-            obj.docDiv = document.getElementById("orderItems");
-            obj.divEl = document.createElement("div");
-            obj.divEl.className = "orderItem";
-            obj.docDiv.appendChild(obj.divEl);
 
-            obj.label = document.createElement("h4");
-            obj.divEl.appendChild(obj.label);
-            obj.label.className = "itemName";
+        obj.docDiv = document.getElementById("orderItems");
+        obj.divEl = document.createElement("div");
+        obj.divEl.className = "orderItem";
+        obj.docDiv.appendChild(obj.divEl);
 
-            obj.count = document.createElement("h4");
-            obj.divEl.appendChild(obj.count);
-            obj.count.className = "itemCount";
+        obj.label = document.createElement("h4");
+        obj.divEl.appendChild(obj.label);
+        obj.label.className = "itemName";
 
-            /*    obj.sum = document.createElement("h4");
-             obj.divEl.appendChild(obj.sum);
-             obj.sum.className = "itemSum";*/
+        obj.count = document.createElement("h4");
+        obj.divEl.appendChild(obj.count);
+        obj.count.className = "itemCount";
 
-            /*obj.btnAdd = document.createElement("button");
-             obj.btnAdd.innerHTML = '<span class="glyphicon glyphicon-plus"></span>';
-             obj.btnAdd.className = "addBtn";
-             obj.divEl.appendChild(obj.btnAdd);*/
+        /*    obj.sum = document.createElement("h4");
+         obj.divEl.appendChild(obj.sum);
+         obj.sum.className = "itemSum";*/
 
-            obj.btnRemove = document.createElement("button");
-            obj.btnRemove.innerHTML = '<span class="glyphicon glyphicon-minus"></span>';
-            obj.btnRemove.className = "removeBtn";
+        /*obj.btnAdd = document.createElement("button");
+         obj.btnAdd.innerHTML = '<span class="glyphicon glyphicon-plus"></span>';
+         obj.btnAdd.className = "addBtn";
+         obj.divEl.appendChild(obj.btnAdd);*/
 
-            obj.btnDelete = document.createElement("button");
-            obj.btnDelete.innerHTML = '<span class="glyphicon glyphicon-remove"></span>';
-            obj.btnDelete.className = "deleteBtn";
+        obj.btnRemove = document.createElement("button");
+        obj.btnRemove.innerHTML = '<span class="glyphicon glyphicon-minus"></span>';
+        obj.btnRemove.className = "removeBtn";
 
-            obj.divEl.appendChild(obj.btnRemove);
-            obj.divEl.appendChild(obj.btnDelete);
+        obj.btnDelete = document.createElement("button");
+        obj.btnDelete.innerHTML = '<span class="glyphicon glyphicon-remove"></span>';
+        obj.btnDelete.className = "deleteBtn";
 
-            obj.updateText = obj.show = function() {
-                obj.label.innerHTML = obj.itemName;
-                obj.count.innerHTML = obj.orderQuantity + ' шт. ' + obj.orderSum + " р.";
-                //  obj.sum.innerHTML = obj.orderSum + " р.";
-                obj.parent.calculateOrder();
-            };
-        } else
-            obj = new OrderDetail(anItemData);
+        obj.divEl.appendChild(obj.btnRemove);
+        obj.divEl.appendChild(obj.btnDelete);
+
+        obj.updateText = 
+        obj.show = function() {
+            obj.label.innerHTML = obj.itemName;
+            obj.count.innerHTML = obj.orderQuantity + ' шт. ' + obj.orderSum + " р.";
+            //  obj.sum.innerHTML = obj.orderSum + " р.";
+            obj.parent.calculateOrder();
+        };
+        
         obj.orderQuantity = 1;
         obj.itemId = anItemData.item_id;
         obj.itemName = anItemData.item_name;
@@ -218,26 +217,20 @@ function OrderList(aParent) {
             delete(obj.parent.orderDetails[obj.itemId]);
             obj.parent.pnlOrderList.remove(obj.panel);
             obj.parent.calculateOrder();
-            if (self.browser)
-                obj.docDiv.removeChild(obj.divEl);
-            else
-                this.close();
+            obj.docDiv.removeChild(obj.divEl);
         };
 
-        if (self.browser) {
-            // obj.btnAdd.onclick = obj.increase;
-            obj.divEl.onclick = function() {
-                if (!obj.stop)
-                    obj.increase();
-                else
-                    obj.stop = false;
-            };
-            obj.btnRemove.onclick = function() {
-                obj.decrease();
-                obj.stop = true;
-            };
-            obj.btnDelete.onclick = obj.delete;
-        }
+        obj.divEl.onclick = function() {
+            if (!obj.stop)
+                obj.increase();
+            else
+                obj.stop = false;
+        };
+        obj.btnRemove.onclick = function() {
+            obj.decrease();
+            obj.stop = true;
+        };
+        obj.btnDelete.onclick = obj.delete;
 
         obj.show();
         return obj;
@@ -248,11 +241,7 @@ function OrderList(aParent) {
         for (var i in self.orderDetails) {
             orderSum += self.orderDetails[i].orderSum;
         }
-        if (self.browser) {
-            document.getElementById("orderSum").innerHTML = '<h3>Итого: <b>' + orderSum + '</b> рублей</h3>';
-        }
-        else
-            form.lbOrderSum.text = orderSum + ' р.';
+        document.getElementById("orderSum").innerHTML = '<h3>Итого: <b>' + orderSum + '</b> рублей</h3>';
         return orderSum;
     };
 
@@ -274,7 +263,8 @@ function OrderList(aParent) {
         var anOrderDetails = {
             orderSum: 0,
             orderItems: [],
-            clientData: client
+            clientData: client,
+            session_id: session.activeSession
         };
         var ic = 0;//items count
 
