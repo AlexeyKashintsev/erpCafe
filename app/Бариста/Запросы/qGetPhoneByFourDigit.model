@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?><datamodel>
+  <parameters>
+    <parameter description="" name="digits" nullable="true" parameterMode="1" precision="0" scale="0" selectionForm="null" signed="true" size="100" type="12" typeName="VARCHAR"/>
+  </parameters>
+  <parametersEntity entityHeight="200" entityIconified="false" entityLocationX="8" entityLocationY="7" entityWidth="150"/>
+  <entity Title="" entityHeight="200" entityIconified="false" entityId="141164450482413" entityLocationX="180" entityLocationY="9" entityWidth="150" tableAlias="t1" tableName="client_personal_data" tableSchemaName=""/>
+</datamodel>
