@@ -1,5 +1,5 @@
 /**
- * 
+ * @public
  * @author stipjey
  * @module
  */ 
@@ -19,7 +19,10 @@ function UserModule() {
         model.save();
         addRole(anUserName, aRoleName);
     };
-    
+  
+    /*
+     * 
+     */
     self.editUser = function(anUserName, aEmail, aPhone){
         model.params.user_name = anUserName;
         model.usersByName.usr_email = aEmail;
