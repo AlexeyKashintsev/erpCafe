@@ -26,20 +26,22 @@ function OrderList(aParent) {
             $(".client-phone-reset").addClass("active");
             var response = session.clientModule.getClientsByFourDigits(inpPhone.value);
             if (response){
+                $(inpPhone).removeClass("red");
+                $(inpPhone).addClass("green");
+                $(clientRegPane).hide();
+                $(clientPane).show();
                 if (response.count > 1){
                     //TODO Сделать список с выбором.
                 } else {
                     inpPhone.value = response[0].phone;
                     client = response[0];
+                    var clientPhoneDiv = cmn.getElement("div", '', clientPane, "clientPhoneDiv");
+                    clientPhoneDiv.innerHTML = "Клиент: " + client.firstName;
+                    var clientBonusDiv = cmn.getElement("div", '', clientPane, "clientBonusDiv");
+                    clientBonusDiv.innerHTML = "На счету: <b>" + client.bonusCount + "</b> бонусов";
                 }
-                $(inpPhone).removeClass("red");
-                $(inpPhone).addClass("green");
-                $(clientRegPane).hide();
-                $(clientPane).show();
-                var clientPhoneDiv = cmn.getElement("div", '', clientPane, "clientPhoneDiv");
-                clientPhoneDiv.innerHTML = "Клиент: " + client.firstName;
-                var clientBonusDiv = cmn.getElement("div", '', clientPane, "clientBonusDiv");
-                clientBonusDiv.innerHTML = "Бонусов: <b>" + client.bonusCount + "</b> рублей";
+                clientPhoneDiv = cmn.getElement("div", '', clientPane, "clientPhoneDiv");
+                clientPhoneDiv.innerHTML = "Найдено больше одной записи! Пожалуйста, уточните запрос.";
              } else {
                  client = false;
                  $(inpPhone).removeClass("green");
