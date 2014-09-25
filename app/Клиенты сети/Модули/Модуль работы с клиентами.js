@@ -81,6 +81,16 @@ function ClientServerModule() {
         });*/
     };
     
+     self.checkIfPhoneExist = function(aPhone){
+        model.qPersonalData.params.phone = aPhone;
+        model.qPersonalData.params.email = null;
+        model.qPersonalData.params.user_name = aPhone;
+        model.qPersonalData.execute();
+        if (model.qPersonalData.length > 0){
+            return true;
+        } else return false;
+    };
+    
     self.getClientsByFourDigits = function(aDigits){
         model.qGetPhoneByFourDigit.params.digits = aDigits;
         model.qGetPhoneByFourDigit.requery();
@@ -134,5 +144,4 @@ function ClientServerModule() {
     self.removeBonuses = function(anAccountId, aCount){
         billModule.addBillOperation(anAccountId, billModule.OPERATION_DEL_BUY, aCount);
     };
-    
 }
