@@ -9,6 +9,7 @@ function UserCreateAndEditForm() {
     var billModule = new ServerModule("BillModule");
     var changePassView = new ChangePassView();
     var userModule = new UserModule();
+    
     var userNew = false;
     var validateLogin = false;
     var validatePass = false;
@@ -62,6 +63,7 @@ function UserCreateAndEditForm() {
     }//GEN-LAST:event_btnSaveActionPerformed
 
     function formWindowOpened(evt) {//GEN-FIRST:event_formWindowOpened
+        form.lbInfo.text = "";
         if(model.params.user_name){
             userNew = false; //говорим что это не новый пользователь
             form.tfLogin.enabled = false;
@@ -79,6 +81,8 @@ function UserCreateAndEditForm() {
             form.tfLogin.text = "";
             form.tfLogin.enabled = true;
             form.tfPass.text = "";
+            form.tfPhone.text ="";
+            form.tfEmail.text ="";
             form.tfPass.enabled = true;           
             form.btnSave.enabled = true;
             model.createFrancizerUser.insert();
