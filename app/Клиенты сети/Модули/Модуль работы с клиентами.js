@@ -81,15 +81,21 @@ function ClientServerModule() {
         });*/
     };
     
-     self.checkIfPhoneExist = function(aPhone){
-        model.qPersonalData.params.phone = aPhone;
-        model.qPersonalData.params.email = null;
-        model.qPersonalData.params.user_name = aPhone;
-        model.qPersonalData.execute();
-        if (model.qPersonalData.length > 0){
-            return true;
+    self.getClientsByFourDigits = function(aDigits){
+        model.qGetPhoneByFourDigit.params.digits = aDigits;
+        model.qGetPhoneByFourDigit.requery();
+        if (model.qGetPhoneByFourDigit.length > 0){
+            var obj = {};
+            var i = 0;
+            model.qGetPhoneByFourDigit.beforeFirst();
+            while (model.qGetPhoneByFourDigit.next()){
+                obj[i] = self.getClientDataByPhone(model.qGetPhoneByFourDigit.cursor.phone);
+                i++;
+            }
+            obj.count = i;
+            return obj;
         } else return false;
-    };
+    }
     
     self.checkIfEmailExist = function(anEmail){
         model.qPersonalData.params.phone = null;
@@ -128,4 +134,5 @@ function ClientServerModule() {
     self.removeBonuses = function(anAccountId, aCount){
         billModule.addBillOperation(anAccountId, billModule.OPERATION_DEL_BUY, aCount);
     };
+    
 }

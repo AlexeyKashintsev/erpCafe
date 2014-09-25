@@ -24,8 +24,14 @@ function OrderList(aParent) {
     function checkIfClientPhoneExists() {
         if (inpPhone.value !== "") {
             $(".client-phone-reset").addClass("active");
-            if (session.clientModule.checkIfPhoneExist(inpPhone.value)){
-                client = session.clientModule.getClientDataByPhone(inpPhone.value);
+            var response = session.clientModule.getClientsByFourDigits(inpPhone.value);
+            if (response){
+                if (response.count > 1){
+                    //TODO Сделать список с выбором.
+                } else {
+                    inpPhone.value = response[0].phone;
+                    client = response[0];
+                }
                 $(inpPhone).removeClass("red");
                 $(inpPhone).addClass("green");
                 $(clientRegPane).hide();
