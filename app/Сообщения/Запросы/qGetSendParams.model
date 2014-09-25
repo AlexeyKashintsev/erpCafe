@@ -3,6 +3,6 @@
     <parameter description="" name="eventType" nullable="true" parameterMode="1" precision="0" scale="0" selectionForm="null" signed="true" size="0" type="2" typeName="NUMERIC"/>
   </parameters>
   <parametersEntity entityHeight="200" entityIconified="false" entityLocationX="8" entityLocationY="7" entityWidth="150"/>
-  <entity Title="" entityHeight="200" entityIconified="false" entityId="141113156599829" entityLocationX="226" entityLocationY="7" entityWidth="150" tableAlias="t1" tableName="sms_types" tableSchemaName=""/>
-  <relation leftEntityId="-1" leftEntityParameterName="eventType" rightEntityFieldName="event_type" rightEntityId="141113156599829"/>
+  <entity Title="" entityHeight="200" entityIconified="false" entityId="141164412984541" entityLocationX="226" entityLocationY="7" entityWidth="150" tableAlias="t1" tableName="msg_sms_types" tableSchemaName=""/>
+  <relation leftEntityId="-1" leftEntityParameterName="eventType" rightEntityFieldName="event_type" rightEntityId="141164412984541"/>
 </datamodel>
