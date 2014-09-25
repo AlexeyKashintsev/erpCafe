@@ -38,7 +38,7 @@ function ClientRegistrationByBarist() {
     }//GEN-LAST:event_formWindowOpened
     
     function ValidatePhone(){
-        var reg = /^(7)\d{10}/i;
+        var reg = /^(8)\d{10}/i;
         if (session.clientModule.checkIfPhoneExist(form.phoneField.text)){
             form.lblPhoneMsg.text = "Номер уже используется";
             return false;
