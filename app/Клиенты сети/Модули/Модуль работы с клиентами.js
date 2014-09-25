@@ -5,7 +5,7 @@
  */ 
 function ClientServerModule() {
     var self = this, model = this.model;
-    var sender = new MessageSender();                                            
+    //var sender = new MessageSender();                                            
     var userModule = new UserModule();
     var adminFunctions = new AdminFunctions();
     var billModule = new BillModule();
@@ -75,10 +75,10 @@ function ClientServerModule() {
         model.qPersonalData.cursor.reg_date = new Date();
         model.save();
         self.setBonusCategory(anUserName, aBonusCategory ? aBonusCategory : 1);
-        sender.sendMessage(sender.REGISTRATION_SUCCESS, {
+       /* sender.sendMessage(sender.REGISTRATION_SUCCESS, {
             phone: model.qPersonalData.cursor.phone,
             username: model.qPersonalData.cursor.first_name
-        });
+        });*/
     };
     
      self.checkIfPhoneExist = function(aPhone){

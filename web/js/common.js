@@ -238,16 +238,22 @@ platypus.ready = function() {
                         });
                         break;
                     case 'franchazi':
-                        session.franchaziId = session.getFranchazi();
-                        require(['AdminStartForm'], function() {
-                            units.asf = new AdminStartForm();
-                        });
+                        session.getFranchazi(
+                            function(aFranchazi){
+                                session.franchaziId = aFranchazi;
+                                require(['AdminStartForm'], function() {
+                                    units.asf = new AdminStartForm();
+                                });
+                            });
                         break;
                     case 'barista':
-                        session.franchaziId = session.getFranchazi();
-                        require(['BaristaDesktop'], function(){
-                            units.bd = new BaristaDesktop();
-                        });
+                        session.getFranchazi(
+                            function(aFranchazi){
+                                session.franchaziId = aFranchazi;
+                                require(['BaristaDesktop'], function(){
+                                    units.bd = new BaristaDesktop();
+                                });
+                            });                        
                         break;
                     case 'client':
                         require(['ClientStartForm'], function(){

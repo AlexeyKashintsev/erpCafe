@@ -58,12 +58,7 @@ function BaristaDesktop() {
         cmn.addTopRightControl("Прием товара", "plus-sign", btnWarehouseAddActionPerformed);
         cmn.addTopRightControl("Закрыть смену", "log-out", btnSessionCloseActionPerformed);
         cmn.addTopRightControl("Выход", "log-out", Logout);
-        session.login(function() {
-            session.getFranchazi(
-                    function(aFranchazi) {
-                        setFranchazi(aFranchazi);
-                    });
-        });
+        setFranchazi(session.franchaziId);
     }
 
     function addTradeItem(aData) {

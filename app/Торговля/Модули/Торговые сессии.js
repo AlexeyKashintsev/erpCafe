@@ -88,19 +88,35 @@ function TradeSessions() {
      * @param {type} aQuantity
      * @returns {Array}
      */
-    function WhItemsCalculation (anItemId, aQuantity){
-        var WhItems = [];
+    function WhItemsConsumption (anItemId, aQuantity, aTradeOperationId){
+        var WhItemsConsump = [];
         model.qContents.params.trade_item_id = anItemId;
         model.qContents.execute();
         model.qContents.beforeFirst();
         while (model.qContents.next()){
-            if (WhItems[model.qContents.cursor.wh_item]){///Что-то здесь поправил!!!!! TODO Проверить
-                WhItems[model.qContents.cursor.wh_item] += model.qContents.cursor.usage_quantity * aQuantity;
+            if (WhItemsConsump[model.qContents.cursor.wh_item]){///Что-то здесь поправил!!!!! TODO Проверить
+                WhItemsConsump[model.qContents.cursor.wh_item] += model.qContents.cursor.usage_quantity * aQuantity;
             } else {
-                WhItems[model.qContents.cursor.wh_item] = model.qContents.cursor.usage_quantity * aQuantity;
+                WhItemsConsump[model.qContents.cursor.wh_item] = model.qContents.cursor.usage_quantity * aQuantity;
             }
         }
-        return WhItems;
+        if (WhItemsConsump.length > 0)
+            try {
+                whSession.whMovement(WhItemsConsump, whSession.WH_PRODUCE_ITEMS);
+            } catch (e) {
+                ep.addEvent('errorAddTradeOperation', {
+                    desk    : 'Ошибка при добавлении расхода товара на склад(er#tr108)',
+                    opID    : aTradeOperationId,
+                    iID     : anItemId
+                });
+            }
+        else {
+                ep.addEvent('errorAddTradeOperation', {
+                    desk    : 'Не указан состав товара(er#tr115)',
+                    opID    : aTradeOperationId,
+                    iID     : anItemId
+                });
+            }
     }
     
     //TODO Написать функцию возвращающую список всех товаров на точке со всем и возможными бонусами
@@ -149,16 +165,20 @@ function TradeSessions() {
                                             anOrderItem.itemId, 
                                             anOrderItem.quantity);
                                             
-            var calculatedConsumption = WhItemsCalculation(anOrderItem.itemId, 
-                                                            anOrderItem.quantity);
-
-            if (whSession.whMovement(calculatedConsumption, whSession.WH_PRODUCE_ITEMS)){
-                return true;
-            } else
-                return false;
+            WhItemsConsumption(anOrderItem.itemId, anOrderItem.quantity);
+        } else {
+            ep.addEvent('errorAddTradeOperation', {
+                desk    : 'Не указано количество или ID товара(er#170)',
+                opID    : aTradeOperationId
+            });
         }
     }
-    
+    /*
+     * TODO Описать подробнее что эта чтука делает, Здесь она точно нужна?
+     * @param {type} aTradeOperation
+     * @param {type} aBillOperation
+     * @returns {undefined}
+     */
     function connectBillAndTradeOperation(aTradeOperation, aBillOperation){
         model.qConnectTradeAndBillOperations.push({
             trade_cashbox_operation: aTradeOperation,
@@ -212,22 +232,21 @@ function TradeSessions() {
                                                                 OperationType,
                                                                 client ? client.bonusBill : null);
             for (var i in anOrderDetails.orderItems) {
-                if (!processOrderItem(anOrderDetails.orderItems[i], TradeOperationId)) {
-                    ep.addEvent('errorAddTradeOperation', anOrderDetails);
-                } else
-                    if (client && anOrderDetails.methodOfPayment === "money") {
-                        BonusCount += getCountBonusesByItem(anOrderDetails.orderItems[i].itemId, client.bonusCategory)
-                                * anOrderDetails.orderItems[i].quantity;
-                    } else if (client && anOrderDetails.methodOfPayment === "bonus"){
-                        BonusCount = anOrderDetails.orderSum;
-                    }
+                processOrderItem(anOrderDetails.orderItems[i], TradeOperationId);
+                
+                if (client && anOrderDetails.methodOfPayment === "money") {
+                    BonusCount += getCountBonusesByItem(anOrderDetails.orderItems[i].itemId, client.bonusCategory)
+                            * anOrderDetails.orderItems[i].quantity;
+                } else if (client && anOrderDetails.methodOfPayment === "bonus"){
+                    BonusCount = anOrderDetails.orderSum;
+                }
             }
             
-            if (client.bonusBill){
+            if (client.bonusBill) {
                 var BillOperationId = billing.addBillOperation(client.bonusBill, 
                                          BonusOperation, 
                                          BonusCount);
-                connectBillAndTradeOperation(TradeOperationId, BillOperationId);    
+                connectBillAndTradeOperation(TradeOperationId, BillOperationId);    //Здесь она точно нужна?
                 if (BonusOperation === billing.OPERATION_DEL_BUY){
                     billing.addBonusesToFranchazi(session.getFranchazi(), BonusCount);
                 }

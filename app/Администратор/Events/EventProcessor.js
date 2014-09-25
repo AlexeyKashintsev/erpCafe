@@ -20,12 +20,14 @@ function EventProcessor() {
     }
     
     self.addEvent = function(aEventType, aEventData){
+        var evt = JSON.stringify(aEventData);
         model.eventById.push({
             event_type  :   aEventType,
             event_user  :   self.principal.name,
-            event_data  :   JSON.stringify(aEventData),
+            event_data  :   evt,
             event_date  :   new Date()
         });
         model.save();
+        Logger.info(evt);
     };
 }
