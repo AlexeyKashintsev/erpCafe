@@ -11,7 +11,6 @@ function ClientServerModule() {
     var billModule = new BillModule();
     
     function ClientConstructor(aPhone){
-        //TODO UserName может не быть телефоном
         model.qPersonalData.params.phone = aPhone;
         model.qPersonalData.execute();
         Logger.info(model.qPersonalData);
@@ -50,12 +49,6 @@ function ClientServerModule() {
     self.createUser = function( aPhone, anEmail, aFirstName,
                                 aMiddleName, aLastName, aBirthday, 
                                 anAddress, anUserName, aBonusCategory){
-        //У клиентов в качестве username используется номер телефона
-        //fixed Первое не всегда верно, иногда может использоваться другой идентификатор
-        //fixed Можно создать пользователя с ролью администратор - дырка 
-        //В БД есть все поля ФИО, здесь только имя
-        //Изолировать pass в пределах одной функции
-        
         if (!anUserName){
             anUserName = aPhone;
         }
@@ -105,7 +98,7 @@ function ClientServerModule() {
             obj.count = i;
             return obj;
         } else return false;
-    }
+    };
     
     self.checkIfEmailExist = function(anEmail){
         model.qPersonalData.params.phone = null;
