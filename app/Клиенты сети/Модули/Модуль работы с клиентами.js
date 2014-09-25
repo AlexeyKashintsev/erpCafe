@@ -130,11 +130,17 @@ function ClientServerModule() {
         return model.qPersonalData.cursor.client_id;
     };
     
-    self.addBonuses = function(anAccountId, aCount){
-        billModule.addBillOperation(anAccountId, billModule.OPERATION_ADD_BONUS, aCount);
+    self.OPERATION_ADD_BONUS = billModule.OPERATION_ADD_BONUS;
+    self.OPERATION_REMOVE_BONUS = billModule.OPERATION_DEL_BUY;
+    
+    self.bonusOperation = function(anAccountId, aBonusOperation, aCount){
+        if (aBonusOperation === self.OPERATION_REMOVE_BONUS){
+            var multiplier = 0.05;
+            var franchaziId = billModule.getBillAccount(session.getFranchazi());
+            billModule.addBillOperation(franchaziId, self.OPERATION_ADD_CASH, aCount*multiplier);
+        }
+        return billModule.addBillOperation(anAccountId, aBonusOperation, aCount);
     };
     
-    self.removeBonuses = function(anAccountId, aCount){
-        billModule.addBillOperation(anAccountId, billModule.OPERATION_DEL_BUY, aCount);
-    };
+    
 }

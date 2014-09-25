@@ -243,13 +243,10 @@ function TradeSessions() {
             }
             
             if (client.bonusBill) {
-                var BillOperationId = billing.addBillOperation(client.bonusBill, 
-                                         BonusOperation, 
-                                         BonusCount);
+                var BillOperationId = clientModule.bonusOperation(client.bonusBill, 
+                                                                  BonusOperation, 
+                                                                  BonusCount);
                 connectBillAndTradeOperation(TradeOperationId, BillOperationId);    //Здесь она точно нужна?
-                if (BonusOperation === billing.OPERATION_DEL_BUY){
-                    billing.addBonusesToFranchazi(session.getFranchazi(), BonusCount);
-                }
             }
             model.save();
         };
