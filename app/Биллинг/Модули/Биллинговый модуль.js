@@ -7,6 +7,7 @@
 function BillModule() {
     var self = this, model = this.model;
     var eventProcessor = new EventProcessor();
+    var session = Modules.get("UserSession");
     
     // Типы операций
     self.OPERATION_ADD_CASH     = 1; //Добавление средств на счет
@@ -436,5 +437,46 @@ function BillModule() {
         model.qBillAccount.params.user_id = aFranId;
         model.qBillAccount.requery();
         return model.qBillAccount.cursor.bill_accounts_id;
+    };
+    
+    /*
+     * TODO Описать подробнее что эта чтука делает, Здесь она точно нужна?
+     * @param {type} aTradeOperation
+     * @param {type} aBillOperation
+     * @returns {undefined}
+     */
+    function connectBillAndTradeOperation(aTradeOperation, aBillOperation){
+        model.qConnectTradeAndBillOperations.push({
+            trade_cashbox_operation: aTradeOperation,
+            bill_operation: aBillOperation
+        });
+    }
+    
+    self.addCashToFranchazi = function(aSum, aType, aFranchaziId){
+        var franchaziId = aFranchaziId ? aFranchaziId : session.getFranchazi();
+        if (aType === "bonus"){
+            var multiplier = 0.05;
+            return self.addBillOperation(franchaziId, self.OPERATION_ADD_CASH, aSum * multiplier);
+        }
+        if (aType === "money")
+            return self.addBillOperation(franchaziId, self.OPERATION_ADD_CASH, aSum);
+    };
+    
+    /*
+     * 
+     */
+    self.bonusOperation = function(anAccountId, aBonusOperation, aCount, aTradeOperationId) {
+        /*
+         * Если идет списание средст с бонусного счета клиента, то начислить деньги на счет франчази
+         */
+        if (aBonusOperation === self.OPERATION_DEL_BUY) {
+            var BillOperation = self.addCashToFranchazi(aCount, "bonus");
+            connectBillAndTradeOperation(aTradeOperationId, BillOperation);
+        }
+        /*
+         * Проведение бонусной операции со счетом клиента
+         */
+        var BillOperation = self.addBillOperation(anAccountId, aBonusOperation, aCount);
+        connectBillAndTradeOperation(aTradeOperationId, BillOperation);
     };
 }

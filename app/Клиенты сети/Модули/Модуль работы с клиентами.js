@@ -133,18 +133,4 @@ function ClientServerModule() {
         model.qPersonalData.execute();
         return model.qPersonalData.cursor.client_id;
     };
-
-    self.OPERATION_ADD_BONUS = billModule.OPERATION_ADD_BONUS;
-    self.OPERATION_REMOVE_BONUS = billModule.OPERATION_DEL_BUY;
-
-    self.bonusOperation = function(anAccountId, aBonusOperation, aCount) {
-        if (aBonusOperation === self.OPERATION_REMOVE_BONUS) {
-            var multiplier = 0.05;
-            var franchaziId = billModule.getBillAccount(session.getFranchazi());
-            billModule.addBillOperation(franchaziId, self.OPERATION_ADD_CASH, aCount * multiplier);//связать операции
-        }
-        return billModule.addBillOperation(anAccountId, aBonusOperation, aCount);
-    };
-
-
 }

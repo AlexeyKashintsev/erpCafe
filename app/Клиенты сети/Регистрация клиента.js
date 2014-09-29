@@ -16,7 +16,7 @@ function ClientRegistrationByBarist() {
     }//GEN-LAST:event_btnAddActionPerformed
 
     function validateForm(){
-        if (ValidateEmail() && ValidatePhone()){
+        if (ValidateLogin() && ValidateEmail() && ValidatePhone()){
             form.btnAdd.enabled = true;
             return true;
         } else {
@@ -53,18 +53,33 @@ function ClientRegistrationByBarist() {
         }
     }
     
-    function ValidateEmail(){
-        var reg = /^([\w.-]+)@([a-zA-Z0-9.-]+[a-zA-Z]{2,6})/;
-        if (session.clientModule.checkIfEmailExist(form.emailField.text)){
-            form.lblEmailMsg.text = "Email уже используется";
+    function ValidateLogin(){
+        if(!form.firstnameField.text){
+            form.lblEmailMsg.text = "Введите имя пользователя";
             return false;
         } else {
-            if (reg.test(form.emailField.text)) {
-                form.lblEmailMsg.text = "";
-                return true;
-            } else {
-                form.lblEmailMsg.text = "Неверный формат Email";
+            form.lblEmailMsg.text = "";
+            return true;
+        }
+    }
+    
+    function ValidateEmail(){
+        var reg = /^([\w.-]+)@([a-zA-Z0-9.-]+[a-zA-Z]{2,6})/;
+        if(!form.emailField.text){
+            form.lblEmailMsg.text = "";
+            return true;
+        } else {
+            if (session.clientModule.checkIfEmailExist(form.emailField.text)){
+                form.lblEmailMsg.text = "Email уже используется";
                 return false;
+            } else {
+                if (reg.test(form.emailField.text)) {
+                    form.lblEmailMsg.text = "";
+                    return true;
+                } else {
+                    form.lblEmailMsg.text = "Неверный формат Email";
+                    return false;
+                }
             }
         }
     }    
@@ -76,4 +91,8 @@ function ClientRegistrationByBarist() {
     function emailFieldFocusLost(evt) {//GEN-FIRST:event_emailFieldFocusLost
         validateForm();
     }//GEN-LAST:event_emailFieldFocusLost
+
+    function firstnameFieldFocusLost(evt) {//GEN-FIRST:event_firstnameFieldFocusLost
+        validateForm();
+    }//GEN-LAST:event_firstnameFieldFocusLost
 }
