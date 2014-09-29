@@ -40,4 +40,14 @@ function formWindowClosing(evt) {//GEN-FIRST:event_formWindowClosing
             self.parent.setFranchazi(model.listFranchazi.org_franchazi_id);
         }
     }//GEN-LAST:event_listFranchaziOnRequeried
+
+    function btnAddActionPerformed(evt) {//GEN-FIRST:event_btnAddActionPerformed
+        model.listFranchazi.insert();
+    }//GEN-LAST:event_btnAddActionPerformed
+
+    function btnDelActionPerformed(evt) {//GEN-FIRST:event_btnDelActionPerformed
+        if (confirm("Действительно удалить франчази " + 
+                model.listFranchazi.cursor.f_name))
+            model.listFranchazi.deleteRow();
+    }//GEN-LAST:event_btnDelActionPerformed
 }
