@@ -216,11 +216,12 @@ function TradeSessions() {
                 case "bonus":
                     BonusOperation = billing.OPERATION_DEL_BUY;
                     OperationType = BONUS;
-                      if (client.bonusBill.length > 0){
-                        if (model.qBillAccount.cursor.currnt_sum < anOrderDetails.orderSum){
-                            ep.addEvent('errorNotEnoughBonuses', anOrderDetails);
-                            return "error";
-                        }
+                    BonusCount = anOrderDetails.orderSum;
+                    if (client.bonusBill.length > 0) {
+                      if (model.qBillAccount.cursor.currnt_sum < anOrderDetails.orderSum){//TODO Выкосить отсюда, убрать в биллинг или клиентский модуль
+                          ep.addEvent('errorNotEnoughBonuses', anOrderDetails);
+                          return "error";
+                      }
                     }
                     break;
                 default:
@@ -236,11 +237,9 @@ function TradeSessions() {
                 
                 if (client && anOrderDetails.methodOfPayment === "money") {
                     BonusCount += getCountBonusesByItem(anOrderDetails.orderItems[i].itemId, client.bonusCategory)
-                            * anOrderDetails.orderItems[i].quantity;
-                } else if (client && anOrderDetails.methodOfPayment === "bonus"){
-                    BonusCount = anOrderDetails.orderSum;
+                                  * anOrderDetails.orderItems[i].quantity;
                 }
-            }
+            }                    
             
             if (client.bonusBill) {
                 var BillOperationId = clientModule.bonusOperation(client.bonusBill, 

@@ -31,7 +31,8 @@ function OrderList(aParent) {
                 $(clientRegPane).hide();
                 $(clientPane).show();
                 if (response.count > 1){
-                    //TODO Сделать список с выбором.
+                    clientPhoneDiv = cmn.getElement("div", '', clientPane, "clientPhoneDiv");
+                    clientPhoneDiv.innerHTML = "Найдено больше одной записи! Пожалуйста, уточните запрос.";
                 } else {
                     inpPhone.value = response[0].phone;
                     client = response[0];
@@ -40,8 +41,6 @@ function OrderList(aParent) {
                     var clientBonusDiv = cmn.getElement("div", '', clientPane, "clientBonusDiv");
                     clientBonusDiv.innerHTML = "На счету: <b>" + client.bonusCount + "</b> бонусов";
                 }
-                clientPhoneDiv = cmn.getElement("div", '', clientPane, "clientPhoneDiv");
-                clientPhoneDiv.innerHTML = "Найдено больше одной записи! Пожалуйста, уточните запрос.";
              } else {
                  client = false;
                  $(inpPhone).removeClass("green");
