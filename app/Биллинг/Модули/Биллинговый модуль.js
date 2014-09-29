@@ -437,4 +437,34 @@ function BillModule() {
         model.qBillAccount.requery();
         return model.qBillAccount.cursor.bill_accounts_id;
     };
+    
+    /*
+     * TODO Описать подробнее что эта чтука делает, Здесь она точно нужна?
+     * @param {type} aTradeOperation
+     * @param {type} aBillOperation
+     * @returns {undefined}
+     */
+    function connectBillAndTradeOperation(aTradeOperation, aBillOperation){
+        model.qConnectTradeAndBillOperations.push({
+            trade_cashbox_operation: aTradeOperation,
+            bill_operation: aBillOperation
+        });
+    }
+    
+    /*
+     * 
+     */
+    self.bonusOperation = function(anAccountId, aBonusOperation, aCount, aTradeOperationId) {
+        if (aBonusOperation === self.OPERATION_DEL_BUY) {
+            var multiplier = 0.05;
+            var franchaziId = self.getBillAccount(Modules.get("UserSession").getFranchazi());//TODO Не работает. На стороне сервера нет session. Использовать Modules.get()
+                                                                                //Или явно передавать ID франчази
+            //Вообще нужно добавить функцию в модуль биллинга, которая бы занималась зачислением денег на счет франчази
+            //наподобие такой billModule.addCash2Franchazi(aFranchaziID, aSum);
+            var BillOperation = self.addBillOperation(franchaziId, self.OPERATION_ADD_CASH, aCount * multiplier);//связать операции
+            connectBillAndTradeOperation(aTradeOperationId, BillOperation);
+        }
+        var BillOperation = self.addBillOperation(anAccountId, aBonusOperation, aCount);
+        connectBillAndTradeOperation(aTradeOperationId, BillOperation);
+    };
 }

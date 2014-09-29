@@ -242,10 +242,7 @@ function TradeSessions() {
             }                    
             
             if (client.bonusBill) {
-                var BillOperationId = clientModule.bonusOperation(client.bonusBill, 
-                                                                  BonusOperation, 
-                                                                  BonusCount);
-                connectBillAndTradeOperation(TradeOperationId, BillOperationId);    //Здесь она точно нужна?
+                billing.bonusOperation(client.bonusBill, BonusOperation, BonusCount, TradeOperationId);
             }
             model.save();
         };
