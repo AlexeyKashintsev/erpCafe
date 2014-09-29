@@ -7,6 +7,7 @@
 function BillModule() {
     var self = this, model = this.model;
     var eventProcessor = new EventProcessor();
+    var session = Modules.get("UserSession");
     
     // Типы операций
     self.OPERATION_ADD_CASH     = 1; //Добавление средств на счет
@@ -451,19 +452,30 @@ function BillModule() {
         });
     }
     
+    self.addCashToFranchazi = function(aSum, aType, aFranchaziId){
+        var franchaziId = aFranchaziId ? aFranchaziId : session.getFranchazi();
+        if (aType === "bonus"){
+            var multiplier = 0.05;
+            return self.addBillOperation(franchaziId, self.OPERATION_ADD_CASH, aSum * multiplier);
+        }
+        if (aType === "money")
+            return self.addBillOperation(franchaziId, self.OPERATION_ADD_CASH, aSum);
+    };
+    
     /*
      * 
      */
     self.bonusOperation = function(anAccountId, aBonusOperation, aCount, aTradeOperationId) {
+        /*
+         * Если идет списание средст с бонусного счета клиента, то начислить деньги на счет франчази
+         */
         if (aBonusOperation === self.OPERATION_DEL_BUY) {
-            var multiplier = 0.05;
-            var franchaziId = self.getBillAccount(Modules.get("UserSession").getFranchazi());//TODO Не работает. На стороне сервера нет session. Использовать Modules.get()
-                                                                                //Или явно передавать ID франчази
-            //Вообще нужно добавить функцию в модуль биллинга, которая бы занималась зачислением денег на счет франчази
-            //наподобие такой billModule.addCash2Franchazi(aFranchaziID, aSum);
-            var BillOperation = self.addBillOperation(franchaziId, self.OPERATION_ADD_CASH, aCount * multiplier);//связать операции
+            var BillOperation = self.addCashToFranchazi(aCount, "bonus");
             connectBillAndTradeOperation(aTradeOperationId, BillOperation);
         }
+        /*
+         * Проведение бонусной операции со счетом клиента
+         */
         var BillOperation = self.addBillOperation(anAccountId, aBonusOperation, aCount);
         connectBillAndTradeOperation(aTradeOperationId, BillOperation);
     };
