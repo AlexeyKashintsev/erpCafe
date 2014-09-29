@@ -2,7 +2,7 @@
   <widget name="lblEmailMsg" parent="Form" prefHeight="24px" prefWidth="180px" type="LabelDesignInfo">
     <constraints height="24px" left="204px" top="144px" type="MarginConstraintsDesignInfo" width="180px"/>
   </widget>
-  <widget name="firstnameField" parent="Form" prefHeight="27px" prefWidth="180px" type="TextFieldDesignInfo">
+  <widget focusLost="firstnameFieldFocusLost" name="firstnameField" parent="Form" prefHeight="27px" prefWidth="180px" type="TextFieldDesignInfo">
     <constraints height="27px" left="204px" top="24px" type="MarginConstraintsDesignInfo" width="180px"/>
   </widget>
   <widget name="label2" parent="Form" prefHeight="24px" prefWidth="144px" text="Имя" type="LabelDesignInfo">
