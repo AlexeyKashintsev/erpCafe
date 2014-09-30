@@ -69,7 +69,13 @@ function BillItemsModule() {
     /*
      * Покупка товаров
      */
-    self.buyItems = function(anItems, anAccountId){
+    self.buyItems = function(anOperationId){
+        var aStatus = billModule.getSelfPropertyValue("OP_STATUS_PAID"); // оплачен    
+        return billModule.setStatusBillOperation(anOperationId, aStatus);
+    };
+    
+    self.createOperation = function(anItems, anAccountId){
+        var aStatus = billModule.getSelfPropertyValue("OP_STATUS_CREATE"); // просто создан
         var sum = 0;
         for(var i in anItems){
             model.qItemBillCost.params.item_id = anItems[i].itemId;
@@ -78,13 +84,17 @@ function BillItemsModule() {
             anItems[i].costId =  model.qItemBillCost.cursor.bill_item_cost_id;
         }
         Logger.info(sum);
-        var operationId = billModule.addBillOperation(anAccountId, billModule.getSelfPropertyValue("OPERATION_DEL_BUY"), sum, billModule.getSelfPropertyValue("OP_STATUS_PROCESSING"));
-        for(var j in anItems){
-            model.qBillOperationItems.insert();
-            model.qBillOperationItems.cursor.operation_id = operationId;
-            model.qBillOperationItems.cursor.cost_id = anItems[j].costId;
-            model.qBillOperationItems.cursor.items_count = anItems[j].count;
-        }
-        model.save();
+        var operationId = billModule.addBillOperation(anAccountId, billModule.getSelfPropertyValue("OPERATION_DEL_BUY"), sum, aStatus);
+        if(operationId){
+            for(var j in anItems){
+                model.qBillOperationItems.insert();
+                model.qBillOperationItems.cursor.operation_id = operationId;
+                model.qBillOperationItems.cursor.cost_id = anItems[j].costId;
+                model.qBillOperationItems.cursor.items_count = anItems[j].count;
+            }
+            model.save();
+            return operationId;
+        }  else 
+            return false;
     };
 }

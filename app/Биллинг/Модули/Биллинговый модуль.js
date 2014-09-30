@@ -22,9 +22,12 @@ function BillModule() {
     self.OP_STATUS_SUCCESS      = 1;
     self.OP_STATUS_FAIL         = 2;
     self.OP_STATUS_BILL         = 3;
-    self.OP_STATUS_PROCESSING   = 4; //Заказ в обработке
-    self.OP_STATUS_SENT         = 5; //Товар отправлен
-    self.OP_STATUS_RECIVED      = 6; //Товар принят
+    self.OP_STATUS_PROCESSING   = 4;    //Заказ в обработке
+    self.OP_STATUS_CREATE       = 5;    //Создан
+    self.OP_STATUS_CREATE_AUTO  = 6;    //Создан автоматически
+    self.OP_STATUS_PAID         = 7;    //Оплачен
+    self.OP_STATUS_SEND         = 8;    //Товар Отправлен
+    self.OP_STATUS_RECIVED      = 9;   //Товар получен 
     
     self.getSelfPropertyValue = function(aPropertyName) {
         return self[aPropertyName];
@@ -160,7 +163,7 @@ function BillModule() {
         model.qBillAccount.requery(function(){
             accountType = model.qBillAccount.cursor.account_type;
         });
-        if ((multiplier === -1) && (aStatus === self.OP_STATUS_SUCCESS) && (anOperationType != self.OPERATION_DEL_SERVICE) && (accountType != self.ACCOUNT_TYPE_CREDIT)) {
+        if ((multiplier === -1) && (aStatus === self.OP_STATUS_SUCCESS || aStatus === self.OP_STATUS_PAID) && (anOperationType != self.OPERATION_DEL_SERVICE) && (accountType != self.ACCOUNT_TYPE_CREDIT)) {
             ERROR_SHORTAGE_MONEY = checkMoneyOnAccount(anAccountId, aSum);
         }
         if (ERROR_SHORTAGE_MONEY) {

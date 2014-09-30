@@ -119,12 +119,14 @@ function BuyItemsForm() {
     function doneButtonClick() {
         var account_id = $('input[name=bill_radio]:checked').val();
         var currnt_sum = $('input[name=bill_radio]:checked').attr('id');
+        var operation_id = billItemsModule.createOperation(list.getItems(),account_id);
         if(account_id){
             if(currnt_sum >= sum){
-                billItemsModule.buyItems(list.getItems(),account_id);
+                billItemsModule.buyItems(operation_id);
                 $(".Thanks").html("<p>Спасибо за заказ!</p>");
                 $("#prevButton, #doneButton, .Bills, .Items, .selection_result").hide();
                 $("#homeButton, .Thanks").show();
+                
             } else {
                 if(confirm("У Вас недостаточно денег!\nПерейти к странице пополнения баланса?")){
                     var addBalance = new AddBalance(account_id);

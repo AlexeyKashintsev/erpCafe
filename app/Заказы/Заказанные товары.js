@@ -2,7 +2,7 @@
  * 
  * @author minya92
  */
-function HistoryOrders() {
+function OrederItems() {
     var self = this, model = this.model, form = this;
     var billModule  = new ServerModule("BillModule");
     
@@ -15,26 +15,30 @@ function HistoryOrders() {
     model.requery();
     }//GEN-LAST:event_btnReqActionPerformed
 
+    function btnSaveActionPerformed(evt) {//GEN-FIRST:event_btnSaveActionPerformed
+
+    }//GEN-LAST:event_btnSaveActionPerformed
+
     function btnReciveActionPerformed(evt) {//GEN-FIRST:event_btnReciveActionPerformed
         if(confirm("Изменить статус операции?")){
-            billModule.setStatusBillOperation(model.qHistoryOrders.cursor.bill_operations_id, billModule.getSelfPropertyValue("OP_STATUS_RECIVED"));
+            billModule.setStatusBillOperation(model.qOrederItems.cursor.bill_operations_id, billModule.getSelfPropertyValue("OP_STATUS_SEND"));
             model.requery();
         }
     }//GEN-LAST:event_btnReciveActionPerformed
 
-    function qHistoryOrdersOnScrolled(evt) {//GEN-FIRST:event_qHistoryOrdersOnScrolled
-        if(model.qHistoryOrders.cursor.operation_status == billModule.getSelfPropertyValue("OP_STATUS_SEND")){
+    function qOrederItemsOnScrolled(evt) {//GEN-FIRST:event_qOrederItemsOnScrolled
+        if(model.qOrederItems.cursor.operation_status >= billModule.getSelfPropertyValue("OP_STATUS_PAID")){
             form.btnRecive.enabled = true;
         } else form.btnRecive.enabled = false;
-        model.params.operation_id = model.qHistoryOrders.cursor.bill_operations_id;
+        model.params.operation_id = model.qOrederItems.cursor.bill_operations_id;
         model.qOperationsItems.requery();
-    }//GEN-LAST:event_qHistoryOrdersOnScrolled
+    }//GEN-LAST:event_qOrederItemsOnScrolled
 
-    function qHistoryOrdersOnRequeried(evt) {//GEN-FIRST:event_qHistoryOrdersOnRequeried
-        if(model.qHistoryOrders.cursor.operation_status == billModule.getSelfPropertyValue("OP_STATUS_SEND")){
+    function qOrederItemsOnRequeried(evt) {//GEN-FIRST:event_qOrederItemsOnRequeried
+        if(model.qOrederItems.cursor.operation_status >= billModule.getSelfPropertyValue("OP_STATUS_PAID")){
             form.btnRecive.enabled = true;
         } else form.btnRecive.enabled = false;
-        model.params.operation_id = model.qHistoryOrders.cursor.bill_operations_id;
+        model.params.operation_id = model.qOrederItems.cursor.bill_operations_id;
         model.qOperationsItems.requery();
-    }//GEN-LAST:event_qHistoryOrdersOnRequeried
+    }//GEN-LAST:event_qOrederItemsOnRequeried
 }
