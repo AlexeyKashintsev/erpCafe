@@ -42,7 +42,8 @@ function MessageSender() {
         }
     };
     
-    
+//Рудимент ------------------------------------------------------------------------------- 
+//TODO Удалить перед релизом
     function sendSMS(aMsg, aPhone){
         smsSender.sendSms(aPhone, aMsg, 'Corvus');
     };

@@ -1,3 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?><datamodel datamodelDbId="null">
   <fieldsEntity entityHeight="200" entityIconified="false" entityId="141164411059393" entityLocationX="9" entityLocationY="0" entityWidth="150" tableName="msg_sms_types"/>
+  <fieldsEntity entityHeight="200" entityIconified="false" entityId="141208222132599" entityLocationX="184" entityLocationY="3" entityWidth="150" tableName="msg_link_tags_and_types"/>
+  <fieldsEntity entityHeight="200" entityIconified="false" entityId="141208203205263" entityLocationX="365" entityLocationY="1" entityWidth="150" tableName="msg_tags"/>
 </datamodel>
