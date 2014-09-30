@@ -9,10 +9,6 @@ function ClientStartForm() {
         common   :   {
             display     :   "Общая информация",
             dispForm    :   "clientDesktop"
-        },
-        blabla  :   {
-            display     :   "Настройка СМС",
-            dispForm    :   "messengerSettings"
         }
     };
     

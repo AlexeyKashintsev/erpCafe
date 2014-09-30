@@ -33,7 +33,7 @@ function MessageSender() {
         }
         if (model.qGetSendParams.cursor.email){
             if (aParams.email){
-                //TODO настроить отправку писем.
+                if (!aParams.subject) aParams.subject = "Информационное сообщение сети кафе ЕРП";
                 emailSender.sendEmail("rcCoffee", aParams.email, aParams.subject, textMessage);
             }
         }
