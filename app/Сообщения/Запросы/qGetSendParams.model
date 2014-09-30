@@ -3,6 +3,10 @@
     <parameter description="" name="eventType" nullable="true" parameterMode="1" precision="0" scale="0" selectionForm="null" signed="true" size="0" type="2" typeName="NUMERIC"/>
   </parameters>
   <parametersEntity entityHeight="200" entityIconified="false" entityLocationX="8" entityLocationY="7" entityWidth="150"/>
+  <entity Title="" entityHeight="200" entityIconified="false" entityId="141208435077474" entityLocationX="565" entityLocationY="6" entityWidth="150" tableAlias="t2" tableName="msg_tags" tableSchemaName=""/>
+  <entity Title="" entityHeight="200" entityIconified="false" entityId="141208435075755" entityLocationX="394" entityLocationY="8" entityWidth="150" tableAlias="t" tableName="msg_link_tags_and_types" tableSchemaName=""/>
   <entity Title="" entityHeight="200" entityIconified="false" entityId="141164412984541" entityLocationX="226" entityLocationY="7" entityWidth="150" tableAlias="t1" tableName="msg_sms_types" tableSchemaName=""/>
   <relation leftEntityId="-1" leftEntityParameterName="eventType" rightEntityFieldName="event_type" rightEntityId="141164412984541"/>
+  <relation leftEntityFieldName="tag_id" leftEntityId="141208435075755" rightEntityFieldName="msg_tags_id" rightEntityId="141208435077474"/>
+  <relation leftEntityFieldName="type_id" leftEntityId="141208435075755" rightEntityFieldName="sms_types_id" rightEntityId="141164412984541"/>
 </datamodel>

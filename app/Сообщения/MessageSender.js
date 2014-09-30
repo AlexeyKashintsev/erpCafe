@@ -18,10 +18,22 @@ function MessageSender() {
     self.BONUS_ADD = 2;
     self.BONUS_REMOVE = 3;
     
-    self.sendMessage = function(anEventType, aParams){
+    self.sendMessage = function(anEventType, aClient, aParams){
+        if (typeof (aClient) != "object"){
+            model.usersByName.params.usr_name = aClient;
+            model.usersByName.requery();
+            if (model.usersByName.length === 0) return "error";
+            aClient = {};
+            aClient.phone = model.usersByName.cursor.usr_phone;
+            aClient.email = model.usersByName.cursor.usr_email;
+            aClient.username = model.usersByName.cursor.usr_name;
+        }
         model.qGetSendParams.params.eventType = anEventType;
         model.qGetSendParams.requery();
         var textMessage = model.qGetSendParams.cursor.message;
+        for (param in aClient){
+            aParams[param] = aClient[param];
+        }
         for (param in aParams){
            textMessage = textMessage.replace(new RegExp("%" + param + "%",'g'), aParams[param]);
         }
