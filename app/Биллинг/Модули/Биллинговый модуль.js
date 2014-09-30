@@ -363,7 +363,7 @@ function BillModule() {
         };
         //model.qServiceList.push(obj);
         model.qServiceList.insert();
-        model.qServiceList.cursor.item_id = model.qServiceList.cursor.bill_services_id;
+        model.qServiceList.cursor.service_id = model.qServiceList.cursor.bill_services_id;
         model.qServiceList.cursor.item_cost = aSum;
         model.qServiceList.cursor.service_days = aDays;
         model.qServiceList.cursor.service_month = aMonth;
@@ -407,10 +407,10 @@ function BillModule() {
         model.qService.requery();
         model.qServiceList.requery(function() {
             if (model.qServiceList.length > 0) {
-                model.qCloseItemCost.params.item_id = aServiceId;
+                model.qCloseItemCost.params.service_id = aServiceId;
                 model.qCloseItemCost.executeUpdate();
                 var obj = {
-                    item_id: aServiceId,
+                    service_id: aServiceId,
                     item_cost: aSum,
                     service_days: aDays,
                     service_month: aMonth,

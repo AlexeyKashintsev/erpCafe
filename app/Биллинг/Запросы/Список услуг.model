@@ -6,5 +6,5 @@
   <entity Title="" entityHeight="200" entityIconified="false" entityId="140791363951617" entityLocationX="236" entityLocationY="4" entityWidth="150" tableAlias="t1" tableName="bill_services" tableSchemaName=""/>
   <entity Title="" entityHeight="200" entityIconified="false" entityId="141078912283690" entityLocationX="449" entityLocationY="2" entityWidth="150" tableAlias="t" tableName="bill_item_cost" tableSchemaName=""/>
   <relation leftEntityId="-1" leftEntityParameterName="service_id" rightEntityFieldName="bill_services_id" rightEntityId="140791363951617"/>
-  <relation leftEntityFieldName="bill_services_id" leftEntityId="140791363951617" rightEntityFieldName="item_id" rightEntityId="141078912283690"/>
+  <relation leftEntityFieldName="bill_services_id" leftEntityId="140791363951617" rightEntityFieldName="service_id" rightEntityId="141078912283690"/>
 </datamodel>
