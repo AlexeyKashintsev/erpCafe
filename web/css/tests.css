@@ -1,0 +1,37 @@
+body {
+    background-color: darkgrey;
+}
+div#log {
+    display: block;
+    position: absolute;
+    right: 0px;
+    left: 0px;
+    bottom: 0px;
+    top: 120px;
+    overflow-y: scroll;
+    margin: 10px;
+    font-family: verdana;
+}
+
+div#log > * {
+    padding: 0px;
+    margin: 0px;
+}
+
+.error {
+    color: RED;
+}
+
+.info {
+    color: black;
+    font-style: italic;
+}
+
+.success {
+    color: green;
+}
+
+.sysInfo {
+    color: black;
+    font-size: larger;
+}
