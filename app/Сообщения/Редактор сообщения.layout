@@ -1,22 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?><layout defaultCloseOperation="2" name="Form" prefHeight="300px" prefWidth="400px" windowOpened="formWindowOpened">
-  <widget actionPerformed="btnAddPasswordActionPerformed" name="btnAddPassword" parent="Form" prefHeight="23px" prefWidth="84px" text="password" type="ButtonDesignInfo">
-    <constraints height="23px" left="216px" top="12px" type="MarginConstraintsDesignInfo" width="84px"/>
-  </widget>
-  <widget actionPerformed="btnAddCountActionPerformed" name="btnAddCount" parent="Form" prefHeight="23px" prefWidth="84px" text="count" type="ButtonDesignInfo">
-    <constraints height="23px" left="120px" top="12px" type="MarginConstraintsDesignInfo" width="84px"/>
-  </widget>
   <widget actionPerformed="btnCancelActionPerformed" name="btnCancel" parent="Form" prefHeight="23px" prefWidth="113px" text="Отмена" type="ButtonDesignInfo">
     <constraints bottom="1px" height="23px" left="120px" type="MarginConstraintsDesignInfo" width="113px"/>
   </widget>
   <widget name="modelTextArea" parent="Form" prefHeight="180px" prefWidth="348px" type="DbTextDesignInfo">
     <datamodelElement entityId="141138720072662" fieldName="message"/>
-    <constraints height="180px" left="24px" top="84px" type="MarginConstraintsDesignInfo" width="348px"/>
+    <constraints height="180px" left="24px" top="72px" type="MarginConstraintsDesignInfo" width="348px"/>
   </widget>
   <widget actionPerformed="btnSaveActionPerformed" name="btnSave" parent="Form" prefHeight="23px" prefWidth="149px" text="Сохранить" type="ButtonDesignInfo">
     <constraints bottom="1px" height="23px" right="11px" type="MarginConstraintsDesignInfo" width="149px"/>
   </widget>
-  <widget actionPerformed="btnAddUsernameActionPerformed" name="btnAddUsername" parent="Form" prefHeight="23px" prefWidth="84px" text="username" type="ButtonDesignInfo">
-    <constraints height="23px" left="24px" top="12px" type="MarginConstraintsDesignInfo" width="84px"/>
+  <widget name="panel" parent="Form" prefHeight="108px" prefWidth="360px" type="PanelDesignInfo">
+    <layout columns="3" rows="4" type="GridLayoutDesignInfo"/>
+    <constraints height="108px" left="24px" top="12px" type="MarginConstraintsDesignInfo" width="360px"/>
+  </widget>
+  <widget actionPerformed="btnAddUsernameActionPerformed" name="btnAddUsername" parent="panel" prefHeight="27px" prefWidth="360px" text="username" type="ButtonDesignInfo"/>
+  <widget actionPerformed="btnAddCountActionPerformed" name="btnAddCount" parent="panel" prefHeight="27px" prefWidth="360px" text="count" type="ButtonDesignInfo"/>
+  <widget actionPerformed="btnAddPasswordActionPerformed" name="btnAddPassword" parent="panel" prefHeight="27px" prefWidth="360px" text="password" type="ButtonDesignInfo"/>
+  <widget actionPerformed="buttonActionPerformed" name="button" parent="Form" prefHeight="23px" prefWidth="65px" text="button" type="ButtonDesignInfo">
+    <constraints bottom="25px" height="23px" left="24px" type="MarginConstraintsDesignInfo" width="65px"/>
   </widget>
   <layout type="MarginLayoutDesignInfo"/>
 </layout>
