@@ -28,6 +28,10 @@ function TradeSessions() {
      * @returns {undefined}
      */
     self.initializeSession = function(aSession, aStartBalance) {
+        if (!aSession) {
+            aSession = session.getActiveTPSession();
+        };
+
         model.qTradeSessionBalance.push({
             session_id  :   aSession,
             start_value :   aStartBalance
