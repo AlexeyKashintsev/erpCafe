@@ -11,6 +11,7 @@ function TradeSessions() {
     var billing = new BillModule();
     var ep = new EventProcessor();
     var session = Modules.get("UserSession");
+    var sender = new MessageSender();
     
     /*
      * Типы операций
@@ -243,6 +244,23 @@ function TradeSessions() {
             
             if (client.bonusBill) {
                 billing.bonusOperation(client.bonusBill, BonusOperation, BonusCount, TradeOperationId);
+                if (BonusOperation === billing.OPERATION_ADD_BONUS){
+                    sender.sendMessage(sender.BONUS_ADD, {
+                        username:   client.firstName,
+                        count   :   BonusCount,
+                        phone   :   client.phone,
+                        email   :   client.email,
+                        subject :   "Информационное сообщение сети кафе ERP"
+                    });
+                }else if (BonusOperation === billing.OPERATION_DEL_BUY){
+                    sender.sendMessage(sender.BONUS_REMOVE, {
+                        username:   client.firstName,
+                        count   :   BonusCount,
+                        phone   :   client.phone,
+                        email   :   client.email,
+                        subject :   "Информационное сообщение сети кафе ERP"
+                    });
+                }
             }
             model.save();
         };

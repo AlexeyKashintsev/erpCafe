@@ -46,6 +46,10 @@ function StartMasterAdminForm() {
         incomePlan      :   {
             display     :   "Настройка доходности",
             dispForm    :   "PlannedIncomeSettings"
+        },
+        messageEdit     :   {
+            display     :   "Настройка сообщений",
+            dispForm    :   "messengerSettings"
         }
         
     };
