@@ -99,4 +99,59 @@ function formWindowClosing(evt) {//GEN-FIRST:event_formWindowClosing
                     model.qTradeItems.requery();
                 });
     }//GEN-LAST:event_selectOnSelect
+    var flag = 0;
+    function qTradeItemsOnChanged(evt) {//GEN-FIRST:event_qTradeItemsOnChanged
+        if(!evt.object.franchazi_id){
+            
+            if(flag == 0){
+                model.qTradeItems.insert(
+                    model.qTradeItems.schema.franchazi_id, model.params.franchazi_id,
+                    model.qTradeItems.schema.item_type, model.qTradeItemTypes.cursor.trade_item_type_id
+                );
+                flag = 1;
+                model.params.item_id = evt.object.trade_items_id;
+                // Вот тут почему то не работает асинхронный код!! Наверное я лось и ошибка глупая.
+                model.qContents.requery(function(){
+                   if(model.qContents.length > 0){
+                        model.qContents.beforeFirst();
+                        while(model.qContents.next()){
+                            model.qContents.insert(
+                                model.qContents.schema.wh_item, model.qContents.cursor.wh_item,
+                                model.qContents.schema.usage_quantity, model.qContents.cursor.usage_quantity,
+                                model.qContents.schema.trade_item, model.qTradeItems.cursor.trade_items_id
+                            );
+                        }
+                    }
+                });
+               
+                alert("Товар продублирован!");
+                model.qTradeItems.beforeFirst();
+                while(model.qTradeItems.next()){
+                    if(model.qTradeItems.cursor.item_name == evt.newValue){
+                        model.qTradeItems.cursor.item_name = evt.oldValue;
+                        flag = 0;
+                        
+                    } 
+                    if(!model.qTradeItems.cursor.item_name)
+                        model.qTradeItems.cursor.item_name = evt.newValue;
+                } 
+            }
+        }
+    }//GEN-LAST:event_qTradeItemsOnChanged
+
+    function qTradeItemsWillChange(evt) {//GEN-FIRST:event_qTradeItemsWillChange
+        
+    }//GEN-LAST:event_qTradeItemsWillChange
+
+    function btnItemSel1ActionPerformed(evt) {//GEN-FIRST:event_btnItemSel1ActionPerformed
+        model.qTradeItems.insert(
+                        model.qTradeItems.schema.franchazi_id, model.params.franchazi_id,
+                        model.qTradeItems.schema.item_type, model.qTradeItemTypes.cursor.trade_item_type_id,
+                        model.qTradeItems.schema.item_name, model.qTradeItems.cursor.item_name
+                    ); 
+    }//GEN-LAST:event_btnItemSel1ActionPerformed
+
+    function paramsOnChanged(evt) {//GEN-FIRST:event_paramsOnChanged
+        // TODO Добавьте здесь свой код:
+    }//GEN-LAST:event_paramsOnChanged
 }

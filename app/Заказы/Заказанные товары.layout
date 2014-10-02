@@ -5,19 +5,20 @@
   <widget name="panel" parent="splitPane" prefHeight="299px" prefWidth="586px" type="PanelDesignInfo">
     <layout type="MarginLayoutDesignInfo"/>
   </widget>
-  <widget name="toolBar" parent="panel" prefHeight="36px" prefWidth="592px" rollover="true" type="ToolbarDesignInfo">
-    <constraints height="36px" left="0px" right="-6px" top="0px" type="MarginConstraintsDesignInfo"/>
+  <widget name="toolBar" parent="panel" prefHeight="36px" prefWidth="588px" rollover="true" type="ToolbarDesignInfo">
+    <constraints height="36px" left="0px" right="-2px" top="0px" type="MarginConstraintsDesignInfo"/>
   </widget>
   <widget actionPerformed="btnReqActionPerformed" focusable="false" horizontalTextPosition="0" icon="icons/22x22/actions/new-view-refresh.png" name="btnReq" parent="toolBar" prefHeight="29px" prefWidth="29px" toolTipText="Обновить" type="ButtonDesignInfo" verticalTextPosition="3"/>
-  <widget actionPerformed="btnReciveActionPerformed" enabled="false" focusable="false" horizontalTextPosition="4" icon="icons/22x22/actions/dialog-apply.png" name="btnRecive" parent="toolBar" prefHeight="29px" prefWidth="107px" text="Заказ получен" toolTipText="Товар получен" type="ButtonDesignInfo" verticalTextPosition="3"/>
+  <widget actionPerformed="btnSaveActionPerformed" focusable="false" horizontalTextPosition="4" icon="icons/22x22/actions/edit-select-all.png" name="btnSave" parent="toolBar" prefHeight="29px" prefWidth="107px" text="Принять заказ" toolTipText="Пополнить баланс" type="ButtonDesignInfo" verticalTextPosition="3" visible="false"/>
+  <widget actionPerformed="btnReciveActionPerformed" enabled="false" focusable="false" horizontalTextPosition="4" icon="icons/22x22/actions/dialog-apply.png" name="btnRecive" parent="toolBar" prefHeight="29px" prefWidth="121px" text="Отправить товар" toolTipText="Отправить товар" type="ButtonDesignInfo" verticalTextPosition="3"/>
   <widget deletable="false" editable="false" insertable="false" name="modelGrid" parent="panel" prefHeight="264px" prefWidth="576px" type="DbGridDesignInfo">
     <rowsColumnsDesignInfo>
-      <rowsDatasource entityId="141156193438016" field="false"/>
+      <rowsDatasource entityId="141209122106028" field="false"/>
     </rowsColumnsDesignInfo>
     <treeDesignInfo/>
-    <column name="colOperation_date" title="Дата заказа">
+    <column name="colOperation_date" title="Дата">
       <controlInfo classHint="DbDateDesignInfo" dateFormat="dd.MM.yyyy HH:mm:ss" name="view" prefHeight="0px" prefWidth="0px"/>
-      <datamodelElement entityId="141156193438016" fieldName="operation_date"/>
+      <datamodelElement entityId="141209122106028" fieldName="operation_date"/>
       <headerStyle>
         <nativeFont name="Tahoma" size="11"/>
       </headerStyle>
@@ -32,7 +33,7 @@
     </column>
     <column name="colOperation_sum" title="Сумма">
       <controlInfo classHint="DbSpinDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
-      <datamodelElement entityId="141156193438016" fieldName="operation_sum"/>
+      <datamodelElement entityId="141209122106028" fieldName="operation_sum"/>
       <headerStyle>
         <nativeFont name="Tahoma" size="11"/>
       </headerStyle>
@@ -45,9 +46,9 @@
         <cellValueField/>
       </cellDesignInfo>
     </column>
-    <column name="colStatus_name" title="Статус заказа">
+    <column name="colStatus_name1" title="Статус">
       <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
-      <datamodelElement entityId="141156193438016" fieldName="status_name"/>
+      <datamodelElement entityId="141209122106028" fieldName="status_name"/>
       <headerStyle>
         <nativeFont name="Tahoma" size="11"/>
       </headerStyle>

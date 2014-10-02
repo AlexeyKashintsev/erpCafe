@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?><datamodel>
   <parametersEntity entityHeight="200" entityIconified="false" entityLocationX="12" entityLocationY="12" entityWidth="150"/>
+  <entity Name="qGetTagsForEvent" Title="" entityHeight="200" entityIconified="false" entityId="141225570648877" entityLocationX="347" entityLocationY="12" entityWidth="150" queryId="qGetTagsForEvent" tableName="" tableSchemaName=""/>
   <entity Name="qGetSendParams" Title="" entityHeight="200" entityIconified="false" entityId="141113272833248" entityLocationX="182" entityLocationY="13" entityWidth="150" queryId="qGetSendParams" tableName="" tableSchemaName=""/>
 </datamodel>
