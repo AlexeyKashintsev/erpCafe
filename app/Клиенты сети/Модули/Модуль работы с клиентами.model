@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?><datamodel>
   <parametersEntity entityHeight="200" entityIconified="false" entityLocationX="12" entityLocationY="12" entityWidth="150"/>
   <entity Name="qPersonalData" Title="" entityHeight="302" entityIconified="false" entityId="140750750145989" entityLocationX="198" entityLocationY="12" entityWidth="150" queryId="qPersonalData" tableName="" tableSchemaName=""/>
+  <entity Name="qGetPersonalDataOfAllClients" Title="" entityHeight="200" entityIconified="false" entityId="141225869504716" entityLocationX="567" entityLocationY="24" entityWidth="150" queryId="qGetPersonalDataOfAllClients" tableName="" tableSchemaName=""/>
   <entity Name="qGetPhoneByFourDigit" Title="" entityHeight="200" entityIconified="false" entityId="141164560534937" entityLocationX="387" entityLocationY="21" entityWidth="150" queryId="qGetPhoneByFourDigit" tableName="" tableSchemaName=""/>
 </datamodel>
