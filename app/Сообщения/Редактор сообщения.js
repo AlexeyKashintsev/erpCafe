@@ -8,15 +8,22 @@ function editMessageForm() {
     
     self.setSmsType = function(aSmsType){
        SMSType = aSmsType;
+       model.params.event = SMSType;
+       model.qGetTagsForEvent.requery(function(){
+            model.qGetTagsForEvent.beforeFirst();
+            while (model.qGetTagsForEvent.next()){
+                var btn = new Button(model.qGetTagsForEvent.cursor.tag_description);
+                btn.tag = model.qGetTagsForEvent.cursor.tag;
+                btn.onActionPerformed = function(evt) {
+                    model.qGetSendParams.cursor.message += "%" + this.tag + "%";
+                };
+                self.panel.add(btn);
+            }
+        });
     };
 
     function formWindowOpened(evt) {//GEN-FIRST:event_formWindowOpened
-        if (SMSType){
-            model.qGetSendParams.params.eventType = SMSType;
-            model.requery();
-        } else {
-            form.close("error");
-        }
+
     }//GEN-LAST:event_formWindowOpened
 
     function btnSaveActionPerformed(evt) {//GEN-FIRST:event_btnSaveActionPerformed
@@ -28,23 +35,11 @@ function editMessageForm() {
         form.close(false);
     }//GEN-LAST:event_btnCancelActionPerformed
 
-    function btnAddUsernameActionPerformed(evt) {//GEN-FIRST:event_btnAddUsernameActionPerformed
-        model.qGetSendParams.cursor.message += "%username%"; 
-    }//GEN-LAST:event_btnAddUsernameActionPerformed
-
-    function btnAddCountActionPerformed(evt) {//GEN-FIRST:event_btnAddCountActionPerformed
-        model.qGetSendParams.cursor.message += "%count%"; 
-    }//GEN-LAST:event_btnAddCountActionPerformed
-
-    function btnAddPasswordActionPerformed(evt) {//GEN-FIRST:event_btnAddPasswordActionPerformed
-        model.qGetSendParams.cursor.message += "%password%"; 
-    }//GEN-LAST:event_btnAddPasswordActionPerformed
+    
 
 
 
-
-    function buttonActionPerformed(evt) {//GEN-FIRST:event_buttonActionPerformed
-    var btn = new Button("fhfghgh");
-    form.panel.add(btn);
-    }//GEN-LAST:event_buttonActionPerformed
+    function formWindowClosed(evt) {//GEN-FIRST:event_formWindowClosed
+        
+    }//GEN-LAST:event_formWindowClosed
 }

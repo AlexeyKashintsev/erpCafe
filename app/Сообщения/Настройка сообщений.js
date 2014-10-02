@@ -5,7 +5,7 @@
  */
 function messengerSettings() {
     var self = this, model = this.model, form = this;
-    var EditMessageForm = new editMessageForm();
+    
     // TODO : place your code here
 
     function btnSaveMouseClicked(evt) {//GEN-FIRST:event_btnSaveMouseClicked
@@ -18,6 +18,7 @@ function messengerSettings() {
 
     function modelGridMouseClicked(evt) {//GEN-FIRST:event_modelGridMouseClicked
         if (evt.clickCount >=2 ){
+            var EditMessageForm = new editMessageForm();
             EditMessageForm.setSmsType(model.qGetSendParams.cursor.event_type);
             EditMessageForm.showModal(function(){
                 model.requery();

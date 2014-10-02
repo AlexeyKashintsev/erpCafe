@@ -1,12 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?><layout defaultCloseOperation="2" name="Form" prefHeight="311px" prefWidth="601px">
   <widget mouseClicked="modelGridMouseClicked" name="modelGrid" parent="Form" prefHeight="249px" prefWidth="591px" type="DbGridDesignInfo">
-    <rowsColumnsDesignInfo>
-      <rowsDatasource entityId="141113272833248" field="false"/>
-    </rowsColumnsDesignInfo>
-    <treeDesignInfo/>
-    <column name="colEVENT_TYPE" title="Событие" width="100">
-      <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
+    <column name="colEVENT_TYPE" readonly="true" title="Событие" width="100">
       <datamodelElement entityId="141113272833248" fieldName="event_description"/>
+      <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
       <columnsDatasource/>
       <columnsDisplayField/>
       <cellsDatasource/>
@@ -21,8 +17,8 @@
     </column>
     <column name="column" title="Оповещение">
       <column name="colSEND_TO_SCREEN" title="на экран">
-        <controlInfo classHint="DbCheckDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
         <datamodelElement entityId="141113272833248" fieldName="display"/>
+        <controlInfo classHint="DbCheckDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
         <columnsDatasource/>
         <columnsDisplayField/>
         <cellsDatasource/>
@@ -36,8 +32,8 @@
         </headerStyle>
       </column>
       <column name="colSEND_EMAIL" title="по e-mail">
-        <controlInfo classHint="DbCheckDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
         <datamodelElement entityId="141113272833248" fieldName="email"/>
+        <controlInfo classHint="DbCheckDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
         <columnsDatasource/>
         <columnsDisplayField/>
         <cellsDatasource/>
@@ -51,8 +47,8 @@
         </headerStyle>
       </column>
       <column name="colSEND_SMS" title="по СМС">
-        <controlInfo classHint="DbCheckDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
         <datamodelElement entityId="141113272833248" fieldName="sms"/>
+        <controlInfo classHint="DbCheckDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
         <columnsDatasource/>
         <columnsDisplayField/>
         <cellsDatasource/>
@@ -78,9 +74,9 @@
         <nativeFont name="Dialog" size="13"/>
       </headerStyle>
     </column>
-    <column name="message" title="Сообщение" width="80">
-      <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
+    <column name="message" readonly="true" title="Сообщение" width="80">
       <datamodelElement entityId="141113272833248" fieldName="message"/>
+      <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
       <columnsDatasource/>
       <columnsDisplayField/>
       <cellsDatasource/>
@@ -93,6 +89,10 @@
         <nativeFont name="Tahoma" size="11"/>
       </headerStyle>
     </column>
+    <rowsColumnsDesignInfo>
+      <rowsDatasource entityId="141113272833248" field="false"/>
+    </rowsColumnsDesignInfo>
+    <treeDesignInfo/>
     <constraints bottom="57px" left="5px" right="5px" top="5px" type="MarginConstraintsDesignInfo"/>
   </widget>
   <widget mouseClicked="btnSaveMouseClicked" name="btnSave" parent="Form" prefHeight="29px" prefWidth="98px" text="Сохранить" type="ButtonDesignInfo">

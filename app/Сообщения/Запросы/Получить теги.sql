@@ -2,6 +2,7 @@
  *
  * @author Work
  * @name qGetTagsForEvent
+ * @public
  */ 
 Select t2.tag, t2.tag_description
 From msg_link_tags_and_types t1
