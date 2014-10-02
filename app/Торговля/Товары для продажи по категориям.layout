@@ -32,35 +32,35 @@
     <column name="colItem_name" title="Название">
       <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
       <datamodelElement entityId="140566813019746" fieldName="item_name"/>
+      <headerStyle>
+        <nativeFont name="Dialog" size="15"/>
+      </headerStyle>
       <columnsDatasource/>
       <columnsDisplayField/>
       <cellsDatasource/>
       <cellDesignInfo>
+        <rowsKeyField/>
         <columnsKeyField/>
         <cellValueField/>
-        <rowsKeyField/>
       </cellDesignInfo>
-      <headerStyle>
-        <nativeFont name="Dialog" size="15"/>
-      </headerStyle>
     </column>
     <column name="select" readonly="true" selectFunction="selectOnSelect" selectOnly="true" title="Состав">
       <controlInfo classHint="DbComboDesignInfo" list="false" name="view" prefHeight="0px" prefWidth="0px">
-        <displayField entityId="140568805648895" fieldName="contents"/>
         <valueField entityId="140568805648895" fieldName="trade_items_id"/>
+        <displayField entityId="140568805648895" fieldName="contents"/>
       </controlInfo>
       <datamodelElement entityId="140566813019746" fieldName="trade_items_id"/>
+      <headerStyle>
+        <nativeFont name="Dialog" size="15"/>
+      </headerStyle>
       <columnsDatasource/>
       <columnsDisplayField/>
       <cellsDatasource/>
       <cellDesignInfo>
+        <rowsKeyField/>
         <columnsKeyField/>
         <cellValueField/>
-        <rowsKeyField/>
       </cellDesignInfo>
-      <headerStyle>
-        <nativeFont name="Dialog" size="15"/>
-      </headerStyle>
     </column>
     <constraints bottom="0px" left="0px" right="0px" top="36px" type="MarginConstraintsDesignInfo"/>
   </widget>
@@ -84,17 +84,17 @@
     <column name="colType_description" title="Категория">
       <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
       <datamodelElement entityId="140566820113240" fieldName="type_name"/>
+      <headerStyle>
+        <nativeFont name="Dialog" size="15"/>
+      </headerStyle>
       <columnsDatasource/>
       <columnsDisplayField/>
       <cellsDatasource/>
       <cellDesignInfo>
+        <rowsKeyField/>
         <columnsKeyField/>
         <cellValueField/>
-        <rowsKeyField/>
       </cellDesignInfo>
-      <headerStyle>
-        <nativeFont name="Dialog" size="15"/>
-      </headerStyle>
     </column>
     <constraints bottom="0px" left="0px" right="0px" top="36px" type="MarginConstraintsDesignInfo"/>
   </widget>

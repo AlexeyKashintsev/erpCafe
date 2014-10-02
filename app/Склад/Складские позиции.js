@@ -50,8 +50,12 @@ function formWindowClosing(evt) {//GEN-FIRST:event_formWindowClosing
     }//GEN-LAST:event_btnAddActionPerformed
 
     function btnDelActionPerformed(evt) {//GEN-FIRST:event_btnDelActionPerformed
-        if (confirm('Вы уверены что хотите удалить этот товар?'))
-            model.qWarehouseItems.deleteRow();
+        if (!model.qWarehouseItems.cursor.franchazi_id || session.userRole === 'admin') {
+            if (confirm('Вы уверены что хотите удалить этот товар?'))
+                model.qWarehouseItems.deleteRow();
+        } else {
+            alert('Данная операция доступна только администратору!');
+        }
     }//GEN-LAST:event_btnDelActionPerformed
 
     function modelGridMouseClicked(evt) {//GEN-FIRST:event_modelGridMouseClicked

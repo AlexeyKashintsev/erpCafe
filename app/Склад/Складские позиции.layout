@@ -17,12 +17,16 @@
     <layout type="MarginLayoutDesignInfo"/>
   </widget>
   <widget name="modelGrid1" parent="panel1" prefHeight="265px" prefWidth="461px" type="DbGridDesignInfo">
+    <rowsColumnsDesignInfo>
+      <rowsDatasource entityId="140784855997466" field="false"/>
+    </rowsColumnsDesignInfo>
+    <treeDesignInfo/>
     <column name="colItem_name" title="Наименование">
       <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
+      <datamodelElement entityId="140784855997466" fieldName="item_name"/>
       <headerStyle>
         <nativeFont name="Dialog" size="15"/>
       </headerStyle>
-      <datamodelElement entityId="140784855997466" fieldName="item_name"/>
       <columnsDatasource/>
       <columnsDisplayField/>
       <cellsDatasource/>
@@ -37,10 +41,10 @@
         <valueField entityId="140532276305367" fieldName="wh_item_types_id"/>
         <displayField entityId="140532276305367" fieldName="type_description"/>
       </controlInfo>
+      <datamodelElement entityId="140784855997466" fieldName="item_type"/>
       <headerStyle>
         <nativeFont name="Dialog" size="15"/>
       </headerStyle>
-      <datamodelElement entityId="140784855997466" fieldName="item_type"/>
       <columnsDatasource/>
       <columnsDisplayField/>
       <cellsDatasource/>
@@ -55,10 +59,10 @@
         <valueField entityId="140532276543923" fieldName="wh_measures_id"/>
         <displayField entityId="140532276543923" fieldName="measure_desc"/>
       </controlInfo>
+      <datamodelElement entityId="140784855997466" fieldName="item_measure"/>
       <headerStyle>
         <nativeFont name="Dialog" size="15"/>
       </headerStyle>
-      <datamodelElement entityId="140784855997466" fieldName="item_measure"/>
       <columnsDatasource/>
       <columnsDisplayField/>
       <cellsDatasource/>
@@ -70,10 +74,10 @@
     </column>
     <column name="colFranchazi" title="Франчази">
       <controlInfo classHint="DbCheckDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
+      <datamodelElement entityId="140784855997466" fieldName="franchazi_id"/>
       <headerStyle>
         <nativeFont name="Dialog" size="13"/>
       </headerStyle>
-      <datamodelElement entityId="140784855997466" fieldName="franchazi_id"/>
       <columnsDatasource/>
       <columnsDisplayField/>
       <cellsDatasource/>
@@ -83,10 +87,6 @@
         <cellValueField/>
       </cellDesignInfo>
     </column>
-    <rowsColumnsDesignInfo>
-      <rowsDatasource entityId="140784855997466" field="false"/>
-    </rowsColumnsDesignInfo>
-    <treeDesignInfo/>
     <constraints bottom="0px" left="0px" right="0px" top="31px" type="MarginConstraintsDesignInfo"/>
   </widget>
   <widget floatable="false" name="toolBar" parent="panel1" prefHeight="31px" prefWidth="461px" rollover="true" type="ToolbarDesignInfo">
@@ -100,12 +100,18 @@
     <layout type="MarginLayoutDesignInfo"/>
   </widget>
   <widget deletable="false" editable="false" insertable="false" mouseClicked="modelGridMouseClicked" name="modelGrid" parent="panel" prefHeight="296px" prefWidth="229px" type="DbGridDesignInfo">
+    <rowsColumnsDesignInfo>
+      <rowsDatasource entityId="140532276305367" field="false"/>
+    </rowsColumnsDesignInfo>
+    <treeDesignInfo>
+      <unaryLinkField entityId="140532276305367" fieldName="parent_type"/>
+    </treeDesignInfo>
     <column name="colType_description" title="Тип товара">
       <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
+      <datamodelElement entityId="140532276305367" fieldName="type_description"/>
       <headerStyle>
         <nativeFont name="Dialog" size="15"/>
       </headerStyle>
-      <datamodelElement entityId="140532276305367" fieldName="type_description"/>
       <columnsDatasource/>
       <columnsDisplayField/>
       <cellsDatasource/>
@@ -115,12 +121,6 @@
         <cellValueField/>
       </cellDesignInfo>
     </column>
-    <rowsColumnsDesignInfo>
-      <rowsDatasource entityId="140532276305367" field="false"/>
-    </rowsColumnsDesignInfo>
-    <treeDesignInfo>
-      <unaryLinkField entityId="140532276305367" fieldName="parent_type"/>
-    </treeDesignInfo>
     <constraints bottom="0px" left="0px" right="0px" top="0px" type="MarginConstraintsDesignInfo"/>
   </widget>
   <layout type="BorderLayoutDesignInfo"/>
