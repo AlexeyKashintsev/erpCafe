@@ -42,7 +42,7 @@ function formWindowClosing(evt) {//GEN-FIRST:event_formWindowClosing
     }//GEN-LAST:event_btnAddActionPerformed
 
     function btnDelActionPerformed(evt) {//GEN-FIRST:event_btnDelActionPerformed
-        if (!model.qTradeItems.cursor.franchazi_id || session.userRole === 'admin') {
+        if (model.qTradeItems.cursor.franchazi_id || session.userRole === 'admin') {
             if (confirm('Вы уверены что хотите удалить товар?'))
                 model.qTradeItems.deleteRow();
         } else {
@@ -110,17 +110,16 @@ function formWindowClosing(evt) {//GEN-FIRST:event_formWindowClosing
     var flag = 0;
     function qTradeItemsOnChanged(evt) {//GEN-FIRST:event_qTradeItemsOnChanged
         if(!evt.object.franchazi_id){
-            
             if(flag == 0){
                 model.qTradeItems.insert(
                     model.qTradeItems.schema.franchazi_id, model.params.franchazi_id,
                     model.qTradeItems.schema.item_type, model.qTradeItemTypes.cursor.trade_item_type_id
                 );
                 flag = 1;
-                model.params.item_id = evt.object.trade_items_id;
-                // Вот тут почему то не работает асинхронный код!! Наверное я лось и ошибка глупая.
+                
+                model.qContents.params.trade_item_id = evt.object.trade_items_id;
                 model.qContents.requery(function(){
-                   if(model.qContents.length > 0){
+                    if(model.qContents.length > 0){
                         model.qContents.beforeFirst();
                         while(model.qContents.next()){
                             model.qContents.insert(
@@ -130,19 +129,18 @@ function formWindowClosing(evt) {//GEN-FIRST:event_formWindowClosing
                             );
                         }
                     }
-                });
-               
-                alert("Товар продублирован!");
-                model.qTradeItems.beforeFirst();
-                while(model.qTradeItems.next()){
-                    if(model.qTradeItems.cursor.item_name == evt.newValue){
-                        model.qTradeItems.cursor.item_name = evt.oldValue;
-                        flag = 0;
-                        
+                    alert("Товар продублирован!");
+                    model.qTradeItems.beforeFirst();
+                    while(model.qTradeItems.next()){
+                        if(model.qTradeItems.cursor.item_name == evt.newValue){
+                            model.qTradeItems.cursor.item_name = evt.oldValue;
+                            flag = 0;
+
+                        } 
+                        if(!model.qTradeItems.cursor.item_name)
+                            model.qTradeItems.cursor.item_name = evt.newValue;
                     } 
-                    if(!model.qTradeItems.cursor.item_name)
-                        model.qTradeItems.cursor.item_name = evt.newValue;
-                } 
+                });
             }
         }
     }//GEN-LAST:event_qTradeItemsOnChanged
@@ -152,11 +150,24 @@ function formWindowClosing(evt) {//GEN-FIRST:event_formWindowClosing
     }//GEN-LAST:event_qTradeItemsWillChange
 
     function btnItemSel1ActionPerformed(evt) {//GEN-FIRST:event_btnItemSel1ActionPerformed
+        model.qContents.params.trade_item_id = model.qTradeItems.cursor.trade_items_id;
         model.qTradeItems.insert(
-                        model.qTradeItems.schema.franchazi_id, model.params.franchazi_id,
-                        model.qTradeItems.schema.item_type, model.qTradeItemTypes.cursor.trade_item_type_id,
-                        model.qTradeItems.schema.item_name, model.qTradeItems.cursor.item_name
-                    ); 
+            model.qTradeItems.schema.franchazi_id, model.params.franchazi_id,
+            model.qTradeItems.schema.item_type, model.qTradeItemTypes.cursor.trade_item_type_id,
+            model.qTradeItems.schema.item_name, model.qTradeItems.cursor.item_name
+        ); 
+        model.qContents.requery(function(){
+            if(model.qContents.length > 0){
+                model.qContents.beforeFirst();
+                while(model.qContents.next()){
+                    model.qContents.insert(
+                        model.qContents.schema.wh_item, model.qContents.cursor.wh_item,
+                        model.qContents.schema.usage_quantity, model.qContents.cursor.usage_quantity,
+                        model.qContents.schema.trade_item, model.qTradeItems.cursor.trade_items_id
+                    );
+                }
+            }
+        });    
     }//GEN-LAST:event_btnItemSel1ActionPerformed
 
     function paramsOnChanged(evt) {//GEN-FIRST:event_paramsOnChanged
