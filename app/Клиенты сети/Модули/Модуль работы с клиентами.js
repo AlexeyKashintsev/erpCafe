@@ -135,4 +135,20 @@ function ClientServerModule() {
         model.qPersonalData.execute();
         return model.qPersonalData.cursor.client_id;
     };
+    
+    self.clientRecovery = function(){
+        model.qGetPersonalDataOfAllClients.requery();
+        model.qGetPersonalDataOfAllClients.beforeFirst();
+        while(model.qGetPersonalDataOfAllClients.next()){
+            if (!userModule.checkIfPhoneExists(model.qGetPersonalDataOfAllClients.cursor.phone)){
+                userModule.createUser(model.qGetPersonalDataOfAllClients.cursor.usr_name ? 
+                                        model.qGetPersonalDataOfAllClients.cursor.usr_name : 
+                                        model.qGetPersonalDataOfAllClients.cursor.phone, 
+                                        adminFunctions.MD5("1"), 
+                                        'client', 
+                                        model.qGetPersonalDataOfAllClients.cursor.email, 
+                                        model.qGetPersonalDataOfAllClients.cursor.phone)
+            }
+        }
+    };
 }

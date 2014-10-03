@@ -48,4 +48,11 @@ function UserModule() {
             return true;
         } else return false;
     };
+    
+    self.checkIfPhoneExists = function(aPhone) {
+        model.params.phone = aPhone;
+        if (model.usersByName.length > 0){
+            return true;
+        } else return false;
+    };
 }
