@@ -253,7 +253,7 @@ platypus.ready = function() {
                                 require(['BaristaDesktop'], function(){
                                     units.bd = new BaristaDesktop();
                                 });
-                            });                        
+                            });
                         break;
                     case 'client':
                         require(['ClientStartForm'], function(){

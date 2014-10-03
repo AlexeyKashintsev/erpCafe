@@ -50,7 +50,7 @@ function formWindowClosing(evt) {//GEN-FIRST:event_formWindowClosing
     }//GEN-LAST:event_btnAddActionPerformed
 
     function btnDelActionPerformed(evt) {//GEN-FIRST:event_btnDelActionPerformed
-        if (!model.qWarehouseItems.cursor.franchazi_id || session.userRole === 'admin') {
+        if (model.qWarehouseItems.cursor.franchazi_id || session.userRole === 'admin') {
             if (confirm('Вы уверены что хотите удалить этот товар?'))
                 model.qWarehouseItems.deleteRow();
         } else {

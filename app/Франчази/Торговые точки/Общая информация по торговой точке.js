@@ -18,6 +18,10 @@ function TradePointCommonInfo(aTradePointDetails, aContainer) {
         wharH   :   {
             d_name  :   '<span class="glyphicon glyphicon-book"></span>',
             d_title :   'Склад'
+        },
+        tradeOp :   {
+            d_name  :   '<span class="glyphicon glyphicon-inbox"></span>',
+            d_title :   'Касса'
         }
     };
     
@@ -53,6 +57,8 @@ function TradePointCommonInfo(aTradePointDetails, aContainer) {
                     'Касса:   ' + (tradePointDetails.startValue ? tradePointDetails.startValue : '') + tradePointDetails.operationsSum + ' рублей';
             var btnEmptyCashBox = cmn.createElement("button", "btn btn-success btn-xs btn-block", currentSession);
             btnEmptyCashBox.innerHTML = 'Снять кассу';
+            var btnWHRevision = cmn.createElement("button", "btn btn-success btn-xs btn-block", currentSession);
+            btnWHRevision.innerHTML = 'Провести ревизию';
             
             var panelData = cmn.createElement("div", "col-md-8", panelContent);
             /** !SHOW CHARTS! **/
@@ -60,6 +66,9 @@ function TradePointCommonInfo(aTradePointDetails, aContainer) {
             
             /** !SHOW WAREHOUSE! **/
             panels.wharH.display = new WHSessionBalance(tradePointDetails.org_trade_point_id, panelData);
+            
+            /** !SHOW TRADE OPERATIONS! **/
+            panels.tradeOp.display = new tradeOperaionsByTP();
             
             /** !SHOW BUtTONS! **/
             var tbBtns = cmn.createElement("div", "col-xs-1", panelContent);            
