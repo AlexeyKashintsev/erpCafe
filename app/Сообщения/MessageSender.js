@@ -19,6 +19,7 @@ function MessageSender() {
     self.BONUS_REMOVE = 3;
     
     self.sendMessage = function(anEventType, aClient, aParams){
+        if (!aParams) aParams = {};
         if (typeof (aClient) != "object"){
             model.usersByName.params.usr_name = aClient;
             model.usersByName.requery();

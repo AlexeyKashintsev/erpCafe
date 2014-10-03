@@ -2,6 +2,4 @@
   <parametersEntity entityHeight="200" entityIconified="false" entityLocationX="12" entityLocationY="12" entityWidth="150"/>
   <entity Name="qGetSendParams" Title="" entityHeight="200" entityIconified="false" entityId="141113163227676" entityLocationX="173" entityLocationY="9" entityWidth="150" queryId="qGetSendParams" tableName="" tableSchemaName=""/>
   <entity Name="usersByName" Title="" entityHeight="200" entityIconified="false" entityId="141208553365833" entityLocationX="357" entityLocationY="13" entityWidth="150" queryId="usersByName" tableName="" tableSchemaName=""/>
-  <referenceRelation leftEntityFieldName="type_id" leftEntityId="141113163227676" rightEntityFieldName="sms_types_id" rightEntityId="141113163227676"/>
-  <referenceRelation leftEntityFieldName="tag_id" leftEntityId="141113163227676" rightEntityFieldName="msg_tags_id" rightEntityId="141113163227676"/>
 </datamodel>
