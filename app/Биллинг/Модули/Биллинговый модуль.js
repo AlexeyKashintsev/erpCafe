@@ -84,6 +84,8 @@ function BillModule() {
      * @returns {undefined}
      */
     self.getQuickSumFromAccountId = function(anAccountId) {
+        model.qBillAccount.params.type = null;
+        model.qBillAccount.params.user_id = null;
         model.qBillAccount.params.account_id = anAccountId;
         model.qBillAccount.requery();
         if (model.qBillAccount.length > 0) return model.qBillAccount.cursor.currnt_sum;
@@ -96,6 +98,8 @@ function BillModule() {
      */
     self.getSumFromAccountId = function(anAccountId) {
         model.qGetAccountBalance.params.account_id = anAccountId;
+        model.qBillAccount.params.type = null;
+        model.qBillAccount.params.user_id = null;
         model.qBillAccount.params.account_id = anAccountId;
         model.qGetAccountBalance.requery();
         model.qBillAccount.requery();
@@ -159,6 +163,8 @@ function BillModule() {
                 break;
         }
         var accountType;
+        model.qBillAccount.params.type = null;
+        model.qBillAccount.params.user_id = null;
         model.qBillAccount.params.account_id = anAccountId;
         model.qBillAccount.requery();
         accountType = model.qBillAccount.cursor.account_type;
@@ -172,6 +178,8 @@ function BillModule() {
         } else {
             model.qBillOperationsList.push(obj);
             if (aStatus === self.OP_STATUS_SUCCESS) {
+                model.qBillAccount.params.type = null;
+                model.qBillAccount.params.user_id = null;
                 model.qBillAccount.params.account_id = anAccountId;
                 model.qBillAccount.requery();
                 if (model.qBillAccount.length > 0)
@@ -216,6 +224,8 @@ function BillModule() {
         model.qBillOperationsList.requery(function() {});
         if (model.qBillOperationsList.length > 0) {
             if (aStatus == self.OP_STATUS_SUCCESS) {
+                model.qBillAccount.params.type = null;
+                model.qBillAccount.params.user_id = null;
                 model.qBillAccount.params.account_id = model.qBillOperationsList.cursor.account_id;
                 model.qBillAccount.requery(function() {
                     ERROR_SHORTAGE_MONEY = checkMoneyOnAccount(model.qBillOperationsList.cursor.account_id, model.qBillOperationsList.cursor.operation_sum);
@@ -265,6 +275,8 @@ function BillModule() {
      */
     self.AddService = function(anAccountId, aServiceId) {
         model.params.service_id = aServiceId;
+        model.qBillAccount.params.type = null;
+        model.qBillAccount.params.user_id = null;
         model.qBillAccount.params.account_id = anAccountId;
         model.qAddService.params.account_id = anAccountId;
         model.qAddService.params.service_id = aServiceId;
@@ -428,6 +440,8 @@ function BillModule() {
      * 
      */
     self.getBillAccount = function(aFranId){
+        model.qBillAccount.params.type = null;
+        model.qBillAccount.params.account_id = null;
         model.qBillAccount.params.user_id = aFranId;
         model.qBillAccount.requery();
         return model.qBillAccount.cursor.bill_accounts_id;
@@ -448,6 +462,7 @@ function BillModule() {
     
     self.addCashToFranchazi = function(aSum, aType, aFranchaziId){
         var franchaziId = aFranchaziId ? aFranchaziId : session.getFranchazi();
+        model.qBillAccount.params.account_id = null;
         model.qBillAccount.params.user_id = franchaziId;
         model.qBillAccount.params.type = self.ACCOUNT_TYPE_DEFAULT;
         model.qBillAccount.requery();
