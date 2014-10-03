@@ -223,7 +223,7 @@ function TradeSessions() {
                     OperationType = BONUS;
                     BonusCount = anOrderDetails.orderSum;
                     if (client.bonusBill.length > 0) {
-                      if (model.qBillAccount.cursor.currnt_sum < anOrderDetails.orderSum){//TODO Выкосить отсюда, убрать в биллинг или клиентский модуль
+                      if (client.bonusCount < anOrderDetails.orderSum){//TODO Выкосить отсюда, убрать в биллинг или клиентский модуль
                           ep.addEvent('errorNotEnoughBonuses', anOrderDetails);
                           return "error";
                       }
