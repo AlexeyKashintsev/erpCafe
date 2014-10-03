@@ -457,12 +457,19 @@ function BillModule() {
     
     self.addCashToFranchazi = function(aSum, aType, aFranchaziId){
         var franchaziId = aFranchaziId ? aFranchaziId : session.getFranchazi();
-        if (aType === "bonus"){
-            var multiplier = 0.05;
-            return self.addBillOperation(franchaziId, self.OPERATION_ADD_CASH, aSum * multiplier);
-        }
-        if (aType === "money")
-            return self.addBillOperation(franchaziId, self.OPERATION_ADD_CASH, aSum);
+        model.qBillAccount.params.user_id = franchaziId;
+        model.qBillAccount.params.type = self.ACCOUNT_TYPE_DEFAULT;
+        model.qBillAccount.requery();
+        if(model.qBillAccount.length > 0){
+            var accountId = model.qBillAccount.cursor.bill_accounts_id;
+            if (aType === "bonus"){
+                var multiplier = 0.05;
+                return self.addBillOperation(accountId, self.OPERATION_ADD_CASH, aSum * multiplier);
+            }
+            if (aType === "money")
+                return self.addBillOperation(accountId, self.OPERATION_ADD_CASH, aSum);
+        } else 
+            return false;
     };
     
     /*
