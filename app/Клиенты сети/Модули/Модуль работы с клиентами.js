@@ -136,7 +136,7 @@ function ClientServerModule() {
         return model.qPersonalData.cursor.client_id;
     };
     
-    self.clientRecovery = function(){
+    self.clientInitialize = function(){
         model.qGetPersonalDataOfAllClients.requery();
         model.qGetPersonalDataOfAllClients.beforeFirst();
         while(model.qGetPersonalDataOfAllClients.next()){
@@ -144,7 +144,7 @@ function ClientServerModule() {
                 userModule.createUser(model.qGetPersonalDataOfAllClients.cursor.usr_name ? 
                                         model.qGetPersonalDataOfAllClients.cursor.usr_name : 
                                         model.qGetPersonalDataOfAllClients.cursor.phone, 
-                                        adminFunctions.MD5("1"), 
+                                        adminFunctions.MD5("password"), 
                                         'client', 
                                         model.qGetPersonalDataOfAllClients.cursor.email, 
                                         model.qGetPersonalDataOfAllClients.cursor.phone)
