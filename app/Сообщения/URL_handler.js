@@ -2,7 +2,8 @@
  * 
  * @name URL_handler
  * @author Alexey
- * @module 
+ * @module
+ * @public 
  */
 function URL_handler() {
     var self = this;

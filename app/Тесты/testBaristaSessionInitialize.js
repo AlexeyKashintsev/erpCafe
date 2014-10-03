@@ -3,7 +3,7 @@
  * @author Alexey
  * @module
  */ 
-function testFranchaziCreate_1() {
+function testBarista() {
     var self = this, model = this.model;
     self.parent = null;
     self.name = 'Создание франчази';
@@ -29,13 +29,25 @@ function testFranchaziCreate_1() {
         success(messages.successInit);
     };
     
+    function login(aUserName, aPassword) {
+        $.post("/erpCafe/j_security_check", { j_username: aUserName, j_password: aPassword }, function(){ 
+            console.log('Logged in...');
+        })
+        .fail(function() {
+            alert( "error" );
+        });
+    }
+    
     function doTest() {
-        //Код теста здесь
+        login("barista", "barista");
+        
     }
     
     self.doTest = function() {
         try {
+            login();
             doTest();
+            self.clear();
             if (ok) 
                 success(messages.success);
             else
@@ -47,6 +59,7 @@ function testFranchaziCreate_1() {
     };
     
     self.clear = function() {
-        //Очистка БД
+      //logout();
+       // console.log('Logged out...');
     };
 }

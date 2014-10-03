@@ -7,7 +7,7 @@
 function testMain() {
     var self = this, model = this.model;
     var log = document.getElementById("log");
-    var testList = ['testFranchaziCreate'];
+    var testList = ['testFranchaziCreate','testBarista'];
     var useHTMLLog = true;
     var messages = {
         loadModules : 'Загрузка модулей',
