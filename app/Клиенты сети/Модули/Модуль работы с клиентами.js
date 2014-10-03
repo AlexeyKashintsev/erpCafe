@@ -140,15 +140,25 @@ function ClientServerModule() {
         model.qGetPersonalDataOfAllClients.requery();
         model.qGetPersonalDataOfAllClients.beforeFirst();
         while(model.qGetPersonalDataOfAllClients.next()){
-            if (!userModule.checkIfPhoneExists(model.qGetPersonalDataOfAllClients.cursor.phone)){
+            var clientphone = model.qGetPersonalDataOfAllClients.cursor.phone;
+            if (!model.qGetPersonalDataOfAllClients.cursor.usr_name){
+                model.qGetPersonalDataOfAllClients.cursor.usr_name = model.qGetPersonalDataOfAllClients.cursor.phone;
+            }
+            var clientusername = model.qGetPersonalDataOfAllClients.cursor.usr_name;
+            if (!userModule.checkIfPhoneExists(clientphone) && !userModule.checkIfLoginExists(clientusername)){
                 userModule.createUser(model.qGetPersonalDataOfAllClients.cursor.usr_name ? 
                                         model.qGetPersonalDataOfAllClients.cursor.usr_name : 
                                         model.qGetPersonalDataOfAllClients.cursor.phone, 
                                         adminFunctions.MD5("password"), 
                                         'client', 
                                         model.qGetPersonalDataOfAllClients.cursor.email, 
-                                        model.qGetPersonalDataOfAllClients.cursor.phone)
+                                        model.qGetPersonalDataOfAllClients.cursor.phone);
+                billModule.createBillAccount(model.qGetPersonalDataOfAllClients.cursor.usr_name ? 
+                                        model.qGetPersonalDataOfAllClients.cursor.usr_name : 
+                                        model.qGetPersonalDataOfAllClients.cursor.phone, 
+                                        billModule.ACCOUNT_TYPE_CLIENT);
             }
         }
+        model.save();
     };
 }

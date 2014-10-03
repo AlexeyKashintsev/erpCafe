@@ -54,6 +54,10 @@ function StartMasterAdminForm() {
         messageEdit     :   {
             display     :   "Настройка сообщений",
             dispForm    :   "messengerSettings"
+        },
+        initClients     :   {
+            display     :   "Восстановление пользователей",
+            dispForm    :   "initClientsForm"
         }
         
     };

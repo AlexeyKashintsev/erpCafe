@@ -8,8 +8,8 @@
   <entity Name="queryRoles" Title="" entityHeight="200" entityIconified="false" entityId="140750567080665" entityLocationX="19" entityLocationY="241" entityWidth="150" queryId="queryRoles" tableName="" tableSchemaName=""/>
   <entity Name="createFrancizerUser" Title="" entityHeight="200" entityIconified="false" entityId="141165209669015" entityLocationX="191" entityLocationY="242" entityWidth="222" queryId="createFrancizerUser" tableName="" tableSchemaName=""/>
   <entity Name="qUserAddRole" Title="" entityHeight="200" entityIconified="false" entityId="140748074182683" entityLocationX="505" entityLocationY="13" entityWidth="150" queryId="qUserAddRole" tableName="" tableSchemaName=""/>
-  <relation leftEntityId="-1" leftEntityParameterName="user_role" rightEntityFieldName="role_name" rightEntityId="140750567080665"/>
   <relation leftEntityId="-1" leftEntityParameterName="user_name" rightEntityId="140748070629425" rightEntityParameterName="usr_name"/>
-  <referenceRelation leftEntityFieldName="user_name" leftEntityId="141165209669015" rightEntityFieldName="usr_name" rightEntityId="140748070629425"/>
+  <relation leftEntityId="-1" leftEntityParameterName="user_role" rightEntityFieldName="role_name" rightEntityId="140750567080665"/>
   <referenceRelation leftEntityFieldName="usr_name" leftEntityId="140748074182683" rightEntityFieldName="usr_name" rightEntityId="140748070629425"/>
+  <referenceRelation leftEntityFieldName="user_name" leftEntityId="141165209669015" rightEntityFieldName="usr_name" rightEntityId="140748070629425"/>
 </datamodel>

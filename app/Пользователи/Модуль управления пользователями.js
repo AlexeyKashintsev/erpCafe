@@ -44,13 +44,15 @@ function UserModule() {
     
     self.checkIfLoginExists = function(aLogin) {
         model.params.user_name = aLogin;
+        model.usersByName.params.phone = null;
         if (model.usersByName.length > 0){
             return true;
         } else return false;
     };
     
     self.checkIfPhoneExists = function(aPhone) {
-        model.params.phone = aPhone;
+        model.params.user_name = null;
+        model.usersByName.params.phone = aPhone;
         if (model.usersByName.length > 0){
             return true;
         } else return false;
