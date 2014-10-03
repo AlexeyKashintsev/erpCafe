@@ -9,6 +9,7 @@ function testBarista() {
     self.name = 'Создание франчази';
     self.roles = ['admin'];
     self.testsCount = 1;
+    
     var messages = {
         successInit : 'Тест инициализирован',
         success     : 'Тест пройден',
@@ -31,21 +32,101 @@ function testBarista() {
     
     function login(aUserName, aPassword) {
         $.post("/erpCafe/j_security_check", { j_username: aUserName, j_password: aPassword }, function(){ 
-            console.log('Logged in...');
+            success('Logged in...');
         })
         .fail(function() {
-            alert( "error" );
+            alert("error");
         });
     }
     
     function doTest() {
-        login("barista", "barista");
+        info("Начало теста");
+        var TS = new ServerModule("TradeSessions");
+        var Session = new ServerModule("UserSession");
+        if (!Session.getUserName()){
+            login("barista", "barista");
+        }
+        var orderDetails = {
+            clientData: false,
+            methodOfPayment: "money",
+            orderItems: [
+                {
+                    itemId: 1,
+                    quantity: 1
+                },
+                {
+                    itemId: 33,
+                    quantity: 1
+                }],
+            orderSum: 700
+        };
+        TS.processOrder(orderDetails, function(){
+            success("Товар проведен");
+        });
+        
+        orderDetails = {
+            clientData: {
+                birthday: "2014-09-23T20:00:00.000Z",
+                bonusBill: 141086646910207,
+                bonusCategory: 1,
+                bonusCount: 20,
+                email: "asd@asd.ru",
+                firstName: "Вася",
+                lastName: "Иванов",
+                middleName: "Петрович",
+                phone: "71234567890",
+                registrationDate: "2014-09-16T11:21:00.000Z"
+            },
+            methodOfPayment: "money",
+            orderItems: [
+                {
+                    itemId: 1,
+                    quantity: 1
+                },
+                {
+                    itemId: 33,
+                    quantity: 1
+                }],
+            orderSum: 700
+        };
+        TS.processOrder(orderDetails, function(){
+            success("Товар проведен клиенту " + orderDetails.clientData.phone + " за деньги");
+        });
+        
+        orderDetails = {
+            clientData: {
+                birthday: "2014-09-23T20:00:00.000Z",
+                bonusBill: 141086646910207,
+                bonusCategory: 1,
+                bonusCount: 2000,
+                email: "asd@asd.ru",
+                firstName: "Вася",
+                lastName: "Иванов",
+                middleName: "Петрович",
+                phone: "71234567890",
+                registrationDate: "2014-09-16T11:21:00.000Z"
+            },
+            methodOfPayment: "bonus",
+            orderItems: [
+                {
+                    itemId: 1,
+                    quantity: 1
+                },
+                {
+                    itemId: 33,
+                    quantity: 1
+                }],
+            orderSum: 700
+        };
+        TS.processOrder(orderDetails, function(){
+            success("Товар проведен клиенту " + orderDetails.clientData.phone + " за бонусы");
+        });
+        
         
     }
     
     self.doTest = function() {
         try {
-            login();
             doTest();
             self.clear();
             if (ok) 
