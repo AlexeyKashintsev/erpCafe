@@ -72,7 +72,7 @@ self.showFormAsInternal = function(aForm) {
     
     self.actionList = {
         common          :   {
-            display     :   "Общая информация",
+            display     :   "Дашборд",
             dispForm    :   "TradePointsDashboard",
             selfGeneration  :   true
         },

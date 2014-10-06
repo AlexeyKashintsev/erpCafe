@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?><datamodel>
+  <parametersEntity entityHeight="200" entityIconified="false" entityLocationX="12" entityLocationY="12" entityWidth="150"/>
+  <entity Name="qCashBoxOperationsByPeriod" Title="" entityHeight="200" entityIconified="false" entityId="141233885011544" entityLocationX="219" entityLocationY="15" entityWidth="150" queryId="qCashBoxOperationsByPeriod" tableName="" tableSchemaName=""/>
+  <referenceRelation leftEntityFieldName="session_id" leftEntityId="141233885011544" rightEntityFieldName="org_session_id" rightEntityId="141233885011544"/>
+</datamodel>

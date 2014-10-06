@@ -68,7 +68,7 @@ function TradePointCommonInfo(aTradePointDetails, aContainer) {
             panels.wharH.display = new WHSessionBalance(tradePointDetails.org_trade_point_id, panelData);
             
             /** !SHOW TRADE OPERATIONS! **/
-            panels.tradeOp.display = new tradeOperaionsByTP();
+            panels.tradeOp.display = new tradeOperaionsByTP(tradePointDetails.org_trade_point_id, panelData);
             
             /** !SHOW BUtTONS! **/
             var tbBtns = cmn.createElement("div", "col-xs-1", panelContent);            
