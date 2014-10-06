@@ -17,7 +17,7 @@ function CreateBillAccount() {
             type = 'ACCOUNT_TYPE_DEFAULT';
         else
             type = 'ACCOUNT_TYPE_CREDIT';
-        billModule.createBillAccount(self.FranchaziId, billModule.getSelfPropertyValue(type));
+        billModule.createBillAccount(billModule.getSelfPropertyValue(type), self.FranchaziId);
         form.close(true);
     }//GEN-LAST:event_buttonActionPerformed
 }

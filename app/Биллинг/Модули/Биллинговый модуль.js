@@ -62,7 +62,7 @@ function BillModule() {
      * @param {type} aSum
      * @returns {@this;@pro;model.qBillAccount.cursor.bill_accounts_id}
      */
-    self.createBillAccount = function(aUserId, aType) {
+    self.createBillAccount = function(aType, aUserId) {
         if (!aType)
             aType = self.ACCOUNT_TYPE_DEFAULT;
         model.qBillAccount.push({
