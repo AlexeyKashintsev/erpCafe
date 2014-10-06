@@ -145,6 +145,9 @@ function ClientServerModule() {
                 model.qGetPersonalDataOfAllClients.cursor.usr_name = model.qGetPersonalDataOfAllClients.cursor.phone;
             }
             var clientusername = model.qGetPersonalDataOfAllClients.cursor.usr_name;
+            if (!model.qGetPersonalDataOfAllClients.cursor.bonus_category){
+                model.qGetPersonalDataOfAllClients.cursor.bonus_category = 1;
+            }
             if (!userModule.checkIfPhoneExists(clientphone) && !userModule.checkIfLoginExists(clientusername)){
                 userModule.createUser(model.qGetPersonalDataOfAllClients.cursor.usr_name ? 
                                         model.qGetPersonalDataOfAllClients.cursor.usr_name : 

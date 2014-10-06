@@ -22,6 +22,6 @@ function clientDesktop() {
     function formWindowOpened(evt) {//GEN-FIRST:event_formWindowOpened
         model.qGetSumAndBonusesFromTradeOperation.params.account_id = clientData.bonusBill;
         model.qGetSumAndBonusesFromTradeOperation.requery();
-        form.lblBonusBillCount.text = "На вашем бонусном счету " + clientData.bonusCount + " баллов";
+        form.lblBonusBillCount.text = "На вашем бонусном счету " + Number(clientData.bonusCount) + " баллов";
     }//GEN-LAST:event_formWindowOpened
 }
