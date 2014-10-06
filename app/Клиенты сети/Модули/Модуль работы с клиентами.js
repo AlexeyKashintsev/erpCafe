@@ -56,7 +56,7 @@ function ClientServerModule() {
         Logger.info("Пароль пользователя: " + pass);
         userModule.createUser(anUserName, adminFunctions.MD5(pass), 'client', anEmail, aPhone);
         model.qPersonalData.insert();
-        model.qPersonalData.cursor.client_id = billModule.createBillAccount(anUserName, billModule.ACCOUNT_TYPE_CLIENT);
+        model.qPersonalData.cursor.client_id = billModule.createBillAccount(billModule.ACCOUNT_TYPE_CLIENT);
         model.qPersonalData.cursor.first_name = aFirstName;
         model.qPersonalData.cursor.middle_name = aMiddleName;
         model.qPersonalData.cursor.last_name = aLastName;
@@ -156,10 +156,8 @@ function ClientServerModule() {
                                         'client', 
                                         model.qGetPersonalDataOfAllClients.cursor.email, 
                                         model.qGetPersonalDataOfAllClients.cursor.phone);
-                billModule.createBillAccount(model.qGetPersonalDataOfAllClients.cursor.usr_name ? 
-                                        model.qGetPersonalDataOfAllClients.cursor.usr_name : 
-                                        model.qGetPersonalDataOfAllClients.cursor.phone, 
-                                        billModule.ACCOUNT_TYPE_CLIENT);
+                var clientID = billModule.createBillAccount(billModule.ACCOUNT_TYPE_CLIENT);
+                model.qGetPersonalDataOfAllClients.cursor.client_id = clientID;
             }
         }
         model.save();
