@@ -1,8 +1,10 @@
 Select t1.item_name, t1.trade_items_id, t1.item_type, t1.franchazi_id,
     array_to_string(array(
-        select t2.item_name || ' ' || t.usage_quantity || ' ' || t2.item_measure as contents 
+        select t2.item_name || ' ' || t.usage_quantity || ' '
+             || (case when t2.item_measure is not null then t2.item_measure else t3.measure end) as contents 
         from trade_items_contents t
-        inner join wh_items t2 on t.wh_item = t2.wh_items_id 
+        inner join wh_items t2 on t.wh_item = t2.wh_items_id
+        left join wh_item_types t3 on t2.item_type = t3.wh_item_types_id
         where t.trade_item = t1.trade_items_id),
         ', ') as contents
 From trade_items t1
