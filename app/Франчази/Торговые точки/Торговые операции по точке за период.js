@@ -52,22 +52,22 @@ function tradeOperaionsByTP(aTradePoint, aContainer) {
     var clnd = cmn.createElement('span','add-on input-group-addon', dtPContainer);
     cmn.createElement('i','glyphicon glyphicon-calendar fa fa-calendar', clnd);
     var dtP = cmn.createElement('input', 'form-control', clnd, 'dateTimePicker');
+    var end = new Date();
+    var start = end.setDate(end.getDate()-7);
     /*dtP.innerHTML = '<script type="text/javascript" src="js/moment.min.js"></script>\n\
 <script type="text/javascript" src="js/daterangepicker.js"></script>';*/
-    Resource.loadText("../js/moment.min.js", "UTF-8", function(txt) {
-        eval(txt);
-        Resource.loadText("../js/daterangepicker.js", "UTF-8", function(txt) {
-            eval(txt);
+    $.getScript("js/moment.min.js", function(){
+        $.getScript("js/daterangepicker.js", function() {
             $(dtP).daterangepicker(
                 { 
                   format: 'YYYY-MM-DD',
-                  startDate: '2013-01-01',
-                  endDate: '2013-12-31'
+                  startDate: start,
+                  endDate: end
                 },
                 function(start, end, label) {
                   alert('A date range was chosen: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
                 }
             );
         });
-    });    
+    });
 }
