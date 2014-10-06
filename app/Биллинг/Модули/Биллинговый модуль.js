@@ -8,6 +8,7 @@ function BillModule() {
     var self = this, model = this.model;
     var eventProcessor = new EventProcessor();
     var session = Modules.get("UserSession");
+    var sender = new MessageSender();
     
     // Типы операций
     self.OPERATION_ADD_CASH     = 1; //Добавление средств на счет
@@ -481,7 +482,7 @@ function BillModule() {
     /*
      * 
      */
-    self.bonusOperation = function(anAccountId, aBonusOperation, aCount, aTradeOperationId) {
+    self.bonusOperation = function(aClient, aBonusOperation, aCount, aTradeOperationId) {
         /*
          * Если идет списание средст с бонусного счета клиента, то начислить деньги на счет франчази
          */
@@ -492,7 +493,24 @@ function BillModule() {
         /*
          * Проведение бонусной операции со счетом клиента
          */
-        var BillOperation = self.addBillOperation(anAccountId, aBonusOperation, aCount);
+        var BillOperation = self.addBillOperation(aClient.bonusBill, aBonusOperation, aCount);
         connectBillAndTradeOperation(aTradeOperationId, BillOperation);
+        if (aBonusOperation === self.OPERATION_ADD_BONUS){
+            sender.sendMessage(sender.BONUS_ADD, {
+                username:   aClient.firstName,
+                count   :   aCount,
+                phone   :   aClient.phone,
+                email   :   aClient.email,
+                subject :   "Информационное сообщение сети кафе ERP"
+            });
+        }else if (aBonusOperation === self.OPERATION_DEL_BUY){
+            sender.sendMessage(sender.BONUS_REMOVE, {
+                username:   aClient.firstName,
+                count   :   aCount,
+                phone   :   aClient.phone,
+                email   :   aClient.email,
+                subject :   "Информационное сообщение сети кафе ERP"
+            });
+        }
     };
 }

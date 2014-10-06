@@ -223,7 +223,7 @@ function TradeSessions() {
                     OperationType = BONUS;
                     BonusCount = anOrderDetails.orderSum;
                     if (client.bonusBill.length > 0) {
-                      if (client.bonusCount < anOrderDetails.orderSum){//TODO Выкосить отсюда, убрать в биллинг или клиентский модуль
+                      if (client.bonusCount < anOrderDetails.orderSum){
                           ep.addEvent('errorNotEnoughBonuses', anOrderDetails);
                           return "error";
                       }
@@ -248,24 +248,7 @@ function TradeSessions() {
             model.save();
             
             if (client.bonusBill) {
-                billing.bonusOperation(client.bonusBill, BonusOperation, BonusCount, TradeOperationId);
-//                if (BonusOperation === billing.OPERATION_ADD_BONUS){
-//                    sender.sendMessage(sender.BONUS_ADD, {
-//                        username:   client.firstName,
-//                        count   :   BonusCount,
-//                        phone   :   client.phone,
-//                        email   :   client.email,
-//                        subject :   "Информационное сообщение сети кафе ERP"
-//                    });
-//                }else if (BonusOperation === billing.OPERATION_DEL_BUY){
-//                    sender.sendMessage(sender.BONUS_REMOVE, {
-//                        username:   client.firstName,
-//                        count   :   BonusCount,
-//                        phone   :   client.phone,
-//                        email   :   client.email,
-//                        subject :   "Информационное сообщение сети кафе ERP"
-//                    });
-//                }
+                billing.bonusOperation(client, BonusOperation, BonusCount, TradeOperationId);
             }
             
         };
