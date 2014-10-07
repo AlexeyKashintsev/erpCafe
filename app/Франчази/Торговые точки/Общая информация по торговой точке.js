@@ -33,7 +33,15 @@ function TradePointCommonInfo(aTradePointDetails, aContainer) {
         }
     }
     
-
+    function btnWHRevisionOnClick(){
+        if(!tradePointDetails.end_date){
+            alert("Сначала нужно закрыть смену!");
+        } else {
+            var revisionForm = new RevisionForm();
+            revisionForm.setTradePoint(tradePointDetails.org_trade_point_id);
+            revisionForm.showModal();
+        }
+    }
 
     function showOnContainer() {
         var heading = cmn.createElement("div", "panel-heading", container);
@@ -59,11 +67,12 @@ function TradePointCommonInfo(aTradePointDetails, aContainer) {
             btnEmptyCashBox.innerHTML = 'Снять кассу';
             var btnWHRevision = cmn.createElement("button", "btn btn-success btn-xs btn-block", currentSession);
             btnWHRevision.innerHTML = 'Провести ревизию';
+            btnWHRevision.onclick = btnWHRevisionOnClick;
             
             var panelData = cmn.createElement("div", "col-md-8", panelContent);
             /** !SHOW CHARTS! **/
             panels.charts.display = new ChartsByTP(tradePointDetails, panelData);
-            
+           
             /** !SHOW WAREHOUSE! **/
             panels.wharH.display = new WHSessionBalance(tradePointDetails.org_trade_point_id, panelData);
             
@@ -81,6 +90,6 @@ function TradePointCommonInfo(aTradePointDetails, aContainer) {
             Logger.warning(e);
         }
     }
-
+    
     showOnContainer();
 }

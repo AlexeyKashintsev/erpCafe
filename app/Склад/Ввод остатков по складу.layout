@@ -17,40 +17,40 @@
     <constraints place="Center" type="BorderLayoutConstraintsDesignInfo"/>
   </widget>
   <widget name="modelGrid" parent="pnlWorkSpace" prefHeight="325px" prefWidth="530px" type="DbGridDesignInfo">
-    <column name="colItem_name" title="Товар">
-      <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
-      <columnsDatasource/>
-      <columnsDisplayField/>
-      <cellsDatasource/>
-      <cellDesignInfo>
-        <rowsKeyField/>
-        <columnsKeyField/>
-        <cellValueField/>
-      </cellDesignInfo>
-      <headerStyle>
-        <nativeFont name="Dialog" size="15"/>
-      </headerStyle>
-      <datamodelElement entityId="140549864254788" fieldName="item_name"/>
-    </column>
-    <column name="colItem_id" title="Количество">
-      <controlInfo classHint="DbLabelDesignInfo" emptyText="0" name="view" prefHeight="0px" prefWidth="0px"/>
-      <columnsDatasource/>
-      <columnsDisplayField/>
-      <cellsDatasource/>
-      <cellDesignInfo>
-        <rowsKeyField/>
-        <columnsKeyField/>
-        <cellValueField/>
-      </cellDesignInfo>
-      <headerStyle>
-        <nativeFont name="Dialog" size="15"/>
-      </headerStyle>
-      <datamodelElement entityId="140549864254788" fieldName="start_value"/>
-    </column>
+    <treeDesignInfo/>
     <rowsColumnsDesignInfo>
       <rowsDatasource entityId="140549864254788" field="false"/>
     </rowsColumnsDesignInfo>
-    <treeDesignInfo/>
+    <column name="colItem_name" title="Товар">
+      <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
+      <datamodelElement entityId="140549864254788" fieldName="item_name"/>
+      <columnsDatasource/>
+      <columnsDisplayField/>
+      <cellsDatasource/>
+      <cellDesignInfo>
+        <columnsKeyField/>
+        <cellValueField/>
+        <rowsKeyField/>
+      </cellDesignInfo>
+      <headerStyle>
+        <nativeFont name="Dialog" size="15"/>
+      </headerStyle>
+    </column>
+    <column name="colItem_id" title="Количество">
+      <controlInfo classHint="DbLabelDesignInfo" emptyText="0" name="view" prefHeight="0px" prefWidth="0px"/>
+      <datamodelElement entityId="140549864254788" fieldName="start_value"/>
+      <columnsDatasource/>
+      <columnsDisplayField/>
+      <cellsDatasource/>
+      <cellDesignInfo>
+        <columnsKeyField/>
+        <cellValueField/>
+        <rowsKeyField/>
+      </cellDesignInfo>
+      <headerStyle>
+        <nativeFont name="Dialog" size="15"/>
+      </headerStyle>
+    </column>
     <constraints bottom="0px" left="0px" right="0px" top="0px" type="MarginConstraintsDesignInfo"/>
   </widget>
   <layout type="BorderLayoutDesignInfo"/>

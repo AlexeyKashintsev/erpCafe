@@ -14,7 +14,7 @@ function WhRevisionByBarista() {
     //model.params.trade_point_id = 3;
     self.setTradePoint = function(aTradePointId) {
         model.params.trade_point_id = aTradePointId;
-        model.params.session_id = session.whSession.setTradePoint(model.params.trade_point_id);
+        //model.params.session_id = session.whSession.setTradePoint(model.params.trade_point_id);
     };
 
     self.items = [];
