@@ -178,18 +178,6 @@ function TradeSessions() {
             });
         }
     }
-    /*
-     * TODO Описать подробнее что эта чтука делает, Здесь она точно нужна?
-     * @param {type} aTradeOperation
-     * @param {type} aBillOperation
-     * @returns {undefined}
-     */
-    function connectBillAndTradeOperation(aTradeOperation, aBillOperation){
-        model.qConnectTradeAndBillOperations.push({
-            trade_cashbox_operation: aTradeOperation,
-            bill_operation: aBillOperation
-        });
-    }
     
     /*
      * Процесс продажи
