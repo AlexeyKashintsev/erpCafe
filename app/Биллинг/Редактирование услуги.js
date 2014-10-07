@@ -5,7 +5,7 @@
  */
 function EditServiceForm() {
     var self = this, model = this.model, form = this;
-    var billModule = new ServerModule("BillModule");
+    var serviceModule = new ServerModule("ServiceModule");
     
     self.serviceId = 0;
     self.setServiceId = function(aServiceId){
@@ -23,8 +23,8 @@ function EditServiceForm() {
 
     function btnSaveActionPerformed(evt) {//GEN-FIRST:event_btnSaveActionPerformed
         if(self.serviceId)
-            billModule.editService(self.serviceId, form.tfName.text, form.tfSum.text, form.tfDays.text, form.checkBox.selected);
-        else billModule.CreateService(form.tfName.text, form.tfSum.text, form.tfDays.text, form.checkBox.selected);
+            serviceModule.editService(self.serviceId, form.tfName.text, form.tfSum.text, form.tfDays.text, form.checkBox.selected);
+        else serviceModule.CreateService(form.tfName.text, form.tfSum.text, form.tfDays.text, form.checkBox.selected);
         form.close(true);
     }//GEN-LAST:event_btnSaveActionPerformed
 

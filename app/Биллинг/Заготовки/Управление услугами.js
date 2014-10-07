@@ -4,12 +4,12 @@
  */
 function CreateServiceForm() {
     var self = this, model = this.model, form = this;
-    var billModule = new ServerModule("BillModule");
+    var serviceModule = new ServerModule("ServiceModule");
     var editServiceForm = new EditServiceForm;
     // TODO : place your code here
 
     function btnSaveActionPerformed(evt) {//GEN-FIRST:event_btnSaveActionPerformed
-        billModule.CreateService(form.tfName.text, form.tfSum.text, form.tfDays.text);
+        serviceModule.CreateService(form.tfName.text, form.tfSum.text, form.tfDays.text);
         model.requery();
     }//GEN-LAST:event_btnSaveActionPerformed
 
@@ -24,7 +24,7 @@ function CreateServiceForm() {
 
     function btnDelActionPerformed(evt) {//GEN-FIRST:event_btnDelActionPerformed
         if(confirm("Вы уверены что хотите удалить услугу?")){
-            billModule.delService(model.qServiceList.cursor.bill_services_id);
+            serviceModule.delService(model.qServiceList.cursor.bill_services_id);
             model.requery();
         }
     }//GEN-LAST:event_btnDelActionPerformed

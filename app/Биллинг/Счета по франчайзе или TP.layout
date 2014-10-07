@@ -161,7 +161,7 @@
       <rowsDatasource entityId="141095893247393" field="false"/>
     </rowsColumnsDesignInfo>
     <treeDesignInfo/>
-    <constraints height="252px" left="0px" top="36px" type="MarginConstraintsDesignInfo" width="756px"/>
+    <constraints bottom="-4px" left="0px" right="-2px" top="36px" type="MarginConstraintsDesignInfo"/>
   </widget>
   <layout type="BorderLayoutDesignInfo"/>
 </layout>

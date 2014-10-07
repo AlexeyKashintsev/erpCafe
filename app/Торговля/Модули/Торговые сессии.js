@@ -11,7 +11,6 @@ function TradeSessions() {
     var billing = new BillModule();
     var ep = new EventProcessor();
     var session = Modules.get("UserSession");
-    var sender = new MessageSender();
     
     /*
      * Типы операций
@@ -179,18 +178,6 @@ function TradeSessions() {
                 opID    : aTradeOperationId
             });
         }
-    }
-    /*
-     * TODO Описать подробнее что эта чтука делает, Здесь она точно нужна?
-     * @param {type} aTradeOperation
-     * @param {type} aBillOperation
-     * @returns {undefined}
-     */
-    function connectBillAndTradeOperation(aTradeOperation, aBillOperation){
-        model.qConnectTradeAndBillOperations.push({
-            trade_cashbox_operation: aTradeOperation,
-            bill_operation: aBillOperation
-        });
     }
     
     /*

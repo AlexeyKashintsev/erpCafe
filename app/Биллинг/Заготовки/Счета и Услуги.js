@@ -4,7 +4,7 @@
  */
 function ListBillAndServices() {
     var self = this, model = this.model, form = this;
-    var billModule = new ServerModule("BillModule");
+    var serviceModule = new ServerModule("ServiceModule");
     var createBillAccount = new CreateBillAccount();
     var addServiceForm = new AddServiceForm();
     var createServiceForm = new CreateServiceForm();
@@ -61,7 +61,7 @@ function ListBillAndServices() {
 
     function button4ActionPerformed(evt) {//GEN-FIRST:event_button4ActionPerformed
        if(confirm("Удалить услугу с лицевого счета?")){
-           if(billModule.delServiceFromAccount(model.qServiceListByAccount.cursor.account_id, model.qServiceListByAccount.cursor.bill_services_id) === false){
+           if(serviceModule.delServiceFromAccount(model.qServiceListByAccount.cursor.account_id, model.qServiceListByAccount.cursor.bill_services_id) === false){
                alert("ошибка удаления услуги!");
            } else {
                model.requery();

@@ -66,14 +66,14 @@ function BillModule() {
         if (!aType)
             aType = self.ACCOUNT_TYPE_DEFAULT;
         model.qBillAccount.push({
-            user_id: aUserId,
+            franchazi_id: aUserId,
             account_type: aType,
             currnt_sum: 0,
             active: true
         });
         model.save();
         eventProcessor.addEvent('billCreated', {
-            user_id: aUserId,
+            franchazi_id: aUserId,
             account_type: aType
         });
         return model.qBillAccount.cursor.bill_accounts_id;
@@ -86,7 +86,7 @@ function BillModule() {
      */
     self.getQuickSumFromAccountId = function(anAccountId) {
         model.qBillAccount.params.type = null;
-        model.qBillAccount.params.user_id = null;
+        model.qBillAccount.params.franchazi_id = null;
         model.qBillAccount.params.account_id = anAccountId;
         model.qBillAccount.requery();
         if (model.qBillAccount.length > 0) return model.qBillAccount.cursor.currnt_sum;
@@ -100,7 +100,7 @@ function BillModule() {
     self.getSumFromAccountId = function(anAccountId) {
         model.qGetAccountBalance.params.account_id = anAccountId;
         model.qBillAccount.params.type = null;
-        model.qBillAccount.params.user_id = null;
+        model.qBillAccount.params.franchazi_id = null;
         model.qBillAccount.params.account_id = anAccountId;
         model.qGetAccountBalance.requery();
         model.qBillAccount.requery();
@@ -165,7 +165,7 @@ function BillModule() {
         }
         var accountType;
         model.qBillAccount.params.type = null;
-        model.qBillAccount.params.user_id = null;
+        model.qBillAccount.params.franchazi_id = null;
         model.qBillAccount.params.account_id = anAccountId;
         model.qBillAccount.requery();
         accountType = model.qBillAccount.cursor.account_type;
@@ -180,7 +180,7 @@ function BillModule() {
             model.qBillOperationsList.push(obj);
             if (aStatus === self.OP_STATUS_SUCCESS) {
                 model.qBillAccount.params.type = null;
-                model.qBillAccount.params.user_id = null;
+                model.qBillAccount.params.franchazi_id = null;
                 model.qBillAccount.params.account_id = anAccountId;
                 model.qBillAccount.requery();
                 if (model.qBillAccount.length > 0)
@@ -226,7 +226,7 @@ function BillModule() {
         if (model.qBillOperationsList.length > 0) {
             if (aStatus == self.OP_STATUS_SUCCESS) {
                 model.qBillAccount.params.type = null;
-                model.qBillAccount.params.user_id = null;
+                model.qBillAccount.params.franchazi_id = null;
                 model.qBillAccount.params.account_id = model.qBillOperationsList.cursor.account_id;
                 model.qBillAccount.requery(function() {
                     ERROR_SHORTAGE_MONEY = checkMoneyOnAccount(model.qBillOperationsList.cursor.account_id, model.qBillOperationsList.cursor.operation_sum);
@@ -256,186 +256,7 @@ function BillModule() {
                 }, ERRORS.INVALID_OP_ID);
         }
     };
-    /*
-     * Вспомогательная функция для избежания дублирования кода
-     * @param {type} aEvent
-     * @param {type} aObj
-     * @param {type} aError
-     * @returns {Boolean}
-     */
-    function addErrorToLogger(aEvent, aObj, aError) {
-        Logger.info(aError);
-        eventProcessor.addEvent(aEvent, {
-            info: aObj,
-            error: aError
-        });
-        return false;
-    }
-    /*
-     * Добавление услуги на лицевой счет 
-     */
-    self.AddService = function(anAccountId, aServiceId) {
-        model.params.service_id = aServiceId;
-        model.qBillAccount.params.type = null;
-        model.qBillAccount.params.user_id = null;
-        model.qBillAccount.params.account_id = anAccountId;
-        model.qAddService.params.account_id = anAccountId;
-        model.qAddService.params.service_id = aServiceId;
-        model.requery(function() {});
-        if (model.qServiceList.length > 0) {
-            if (model.qBillAccount.length > 0) {
-                if (model.qAddService.length == 0) {
-                    if (self.getSumFromAccountId(model.qBillAccount.cursor.bill_accounts_id) >= model.qServiceList.cursor.item_cost) {
-                        var payDate = new Date();
-                        self.addBillOperation(anAccountId, self.OPERATION_DEL_SERVICE, model.qServiceList.cursor.item_cost);
-                        if (model.qServiceList.cursor.service_month) {
-                            payDate.setMonth(payDate.getMonth() + 1);
-                        } else {
-                            payDate.setDate(payDate.getDate() + model.qServiceList.cursor.service_days);
-                        }
-                        var obj = {
-                            account_id: anAccountId,
-                            service_cost_id: model.qServiceList.cursor.bill_item_cost_id,
-                            payment_date: payDate
-                        };
-                        model.qAddService.push(obj);
-                        model.save();
-                        eventProcessor.addEvent('addServiceOnAccount', obj);
-                        return true;
-                    } else {
-                        return addErrorToLogger('errorAddServiceOnAccount', obj, ERRORS.LOST_MONEY);
-                    }
-                } else {
-                    return addErrorToLogger('errorAddServiceOnAccount', obj, ERRORS.SERVICE_ADDED);
-                }
-            } else {
-                return addErrorToLogger('errorAddServiceOnAccount', obj, ERRORS.FIND_ACCOUNT_ID);
-            }
-        } else {
-            return addErrorToLogger('errorAddServiceOnAccount', obj, ERRORS.FIND_SERVICE_ID);
-        }
-    };
-    /*
-     * Удаление услуги с лицевого счета
-     * @param {type} anAccountId
-     * @param {type} aServiceId
-     * @returns {undefined}
-     */
-    self.delServiceFromAccount = function(anAccountId, aServiceId) {
-        model.qServiceListByAccount.params.service_id = aServiceId;
-        model.qServiceListByAccount.params.account_id = anAccountId;
-        model.qServiceListByAccount.requery(function() {});
-        if (model.qServiceListByAccount.length > 0) {
-            if (!model.qServiceListByAccount.cursor.locked) {
-                model.qDelServiceFromAccount.params.account_id = anAccountId;
-                model.qDelServiceFromAccount.params.service_id = model.qServiceListByAccount.cursor.bill_item_cost_id;
-                model.qDelServiceFromAccount.params.service_account_id = model.qServiceListByAccount.cursor.bill_services_accounts_id;
-                model.qDelServiceFromAccount.executeUpdate();
-                model.save();
-                eventProcessor.addEvent('delServiceFromAccount', {
-                    account_id: anAccountId,
-                    service_id: aServiceId
-                });
-                return true;
-            } else {
-                return addErrorToLogger('errorDelServiceFromAccount', {
-                    account_id: anAccountId,
-                    service_id: aServiceId
-                }, ERRORS.SERVICE_LOCKED);
-            }
-        } else {
-            return addErrorToLogger('errorDelServiceFromAccount', {
-                account_id: anAccountId,
-                service_id: aServiceId
-            }, ERRORS.FIND_SERVICE_ID);
-        }
-    };
-    /*
-     * Создание новой услуги
-     * aDays - промежуток дней для снятия абонентской платы
-     * aDays (null) - ежемесячное списание абонентской платы
-     * @param {type} aName
-     * @param {type} aSum
-     * @param {type} aDays
-     * @returns {Boolean}
-     */
-    self.CreateService = function(aName, aSum, aDays, aLock) {
-        var aMonth = false;
-        if (aDays == false || aDays == 0 || aDays == null || aDays === undefined || !aDays){
-            aMonth = true;
-            aDays = 0;
-        }
-        var obj = {
-            service_name: aName,
-            service_days: aDays,
-            item_cost: aSum,
-            service_month: aMonth
-        };
-        //model.qServiceList.push(obj);
-        model.qServiceList.insert();
-        model.qServiceList.cursor.service_id = model.qServiceList.cursor.bill_services_id;
-        model.qServiceList.cursor.item_cost = aSum;
-        model.qServiceList.cursor.service_days = aDays;
-        model.qServiceList.cursor.service_month = aMonth;
-        model.qServiceList.cursor.service_name = aName;
-        model.qServiceList.cursor.locked = aLock;
-        model.qServiceList.cursor.start_date = new Date();
-        model.save();
-        eventProcessor.addEvent('serviceCreated', obj);
-        return true;
-    };
-    /*
-     * Удаление услуги
-     */
-    self.delService = function(aServiceId) {
-        model.params.service_id = aServiceId;
-        model.qServiceList.requery(function() {});
-        if (model.qServiceList.length > 0) {
-            model.qCloseItemCost.params.item_id = aServiceId;
-            model.qCloseItemCost.executeUpdate();
-            model.save();
-            eventProcessor.addEvent('delService', {service_id: aServiceId});
-            return true;
-        } else {
-            eventProcessor.addEvent('errorDelService', {
-                service_id: aServiceId,
-                error: ERRORS.FIND_SERVICE_ID
-            });
-            return false;
-        }
-    };
-    /*
-     * Редактирование услуги
-     */
-    self.editService = function(aServiceId, aName, aSum, aDays, aLock) {
-        var aMonth = false;
-        if (aDays == false || aDays == 0 || aDays == null || aDays === undefined)
-            aMonth = true;
-        model.params.service_id = aServiceId;
-        model.qService.params.service_id = aServiceId;
-        model.qService.requery();
-        model.qServiceList.requery(function() {});
-        if (model.qServiceList.length > 0) {
-            model.qCloseItemCost.params.service_id = aServiceId;
-            model.qCloseItemCost.executeUpdate();
-            var obj = {
-                service_id: aServiceId,
-                item_cost: aSum,
-                service_days: aDays,
-                service_month: aMonth,
-                start_date: new Date()
-            };
-            model.qServiseCostAdd.push(obj);
-            model.qService.cursor.service_name = aName;
-            model.qService.cursor.locked = aLock;
-            model.save();
-            eventProcessor.addEvent('changeService', obj);
-            return true;
-        } else {
-            eventProcessor.addEvent('errorChangeService', {service_id: aServiceId});
-            return false;
-        }
-    };
+    
     
     /*
      * 
@@ -443,7 +264,7 @@ function BillModule() {
     self.getBillAccount = function(aFranId){
         model.qBillAccount.params.type = null;
         model.qBillAccount.params.account_id = null;
-        model.qBillAccount.params.user_id = aFranId;
+        model.qBillAccount.params.franchazi_id = aFranId;
         model.qBillAccount.requery();
         return model.qBillAccount.cursor.bill_accounts_id;
     };
@@ -460,11 +281,17 @@ function BillModule() {
             bill_operation: aBillOperation
         });
     }
-    
+    /*
+     * Добавление денег франчайзе за попукупку бонусами
+     * @param {type} aSum
+     * @param {type} aType
+     * @param {type} aFranchaziId
+     * @returns {@this;@pro;model.qBillOperationsList.cursor.bill_operations_id|Boolean}
+     */
     self.addCashToFranchazi = function(aSum, aType, aFranchaziId){
         var franchaziId = aFranchaziId ? aFranchaziId : session.getFranchazi();
         model.qBillAccount.params.account_id = null;
-        model.qBillAccount.params.user_id = franchaziId;
+        model.qBillAccount.params.franchazi_id = franchaziId;
         model.qBillAccount.params.type = self.ACCOUNT_TYPE_DEFAULT;
         model.qBillAccount.requery();
         if(model.qBillAccount.length > 0){
@@ -480,19 +307,15 @@ function BillModule() {
     };
     
     /*
-     * 
+     * Проведение бонусной операции и начаисление денег на счет франчайзе
      */
     self.bonusOperation = function(aClient, aBonusOperation, aCount, aTradeOperationId) {
-        /*
-         * Если идет списание средст с бонусного счета клиента, то начислить деньги на счет франчази
-         */
+        // Если идет списание средст с бонусного счета клиента, то начислить деньги на счет франчази
         if (aBonusOperation === self.OPERATION_DEL_BUY) {
             var BillOperation = self.addCashToFranchazi(aCount, "bonus");
             connectBillAndTradeOperation(aTradeOperationId, BillOperation);
         }
-        /*
-         * Проведение бонусной операции со счетом клиента
-         */
+         // Проведение бонусной операции со счетом клиента
         var BillOperation = self.addBillOperation(aClient.bonusBill, aBonusOperation, aCount);
         connectBillAndTradeOperation(aTradeOperationId, BillOperation);
         if (aBonusOperation === self.OPERATION_ADD_BONUS){
@@ -512,5 +335,6 @@ function BillModule() {
                 subject :   "Информационное сообщение сети кафе ERP"
             });
         }
+        model.save();
     };
 }
