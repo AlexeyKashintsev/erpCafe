@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?><datamodel>
+  <parameters>
+    <parameter description="" name="start_date" nullable="true" parameterMode="1" precision="0" scale="0" selectionForm="null" signed="true" size="0" type="2" typeName="NUMERIC"/>
+    <parameter description="" name="end_date" nullable="true" parameterMode="1" precision="0" scale="0" selectionForm="null" signed="true" size="0" type="2" typeName="NUMERIC"/>
+    <parameter description="" name="trade_point" nullable="true" parameterMode="1" precision="0" scale="0" selectionForm="null" signed="true" size="0" type="2" typeName="NUMERIC"/>
+  </parameters>
+  <parametersEntity entityHeight="200" entityIconified="false" entityLocationX="6" entityLocationY="5" entityWidth="150"/>
+  <entity Title="" entityHeight="82" entityIconified="false" entityId="141267372840328" entityLocationX="364" entityLocationY="9" entityWidth="150" tableAlias="t2" tableName="trade_cash_box_balance" tableSchemaName=""/>
+  <entity Title="" entityHeight="200" entityIconified="false" entityId="141268014071618" entityLocationX="188" entityLocationY="5" entityWidth="150" queryId="qIncomeBySessions" tableAlias="q" tableName="" tableSchemaName=""/>
+  <relation leftEntityFieldName="session_id" leftEntityId="141267372840328" rightEntityFieldName="org_session_id" rightEntityId="141268014071618"/>
+  <relation leftEntityId="-1" leftEntityParameterName="start_date" rightEntityId="141268014071618" rightEntityParameterName="start_date"/>
+  <relation leftEntityId="-1" leftEntityParameterName="trade_point" rightEntityId="141268014071618" rightEntityParameterName="trade_point"/>
+  <relation leftEntityId="-1" leftEntityParameterName="end_date" rightEntityId="141268014071618" rightEntityParameterName="end_date"/>
+</datamodel>

@@ -17,9 +17,11 @@ function TradeSessions() {
      * Типы операций
      * Деньги: 0
      * Бонусы: 1
+     * Безнал: 10
      */
-    var MONEY = 0;
-    var BONUS = 1;
+    var PAYMENT_TYPE_MONEY =  0;
+    var PAYMENT_TYPE_BONUS = 1;
+    var PAYMENT_TYPE_CARD = 10;
     
     /*
      * �?нициализация сессии
@@ -216,11 +218,11 @@ function TradeSessions() {
                 case "money":
                     var BonusCount = 0;
                     var BonusOperation = billing.OPERATION_ADD_BONUS;
-                    var OperationType = MONEY;
+                    var OperationType = PAYMENT_TYPE_MONEY;
                     break;
                 case "bonus":
                     BonusOperation = billing.OPERATION_DEL_BUY;
-                    OperationType = BONUS;
+                    OperationType = PAYMENT_TYPE_BONUS;
                     BonusCount = anOrderDetails.orderSum;
                     if (client.bonusBill.length > 0) {
                       if (client.bonusCount < anOrderDetails.orderSum){

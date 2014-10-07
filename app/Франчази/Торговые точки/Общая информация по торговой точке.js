@@ -43,7 +43,7 @@ function TradePointCommonInfo(aTradePointDetails, aContainer) {
 
         var panelContent = cmn.createElement("div", "panel-body", container);
         //var row = cmn.createElement("div", "row", panelContent);
-        var currentSession = cmn.createElement("div", "col-md-3", panelContent);//row);
+        var currentSession = cmn.createElement("div", "col-lg-2 col-md-3 col-xs-12", panelContent);//row);
         try {
             currentSession.innerHTML =
                     (tradePointDetails.end_date ? '<button class="label label-default label-block">Смена закрыта</button>' :
@@ -60,7 +60,7 @@ function TradePointCommonInfo(aTradePointDetails, aContainer) {
             var btnWHRevision = cmn.createElement("button", "btn btn-success btn-xs btn-block", currentSession);
             btnWHRevision.innerHTML = 'Провести ревизию';
             
-            var panelData = cmn.createElement("div", "col-md-8", panelContent);
+            var panelData = cmn.createElement("div", "col-lg-9 col-md-8 col-xs-11", panelContent);
             /** !SHOW CHARTS! **/
             panels.charts.display = new ChartsByTP(tradePointDetails, panelData);
             

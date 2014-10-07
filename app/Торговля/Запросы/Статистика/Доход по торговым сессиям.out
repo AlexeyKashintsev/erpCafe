@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?><outputFields>
+  <field bindedColumn="recieved_cash" sqlType="2"/>
+  <field bindedColumn="recieved_bonuses" sqlType="2"/>
+  <field bindedColumn="recieved_by_card" sqlType="2"/>
+  <field bindedColumn="operations_count" sqlType="2"/>
+</outputFields>
