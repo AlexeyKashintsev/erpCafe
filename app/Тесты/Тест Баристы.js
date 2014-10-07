@@ -42,6 +42,8 @@ function testBarista() {
     function doTest() {
         info("Начало теста");
         var TS = new ServerModule("TradeSessions");
+        var BM = new ServerModule("BillModule");
+        var CM = new ServerModule("ClientServerModule");
         var Session = new ServerModule("UserSession");
         if (!Session.getUserName()){
             login("barista", "barista");
@@ -64,19 +66,11 @@ function testBarista() {
             success("Товар проведен");
         });
         
+        /*
+         * 
+         */
+        
         orderDetails = {
-            clientData: {
-                birthday: "2014-09-23T20:00:00.000Z",
-                bonusBill: 141086646910207,
-                bonusCategory: 1,
-                bonusCount: 20,
-                email: "asd@asd.ru",
-                firstName: "Вася",
-                lastName: "Иванов",
-                middleName: "Петрович",
-                phone: "71234567890",
-                registrationDate: "2014-09-16T11:21:00.000Z"
-            },
             methodOfPayment: "money",
             orderItems: [
                 {
@@ -89,23 +83,17 @@ function testBarista() {
                 }],
             orderSum: 700
         };
+        orderDetails.clientData = CM.getClientDataByPhone("71234567890");
+        
+        var startBonusCount = BM.getSumFromAccountId(orderDetails.clientData.bonusBill);
+        info("Стартовое значение " + startBonusCount);
         TS.processOrder(orderDetails, function(){
             success("Товар проведен клиенту " + orderDetails.clientData.phone + " за деньги");
+            var endBonusCount = BM.getSumFromAccountId(orderDetails.clientData.bonusBill);
+            info("Конечное значение " + endBonusCount);
         });
         
         orderDetails = {
-            clientData: {
-                birthday: "2014-09-23T20:00:00.000Z",
-                bonusBill: 141086646910207,
-                bonusCategory: 1,
-                bonusCount: 2000,
-                email: "asd@asd.ru",
-                firstName: "Вася",
-                lastName: "Иванов",
-                middleName: "Петрович",
-                phone: "71234567890",
-                registrationDate: "2014-09-16T11:21:00.000Z"
-            },
             methodOfPayment: "bonus",
             orderItems: [
                 {
@@ -118,11 +106,15 @@ function testBarista() {
                 }],
             orderSum: 700
         };
+        orderDetails.clientData = CM.getClientDataByPhone("71234567890");
+
+        var startBonusCount = BM.getSumFromAccountId(orderDetails.clientData.bonusBill);
+        info("Стартовое значение " + startBonusCount);
         TS.processOrder(orderDetails, function(){
             success("Товар проведен клиенту " + orderDetails.clientData.phone + " за бонусы");
+            var endBonusCount = BM.getSumFromAccountId(orderDetails.clientData.bonusBill);
+            info("Конечное значение " + endBonusCount);
         });
-        
-        
     }
     
     self.doTest = function() {

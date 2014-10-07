@@ -11,7 +11,6 @@ function TradeSessions() {
     var billing = new BillModule();
     var ep = new EventProcessor();
     var session = Modules.get("UserSession");
-    var sender = new MessageSender();
     
     /*
      * Типы операций
