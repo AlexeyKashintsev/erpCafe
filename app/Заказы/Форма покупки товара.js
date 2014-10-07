@@ -79,7 +79,7 @@ function BuyItemsForm() {
         while(model.qAccountType.next()){
             AccountTypes[model.qAccountType.cursor.bill_account_types_id] = model.qAccountType.cursor.type_name;
         }
-        model.qBillAccount.params.user_id = userSession.getFranchazi();
+        model.qBillAccount.params.franchazi_id = userSession.getFranchazi();
         model.qBillAccount.requery(function(){
             model.qBillAccount.beforeFirst();
             var i = 1, selected = '';

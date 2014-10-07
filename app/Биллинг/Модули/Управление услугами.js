@@ -36,7 +36,7 @@ function ServiceModule() {
     self.AddService = function(anAccountId, aServiceId) {
         model.params.service_id = aServiceId;
         model.qBillAccount.params.type = null;
-        model.qBillAccount.params.user_id = null;
+        model.qBillAccount.params.franchazi_id = null;
         model.qBillAccount.params.account_id = anAccountId;
         model.qAddService.params.account_id = anAccountId;
         model.qAddService.params.service_id = aServiceId;

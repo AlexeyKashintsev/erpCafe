@@ -66,14 +66,14 @@ function BillModule() {
         if (!aType)
             aType = self.ACCOUNT_TYPE_DEFAULT;
         model.qBillAccount.push({
-            user_id: aUserId,
+            franchazi_id: aUserId,
             account_type: aType,
             currnt_sum: 0,
             active: true
         });
         model.save();
         eventProcessor.addEvent('billCreated', {
-            user_id: aUserId,
+            franchazi_id: aUserId,
             account_type: aType
         });
         return model.qBillAccount.cursor.bill_accounts_id;
@@ -86,7 +86,7 @@ function BillModule() {
      */
     self.getQuickSumFromAccountId = function(anAccountId) {
         model.qBillAccount.params.type = null;
-        model.qBillAccount.params.user_id = null;
+        model.qBillAccount.params.franchazi_id = null;
         model.qBillAccount.params.account_id = anAccountId;
         model.qBillAccount.requery();
         if (model.qBillAccount.length > 0) return model.qBillAccount.cursor.currnt_sum;
@@ -100,7 +100,7 @@ function BillModule() {
     self.getSumFromAccountId = function(anAccountId) {
         model.qGetAccountBalance.params.account_id = anAccountId;
         model.qBillAccount.params.type = null;
-        model.qBillAccount.params.user_id = null;
+        model.qBillAccount.params.franchazi_id = null;
         model.qBillAccount.params.account_id = anAccountId;
         model.qGetAccountBalance.requery();
         model.qBillAccount.requery();
@@ -165,7 +165,7 @@ function BillModule() {
         }
         var accountType;
         model.qBillAccount.params.type = null;
-        model.qBillAccount.params.user_id = null;
+        model.qBillAccount.params.franchazi_id = null;
         model.qBillAccount.params.account_id = anAccountId;
         model.qBillAccount.requery();
         accountType = model.qBillAccount.cursor.account_type;
@@ -180,7 +180,7 @@ function BillModule() {
             model.qBillOperationsList.push(obj);
             if (aStatus === self.OP_STATUS_SUCCESS) {
                 model.qBillAccount.params.type = null;
-                model.qBillAccount.params.user_id = null;
+                model.qBillAccount.params.franchazi_id = null;
                 model.qBillAccount.params.account_id = anAccountId;
                 model.qBillAccount.requery();
                 if (model.qBillAccount.length > 0)
@@ -226,7 +226,7 @@ function BillModule() {
         if (model.qBillOperationsList.length > 0) {
             if (aStatus == self.OP_STATUS_SUCCESS) {
                 model.qBillAccount.params.type = null;
-                model.qBillAccount.params.user_id = null;
+                model.qBillAccount.params.franchazi_id = null;
                 model.qBillAccount.params.account_id = model.qBillOperationsList.cursor.account_id;
                 model.qBillAccount.requery(function() {
                     ERROR_SHORTAGE_MONEY = checkMoneyOnAccount(model.qBillOperationsList.cursor.account_id, model.qBillOperationsList.cursor.operation_sum);
@@ -264,7 +264,7 @@ function BillModule() {
     self.getBillAccount = function(aFranId){
         model.qBillAccount.params.type = null;
         model.qBillAccount.params.account_id = null;
-        model.qBillAccount.params.user_id = aFranId;
+        model.qBillAccount.params.franchazi_id = aFranId;
         model.qBillAccount.requery();
         return model.qBillAccount.cursor.bill_accounts_id;
     };
@@ -291,7 +291,7 @@ function BillModule() {
     self.addCashToFranchazi = function(aSum, aType, aFranchaziId){
         var franchaziId = aFranchaziId ? aFranchaziId : session.getFranchazi();
         model.qBillAccount.params.account_id = null;
-        model.qBillAccount.params.user_id = franchaziId;
+        model.qBillAccount.params.franchazi_id = franchaziId;
         model.qBillAccount.params.type = self.ACCOUNT_TYPE_DEFAULT;
         model.qBillAccount.requery();
         if(model.qBillAccount.length > 0){
