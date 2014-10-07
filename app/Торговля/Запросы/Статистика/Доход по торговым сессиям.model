@@ -8,5 +8,7 @@
   <entity Title="" entityHeight="200" entityIconified="false" entityId="141267989972435" entityLocationX="197" entityLocationY="7" entityWidth="150" tableAlias="t1" tableName="org_session" tableSchemaName=""/>
   <entity Title="" entityHeight="200" entityIconified="false" entityId="141267991909271" entityLocationX="449" entityLocationY="14" entityWidth="150" tableAlias="t" tableName="trade_cash_box_operation" tableSchemaName=""/>
   <relation leftEntityFieldName="org_session_id" leftEntityId="141267989972435" rightEntityFieldName="session_id" rightEntityId="141267991909271"/>
+  <relation leftEntityId="-1" leftEntityParameterName="start_date" rightEntityFieldName="end_date" rightEntityId="141267989972435"/>
+  <relation leftEntityId="-1" leftEntityParameterName="end_date" rightEntityFieldName="start_date" rightEntityId="141267989972435"/>
   <relation leftEntityId="-1" leftEntityParameterName="trade_point" rightEntityFieldName="trade_point" rightEntityId="141267989972435"/>
 </datamodel>

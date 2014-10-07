@@ -14,6 +14,7 @@ function tradeOperaionsByTP(aTradePoint, aContainer) {
     };
     
     self.setPeriod = function(aStartDate, anEndDate) {
+        Logger.info(aStartDate + " - " + anEndDate);
         if (aStartDate) model.qTradeSessionsInPeriod.params.start_date = aStartDate;
         if (anEndDate) model.qTradeSessionsInPeriod.params.end_date = anEndDate;
         $(content).remove();
@@ -35,7 +36,7 @@ function tradeOperaionsByTP(aTradePoint, aContainer) {
             var startTime = cmn.createElement('th', 'whItemDesc', aContainer);
             startTime.innerHTML = cmn.getTimeString(aData.start_date);
             var endTime = cmn.createElement('th', 'whItemDesc', aContainer);
-            endTime.innerHTML = cmn.getTimeString(aData.end_date);
+            endTime.innerHTML = aData.end_date ? cmn.getTimeString(aData.end_date) : "открыта";
             var startValue = cmn.createElement('th', 'whItemDesc', aContainer);
             startValue.innerHTML = aData.start_value;
             var cashValue = cmn.createElement('th', 'whItemDesc', aContainer);
@@ -51,7 +52,7 @@ function tradeOperaionsByTP(aTradePoint, aContainer) {
     }
     
     function showItems() {
-        Logger.info("Отображение данных для торговой точки " + model.params.trade_point_id);
+        //Logger.info("Отображение данных для торговой точки " + model.params.trade_point_id);
         $(content).remove();
         content = cmn.createElement("table", "table table-hover whSessionBalance", self.container);
        // if (content&&!shown) {
@@ -81,6 +82,7 @@ function tradeOperaionsByTP(aTradePoint, aContainer) {
             
             /*** #BODY# ***/
             var tbody = cmn.createElement('tbody', null, content, 'wh_item_title');
+            alert(model.qTradeSessionsInPeriod.length);
             model.qTradeSessionsInPeriod.beforeFirst();
             while (model.qTradeSessionsInPeriod.next()) {
                 var tr = cmn.createElement('tr', 'whItemContainer ', tbody);
