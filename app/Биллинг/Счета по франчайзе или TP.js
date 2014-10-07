@@ -9,6 +9,7 @@ function BillsFranchazi() {
 var self = this, model = this.model, form = this;
 var createBillAccount = new CreateBillAccount();
 var bm = new ServerModule("BillModule");
+var serviceModule = new ServerModule("ServiceModule");
 var addServiceForm = new AddServiceForm();
 var addBillOperation = new AddBillOperation();
 var historyOperations = new HistoryOperations();
@@ -86,7 +87,7 @@ function formWindowClosing(evt) {//GEN-FIRST:event_formWindowClosing
 
     function btnDel1ActionPerformed(evt) {//GEN-FIRST:event_btnDel1ActionPerformed
         if(confirm("Удалить услугу с выбранного счета?")){
-            bm.delServiceFromAccount(model.qBillAccount.cursor.bill_accounts_id, model.qServiceListByAccount.cursor.bill_services_id);
+            serviceModule.delServiceFromAccount(model.qBillAccount.cursor.bill_accounts_id, model.qServiceListByAccount.cursor.bill_services_id);
             model.qServiceListByAccount.requery();
         }
     }//GEN-LAST:event_btnDel1ActionPerformed

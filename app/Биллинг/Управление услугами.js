@@ -4,7 +4,7 @@
  */
 function ManageServices() {
     var self = this, model = this.model, form = this;
-    var bm = new ServerModule("BillModule");
+    var serviceModule = new ServerModule("ServiceModule");
     var editServiceForm = new EditServiceForm();
 
     function btnAdd1ActionPerformed(evt) {//GEN-FIRST:event_btnAdd1ActionPerformed
@@ -16,8 +16,8 @@ function ManageServices() {
 
     function btnDel1ActionPerformed(evt) {//GEN-FIRST:event_btnDel1ActionPerformed
         if(confirm("Удалить услугу?")){
-            bm.delService(model.qServiceList.cursor.bill_services_id);
-            model.qServiceListByAccount.requery();
+            serviceModule.delService(model.qServiceList.cursor.bill_services_id);
+            model.requery();
         }
     }//GEN-LAST:event_btnDel1ActionPerformed
 
