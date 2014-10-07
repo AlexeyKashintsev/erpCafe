@@ -270,3 +270,8 @@ button.active {
 .selection_result > button.active:hover {
   background-color: #D03A00;
 }
+
+div.loadDiv {
+    background: url("../img/loadingAnimation.gif") no-repeat scroll center center rgba(0, 0, 0, 0);
+    height: 130px;
+}

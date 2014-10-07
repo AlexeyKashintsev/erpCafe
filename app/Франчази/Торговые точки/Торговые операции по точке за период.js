@@ -6,33 +6,92 @@
 function tradeOperaionsByTP(aTradePoint, aContainer) {
     var self = this, model = this.model;
     var shown = false;
+    var content = null;
+    var sessions = [];
     
     self.setWarehouse = function(aWarehouse) {
-        model.qCashBoxOperationsByPeriod.params.tradePointId = aWarehouse;
+        model.qTradeSessionsInPeriod.params.trade_point = aWarehouse;
     };
     
     self.setPeriod = function(aStartDate, anEndDate) {
-        if (aStartDate) model.qCashBoxOperationsByPeriod.params.startDate = aStartDate;
-        if (anEndDate) model.qCashBoxOperationsByPeriod.params.endDate = anEndDate;
+        Logger.info(aStartDate + " - " + anEndDate);
+        if (aStartDate) model.qTradeSessionsInPeriod.params.start_date = aStartDate;
+        if (anEndDate) model.qTradeSessionsInPeriod.params.end_date = anEndDate;
+        $(content).remove();
+        content = cmn.createElement('div', 'loadDiv', self.container);
+        sessions = [];
+        
+        model.qTradeSessionsInPeriod.execute(function() {
+            showItems();
+        });
     };
 
     self.setTradePoint = self.setWarehouse;
     
+    function SessionData(aData, aContainer) {
+        var userName = cmn.createElement('th', 'whItemDesc', aContainer);
+            userName.innerHTML = aData.user_name;
+            var date = cmn.createElement('th', 'whItemDesc', aContainer);
+            date.innerHTML = dateToString(aData.start_date);
+            var startTime = cmn.createElement('th', 'whItemDesc', aContainer);
+            startTime.innerHTML = cmn.getTimeString(aData.start_date);
+            var endTime = cmn.createElement('th', 'whItemDesc', aContainer);
+            endTime.innerHTML = aData.end_date ? cmn.getTimeString(aData.end_date) : "открыта";
+            var startValue = cmn.createElement('th', 'whItemDesc', aContainer);
+            startValue.innerHTML = aData.start_value;
+            var cashValue = cmn.createElement('th', 'whItemDesc', aContainer);
+            cashValue.innerHTML = aData.recieved_cash;
+            var bonusesValue = cmn.createElement('th', 'whItemDesc', aContainer);
+            bonusesValue.innerHTML = aData.recieved_bonuses;
+            var cardValue = cmn.createElement('th', 'whItemDesc', aContainer);
+            cardValue.innerHTML = aData.recieved_by_card;
+            var incomeValue = cmn.createElement('th', 'whItemDesc', aContainer);
+            incomeValue.innerHTML = aData.recieved_cash + aData.recieved_by_card;
+            var endValue = cmn.createElement('th', 'whItemDesc', aContainer);
+            endValue.innerHTML = aData.end_value;
+    }
+    
     function showItems() {
-        Logger.info("Отображение данных для торговой точки " + model.params.trade_point_id);
-        if (self.container&&!shown) {
-            var thead = cmn.createElement('thead', null, self.container, 'wh_item_title');
+        //Logger.info("Отображение данных для торговой точки " + model.params.trade_point_id);
+        $(content).remove();
+        content = cmn.createElement("table", "table table-hover whSessionBalance", self.container);
+       // if (content&&!shown) {
+            //*** #HEADER# ***
+            var thead = cmn.createElement('thead', null, content, 'wh_item_title');
             var tr = cmn.createElement('tr', null, thead);
-            var nameLabel = cmn.createElement('th', 'whItemDesc', tr);
-            nameLabel.innerHTML = "Дата операции";
+            var userName = cmn.createElement('th', 'whItemDesc', tr);
+            userName.innerHTML = "Бариста";
+            var date = cmn.createElement('th', 'whItemDesc', tr);
+            date.innerHTML = "Дата";
+            var startTime = cmn.createElement('th', 'whItemDesc', tr);
+            startTime.innerHTML = "Открытие";
+            var endTime = cmn.createElement('th', 'whItemDesc', tr);
+            endTime.innerHTML = "Закрытие";
             var startValue = cmn.createElement('th', 'whItemDesc', tr);
-            startValue.innerHTML = "Тип операции";
-            var usedValue = cmn.createElement('th', 'whItemDesc', tr);
-            usedValue.innerHTML = "Сумма";
-            var currentValue = cmn.createElement('th', 'whItemDesc', tr);
-            currentValue.innerHTML = "Пользователь";
+            startValue.innerHTML = "Касса открытие";
+            var cashValue = cmn.createElement('th', 'whItemDesc', tr);
+            cashValue.innerHTML = "Наличка";
+            var bonusesValue = cmn.createElement('th', 'whItemDesc', tr);
+            bonusesValue.innerHTML = "Бонусы";
+            var cardValue = cmn.createElement('th', 'whItemDesc', tr);
+            cardValue.innerHTML = "Безнал";
+            var incomeValue = cmn.createElement('th', 'whItemDesc', tr);
+            incomeValue.innerHTML = "Доход";
+            var endValue = cmn.createElement('th', 'whItemDesc', tr);
+            endValue.innerHTML = "Касса закрытие";
             
-            var tbody = cmn.createElement('tbody', null, self.container, 'wh_item_title');
+            /*** #BODY# ***/
+            var tbody = cmn.createElement('tbody', null, content, 'wh_item_title');
+            alert(model.qTradeSessionsInPeriod.length);
+            model.qTradeSessionsInPeriod.beforeFirst();
+            while (model.qTradeSessionsInPeriod.next()) {
+                var tr = cmn.createElement('tr', 'whItemContainer ', tbody);
+                sessions[sessions.length] = {
+                    display : tr,
+                    data    : new SessionData(model.qTradeSessionsInPeriod.cursor, tr)
+                };
+                
+            }
             /*for (var j in items) {
                 if (!items[j].shown) {
                     tr = cmn.createElement('tr', 'whItemContainer ', tbody, 'wh_item_' + j);
@@ -40,32 +99,41 @@ function tradeOperaionsByTP(aTradePoint, aContainer) {
                 }
                 items[j].visualize();
             }*/
-            shown = true;
-        }
+         //   shown = true;
     };
+    
+    function dateToString(aDate) {
+        var DD = aDate.getDate();
+        var MM = aDate.getMonth() + 1;
+        var YYYY = aDate.getFullYear();
+        return YYYY + '-' + MM + '-' + DD;
+    }
     
     self.setTradePoint(aTradePoint);
     
     self.container = cmn.createElement("div", "tbBalanceDetails", aContainer);
     var controls = cmn.createElement('div', 'controls', self.container);
-    var dtPContainer = cmn.createElement('div', 'controls', controls);
+    var dtPContainer = cmn.createElement('div', 'input-prepend input-group', controls);
     var clnd = cmn.createElement('span','add-on input-group-addon', dtPContainer);
     cmn.createElement('i','glyphicon glyphicon-calendar fa fa-calendar', clnd);
-    var dtP = cmn.createElement('input', 'form-control', clnd, 'dateTimePicker');
-    var end = new Date();
-    var start = end.setDate(end.getDate()-7);
-    /*dtP.innerHTML = '<script type="text/javascript" src="js/moment.min.js"></script>\n\
-<script type="text/javascript" src="js/daterangepicker.js"></script>';*/
+    var dtP = cmn.createElement('input', 'form-control', dtPContainer, 'dateTimePicker');
+    var iEnd = new Date();
+    var iStart = new Date();
+    iStart.setDate(iStart.getDate()-7);
+    var sStart = dateToString(iStart);
+    var sEnd = dateToString(iEnd);
+    
     $.getScript("js/moment.min.js", function(){
         $.getScript("js/daterangepicker.js", function() {
+            dtP.value = sStart + ' - ' + sEnd;
             $(dtP).daterangepicker(
                 { 
                   format: 'YYYY-MM-DD',
-                  startDate: start,
-                  endDate: end
+                  startDate: sStart,
+                  endDate: sEnd
                 },
                 function(start, end, label) {
-                  alert('A date range was chosen: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
+                    self.setPeriod(start, end);
                 }
             );
         });

@@ -11,15 +11,16 @@ function TradeSessions() {
     var billing = new BillModule();
     var ep = new EventProcessor();
     var session = Modules.get("UserSession");
-    var sender = new MessageSender();
     
     /*
      * Типы операций
      * Деньги: 0
      * Бонусы: 1
+     * Безнал: 10
      */
-    var MONEY = 0;
-    var BONUS = 1;
+    var PAYMENT_TYPE_MONEY =  0;
+    var PAYMENT_TYPE_BONUS = 1;
+    var PAYMENT_TYPE_CARD = 10;
     
     /*
      * �?нициализация сессии
@@ -178,18 +179,6 @@ function TradeSessions() {
             });
         }
     }
-    /*
-     * TODO Описать подробнее что эта чтука делает, Здесь она точно нужна?
-     * @param {type} aTradeOperation
-     * @param {type} aBillOperation
-     * @returns {undefined}
-     */
-    function connectBillAndTradeOperation(aTradeOperation, aBillOperation){
-        model.qConnectTradeAndBillOperations.push({
-            trade_cashbox_operation: aTradeOperation,
-            bill_operation: aBillOperation
-        });
-    }
     
     /*
      * Процесс продажи
@@ -216,11 +205,11 @@ function TradeSessions() {
                 case "money":
                     var BonusCount = 0;
                     var BonusOperation = billing.OPERATION_ADD_BONUS;
-                    var OperationType = MONEY;
+                    var OperationType = PAYMENT_TYPE_MONEY;
                     break;
                 case "bonus":
                     BonusOperation = billing.OPERATION_DEL_BUY;
-                    OperationType = BONUS;
+                    OperationType = PAYMENT_TYPE_BONUS;
                     BonusCount = anOrderDetails.orderSum;
                     if (client.bonusBill.length > 0) {
                       if (client.bonusCount < anOrderDetails.orderSum){

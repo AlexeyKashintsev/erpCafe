@@ -127,7 +127,7 @@ function WHSessionBalance(aWarehouse, aContainer) {
         model.queryOpenedSession.requery(function(){proceedLast();});
         model.qLastSessionOnTradePoint.requery(function(){proceedLast();});
         
-        var pLEC = 0;
+        var pLEC = 0;//Счетчик запусков для определения последней сессии
         function proceedLast() {
             pLEC++;
             if (model.queryOpenedSession.length > 0 && pLEC < 3) {
