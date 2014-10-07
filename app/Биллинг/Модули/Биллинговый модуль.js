@@ -335,5 +335,6 @@ function BillModule() {
                 subject :   "Информационное сообщение сети кафе ERP"
             });
         }
+        model.save();
     };
 }

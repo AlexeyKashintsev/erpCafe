@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?><datamodel>
   <parametersEntity entityHeight="200" entityIconified="false" entityLocationX="8" entityLocationY="7" entityWidth="150"/>
-  <entity Title="" entityHeight="200" entityIconified="false" entityId="141260495655403" entityLocationX="211" entityLocationY="10" entityWidth="150" tableAlias="t" tableName="client_personal_data" tableSchemaName=""/>
+  <entity Title="" entityHeight="200" entityIconified="false" entityId="141268434525958" entityLocationX="211" entityLocationY="10" entityWidth="150" tableAlias="t" tableName="trade_cash_box_operation_types" tableSchemaName=""/>
 </datamodel>
