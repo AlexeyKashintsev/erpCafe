@@ -9,7 +9,7 @@
   <widget actionPerformed="btnReqActionPerformed" focusable="false" horizontalTextPosition="0" name="btnReq" parent="pnlSelLock" prefHeight="24px" prefWidth="96px" text="Сбросить" toolTipText="Обновить" type="ButtonDesignInfo" verticalTextPosition="3">
     <constraints height="24px" left="12px" top="15px" type="MarginConstraintsDesignInfo" width="96px"/>
   </widget>
-  <widget actionPerformed="btnWORevisionActionPerformed" name="btnWORevision" parent="pnlSelLock" prefHeight="25px" prefWidth="180px" text="Без ревизии" type="ButtonDesignInfo" visible="false">
+  <widget actionPerformed="btnWORevisionActionPerformed" name="btnWORevision" parent="pnlSelLock" prefHeight="25px" prefWidth="180px" text="Без ревизии" type="ButtonDesignInfo">
     <constraints bottom="10px" height="25px" right="206px" type="MarginConstraintsDesignInfo" width="180px"/>
   </widget>
   <widget name="pnlWorkSpace" parent="Form" prefHeight="325px" prefWidth="530px" type="PanelDesignInfo">
@@ -17,40 +17,40 @@
     <constraints place="Center" type="BorderLayoutConstraintsDesignInfo"/>
   </widget>
   <widget name="modelGrid" parent="pnlWorkSpace" prefHeight="325px" prefWidth="530px" type="DbGridDesignInfo">
+    <treeDesignInfo/>
+    <rowsColumnsDesignInfo>
+      <rowsDatasource entityId="140549864254788" field="false"/>
+    </rowsColumnsDesignInfo>
     <column name="colItem_name" title="Товар">
       <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
-      <headerStyle>
-        <nativeFont name="Dialog" size="15"/>
-      </headerStyle>
       <datamodelElement entityId="140549864254788" fieldName="item_name"/>
       <columnsDatasource/>
       <columnsDisplayField/>
       <cellsDatasource/>
       <cellDesignInfo>
-        <rowsKeyField/>
         <columnsKeyField/>
         <cellValueField/>
+        <rowsKeyField/>
       </cellDesignInfo>
-    </column>
-    <column name="colItem_id" title="Количество">
-      <controlInfo classHint="DbLabelDesignInfo" emptyText="0" name="view" prefHeight="0px" prefWidth="0px"/>
       <headerStyle>
         <nativeFont name="Dialog" size="15"/>
       </headerStyle>
+    </column>
+    <column name="colItem_id" title="Количество">
+      <controlInfo classHint="DbLabelDesignInfo" emptyText="0" name="view" prefHeight="0px" prefWidth="0px"/>
       <datamodelElement entityId="140549864254788" fieldName="start_value"/>
       <columnsDatasource/>
       <columnsDisplayField/>
       <cellsDatasource/>
       <cellDesignInfo>
-        <rowsKeyField/>
         <columnsKeyField/>
         <cellValueField/>
+        <rowsKeyField/>
       </cellDesignInfo>
+      <headerStyle>
+        <nativeFont name="Dialog" size="15"/>
+      </headerStyle>
     </column>
-    <rowsColumnsDesignInfo>
-      <rowsDatasource entityId="140549864254788" field="false"/>
-    </rowsColumnsDesignInfo>
-    <treeDesignInfo/>
     <constraints bottom="0px" left="0px" right="0px" top="0px" type="MarginConstraintsDesignInfo"/>
   </widget>
   <layout type="BorderLayoutDesignInfo"/>

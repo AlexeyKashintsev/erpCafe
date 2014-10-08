@@ -33,7 +33,6 @@ function TradePointsDashboard() {
         this.data = aTradePointDetails;
         //this.form.setTradePoint(aTradePointDetails.org_trade_point_id);
         //this.form.showOnPanel(this.commonData);
-        
     };
 
     function listTradePointsOnRequeried(evt) {//GEN-FIRST:event_listTradePointsOnRequeried
