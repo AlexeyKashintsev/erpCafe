@@ -7,6 +7,7 @@
 function testMain() {
     var self = this, model = this.model;
     var log = document.getElementById("log");
+    login('testbar','testbar');
     var testList = [{
             name: 'testFranchaziCreate'
     },{
@@ -80,8 +81,8 @@ function testMain() {
                 message(messages.test + " " + j + " " + testList[j].name, '');
                 try {
                     var test = new Module(testList[j].name);
-                    if (testList[j].login && testList[j].pass)
-                        login(testList[j].login, testList[j].pass);
+//                    if (testList[j].login && testList[j].pass)
+//                        login(testList[j].login, testList[j].pass);
                     test.init(self);
                     if (test.doTest())
                         ok++;
