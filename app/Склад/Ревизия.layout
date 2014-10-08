@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?><layout defaultCloseOperation="2" name="Form" prefHeight="300px" prefWidth="400px" windowOpened="formWindowOpened">
   <widget deletable="false" insertable="false" name="modelGrid" parent="Form" prefHeight="252px" prefWidth="396px" type="DbGridDesignInfo">
-    <treeDesignInfo/>
-    <rowsColumnsDesignInfo>
-      <rowsDatasource entityId="141269220987888" field="false"/>
-    </rowsColumnsDesignInfo>
     <column name="colItem_name" readonly="true">
       <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
-      <datamodelElement entityId="141269220987888" fieldName="item_name"/>
       <columnsDatasource/>
       <columnsDisplayField/>
       <cellsDatasource/>
@@ -15,13 +10,13 @@
         <cellValueField/>
         <rowsKeyField/>
       </cellDesignInfo>
+      <datamodelElement entityId="141269220987888" fieldName="item_name"/>
       <headerStyle>
         <nativeFont name="Tahoma" size="11"/>
       </headerStyle>
     </column>
     <column name="colStart_value" readonly="true">
       <controlInfo classHint="DbSpinDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
-      <datamodelElement entityId="141269220987888" fieldName="start_value"/>
       <columnsDatasource/>
       <columnsDisplayField/>
       <cellsDatasource/>
@@ -30,13 +25,13 @@
         <cellValueField/>
         <rowsKeyField/>
       </cellDesignInfo>
+      <datamodelElement entityId="141269220987888" fieldName="start_value"/>
       <headerStyle>
         <nativeFont name="Tahoma" size="11"/>
       </headerStyle>
     </column>
     <column name="end_value">
       <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
-      <datamodelElement entityId="141269220987888" fieldName="end_value"/>
       <columnsDatasource/>
       <columnsDisplayField/>
       <cellsDatasource/>
@@ -45,14 +40,22 @@
         <cellValueField/>
         <rowsKeyField/>
       </cellDesignInfo>
+      <datamodelElement entityId="141269220987888" fieldName="end_value"/>
       <headerStyle>
         <nativeFont name="Tahoma" size="11"/>
       </headerStyle>
     </column>
+    <rowsColumnsDesignInfo>
+      <rowsDatasource entityId="141269220987888" field="false"/>
+    </rowsColumnsDesignInfo>
+    <treeDesignInfo/>
     <constraints height="252px" left="0px" top="0px" type="MarginConstraintsDesignInfo" width="396px"/>
   </widget>
-  <widget name="button" parent="Form" prefHeight="36px" prefWidth="113px" text="button" type="ButtonDesignInfo">
+  <widget actionPerformed="buttonActionPerformed" name="button" parent="Form" prefHeight="36px" prefWidth="113px" text="button" type="ButtonDesignInfo">
     <constraints bottom="0px" height="36px" right="-1px" type="MarginConstraintsDesignInfo" width="113px"/>
+  </widget>
+  <widget actionPerformed="button1ActionPerformed" name="button1" parent="Form" prefHeight="23px" prefWidth="71px" text="button1" type="ButtonDesignInfo">
+    <constraints bottom="13px" height="23px" left="132px" type="MarginConstraintsDesignInfo" width="71px"/>
   </widget>
   <layout type="MarginLayoutDesignInfo"/>
 </layout>

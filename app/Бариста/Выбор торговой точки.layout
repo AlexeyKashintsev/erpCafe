@@ -1,33 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?><layout defaultCloseOperation="2" name="Form" prefHeight="321px" prefWidth="400px" windowOpened="formWindowOpened">
-  <widget name="modelGrid" parent="Form" prefHeight="216px" prefWidth="372px" type="DbGridDesignInfo">
+  <widget deletable="false" editable="false" insertable="false" name="modelGrid" parent="Form" prefHeight="216px" prefWidth="372px" type="DbGridDesignInfo">
     <column name="colTp_name" title="Наименование">
       <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
-      <datamodelElement entityId="140688602934497" fieldName="tp_name"/>
-      <cellDesignInfo>
-        <cellValueField/>
-        <columnsKeyField/>
-        <rowsKeyField/>
-      </cellDesignInfo>
-      <cellsDatasource/>
       <columnsDatasource/>
       <columnsDisplayField/>
+      <cellsDatasource/>
+      <cellDesignInfo>
+        <columnsKeyField/>
+        <cellValueField/>
+        <rowsKeyField/>
+      </cellDesignInfo>
+      <datamodelElement entityId="140688602934497" fieldName="tp_name"/>
       <headerStyle>
-        <nativeFont name="Lucida Grande" size="13"/>
+        <nativeFont name="Dialog" size="13"/>
       </headerStyle>
     </column>
     <column name="colTp_address" title="Адрес">
       <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
-      <datamodelElement entityId="140688602934497" fieldName="tp_address"/>
-      <cellDesignInfo>
-        <cellValueField/>
-        <columnsKeyField/>
-        <rowsKeyField/>
-      </cellDesignInfo>
-      <cellsDatasource/>
       <columnsDatasource/>
       <columnsDisplayField/>
+      <cellsDatasource/>
+      <cellDesignInfo>
+        <columnsKeyField/>
+        <cellValueField/>
+        <rowsKeyField/>
+      </cellDesignInfo>
+      <datamodelElement entityId="140688602934497" fieldName="tp_address"/>
       <headerStyle>
-        <nativeFont name="Lucida Grande" size="13"/>
+        <nativeFont name="Dialog" size="13"/>
       </headerStyle>
     </column>
     <rowsColumnsDesignInfo>
@@ -35,7 +35,7 @@
     </rowsColumnsDesignInfo>
     <treeDesignInfo/>
     <constraints bottom="57px" left="12px" right="16px" top="48px" type="MarginConstraintsDesignInfo"/>
-    <easFont name="Lucida Grande" size="14"/>
+    <easFont name="Dialog" size="14"/>
   </widget>
   <widget actionPerformed="buttonActionPerformed" name="button" parent="Form" prefHeight="36px" prefWidth="110px" text="Продолжить" type="ButtonDesignInfo">
     <constraints bottom="9px" height="36px" right="14px" type="MarginConstraintsDesignInfo" width="110px"/>
