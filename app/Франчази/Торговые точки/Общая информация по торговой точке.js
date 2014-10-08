@@ -31,6 +31,8 @@ function TradePointCommonInfo(aTradePointDetails, aContainer) {
             if (j !== aPanelName)
                 $(panels[j].display.container).hide();
         }
+        if (panels[aPanelName].display.showData)
+            panels[aPanelName].display.showData();
     }
     
     function btnWHRevisionOnClick(){

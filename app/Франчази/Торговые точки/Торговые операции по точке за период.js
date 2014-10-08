@@ -36,7 +36,7 @@ function tradeOperaionsByTP(aTradePoint, aContainer) {
             var startTime = cmn.createElement('th', 'whItemDesc', aContainer);
             startTime.innerHTML = cmn.getTimeString(aData.start_date);
             var endTime = cmn.createElement('th', 'whItemDesc', aContainer);
-            endTime.innerHTML = aData.end_date ? cmn.getTimeString(aData.end_date) : "открыта";
+            endTime.innerHTML = cmn.getTimeString(aData.end_date);
             var startValue = cmn.createElement('th', 'whItemDesc', aContainer);
             startValue.innerHTML = aData.start_value;
             var cashValue = cmn.createElement('th', 'whItemDesc', aContainer);
@@ -52,10 +52,8 @@ function tradeOperaionsByTP(aTradePoint, aContainer) {
     }
     
     function showItems() {
-        //Logger.info("Отображение данных для торговой точки " + model.params.trade_point_id);
         $(content).remove();
         content = cmn.createElement("table", "table table-hover whSessionBalance", self.container);
-       // if (content&&!shown) {
             //*** #HEADER# ***
             var thead = cmn.createElement('thead', null, content, 'wh_item_title');
             var tr = cmn.createElement('tr', null, thead);
@@ -82,7 +80,6 @@ function tradeOperaionsByTP(aTradePoint, aContainer) {
             
             /*** #BODY# ***/
             var tbody = cmn.createElement('tbody', null, content, 'wh_item_title');
-            alert(model.qTradeSessionsInPeriod.length);
             model.qTradeSessionsInPeriod.beforeFirst();
             while (model.qTradeSessionsInPeriod.next()) {
                 var tr = cmn.createElement('tr', 'whItemContainer ', tbody);
@@ -92,14 +89,6 @@ function tradeOperaionsByTP(aTradePoint, aContainer) {
                 };
                 
             }
-            /*for (var j in items) {
-                if (!items[j].shown) {
-                    tr = cmn.createElement('tr', 'whItemContainer ', tbody, 'wh_item_' + j);
-                    items[j].setContainer(tr);
-                }
-                items[j].visualize();
-            }*/
-         //   shown = true;
     };
     
     function dateToString(aDate) {
@@ -109,33 +98,46 @@ function tradeOperaionsByTP(aTradePoint, aContainer) {
         return YYYY + '-' + MM + '-' + DD;
     }
     
-    self.setTradePoint(aTradePoint);
-    
     self.container = cmn.createElement("div", "tbBalanceDetails", aContainer);
     var controls = cmn.createElement('div', 'controls', self.container);
     var dtPContainer = cmn.createElement('div', 'input-prepend input-group', controls);
     var clnd = cmn.createElement('span','add-on input-group-addon', dtPContainer);
     cmn.createElement('i','glyphicon glyphicon-calendar fa fa-calendar', clnd);
     var dtP = cmn.createElement('input', 'form-control', dtPContainer, 'dateTimePicker');
-    var iEnd = new Date();
-    var iStart = new Date();
-    iStart.setDate(iStart.getDate()-7);
-    var sStart = dateToString(iStart);
-    var sEnd = dateToString(iEnd);
     
-    $.getScript("js/moment.min.js", function(){
-        $.getScript("js/daterangepicker.js", function() {
-            dtP.value = sStart + ' - ' + sEnd;
-            $(dtP).daterangepicker(
-                { 
-                  format: 'YYYY-MM-DD',
-                  startDate: sStart,
-                  endDate: sEnd
-                },
-                function(start, end, label) {
-                    self.setPeriod(start, end);
-                }
-            );
-        });
-    });
+    function initDatePicker(aStart, aEnd) {
+        dtP.value = aStart + ' - ' + aEnd;
+        $(dtP).daterangepicker(
+            { 
+              format: 'YYYY-MM-DD',
+              startDate: aStart,
+              endDate: aEnd
+            },
+            function(start, end, label) {
+                self.setPeriod(new Date(start), new Date(end));
+            }
+        );
+    }
+    
+    self.showData = function() {
+        var iEnd = new Date();
+        var iStart = new Date();
+        iStart.setDate(iStart.getDate()-7);
+        var sStart = dateToString(iStart);
+        var sEnd = dateToString(iEnd);
+
+        self.setTradePoint(aTradePoint);
+        self.setPeriod(iStart, iEnd);
+        
+        try {
+            initDatePicker(sStart, sEnd);
+        } catch (e) {
+            $.getScript("js/moment.min.js", function(){
+                $.getScript("js/daterangepicker.js", function() {
+                    initDatePicker(sStart, sEnd);
+                });
+            });
+        }
+        
+    };
 }
