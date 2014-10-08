@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?><datamodel>
+  <parameters>
+    <parameter description="" name="session_id" nullable="true" parameterMode="1" precision="0" scale="0" selectionForm="null" signed="true" size="0" type="2" typeName="NUMERIC"/>
+  </parameters>
+  <parametersEntity entityHeight="200" entityIconified="false" entityLocationX="8" entityLocationY="7" entityWidth="150"/>
+  <entity Title="" entityHeight="200" entityIconified="false" entityId="141277578952080" entityLocationX="176" entityLocationY="7" entityWidth="150" tableAlias="t1" tableName="trade_cash_box_operation" tableSchemaName=""/>
+  <entity Title="" entityHeight="200" entityIconified="false" entityId="141277579413577" entityLocationX="346" entityLocationY="9" entityWidth="150" tableAlias="t" tableName="trade_cash_box_operation_types" tableSchemaName=""/>
+  <relation leftEntityFieldName="operation_type" leftEntityId="141277578952080" rightEntityFieldName="trade_cash_box_operation_types_id" rightEntityId="141277579413577"/>
+  <relation leftEntityId="-1" leftEntityParameterName="session_id" rightEntityFieldName="session_id" rightEntityId="141277578952080"/>
+</datamodel>

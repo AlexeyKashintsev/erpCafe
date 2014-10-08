@@ -2,11 +2,11 @@
   <widget dividerLocation="350" leftComponent="pnlLeft" name="splitPane" parent="Form" prefHeight="417px" prefWidth="911px" rightComponent="scrollPane" type="SplitDesignInfo">
     <constraints bottom="-3px" left="0px" right="-1px" top="48px" type="MarginConstraintsDesignInfo"/>
   </widget>
-  <widget name="scrollPane" parent="splitPane" prefHeight="413px" prefWidth="554px" type="ScrollDesignInfo"/>
-  <widget name="pnlRigth" parent="scrollPane" prefHeight="409px" prefWidth="550px" type="PanelDesignInfo">
+  <widget name="scrollPane" parent="splitPane" prefHeight="415px" prefWidth="555px" type="ScrollDesignInfo"/>
+  <widget name="pnlRigth" parent="scrollPane" prefHeight="413px" prefWidth="553px" type="PanelDesignInfo">
     <layout type="FlowLayoutDesignInfo"/>
   </widget>
-  <widget name="pnlLeft" parent="splitPane" prefHeight="413px" prefWidth="348px" type="PanelDesignInfo">
+  <widget name="pnlLeft" parent="splitPane" prefHeight="415px" prefWidth="349px" type="PanelDesignInfo">
     <layout type="MarginLayoutDesignInfo"/>
   </widget>
   <widget actionPerformed="btnSessionCloseActionPerformed" name="btnSessionClose" parent="Form" prefHeight="48px" prefWidth="158px" text="Закрыть смену" type="ButtonDesignInfo">

@@ -147,8 +147,8 @@ function WhSessionModule() {
         model.qLastSessionOnTradePoint.requery();
         if (model.qLastSessionOnTradePoint.length >0) {
             var lastSession = model.qLastSessionOnTradePoint.cursor.org_session_id;
-            model.updateItems.params.session_id = lastSession;
-            model.updateItems.executeUpdate();
+         /*   model.updateItems.params.session_id = lastSession;
+            model.updateItems.executeUpdate();*/
             var lastResult = getValuesBySession(lastSession, true);
             self.setStartValues(lastResult);
             return true;

@@ -105,6 +105,7 @@ function BaristaDesktop() {
     }//GEN-LAST:event_getSessionsOnRequeried
 
     function btnSessionCloseActionPerformed(evt) {//GEN-FIRST:event_btnSessionCloseActionPerformed
+        session.tradeSession.calculateFinalValues();
         session.whSession.closeSession();
         Logout();
     }//GEN-LAST:event_btnSessionCloseActionPerformed
