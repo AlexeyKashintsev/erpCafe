@@ -12,7 +12,7 @@ function RevisionForm() {
     
     self.items = [];
     self.end_items = [];
-
+    self.close = false;
     function getStartValues() {
         whSessionModule.setTradePoint(model.params.trade_point_id);
         var session_id = whSessionModule.createSession(false, true);
@@ -24,9 +24,16 @@ function RevisionForm() {
             model.itemsByTP.cursor.start_value = self.items[model.itemsByTP.cursor.item_id];
         }
     }
-
+    
+    function closeSession(anItems){
+        if(whSessionModule.closeSessionByRevision(anItems))
+            alert("Ревизя успешно проведена");
+        else alert("Возникли ошибки");
+    }
+    
     function formWindowOpened(evt) {//GEN-FIRST:event_formWindowOpened
-        
+        getStartValues();
+        self.close = false;
     }//GEN-LAST:event_formWindowOpened
 
     function buttonActionPerformed(evt) {//GEN-FIRST:event_buttonActionPerformed
@@ -39,11 +46,21 @@ function RevisionForm() {
             }
         }
         console.log(self.end_items);
-        if(whSessionModule.closeSessionByRevision(self.end_items))
-            alert("123");
+        closeSession(self.end_items);
+        self.close = true;
+        form.close();
     }//GEN-LAST:event_buttonActionPerformed
 
-    function button1ActionPerformed(evt) {//GEN-FIRST:event_button1ActionPerformed
-        getStartValues();
-    }//GEN-LAST:event_button1ActionPerformed
+    function formWindowClosing(evt) {//GEN-FIRST:event_formWindowClosing
+        if(!self.close){
+            if(confirm("Отменить ревизию? Все конечные значения будут заполнены началаьными значениями.")){
+                model.itemsByTP.beforeFirst();
+                while (model.itemsByTP.next()) {
+                    self.end_items[model.itemsByTP.cursor.item_id] = model.itemsByTP.cursor.start_value;
+                }
+                console.log(self.end_items);
+                closeSession(self.end_items);
+            }
+        }
+    }//GEN-LAST:event_formWindowClosing
 }
