@@ -229,9 +229,13 @@ cmn.locale = {
             };
 
 cmn.getTimeString = function(aDate) {
-    var HH = aDate.getHours();
-    var MM = aDate.getMinutes();
-    return HH + ":" + MM;
+    try {
+        var HH = aDate.getHours();
+        var MM = aDate.getMinutes();
+        return HH + ":" + MM;
+    } catch(e) {
+        return '--:--';
+    }
 }
 
 

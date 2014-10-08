@@ -8,5 +8,6 @@
   <entity Name="qLastSessionOnTradePoint" Title="" entityHeight="200" entityIconified="false" entityId="141104998127576" entityLocationX="201" entityLocationY="241" entityWidth="150" queryId="qLastSessionOnTradePoint" tableName="" tableSchemaName=""/>
   <entity Name="qWHSessionBalance" Title="" entityHeight="200" entityIconified="false" entityId="141104997139589" entityLocationX="391" entityLocationY="13" entityWidth="150" queryId="qWHSessionBalance" tableName="" tableSchemaName=""/>
   <relation leftEntityId="-1" leftEntityParameterName="trade_point_id" rightEntityId="141105013593905" rightEntityParameterName="trade_point_id"/>
+  <relation leftEntityId="-1" leftEntityParameterName="trade_point_id" rightEntityId="141104844547669" rightEntityParameterName="trade_point_id"/>
   <relation leftEntityId="-1" leftEntityParameterName="trade_point_id" rightEntityId="141104998127576" rightEntityParameterName="trade_point_id"/>
 </datamodel>
