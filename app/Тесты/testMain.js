@@ -8,6 +8,7 @@ function testMain() {
     var self = this, model = this.model;
     var log = document.getElementById("log");
     var testList = ['testFranchaziCreate','testBarista'];
+    login("testbar", "testbar");
     var useHTMLLog = true;
     var messages = {
         loadModules : 'Загрузка модулей',
@@ -46,6 +47,15 @@ function testMain() {
     self.success = function(aMsg) {
         message(aMsg, 'success');
     };
+    
+    function login(aUserName, aPassword) {
+        $.post("/erpCafe/j_security_check", { j_username: aUserName, j_password: aPassword }, function(){ 
+            success('Logged in...');
+        })
+        .fail(function() {
+            alert("error");
+        });
+    }
     
     function doTests() {
         message(messages.loadModules, '');
