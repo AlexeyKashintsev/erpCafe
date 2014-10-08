@@ -12,10 +12,11 @@ function RevisionForm() {
     
     self.items = [];
     self.end_items = [];
-    self.close = false;
+    self.session_id;
+    self.closing = false;
     function getStartValues() {
         whSessionModule.setTradePoint(model.params.trade_point_id);
-        var session_id = whSessionModule.createSession(false, true);
+        self.session_id = whSessionModule.createSession(false, true);
         whSessionModule.setStartValuesAuto();
         self.items = whSessionModule.getCurrentStartValues();
         console.log(self.items);
@@ -35,7 +36,7 @@ function RevisionForm() {
     
     function formWindowOpened(evt) {//GEN-FIRST:event_formWindowOpened
         getStartValues();
-        self.close = false;
+        self.closing = false;
     }//GEN-LAST:event_formWindowOpened
 
     function buttonActionPerformed(evt) {//GEN-FIRST:event_buttonActionPerformed
@@ -49,20 +50,15 @@ function RevisionForm() {
         }
         console.log(self.end_items);
         closeSession(self.end_items);
-        self.close = true;
-        form.close();
+        self.closing = true;
+        form.close(true);
     }//GEN-LAST:event_buttonActionPerformed
 
     function formWindowClosing(evt) {//GEN-FIRST:event_formWindowClosing
-        if(!self.close){
-            if(confirm("Отменить ревизию? Все конечные значения будут заполнены началаьными значениями.")){
-                model.itemsByTP.beforeFirst();
-                while (model.itemsByTP.next()) {
-                    self.end_items[model.itemsByTP.cursor.item_id] = model.itemsByTP.cursor.start_value;
-                }
-                console.log(self.end_items);
-                closeSession(self.end_items);
-            }
+        if(!self.closing){
+            if(confirm("Отменить ревизию? Несохраненные данные будут потеряны!")){
+                whSessionModule.delRevision(self.session_id);
+            } else return false;
         }
     }//GEN-LAST:event_formWindowClosing
 
@@ -74,4 +70,12 @@ function RevisionForm() {
             }
         }
     }//GEN-LAST:event_itemsByTPOnRequeried
+
+    function button1ActionPerformed(evt) {//GEN-FIRST:event_button1ActionPerformed
+        if(self.session_id){
+            whSessionModule.delRevision(self.session_id);
+            self.closing = true;
+        }
+        form.close(true);
+    }//GEN-LAST:event_button1ActionPerformed
 }

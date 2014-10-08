@@ -156,7 +156,16 @@ function WhSessionModule() {
             return false;
         }
     };
-    
+    /*
+     * Удаление ревизии
+     * @param {type} aSessionId
+     * @returns {undefined}
+     */
+    self.delRevision = function(aSessionId){
+        model.qDeleteRevision.params.session_id = aSessionId;
+        model.qDeleteRevision.executeUpdate();
+        model.save();
+    };
     /*
      * Изменение стартовых значений Баланса Сессии по каждому товару торговой
      * точки

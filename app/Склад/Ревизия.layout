@@ -1,54 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?><layout defaultCloseOperation="2" name="Form" prefHeight="325px" prefWidth="517px" windowClosing="formWindowClosing" windowOpened="formWindowOpened">
   <widget deletable="false" insertable="false" name="modelGrid" parent="Form" prefHeight="252px" prefWidth="516px" type="DbGridDesignInfo">
     <column name="colItem_name" readonly="true" title="Название">
-      <datamodelElement entityId="141269220987888" fieldName="item_name"/>
       <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
-      <headerStyle>
-        <nativeFont name="Tahoma" size="11"/>
-      </headerStyle>
       <columnsDatasource/>
       <columnsDisplayField/>
       <cellsDatasource/>
       <cellDesignInfo>
-        <rowsKeyField/>
         <columnsKeyField/>
         <cellValueField/>
+        <rowsKeyField/>
       </cellDesignInfo>
+      <datamodelElement entityId="141269220987888" fieldName="item_name"/>
+      <headerStyle>
+        <nativeFont name="Tahoma" size="11"/>
+      </headerStyle>
     </column>
     <column name="colStart_value" title="Начальное значение">
-      <datamodelElement entityId="141269220987888" fieldName="start_value"/>
       <controlInfo classHint="DbSpinDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
-      <headerStyle>
-        <nativeFont name="Tahoma" size="11"/>
-      </headerStyle>
       <columnsDatasource/>
       <columnsDisplayField/>
       <cellsDatasource/>
       <cellDesignInfo>
-        <rowsKeyField/>
         <columnsKeyField/>
         <cellValueField/>
+        <rowsKeyField/>
       </cellDesignInfo>
+      <datamodelElement entityId="141269220987888" fieldName="start_value"/>
+      <headerStyle>
+        <nativeFont name="Tahoma" size="11"/>
+      </headerStyle>
     </column>
     <column name="end_value" title="Конечное значение">
-      <datamodelElement entityId="141269220987888" fieldName="end_value"/>
       <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
-      <headerStyle>
-        <nativeFont name="Tahoma" size="11"/>
-      </headerStyle>
       <columnsDatasource/>
       <columnsDisplayField/>
       <cellsDatasource/>
       <cellDesignInfo>
-        <rowsKeyField/>
         <columnsKeyField/>
         <cellValueField/>
+        <rowsKeyField/>
       </cellDesignInfo>
+      <datamodelElement entityId="141269220987888" fieldName="end_value"/>
+      <headerStyle>
+        <nativeFont name="Tahoma" size="11"/>
+      </headerStyle>
     </column>
-    <treeDesignInfo/>
     <rowsColumnsDesignInfo>
       <rowsDatasource entityId="141269220987888" field="false"/>
     </rowsColumnsDesignInfo>
+    <treeDesignInfo/>
     <constraints height="252px" left="0px" top="0px" type="MarginConstraintsDesignInfo" width="516px"/>
   </widget>
   <widget actionPerformed="buttonActionPerformed" name="button" parent="Form" prefHeight="24px" prefWidth="161px" text="Прозвести ревизию " type="ButtonDesignInfo">
@@ -56,6 +56,9 @@
   </widget>
   <widget name="label" parent="Form" prefHeight="14px" prefWidth="504px" text="Незаполненные конечные значения будут автоматически перенесены из начальных значенией" type="LabelDesignInfo">
     <constraints bottom="47px" height="14px" left="12px" type="MarginConstraintsDesignInfo" width="504px"/>
+  </widget>
+  <widget actionPerformed="button1ActionPerformed" name="button1" parent="Form" prefHeight="23px" prefWidth="95px" text="Отменить" type="ButtonDesignInfo">
+    <constraints bottom="13px" height="23px" left="240px" type="MarginConstraintsDesignInfo" width="95px"/>
   </widget>
   <layout type="MarginLayoutDesignInfo"/>
 </layout>
