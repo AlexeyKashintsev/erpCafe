@@ -19,9 +19,11 @@ function RevisionForm() {
         whSessionModule.setStartValuesAuto();
         self.items = whSessionModule.getCurrentStartValues();
         console.log(self.items);
-        model.itemsByTP.beforeFirst();
-        while (model.itemsByTP.next()) {
-            model.itemsByTP.cursor.start_value = self.items[model.itemsByTP.cursor.item_id];
+        if (model.itemsByTP.length > 0) {
+            model.itemsByTP.beforeFirst();
+            while (model.itemsByTP.next()) {
+                model.itemsByTP.cursor.start_value = self.items[model.itemsByTP.cursor.item_id];
+            }
         }
     }
     
@@ -63,4 +65,13 @@ function RevisionForm() {
             }
         }
     }//GEN-LAST:event_formWindowClosing
+
+    function itemsByTPOnRequeried(evt) {//GEN-FIRST:event_itemsByTPOnRequeried
+        if (self.items.length > 0) {
+            model.itemsByTP.beforeFirst();
+            while (model.itemsByTP.next()) {
+                model.itemsByTP.cursor.start_value = self.items[model.itemsByTP.cursor.item_id];
+            }
+        }
+    }//GEN-LAST:event_itemsByTPOnRequeried
 }
