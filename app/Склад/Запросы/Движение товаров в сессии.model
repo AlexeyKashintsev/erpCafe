@@ -3,13 +3,13 @@
     <parameter description="" name="session_id" nullable="true" parameterMode="1" precision="0" scale="0" selectionForm="null" signed="true" size="0" type="2" typeName="NUMERIC"/>
   </parameters>
   <parametersEntity entityHeight="200" entityIconified="false" entityLocationX="8" entityLocationY="7" entityWidth="150"/>
-  <entity Title="" entityHeight="200" entityIconified="false" entityId="140558408204686" entityLocationX="423" entityLocationY="11" entityWidth="150" tableAlias="t" tableName="wh_movement_types" tableSchemaName=""/>
-  <entity Title="" entityHeight="200" entityIconified="false" entityId="140732728358272" entityLocationX="814" entityLocationY="12" entityWidth="150" tableAlias="t3" tableName="wh_items" tableSchemaName=""/>
-  <entity Title="" entityHeight="200" entityIconified="false" entityId="140558407589061" entityLocationX="212" entityLocationY="5" entityWidth="150" tableAlias="t1" tableName="wh_movements" tableSchemaName=""/>
-  <entity Title="" entityHeight="200" entityIconified="false" entityId="140732582986934" entityLocationX="615" entityLocationY="14" entityWidth="150" tableAlias="t2" tableName="wh_session_balance" tableSchemaName=""/>
-  <relation leftEntityFieldName="wh_movement_types_id" leftEntityId="140558408204686" rightEntityFieldName="movement_type" rightEntityId="140558407589061"/>
-  <relation leftEntityFieldName="item_id" leftEntityId="140732582986934" rightEntityFieldName="wh_items_id" rightEntityId="140732728358272"/>
-  <relation leftEntityFieldName="item_id" leftEntityId="140558407589061" rightEntityFieldName="item_id" rightEntityId="140732582986934"/>
-  <relation leftEntityFieldName="session_id" leftEntityId="140558407589061" rightEntityFieldName="session_id" rightEntityId="140732582986934"/>
-  <relation leftEntityId="-1" leftEntityParameterName="session_id" rightEntityFieldName="session_id" rightEntityId="140558407589061"/>
+  <entity Title="" entityHeight="83" entityIconified="false" entityId="140558408204686" entityLocationX="711" entityLocationY="59" entityWidth="150" tableAlias="t" tableName="wh_movement_types" tableSchemaName=""/>
+  <entity Title="" entityHeight="81" entityIconified="false" entityId="141277435366067" entityLocationX="357" entityLocationY="36" entityWidth="150" tableAlias="t2" tableName="wh_items_in_warehouse" tableSchemaName=""/>
+  <entity Title="" entityHeight="148" entityIconified="false" entityId="141277450494320" entityLocationX="532" entityLocationY="12" entityWidth="150" tableAlias="t1" tableName="wh_movements" tableSchemaName=""/>
+  <entity Title="" entityHeight="200" entityIconified="false" entityId="141277442595381" entityLocationX="182" entityLocationY="32" entityWidth="150" tableAlias="t3" tableName="org_session" tableSchemaName=""/>
+  <relation leftEntityFieldName="trade_point" leftEntityId="141277442595381" rightEntityFieldName="warehouse" rightEntityId="141277435366067"/>
+  <relation leftEntityFieldName="org_session_id" leftEntityId="141277442595381" rightEntityFieldName="session_id" rightEntityId="141277450494320"/>
+  <relation leftEntityId="-1" leftEntityParameterName="session_id" rightEntityFieldName="org_session_id" rightEntityId="141277442595381"/>
+  <relation leftEntityFieldName="wh_movement_types_id" leftEntityId="140558408204686" rightEntityFieldName="movement_type" rightEntityId="141277450494320"/>
+  <relation leftEntityFieldName="item_id" leftEntityId="141277435366067" rightEntityFieldName="item_id" rightEntityId="141277450494320"/>
 </datamodel>

@@ -46,6 +46,15 @@ function TradeSessions() {
         model.save();
     };
     
+    self.calculateFinalValues = function(aSession) {
+        if (!aSession) {
+            aSession = session.getActiveTPSession();
+        };
+        
+        model.prSetFinalBalance4CashBox.params.session_id = aSession;
+        model.prSetFinalBalance4CashBox.executeUpdate();
+    };
+    
   /*
    * Получение текущей сессии
    * @returns {@this;@pro;model.qOpenedSession.org_session_id}
