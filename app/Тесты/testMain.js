@@ -7,7 +7,7 @@
 function testMain() {
     var self = this, model = this.model;
     var log = document.getElementById("log");
-    login('testbar','testbar');
+    //login('testbar','testbar');
     var testList = [{
             name: 'testFranchaziCreate'
     },{
@@ -55,11 +55,17 @@ function testMain() {
     };
     
     function login(aUserName, aPassword) {
-        $.post("/erpCafe/j_security_check", { j_username: aUserName, j_password: aPassword }, function(){ 
-            success('Logged in...');
-        })
-        .fail(function() {
-            console.log("Login error!..");
+        $.ajax({
+            url: "/erpCafe/j_security_check",
+            data: { j_username: aUserName, j_password: aPassword },
+            type: "POST",
+            async: false,
+            success: function() {
+                console.log("Log In! ");
+            },
+            error: function(e) {
+                console.log("Login Failed..")
+            }
         });
     }
     
@@ -81,8 +87,8 @@ function testMain() {
                 message(messages.test + " " + j + " " + testList[j].name, '');
                 try {
                     var test = new Module(testList[j].name);
-//                    if (testList[j].login && testList[j].pass)
-//                        login(testList[j].login, testList[j].pass);
+                    if (testList[j].login && testList[j].pass)
+                        login(testList[j].login, testList[j].pass);
                     test.init(self);
                     if (test.doTest())
                         ok++;
