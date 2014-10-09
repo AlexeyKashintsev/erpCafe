@@ -7,17 +7,21 @@
         <link rel="stylesheet" href="css/login.css" />
     </head>
     <body>
+        <div class="spacer"></div>
         <div id="stylized" class="myform">
             <form id="form" name="form" action="j_security_check" method="POST" enctype="application/x-www-form-urlencoded">
-                <h1>Login to Application</h1>
-                <p>Powered by Platypus Platform</p>
-                <label>Username
+                <img src='img/header_logo.png'></img>
+                <div class="header">
+                    <h1>Вход в приложение</h1>
+                </div>
+                
+                <label>Имя пользователя
                 </label>
                 <input type="text" name="j_username" id="name" />
-                <label>Password
+                <label>Пароль
                 </label>
                 <input type="password" name="j_password" id="password" />
-                <button type="submit">Login</button>
+                <button type="submit">Войти</button>
             </form>
         </div>
     </body>
