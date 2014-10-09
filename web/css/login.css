@@ -1,64 +1,99 @@
-            body{
-                font-family:"Lucida Grande", "Lucida Sans Unicode", Verdana, Arial, Helvetica, sans-serif;
-                font-size:12px;
-                background-color: darkbrown;
-            }
-            p, h1, form, button{border:0; margin:0; padding:0;}
-            .spacer{clear:both; height:1px;}
-            .myform{
-                margin:0 auto;
-                width:400px;
-                padding:14px;
-            }
-            #stylized{
-                border:solid 2px #b7ddf2;
-                background:#ebf4fb;
-            }
-            #stylized h1 {
-                font-size:14px;
-                font-weight:bold;
-                margin-bottom:8px;
-            }
-            #stylized p{
-                font-size:11px;
-                color:#666666;
-                margin-bottom:20px;
-                border-bottom:solid 1px #b7ddf2;
-                padding-bottom:10px;
-            }
-            #stylized label{
-                display:block;
-                margin-top: 6px;
-                font-weight:bold;
-                text-align:right;
-                width:140px;
-                float:left;
-            }
-            #stylized .small{
-                color:#666666;
-                display:block;
-                font-size:11px;
-                font-weight:normal;
-                text-align:right;
-                width:140px;
-            }
-            #stylized input{
-                float:left;
-                font-size:12px;
-                padding:4px 2px;
-                border:solid 1px #aacfe4;
-                width:200px;
-                margin:2px 0 20px 10px;
-            }
-            #stylized button{
-                clear:both;
-                margin-left:150px;
-                width:125px;
-                height:31px;
-                background:#666666;
-                text-align:center;
-                line-height:31px;
-                color:#FFFFFF;
-                font-size:11px;
-                font-weight:bold;
-            }
+html, body{
+    height: 100%;
+}
+body{
+    font-family: Verdana, Arial;
+    font-size:12px;
+    background-image: url("../img/login_background.jpg");
+}
+p, h1, form, button{border:0; margin:0; padding:0;}
+.spacer{clear:both; height:1px;}
+.myform{
+    margin:0 auto;
+    width:400px;
+    
+}
+div.spacer {
+    //padding-top: 10%;
+    display: block;
+    height: 33%;
+}
+.header {
+    background-color: #7c3902;;
+    padding:10px;
+    text-align: left;
+    margin-bottom: 30px;
+    height: 80px;
+}
+img {
+    position: absolute;
+    height: 120px;
+    padding: 5px 7px;
+    display: block;
+}
+#stylized{
+    border: solid #7c3902;
+    background: #fcf1ec;
+    padding-bottom: 20px;
+}
+#stylized h1 {
+    font-family: 'Intro', Arial, sans-serif;
+    font-size: 24px;
+    letter-spacing: 0;
+    font-weight:bold;
+    color: #fff7ed;
+    margin-top: 30px;
+    margin-left: 130px;
+}
+#stylized p{
+    font-size:11px;
+    color:#666666;
+}
+#stylized label{
+    display:block;
+    margin-top: 6px;
+    #font-weight:bold;
+    text-align:right;
+    width:140px;
+    float:left;
+}
+#stylized .small{
+    color:#666666;
+    display:block;
+    font-size:11px;
+    font-weight:normal;
+    text-align:right;
+    width:140px;
+}
+#stylized input{
+    float:left;
+    font-size:12px;
+    padding:4px 2px;
+    border:solid 1px #7c3902;
+    width:200px;
+    margin:2px 0 20px 10px;
+}
+#stylized button{
+    clear:both;
+    color: #fff7ed;
+    margin-left:150px;
+    background:#7c3902;
+    text-align:center;
+    line-height:31px;
+    font-size:18px;
+    font-weight:bold;
+    padding: 2px 81px;
+    cursor: pointer;
+}
+
+#stylized button:hover{
+    background-color: #ff6105;
+    color: white;
+}
+div.error {
+    text-align: center;
+    padding-bottom:  20px;
+    color: red;
+    font-weight: bold;
+    font-size: 14px;
+}
