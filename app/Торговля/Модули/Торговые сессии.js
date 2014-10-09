@@ -22,6 +22,13 @@ function TradeSessions() {
     var PAYMENT_TYPE_BONUS = 1;
     var PAYMENT_TYPE_CARD = 10;
     
+    self.getInfoForErrors = function(anError){
+        switch(anError){
+            case 1 : return "Несовпадение суммы операции на клиенте и на сервере";
+            case 2 : return "Недостаточно бонусов для оплаты бонусами";
+        }
+    }
+    
     /*
      * �?нициализация сессии
      * @param {type} aSession
@@ -227,7 +234,7 @@ function TradeSessions() {
         var ServerSum = calculateOrderSum(anOrderDetails.orderItems);
         if (anOrderDetails.orderSum !== ServerSum){
             ep.addEvent('sumDifference', {client: anOrderDetails, server: ServerSum});
-            return false;
+            return 1;
         }
         
         if (anOrderDetails.clientData)
@@ -250,10 +257,10 @@ function TradeSessions() {
                     BonusOperation = billing.OPERATION_DEL_BUY;
                     OperationType = PAYMENT_TYPE_BONUS;
                     BonusCount = anOrderDetails.orderSum;
-                    if (client.bonusBill.length > 0) {
+                    if (client.bonusBill) {
                       if (client.bonusCount < anOrderDetails.orderSum){
                           ep.addEvent('errorNotEnoughBonuses', anOrderDetails);
-                          return "error";
+                          return 2;
                       }
                     }
                     break;
@@ -280,5 +287,6 @@ function TradeSessions() {
             }
             
         };
+        return 0;
     };
 }

@@ -103,7 +103,7 @@ function testBarista() {
                     itemId: 33,
                     quantity: 1
                 }],
-            orderSum: 7
+            orderSum: 700
         };
         orderDetails.clientData = CM.getClientDataByPhone("71234567890");
 
