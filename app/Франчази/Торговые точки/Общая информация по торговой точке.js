@@ -8,6 +8,7 @@ function TradePointCommonInfo(aTradePointDetails, aContainer) {
     var container = aContainer;
     var tradePointDetails = aTradePointDetails;
     var buttonsSelector = null;
+    var tradeAdminModule = new ServerModule("TradeAdminModule");
     
     var panels = {
         charts  :   {
@@ -44,6 +45,12 @@ function TradePointCommonInfo(aTradePointDetails, aContainer) {
             revisionForm.showModal();
         }
     }
+    
+    function btnEmptyCashBoxOnClick(){
+        var sum = prompt("Сколько денег вы хотите снять?", 0);
+        if(tradeAdminModule.stayCash(false, sum, tradePointDetails.org_trade_point_id))
+            alert("Деньги списаны.");
+    }
 
     function showOnContainer() {
         var heading = cmn.createElement("div", "panel-heading", container);
@@ -67,6 +74,7 @@ function TradePointCommonInfo(aTradePointDetails, aContainer) {
                     'Касса:   ' + (tradePointDetails.startValue ? tradePointDetails.startValue : '') + tradePointDetails.operationsSum + ' рублей';
             var btnEmptyCashBox = cmn.createElement("button", "btn btn-success btn-xs btn-block", currentSession);
             btnEmptyCashBox.innerHTML = 'Снять кассу';
+            btnEmptyCashBox.onclick = btnEmptyCashBoxOnClick;
             var btnWHRevision = cmn.createElement("button", "btn btn-success btn-xs btn-block", currentSession);
             btnWHRevision.innerHTML = 'Провести ревизию';
             btnWHRevision.onclick = btnWHRevisionOnClick;
