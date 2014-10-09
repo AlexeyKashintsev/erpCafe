@@ -99,7 +99,7 @@ function WHSessionBalance(aWarehouse, aContainer) {
 
     self.setWarehouse = function(aWarehouse) {
         model.params.trade_point_id = aWarehouse;
-        model.itemsByTP.params.trade_point_id = aWarehouse;
+      // model.itemsByTP.params.trade_point_id = aWarehouse;
     };
 
     self.setTradePoint = self.setWarehouse;
@@ -139,9 +139,12 @@ function WHSessionBalance(aWarehouse, aContainer) {
         }
     };
     
-    Logger.info("Инициалицзация склада: " + aWarehouse);
     self.container = cmn.createElement("table", "table table-hover whSessionBalance", aContainer);
-    self.setWarehouse(aWarehouse);
+    
+    //self.showData = function() {
+        Logger.info("Инициалицзация склада: " + aWarehouse);
+        self.setWarehouse(aWarehouse);
+  //  };
     //self.getCurrentBalance(aWarehouse);
 
     function itemsByTPOnRequeried(evt) {//GEN-FIRST:event_itemsByTPOnRequeried

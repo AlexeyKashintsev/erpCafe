@@ -76,7 +76,7 @@ function WhSessionModule() {
      * Создает сессию с указанным идентификатором, или, если он не указан
      * возвращает Id новой сессии
      */
-    self.createSession = function(aSessionId) {
+    self.createSession = function(aSessionId, aRevision) {
         if (self.getCurrentSession()) {
             return aSessionId ? model.params.session_id : false;//Код ошибки
         } else {
@@ -86,6 +86,7 @@ function WhSessionModule() {
             model.qOpenedSession.cursor.trade_point = model.params.trade_point_id;
             model.qOpenedSession.cursor.start_date = new Date();
             model.qOpenedSession.cursor.user_name = self.principal.name;
+            if(aRevision) model.qOpenedSession.cursor.revision = true;
             initSession();
             ep.addEvent('newSession', {
                 session: model.params.session_id,
@@ -115,17 +116,39 @@ function WhSessionModule() {
     };
     
     /*
+     * Закрытие сессии из-за ревизии
+     */
+    self.closeSessionByRevision = function(anItems, aTradePoint) {
+        if (aTradePoint)
+            self.setTradePoint(aTradePoint);
+        
+        if (self.getCurrentSession()) {
+            model.querySessionBalance.params.session_id = model.params.session_id;
+            model.querySessionBalance.requery();
+            model.querySessionBalance.beforeFirst();
+            while (model.querySessionBalance.next()) {
+                model.querySessionBalance.cursor.end_value = anItems[model.querySessionBalance.cursor.item_id];
+            }
+
+            model.qOpenedSession.cursor.end_date = new Date();
+            model.save();
+            
+            return true;
+        } else
+            return false;
+    };
+    /*
      * Автоматически заполняет стартовые значения для текущей сессии из последней
      * @param {type} aTradePoint
      * @returns {undefined}
      */
     self.setStartValuesAuto = function(aTradePoint) {
-        self.setTradePoint(aTradePoint);
+        if(aTradePoint) self.setTradePoint(aTradePoint);
         model.qLastSessionOnTradePoint.requery();
         if (model.qLastSessionOnTradePoint.length >0) {
             var lastSession = model.qLastSessionOnTradePoint.cursor.org_session_id;
-            model.updateItems.params.session_id = lastSession;
-            model.updateItems.executeUpdate();
+         /*   model.updateItems.params.session_id = lastSession;
+            model.updateItems.executeUpdate();*/
             var lastResult = getValuesBySession(lastSession, true);
             self.setStartValues(lastResult);
             return true;
@@ -133,7 +156,16 @@ function WhSessionModule() {
             return false;
         }
     };
-    
+    /*
+     * Удаление ревизии
+     * @param {type} aSessionId
+     * @returns {undefined}
+     */
+    self.delRevision = function(aSessionId){
+        model.qDeleteRevision.params.session_id = aSessionId;
+        model.qDeleteRevision.executeUpdate();
+        model.save();
+    };
     /*
      * Изменение стартовых значений Баланса Сессии по каждому товару торговой
      * точки
