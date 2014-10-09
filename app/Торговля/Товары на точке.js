@@ -24,6 +24,7 @@ function TradeItemsOnTradePoint() {
     var askForChanges = new AskForChangesApplying();
     
     self.setFranchazi = function(aFranchazi) {
+        alert('!' + aFranchazi);
         self.model.params.franchazi_id = aFranchazi;
     };
     
