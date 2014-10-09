@@ -190,6 +190,30 @@ function TradeSessions() {
     }
     
     /*
+     * Получение цены товара
+     * @param {type} aItemId
+     * @returns {@this;@pro;model.tradeItemCost.cursor.item_cost}
+     */
+    function getCostByItem(anItem, aTpId){
+        
+        model.tradeItemCost.params.date_id = new Date();
+        model.tradeItemCost.params.item_id = anItem;
+        model.tradeItemCost.params.trade_point_id = aTpId;
+        model.tradeItemCost.requery();
+        return model.tradeItemCost.cursor.item_cost;
+    }
+    
+    function calculateOrderSum(anItems){
+        var sum = 0;
+        model.qOpenedSession.params.user_name = self.principal.name;
+        var tpid = model.qOpenedSession.cursor.trade_point;
+        for (var i in anItems) {
+            sum += getCostByItem(anItems[i].itemId, tpid)*anItems[i].quantity;
+        }
+        return sum;
+    }
+    
+    /*
      * Процесс продажи
      * @param {type} anOrderDetails
      * @returns {String}
@@ -198,6 +222,12 @@ function TradeSessions() {
         var client = false;
         if (!model.params.session_id){
             model.params.session_id = getCurrentSession();
+        }
+        
+        var ServerSum = calculateOrderSum(anOrderDetails.orderItems);
+        if (anOrderDetails.orderSum !== ServerSum){
+            ep.addEvent('sumDifference', {client: anOrderDetails, server: ServerSum});
+            return false;
         }
         
         if (anOrderDetails.clientData)
