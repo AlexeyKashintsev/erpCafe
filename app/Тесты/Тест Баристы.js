@@ -30,24 +30,20 @@ function testBarista() {
         success(messages.successInit);
     };
     
-    function login(aUserName, aPassword) {
-        $.post("/erpCafe/j_security_check", { j_username: aUserName, j_password: aPassword }, function(){ 
-            success('Logged in...');
-        })
-        .fail(function() {
-            alert("error");
-        });
-    }
+    
     
     function doTest() {
         info("Начало теста");
+        var Session = new ServerModule("UserSession");
         var TS = new ServerModule("TradeSessions");
         var BM = new ServerModule("BillModule");
         var CM = new ServerModule("ClientServerModule");
-        var Session = new ServerModule("UserSession");
-        if (!Session.getUserName()){
-            login("barista", "barista");
-        }
+        var WH = new ServerModule("WhSessionModule");
+        WH.createSession();
+        /*
+         * Простая покупка
+         * @type type
+         */
         var orderDetails = {
             clientData: false,
             methodOfPayment: "money",
@@ -67,7 +63,7 @@ function testBarista() {
         });
         
         /*
-         * 
+         * Покупка за деньги с начислением бонусов
          */
         
         orderDetails = {
@@ -93,6 +89,9 @@ function testBarista() {
             info("Конечное значение " + endBonusCount);
         });
         
+        /*
+         * Покупка за бонусы 
+         */
         orderDetails = {
             methodOfPayment: "bonus",
             orderItems: [
@@ -104,7 +103,7 @@ function testBarista() {
                     itemId: 33,
                     quantity: 1
                 }],
-            orderSum: 700
+            orderSum: 7
         };
         orderDetails.clientData = CM.getClientDataByPhone("71234567890");
 
