@@ -22,6 +22,13 @@ function TradeSessions() {
     var PAYMENT_TYPE_BONUS = 1;
     var PAYMENT_TYPE_CARD = 10;
     
+    self.getInfoForErrors = function(anError){
+        switch(anError){
+            case 1 : return "Несовпадение суммы операции на клиенте и на сервере";
+            case 2 : return "Недостаточно бонусов для оплаты бонусами";
+        }
+    }
+    
     /*
      * �?нициализация сессии
      * @param {type} aSession
@@ -190,6 +197,30 @@ function TradeSessions() {
     }
     
     /*
+     * Получение цены товара
+     * @param {type} aItemId
+     * @returns {@this;@pro;model.tradeItemCost.cursor.item_cost}
+     */
+    function getCostByItem(anItem, aTpId){
+        
+        model.tradeItemCost.params.date_id = new Date();
+        model.tradeItemCost.params.item_id = anItem;
+        model.tradeItemCost.params.trade_point_id = aTpId;
+        model.tradeItemCost.requery();
+        return model.tradeItemCost.cursor.item_cost;
+    }
+    
+    function calculateOrderSum(anItems){
+        var sum = 0;
+        model.qOpenedSession.params.user_name = self.principal.name;
+        var tpid = model.qOpenedSession.cursor.trade_point;
+        for (var i in anItems) {
+            sum += getCostByItem(anItems[i].itemId, tpid)*anItems[i].quantity;
+        }
+        return sum;
+    }
+    
+    /*
      * Процесс продажи
      * @param {type} anOrderDetails
      * @returns {String}
@@ -198,6 +229,12 @@ function TradeSessions() {
         var client = false;
         if (!model.params.session_id){
             model.params.session_id = getCurrentSession();
+        }
+        
+        var ServerSum = calculateOrderSum(anOrderDetails.orderItems);
+        if (anOrderDetails.orderSum !== ServerSum){
+            ep.addEvent('sumDifference', {client: anOrderDetails, server: ServerSum});
+            return 1;
         }
         
         if (anOrderDetails.clientData)
@@ -220,10 +257,10 @@ function TradeSessions() {
                     BonusOperation = billing.OPERATION_DEL_BUY;
                     OperationType = PAYMENT_TYPE_BONUS;
                     BonusCount = anOrderDetails.orderSum;
-                    if (client.bonusBill.length > 0) {
+                    if (client.bonusBill) {
                       if (client.bonusCount < anOrderDetails.orderSum){
                           ep.addEvent('errorNotEnoughBonuses', anOrderDetails);
-                          return "error";
+                          return 2;
                       }
                     }
                     break;
@@ -250,5 +287,6 @@ function TradeSessions() {
             }
             
         };
+        return 0;
     };
 }

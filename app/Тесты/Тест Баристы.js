@@ -9,7 +9,11 @@ function testBarista() {
     self.name = 'Создание франчази';
     self.roles = ['admin'];
     self.testsCount = 1;
-    
+    var TS = new ServerModule("TradeSessions");
+    var BM = new ServerModule("BillModule");
+    var CM = new ServerModule("ClientServerModule");
+    var WH = new ServerModule("WhSessionModule");
+        
     var messages = {
         successInit : 'Тест инициализирован',
         success     : 'Тест пройден',
@@ -34,11 +38,7 @@ function testBarista() {
     
     function doTest() {
         info("Начало теста");
-        var Session = new ServerModule("UserSession");
-        var TS = new ServerModule("TradeSessions");
-        var BM = new ServerModule("BillModule");
-        var CM = new ServerModule("ClientServerModule");
-        var WH = new ServerModule("WhSessionModule");
+        WH.setTradePoint(6);
         WH.createSession();
         /*
          * Простая покупка
@@ -103,7 +103,7 @@ function testBarista() {
                     itemId: 33,
                     quantity: 1
                 }],
-            orderSum: 7
+            orderSum: 700
         };
         orderDetails.clientData = CM.getClientDataByPhone("71234567890");
 
@@ -131,7 +131,7 @@ function testBarista() {
     };
     
     self.clear = function() {
-      //logout();
+        WH.closeSession();
        // console.log('Logged out...');
     };
 }

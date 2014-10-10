@@ -1,5 +1,5 @@
 /**
- * 
+ * @rolesAllowed admin franchazi
  * @author ak
  * @module
  * @public
@@ -7,7 +7,8 @@
 function TradeAdminModule() {
     var self = this, model = this.model;
     var franchazi = null;
-    
+    self.OP_TYPE_STAY_CASH = 11; // операция снятия кассы
+
     //Возвращает true, если на точке или франшизе есть записи
     function setTradeItemOnTradePoint(anItem, aTradePoint, aFranchazi, aDate) {
         if (aFranchazi) franchazi = aFranchazi;
@@ -100,5 +101,26 @@ function TradeAdminModule() {
     self.setEndDateForTradeItem = function(anItem, aTradePoint, aFranchazi, aEndDate) {
         closeItemOnTradePointOrFranchazi(anItem, aTradePoint, aFranchazi, aEndDate);
         model.save();
+    };
+    
+    self.stayCash = function(aSessionId, aSum, aTradePoint){
+        if(!aSessionId){
+            model.qLastSessionOnTradePoint.params.trade_point_id = aTradePoint;
+            model.qLastSessionOnTradePoint.requery();
+            //model.qLastSessionOnTradePoint.executeUpdate();
+            aSessionId = model.qLastSessionOnTradePoint.cursor.org_session_id;
+        }
+        model.getSessions.params.session_id = aSessionId;
+        model.getSessions.requery();
+        if(model.getSessions.length > 0){
+            model.qTradeOperationBySession.insert();
+            model.qTradeOperationBySession.cursor.operation_sum = aSum;
+            model.qTradeOperationBySession.cursor.operation_date = new Date();
+            model.qTradeOperationBySession.cursor.operation_type = self.OP_TYPE_STAY_CASH;
+            model.qTradeOperationBySession.cursor.session_id = aSessionId;
+            model.qTradeOperationBySession.cursor.user_name = self.principal.name;
+            model.save();
+            return model.qTradeOperationBySession.cursor.trade_cash_box_operation_id;
+        } else return false;
     };
 }
