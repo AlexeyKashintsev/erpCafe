@@ -61,12 +61,18 @@ function TradeAdminModule() {
         }
     }
     
-    function closeItemOnTradePointOrFranchazi(anItem, aTradePoint, aFranchazi, aEndDate) {
-        if (setTradeItemOnTradePoint(anItem, aTradePoint, aFranchazi)) {
+    function closeItemOnTradePointOrFranchazi(anItem, aTradePoint, aFranchazi, anEndDate) {
+        /*if (setTradeItemOnTradePoint(anItem, aTradePoint, aFranchazi)) {
             model.qTIbyTP.beforeFirst();
             while (model.qTIbyTP.next())
                 model.qTIbyTP.cursor.end_date = aEndDate ? aEndDate : new Date();
-        }
+            model.save();
+        }*/
+        model.prCloseItemCost.params.franchazi_id = aFranchazi;
+        model.prCloseItemCost.params.trade_point_id = aTradePoint;
+        model.prCloseItemCost.params.item_id = anItem;
+        //model.prCloseItemCost.params.stop_date = Date(anEndDate);
+        model.prCloseItemCost.executeUpdate();
     }
     /*
      * При указании торговой точки будет добавлена на торговую точку,

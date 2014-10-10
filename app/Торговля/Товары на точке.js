@@ -24,18 +24,20 @@ function TradeItemsOnTradePoint() {
     var askForChanges = new AskForChangesApplying();
     
     self.setFranchazi = function(aFranchazi) {
-        alert('!' + aFranchazi);
+       // alert('!' + aFranchazi);
         self.model.params.franchazi_id = aFranchazi;
     };
     
     self.setTradePoint = function(aTradePoint) {
         model.params.trade_point_id = aTradePoint;
+        model.params.actual_date = new Date();
     };
     
     //self.setFranchazi(1);
     //self.setTradePoint(15);
 
 function btnReqActionPerformed(evt) {//GEN-FIRST:event_btnReqActionPerformed
+        alert(model.params.franchazi_id + '\\' + model.params.trade_point_id + '\\' + model.params.actual_date);
         if (self.model.modified && confirm('Сохранить изменения?')) {
             modelSave();
         }
@@ -47,7 +49,7 @@ function btnReqActionPerformed(evt) {//GEN-FIRST:event_btnReqActionPerformed
 }//GEN-LAST:event_btnReqActionPerformed
 
     function modelSave() {
-        model.qTradeItemsAndType.params.actual_date = new Date();
+        //model.qTradeItemsAndType.params.actual_date = new Date();
         model.qTradeItemsAndType.beforeFirst();
         while (model.qTradeItemsAndType.next()) {
             if ((model.qTradeItemsAndType.cursor.r_cost !== model.qTradeItemsAndType.cursor.r_old_cost) && (model.qTradeItemsAndType.cursor.r_id.match(/type/gi))){

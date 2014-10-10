@@ -18,4 +18,4 @@ From trade_items_cost t1
  Where :franchazi_id = t1.franchazi_id
  and :trade_point_id = t1.trade_point_id
  and :actual_date >= t1.start_date
- and (:actual_date = t1.end_date or t1.end_date is null)
+ and (:actual_date <= t1.end_date or t1.end_date is null)
