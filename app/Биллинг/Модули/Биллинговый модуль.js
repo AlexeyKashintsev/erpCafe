@@ -276,10 +276,11 @@ function BillModule() {
      * @returns {undefined}
      */
     function connectBillAndTradeOperation(aTradeOperation, aBillOperation){
-        model.qConnectTradeAndBillOperations.push({
-            trade_cashbox_operation: aTradeOperation,
-            bill_operation: aBillOperation
-        });
+        if (!!aTradeOperation && !!aBillOperation)
+            model.qConnectTradeAndBillOperations.push({
+                trade_cashbox_operation: aTradeOperation,
+                bill_operation: aBillOperation
+            });
     }
     /*
      * Добавление денег франчайзе за попукупку бонусами
