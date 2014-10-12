@@ -4,5 +4,7 @@
   </parameters>
   <parametersEntity entityHeight="200" entityIconified="false" entityLocationX="8" entityLocationY="7" entityWidth="150"/>
   <entity Title="" entityHeight="200" entityIconified="false" entityId="140784846212310" entityLocationX="216" entityLocationY="9" entityWidth="150" tableAlias="t1" tableName="wh_items" tableSchemaName=""/>
-  <relation leftEntityId="-1" leftEntityParameterName="item_type" rightEntityFieldName="item_type" rightEntityId="140784846212310"/>
+  <entity Title="" entityHeight="200" entityIconified="false" entityId="141296836644229" entityLocationX="443" entityLocationY="12" entityWidth="150" queryId="qSubtypes" tableAlias="q" tableName="" tableSchemaName=""/>
+  <relation leftEntityFieldName="wh_item_types_id" leftEntityId="141296836644229" rightEntityFieldName="item_type" rightEntityId="140784846212310"/>
+  <relation leftEntityId="-1" leftEntityParameterName="item_type" rightEntityId="141296836644229" rightEntityParameterName="parent_type"/>
 </datamodel>
