@@ -206,15 +206,13 @@ function TradeSessions() {
      * @returns {@this;@pro;model.tradeItemCost.cursor.item_cost}
      */
     function getCostByItem(anItem, aTpId) {
-
         model.tradeItemCost.params.date_id = new Date();
         model.tradeItemCost.params.item_id = anItem;
         model.tradeItemCost.params.trade_point_id = aTpId;
         model.tradeItemCost.requery();
         return model.tradeItemCost.cursor.item_cost;
     }
-//Вообще цену здесь можно сравнивать и в основную функцию возвращать true/false
-// checkOrderSum(anItems, aSum)
+
     function calculateOrderSum(anItems) {
         var sum = 0;
         model.qOpenedSession.params.user_name = session.getUserName();
@@ -224,7 +222,12 @@ function TradeSessions() {
         }
         return sum;
     }
-
+    
+    function checkOrderSum(anItems, aSum){
+        if (calculateOrderSum(anItems) !== aSum) return false;
+        else return true;
+    }
+    
     /*
      * Процесс продажи
      * @param {type} anOrderDetails
@@ -236,11 +239,10 @@ function TradeSessions() {
             model.params.session_id = getCurrentSession();
         }
 
-   /*     var ServerSum = calculateOrderSum(anOrderDetails.orderItems);
-        if (anOrderDetails.orderSum !== ServerSum) {
+        if (!checkOrderSum(anOrderDetails.orderItems, anOrderDetails.orderSum)) {
             ep.addEvent('sumDifference', {client: anOrderDetails, server: ServerSum});
             return 1;
-        }*/
+        }
 
         if (anOrderDetails.clientData)
             client = clientModule.getClientDataByPhone(anOrderDetails.clientData.phone);
@@ -291,8 +293,7 @@ function TradeSessions() {
                 billing.bonusOperation(client, BonusOperation, BonusCount, TradeOperationId);
             }
 
-        }
-        ;
+        };
         return 0;
     };
 }
