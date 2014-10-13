@@ -32,7 +32,7 @@ function TradeSessions() {
     };
 
     /*
-     * �?нициализация сессии
+     * Инициализация сессии
      * @param {type} aSession
      * @param {type} aStartBalance
      * @returns {undefined}
@@ -69,7 +69,7 @@ function TradeSessions() {
      * @returns {@this;@pro;model.qOpenedSession.org_session_id}
      */
     function getCurrentSession() {
-        model.qOpenedSession.params.user_name = self.principal.name;
+        model.qOpenedSession.params.user_name = session.getUserName();
         model.qOpenedSession.execute();
         ep.addEvent('openSession', {
             session: model.qOpenedSession.org_session_id,
@@ -158,7 +158,7 @@ function TradeSessions() {
         if (model.qBonusRateForItemsEdit.length > 0) {
             return model.qBonusRateForItemsEdit.cursor.bonus_rate;
         } else {
-            model.qOpenedSession.params.user_name = self.principal.name;//Вот это что такое?!!!
+            model.qOpenedSession.params.user_name = session.getUserName(); //поправил
             model.tradeItemCost.params.date_id = new Date();
             model.tradeItemCost.params.item_id = anItem;
             model.tradeItemCost.params.trade_point_id = model.qOpenedSession.cursor.trade_point;
@@ -166,6 +166,7 @@ function TradeSessions() {
             return model.tradeItemCost.cursor.item_cost * getCountBonusesByCategory(model.qBonusRateForItemsEdit.params.bonus_category) / 100;
         }
     }
+    
     /*
      * Получение количества бонусов за товар в зависимости от категории пользователя.
      * @param {type} aCatId
@@ -216,7 +217,7 @@ function TradeSessions() {
 // checkOrderSum(anItems, aSum)
     function calculateOrderSum(anItems) {
         var sum = 0;
-        model.qOpenedSession.params.user_name = self.principal.name;
+        model.qOpenedSession.params.user_name = session.getUserName();
         var tpid = model.qOpenedSession.cursor.trade_point;
         for (var i in anItems) {//TODO Запросить все товары на точке одним запросом при открытии сессии
             sum += getCostByItem(anItems[i].itemId, tpid) * anItems[i].quantity;
