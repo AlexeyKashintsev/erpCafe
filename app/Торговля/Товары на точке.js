@@ -10,8 +10,7 @@ function TradeItemsOnTradePoint() {
     var self = this, model = this.model, form = this;
 
     self.selectForm = false;
-    model.params.show_only_present = false;
-    model.params.sort_by_type = false;
+    
     /*model.params.beginUpdate();
     model.params.item_type = null;
     model.params.show_only_present = true;
@@ -30,26 +29,17 @@ function TradeItemsOnTradePoint() {
     
     self.setTradePoint = function(aTradePoint) {
         model.params.trade_point_id = aTradePoint;
-        model.params.actual_date = new Date();
     };
-    
-    //self.setFranchazi(1);
-    //self.setTradePoint(15);
 
 function btnReqActionPerformed(evt) {//GEN-FIRST:event_btnReqActionPerformed
         alert(model.params.franchazi_id + '\\' + model.params.trade_point_id + '\\' + model.params.actual_date);
         if (self.model.modified && confirm('Сохранить изменения?')) {
             modelSave();
         }
-        model.qTradeItemsAndType.params.show_only_present = model.params.show_only_present;
-        model.qTradeItemsAndType.params.sort_by_type = model.params.sort_by_type;
-        /*Logger.info('Param show_only_present: '+ model.params.show_only_present);
-        Logger.info('Param model.params.sort_by_type: '+ model.params.sort_by_type);*/
         self.model.requery();
 }//GEN-LAST:event_btnReqActionPerformed
 
     function modelSave() {
-        //model.qTradeItemsAndType.params.actual_date = new Date();
         model.qTradeItemsAndType.beforeFirst();
         while (model.qTradeItemsAndType.next()) {
             if ((model.qTradeItemsAndType.cursor.r_cost !== model.qTradeItemsAndType.cursor.r_old_cost) && (model.qTradeItemsAndType.cursor.r_id.match(/type/gi))){
@@ -119,12 +109,7 @@ function btnSaveActionPerformed(evt) {//GEN-FIRST:event_btnSaveActionPerformed
 
     function formWindowOpened(evt) {//GEN-FIRST:event_formWindowOpened
         form.pnlSelLock.visible = self.selectForm;
-        model.params.beginUpdate();
-        //model.params.item_type = null;
-        //model.params.show_only_present = false;
-        //model.params.sort_by_type = false;
         model.params.actual_date = new Date();
-        model.params.endUpdate();
     }//GEN-LAST:event_formWindowOpened
 
     function formWindowClosing(evt) {//GEN-FIRST:event_formWindowClosing
@@ -146,4 +131,26 @@ function btnSaveActionPerformed(evt) {//GEN-FIRST:event_btnSaveActionPerformed
             return false;
         }
     }//GEN-LAST:event_qTradeItemsAndTypeWillChange
+
+    function qTradeItemsAndTypeOnRequeried(evt) {//GEN-FIRST:event_qTradeItemsAndTypeOnRequeried
+        Logger.info("\nLength: " + model.qTradeItemsAndType.length +
+                    "\nF_ID: " + model.qTradeItemsAndType.params.franchazi_id +
+                    "\nTP_ID: " + model.qTradeItemsAndType.params.trade_point_id +
+                    "\nSoP: " + model.qTradeItemsAndType.params.show_only_present +
+                    "\nSbT: " + model.qTradeItemsAndType.params.sort_by_type +
+                    "\nAcD: " + model.qTradeItemsAndType.params.actual_date);
+    }//GEN-LAST:event_qTradeItemsAndTypeOnRequeried
+
+    function buttonActionPerformed(evt) {//GEN-FIRST:event_buttonActionPerformed
+        model.params.show_only_present = null;
+        //model.params.sort_by_type = null;
+    }//GEN-LAST:event_buttonActionPerformed
+
+    function tbExistsActionPerformed(evt) {//GEN-FIRST:event_tbExistsActionPerformed
+        model.params.show_only_present = this.selected ? true : null;
+    }//GEN-LAST:event_tbExistsActionPerformed
+
+    function tbSortByTypeActionPerformed(evt) {//GEN-FIRST:event_tbSortByTypeActionPerformed
+        model.params.sort_by_type = this.selected ? true : null;
+    }//GEN-LAST:event_tbSortByTypeActionPerformed
 }

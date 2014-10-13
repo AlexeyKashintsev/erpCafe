@@ -15,71 +15,74 @@
     <constraints bottom="-2px" left="0px" right="2px" top="2px" type="MarginConstraintsDesignInfo"/>
   </widget>
   <widget name="modelGrid1" parent="panel1" prefHeight="267px" prefWidth="695px" type="DbGridDesignInfo">
-    <treeDesignInfo>
-      <unaryLinkField entityId="140671973955379" fieldName="r_parent"/>
-    </treeDesignInfo>
-    <rowsColumnsDesignInfo>
-      <rowsDatasource entityId="140671973955379" field="false"/>
-    </rowsColumnsDesignInfo>
     <column name="colItem_name" readonly="true" title="Наименование">
-      <headerStyle>
-        <nativeFont name="Dialog" size="15"/>
-      </headerStyle>
+      <datamodelElement entityId="141319793264641" fieldName="r_name"/>
       <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
-      <datamodelElement entityId="140671973955379" fieldName="r_name"/>
       <columnsDatasource/>
       <columnsDisplayField/>
       <cellsDatasource/>
       <cellDesignInfo>
+        <rowsKeyField/>
         <columnsKeyField/>
         <cellValueField/>
-        <rowsKeyField/>
       </cellDesignInfo>
+      <headerStyle>
+        <nativeFont name="Dialog" size="15"/>
+      </headerStyle>
     </column>
     <column name="colCost" title="Цена">
+      <datamodelElement entityId="141319793264641" fieldName="r_cost"/>
+      <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
+      <columnsDatasource/>
+      <columnsDisplayField/>
+      <cellsDatasource/>
+      <cellDesignInfo>
+        <rowsKeyField/>
+        <columnsKeyField/>
+        <cellValueField/>
+      </cellDesignInfo>
       <headerStyle>
         <nativeFont name="Dialog" size="13"/>
       </headerStyle>
-      <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
-      <datamodelElement entityId="140671973955379" fieldName="r_cost"/>
+    </column>
+    <column name="select" title=" " width="8">
+      <datamodelElement entityId="141319793264641" fieldName="r_selected"/>
+      <controlInfo classHint="DbCheckDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
       <columnsDatasource/>
       <columnsDisplayField/>
       <cellsDatasource/>
       <cellDesignInfo>
+        <rowsKeyField/>
         <columnsKeyField/>
         <cellValueField/>
-        <rowsKeyField/>
       </cellDesignInfo>
-    </column>
-    <column name="select" title=" " width="8">
       <headerStyle>
         <nativeFont name="Dialog" size="15"/>
       </headerStyle>
-      <controlInfo classHint="DbCheckDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
-      <datamodelElement entityId="140671973955379" fieldName="r_selected"/>
-      <columnsDatasource/>
-      <columnsDisplayField/>
-      <cellsDatasource/>
-      <cellDesignInfo>
-        <columnsKeyField/>
-        <cellValueField/>
-        <rowsKeyField/>
-      </cellDesignInfo>
     </column>
+    <rowsColumnsDesignInfo>
+      <rowsDatasource entityId="141319793264641" field="false"/>
+    </rowsColumnsDesignInfo>
+    <treeDesignInfo>
+      <unaryLinkField entityId="141319793264641" fieldName="r_parent"/>
+    </treeDesignInfo>
     <constraints bottom="0px" left="0px" right="0px" top="31px" type="MarginConstraintsDesignInfo"/>
   </widget>
   <widget floatable="false" name="toolBar" parent="panel1" prefHeight="31px" prefWidth="695px" rollover="true" type="ToolbarDesignInfo">
     <constraints height="31px" left="0px" right="0px" top="0px" type="MarginConstraintsDesignInfo"/>
   </widget>
-  <widget actionPerformed="btnAddActionPerformed" focusable="false" horizontalTextPosition="0" icon="icons/22x22/actions/list-add.png" name="btnAdd" parent="toolBar" prefHeight="29px" prefWidth="29px" toolTipText="Добавить" type="ButtonDesignInfo" verticalTextPosition="3"/>
-  <widget actionPerformed="btnDelActionPerformed" focusable="false" horizontalTextPosition="0" icon="icons/22x22/actions/list-remove.png" name="btnDel" parent="toolBar" prefHeight="29px" prefWidth="29px" toolTipText="Удалить" type="ButtonDesignInfo" verticalTextPosition="3"/>
-  <widget actionPerformed="btnReqActionPerformed" focusable="false" horizontalTextPosition="0" icon="icons/22x22/actions/new-view-refresh.png" name="btnReq" parent="toolBar" prefHeight="29px" prefWidth="29px" toolTipText="Обновить" type="ButtonDesignInfo" verticalTextPosition="3"/>
-  <widget actionPerformed="btnSaveActionPerformed" focusable="false" horizontalTextPosition="0" icon="icons/22x22/actions/document-save.png" name="btnSave" parent="toolBar" prefHeight="29px" prefWidth="29px" toolTipText="Сохранить" type="ButtonDesignInfo" verticalTextPosition="3"/>
-  <widget name="modelCheckBox" parent="toolBar" prefHeight="20px" prefWidth="121px" text="Товары в продаже" type="DbCheckDesignInfo">
+  <widget actionPerformed="btnAddActionPerformed" focusable="false" horizontalTextPosition="0" icon="icons/22x22/actions/list-add.png" name="btnAdd" parent="toolBar" prefHeight="26px" prefWidth="34px" toolTipText="Добавить" type="ButtonDesignInfo" verticalTextPosition="3"/>
+  <widget actionPerformed="btnDelActionPerformed" focusable="false" horizontalTextPosition="0" icon="icons/22x22/actions/list-remove.png" name="btnDel" parent="toolBar" prefHeight="26px" prefWidth="34px" toolTipText="Удалить" type="ButtonDesignInfo" verticalTextPosition="3"/>
+  <widget actionPerformed="btnReqActionPerformed" focusable="false" horizontalTextPosition="0" icon="icons/22x22/actions/new-view-refresh.png" name="btnReq" parent="toolBar" prefHeight="26px" prefWidth="34px" toolTipText="Обновить" type="ButtonDesignInfo" verticalTextPosition="3"/>
+  <widget actionPerformed="btnSaveActionPerformed" focusable="false" horizontalTextPosition="0" icon="icons/22x22/actions/document-save.png" name="btnSave" parent="toolBar" prefHeight="26px" prefWidth="34px" toolTipText="Сохранить" type="ButtonDesignInfo" verticalTextPosition="3"/>
+  <widget actionPerformed="tbExistsActionPerformed" focusable="false" horizontalTextPosition="4" icon="icons/22x22/apps/abiword.png" name="tbExists" parent="toolBar" prefHeight="27px" prefWidth="158px" text="Товары в продаже" type="ToggleButtonDesignInfo"/>
+  <widget actionPerformed="tbSortByTypeActionPerformed" focusable="false" horizontalTextPosition="4" icon="icons/22x22/places/human-folder-open.png" name="tbSortByType" parent="toolBar" prefHeight="27px" prefWidth="190px" text="Сгруппировать по типу" type="ToggleButtonDesignInfo"/>
+  <widget name="modelCheckBox" parent="toolBar" prefHeight="27px" prefWidth="150px" text="Товары в продаже" type="DbCheckDesignInfo" visible="false">
     <datamodelElement entityId="-1" fieldName="show_only_present"/>
   </widget>
-  <widget name="modelCheckBox1" parent="toolBar" prefHeight="20px" prefWidth="145px" text="Сгруппировать по типу" type="DbCheckDesignInfo">
+  <widget name="modelCheckBox1" parent="toolBar" prefHeight="27px" prefWidth="182px" text="Сгруппировать по типу" type="DbCheckDesignInfo" visible="false">
     <datamodelElement entityId="-1" fieldName="sort_by_type"/>
   </widget>
+  <widget actionPerformed="buttonActionPerformed" focusable="false" horizontalTextPosition="0" name="button" parent="toolBar" prefHeight="18px" prefWidth="48px" text="button" type="ButtonDesignInfo" verticalTextPosition="3" visible="false"/>
   <layout type="BorderLayoutDesignInfo"/>
 </layout>
