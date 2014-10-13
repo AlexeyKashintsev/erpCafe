@@ -146,6 +146,20 @@ function TradeSessions() {
     //TODO Написать функцию возвращающую список всех товаров на точке со всем и возможными бонусами
     //Обращение к БД всего один раз + передача списка доступных товаров на сторону клента (см tradeItemsByTradePointWithCost)
     //TODO - я кому предыдущий комент написал?
+    function getTradeItemsByTradePointWithCostAndBonuses(){
+        var items = {};
+        model.tradeItemsByTradePointWithCost.params.actual_date = new Date();
+        model.tradeItemsByTradePointWithCost.params.franchazi_id = session.getFranchazi();
+        model.tradeItemsByTradePointWithCost.params.trade_point_id = session.tradePoint;  
+        model.tradeItemsByTradePointWithCost.requery();
+        model.tradeItemsByTradePointWithCost.beforeFirst();
+        while (model.tradeItemsByTradePointWithCost.next()){
+            items[model.tradeItemsByTradePointWithCost.cursor.item_id].cost = model.tradeItemsByTradePointWithCost.cursor.item_cost;
+            items[model.tradeItemsByTradePointWithCost.cursor.item_id].name = model.tradeItemsByTradePointWithCost.cursor.item_name;
+        }
+    }
+    
+    
     /*
      * Получение количества бонусов за товар
      * @param {type} anItem
