@@ -3,13 +3,16 @@
     <parameter description="" name="item_type" nullable="true" parameterMode="1" precision="0" scale="0" selectionForm="null" signed="true" size="0" type="2" typeName="NUMERIC"/>
     <parameter description="" name="franchazi_id" nullable="true" parameterMode="1" precision="0" scale="0" selectionForm="null" signed="true" size="0" type="2" typeName="NUMERIC"/>
     <parameter description="" name="trade_point_id" nullable="true" parameterMode="1" precision="0" scale="0" selectionForm="null" signed="true" size="0" type="2" typeName="NUMERIC"/>
+    <parameter description="" name="show_type" nullable="true" parameterMode="1" precision="0" scale="0" selectionForm="null" signed="true" size="0" type="2" typeName="NUMERIC"/>
   </parameters>
   <parametersEntity entityHeight="200" entityIconified="false" entityLocationX="12" entityLocationY="12" entityWidth="150"/>
-  <entity Name="delItemsInWH" Title="" entityHeight="200" entityIconified="false" entityId="140541237238023" entityLocationX="448" entityLocationY="18" entityWidth="150" queryId="delItemsInWH" tableName="" tableSchemaName=""/>
+  <entity Name="delItemsInWH" Title="" entityHeight="53" entityIconified="false" entityId="140541237238023" entityLocationX="448" entityLocationY="18" entityWidth="150" queryId="delItemsInWH" tableName="" tableSchemaName=""/>
   <entity Name="qWarehouseItems" Title="" entityHeight="200" entityIconified="false" entityId="140784855997466" entityLocationX="249" entityLocationY="239" entityWidth="150" queryId="qWarehouseItems" tableName="" tableSchemaName=""/>
   <entity Name="itemType" Title="" entityHeight="200" entityIconified="false" entityId="140532276305367" entityLocationX="251" entityLocationY="18" entityWidth="150" onAfterScroll="itemTypeOnScrolled" queryId="itemType" tableName="" tableSchemaName=""/>
   <entity Name="queryMeasures" Title="" entityHeight="200" entityIconified="false" entityId="140532276543923" entityLocationX="17" entityLocationY="227" entityWidth="150" queryId="queryMeasures" tableName="" tableSchemaName=""/>
-  <relation leftEntityId="-1" leftEntityParameterName="item_type" polyline="168;44 228;44 228;271 243;271" rightEntityId="140784855997466" rightEntityParameterName="item_type"/>
+  <relation leftEntityId="-1" leftEntityParameterName="item_type" rightEntityId="140784855997466" rightEntityParameterName="item_type"/>
+  <relation leftEntityId="-1" leftEntityParameterName="franchazi_id" rightEntityId="140784855997466" rightEntityParameterName="franchazi_id"/>
+  <relation leftEntityId="-1" leftEntityParameterName="show_type" rightEntityId="140784855997466" rightEntityParameterName="show_type"/>
   <referenceRelation leftEntityFieldName="parent_type" leftEntityId="140532276305367" rightEntityFieldName="wh_item_types_id" rightEntityId="140532276305367"/>
   <referenceRelation leftEntityFieldName="item_measure" leftEntityId="140784855997466" rightEntityFieldName="wh_measures_id" rightEntityId="140532276543923"/>
   <referenceRelation leftEntityFieldName="item_type" leftEntityId="140784855997466" rightEntityFieldName="wh_item_types_id" rightEntityId="140532276305367"/>

@@ -2,7 +2,7 @@ WITH RECURSIVE tst AS
 (
     SELECT r.wh_item_types_id, r.type_description, r.parent_type, r.measure
     from wh_item_types r
-    where r.parent_type = :parent_type 
+    where r.wh_item_types_id = :parent_type 
         or (r.parent_type is null and (:parent_type is null or :parent_type = 0))
   UNION ALL
     select r.wh_item_types_id, r.type_description, r.parent_type, r.measure

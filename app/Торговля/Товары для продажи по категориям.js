@@ -31,8 +31,8 @@ function formWindowClosing(evt) {//GEN-FIRST:event_formWindowClosing
 }//GEN-LAST:event_formWindowClosing
 
     function btnAddActionPerformed(evt) {//GEN-FIRST:event_btnAddActionPerformed
-        if(model.qTradeItemTypes.cursor.trade_item_type_id == 0){
-            alert("Выберите тип товара");
+        if(model.qTradeItemTypes.cursor.trade_item_type_id <= 0) {
+            alert("Выберите тип товара отличный от \"Все товары\" и \"Мои товары\"");
         } else {
             model.qTradeItems.insert(
                     model.qTradeItems.schema.franchazi_id, model.params.franchazi_id,
@@ -84,7 +84,7 @@ function formWindowClosing(evt) {//GEN-FIRST:event_formWindowClosing
     model.qTradeItemTypes.requery();
     }//GEN-LAST:event_btnReq1ActionPerformed
 
-    function btnItemSelActionPerformed(evt) {//GEN-FIRST:event_btnItemSelActionPerformed
+    function btnItemEditContentActionPerformed(evt) {//GEN-FIRST:event_btnItemEditContentActionPerformed
         if(model.qTradeItems.length > 0) {
             if (model.modified&&confirm('Сохранить изменения?')){
                 model.save();
@@ -97,7 +97,7 @@ function formWindowClosing(evt) {//GEN-FIRST:event_formWindowClosing
         } else {
             alert('Вы не выбрали товар!');
         }
-    }//GEN-LAST:event_btnItemSelActionPerformed
+    }//GEN-LAST:event_btnItemEditContentActionPerformed
 
     function selectOnSelect(aEditor) {//GEN-FIRST:event_selectOnSelect
         model.save();
@@ -149,7 +149,7 @@ function formWindowClosing(evt) {//GEN-FIRST:event_formWindowClosing
         
     }//GEN-LAST:event_qTradeItemsWillChange
 
-    function btnItemSel1ActionPerformed(evt) {//GEN-FIRST:event_btnItemSel1ActionPerformed
+    function btnItemCreateDoubleActionPerformed(evt) {//GEN-FIRST:event_btnItemCreateDoubleActionPerformed
         model.qContents.params.trade_item_id = model.qTradeItems.cursor.trade_items_id;
         model.qTradeItems.insert(
             model.qTradeItems.schema.franchazi_id, model.params.franchazi_id,
@@ -168,9 +168,17 @@ function formWindowClosing(evt) {//GEN-FIRST:event_formWindowClosing
                 }
             }
         });    
-    }//GEN-LAST:event_btnItemSel1ActionPerformed
+    }//GEN-LAST:event_btnItemCreateDoubleActionPerformed
 
     function paramsOnChanged(evt) {//GEN-FIRST:event_paramsOnChanged
         // TODO Добавьте здесь свой код:
     }//GEN-LAST:event_paramsOnChanged
+
+    function rbAllActionPerformed(evt) {//GEN-FIRST:event_rbAllActionPerformed
+        model.params.show_type = 0;
+    }//GEN-LAST:event_rbAllActionPerformed
+
+    function rbMyActionPerformed(evt) {//GEN-FIRST:event_rbMyActionPerformed
+        model.params.show_type = 2;
+    }//GEN-LAST:event_rbMyActionPerformed
 }

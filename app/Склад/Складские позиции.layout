@@ -17,10 +17,9 @@
     <layout type="MarginLayoutDesignInfo"/>
   </widget>
   <widget name="modelGrid1" parent="panel1" prefHeight="263px" prefWidth="460px" type="DbGridDesignInfo">
-    <treeDesignInfo/>
     <column name="colItem_name" title="Наименование">
-      <datamodelElement entityId="140784855997466" fieldName="item_name"/>
       <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
+      <datamodelElement entityId="140784855997466" fieldName="item_name"/>
       <columnsDatasource/>
       <columnsDisplayField/>
       <cellsDatasource/>
@@ -34,11 +33,11 @@
       </headerStyle>
     </column>
     <column name="colType" title="Тип">
-      <datamodelElement entityId="140784855997466" fieldName="item_type"/>
       <controlInfo classHint="DbComboDesignInfo" name="view" prefHeight="0px" prefWidth="0px">
         <valueField entityId="140532276305367" fieldName="wh_item_types_id"/>
         <displayField entityId="140532276305367" fieldName="type_description"/>
       </controlInfo>
+      <datamodelElement entityId="140784855997466" fieldName="item_type"/>
       <columnsDatasource/>
       <columnsDisplayField/>
       <cellsDatasource/>
@@ -52,11 +51,11 @@
       </headerStyle>
     </column>
     <column name="colItem_measure" title="Ед измерения">
-      <datamodelElement entityId="140784855997466" fieldName="item_measure"/>
       <controlInfo classHint="DbComboDesignInfo" name="view" prefHeight="0px" prefWidth="0px">
         <valueField entityId="140532276543923" fieldName="wh_measures_id"/>
         <displayField entityId="140532276543923" fieldName="measure_desc"/>
       </controlInfo>
+      <datamodelElement entityId="140784855997466" fieldName="item_measure"/>
       <columnsDatasource/>
       <columnsDisplayField/>
       <cellsDatasource/>
@@ -70,8 +69,8 @@
       </headerStyle>
     </column>
     <column name="colFranchazi" title="Франчази">
-      <datamodelElement entityId="140784855997466" fieldName="franchazi_id"/>
       <controlInfo classHint="DbCheckDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
+      <datamodelElement entityId="140784855997466" fieldName="franchazi_id"/>
       <columnsDatasource/>
       <columnsDisplayField/>
       <cellsDatasource/>
@@ -87,8 +86,15 @@
     <rowsColumnsDesignInfo>
       <rowsDatasource entityId="140784855997466" field="false"/>
     </rowsColumnsDesignInfo>
+    <treeDesignInfo/>
     <constraints bottom="0px" left="0px" right="0px" top="31px" type="MarginConstraintsDesignInfo"/>
   </widget>
+  <widget borderPainted="false" floatable="false" name="toolBar1" parent="panel1" prefHeight="28px" prefWidth="240px" rollover="true" type="ToolbarDesignInfo">
+    <constraints height="28px" right="4px" top="0px" type="MarginConstraintsDesignInfo" width="240px"/>
+  </widget>
+  <widget actionPerformed="rbAllActionPerformed" buttonGroup="buttonGroup" name="rbAll" parent="toolBar1" prefHeight="23px" prefWidth="53px" selected="true" text="Все" type="RadioDesignInfo"/>
+  <widget actionPerformed="rbMyActionPerformed" buttonGroup="buttonGroup" name="rbMy" parent="toolBar1" prefHeight="23px" prefWidth="59px" text="Мои" type="RadioDesignInfo"/>
+  <widget actionPerformed="rbCommonActionPerformed" buttonGroup="buttonGroup" name="rbCommon" parent="toolBar1" prefHeight="23px" prefWidth="140px" text="Использованные" type="RadioDesignInfo"/>
   <widget floatable="false" name="toolBar" parent="panel1" prefHeight="31px" prefWidth="460px" rollover="true" type="ToolbarDesignInfo">
     <constraints height="31px" left="0px" right="0px" top="0px" type="MarginConstraintsDesignInfo"/>
   </widget>
@@ -100,12 +106,9 @@
     <layout type="MarginLayoutDesignInfo"/>
   </widget>
   <widget deletable="false" editable="false" insertable="false" mouseClicked="modelGridMouseClicked" name="modelGrid" parent="panel" prefHeight="294px" prefWidth="228px" type="DbGridDesignInfo">
-    <treeDesignInfo>
-      <unaryLinkField entityId="140532276305367" fieldName="parent_type"/>
-    </treeDesignInfo>
     <column name="colType_description" title="Тип товара">
-      <datamodelElement entityId="140532276305367" fieldName="type_description"/>
       <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
+      <datamodelElement entityId="140532276305367" fieldName="type_description"/>
       <columnsDatasource/>
       <columnsDisplayField/>
       <cellsDatasource/>
@@ -121,7 +124,11 @@
     <rowsColumnsDesignInfo>
       <rowsDatasource entityId="140532276305367" field="false"/>
     </rowsColumnsDesignInfo>
+    <treeDesignInfo>
+      <unaryLinkField entityId="140532276305367" fieldName="parent_type"/>
+    </treeDesignInfo>
     <constraints bottom="0px" left="0px" right="0px" top="0px" type="MarginConstraintsDesignInfo"/>
   </widget>
+  <nonvisual name="buttonGroup" type="ButtonGroupDesignInfo"/>
   <layout type="BorderLayoutDesignInfo"/>
 </layout>

@@ -13,4 +13,4 @@ Select 0 as trade_item_type_id, 'Все товары' as type_name, null as pare
 , null as settings
 From trade_item_type t) q
 group by trade_item_type_id, type_name, parent_type, settings
-order by q.trade_item_type_id desc
+order by q.trade_item_type_id

@@ -1,9 +1,9 @@
-Select 'type_'||t1.trade_item_type_id as r_id, t1.type_name as r_name
+(Select 'type_'||t1.trade_item_type_id as r_id, t1.type_name as r_name
 , 'type_'||t1.parent_type as r_parent
 , null as r_cost, null as r_old_cost
 , null as r_selected, null as r_selected2, null as add2TP
 From trade_item_type t1
-where :sort_by_type = true
+where :sort_by_type = true)
 union all
 select CAST (t.trade_items_id as text) as r_id, t.item_name as r_name
 , case when :sort_by_type = true then 'type_'||t.item_type else null end as r_parent
@@ -13,9 +13,9 @@ select CAST (t.trade_items_id as text) as r_id, t.item_name as r_name
 , null as add2TP
 From trade_items t
 left join trade_items_cost t2 on t.trade_items_id = t2.item_id
-                                and t2.franchazi_id = :franchazi_id
+                                and (t2.franchazi_id = :franchazi_id or t.franchazi_id is null)
                                 and t2.trade_point_id = :trade_point_id
                                 and :actual_date >= t2.start_date
                                 and (:actual_date < t2.end_date or t2.end_date is null)
- Where (:franchazi_id = t.franchazi_id or t.franchazi_id is null)
-    and ((:trade_point_id = t2.trade_point_id) or :show_only_present = false or :show_only_present is null or true)
+ Where :show_only_present = false
+ or :show_only_present is null or (:show_only_present = true and t2.item_cost is not null)

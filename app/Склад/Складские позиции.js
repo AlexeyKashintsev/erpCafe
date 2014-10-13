@@ -44,7 +44,7 @@ function formWindowClosing(evt) {//GEN-FIRST:event_formWindowClosing
 }//GEN-LAST:event_formWindowClosing
 
     function btnAddActionPerformed(evt) {//GEN-FIRST:event_btnAddActionPerformed
-        model.qWarehouseItems.insert(model.qWarehouseItems.schema.item_type, model.itemType.cursor.wh_item_types_id,
+        model.qWarehouseItems.insert(model.qWarehouseItems.schema.item_type, model.itemType.cursor.wh_item_types_id === 0 ? null : model.itemType.cursor.wh_item_types_id,
                                 model.qWarehouseItems.schema.franchazi_id, model.params.franchazi_id
                                 );
     }//GEN-LAST:event_btnAddActionPerformed
@@ -73,4 +73,16 @@ function formWindowClosing(evt) {//GEN-FIRST:event_formWindowClosing
     function itemTypeOnScrolled(evt) {//GEN-FIRST:event_itemTypeOnScrolled
         model.params.item_type = model.itemType.cursor.wh_item_types_id;
     }//GEN-LAST:event_itemTypeOnScrolled
+
+    function rbAllActionPerformed(evt) {//GEN-FIRST:event_rbAllActionPerformed
+        model.params.show_type = 0;
+    }//GEN-LAST:event_rbAllActionPerformed
+
+    function rbMyActionPerformed(evt) {//GEN-FIRST:event_rbMyActionPerformed
+        model.params.show_type = 2;
+    }//GEN-LAST:event_rbMyActionPerformed
+
+    function rbCommonActionPerformed(evt) {//GEN-FIRST:event_rbCommonActionPerformed
+        model.params.show_type = 1;
+    }//GEN-LAST:event_rbCommonActionPerformed
 }

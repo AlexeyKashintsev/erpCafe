@@ -1,10 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?><datamodel>
   <parameters>
     <parameter description="" name="item_type" nullable="true" parameterMode="1" precision="0" scale="0" selectionForm="null" signed="true" size="0" type="2" typeName="NUMERIC"/>
+    <parameter description="" name="show_type" nullable="true" parameterMode="1" precision="0" scale="0" selectionForm="null" signed="true" size="0" type="2" typeName="NUMERIC"/>
+    <parameter description="" name="franchazi_id" nullable="true" parameterMode="1" precision="0" scale="0" selectionForm="null" signed="true" size="0" type="2" typeName="NUMERIC"/>
   </parameters>
   <parametersEntity entityHeight="200" entityIconified="false" entityLocationX="8" entityLocationY="7" entityWidth="150"/>
   <entity Title="" entityHeight="200" entityIconified="false" entityId="140784846212310" entityLocationX="216" entityLocationY="9" entityWidth="150" tableAlias="t1" tableName="wh_items" tableSchemaName=""/>
   <entity Title="" entityHeight="200" entityIconified="false" entityId="141296836644229" entityLocationX="443" entityLocationY="12" entityWidth="150" queryId="qSubtypes" tableAlias="q" tableName="" tableSchemaName=""/>
+  <entity Title="" entityHeight="200" entityIconified="false" entityId="141318197100090" entityLocationX="646" entityLocationY="12" entityWidth="150" queryId="qWHItemsByFranchazi" tableAlias="q1" tableName="" tableSchemaName=""/>
   <relation leftEntityFieldName="wh_item_types_id" leftEntityId="141296836644229" rightEntityFieldName="item_type" rightEntityId="140784846212310"/>
+  <relation leftEntityFieldName="wh_items_id" leftEntityId="140784846212310" rightEntityFieldName="item_id" rightEntityId="141318197100090"/>
+  <relation leftEntityId="-1" leftEntityParameterName="show_type" rightEntityFieldName="item_type" rightEntityId="140784846212310"/>
   <relation leftEntityId="-1" leftEntityParameterName="item_type" rightEntityId="141296836644229" rightEntityParameterName="parent_type"/>
+  <relation leftEntityId="-1" leftEntityParameterName="franchazi_id" rightEntityId="141318197100090" rightEntityParameterName="franchazi_id"/>
 </datamodel>
