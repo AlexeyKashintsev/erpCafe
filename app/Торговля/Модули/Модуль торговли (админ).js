@@ -7,6 +7,8 @@
 function TradeAdminModule() {
     var self = this, model = this.model;
     var franchazi = null;
+    var session = Modules.get("UserSession");
+
     self.OP_TYPE_STAY_CASH = 11; // операция снятия кассы
 
     //Возвращает true, если на точке или франшизе есть записи
@@ -102,7 +104,10 @@ function TradeAdminModule() {
         closeItemOnTradePointOrFranchazi(anItem, aTradePoint, aFranchazi, aEndDate);
         model.save();
     };
-    
+    /*
+     * Списание денег с кассы
+     * 
+     */
     self.stayCash = function(aSessionId, aSum, aTradePoint){
         if(!aSessionId){
             model.qLastSessionOnTradePoint.params.trade_point_id = aTradePoint;
@@ -118,7 +123,7 @@ function TradeAdminModule() {
             model.qTradeOperationBySession.cursor.operation_date = new Date();
             model.qTradeOperationBySession.cursor.operation_type = self.OP_TYPE_STAY_CASH;
             model.qTradeOperationBySession.cursor.session_id = aSessionId;
-            model.qTradeOperationBySession.cursor.user_name = self.principal.name;
+            model.qTradeOperationBySession.cursor.user_name = session.getUserName();
             model.save();
             return model.qTradeOperationBySession.cursor.trade_cash_box_operation_id;
         } else return false;
