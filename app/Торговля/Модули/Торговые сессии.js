@@ -146,6 +146,20 @@ function TradeSessions() {
     //TODO Написать функцию возвращающую список всех товаров на точке со всем и возможными бонусами
     //Обращение к БД всего один раз + передача списка доступных товаров на сторону клента (см tradeItemsByTradePointWithCost)
     //TODO - я кому предыдущий комент написал?
+    function getTradeItemsByTradePointWithCostAndBonuses(){
+        var items = {};
+        model.tradeItemsByTradePointWithCost.params.actual_date = new Date();
+        model.tradeItemsByTradePointWithCost.params.franchazi_id = session.getFranchazi();
+        model.tradeItemsByTradePointWithCost.params.trade_point_id = session.tradePoint;  
+        model.tradeItemsByTradePointWithCost.requery();
+        model.tradeItemsByTradePointWithCost.beforeFirst();
+        while (model.tradeItemsByTradePointWithCost.next()){
+            items[model.tradeItemsByTradePointWithCost.cursor.item_id].cost = model.tradeItemsByTradePointWithCost.cursor.item_cost;
+            items[model.tradeItemsByTradePointWithCost.cursor.item_id].name = model.tradeItemsByTradePointWithCost.cursor.item_name;
+        }
+    }
+    
+    
     /*
      * Получение количества бонусов за товар
      * @param {type} anItem
@@ -206,15 +220,13 @@ function TradeSessions() {
      * @returns {@this;@pro;model.tradeItemCost.cursor.item_cost}
      */
     function getCostByItem(anItem, aTpId) {
-
         model.tradeItemCost.params.date_id = new Date();
         model.tradeItemCost.params.item_id = anItem;
         model.tradeItemCost.params.trade_point_id = aTpId;
         model.tradeItemCost.requery();
         return model.tradeItemCost.cursor.item_cost;
     }
-//Вообще цену здесь можно сравнивать и в основную функцию возвращать true/false
-// checkOrderSum(anItems, aSum)
+
     function calculateOrderSum(anItems) {
         var sum = 0;
         model.qOpenedSession.params.user_name = session.getUserName();
@@ -224,7 +236,12 @@ function TradeSessions() {
         }
         return sum;
     }
-
+    
+    function checkOrderSum(anItems, aSum){
+        if (calculateOrderSum(anItems) !== aSum) return false;
+        else return true;
+    }
+    
     /*
      * Процесс продажи
      * @param {type} anOrderDetails
@@ -236,11 +253,10 @@ function TradeSessions() {
             model.params.session_id = getCurrentSession();
         }
 
-   /*     var ServerSum = calculateOrderSum(anOrderDetails.orderItems);
-        if (anOrderDetails.orderSum !== ServerSum) {
+        if (!checkOrderSum(anOrderDetails.orderItems, anOrderDetails.orderSum)) {
             ep.addEvent('sumDifference', {client: anOrderDetails, server: ServerSum});
             return 1;
-        }*/
+        }
 
         if (anOrderDetails.clientData)
             client = clientModule.getClientDataByPhone(anOrderDetails.clientData.phone);
@@ -291,8 +307,7 @@ function TradeSessions() {
                 billing.bonusOperation(client, BonusOperation, BonusCount, TradeOperationId);
             }
 
-        }
-        ;
+        };
         return 0;
     };
 }
