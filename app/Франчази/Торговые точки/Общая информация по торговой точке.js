@@ -70,8 +70,8 @@ function TradePointCommonInfo(aTradePointDetails, aContainer) {
                     '<span class="glyphicon glyphicon-time"></span>   ' + tradePointDetails.start_date.getHours() + ':' + tradePointDetails.start_date.getMinutes() + ' | ' +
                     (tradePointDetails.end_date ? tradePointDetails.end_date.getHours() + ':' + tradePointDetails.end_date.getMinutes() : '--:--') + '<br>' +
                     'Визитов:  ' + tradePointDetails.operationsCount + '<br>' +
-                    'Доход:   ' + tradePointDetails.operationsSum + ' рублей<br>' +
-                    'Касса:   ' + (tradePointDetails.startValue ? tradePointDetails.startValue : '') + tradePointDetails.operationsSum + ' рублей';
+                    'Доход:   ' + (tradePointDetails.operationsSum ?  tradePointDetails.operationsSum + ' рублей<br>' : ' нет данных<br>') +
+                    'Касса:   ' + ((tradePointDetails.startValue ? tradePointDetails.startValue : 0) + (tradePointDetails.operationsSum ?  tradePointDetails.operationsSum : 0)) + ' рублей';
             var btnEmptyCashBox = cmn.createElement("button", "btn btn-success btn-xs btn-block", currentSession);
             btnEmptyCashBox.innerHTML = 'Снять кассу';
             btnEmptyCashBox.onclick = btnEmptyCashBoxOnClick;
