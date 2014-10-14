@@ -50,7 +50,7 @@ function TradePointCommonInfo(aTradePointDetails, aContainer) {
         var sum = prompt("Сколько денег вы хотите снять?", 0);
         var dohod = ((tradePointDetails.startValue ? tradePointDetails.startValue : 0) + (tradePointDetails.operationsSum ?  tradePointDetails.operationsSum : 0));
         if(dohod >= sum){
-            if(tradeAdminModule.stayCash(tradePointDetails.org_trade_point_id, sum, tradePointDetails.org_trade_point_id))
+            if(tradeAdminModule.stayCash(false, sum, tradePointDetails.org_trade_point_id))
                 alert("Деньги списаны.");
         } else  alert("В кассе нет "+sum+" рублей");
     }
