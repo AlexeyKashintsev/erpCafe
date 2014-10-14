@@ -2,10 +2,10 @@
   <fieldsEntity entityHeight="85" entityIconified="false" entityId="140705851491153" entityLocationX="597" entityLocationY="207" entityWidth="144" tableName="trade_cash_box_balance"/>
   <fieldsEntity entityHeight="200" entityIconified="false" entityId="140567491555949" entityLocationX="46" entityLocationY="238" entityWidth="150" tableName="trade_items_cost"/>
   <fieldsEntity entityHeight="200" entityIconified="false" entityId="140567491554203" entityLocationX="46" entityLocationY="22" entityWidth="150" tableName="org_trade_point"/>
-  <fieldsEntity entityHeight="128" entityIconified="false" entityId="141267944538570" entityLocationX="596" entityLocationY="16" entityWidth="150" tableName="trade_cash_box_operation_types"/>
+  <fieldsEntity entityHeight="128" entityIconified="false" entityId="141267944538570" entityLocationX="595" entityLocationY="16" entityWidth="150" tableName="trade_cash_box_operation_types"/>
   <fieldsEntity entityHeight="200" entityIconified="false" entityId="140567491556569" entityLocationX="218" entityLocationY="19" entityWidth="167" tableName="trade_operations"/>
   <fieldsEntity entityHeight="200" entityIconified="false" entityId="140654881856927" entityLocationX="422" entityLocationY="232" entityWidth="150" tableName="org_session"/>
-  <fieldsEntity entityHeight="200" entityIconified="false" entityId="140567491554660" entityLocationX="421" entityLocationY="16" entityWidth="144" tableName="trade_cash_box_operation"/>
+  <fieldsEntity entityHeight="200" entityIconified="false" entityId="140567491554660" entityLocationX="420" entityLocationY="16" entityWidth="144" tableName="trade_cash_box_operation"/>
   <fieldsEntity entityHeight="200" entityIconified="false" entityId="140654869018643" entityLocationX="598" entityLocationY="300" entityWidth="150" tableName="mtd_users"/>
   <fieldsEntity entityHeight="200" entityIconified="false" entityId="140567491555313" entityLocationX="231" entityLocationY="238" entityWidth="150" tableName="trade_items"/>
 </datamodel>

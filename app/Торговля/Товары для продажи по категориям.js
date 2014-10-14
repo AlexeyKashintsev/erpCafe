@@ -113,7 +113,8 @@ function formWindowClosing(evt) {//GEN-FIRST:event_formWindowClosing
             if(flag == 0){
                 model.qTradeItems.insert(
                     model.qTradeItems.schema.franchazi_id, model.params.franchazi_id,
-                    model.qTradeItems.schema.item_type, model.qTradeItemTypes.cursor.trade_item_type_id
+                    model.qTradeItems.schema.item_type, model.qTradeItemTypes.cursor.trade_item_type_id,
+                    model.qTradeItems.schema.original_id, model.qTradeItems.cursor.trade_items_id
                 );
                 flag = 1;
                 
@@ -135,7 +136,6 @@ function formWindowClosing(evt) {//GEN-FIRST:event_formWindowClosing
                         if(model.qTradeItems.cursor.item_name == evt.newValue){
                             model.qTradeItems.cursor.item_name = evt.oldValue;
                             flag = 0;
-
                         } 
                         if(!model.qTradeItems.cursor.item_name)
                             model.qTradeItems.cursor.item_name = evt.newValue;
@@ -154,7 +154,8 @@ function formWindowClosing(evt) {//GEN-FIRST:event_formWindowClosing
         model.qTradeItems.insert(
             model.qTradeItems.schema.franchazi_id, model.params.franchazi_id,
             model.qTradeItems.schema.item_type, model.qTradeItemTypes.cursor.trade_item_type_id,
-            model.qTradeItems.schema.item_name, model.qTradeItems.cursor.item_name
+            model.qTradeItems.schema.item_name, model.qTradeItems.cursor.item_name,
+            model.qTradeItems.schema.original_id, model.qTradeItems.cursor.trade_items_id
         ); 
         model.qContents.requery(function(){
             if(model.qContents.length > 0){
