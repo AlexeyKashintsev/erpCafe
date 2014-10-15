@@ -11,6 +11,7 @@ function TradeSessions() {
     var billing = new BillModule();
     var ep = new EventProcessor();
     var session = Modules.get("UserSession");
+    var sessionItems = {};
 
     /*
      * Типы операций
@@ -147,15 +148,14 @@ function TradeSessions() {
     //Обращение к БД всего один раз + передача списка доступных товаров на сторону клента (см tradeItemsByTradePointWithCost)
     //TODO - я кому предыдущий комент написал?
     function getTradeItemsByTradePointWithCostAndBonuses(){
-        var items = {};
         model.tradeItemsByTradePointWithCost.params.actual_date = new Date();
         model.tradeItemsByTradePointWithCost.params.franchazi_id = session.getFranchazi();
         model.tradeItemsByTradePointWithCost.params.trade_point_id = session.tradePoint;  
         model.tradeItemsByTradePointWithCost.requery();
         model.tradeItemsByTradePointWithCost.beforeFirst();
         while (model.tradeItemsByTradePointWithCost.next()){
-            items[model.tradeItemsByTradePointWithCost.cursor.item_id].cost = model.tradeItemsByTradePointWithCost.cursor.item_cost;
-            items[model.tradeItemsByTradePointWithCost.cursor.item_id].name = model.tradeItemsByTradePointWithCost.cursor.item_name;
+            sessionItems[model.tradeItemsByTradePointWithCost.cursor.item_id].cost = model.tradeItemsByTradePointWithCost.cursor.item_cost;
+            sessionItems[model.tradeItemsByTradePointWithCost.cursor.item_id].name = model.tradeItemsByTradePointWithCost.cursor.item_name;
         }
     }
     
@@ -218,22 +218,22 @@ function TradeSessions() {
      * TODO Искоренить сие зло
      * @param {type} aItemId
      * @returns {@this;@pro;model.tradeItemCost.cursor.item_cost}
-     */
+     *
     function getCostByItem(anItem, aTpId) {
         model.tradeItemCost.params.date_id = new Date();
         model.tradeItemCost.params.item_id = anItem;
         model.tradeItemCost.params.trade_point_id = aTpId;
         model.tradeItemCost.requery();
         return model.tradeItemCost.cursor.item_cost;
-    }
+    }*/
 
     function calculateOrderSum(anItems) {
         var sum = 0;
         model.qOpenedSession.params.user_name = session.getUserName();
         var tpid = model.qOpenedSession.cursor.trade_point;
         for (var i in anItems) {//TODO Запросить все товары на точке одним запросом при открытии сессии
-            sum += getCostByItem(anItems[i].itemId, tpid) * anItems[i].quantity;
-        }
+            sum += sessionItems[anItems[i].itemId] * anItems[i].quantity;//getCostByItem(anItems[i].itemId, tpid) * anItems[i].quantity;
+        };
         return sum;
     }
     
@@ -253,10 +253,10 @@ function TradeSessions() {
             model.params.session_id = getCurrentSession();
         }
 
-        if (!checkOrderSum(anOrderDetails.orderItems, anOrderDetails.orderSum)) {
+       /* if (!checkOrderSum(anOrderDetails.orderItems, anOrderDetails.orderSum)) {
             ep.addEvent('sumDifference', {client: anOrderDetails, server: ServerSum});
             return 1;
-        }
+        }*/
 
         if (anOrderDetails.clientData)
             client = clientModule.getClientDataByPhone(anOrderDetails.clientData.phone);
