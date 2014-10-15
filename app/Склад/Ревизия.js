@@ -14,6 +14,7 @@ function RevisionForm() {
     self.end_items = {};
     self.session_id;
     self.closing = false;
+    
     function getStartValues() {
         whSessionModule.setTradePoint(model.params.trade_point_id);
         self.session_id = whSessionModule.createSession(false, true);
@@ -35,11 +36,10 @@ function RevisionForm() {
     }
     
     function formWindowOpened(evt) {//GEN-FIRST:event_formWindowOpened
-        getStartValues();
         self.closing = false;
     }//GEN-LAST:event_formWindowOpened
 
-    function buttonActionPerformed(evt) {//GEN-FIRST:event_buttonActionPerformed
+    function btnMakeRevisionActionPerformed(evt) {//GEN-FIRST:event_btnMakeRevisionActionPerformed
         model.itemsByTP.beforeFirst();
         while (model.itemsByTP.next()) {
             if(model.itemsByTP.cursor.end_value){
@@ -52,7 +52,7 @@ function RevisionForm() {
         closeSession(self.end_items);
         self.closing = true;
         form.close(true);
-    }//GEN-LAST:event_buttonActionPerformed
+    }//GEN-LAST:event_btnMakeRevisionActionPerformed
 
     function formWindowClosing(evt) {//GEN-FIRST:event_formWindowClosing
         if(!self.closing){
@@ -63,19 +63,20 @@ function RevisionForm() {
     }//GEN-LAST:event_formWindowClosing
 
     function itemsByTPOnRequeried(evt) {//GEN-FIRST:event_itemsByTPOnRequeried
-        if (self.items.length > 0) {
+        //if (self.items.length > 0) {
             model.itemsByTP.beforeFirst();
             while (model.itemsByTP.next()) {
                 model.itemsByTP.cursor.start_value = self.items[model.itemsByTP.cursor.item_id];
             }
-        }
+            getStartValues();
+        //}
     }//GEN-LAST:event_itemsByTPOnRequeried
 
-    function button1ActionPerformed(evt) {//GEN-FIRST:event_button1ActionPerformed
+    function btnCancelActionPerformed(evt) {//GEN-FIRST:event_btnCancelActionPerformed
         if(self.session_id){
             whSessionModule.delRevision(self.session_id);
             self.closing = true;
         }
         form.close(true);
-    }//GEN-LAST:event_button1ActionPerformed
+    }//GEN-LAST:event_btnCancelActionPerformed
 }
