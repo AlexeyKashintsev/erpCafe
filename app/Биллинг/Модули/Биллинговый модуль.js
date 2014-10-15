@@ -319,7 +319,7 @@ function BillModule() {
          // Проведение бонусной операции со счетом клиента
         var BillOperation = self.addBillOperation(aClient.bonusBill, aBonusOperation, aCount);
         connectBillAndTradeOperation(aTradeOperationId, BillOperation);
-        if (aBonusOperation === self.OPERATION_ADD_BONUS){
+      /*  if (aBonusOperation === self.OPERATION_ADD_BONUS){
             sender.sendMessage(sender.BONUS_ADD, {
                 username:   aClient.firstName,
                 count   :   aCount,
@@ -335,7 +335,7 @@ function BillModule() {
                 email   :   aClient.email,
                 subject :   "Информационное сообщение сети кафе ERP"
             });
-        }
+        }*/
         model.save();
     };
 }
