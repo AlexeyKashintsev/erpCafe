@@ -115,17 +115,19 @@ function TradeSessions() {
      */
     function WhItemsConsumption(anItemId, aQuantity, aTradeOperationId) {
         var WhItemsConsump = [];
+        var empty = true;
         model.qContents.params.trade_item_id = anItemId;
         model.qContents.execute();
         model.qContents.beforeFirst();
         while (model.qContents.next()) {
+            empty = false;
             if (WhItemsConsump[model.qContents.cursor.wh_item]) {///Что-то здесь поправил!!!!! TODO Проверить
                 WhItemsConsump[model.qContents.cursor.wh_item] += model.qContents.cursor.usage_quantity * aQuantity;
             } else {
                 WhItemsConsump[model.qContents.cursor.wh_item] = model.qContents.cursor.usage_quantity * aQuantity;
             }
         }
-        if (WhItemsConsump.length > 0)
+        if (!empty)
             try {
                 whSession.whMovement(WhItemsConsump, whSession.WH_PRODUCE_ITEMS);
             } catch (e) {
