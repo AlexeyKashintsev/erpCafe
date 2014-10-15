@@ -122,6 +122,8 @@ function WhSessionModule() {
         if (aTradePoint)
             self.setTradePoint(aTradePoint);
         
+        self.getCurrentSession();
+        
         if (self.getCurrentSession()) {
             model.querySessionBalance.params.session_id = model.params.session_id;
             model.querySessionBalance.requery();
@@ -206,7 +208,7 @@ function WhSessionModule() {
      * @returns {Array}
      */
     function getValuesBySession(aSession, aEndValue) {
-        var values = [];
+        var values = {};
         model.querySessionBalance.params.session_id = aSession;
         model.querySessionBalance.requery();
         model.querySessionBalance.beforeFirst();

@@ -153,4 +153,12 @@ function btnSaveActionPerformed(evt) {//GEN-FIRST:event_btnSaveActionPerformed
     function tbSortByTypeActionPerformed(evt) {//GEN-FIRST:event_tbSortByTypeActionPerformed
         model.params.sort_by_type = this.selected ? true : null;
     }//GEN-LAST:event_tbSortByTypeActionPerformed
+
+    function rbAllActionPerformed(evt) {//GEN-FIRST:event_rbAllActionPerformed
+        model.params.show_type = 0;
+    }//GEN-LAST:event_rbAllActionPerformed
+
+    function rbMyActionPerformed(evt) {//GEN-FIRST:event_rbMyActionPerformed
+        model.params.show_type = 2;
+    }//GEN-LAST:event_rbMyActionPerformed
 }

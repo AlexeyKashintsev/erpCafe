@@ -4,12 +4,16 @@
  * @name qTradeItemsAndType
  * @public
  * @readonly
- */
-Select t1.trade_item_type_id as r_id, t1.type_name as r_name
-, 'aaa' as r_parent
-, null as r_cost, null as r_old_cost
-, null as r_selected, null as r_selected2, null as add2TP
+ */ 
+Select t1.trade_item_type_id AS r_id, t1.type_name AS r_name, 'aaa' AS r_parent
+, null AS r_cost, null AS r_old_cost, null AS r_selected
+, null AS r_selected2, null AS add2TP 
 From trade_item_type t1
-left join trade_items t on t1.trade_item_type_id = t.item_type
-left join trade_items_cost t2 on t.trade_items_id = t2.item_id
-where :sort_by_type = true
+ Left Join trade_items t on t1.trade_item_type_id = t.item_type
+ Left Join trade_items_cost t2 on t.trade_items_id = t2.item_id
+ Where :sort_by_type = true
+ and :show_type = t2.settings
+ and :trade_point_id = t2.trade_point_id
+ and :franchazi_id = t2.trade_items_cost_id
+ and :actual_date = t2.start_date
+ and :actual_date = t2.end_date

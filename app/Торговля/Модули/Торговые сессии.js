@@ -11,7 +11,7 @@ function TradeSessions() {
     var billing = new BillModule();
     var ep = new EventProcessor();
     var session = Modules.get("UserSession");
-    var sessionItems = [];
+    var sessionItems = {};
     getTradeItemsByTradePointWithCostAndBonuses();
     /*
      * Типы операций
@@ -115,17 +115,19 @@ function TradeSessions() {
      */
     function WhItemsConsumption(anItemId, aQuantity, aTradeOperationId) {
         var WhItemsConsump = [];
+        var empty = true;
         model.qContents.params.trade_item_id = anItemId;
         model.qContents.execute();
         model.qContents.beforeFirst();
         while (model.qContents.next()) {
+            empty = false;
             if (WhItemsConsump[model.qContents.cursor.wh_item]) {///Что-то здесь поправил!!!!! TODO Проверить
                 WhItemsConsump[model.qContents.cursor.wh_item] += model.qContents.cursor.usage_quantity * aQuantity;
             } else {
                 WhItemsConsump[model.qContents.cursor.wh_item] = model.qContents.cursor.usage_quantity * aQuantity;
             }
         }
-        if (WhItemsConsump.length > 0)
+        if (!empty)
             try {
                 whSession.whMovement(WhItemsConsump, whSession.WH_PRODUCE_ITEMS);
             } catch (e) {
@@ -222,22 +224,22 @@ function TradeSessions() {
      * TODO Искоренить сие зло
      * @param {type} aItemId
      * @returns {@this;@pro;model.tradeItemCost.cursor.item_cost}
-     */
+     *
     function getCostByItem(anItem, aTpId) {
         model.tradeItemCost.params.date_id = new Date();
         model.tradeItemCost.params.item_id = anItem;
         model.tradeItemCost.params.trade_point_id = aTpId;
         model.tradeItemCost.requery();
         return model.tradeItemCost.cursor.item_cost;
-    }
+    }*/
 
     function calculateOrderSum(anItems) {
         var sum = 0;
         model.qOpenedSession.params.user_name = session.getUserName();
         var tpid = model.qOpenedSession.cursor.trade_point;
         for (var i in anItems) {//TODO Запросить все товары на точке одним запросом при открытии сессии
-            sum += getCostByItem(anItems[i].itemId, tpid) * anItems[i].quantity;
-        }
+            sum += sessionItems[anItems[i].itemId] * anItems[i].quantity;//getCostByItem(anItems[i].itemId, tpid) * anItems[i].quantity;
+        };
         return sum;
     }
     
@@ -257,10 +259,10 @@ function TradeSessions() {
             model.params.session_id = getCurrentSession();
         }
 
-        if (!checkOrderSum(anOrderDetails.orderItems, anOrderDetails.orderSum)) {
+       /* if (!checkOrderSum(anOrderDetails.orderItems, anOrderDetails.orderSum)) {
             ep.addEvent('sumDifference', {client: anOrderDetails, server: ServerSum});
             return 1;
-        }
+        }*/
 
         if (anOrderDetails.clientData)
             client = clientModule.getClientDataByPhone(anOrderDetails.clientData.phone);
@@ -293,7 +295,6 @@ function TradeSessions() {
                     ep.addEvent('errorMethodOfPaymentIsNull', anOrderDetails);
                     return "error";
             }
-            sessionItems.cool = 0;
 
             var TradeOperationId = TradeOperationAddToCashBox(anOrderDetails.orderSum,
                     OperationType,
