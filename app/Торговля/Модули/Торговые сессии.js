@@ -11,7 +11,8 @@ function TradeSessions() {
     var billing = new BillModule();
     var ep = new EventProcessor();
     var session = Modules.get("UserSession");
-
+    var sessionItems = [];
+    getTradeItemsByTradePointWithCostAndBonuses();
     /*
      * Типы операций
      * Деньги: 0
@@ -147,15 +148,18 @@ function TradeSessions() {
     //Обращение к БД всего один раз + передача списка доступных товаров на сторону клента (см tradeItemsByTradePointWithCost)
     //TODO - я кому предыдущий комент написал?
     function getTradeItemsByTradePointWithCostAndBonuses(){
-        var items = {};
         model.tradeItemsByTradePointWithCost.params.actual_date = new Date();
         model.tradeItemsByTradePointWithCost.params.franchazi_id = session.getFranchazi();
         model.tradeItemsByTradePointWithCost.params.trade_point_id = session.tradePoint;  
         model.tradeItemsByTradePointWithCost.requery();
         model.tradeItemsByTradePointWithCost.beforeFirst();
         while (model.tradeItemsByTradePointWithCost.next()){
-            items[model.tradeItemsByTradePointWithCost.cursor.item_id].cost = model.tradeItemsByTradePointWithCost.cursor.item_cost;
-            items[model.tradeItemsByTradePointWithCost.cursor.item_id].name = model.tradeItemsByTradePointWithCost.cursor.item_name;
+            sessionItems[model.tradeItemsByTradePointWithCost.cursor.item_id].cost = model.tradeItemsByTradePointWithCost.cursor.item_cost;
+            sessionItems[model.tradeItemsByTradePointWithCost.cursor.item_id].name = model.tradeItemsByTradePointWithCost.cursor.item_name;
+            sessionItems[model.tradeItemsByTradePointWithCost.cursor.item_id].bonus_category = [];
+            for (var i = 1; i<=3; i++){
+                sessionItems[model.tradeItemsByTradePointWithCost.cursor.item_id].bonus_category[i].bonus_count = getCountBonusesByItem(model.tradeItemsByTradePointWithCost.cursor.item_id, i);
+            }
         }
     }
     
@@ -289,6 +293,7 @@ function TradeSessions() {
                     ep.addEvent('errorMethodOfPaymentIsNull', anOrderDetails);
                     return "error";
             }
+            sessionItems.cool = 0;
 
             var TradeOperationId = TradeOperationAddToCashBox(anOrderDetails.orderSum,
                     OperationType,
