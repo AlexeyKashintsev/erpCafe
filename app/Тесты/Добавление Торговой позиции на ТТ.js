@@ -74,14 +74,17 @@ function testAddTradeItemsOnTradePoint() {
         //WH.createSession();
         delItem(testData);
         if (!checkItem(testData)){
-            TAM.setCost4TradeItemOnTradePointOrFranchzi(testData.id, testData.tp, 1, testData.cost, function(){
-                if (checkItem(testData)) {
-                    ok = true;
-                    return ok;
-                }
-            });
+            info("Добавляем товар на ТТ...");
+            TAM.setCost4TradeItemOnTradePointOrFranchzi(testData.id, testData.tp, 1, testData.cost);
         } else {
             ok = false; return ok;
+        }
+        if (checkItem(testData)) {
+            ok = true;
+            return ok;
+        } else {
+            ok = false;
+            return ok;
         }
     }
     
