@@ -42,7 +42,7 @@ function testAddTradeItemsOnTradePoint() {
         model.tradeItemsByTP.params.trade_point_id = data.tp;
         model.tradeItemsByTP.requery();
         if (model.tradeItemsByTP.length > 0){
-            info("На точке уже есть такой товар. Удаляем...")
+            info("На точке уже есть такой товар. Удаляем...");
             model.tradeItemsByTP.deleteRow();
         }
         model.save();
