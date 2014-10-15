@@ -86,11 +86,12 @@ function TradePointCommonInfo(aTradePointDetails, aContainer) {
                     (tradePointDetails.end_date ? tradePointDetails.end_date.getHours() + ':' + tradePointDetails.end_date.getMinutes() : '--:--') + '<br>';              
             
             additionalInfo = cmn.createElement("span","",currentSession);
-            var opRemove = (tradePointDetails.operationsRemove ?  tradePointDetails.operationsRemove : 0) * 1.0;
-            var opSum = (tradePointDetails.operationsSum ?  tradePointDetails.operationsSum : 0) * 1.0;
-            var startValue = (tradePointDetails.startValue ? tradePointDetails.startValue : 0) * 1.0;
-            kassa = 
-            dohod =  
+            
+            var opRemove = (tradePointDetails.operationsRemove ?  tradePointDetails.operationsRemove : 0)*1;
+            var opSum = (tradePointDetails.operationsSum ?  tradePointDetails.operationsSum : 0)*1;
+            var startValue = (tradePointDetails.startValue ? tradePointDetails.startValue : 0)*1;
+            kassa = startValue + opSum - opRemove;
+            dohod = startValue + opSum;
             setAdditionalInfo(dohod, kassa);
             
             var btnEmptyCashBox = cmn.createElement("button", "btn btn-success btn-xs btn-block", currentSession);

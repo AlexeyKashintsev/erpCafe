@@ -110,10 +110,10 @@ function TradeAdminModule() {
      */
     self.takeMoneyFromCashbox = function(aSessionId, aSum, aTradePoint){
         if(!aSessionId){
-            model.qLastSessionOnTradePoint.params. trade_point_id = aTradePoint;
-            model.qLastSessionOnTradePoint.requery();
+            model.qLastClosedSessionOnTradePoint.params. trade_point_id = aTradePoint;
+            model.qLastClosedSessionOnTradePoint.requery();
             //model.qLastClosedSessionOnTradePoint.executeUpdate();
-            aSessionId = model.qLastSessionOnTradePoint.cursor.org_session_id;
+            aSessionId = model.qLastClosedSessionOnTradePoint.cursor.org_session_id;
         }
         model.getSessions.params.session_id = aSessionId;
         model.getSessions.requery();
