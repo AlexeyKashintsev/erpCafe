@@ -11,7 +11,7 @@ function RevisionForm() {
     };
     
     self.items = [];
-    self.end_items = [];
+    self.end_items = {};
     self.session_id;
     self.closing = false;
     function getStartValues() {
