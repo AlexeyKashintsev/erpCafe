@@ -9,7 +9,7 @@ function TradeAdminModule() {
     var franchazi = null;
     var session = Modules.get("UserSession");
 
-    self.OP_TYPE_STAY_CASH = 11; // операция снятия кассы
+    self.OP_TYPE_REMOVE_CASH = 101; // операция снятия кассы
 
     //Возвращает true, если на точке или франшизе есть записи
     function setTradeItemOnTradePoint(anItem, aTradePoint, aFranchazi, aDate) {
@@ -108,11 +108,11 @@ function TradeAdminModule() {
      * Списание денег с кассы
      * 
      */
-    self.stayCash = function(aSessionId, aSum, aTradePoint){
+    self.takeMoneyFromCashbox = function(aSessionId, aSum, aTradePoint){
         if(!aSessionId){
-            model.qLastSessionOnTradePoint.params.trade_point_id = aTradePoint;
+            model.qLastSessionOnTradePoint.params. trade_point_id = aTradePoint;
             model.qLastSessionOnTradePoint.requery();
-            //model.qLastSessionOnTradePoint.executeUpdate();
+            //model.qLastClosedSessionOnTradePoint.executeUpdate();
             aSessionId = model.qLastSessionOnTradePoint.cursor.org_session_id;
         }
         model.getSessions.params.session_id = aSessionId;
@@ -121,7 +121,7 @@ function TradeAdminModule() {
             model.qTradeOperationBySession.insert();
             model.qTradeOperationBySession.cursor.operation_sum = aSum;
             model.qTradeOperationBySession.cursor.operation_date = new Date();
-            model.qTradeOperationBySession.cursor.operation_type = self.OP_TYPE_STAY_CASH;
+            model.qTradeOperationBySession.cursor.operation_type = self.OP_TYPE_REMOVE_CASH;
             model.qTradeOperationBySession.cursor.session_id = aSessionId;
             model.qTradeOperationBySession.cursor.user_name = session.getUserName();
             model.save();

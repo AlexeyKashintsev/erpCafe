@@ -125,7 +125,7 @@ function WHSessionBalance(aWarehouse, aContainer) {
             self.setWarehouse(aWarehouse);
         Logger.info("Получение сессии для склада: " + model.params.trade_point_id);
         model.queryOpenedSession.requery(function(){proceedLast();});
-        model.qLastSessionOnTradePoint.requery(function(){proceedLast();});
+        model.qLastClosedSessionOnTradePoint.requery(function(){proceedLast();});
         
         var pLEC = 0;//Счетчик запусков для определения последней сессии
         function proceedLast() {
@@ -133,8 +133,8 @@ function WHSessionBalance(aWarehouse, aContainer) {
             if (model.queryOpenedSession.length > 0 && pLEC < 3) {
                 self.setSession(model.queryOpenedSession.cursor.org_session_id);
                 pLEC = 10;
-            } else if (pLEC === 2 && model.qLastSessionOnTradePoint.length > 0) {
-                self.setSession(model.qLastSessionOnTradePoint.cursor.org_session_id);
+            } else if (pLEC === 2 && model.qLastClosedSessionOnTradePoint.length > 0) {
+                self.setSession(model.qLastClosedSessionOnTradePoint.cursor.org_session_id);
             }
         }
     };
