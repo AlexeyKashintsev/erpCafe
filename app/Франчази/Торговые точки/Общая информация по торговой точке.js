@@ -9,7 +9,9 @@ function TradePointCommonInfo(aTradePointDetails, aContainer) {
     var tradePointDetails = aTradePointDetails;
     var buttonsSelector = null;
     var tradeAdminModule = new ServerModule("TradeAdminModule");
-    
+    var additionalInfo = null;
+    var dohod = null;
+    var kassa = null;
     var panels = {
         charts  :   {
             d_name  :   '<span class="glyphicon glyphicon-stats"></span>',
@@ -48,19 +50,29 @@ function TradePointCommonInfo(aTradePointDetails, aContainer) {
     
     function btnEmptyCashBoxOnClick(){
         var sum = prompt("Сколько денег вы хотите снять?", 0);
-        var dohod = ((tradePointDetails.startValue ? tradePointDetails.startValue : 0) + (tradePointDetails.operationsSum ?  tradePointDetails.operationsSum : 0));
-        if(dohod >= sum){
-            if(tradeAdminModule.stayCash(false, sum, tradePointDetails.org_trade_point_id))
+        if(kassa >= sum){
+            if(tradeAdminModule.takeMoneyFromCashbox(false, sum, tradePointDetails.org_trade_point_id)){
+                kassa = kassa - sum;
+                setAdditionalInfo(dohod, kassa);
                 alert("Деньги списаны.");
+            }
         } else  alert("В кассе нет "+sum+" рублей");
     }
-
+    
+    function setAdditionalInfo(aDohod, aKassa){
+        additionalInfo.innerHTML = "";
+        additionalInfo.innerHTML = 
+                'Визитов:  ' + tradePointDetails.operationsCount + '<br>' +
+                'Доход:   ' + aDohod + ' рублей<br>' +
+                'Касса:   ' + aKassa + ' рублей';
+    }
+    
     function showOnContainer() {
         var heading = cmn.createElement("div", "panel-heading", container);
         heading.innerHTML = '<h3 class="panel-title">' + tradePointDetails.tp_name + '</h3>';
         var tpAddress = cmn.createElement("span", "label label-bw", heading);
         tpAddress.innerHTML = tradePointDetails.tp_address;
-
+        
         var panelContent = cmn.createElement("div", "panel-body", container);
         //var row = cmn.createElement("div", "row", panelContent);
         var currentSession = cmn.createElement("div", "col-lg-2 col-md-3 col-xs-12", panelContent);//row);
@@ -71,10 +83,17 @@ function TradePointCommonInfo(aTradePointDetails, aContainer) {
                     '<span class="glyphicon glyphicon-user"></span>   ' + tradePointDetails.user_name + '<br>' +
                     '<span class="glyphicon glyphicon-calendar"></span>   ' + tradePointDetails.start_date.toLocaleDateString() + '<br>' +
                     '<span class="glyphicon glyphicon-time"></span>   ' + tradePointDetails.start_date.getHours() + ':' + tradePointDetails.start_date.getMinutes() + ' | ' +
-                    (tradePointDetails.end_date ? tradePointDetails.end_date.getHours() + ':' + tradePointDetails.end_date.getMinutes() : '--:--') + '<br>' +
-                    'Визитов:  ' + tradePointDetails.operationsCount + '<br>' +
-                    'Доход:   ' + (tradePointDetails.operationsSum ?  tradePointDetails.operationsSum + ' рублей<br>' : ' нет данных<br>') +
-                    'Касса:   ' + ((tradePointDetails.startValue ? tradePointDetails.startValue : 0) + (tradePointDetails.operationsSum ?  tradePointDetails.operationsSum : 0)) + ' рублей';
+                    (tradePointDetails.end_date ? tradePointDetails.end_date.getHours() + ':' + tradePointDetails.end_date.getMinutes() : '--:--') + '<br>';              
+            
+            additionalInfo = cmn.createElement("span","",currentSession);
+            
+            var opRemove = (tradePointDetails.operationsRemove ?  tradePointDetails.operationsRemove : 0)*1;
+            var opSum = (tradePointDetails.operationsSum ?  tradePointDetails.operationsSum : 0)*1;
+            var startValue = (tradePointDetails.startValue ? tradePointDetails.startValue : 0)*1;
+            kassa = startValue + opSum - opRemove;
+            dohod = startValue + opSum;
+            setAdditionalInfo(dohod, kassa);
+            
             var btnEmptyCashBox = cmn.createElement("button", "btn btn-success btn-xs btn-block", currentSession);
             btnEmptyCashBox.innerHTML = 'Снять кассу';
             btnEmptyCashBox.onclick = btnEmptyCashBoxOnClick;

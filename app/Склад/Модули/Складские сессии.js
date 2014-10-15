@@ -146,9 +146,9 @@ function WhSessionModule() {
      */
     self.setStartValuesAuto = function(aTradePoint) {
         if(aTradePoint) self.setTradePoint(aTradePoint);
-        model.qLastSessionOnTradePoint.requery();
-        if (model.qLastSessionOnTradePoint.length >0) {
-            var lastSession = model.qLastSessionOnTradePoint.cursor.org_session_id;
+        model.qLastClosedSessionOnTradePoint.requery();
+        if (model.qLastClosedSessionOnTradePoint.length >0) {
+            var lastSession = model.qLastClosedSessionOnTradePoint.cursor.org_session_id;
          /*   model.updateItems.params.session_id = lastSession;
             model.updateItems.executeUpdate();*/
             var lastResult = getValuesBySession(lastSession, true);
