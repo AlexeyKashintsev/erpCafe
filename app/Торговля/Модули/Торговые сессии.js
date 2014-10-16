@@ -178,7 +178,8 @@ function TradeSessions() {
         if (model.qBonusRateForItemsEdit.length > 0) {
             return model.qBonusRateForItemsEdit.cursor.bonus_rate;
         } else {
-            model.qOpenedSession.params.user_name = session.getUserName(); //поправил
+            model.qOpenedSession.params.user_name = session.getUserName();
+            model.qOpenedSession.requery();
             model.tradeItemCost.params.date_id = new Date();
             model.tradeItemCost.params.item_id = anItem;
             model.tradeItemCost.params.trade_point_id = model.qOpenedSession.cursor.trade_point;

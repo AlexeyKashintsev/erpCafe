@@ -10,17 +10,19 @@ function testMain() {
     //login('testbar','testbar');
     var testList = [{
             name: 'testFranchaziCreate'
-    },
-//    {
-//            name: 'testBarista',
-//            login: 'testbar',
-//            pass: 'testbar'
-//    },
-    {
-            name: 'testAddTradeItemsOnTradePoint',
-            login: 'fran',
-            pass: 'fran'
-    }];
+        },
+        {
+                name: 'testBarista',
+                login: 'testbar',
+                pass: 'testbar'
+        }
+//        ,
+//        {
+//                name: 'testAddTradeItemsOnTradePoint',
+//                login: 'fran',
+//                pass: 'fran'
+//        }
+    ];
     var useHTMLLog = true;
     var messages = {
         loadModules : 'Загрузка модулей',
