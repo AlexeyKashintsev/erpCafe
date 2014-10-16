@@ -6,13 +6,13 @@
  */
 function TradeSessions() {
     var self = this, model = this.model;
-    var whSession = new WhSessionModule();
-    var clientModule = new ClientServerModule();
-    var billing = new BillModule();
-    var ep = new EventProcessor();
+    var whSession = Modules.get('WhSessionModule');
+    var clientModule = Modules.get('ClientServerModule');
+    var billing = Modules.get('BillModule');
+    var ep = Modules.get('EventProcessor');
     var session = Modules.get("UserSession");
     var sessionItems = {};
-    getTradeItemsByTradePointWithCostAndBonuses();
+    Logger.info('Trade');
     /*
      * Типы операций
      * Деньги: 0
@@ -58,7 +58,8 @@ function TradeSessions() {
 
     self.calculateFinalValues = function(aSession) {
         if (!aSession) {
-            aSession = getCurrentSession();
+            aSession = model.params.session_id ? model.params.session_id :
+                                                    getCurrentSession();
         };
         Logger.info('Закрытие сессии ' + aSession);
         model.prSetFinalBalance4CashBox.params.session_id = aSession;
@@ -76,9 +77,12 @@ function TradeSessions() {
             session: model.qOpenedSession.org_session_id,
             module: 'TradeSessions'
         });
-        if (model.qOpenedSession.org_session_id)
+        if (model.qOpenedSession.org_session_id) {
             whSession.setCurrentSession(model.qOpenedSession.org_session_id);
-        return model.qOpenedSession.org_session_id;
+            model.params.session_id = model.qOpenedSession.org_session_id;
+            getTradeItemsByTradePointWithCostAndBonuses();
+        }
+        return model.params.session_id;
     }
 
     function TradeOperationAddToCashBox(anOrderSum, anOperationType, aClientId) {
@@ -152,22 +156,25 @@ function TradeSessions() {
     function getTradeItemsByTradePointWithCostAndBonuses(){
         model.tradeItemsByTradePointWithCost.params.actual_date = new Date();
         model.tradeItemsByTradePointWithCost.params.franchazi_id = session.getFranchazi();
-        model.tradeItemsByTradePointWithCost.params.trade_point_id = session.tradePoint;  
+        model.tradeItemsByTradePointWithCost.params.trade_point_id = session.getTradePoint();  
         model.tradeItemsByTradePointWithCost.requery();
         model.tradeItemsByTradePointWithCost.beforeFirst();
         while (model.tradeItemsByTradePointWithCost.next()){
+            sessionItems[model.tradeItemsByTradePointWithCost.cursor.item_id] = {};
             sessionItems[model.tradeItemsByTradePointWithCost.cursor.item_id].cost = model.tradeItemsByTradePointWithCost.cursor.item_cost;
             sessionItems[model.tradeItemsByTradePointWithCost.cursor.item_id].name = model.tradeItemsByTradePointWithCost.cursor.item_name;
             sessionItems[model.tradeItemsByTradePointWithCost.cursor.item_id].bonus_category = [];
             for (var i = 1; i<=3; i++){
-                sessionItems[model.tradeItemsByTradePointWithCost.cursor.item_id].bonus_category[i].bonus_count = getCountBonusesByItem(model.tradeItemsByTradePointWithCost.cursor.item_id, i);
+                sessionItems[model.tradeItemsByTradePointWithCost.cursor.item_id].bonus_category[i] = getCountBonusesByItem(model.tradeItemsByTradePointWithCost.cursor.item_id, i);
             }
         }
+        return sessionItems;
     }
     
     
     /*
      * Получение количества бонусов за товар
+     * TODO Переделать, чтобы все возвращалось одним запросом
      * @param {type} anItem
      * @returns {Number|@this;@pro;model.tradeItemCost.cursor.item_cost|@this;@pro;model.qBonusRateForItemsEdit.cursor.bonus_rate|@this;@pro;model.qGetBonusCategories.cursor.category_bonus_rate}
      */
@@ -178,13 +185,7 @@ function TradeSessions() {
         if (model.qBonusRateForItemsEdit.length > 0) {
             return model.qBonusRateForItemsEdit.cursor.bonus_rate;
         } else {
-            model.qOpenedSession.params.user_name = session.getUserName();
-            model.qOpenedSession.requery();
-            model.tradeItemCost.params.date_id = new Date();
-            model.tradeItemCost.params.item_id = anItem;
-            model.tradeItemCost.params.trade_point_id = model.qOpenedSession.cursor.trade_point;
-            model.tradeItemCost.requery();
-            return model.tradeItemCost.cursor.item_cost * getCountBonusesByCategory(model.qBonusRateForItemsEdit.params.bonus_category) / 100;
+            return getCountBonusesByCategory(model.qBonusRateForItemsEdit.params.bonus_category) / 100;
         }
     }
     
@@ -207,9 +208,9 @@ function TradeSessions() {
      */
     function processOrderItem(anOrderItem, aTradeOperationId) {
         if (anOrderItem.itemId && anOrderItem.quantity) {
-            TradeItemsPushInTradeOperation(aTradeOperationId,
-                    anOrderItem.itemId,
-                    anOrderItem.quantity);
+            TradeItemsPushInTradeOperation( aTradeOperationId,
+                                            anOrderItem.itemId,
+                                            anOrderItem.quantity);
 
             WhItemsConsumption(anOrderItem.itemId, anOrderItem.quantity);
         } else {
@@ -220,26 +221,12 @@ function TradeSessions() {
         }
     }
 
-    /*
-     * Получение цены товара
-     * TODO Искоренить сие зло
-     * @param {type} aItemId
-     * @returns {@this;@pro;model.tradeItemCost.cursor.item_cost}
-     *
-    function getCostByItem(anItem, aTpId) {
-        model.tradeItemCost.params.date_id = new Date();
-        model.tradeItemCost.params.item_id = anItem;
-        model.tradeItemCost.params.trade_point_id = aTpId;
-        model.tradeItemCost.requery();
-        return model.tradeItemCost.cursor.item_cost;
-    }*/
-
     function calculateOrderSum(anItems) {
         var sum = 0;
         model.qOpenedSession.params.user_name = session.getUserName();
         var tpid = model.qOpenedSession.cursor.trade_point;
-        for (var i in anItems) {//TODO Запросить все товары на точке одним запросом при открытии сессии
-            sum += sessionItems[anItems[i].itemId] * anItems[i].quantity;//getCostByItem(anItems[i].itemId, tpid) * anItems[i].quantity;
+        for (var i in anItems) {
+            sum += sessionItems[anItems[i].itemId] * anItems[i].quantity;
         };
         return sum;
     }
@@ -257,7 +244,7 @@ function TradeSessions() {
     self.processOrder = function(anOrderDetails) {
         var client = false;
         if (!model.params.session_id) {
-            model.params.session_id = getCurrentSession();
+            getCurrentSession();
         }
 
        /* if (!checkOrderSum(anOrderDetails.orderItems, anOrderDetails.orderSum)) {
@@ -300,11 +287,13 @@ function TradeSessions() {
             var TradeOperationId = TradeOperationAddToCashBox(anOrderDetails.orderSum,
                     OperationType,
                     client ? client.bonusBill : null);
+                    
             for (var i in anOrderDetails.orderItems) {
                 processOrderItem(anOrderDetails.orderItems[i], TradeOperationId);
 
                 if (client && anOrderDetails.methodOfPayment === "money") {
-                    BonusCount += getCountBonusesByItem(anOrderDetails.orderItems[i].itemId, client.bonusCategory)
+                    BonusCount += sessionItems[anOrderDetails.orderItems[i].itemId].bonus_category[client.bonusCategory]
+                            * sessionItems[anOrderDetails.orderItems[i].itemId].cost//getCountBonusesByItem(anOrderDetails.orderItems[i].itemId, client.bonusCategory)
                             * anOrderDetails.orderItems[i].quantity;
                 }
             }
@@ -317,4 +306,5 @@ function TradeSessions() {
         };
         return 0;
     };
+    getCurrentSession();
 }
