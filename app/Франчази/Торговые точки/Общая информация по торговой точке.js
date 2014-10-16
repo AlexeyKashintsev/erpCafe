@@ -10,8 +10,8 @@ function TradePointCommonInfo(aTradePointDetails, aContainer) {
     var buttonsSelector = null;
     var tradeAdminModule = new ServerModule("TradeAdminModule");
     var additionalInfo = null;
-    var dohod = null;
-    var kassa = null;
+    var income = null;
+    var cashBox = null;
     var panels = {
         charts  :   {
             d_name  :   '<span class="glyphicon glyphicon-stats"></span>',
@@ -50,10 +50,10 @@ function TradePointCommonInfo(aTradePointDetails, aContainer) {
     
     function btnEmptyCashBoxOnClick(){
         var sum = prompt("Сколько денег вы хотите снять?", 0);
-        if(kassa >= sum){
+        if(cashBox >= sum){
             if(tradeAdminModule.takeMoneyFromCashbox(false, sum, tradePointDetails.org_trade_point_id)){
-                kassa = kassa - sum;
-                setAdditionalInfo(dohod, kassa);
+                cashBox = cashBox - sum;
+                setAdditionalInfo(income, cashBox);
                 alert("Деньги списаны.");
             }
         } else  alert("В кассе нет "+sum+" рублей");
@@ -87,12 +87,11 @@ function TradePointCommonInfo(aTradePointDetails, aContainer) {
             
             additionalInfo = cmn.createElement("span","",currentSession);
             
-            var opRemove = (tradePointDetails.operationsRemove ?  tradePointDetails.operationsRemove : 0)*1;
-            var opSum = (tradePointDetails.operationsSum ?  tradePointDetails.operationsSum : 0)*1;
-            var startValue = (tradePointDetails.startValue ? tradePointDetails.startValue : 0)*1;
-            kassa = startValue + opSum - opRemove;
-            dohod = startValue + opSum;
-            setAdditionalInfo(dohod, kassa);
+            var opSum = tradePointDetails.operationsSum ?  tradePointDetails.operationsSum : 0;
+            var startValue = tradePointDetails.start_value ? tradePointDetails.start_value : 0;
+            var income = tradePointDetails.incomeSum ? tradePointDetails.incomeSum : 0;
+            cashBox = startValue + opSum;
+            setAdditionalInfo(income, cashBox);
             
             var btnEmptyCashBox = cmn.createElement("button", "btn btn-success btn-xs btn-block", currentSession);
             btnEmptyCashBox.innerHTML = 'Снять кассу';

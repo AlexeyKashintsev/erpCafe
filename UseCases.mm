@@ -1,7 +1,7 @@
 <map version="1.0.1">
 <!-- To view this file, download free mind mapping software FreeMind from http://freemind.sourceforge.net -->
-<node CREATED="1403537102338" ID="ID_1456250441" MODIFIED="1403537117569" TEXT="Use cases">
-<node CREATED="1403537176814" ID="ID_2551792" MODIFIED="1403537298194" POSITION="right" TEXT="&#x41b;&#x43e;&#x433;&#x438;&#x43d;">
+<node CREATED="1403537102338" ID="ID_1456250441" MODIFIED="1413365578292" TEXT="Use cases">
+<node CREATED="1403537176814" HGAP="21" ID="ID_2551792" MODIFIED="1413365627794" POSITION="right" TEXT="&#x41b;&#x43e;&#x433;&#x438;&#x43d;" VSHIFT="-117">
 <icon BUILTIN="password"/>
 <node CREATED="1403537142766" ID="ID_1888841361" MODIFIED="1403537175524" TEXT="&#x411;&#x430;&#x440;&#x438;&#x441;&#x442;&#x430;">
 <icon BUILTIN="ksmiletris"/>
@@ -182,6 +182,52 @@
 <node CREATED="1403538072113" ID="ID_1930100074" MODIFIED="1407016942661" TEXT="&#x41f;&#x43e;&#x43b;&#x443;&#x447;&#x438;&#x442;&#x44c; &#x443;&#x432;&#x435;&#x434;&#x43e;&#x43c;&#x43b;&#x435;&#x43d;&#x438;&#x435;">
 <node CREATED="1403538080067" ID="ID_528963388" MODIFIED="1403538082093" TEXT="&#x421;&#x41c;&#x421;"/>
 <node CREATED="1403538082865" ID="ID_2035364" MODIFIED="1403538085781" TEXT="e-mail"/>
+</node>
+</node>
+<node CREATED="1413365242550" HGAP="69" ID="ID_1859451739" MODIFIED="1413365634011" POSITION="right" TEXT="&#x422;&#x435;&#x441;&#x442;&#x44b;" VSHIFT="90">
+<node CREATED="1413365272387" HGAP="19" ID="ID_206401998" MODIFIED="1413367809079" TEXT="&#x411;&#x430;&#x440;&#x438;&#x441;&#x442;&#x430;" VSHIFT="-32">
+<node CREATED="1413368005995" HGAP="25" ID="ID_1875202215" MODIFIED="1413368230203" TEXT="&#x417;&#x430;&#x43f;&#x440;&#x43e;&#x441; &#x442;&#x43e;&#x432;&#x430;&#x440;&#x43e;&#x432; &#x43d;&#x430; &#x442;&#x43e;&#x447;&#x43a;&#x435;" VSHIFT="-14">
+<icon BUILTIN="full-5"/>
+</node>
+<node CREATED="1413365445627" HGAP="38" ID="ID_1109261879" MODIFIED="1413368235909" TEXT="&#x41f;&#x440;&#x43e;&#x434;&#x430;&#x436;&#x430;" VSHIFT="-8">
+<icon BUILTIN="full-6"/>
+<node CREATED="1413365454299" ID="ID_940016337" MODIFIED="1413365461832" TEXT="&#x41e;&#x431;&#x44b;&#x447;&#x43d;&#x430;&#x44f;"/>
+<node CREATED="1413365464139" ID="ID_1302940752" MODIFIED="1413365472425" TEXT="&#x421; &#x437;&#x430;&#x447;&#x438;&#x441;&#x43b;&#x435;&#x43d;&#x438;&#x435;&#x43c; &#x431;&#x43e;&#x43d;&#x443;&#x441;&#x43e;&#x432;"/>
+<node CREATED="1413365473587" ID="ID_1013503802" MODIFIED="1413365481119" TEXT="&#x417;&#x430; &#x431;&#x43e;&#x43d;&#x443;&#x441;&#x44b;"/>
+</node>
+<node CREATED="1413367820742" ID="ID_345764594" MODIFIED="1413368240121" TEXT="&#x417;&#x430;&#x43a;&#x440;&#x44b;&#x442;&#x438;&#x435; &#x441;&#x43c;&#x435;&#x43d;&#x44b;">
+<icon BUILTIN="full-7"/>
+<node CREATED="1413367833926" ID="ID_450277178" MODIFIED="1413367841586" TEXT="&#x41f;&#x440;&#x43e;&#x432;&#x435;&#x440;&#x43a;&#x430; &#x43e;&#x441;&#x442;&#x430;&#x442;&#x43a;&#x43e;&#x432; &#x43d;&#x430; &#x441;&#x43a;&#x43b;&#x430;&#x434;&#x435;"/>
+<node CREATED="1413367842253" ID="ID_1058664065" MODIFIED="1413367847700" TEXT="&#x41f;&#x440;&#x43e;&#x432;&#x435;&#x440;&#x43a;&#x430; &#x43e;&#x441;&#x442;&#x430;&#x442;&#x43a;&#x430; &#x43f;&#x43e; &#x43a;&#x430;&#x441;&#x441;&#x435;"/>
+</node>
+</node>
+<node CREATED="1413365296111" HGAP="15" ID="ID_1479927566" MODIFIED="1413367551168" TEXT="&#x424;&#x440;&#x430;&#x43d;&#x447;&#x430;&#x437;&#x438;" VSHIFT="25">
+<node CREATED="1413365499002" ID="ID_935640951" MODIFIED="1413368247873" TEXT="&#x420;&#x435;&#x432;&#x438;&#x437;&#x438;&#x44f;" VSHIFT="-16">
+<icon BUILTIN="full-9"/>
+</node>
+<node CREATED="1413365509882" ID="ID_1622363151" MODIFIED="1413368245496" TEXT="&#x421;&#x43d;&#x44f;&#x442;&#x438;&#x435; &#x43a;&#x430;&#x441;&#x441;&#x44b;" VSHIFT="-1">
+<icon BUILTIN="full-8"/>
+</node>
+<node CREATED="1413367557323" HGAP="22" ID="ID_1881188364" MODIFIED="1413367789022" TEXT="&#x421;&#x43a;&#x43b;&#x430;&#x434;">
+<node CREATED="1413367565691" ID="ID_795659786" MODIFIED="1413368210927" TEXT="&#x414;&#x43e;&#x431;&#x430;&#x432;&#x43b;&#x435;&#x43d;&#x438;&#x435; &#x43d;&#x43e;&#x432;&#x43e;&#x433;&#x43e; &#x442;&#x43e;&#x432;&#x430;&#x440;&#x430;">
+<icon BUILTIN="full-1"/>
+</node>
+</node>
+<node CREATED="1413367582243" HGAP="22" ID="ID_303126198" MODIFIED="1413367785422" TEXT="&#x422;&#x43e;&#x440;&#x433;&#x43e;&#x432;&#x44b;&#x435; &#x43f;&#x43e;&#x437;&#x438;&#x446;&#x438;&#x438;" VSHIFT="-2">
+<node CREATED="1413367589546" ID="ID_1874427738" MODIFIED="1413368215417" TEXT="&#x414;&#x43e;&#x431;&#x430;&#x432;&#x43b;&#x435;&#x43d;&#x438;&#x435; &#x43d;&#x43e;&#x432;&#x43e;&#x439; &#x442;&#x43e;&#x440;&#x433;&#x43e;&#x432;&#x43e;&#x439; &#x43f;&#x43e;&#x437;&#x438;&#x446;&#x438;&#x438;">
+<icon BUILTIN="full-2"/>
+</node>
+<node CREATED="1413367603674" ID="ID_1006726113" MODIFIED="1413368219453" TEXT="&#x41d;&#x430;&#x43f;&#x43e;&#x43b;&#x43d;&#x435;&#x43d;&#x438;&#x435; &#x442;&#x43e;&#x440;&#x433;&#x43e;&#x432;&#x43e;&#x439; &#x43f;&#x43e;&#x437;&#x438;&#x446;&#x438;&#x438; &#x441;&#x43a;&#x43b;&#x430;&#x434;&#x441;&#x43a;&#x438;&#x43c;&#x438; &#x43f;&#x43e;&#x437;&#x438;&#x446;&#x438;&#x44f;&#x43c;&#x438;">
+<icon BUILTIN="full-3"/>
+</node>
+<node CREATED="1413367627633" ID="ID_1283433224" MODIFIED="1413368221673" TEXT="&#x414;&#x43e;&#x431;&#x430;&#x432;&#x43b;&#x435;&#x43d;&#x438;&#x435; &#x422;&#x43e;&#x440;&#x433;&#x43e;&#x432;&#x43e;&#x439; &#x43f;&#x43e;&#x437;&#x438;&#x446;&#x438;&#x438; &#x43d;&#x430; &#x422;&#x422;">
+<icon BUILTIN="full-4"/>
+</node>
+</node>
+<node CREATED="1413367900598" ID="ID_998557126" MODIFIED="1413367954921" TEXT="&#x410;&#x434;&#x43c;&#x438;&#x43d;&#x438;&#x441;&#x442;&#x440;&#x438;&#x440;&#x43e;&#x432;&#x430;&#x43d;&#x438;&#x435;" VSHIFT="15">
+<node CREATED="1413367909124" ID="ID_1596815919" MODIFIED="1413367916858" TEXT="&#x421;&#x43e;&#x437;&#x434;&#x430;&#x43d;&#x438;&#x435; &#x431;&#x430;&#x440;&#x438;&#x441;&#x442;&#x44b;"/>
+<node CREATED="1413367918012" ID="ID_1811687144" MODIFIED="1413367937720" TEXT="&#x41d;&#x430;&#x437;&#x43d;&#x430;&#x447;&#x435;&#x43d;&#x438;&#x435; &#x431;&#x430;&#x440;&#x438;&#x441;&#x442;&#x44b; &#x43d;&#x430; &#x442;&#x43e;&#x447;&#x43a;&#x443;"/>
+</node>
 </node>
 </node>
 </node>

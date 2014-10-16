@@ -43,7 +43,7 @@ function TradeAdminModule() {
                 addItemContentsToWH(anItem, model.listTradePoints.cursor.org_trade_point_id);
             }
         } else {
-            pushItemInTradePoint(anItem, aTradePoint, aCost, franchazi);
+            pushItemInTradePoint(anItem, aTradePoint, aCost, aFranchazi);
             addItemContentsToWH(anItem, aTradePoint);
         }
     };

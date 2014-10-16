@@ -10,14 +10,12 @@ function BaristaDesktop() {
     self.userName = session.getUserName();
     var whAdd = null;
 
-    self.orderList = new OrderList(self);
-
     function setSession(aSession) {
         if (aSession) {
             Logger.info('Сессия открыта ' + aSession);
             model.params.session_id = aSession;
             session.activeSession = aSession;
-            session.whSession.setCurrentSession(aSession);
+            //session.whSession.setCurrentSession(aSession);
             model.getSessions.requery();
         } else {//открываем новую сессию
             //Выбираем торговую точку
@@ -50,23 +48,17 @@ function BaristaDesktop() {
         }
     }
 
-    function setFranchazi(aFranchazi) {
-        if (!aFranchazi)
-            Logout();
-
-        model.tradeItemsByTradePointWithCost.params.franchazi_id = aFranchazi;
-        model.tradeItemsByTradePointWithCost.params.actual_date = new Date();
-
-        session.getActiveTPSession(function(aSession) {
-            setSession(aSession);
-        });
-    }
-
     function startBaristaDesktop() {
         cmn.addTopRightControl("Прием товара", "plus-sign", btnWarehouseAddActionPerformed);
         cmn.addTopRightControl("Закрыть смену", "log-out", btnSessionCloseActionPerformed);
         cmn.addTopRightControl("Выход", "log-out", Logout);
-        setFranchazi(session.franchaziId);
+        
+        session.getActiveTPSession(function(aSession) {
+            setSession(aSession);
+        });
+        
+        self.orderList = new OrderList(self);
+        
     }
 
     function addTradeItem(aData) {
@@ -99,6 +91,8 @@ function BaristaDesktop() {
         if (!model.getSessions.empty) {
             session.tradePoint = model.getSessions.trade_point;
             model.params.trade_point_id = session.tradePoint;
+            model.tradeItemsByTradePointWithCost.params.franchazi_id = session.franchaziId;
+            model.tradeItemsByTradePointWithCost.params.actual_date = new Date();
             model.tradeItemsByTradePointWithCost.params.trade_point_id = session.tradePoint;
             model.tradeItemsByTradePointWithCost.execute();
         }
