@@ -10,11 +10,19 @@ function testMain() {
     //login('testbar','testbar');
     var testList = [{
             name: 'testFranchaziCreate'
-    },{
-            name: 'testBarista',
-            login: 'testbar',
-            pass: 'testbar'
-    }];
+        },
+        {
+                name: 'testBarista',
+                login: 'testbar',
+                pass: 'testbar'
+        }
+//        ,
+//        {
+//                name: 'testAddTradeItemsOnTradePoint',
+//                login: 'fran',
+//                pass: 'fran'
+//        }
+    ];
     var useHTMLLog = true;
     var messages = {
         loadModules : 'Загрузка модулей',
@@ -86,9 +94,9 @@ function testMain() {
             for (var j in testList) {
                 message(messages.test + " " + j + " " + testList[j].name, '');
                 try {
-                    var test = new Module(testList[j].name);
                     if (testList[j].login && testList[j].pass)
                         login(testList[j].login, testList[j].pass);
+                    var test = new Module(testList[j].name);
                     test.init(self);
                     if (test.doTest())
                         ok++;

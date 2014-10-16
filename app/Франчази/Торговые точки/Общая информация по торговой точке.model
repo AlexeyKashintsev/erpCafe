@@ -4,5 +4,4 @@
     <parameter description="" name="tradePointId" nullable="true" parameterMode="1" precision="0" scale="0" selectionForm="null" signed="true" size="0" type="2" typeName="NUMERIC"/>
   </parameters>
   <parametersEntity entityHeight="200" entityIconified="false" entityLocationX="12" entityLocationY="12" entityWidth="150"/>
-  <entity Name="qTradePointIncomeByPeriod" Title="" entityHeight="200" entityIconified="false" entityId="141081014886573" entityLocationX="182" entityLocationY="12" entityWidth="150" queryId="qTradePointIncomeByPeriod" tableName="" tableSchemaName=""/>
 </datamodel>

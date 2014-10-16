@@ -12,7 +12,7 @@ function TradeSessions() {
     var ep = new EventProcessor();
     var session = Modules.get("UserSession");
     var sessionItems = {};
-
+    getTradeItemsByTradePointWithCostAndBonuses();
     /*
      * Типы операций
      * Деньги: 0
@@ -158,6 +158,10 @@ function TradeSessions() {
         while (model.tradeItemsByTradePointWithCost.next()){
             sessionItems[model.tradeItemsByTradePointWithCost.cursor.item_id].cost = model.tradeItemsByTradePointWithCost.cursor.item_cost;
             sessionItems[model.tradeItemsByTradePointWithCost.cursor.item_id].name = model.tradeItemsByTradePointWithCost.cursor.item_name;
+            sessionItems[model.tradeItemsByTradePointWithCost.cursor.item_id].bonus_category = [];
+            for (var i = 1; i<=3; i++){
+                sessionItems[model.tradeItemsByTradePointWithCost.cursor.item_id].bonus_category[i].bonus_count = getCountBonusesByItem(model.tradeItemsByTradePointWithCost.cursor.item_id, i);
+            }
         }
     }
     
@@ -174,7 +178,8 @@ function TradeSessions() {
         if (model.qBonusRateForItemsEdit.length > 0) {
             return model.qBonusRateForItemsEdit.cursor.bonus_rate;
         } else {
-            model.qOpenedSession.params.user_name = session.getUserName(); //поправил
+            model.qOpenedSession.params.user_name = session.getUserName();
+            model.qOpenedSession.requery();
             model.tradeItemCost.params.date_id = new Date();
             model.tradeItemCost.params.item_id = anItem;
             model.tradeItemCost.params.trade_point_id = model.qOpenedSession.cursor.trade_point;

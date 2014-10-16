@@ -1,3 +1,10 @@
+/**
+ *
+ * @author ak
+ * @name qLastClosedSessionOnTradePoint
+ * @manual
+ * @public
+ */ 
 Select t1.org_session_id 
 From org_session t1
  Where :trade_point_id = t1.trade_point

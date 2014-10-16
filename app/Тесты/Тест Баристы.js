@@ -34,86 +34,130 @@ function testBarista() {
         success(messages.successInit);
     };
     
+    //Функции для теста
     
+    /*
+    * Простая покупка
+    * @type type
+    */
+    var buyDefault = {
+        name : "buyDefault",
+        clientData: false,
+        methodOfPayment: "money",
+        orderItems: [
+            {
+                itemId: 1,
+                quantity: 1
+            },
+            {
+                itemId: 33,
+                quantity: 1
+            }],
+        orderSum: 700
+    };
+    /*
+    * Покупка за деньги с начислением бонусов
+    */
+    var buyWithMoney = {
+        name : "buyWithMoney",
+        methodOfPayment: "money",
+        orderItems: [
+            {
+                itemId: 1,
+                quantity: 1
+            },
+            {
+                itemId: 33,
+                quantity: 1
+            }],
+        orderSum: 700,
+        clientData: CM.getClientDataByPhone("71234567890")
+    };
+
+    /*
+     * Покупка за бонусы
+     */
+
+    var buyWithBonus = {
+        name : "buyWithBonus",
+        methodOfPayment: "bonus",
+        orderItems: [
+            {
+                itemId: 1,
+                quantity: 1
+            },
+            {
+                itemId: 33,
+                quantity: 1
+            }],
+        orderSum: 700,
+        clientData : CM.getClientDataByPhone("71234567890")
+    };
+
+    function checkState(aTypeOperation, orderDetails){
+        var output = {};
+        if (aTypeOperation !== "buyDefault"){
+            output.BonusCount = BM.getSumFromAccountId(orderDetails.clientData.bonusBill);
+            info("Текущее значение бонусов у клиента " + output.BonusCount);
+        }
+        //TODO Добавить снятие информации о наличке в кассе
+        return output;
+    }
+    
+    function checkResult(before, after, aTypeOperation){
+        switch (aTypeOperation){
+            case "buyDefault":
+                //TODO проверка начисления налички в кассу
+                break;
+            case "buyWithMoney":
+                //TODO проверка начисления налички в кассу
+                if (before.BonusCount){
+                    if (Number(before.BonusCount) < Number(after.BonusCount)){
+                        success("Бонусы начислены в размере " + (after.BonusCount - before.BonusCount));
+                    } else {
+                        error ("Бонусы не начислены!");
+                        ok = false;
+                    }
+                }
+                break;
+            case "buyWithBonus":
+                //TODO проверка начисления налички в кассу
+                if (before.BonusCount){
+                    if (Number(before.BonusCount) > Number(after.BonusCount)){
+                        success("Бонусы списаны в размере " + (before.BonusCount - after.BonusCount));
+                    } else {
+                        error ("Бонусы не списаны!");
+                        ok = false;
+                    }
+                }
+                break;
+        }
+        
+        
+    }
+    
+    function processOrderUnderShell(orderDetails){
+        var after, before = {};
+        info("Начинаем операцию " + orderDetails.name);
+        info("Проверяем значения отслеживаемых параметров....");
+        before = checkState(orderDetails.name, orderDetails);
+        TS.processOrder(orderDetails);
+        success("Товар проведен клиенту " + orderDetails.clientData.phone + " за " + orderDetails.methodOfPayment);
+        info("Проверяем значения отслеживаемых параметров....");
+        after = checkState(orderDetails.name, orderDetails);      
+        checkResult(before, after, orderDetails.name);
+    }
     
     function doTest() {
         info("Начало теста");
         WH.setTradePoint(6);
         WH.createSession();
-        /*
-         * Простая покупка
-         * @type type
-         */
-        var orderDetails = {
-            clientData: false,
-            methodOfPayment: "money",
-            orderItems: [
-                {
-                    itemId: 1,
-                    quantity: 1
-                },
-                {
-                    itemId: 33,
-                    quantity: 1
-                }],
-            orderSum: 700
-        };
-        TS.processOrder(orderDetails, function(){
-            success("Товар проведен");
-        });
+        TS.initializeSession(WH.getCurrentSession(), 0);
         
-        /*
-         * Покупка за деньги с начислением бонусов
-         */
-        
-        orderDetails = {
-            methodOfPayment: "money",
-            orderItems: [
-                {
-                    itemId: 1,
-                    quantity: 1
-                },
-                {
-                    itemId: 33,
-                    quantity: 1
-                }],
-            orderSum: 700
-        };
-        orderDetails.clientData = CM.getClientDataByPhone("71234567890");
-        
-        var startBonusCount = BM.getSumFromAccountId(orderDetails.clientData.bonusBill);
-        info("Стартовое значение " + startBonusCount);
-        TS.processOrder(orderDetails, function(){
-            success("Товар проведен клиенту " + orderDetails.clientData.phone + " за деньги");
-            var endBonusCount = BM.getSumFromAccountId(orderDetails.clientData.bonusBill);
-            info("Конечное значение " + endBonusCount);
-        });
-        
-        /*
-         * Покупка за бонусы 
-         */
-        orderDetails = {
-            methodOfPayment: "bonus",
-            orderItems: [
-                {
-                    itemId: 1,
-                    quantity: 1
-                },
-                {
-                    itemId: 33,
-                    quantity: 1
-                }],
-            orderSum: 700
-        };
-        orderDetails.clientData = CM.getClientDataByPhone("71234567890");
+        processOrderUnderShell(buyDefault);
+        processOrderUnderShell(buyWithMoney);
+        processOrderUnderShell(buyWithBonus);
 
-        var startBonusCount = BM.getSumFromAccountId(orderDetails.clientData.bonusBill);
-        info("Стартовое значение " + startBonusCount);
-        TS.processOrder(orderDetails, function(){
-            success("Товар проведен клиенту " + orderDetails.clientData.phone + " за бонусы");
-            var endBonusCount = BM.getSumFromAccountId(orderDetails.clientData.bonusBill);
-            info("Конечное значение " + endBonusCount);
-        });
     }
     
     self.doTest = function() {

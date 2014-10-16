@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?><datamodel>
+  <parametersEntity entityHeight="200" entityIconified="false" entityLocationX="12" entityLocationY="12" entityWidth="150"/>
+  <entity Name="tradeItemsByTP" Title="" entityHeight="200" entityIconified="false" entityId="141337192935266" entityLocationX="342" entityLocationY="4" entityWidth="150" queryId="tradeItemsByTP" tableName="" tableSchemaName=""/>
+  <entity Name="qBillAccount" Title="" entityHeight="200" entityIconified="false" entityId="141268968447950" entityLocationX="180" entityLocationY="5" entityWidth="150" queryId="qBillAccount" tableName="" tableSchemaName=""/>
+</datamodel>
