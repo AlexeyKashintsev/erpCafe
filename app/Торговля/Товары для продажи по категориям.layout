@@ -6,10 +6,10 @@
   <widget actionPerformed="btnSelectActionPerformed" icon="icons/22x22/actions/dialog-apply.png" name="btnSelect" parent="pnlSelLock" prefHeight="35px" prefWidth="174px" text="Сохранить" type="ButtonDesignInfo">
     <constraints bottom="7px" height="35px" right="7px" type="MarginConstraintsDesignInfo" width="174px"/>
   </widget>
-  <widget name="label" parent="pnlSelLock" prefHeight="24px" prefWidth="468px" text="label" type="LabelDesignInfo">
+  <widget mouseClicked="lbCategoryMouseClicked" name="lbCategory" parent="pnlSelLock" prefHeight="24px" prefWidth="468px" type="LabelDesignInfo">
     <constraints height="24px" left="12px" top="0px" type="MarginConstraintsDesignInfo" width="468px"/>
   </widget>
-  <widget name="label1" parent="pnlSelLock" prefHeight="24px" prefWidth="480px" text="label1" type="LabelDesignInfo">
+  <widget mouseClicked="lbItemMouseClicked" name="lbItem" parent="pnlSelLock" prefHeight="24px" prefWidth="480px" type="LabelDesignInfo">
     <constraints height="24px" left="12px" top="24px" type="MarginConstraintsDesignInfo" width="480px"/>
   </widget>
   <widget name="pnlWorkSpace" parent="Form" prefHeight="302px" prefWidth="697px" type="PanelDesignInfo">
@@ -41,33 +41,33 @@
       <headerStyle>
         <nativeFont name="Dialog" size="15"/>
       </headerStyle>
+      <datamodelElement entityId="140566813019746" fieldName="item_name"/>
+      <columnsDatasource/>
+      <columnsDisplayField/>
+      <cellsDatasource/>
       <cellDesignInfo>
         <rowsKeyField/>
         <columnsKeyField/>
         <cellValueField/>
       </cellDesignInfo>
-      <columnsDisplayField/>
-      <datamodelElement entityId="140566813019746" fieldName="item_name"/>
-      <cellsDatasource/>
-      <columnsDatasource/>
     </column>
     <column name="select" selectFunction="selectOnSelect" selectOnly="true" title="Состав">
       <controlInfo classHint="DbComboDesignInfo" list="false" name="view" prefHeight="0px" prefWidth="0px">
-        <valueField entityId="140568805648895" fieldName="trade_items_id"/>
         <displayField entityId="140568805648895" fieldName="contents"/>
+        <valueField entityId="140568805648895" fieldName="trade_items_id"/>
       </controlInfo>
       <headerStyle>
         <nativeFont name="Dialog" size="15"/>
       </headerStyle>
+      <datamodelElement entityId="140566813019746" fieldName="trade_items_id"/>
+      <columnsDatasource/>
+      <columnsDisplayField/>
+      <cellsDatasource/>
       <cellDesignInfo>
         <rowsKeyField/>
         <columnsKeyField/>
         <cellValueField/>
       </cellDesignInfo>
-      <columnsDisplayField/>
-      <datamodelElement entityId="140566813019746" fieldName="trade_items_id"/>
-      <cellsDatasource/>
-      <columnsDatasource/>
     </column>
     <treeDesignInfo/>
     <rowsColumnsDesignInfo>
@@ -91,15 +91,15 @@
       <headerStyle>
         <nativeFont name="Dialog" size="15"/>
       </headerStyle>
+      <datamodelElement entityId="140566820113240" fieldName="type_name"/>
+      <columnsDatasource/>
+      <columnsDisplayField/>
+      <cellsDatasource/>
       <cellDesignInfo>
         <rowsKeyField/>
         <columnsKeyField/>
         <cellValueField/>
       </cellDesignInfo>
-      <columnsDisplayField/>
-      <datamodelElement entityId="140566820113240" fieldName="type_name"/>
-      <cellsDatasource/>
-      <columnsDatasource/>
     </column>
     <treeDesignInfo>
       <unaryLinkField entityId="140566820113240" fieldName="parent_type"/>

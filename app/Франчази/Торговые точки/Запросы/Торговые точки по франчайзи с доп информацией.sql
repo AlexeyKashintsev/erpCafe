@@ -10,7 +10,7 @@
 Select q.org_trade_point_id, q.tp_name, q.tp_address
 , q.start_date, q.end_date, q.user_name
 , t.start_value, t.end_value, sum(t2.operation_sum * t1.cash_multiplier) AS operationsSum
-, sum(t2.operation_sum * t1.remove_multiplier) AS operationsRemove
+, sum(t2.operation_sum * t1.income_multiplier) AS operationsRemove
 , count(t2.operation_sum) AS operationsCount 
 From #qOpenedOrLastSessionFranchazi q
  Left Join trade_cash_box_balance t on t.session_id = q.org_session_id

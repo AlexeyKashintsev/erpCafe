@@ -7,7 +7,7 @@
 function ItemsForTrade() {
     var self = this, model = this.model, form = this;
     var contentTradeItem = new ContentTradeItem();
-
+    var session = new ServerReport("UserSession");
     
     self.setFranchazi = function(aFranchazi) {
         model.params.franchazi_id = aFranchazi;
@@ -185,4 +185,93 @@ function formWindowClosing(evt) {//GEN-FIRST:event_formWindowClosing
     function rbMyActionPerformed(evt) {//GEN-FIRST:event_rbMyActionPerformed
         model.params.show_type = 2;
     }//GEN-LAST:event_rbMyActionPerformed
+
+    function qTradeItemsOnScrolled(evt) {//GEN-FIRST:event_qTradeItemsOnScrolled
+        model.qBonusCountForTradeItem.params.trade_item = model.qTradeItems.cursor.trade_items_id;
+        model.qBonusCountForTradeItem.params.trade_type = null;
+        model.qBonusCountForTradeItem.requery(function(){
+            if(model.qBonusCountForTradeItem.length > 0){
+                 form.lbItem.text = "Бонусная ставка по товару: " + model.qBonusCountForTradeItem.cursor.bonus_rate + "%";
+            } else {
+                form.lbItem.text = "Бонусная ставка по товару не назначена";
+            }
+        });
+    }//GEN-LAST:event_qTradeItemsOnScrolled
+
+    function qTradeItemTypesOnScrolled(evt) {//GEN-FIRST:event_qTradeItemTypesOnScrolled
+        //alert(model.qTradeItemTypes.cursor.trade_item_type_id);
+        model.qBonusCountForTradeItem.params.trade_type = model.qTradeItemTypes.cursor.trade_item_type_id;
+        model.qBonusCountForTradeItem.params.trade_item = null;
+        model.qBonusCountForTradeItem.requery(function(){
+            if(!model.qBonusCountForTradeItem.empty){
+                 form.lbCategory.text = "Бонусная ставка по категории товара: " + model.qBonusCountForTradeItem.cursor.bonus_rate + "%";
+            } else {
+                form.lbCategory.text = "Бонусная ставка по категории товара не назначена";
+            }
+        });
+    }//GEN-LAST:event_qTradeItemTypesOnScrolled
+
+    function lbCategoryMouseClicked(evt) {//GEN-FIRST:event_lbCategoryMouseClicked
+        if(evt.clickCount > 1 && session.getUserRole() === "admin") {
+            var rate =prompt("Введите бонусную ставку для категории товара: " + model.qTradeItemTypes.cursor.type_name, 0);
+            if(rate){
+                model.qBonusCountForTradeItem.params.trade_type = model.qTradeItemTypes.cursor.trade_item_type_id;
+                model.qBonusCountForTradeItem.params.trade_item = null;
+                model.qBonusCountForTradeItem.requery();
+                if(model.qBonusCountForTradeItem.length > 0){
+                     model.qBonusCountForTradeItem.cursor.bonus_rate = rate;
+                } else {
+                    model.qBonusCountForTradeItem.push({
+                        bonus_rate : rate,
+                        type_id: model.qTradeItemTypes.cursor.trade_item_type_id
+                    });
+                }
+                model.save();
+            }
+        }
+    }//GEN-LAST:event_lbCategoryMouseClicked
+
+    function qTradeItemTypesOnRequeried(evt) {//GEN-FIRST:event_qTradeItemTypesOnRequeried
+        model.qBonusCountForTradeItem.params.trade_type = model.qTradeItemTypes.cursor.trade_item_type_id;
+        model.qBonusCountForTradeItem.params.trade_item = null;
+        model.qBonusCountForTradeItem.requery(function(){
+            if(model.qBonusCountForTradeItem.length > 0){
+                 form.lbCategory.text = "Бонусная ставка по категории товара: " + model.qBonusCountForTradeItem.cursor.bonus_rate + "%";
+            } else {
+                form.lbCategory.text = "Бонусная ставка по категории товара не назначена";
+            }
+        });
+    }//GEN-LAST:event_qTradeItemTypesOnRequeried
+
+    function qTradeItemsOnRequeried(evt) {//GEN-FIRST:event_qTradeItemsOnRequeried
+        model.qBonusCountForTradeItem.params.trade_item = model.qTradeItems.cursor.trade_items_id;
+        model.qBonusCountForTradeItem.params.trade_type = null;
+        model.qBonusCountForTradeItem.requery(function(){
+            if(model.qBonusCountForTradeItem.length > 0){
+                 form.lbItem.text = "Бонусная ставка по товару: " + model.qBonusCountForTradeItem.cursor.bonus_rate + "%";
+            } else {
+                form.lbItem.text = "Бонусная ставка по товару не назначена";
+            }
+        });
+    }//GEN-LAST:event_qTradeItemsOnRequeried
+
+    function lbItemMouseClicked(evt) {//GEN-FIRST:event_lbItemMouseClicked
+         if(evt.clickCount > 1 && session.getUserRole() === "admin") {
+            var rate =prompt("Введите бонусную ставку для товара: " + model.qTradeItems.cursor.item_name, 0);
+            if(rate){
+                model.qBonusCountForTradeItem.params.trade_type = null;
+                model.qBonusCountForTradeItem.params.trade_item = model.qTradeItems.cursor.trade_items_id;
+                model.qBonusCountForTradeItem.requery();
+                if(model.qBonusCountForTradeItem.length > 0){
+                     model.qBonusCountForTradeItem.cursor.bonus_rate = rate;
+                } else {
+                    model.qBonusCountForTradeItem.push({
+                        bonus_rate : rate,
+                        trade_item: model.qTradeItems.cursor.trade_items_id
+                    });
+                }
+                model.save();
+            }
+        }
+    }//GEN-LAST:event_lbItemMouseClicked
 }
