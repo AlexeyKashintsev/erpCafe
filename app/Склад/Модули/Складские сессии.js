@@ -10,6 +10,7 @@
 function WhSessionModule() {
     var self = this, model = this.model;
     var ep = new EventProcessor();
+    var session = Modules.get("UserSession");
 
     self.WH_ADD_ITEMS = 1;
     self.WH_REMOVE_ITEMS = 2;
@@ -39,8 +40,14 @@ function WhSessionModule() {
      * Иначе false 
      */
     self.getCurrentSession = function() {
+        try {
+            model.params.session_id = session.getActiveTPSession();
+            model.params.trade_point_id = session.getTradePoint();
+        } catch(e) {
+            Logger.warning(e);
+        }
         model.qOpenedSession.execute();
-        if (model.qOpenedSession.length > 0) {
+        if (!model.qOpenedSession.empty) {
             if (model.params.trade_point_id !== model.qOpenedSession.cursor.trade_point
                     && model.params.session_id !== model.qOpenedSession.cursor.org_session_id)
             {
