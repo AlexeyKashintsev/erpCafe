@@ -9,6 +9,7 @@ function testAddTradeItemsOnTradePoint() {
     self.name = 'Добавление Торговой позиции на Торговую Точку';
     self.roles = ['admin'];
     self.testsCount = 1;
+    var TM = new ServerModule("ServerModuleForTests");
     var TS = new ServerModule("TradeSessions");
     var BM = new ServerModule("BillModule");
     var CM = new ServerModule("ClientServerModule");
@@ -49,12 +50,7 @@ function testAddTradeItemsOnTradePoint() {
     }
     
     function checkItem(data){
-        model.tradeItemsByTP.params.actual_date = new Date();
-        model.tradeItemsByTP.params.franchazi_id = 1;
-        model.tradeItemsByTP.params.item_id = data.id;
-        model.tradeItemsByTP.params.trade_point_id = data.tp;
-        model.tradeItemsByTP.requery();
-        if (model.tradeItemsByTP.length > 0){
+        if (TM.checkItem(data)){
             info("Товар есть на точке");
             return true;
         } else {

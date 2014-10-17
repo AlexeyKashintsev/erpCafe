@@ -9,6 +9,7 @@ function testBarista() {
     self.name = 'Создание франчази';
     self.roles = ['admin'];
     self.testsCount = 1;
+    var TM = new ServerModule("ServerModuleForTests");
     var TS = new ServerModule("TradeSessions");
     var BM = new ServerModule("BillModule");
     var CM = new ServerModule("ClientServerModule");
@@ -95,22 +96,33 @@ function testBarista() {
     };
 
     function checkState(aTypeOperation, orderDetails){
+        info("Проверяем значения отслеживаемых параметров....");
         var output = {};
         if (aTypeOperation !== "buyDefault"){
             output.BonusCount = BM.getSumFromAccountId(orderDetails.clientData.bonusBill);
             info("Текущее значение бонусов у клиента " + output.BonusCount);
         }
-        //TODO Добавить снятие информации о наличке в кассе
         return output;
     }
     
     function checkResult(before, after, aTypeOperation){
+        var ChangeInCashBoxBalance = TM.changeInCashBoxBalance(WH.getCurrentSession());
         switch (aTypeOperation){
             case "buyDefault":
-                //TODO проверка начисления налички в кассу
+                if (ChangeInCashBoxBalance){
+                    success("Количество денег в кассе изенилось на " + ChangeInCashBoxBalance);
+                } else {
+                    ok = false;
+                    error("в кассе нет изменений");
+                }
                 break;
             case "buyWithMoney":
-                //TODO проверка начисления налички в кассу
+                if (ChangeInCashBoxBalance){
+                    success("Количество денег в кассе изенилось на " + ChangeInCashBoxBalance);
+                } else {
+                    ok = false;
+                    error("в кассе нет изменений");
+                }
                 if (before.BonusCount){
                     if (Number(before.BonusCount) < Number(after.BonusCount)){
                         success("Бонусы начислены в размере " + (after.BonusCount - before.BonusCount));
@@ -121,7 +133,12 @@ function testBarista() {
                 }
                 break;
             case "buyWithBonus":
-                //TODO проверка начисления налички в кассу
+                if (!ChangeInCashBoxBalance()){
+                    success("В кассе изменений не произошло");
+                } else {
+                    ok = false;
+                    error("Количество денег в кассе изенилось на " + ChangeInCashBoxBalance);
+                }
                 if (before.BonusCount){
                     if (Number(before.BonusCount) > Number(after.BonusCount)){
                         success("Бонусы списаны в размере " + (before.BonusCount - after.BonusCount));
@@ -136,23 +153,34 @@ function testBarista() {
         
     }
     
+    
+    function openSession(){
+        WH.createSession();
+        TS.initializeSession(WH.getCurrentSession(), 0);
+        return WH.getCurrentSession();
+    }
+    
+    function closeSession(){
+        TS.calculateFinalValues(WH.getCurrentSession());
+        WH.closeSession();
+    }
+    
     function processOrderUnderShell(orderDetails){
         var after, before = {};
         info("Начинаем операцию " + orderDetails.name);
-        info("Проверяем значения отслеживаемых параметров....");
+        info("Открываем сессию... " + openSession());
         before = checkState(orderDetails.name, orderDetails);
         TS.processOrder(orderDetails);
         success("Товар проведен клиенту " + orderDetails.clientData.phone + " за " + orderDetails.methodOfPayment);
-        info("Проверяем значения отслеживаемых параметров....");
-        after = checkState(orderDetails.name, orderDetails);      
+        after = checkState(orderDetails.name, orderDetails);
+        closeSession();
         checkResult(before, after, orderDetails.name);
     }
     
     function doTest() {
         info("Начало теста");
         WH.setTradePoint(6);
-        WH.createSession();
-        TS.initializeSession(WH.getCurrentSession(), 0);
+        
         
         processOrderUnderShell(buyDefault);
         processOrderUnderShell(buyWithMoney);
