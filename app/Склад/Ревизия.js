@@ -6,28 +6,26 @@ function RevisionForm() {
     var self = this, model = this.model, form = this;
     var whSessionModule = new ServerModule("WhSessionModule");
     
-    self.setTradePoint = function(aTradePointId) {
-        model.params.trade_point_id = aTradePointId;
-    };
-    
     self.items = [];
     self.end_items = {};
     self.session_id;
     self.closing = false;
     
-    function getStartValues() {
+    self.setTradePoint = function(aTradePointId) {
+        model.params.trade_point_id = aTradePointId;
         whSessionModule.setTradePoint(model.params.trade_point_id);
         self.session_id = whSessionModule.createSession(false, true);
         whSessionModule.setStartValuesAuto();
+        
         self.items = whSessionModule.getCurrentStartValues();
         console.log(self.items);
-        if (model.itemsByTP.length > 0) {
+        if (!model.itemsByTP.empty) {
             model.itemsByTP.beforeFirst();
             while (model.itemsByTP.next()) {
                 model.itemsByTP.cursor.start_value = self.items[model.itemsByTP.cursor.item_id];
             }
         }
-    }
+    };
     
     function closeSession(anItems){
         if(whSessionModule.closeSessionByRevision(anItems))
@@ -63,13 +61,13 @@ function RevisionForm() {
     }//GEN-LAST:event_formWindowClosing
 
     function itemsByTPOnRequeried(evt) {//GEN-FIRST:event_itemsByTPOnRequeried
-        //if (self.items.length > 0) {
+        Logger.info('!!!');
+        if (!self.items.empty) {
             model.itemsByTP.beforeFirst();
             while (model.itemsByTP.next()) {
                 model.itemsByTP.cursor.start_value = self.items[model.itemsByTP.cursor.item_id];
             }
-            getStartValues();
-        //}
+        }
     }//GEN-LAST:event_itemsByTPOnRequeried
 
     function btnCancelActionPerformed(evt) {//GEN-FIRST:event_btnCancelActionPerformed

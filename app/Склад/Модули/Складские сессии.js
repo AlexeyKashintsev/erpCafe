@@ -40,11 +40,13 @@ function WhSessionModule() {
      * Иначе false 
      */
     self.getCurrentSession = function() {
-        try {
-            model.params.session_id = session.getActiveTPSession();
-            model.params.trade_point_id = session.getTradePoint();
-        } catch(e) {
-            Logger.warning(e);
+        if (!model.params.session_id && !model.params.trade_point_id) {
+            try {
+                model.params.session_id = session.getActiveTPSession();
+                model.params.trade_point_id = session.getTradePoint();
+            } catch(e) {
+                Logger.warning(e);
+            }
         }
         model.qOpenedSession.execute();
         if (!model.qOpenedSession.empty) {
