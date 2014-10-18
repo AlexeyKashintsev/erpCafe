@@ -11,7 +11,6 @@ p, h1, form, button{border:0; margin:0; padding:0;}
 .myform{
     margin:0 auto;
     width:400px;
-    
 }
 div.spacer {
     //padding-top: 10%;
@@ -96,4 +95,22 @@ div.error {
     color: red;
     font-weight: bold;
     font-size: 14px;
+}
+
+div.alert {
+    margin: 10px auto;
+    width:400px;
+    border: solid #7c3902;
+    background: #fcf1ec;
+    padding-bottom: 20px;
+}
+
+.alert h1 {
+    font-size: large;
+    color: red;
+    padding-top: 15px;
+}
+
+.alert > * {
+    padding-left: 10px; 
 }
