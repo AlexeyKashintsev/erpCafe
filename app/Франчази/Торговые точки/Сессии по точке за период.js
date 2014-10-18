@@ -95,7 +95,7 @@ function tradeOperaionsByTP(aTradePoint, aContainer) {
         var DD = aDate.getDate();
         var MM = aDate.getMonth() + 1;
         var YYYY = aDate.getFullYear();
-        return YYYY + '-' + MM + '-' + DD;
+        return YYYY + '/' + MM + '/' + DD;
     }
     
     self.container = cmn.createElement("div", "tbBalanceDetails", aContainer);
