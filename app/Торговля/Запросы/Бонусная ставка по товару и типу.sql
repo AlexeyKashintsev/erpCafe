@@ -2,6 +2,8 @@
  * @public
  * @author minya92
  * @name qBonusCountForTradeItem
+ * @rolesAllowedWrite admin
+ * @rolesAllowedRead franchazi admin
  */ 
 Select * 
 From bonus_rate_for_trade_items t1

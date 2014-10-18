@@ -12,11 +12,11 @@
   <entity Name="qItemBillCost" Title="" entityHeight="218" entityIconified="false" entityId="140896463679793" entityLocationX="575" entityLocationY="223" entityWidth="150" queryId="qItemBillCost" tableName="" tableSchemaName=""/>
   <entity Name="qAddItemsOnOperation" Title="" entityHeight="95" entityIconified="false" entityId="140896477010156" entityLocationX="407" entityLocationY="414" entityWidth="150" queryId="qAddItemsOnOperation" tableName="" tableSchemaName=""/>
   <relation leftEntityId="-1" leftEntityParameterName="operation_id" rightEntityId="140802119915363" rightEntityParameterName="operation_id"/>
-  <referenceRelation leftEntityFieldName="bill_operation" leftEntityId="141199975520960" rightEntityFieldName="bill_operations_id" rightEntityId="140802119915363"/>
   <referenceRelation leftEntityFieldName="operation_status" leftEntityId="140802119915363" rightEntityFieldName="bill_operations_status_id" rightEntityId="140802119915363"/>
-  <referenceRelation leftEntityFieldName="account_id" leftEntityId="140802119915363" rightEntityFieldName="bill_accounts_id" rightEntityId="140791225424245"/>
-  <referenceRelation leftEntityFieldName="operation_id" leftEntityId="140896477010156" rightEntityFieldName="bill_operations_id" rightEntityId="140802119915363"/>
-  <referenceRelation leftEntityFieldName="cost_id" leftEntityId="140896477010156" rightEntityFieldName="bill_item_cost_id" rightEntityId="140896463679793"/>
+  <referenceRelation leftEntityFieldName="bill_operation" leftEntityId="141199975520960" rightEntityFieldName="bill_operations_id" rightEntityId="140802119915363"/>
   <referenceRelation leftEntityFieldName="operation_type" leftEntityId="140802119915363" rightEntityFieldName="bill_operations_type_id" rightEntityId="140802119915363"/>
   <referenceRelation leftEntityFieldName="account_id" leftEntityId="141087132755004" rightEntityFieldName="bill_accounts_id" rightEntityId="140791225424245"/>
+  <referenceRelation leftEntityFieldName="operation_id" leftEntityId="140896477010156" rightEntityFieldName="bill_operations_id" rightEntityId="140802119915363"/>
+  <referenceRelation leftEntityFieldName="cost_id" leftEntityId="140896477010156" rightEntityFieldName="bill_item_cost_id" rightEntityId="140896463679793"/>
+  <referenceRelation leftEntityFieldName="account_id" leftEntityId="140802119915363" rightEntityFieldName="bill_accounts_id" rightEntityId="140791225424245"/>
 </datamodel>
