@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?><datamodel>
   <parametersEntity entityHeight="200" entityIconified="false" entityLocationX="12" entityLocationY="12" entityWidth="150"/>
+  <entity Name="qTradeSessionBalance" Title="" entityHeight="200" entityIconified="false" entityId="141353227449191" entityLocationX="346" entityLocationY="9" entityWidth="150" queryId="qTradeSessionBalance" tableName="" tableSchemaName=""/>
+  <entity Name="querySessionBalance" Title="" entityHeight="200" entityIconified="false" entityId="141353229269601" entityLocationX="504" entityLocationY="8" entityWidth="150" queryId="querySessionBalance" tableName="" tableSchemaName=""/>
   <entity Name="qBillAccount" Title="" entityHeight="200" entityIconified="false" entityId="141268968447950" entityLocationX="180" entityLocationY="5" entityWidth="150" queryId="qBillAccount" tableName="" tableSchemaName=""/>
 </datamodel>
