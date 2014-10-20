@@ -1,13 +1,13 @@
-<?xml version="1.0" encoding="UTF-8"?><layout defaultCloseOperation="2" name="Form" prefHeight="352px" prefWidth="697px" windowClosing="formWindowClosing" windowOpened="formWindowOpened">
-  <widget name="pnlSelLock" parent="Form" prefHeight="50px" prefWidth="697px" type="PanelDesignInfo">
+<?xml version="1.0" encoding="UTF-8"?><layout defaultCloseOperation="2" name="Form" prefHeight="355px" prefWidth="714px" windowClosing="formWindowClosing" windowOpened="formWindowOpened">
+  <widget name="pnlSelLock" parent="Form" prefHeight="50px" prefWidth="714px" type="PanelDesignInfo">
     <layout type="MarginLayoutDesignInfo"/>
     <constraints place="South" type="BorderLayoutConstraintsDesignInfo"/>
   </widget>
   <widget actionPerformed="btnResetCategoryActionPerformed" name="btnResetCategory" parent="pnlSelLock" prefHeight="21px" prefWidth="108px" text="Сбросить" type="ButtonDesignInfo" visible="false">
     <constraints height="21px" left="336px" top="2px" type="MarginConstraintsDesignInfo" width="108px"/>
   </widget>
-  <widget actionPerformed="btnSelectActionPerformed" icon="icons/22x22/actions/dialog-apply.png" name="btnSelect" parent="pnlSelLock" prefHeight="35px" prefWidth="174px" text="Сохранить" type="ButtonDesignInfo">
-    <constraints bottom="7px" height="35px" right="7px" type="MarginConstraintsDesignInfo" width="174px"/>
+  <widget actionPerformed="btnSelectActionPerformed" icon="icons/22x22/actions/dialog-apply.png" name="btnSelect" parent="pnlSelLock" prefHeight="36px" prefWidth="174px" text="Сохранить" type="ButtonDesignInfo">
+    <constraints height="36px" right="12px" top="0px" type="MarginConstraintsDesignInfo" width="174px"/>
   </widget>
   <widget mouseClicked="lbCategoryMouseClicked" name="lbCategory" parent="pnlSelLock" prefHeight="24px" prefWidth="312px" type="LabelDesignInfo">
     <constraints height="24px" left="12px" top="0px" type="MarginConstraintsDesignInfo" width="312px"/>
@@ -18,14 +18,14 @@
   <widget actionPerformed="btnResetItemsActionPerformed" name="btnResetItems" parent="pnlSelLock" prefHeight="21px" prefWidth="108px" text="Сбросить" type="ButtonDesignInfo" visible="false">
     <constraints bottom="5px" height="21px" left="336px" type="MarginConstraintsDesignInfo" width="108px"/>
   </widget>
-  <widget name="pnlWorkSpace" parent="Form" prefHeight="302px" prefWidth="697px" type="PanelDesignInfo">
+  <widget name="pnlWorkSpace" parent="Form" prefHeight="305px" prefWidth="714px" type="PanelDesignInfo">
     <layout type="MarginLayoutDesignInfo"/>
     <constraints place="Center" type="BorderLayoutConstraintsDesignInfo"/>
   </widget>
-  <widget dividerLocation="230" leftComponent="panel" name="splitPane" parent="pnlWorkSpace" prefHeight="302px" prefWidth="697px" rightComponent="panel1" type="SplitDesignInfo">
+  <widget dividerLocation="230" leftComponent="panel" name="splitPane" parent="pnlWorkSpace" prefHeight="305px" prefWidth="714px" rightComponent="panel1" type="SplitDesignInfo">
     <constraints bottom="0px" left="0px" right="0px" top="0px" type="MarginConstraintsDesignInfo"/>
   </widget>
-  <widget name="panel1" parent="splitPane" prefHeight="300px" prefWidth="461px" type="PanelDesignInfo">
+  <widget name="panel1" parent="splitPane" prefHeight="303px" prefWidth="478px" type="PanelDesignInfo">
     <layout type="MarginLayoutDesignInfo"/>
   </widget>
   <widget borderPainted="false" floatable="false" name="toolBar11" parent="panel1" prefHeight="27px" prefWidth="122px" rollover="true" type="ToolbarDesignInfo">
@@ -33,7 +33,7 @@
   </widget>
   <widget actionPerformed="rbAllActionPerformed" buttonGroup="buttonGroup" name="rbAll" parent="toolBar11" prefHeight="15px" prefWidth="35px" selected="true" text="Все" type="RadioDesignInfo"/>
   <widget actionPerformed="rbMyActionPerformed" buttonGroup="buttonGroup" name="rbMy" parent="toolBar11" prefHeight="15px" prefWidth="37px" text="Мои" type="RadioDesignInfo"/>
-  <widget floatable="false" name="toolBar" parent="panel1" prefHeight="36px" prefWidth="467px" rollover="true" type="ToolbarDesignInfo">
+  <widget floatable="false" name="toolBar" parent="panel1" prefHeight="36px" prefWidth="484px" rollover="true" type="ToolbarDesignInfo">
     <constraints height="36px" left="0px" right="-6px" top="0px" type="MarginConstraintsDesignInfo"/>
   </widget>
   <widget actionPerformed="btnAddActionPerformed" focusable="false" horizontalTextPosition="0" icon="icons/22x22/actions/list-add.png" name="btnAdd" parent="toolBar" prefHeight="29px" prefWidth="29px" toolTipText="Добавить" type="ButtonDesignInfo" verticalTextPosition="3"/>
@@ -41,27 +41,31 @@
   <widget actionPerformed="btnReqActionPerformed" focusable="false" horizontalTextPosition="0" icon="icons/22x22/actions/new-view-refresh.png" name="btnReq" parent="toolBar" prefHeight="29px" prefWidth="29px" toolTipText="Обновить" type="ButtonDesignInfo" verticalTextPosition="3"/>
   <widget actionPerformed="btnItemEditContentActionPerformed" focusable="false" horizontalTextPosition="4" icon="icons/22x22/actions/manilla-document-open.png" name="btnItemEditContent" parent="toolBar" prefHeight="29px" prefWidth="29px" toolTipText="Состав товара" type="ButtonDesignInfo" verticalTextPosition="3"/>
   <widget actionPerformed="btnItemCreateDoubleActionPerformed" focusable="false" horizontalTextPosition="4" icon="icons/22x22/actions/document-revert.png" name="btnItemCreateDouble" parent="toolBar" prefHeight="29px" prefWidth="29px" toolTipText="Дублировать товар" type="ButtonDesignInfo" verticalTextPosition="3"/>
-  <widget name="modelGrid1" parent="panel1" prefHeight="264px" prefWidth="461px" type="DbGridDesignInfo">
-    <treeDesignInfo/>
-    <rowsColumnsDesignInfo>
-      <rowsDatasource entityId="140566813019746" field="false"/>
-    </rowsColumnsDesignInfo>
+  <widget name="modelGrid1" parent="panel1" prefHeight="264px" prefWidth="478px" type="DbGridDesignInfo">
     <column name="colItem_name" title="Название">
+      <columnsDatasource/>
+      <columnsDisplayField/>
+      <cellsDatasource/>
+      <cellDesignInfo>
+        <columnsKeyField/>
+        <cellValueField/>
+        <rowsKeyField/>
+      </cellDesignInfo>
       <headerStyle>
         <nativeFont name="Dialog" size="15"/>
       </headerStyle>
       <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
       <datamodelElement entityId="140566813019746" fieldName="item_name"/>
+    </column>
+    <column name="select" selectFunction="selectOnSelect" selectOnly="true" title="Состав">
       <columnsDatasource/>
       <columnsDisplayField/>
       <cellsDatasource/>
       <cellDesignInfo>
-        <rowsKeyField/>
         <columnsKeyField/>
         <cellValueField/>
+        <rowsKeyField/>
       </cellDesignInfo>
-    </column>
-    <column name="select" selectFunction="selectOnSelect" selectOnly="true" title="Состав">
       <headerStyle>
         <nativeFont name="Dialog" size="15"/>
       </headerStyle>
@@ -70,18 +74,14 @@
         <displayField entityId="140568805648895" fieldName="contents"/>
       </controlInfo>
       <datamodelElement entityId="140566813019746" fieldName="trade_items_id"/>
-      <columnsDatasource/>
-      <columnsDisplayField/>
-      <cellsDatasource/>
-      <cellDesignInfo>
-        <rowsKeyField/>
-        <columnsKeyField/>
-        <cellValueField/>
-      </cellDesignInfo>
     </column>
+    <rowsColumnsDesignInfo>
+      <rowsDatasource entityId="140566813019746" field="false"/>
+    </rowsColumnsDesignInfo>
+    <treeDesignInfo/>
     <constraints height="264px" left="0px" right="0px" top="36px" type="MarginConstraintsDesignInfo"/>
   </widget>
-  <widget name="panel" parent="splitPane" prefHeight="300px" prefWidth="229px" type="PanelDesignInfo">
+  <widget name="panel" parent="splitPane" prefHeight="303px" prefWidth="229px" type="PanelDesignInfo">
     <layout type="MarginLayoutDesignInfo"/>
   </widget>
   <widget floatable="false" name="toolBar1" parent="panel" prefHeight="36px" prefWidth="697px" rollover="true" type="ToolbarDesignInfo">
@@ -92,27 +92,27 @@
   <widget actionPerformed="btnDel1ActionPerformed" focusable="false" horizontalTextPosition="0" icon="icons/22x22/actions/list-remove.png" name="btnDel1" parent="toolBar1" prefHeight="29px" prefWidth="29px" toolTipText="Удалить" type="ButtonDesignInfo" verticalTextPosition="3"/>
   <widget actionPerformed="btnReq1ActionPerformed" focusable="false" horizontalTextPosition="0" icon="icons/22x22/actions/new-view-refresh.png" name="btnReq1" parent="toolBar1" prefHeight="29px" prefWidth="29px" toolTipText="Обновить" type="ButtonDesignInfo" verticalTextPosition="3"/>
   <widget mouseClicked="modelGridMouseClicked" name="modelGrid" parent="panel" prefHeight="264px" prefWidth="229px" type="DbGridDesignInfo">
-    <treeDesignInfo>
-      <unaryLinkField entityId="140566820113240" fieldName="parent_type"/>
-    </treeDesignInfo>
-    <rowsColumnsDesignInfo>
-      <rowsDatasource entityId="140566820113240" field="false"/>
-    </rowsColumnsDesignInfo>
     <column name="colType_description" title="Категория">
+      <columnsDatasource/>
+      <columnsDisplayField/>
+      <cellsDatasource/>
+      <cellDesignInfo>
+        <columnsKeyField/>
+        <cellValueField/>
+        <rowsKeyField/>
+      </cellDesignInfo>
       <headerStyle>
         <nativeFont name="Dialog" size="15"/>
       </headerStyle>
       <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
       <datamodelElement entityId="140566820113240" fieldName="type_name"/>
-      <columnsDatasource/>
-      <columnsDisplayField/>
-      <cellsDatasource/>
-      <cellDesignInfo>
-        <rowsKeyField/>
-        <columnsKeyField/>
-        <cellValueField/>
-      </cellDesignInfo>
     </column>
+    <rowsColumnsDesignInfo>
+      <rowsDatasource entityId="140566820113240" field="false"/>
+    </rowsColumnsDesignInfo>
+    <treeDesignInfo>
+      <unaryLinkField entityId="140566820113240" fieldName="parent_type"/>
+    </treeDesignInfo>
     <constraints height="264px" left="0px" right="0px" top="36px" type="MarginConstraintsDesignInfo"/>
   </widget>
   <nonvisual name="buttonGroup" type="ButtonGroupDesignInfo"/>

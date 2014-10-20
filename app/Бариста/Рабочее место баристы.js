@@ -107,7 +107,7 @@ function BaristaDesktop() {
     function btnWarehouseAddActionPerformed(evt) {//GEN-FIRST:event_btnWarehouseAddActionPerformed
         if (!whAdd) {
             whAdd = new WHSetAddMovement();
-            //whAdd.setTradePoint(session.tradePoint);
+            whAdd.setTradePoint(session.tradePoint);
         }
         whAdd.show();
     }//GEN-LAST:event_btnWarehouseAddActionPerformed

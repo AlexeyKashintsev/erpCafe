@@ -21,6 +21,10 @@ function WhSessionModule() {
         2: ""
     };
     
+    self.getSelfPropertyValue = function(aPropertyName) {
+        return self[aPropertyName];
+    };
+    
     function setParams(aTradePointId, aSessionID) {
         try {
             if (!aTradePointId && !aSessionID) {

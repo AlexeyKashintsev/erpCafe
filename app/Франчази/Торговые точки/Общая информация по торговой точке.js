@@ -48,6 +48,17 @@ function TradePointCommonInfo(aTradePointDetails, aContainer) {
         }
     }
     
+    function btnWHSetAddMovementOnClick(){
+        if(tradePointDetails.end_date){
+            alert("Сначала нужно открыть смену!");
+        } else {
+            //alert(tradePointDetails.org_session_id);
+            var wHSetAddMovement = new WHSetAddMovement();
+            wHSetAddMovement.setSessIdAndTPFran(tradePointDetails.org_session_id, tradePointDetails.org_trade_point_id);
+            wHSetAddMovement.showModal();
+        }
+    }
+    
     function btnEmptyCashBoxOnClick(){
         var sum = prompt("Сколько денег вы хотите снять?", 0);
         if(cashBox >= sum){
@@ -58,6 +69,8 @@ function TradePointCommonInfo(aTradePointDetails, aContainer) {
             }
         } else  alert("В кассе нет "+sum+" рублей");
     }
+    
+    
     
     function setAdditionalInfo(aDohod, aKassa){
         additionalInfo.innerHTML = "";
@@ -99,6 +112,9 @@ function TradePointCommonInfo(aTradePointDetails, aContainer) {
             var btnWHRevision = cmn.createElement("button", "btn btn-success btn-xs btn-block", currentSession);
             btnWHRevision.innerHTML = 'Провести ревизию';
             btnWHRevision.onclick = btnWHRevisionOnClick;
+            var btnWHSetAddMovement = cmn.createElement("button", "btn btn-success btn-xs btn-block", currentSession);
+            btnWHSetAddMovement.innerHTML = 'Прием товаров';
+            btnWHSetAddMovement.onclick = btnWHSetAddMovementOnClick;
             
             var panelData = cmn.createElement("div", "col-lg-9 col-md-8 col-xs-11", panelContent);
             /** !SHOW CHARTS! **/

@@ -9,9 +9,14 @@ function WarehouseItemList() {
 
     var self = this, model = this.model, form = this;
     model.params.item_type = 0;
-   
+    self.dialogMode = false;
+    
     self.setFranchazi = function(aFranchazi) {
         self.model.params.franchazi_id = aFranchazi;
+    };
+    
+    self.setDialogMode = function() {
+        self.dialogMode = true;
     };
     
     self.setTradePoint = function(aTradePoint) {
@@ -33,7 +38,10 @@ function btnSaveActionPerformed(evt) {//GEN-FIRST:event_btnSaveActionPerformed
 }//GEN-LAST:event_btnSaveActionPerformed
 
 function formWindowOpened(evt) {//GEN-FIRST:event_formWindowOpened
-        //form.pnlSelLock.visible = self.selectForm;
+        if(self.dialogMode){
+            form.btnSelect.visible = true;
+            form.panel2.visible = true;
+        }
 }//GEN-LAST:event_formWindowOpened
 
 function formWindowClosing(evt) {//GEN-FIRST:event_formWindowClosing
@@ -62,14 +70,6 @@ function formWindowClosing(evt) {//GEN-FIRST:event_formWindowClosing
         self.autoChange = false;
     }//GEN-LAST:event_modelGridMouseClicked
 
-    function btnSelectActionPerformed(evt) {//GEN-FIRST:event_btnSelectActionPerformed
-        if(model.qWarehouseItems.length > 0){
-            form.close(model.qWarehouseItems.cursor.wh_items_id);
-        } else {
-            alert('Вы ничего не выбрали!');
-        }
-    }//GEN-LAST:event_btnSelectActionPerformed
-
     function itemTypeOnScrolled(evt) {//GEN-FIRST:event_itemTypeOnScrolled
         model.params.item_type = model.itemType.cursor.wh_item_types_id;
     }//GEN-LAST:event_itemTypeOnScrolled
@@ -85,4 +85,12 @@ function formWindowClosing(evt) {//GEN-FIRST:event_formWindowClosing
     function rbCommonActionPerformed(evt) {//GEN-FIRST:event_rbCommonActionPerformed
         model.params.show_type = 1;
     }//GEN-LAST:event_rbCommonActionPerformed
+
+    function btnSelectActionPerformed(evt) {//GEN-FIRST:event_btnSelectActionPerformed
+        if(model.qWarehouseItems.length > 0){
+            form.close(model.qWarehouseItems.cursor.wh_items_id);
+        } else {
+            alert('Вы ничего не выбрали!');
+        }
+    }//GEN-LAST:event_btnSelectActionPerformed
 }
