@@ -28,13 +28,13 @@ function BaristaDesktop() {
                 if (!aTradePoint)
                     Logout();
                 session.tradePoint = aTradePoint;
-                if (session.whSession.setStartValuesAuto(aTradePoint)) {
+                if (!session.whSession.setTradePoint(aTradePoint)) 
+                if (session.whSession.createSession()) {
                     session.activeSession = session.whSession.getCurrentSession();
-                    session.tradeSession.initializeSession(session.activeSession,
-                                                            prompt("Введите остаток по кассе", "0"));
+                    session.tradeSession.initializeSession(session.activeSession, prompt("Введите остаток по кассе", "0"));
                     setSession(session.activeSession);
                 } else {
-                    alert('Склад не инициализирован');
+                    alert('Склад не инициализирован'); //TODO Поправить
                     var whInitializer = new WhRevisionByBarista();
                     whInitializer.setTradePoint(aTradePoint);
                     whInitializer.showModal(function() {
