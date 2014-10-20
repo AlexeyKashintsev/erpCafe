@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?><datamodel>
+  <parametersEntity entityHeight="200" entityIconified="false" entityLocationX="12" entityLocationY="12" entityWidth="150"/>
+  <entity Name="itemsByTP" Title="" entityHeight="200" entityIconified="false" entityId="141381771417333" entityLocationX="517" entityLocationY="12" entityWidth="150" queryId="itemsByTP" tableName="" tableSchemaName=""/>
+  <entity Name="qTradeSessionBalance" Title="" entityHeight="200" entityIconified="false" entityId="141353682798486" entityLocationX="176" entityLocationY="13" entityWidth="150" queryId="qTradeSessionBalance" tableName="" tableSchemaName=""/>
+  <entity Name="tradeItemsByTP" Title="" entityHeight="200" entityIconified="false" entityId="141353698583337" entityLocationX="349" entityLocationY="14" entityWidth="150" queryId="tradeItemsByTP" tableName="" tableSchemaName=""/>
+</datamodel>

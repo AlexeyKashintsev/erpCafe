@@ -3,6 +3,7 @@
  * @author mike
  * @name querySessionBalance
  * @manual
+ * @public
  */ 
 Select * 
 From wh_session_balance t1

@@ -3,6 +3,7 @@
  * @author mike
  * @name countItems
  * @readonly
+ * @public
  */ 
 Select t3.org_session_id as session_id, t2.item_id
 , case when sum(t1."value" * t.multiplier) is not null 
