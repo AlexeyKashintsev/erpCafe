@@ -2,6 +2,7 @@
  * 
  * @author Алексей
  * @public
+ * @module
  */ 
 function UserSession() {
     var self = this, model = this.model;
@@ -42,8 +43,15 @@ function UserSession() {
     };
     
     self.getActiveTPSession = function() {
-        model.qOpenedSession.requery();
-        return model.qOpenedSession.empty ? false : model.qOpenedSession.org_session_id;
+        model.qOpenedSession.execute();
+        return model.qOpenedSession.empty ? false : 
+                model.qOpenedSession.cursor.org_session_id;
+    };
+    
+    self.getTradePoint = function() {
+        model.qOpenedSession.execute();
+        return model.qOpenedSession.empty ? false : 
+                model.qOpenedSession.cursor.trade_point;
     };
     
     self.getUserName = function() {
@@ -62,7 +70,7 @@ function UserSession() {
         model.qSessionById.params.session_id = aSession;
         model.qSessionById.execute();
         if (!model.qSessionById.empty)
-            return model.qSessionById.cursor.end_date === null
+            return model.qSessionById.cursor.end_date === null;
         else
             return false;
     };
