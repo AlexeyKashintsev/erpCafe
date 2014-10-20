@@ -25,4 +25,15 @@ function ServerModuleForTests() {
         model.qTradeSessionBalance.requery();
         return model.qTradeSessionBalance.cursor.end_value - model.qTradeSessionBalance.cursor.start_value;
     };
+    
+    self.getItemsFromTradePoint = function(aTP){
+        var out = [];
+        var i = 0;
+        model.itemsByTP.params.trade_point_id = aTP;
+        model.itemsByTP.requery();
+        model.itemsByTP.beforeFirst();
+        while (model.itemsByTP.next()){
+            out[model.itemsByTP.cursor.item_id] = 100;
+        }
+    };
 }

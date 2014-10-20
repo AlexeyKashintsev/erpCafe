@@ -36,7 +36,7 @@ function testBarista() {
     };
     
     //Функции для теста
-    
+    var session;
     /*
     * Простая покупка
     * @type type
@@ -106,7 +106,14 @@ function testBarista() {
     }
     
     function checkResult(before, after, aTypeOperation){
-        var ChangeInCashBoxBalance = TM.changeInCashBoxBalance(WH.getCurrentSession());
+        var ChangeInCashBoxBalance = false;
+        try {
+            ChangeInCashBoxBalance = TM.changeInCashBoxBalance(WH.getCurrentSession());
+        } catch (e){
+            error("Не удалось получить изменения в кассе. Возможно проблемы с сессией.");
+            info(e);
+        }
+        
         switch (aTypeOperation){
             case "buyDefault":
                 if (ChangeInCashBoxBalance){
@@ -133,7 +140,7 @@ function testBarista() {
                 }
                 break;
             case "buyWithBonus":
-                if (!ChangeInCashBoxBalance()){
+                if (!ChangeInCashBoxBalance){
                     success("В кассе изменений не произошло");
                 } else {
                     ok = false;
@@ -156,25 +163,74 @@ function testBarista() {
     
     function openSession(){
         WH.createSession();
-        TS.initializeSession(WH.getCurrentSession(), 0);
-        return WH.getCurrentSession();
+        session = WH.getCurrentSession();
+        TS.initializeSession(session, 0);
     }
     
     function closeSession(){
-        TS.calculateFinalValues(WH.getCurrentSession());
+        TS.calculateFinalValues(session ? session : WH.getCurrentSession());
+        WH.closeSession();
+    }
+    
+    function revision(){
+        WH.createSession(null, true, TM.getItemsFromTradePoint(6));
         WH.closeSession();
     }
     
     function processOrderUnderShell(orderDetails){
         var after, before = {};
         info("Начинаем операцию " + orderDetails.name);
-        info("Открываем сессию... " + openSession());
+        try {
+            openSession();
+            if (session){
+                info("Открыли сессию... " + session);
+            } else {
+                error("Сессия не открыта!");
+                info("Проводим ревизию");
+                try {
+                    revision();
+                    info("Ревизия проведена");
+                    openSession();
+                    if (session) {
+                        info("Открыли сессию... " + session);
+                    } else {
+                        error("Сессия не открывается");
+                        ok = false;
+                        return 0;
+                    }
+                } catch(e){
+                    error("Ошибка при проведении ревизии " + e);
+                }
+            }
+        } catch (e) {
+            info("Не удалось открыть сессию");
+            error(e);
+        }
         before = checkState(orderDetails.name, orderDetails);
-        TS.processOrder(orderDetails);
-        success("Товар проведен клиенту " + orderDetails.clientData.phone + " за " + orderDetails.methodOfPayment);
+        try {
+            if (TS.processOrder(orderDetails) === 0){
+                success("Товар проведен клиенту " + orderDetails.clientData.phone + " за " + orderDetails.methodOfPayment);
+            } else {
+                error("Товар не проведен");
+            }
+        } catch(e) {
+            error("Ошибка в processOrder");
+            info(e);
+        }
+        
         after = checkState(orderDetails.name, orderDetails);
-        closeSession();
-        checkResult(before, after, orderDetails.name);
+        try{
+            closeSession();
+        } catch(e){
+            error("ошибка при закрытии сессии");
+            info(e);
+        }
+        try {
+            checkResult(before, after, orderDetails.name);
+        } catch(e){
+            error("ошибка при проверке результатов выполнения теста");
+            info(e);
+        }
     }
     
     function doTest() {
