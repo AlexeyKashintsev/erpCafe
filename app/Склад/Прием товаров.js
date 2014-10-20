@@ -10,7 +10,7 @@ var MSG_SESSION_CLOSED_ERROR = "Сначала нужно открыть сме�
 var MSG_SET_MOVEMENTS_ERROR  = "Произошла ошибка при добавлении товара!";
 
 var self = this, model = this.model, form = this;
-
+var whSessionModule = new ServerModule("WhSessionModule");
 self.setTradePoint = function(aTradePointId) {
     model.params.trade_point_id = aTradePointId;
     if (aTradePointId !== session.tradePoint) {
@@ -20,8 +20,13 @@ self.setTradePoint = function(aTradePointId) {
     }
 };
 
+self.setSessIdAndTPFran = function(aSessId, aTP) {
+    model.params.session_id = aSessId;
+    model.params.trade_point_id = aTP;
+};
+
 function formWindowOpened(evt) {//GEN-FIRST:event_formWindowOpened
-    self.setTradePoint(session.tradePoint);
+    //self.setTradePoint(session.tradePoint);
     form.btnProceed.enabled = true;
     if(!model.params.session_id) {
         alert(MSG_SESSION_CLOSED_ERROR);
@@ -41,7 +46,7 @@ function formWindowClosing(evt) {//GEN-FIRST:event_formWindowClosing
                  items[model.itemsByTP.cursor.item_id] = model.itemsByTP.cursor.start_value;
              }
          }
-         if (session.whSession.whMovement(items, session.whSession.WH_ADD_ITEMS)) 
+         if (whSessionModule.whMovement(items, whSessionModule.getSelfPropertyValue("WH_ADD_ITEMS"), model.params.session_id)) 
             form.close();
          else
              alert(MSG_SET_MOVEMENTS_ERROR);

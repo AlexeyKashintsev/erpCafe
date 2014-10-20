@@ -52,7 +52,9 @@ function TradePointCommonInfo(aTradePointDetails, aContainer) {
         if(tradePointDetails.end_date){
             alert("Сначала нужно открыть смену!");
         } else {
+            //alert(tradePointDetails.org_session_id);
             var wHSetAddMovement = new WHSetAddMovement();
+            wHSetAddMovement.setSessIdAndTPFran(tradePointDetails.org_session_id, tradePointDetails.org_trade_point_id);
             wHSetAddMovement.showModal();
         }
     }
