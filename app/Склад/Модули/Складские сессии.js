@@ -82,7 +82,7 @@ function WhSessionModule() {
             }
         }
         
-        if (aStartValues !== {}) {
+        if (!!aStartValues && aStartValues !== {}) {
             model.itemsByTP.beforeFirst();
             while (model.itemsByTP.next()) {
                 model.querySessionBalance.insert(
