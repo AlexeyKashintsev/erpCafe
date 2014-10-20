@@ -25,7 +25,7 @@ function WhSessionModule() {
         try {
             if (!aTradePointId && !aSessionID) {
                 aTradePointId = session.getTradePoint();
-                aTradePointId = session.getActiveTPSession();
+                aSessionID = session.getActiveTPSession();
             }
             model.params.session_id = aSessionID;
             model.params.trade_point_id = aTradePointId;
