@@ -12,7 +12,7 @@ function TradeSessions() {
     var ep = Modules.get('EventProcessor');
     var session = Modules.get("UserSession");
     var sessionItems = {};
-    Logger.info('Trade');
+    
     /*
      * Типы операций
      * Деньги: 0
@@ -39,21 +39,24 @@ function TradeSessions() {
      * @returns {undefined}
      */
     self.initializeSession = function(aSession, aStartBalance) {
-        if (!aSession) {
-            aSession = session.getActiveTPSession();
-        };
-
-        model.qTradeSessionBalance.push({
-            session_id: aSession,
-            start_value: aStartBalance
-        });
-        model.params.session_id = aSession;
-        ep.addEvent('newSession', {
-            session: aSession,
-            module: 'TradeSessions',
-            startB: aStartBalance
-        });
-        model.save();
+        if (aSession && !session.getActiveTPSession()) {
+            //aSession = session.getActiveTPSession();
+        //};
+            model.qTradeSessionBalance.push({
+                session_id: aSession,
+                start_value: aStartBalance
+            });
+            model.params.session_id = aSession;
+            ep.addEvent('newSession', {
+                session: aSession,
+                module: 'TradeSessions',
+                startB: aStartBalance
+            });
+            model.save();
+        } else {
+            Logger.warning('Ошибка при инициализации сессии');
+            //TODO выводить ошибку в сообщения
+        }
     };
 
     self.calculateFinalValues = function(aSession) {

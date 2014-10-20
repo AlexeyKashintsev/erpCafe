@@ -20,17 +20,28 @@ function WhSessionModule() {
         1: "",
         2: ""
     };
+    
+    function setParams(aTradePointId, aSessionID) {
+        try {
+            if (!aTradePointId && !aSessionID) {
+                aTradePointId = session.getTradePoint();
+                aSessionID = session.getActiveTPSession();
+            }
+            model.params.session_id = aSessionID;
+            model.params.trade_point_id = aTradePointId;
+        } catch(e) {
+            Logger.warning(e);//TODO Добавить запись в лог
+        }
+    }
 
     self.setTradePoint = function(aTradePointId) {
-        model.params.trade_point_id = aTradePointId;
-        model.params.session_id = null;
+        setParams(aTradePointId, null);
         self.getCurrentSession();
         return model.params.session_id;
     };
 
     self.setCurrentSession = function(aSessionID) {
-        model.params.session_id = aSessionID;
-        model.params.trade_point_id = null;
+        setParams(null, aSessionID);
         self.getCurrentSession();
         return model.params.trade_point_id;
     };
@@ -40,26 +51,17 @@ function WhSessionModule() {
      * Иначе false 
      */
     self.getCurrentSession = function() {
-        if (!model.params.session_id && !model.params.trade_point_id) {
-            try {
-                model.params.session_id = session.getActiveTPSession();
-                model.params.trade_point_id = session.getTradePoint();
-            } catch(e) {
-                Logger.warning(e);
-            }
-        }
+        if (!model.params.session_id && !model.params.trade_point_id)
+            setParams();
+            
         model.qOpenedSession.execute();
         if (!model.qOpenedSession.empty) {
-            if (model.params.trade_point_id !== model.qOpenedSession.cursor.trade_point
-                    && model.params.session_id !== model.qOpenedSession.cursor.org_session_id)
-            {
-                model.params.trade_point_id = model.qOpenedSession.cursor.trade_point;
-                model.params.session_id = model.qOpenedSession.cursor.org_session_id;
-                ep.addEvent('openSession', {
-                    session: model.qOpenedSession.org_session_id,
-                    module: 'whSessions'
-                });
-            }
+            model.params.trade_point_id = model.qOpenedSession.cursor.trade_point;
+            model.params.session_id = model.qOpenedSession.cursor.org_session_id;
+            ep.addEvent('openSession', {
+                session: model.qOpenedSession.org_session_id,
+                module: 'whSessions'
+            });
             return model.params.session_id;
         } else {
             model.params.session_id = null;
@@ -71,133 +73,103 @@ function WhSessionModule() {
      * @param {type} aSessionId
      * @returns {undefined}
      */
-    function initSession() {
-        model.itemsByTP.beforeFirst();
-        while (model.itemsByTP.next()) {
-            model.querySessionBalance.insert(
-                    model.querySessionBalance.schema.session_id, model.params.session_id,
-                    model.querySessionBalance.schema.item_id, model.itemsByTP.cursor.item_id
-                    );
+    function initializeSessionBalance(aStartValues) {
+        if (!aStartValues && aStartValues !== {}) { // подставляем остатки от предыдущей сессии
+            model.qLastClosedSessionOnTradePoint.requery();
+            if (!model.qLastClosedSessionOnTradePoint.empty) {
+                var lastSession = model.qLastClosedSessionOnTradePoint.cursor.org_session_id;
+                aStartValues = getValuesBySession(lastSession, true);
+            }
         }
+        
+        if (aStartValues !== {}) {
+            model.itemsByTP.beforeFirst();
+            while (model.itemsByTP.next()) {
+                model.querySessionBalance.insert(
+                        model.querySessionBalance.schema.session_id, model.params.session_id,
+                        model.querySessionBalance.schema.item_id, model.itemsByTP.cursor.item_id
+                    );
+                model.querySessionBalance.cursor.start_value = aStartValues[model.querySessionBalance.cursor.item_id];
+            }
+            return true;
+        } else
+            return false;
     }
 
     /*
      * Создает сессию с указанным идентификатором, или, если он не указан
      * возвращает Id новой сессии
      */
-    self.createSession = function(aSessionId, aRevision) {
+    self.createSession = function(aSessionId, aRevision, aStartValues) {
         if (self.getCurrentSession()) {
             return aSessionId ? model.params.session_id : false;//Код ошибки
         } else {
-            aSessionId ? model.qOpenedSession.insert(model.qOpenedSession.schema.org_session_id, aSessionId) :
-                    model.qOpenedSession.insert();
+            model.qOpenedSession.push({
+                    trade_point :   model.params.trade_point_id,
+                    start_date  :   new Date(),
+                    user_name   :   session.getUserName(),
+                    revision    :   aRevision
+                });
+            if (aSessionId)
+                model.qOpenedSession.cursor.org_session_id = aSessionId;
             model.params.session_id = model.qOpenedSession.cursor.org_session_id;
-            model.qOpenedSession.cursor.trade_point = model.params.trade_point_id;
-            model.qOpenedSession.cursor.start_date = new Date();
-            model.qOpenedSession.cursor.user_name = self.principal.name;
-            if(aRevision) model.qOpenedSession.cursor.revision = true;
-            initSession();
-            ep.addEvent('newSession', {
-                session: model.params.session_id,
-                module: 'whSessions'
-            });
-            model.save();
-            return model.params.session_id;
+            
+            if (initializeSessionBalance(aStartValues)) {
+                ep.addEvent('newSession', {
+                    session: model.params.session_id,
+                    module: 'whSessions'
+                });
+                model.save();
+                return model.params.session_id;
+            } else {
+                model.revert();
+                return false; //TODO Возвращать код ошибки, записывать в события
+            }
         }
     };
     
     /*
      * Закрытие сессии
      */
-    self.closeSession = function() {
+    self.closeSession = function(aEndValues) {
         if (self.getCurrentSession()) {
-            model.qOpenedSession.cursor.end_date = new Date();
-            model.save();
             ep.addEvent('closeSession', {
                 session: model.params.session_id,
                 module: 'whSessions'
             });
-            model.updateItems.params.session_id = model.params.session_id;
-            model.updateItems.executeUpdate();
-            return true;
-        } else
-            return false;
-    };
-    
-    /*
-     * Закрытие сессии из-за ревизии
-     */
-    self.closeSessionByRevision = function(anItems, aTradePoint) {
-        if (aTradePoint)
-            self.setTradePoint(aTradePoint);
-        
-        self.getCurrentSession();
-        
-        if (self.getCurrentSession()) {
-            model.querySessionBalance.params.session_id = model.params.session_id;
-            model.querySessionBalance.requery();
-            model.querySessionBalance.beforeFirst();
-            while (model.querySessionBalance.next()) {
-                model.querySessionBalance.cursor.end_value = anItems[model.querySessionBalance.cursor.item_id];
-            }
-
             model.qOpenedSession.cursor.end_date = new Date();
-            model.save();
-            
+                        
+            if (model.qOpenedSession.cursor.revision && aEndValues) {
+                model.querySessionBalance.params.session_id = model.params.session_id;
+                model.querySessionBalance.requery();
+                model.querySessionBalance.beforeFirst();
+                while (model.querySessionBalance.next()) {
+                    model.querySessionBalance.cursor.end_value = aEndValues[model.querySessionBalance.cursor.item_id];
+                }
+                model.save();
+            } else {
+                model.save();
+                model.updateItems.params.session_id = model.params.session_id;
+                model.updateItems.executeUpdate();
+            }
             return true;
         } else
             return false;
     };
-    /*
-     * Автоматически заполняет стартовые значения для текущей сессии из последней
-     * @param {type} aTradePoint
-     * @returns {undefined}
-     */
-    self.setStartValuesAuto = function(aTradePoint) {
-        if(aTradePoint) self.setTradePoint(aTradePoint);
-        model.qLastClosedSessionOnTradePoint.requery();
-        if (model.qLastClosedSessionOnTradePoint.length >0) {
-            var lastSession = model.qLastClosedSessionOnTradePoint.cursor.org_session_id;
-         /*   model.updateItems.params.session_id = lastSession;
-            model.updateItems.executeUpdate();*/
-            var lastResult = getValuesBySession(lastSession, true);
-            self.setStartValues(lastResult);
-            return true;
-        } else {
-            return false;
-        }
-    };
+
     /*
      * Удаление ревизии
      * @param {type} aSessionId
      * @returns {undefined}
+     * TODO Переименовать в cancelRevision и сделать проверку, что сессия на самом деле ревизия и в ней нет операций
+     * + выполнять ее можно только от имени админа или франчази
      */
     self.delRevision = function(aSessionId){
         model.qDeleteRevision.params.session_id = aSessionId;
         model.qDeleteRevision.executeUpdate();
         model.save();
     };
-    /*
-     * Изменение стартовых значений Баланса Сессии по каждому товару торговой
-     * точки
-     */
-    self.setStartValues = function(anItems, aTradePoint) {
-        if (aTradePoint)
-            self.setTradePoint(aTradePoint);
 
-        if (!self.getCurrentSession()) {
-            self.createSession();
-        }
-
-        model.querySessionBalance.params.session_id = model.params.session_id;
-        model.querySessionBalance.requery();
-        model.querySessionBalance.beforeFirst();
-        while (model.querySessionBalance.next()) {
-            model.querySessionBalance.cursor.start_value = anItems[model.querySessionBalance.cursor.item_id];
-        }
-        model.save();
-        return true;
-    };
     /*
      * Получение стартовых значений текущей Баланса Сессии по каждому товару торговой
      * точки
@@ -232,7 +204,10 @@ function WhSessionModule() {
     /*
      * Добавление товаров на склад
      */
-    self.whMovement = function(anItems, aMovementType) {
+    self.whMovement = function(anItems, aMovementType, aSession) {
+        if (aSession)
+            setParams(null, aSession);
+        
         if (self.getCurrentSession()) {
             for (var id in anItems) {
                 model.queryMovements.push({

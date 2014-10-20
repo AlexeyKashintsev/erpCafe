@@ -10,18 +10,18 @@
   <entity Name="querySessionBalance" Title="" entityHeight="200" entityIconified="false" entityId="140549953114953" entityLocationX="459" entityLocationY="12" entityWidth="224" queryId="querySessionBalance" tableName="" tableSchemaName=""/>
   <entity Name="qDeleteRevision" Title="" entityHeight="57" entityIconified="false" entityId="141278085885112" entityLocationX="660" entityLocationY="297" entityWidth="150" queryId="qDeleteRevision" tableName="" tableSchemaName=""/>
   <entity Name="updateItems" Title="" entityHeight="232" entityIconified="false" entityId="140559598452805" entityLocationX="745" entityLocationY="14" entityWidth="150" queryId="updateItems" tableName="" tableSchemaName=""/>
-  <entity Name="qOpenedSession" Title="" entityHeight="200" entityIconified="false" entityId="140560208256658" entityLocationX="206" entityLocationY="10" entityWidth="198" queryId="queryOpenedSession" tableName="" tableSchemaName=""/>
-  <relation leftEntityId="-1" leftEntityParameterName="trade_point_id" rightEntityId="140549955021843" rightEntityParameterName="trade_point_id"/>
-  <relation leftEntityId="-1" leftEntityParameterName="session_id" rightEntityId="140560208256658" rightEntityParameterName="session_id"/>
-  <relation leftEntityId="-1" leftEntityParameterName="trade_point_id" rightEntityId="140560208256658" rightEntityParameterName="trade_point_id"/>
+  <entity Name="qOpenedSession" Title="" entityHeight="200" entityIconified="false" entityId="140560208256658" entityLocationX="206" entityLocationY="11" entityWidth="198" queryId="queryOpenedSession" tableName="" tableSchemaName=""/>
   <relation leftEntityId="-1" leftEntityParameterName="trade_point_id" rightEntityId="141104450811143" rightEntityParameterName="trade_point_id"/>
-  <referenceRelation leftEntityFieldName="session_id" leftEntityId="140558094552687" rightEntityFieldName="org_session_id" rightEntityId="140560208256658"/>
+  <relation leftEntityId="-1" leftEntityParameterName="session_id" rightEntityId="140560208256658" rightEntityParameterName="session_id"/>
+  <relation leftEntityId="-1" leftEntityParameterName="trade_point_id" rightEntityId="140549955021843" rightEntityParameterName="trade_point_id"/>
+  <relation leftEntityId="-1" leftEntityParameterName="trade_point_id" rightEntityId="140560208256658" rightEntityParameterName="trade_point_id"/>
   <referenceRelation leftEntityFieldName="session_id" leftEntityId="140549953114953" rightEntityFieldName="org_session_id" rightEntityId="140560208256658"/>
-  <referenceRelation leftEntityFieldName="session_id" leftEntityId="140558094552687" rightEntityFieldName="session_id" rightEntityId="140559598452805"/>
   <referenceRelation leftEntityFieldName="session_id" leftEntityId="140558094552687" rightEntityFieldName="org_session_id" rightEntityId="141104450811143"/>
-  <referenceRelation leftEntityFieldName="session_id" leftEntityId="140559598452805" rightEntityFieldName="session_id" rightEntityId="140559598452805"/>
-  <referenceRelation leftEntityFieldName="session_id" leftEntityId="140549953114953" rightEntityFieldName="session_id" rightEntityId="140559598452805"/>
-  <referenceRelation leftEntityFieldName="session_id" leftEntityId="140559598452805" rightEntityFieldName="org_session_id" rightEntityId="140560208256658"/>
   <referenceRelation leftEntityFieldName="session_id" leftEntityId="140559598452805" rightEntityFieldName="org_session_id" rightEntityId="141104450811143"/>
+  <referenceRelation leftEntityFieldName="session_id" leftEntityId="140559598452805" rightEntityFieldName="org_session_id" rightEntityId="140560208256658"/>
   <referenceRelation leftEntityFieldName="session_id" leftEntityId="140549953114953" rightEntityFieldName="org_session_id" rightEntityId="141104450811143"/>
+  <referenceRelation leftEntityFieldName="session_id" leftEntityId="140549953114953" rightEntityFieldName="session_id" rightEntityId="140559598452805"/>
+  <referenceRelation leftEntityFieldName="session_id" leftEntityId="140558094552687" rightEntityFieldName="org_session_id" rightEntityId="140560208256658"/>
+  <referenceRelation leftEntityFieldName="session_id" leftEntityId="140559598452805" rightEntityFieldName="session_id" rightEntityId="140559598452805"/>
+  <referenceRelation leftEntityFieldName="session_id" leftEntityId="140558094552687" rightEntityFieldName="session_id" rightEntityId="140559598452805"/>
 </datamodel>

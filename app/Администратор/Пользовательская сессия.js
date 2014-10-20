@@ -70,7 +70,7 @@ function UserSession() {
         model.qSessionById.params.session_id = aSession;
         model.qSessionById.execute();
         if (!model.qSessionById.empty)
-            return model.qSessionById.cursor.end_date === null
+            return model.qSessionById.cursor.end_date === null;
         else
             return false;
     };
