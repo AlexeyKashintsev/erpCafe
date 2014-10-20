@@ -9,4 +9,4 @@ Select org_session_id, q.user_name, trade_point, q.revision
 From trade_cash_box_operation t
  Left Join #qSessionsInPeriod q on q.org_session_id = t.session_id
  Where (:trade_point is null)
- Group by org_session_id, q.user_name, trade_point, start_date, end_date
+ Group by org_session_id, q.user_name, trade_point, start_date, end_date, q.revision

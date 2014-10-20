@@ -5,4 +5,4 @@ Select org_session_id, q.user_name, trade_point, q.revision, start_date, end_dat
 , count(*) as operations_count
 From #qSessionsInPeriod q
  Left Join trade_cash_box_operation t on q.org_session_id = t.session_id
- Group by org_session_id, q.user_name, trade_point, start_date, end_date
+ Group by org_session_id, q.user_name, trade_point, start_date, end_date, q.revision

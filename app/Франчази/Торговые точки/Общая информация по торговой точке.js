@@ -54,7 +54,7 @@ function TradePointCommonInfo(aTradePointDetails, aContainer) {
         } else {
             //alert(tradePointDetails.org_session_id);
             var wHSetAddMovement = new WHSetAddMovement();
-            wHSetAddMovement.setSessIdAndTPFran(tradePointDetails.org_session_id, tradePointDetails.org_trade_point_id);
+            wHSetAddMovement.setTradePoint(tradePointDetails.org_trade_point_id);
             wHSetAddMovement.showModal();
         }
     }
