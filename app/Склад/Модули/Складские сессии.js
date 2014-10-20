@@ -156,6 +156,8 @@ function WhSessionModule() {
                 model.updateItems.params.session_id = model.params.session_id;
                 model.updateItems.executeUpdate();
             }
+            
+            model.params.session_id = null;
             return true;
         } else
             return false;
@@ -172,6 +174,8 @@ function WhSessionModule() {
         model.qDeleteRevision.params.session_id = aSessionId;
         model.qDeleteRevision.executeUpdate();
         model.save();
+        
+        model.params.session_id = null;
     };
 
     /*
