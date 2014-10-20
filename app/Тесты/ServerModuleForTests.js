@@ -28,12 +28,12 @@ function ServerModuleForTests() {
     
     self.getItemsFromTradePoint = function(aTP){
         var out = [];
-        var i = 0;
         model.itemsByTP.params.trade_point_id = aTP;
         model.itemsByTP.requery();
         model.itemsByTP.beforeFirst();
         while (model.itemsByTP.next()){
             out[model.itemsByTP.cursor.item_id] = 100;
         }
+        return out;
     };
 }

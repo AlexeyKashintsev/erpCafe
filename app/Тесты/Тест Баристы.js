@@ -174,7 +174,7 @@ function testBarista() {
     
     function revision(){
         WH.createSession(null, true, TM.getItemsFromTradePoint(6));
-        WH.closeSession();
+        WH.closeSession(TM.getItemsFromTradePoint(6));
     }
     
     function processOrderUnderShell(orderDetails){
