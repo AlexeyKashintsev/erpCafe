@@ -7,7 +7,7 @@
 
 function ContentTradeItem() {
 var self = this, model = this.model, form = this; 
-var selectItemsInWH = new SelectItemsInWH();
+var warehouseItemList = new WarehouseItemList();
 self.productName = '';
 
 self.setTradeItem = function (aTradeItem){
@@ -33,13 +33,19 @@ function formWindowClosing(evt) {//GEN-FIRST:event_formWindowClosing
 
 
     function btnAddActionPerformed(evt) {//GEN-FIRST:event_btnAddActionPerformed
-        model.qContents.insert(
-                model.qContents.schema.trade_item, model.params.trade_item
-        );
+        warehouseItemList.setDialogMode();
+        warehouseItemList.showModal(function(aResult){
+            if(aResult){
+                model.qContents.insert(
+                    model.qContents.schema.trade_item, model.params.trade_item,
+                    model.qContents.schema.wh_item, aResult
+                );
+            }
+        });
     }//GEN-LAST:event_btnAddActionPerformed
 
     function colWh_itemOnSelect(aEditor) {//GEN-FIRST:event_colWh_itemOnSelect
-        selectItemsInWH.showModal(function(item){
+        warehouseItemList.showModal(function(item){
             model.qContents.cursor.wh_item = item;
         });
     }//GEN-LAST:event_colWh_itemOnSelect
