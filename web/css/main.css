@@ -78,6 +78,11 @@ div.navbar.navbar-fixed-top {
   background-color: #54312d;
 }
 
+/*** # DATA # ***/
+th.session-desc {
+  cursor: pointer;
+}
+
 /* ### BARISTA ### */
 .red {
   color: #E74C3C;

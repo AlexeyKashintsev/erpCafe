@@ -1,4 +1,4 @@
-Select org_session_id, q.user_name, trade_point, start_date, end_date
+Select org_session_id, q.user_name, trade_point, q.revision, start_date, end_date
 , sum(Case  When t.operation_type = 0 Then t.operation_sum Else 0 End) AS recieved_cash
 , sum(Case  When t.operation_type = 1 Then t.operation_sum else 0 End) AS recieved_bonuses
 , sum(Case  When t.operation_type = 10 Then t.operation_sum else 0 End) AS recieved_by_card

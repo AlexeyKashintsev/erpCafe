@@ -95,21 +95,26 @@ function WHSessionBalance(aWarehouse, aContainer) {
             tItem.view.usedValue.innerHTML = (tItem.usedV ? tItem.usedV : "--") + ' ' + tItem.item_measure;
             tItem.view.currentValue.innerHTML = (tItem.finalV ? tItem.finalV : "--") + ' ' + tItem.item_measure;
         };
+        
+        tItem.destroy = function() {
+            if (tItem.view) 
+                $(tItem.view).remove();
+            delete tItem;
+        };
     }
 
     self.setWarehouse = function(aWarehouse) {
         model.params.trade_point_id = aWarehouse;
-      // model.itemsByTP.params.trade_point_id = aWarehouse;
     };
 
     self.setTradePoint = self.setWarehouse;
 
     self.setSession = function(aSession) {
         model.qWHSessionBalance.params.session_id = aSession;
-        self.updateSessionData();
+        updateSessionData();
     };
     
-    self.updateSessionData = function() {
+    function updateSessionData() {
         Logger.info("Получение баланса. Склад: " + aWarehouse + ", идентификатор сессии " + model.qWHSessionBalance.params.session_id);
         model.qWHSessionBalance.execute(function() {
             model.qWHSessionBalance.beforeFirst();
@@ -119,7 +124,11 @@ function WHSessionBalance(aWarehouse, aContainer) {
             showItems();
         });
     };
-    
+    /**
+     * 
+     * @param {type} aWarehouse - TradePoint ID
+     * @returns none
+     */
     self.getCurrentBalance = function(aWarehouse) {
         if (aWarehouse)
             self.setWarehouse(aWarehouse);
@@ -151,9 +160,11 @@ function WHSessionBalance(aWarehouse, aContainer) {
         Logger.info("Получены складские позиции по складу: " + model.params.trade_point_id 
                 + ", Количество записей: " + model.itemsByTP.length);
         model.itemsByTP.beforeFirst();
+        for (var j in items)
+            items[j].destroy();
         while (model.itemsByTP.next()) {
-            if (!items[model.itemsByTP.cursor.item_id])
-                items[model.itemsByTP.cursor.item_id] = new Item(model.itemsByTP.cursor);
+           // if (!items[model.itemsByTP.cursor.item_id])
+            items[model.itemsByTP.cursor.item_id] = new Item(model.itemsByTP.cursor);
         }
         if (!shown) self.getCurrentBalance();
     }//GEN-LAST:event_itemsByTPOnRequeried
