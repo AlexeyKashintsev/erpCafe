@@ -1,8 +1,8 @@
 /**
  * @public
  * @author minya92
- * @name qBonusCountForTradeItem
- * @rolesAllowed franchazi admin
+ * @name qBonusCountForTradeItemReadonly
+ * @readonly
  */ 
 Select * 
 From bonus_rate_for_trade_items t1

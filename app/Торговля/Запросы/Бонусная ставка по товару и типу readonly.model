@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?><datamodel>
+  <parameters>
+    <parameter description="" name="trade_item" nullable="true" parameterMode="1" precision="0" scale="0" selectionForm="null" signed="true" size="0" type="2" typeName="NUMERIC"/>
+    <parameter description="" name="trade_type" nullable="true" parameterMode="1" precision="0" scale="0" selectionForm="null" signed="true" size="0" type="2" typeName="NUMERIC"/>
+  </parameters>
+  <parametersEntity entityHeight="200" entityIconified="false" entityLocationX="8" entityLocationY="7" entityWidth="150"/>
+  <entity Title="" entityHeight="200" entityIconified="false" entityId="141346252024078" entityLocationX="203" entityLocationY="5" entityWidth="150" tableAlias="t1" tableName="bonus_rate_for_trade_items" tableSchemaName=""/>
+  <relation leftEntityId="-1" leftEntityParameterName="trade_type" rightEntityFieldName="type_id" rightEntityId="141346252024078"/>
+  <relation leftEntityId="-1" leftEntityParameterName="trade_item" rightEntityFieldName="trade_item" rightEntityId="141346252024078"/>
+</datamodel>

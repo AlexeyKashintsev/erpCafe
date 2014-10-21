@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?><datamodel>
+  <parametersEntity entityHeight="200" entityIconified="false" entityLocationX="12" entityLocationY="12" entityWidth="150"/>
+  <entity Name="qTradeItemsId" Title="" entityHeight="200" entityIconified="false" entityId="141390120808317" entityLocationX="369" entityLocationY="17" entityWidth="150" queryId="qTradeItemsId" tableName="" tableSchemaName=""/>
+  <entity Name="qBonusCountForTradeItem" Title="" entityHeight="200" entityIconified="false" entityId="141389511258279" entityLocationX="182" entityLocationY="12" entityWidth="150" queryId="qBonusCountForTradeItem" tableName="" tableSchemaName=""/>
+  <entity Name="qTradeItemTypes" Title="" entityHeight="200" entityIconified="false" entityId="141389809297552" entityLocationX="196" entityLocationY="226" entityWidth="150" queryId="qTradeItemTypes" tableName="" tableSchemaName=""/>
+  <entity Name="qTradeItems" Title="" entityHeight="200" entityIconified="false" entityId="141389609091413" entityLocationX="13" entityLocationY="226" entityWidth="150" queryId="qTradeItems" tableName="" tableSchemaName=""/>
+  <referenceRelation leftEntityFieldName="item_type" leftEntityId="141390120808317" rightEntityFieldName="trade_item_type_id" rightEntityId="141389809297552"/>
+  <referenceRelation leftEntityFieldName="type_id" leftEntityId="141389511258279" rightEntityFieldName="trade_item_type_id" rightEntityId="141389809297552"/>
+  <referenceRelation leftEntityFieldName="trade_item" leftEntityId="141389511258279" rightEntityFieldName="trade_items_id" rightEntityId="141389609091413"/>
+  <referenceRelation leftEntityFieldName="trade_item" leftEntityId="141389511258279" rightEntityFieldName="trade_items_id" rightEntityId="141390120808317"/>
+  <referenceRelation leftEntityFieldName="parent_type" leftEntityId="141389809297552" rightEntityFieldName="trade_item_type_id" rightEntityId="141389809297552"/>
+  <referenceRelation leftEntityFieldName="item_type" leftEntityId="141389609091413" rightEntityFieldName="trade_item_type_id" rightEntityId="141389809297552"/>
+</datamodel>
