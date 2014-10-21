@@ -3,6 +3,7 @@
  * @manual
  * @author minya92
  * @name qDeleteRevision
+ * @rolesAllowed admin franchazi
  */
 
 Delete from org_session t1

@@ -164,13 +164,12 @@ function WhSessionModule() {
     };
 
     /*
-     * Удаление ревизии
+     * Отмена ревизии (удаление)
      * @param {type} aSessionId
      * @returns {undefined}
-     * TODO Переименовать в cancelRevision и сделать проверку, что сессия на самом деле ревизия и в ней нет операций
-     * + выполнять ее можно только от имени админа или франчази
+     * @rolesAllowed admin franchazi
      */
-    self.delRevision = function(aSessionId){
+    self.cancelRevision = function(aSessionId){
         model.qDeleteRevision.params.session_id = aSessionId;
         model.qDeleteRevision.executeUpdate();
         model.save();
