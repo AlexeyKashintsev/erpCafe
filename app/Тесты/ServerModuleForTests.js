@@ -21,9 +21,13 @@ function ServerModuleForTests() {
     };
     
     self.changeInCashBoxBalance = function(aSession){
-        model.qTradeSessionBalance.params.trade_session = aSession;
-        model.qTradeSessionBalance.requery();
-        return model.qTradeSessionBalance.cursor.end_value - model.qTradeSessionBalance.cursor.start_value;
+        if (aSession){
+            model.qTradeSessionBalance.params.trade_session = aSession;
+            model.qTradeSessionBalance.requery();
+            return model.qTradeSessionBalance.cursor.end_value - model.qTradeSessionBalance.cursor.start_value;
+        } else {
+            return false;
+        }
     };
     
     self.getItemsFromTradePoint = function(aTP){

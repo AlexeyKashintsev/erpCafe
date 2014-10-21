@@ -185,7 +185,7 @@ function testBarista() {
             if (session){
                 info("Открыли сессию... " + session);
             } else {
-                error("Сессия не открыта!");
+                info("Сессия не открыта!");
                 info("Проводим ревизию");
                 try {
                     revision();

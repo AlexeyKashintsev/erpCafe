@@ -39,24 +39,21 @@ function TradeSessions() {
      * @returns {undefined}
      */
     self.initializeSession = function(aSession, aStartBalance) {
-        if (aSession && !session.getActiveTPSession()) {
-            //aSession = session.getActiveTPSession();
-        //};
-            model.qTradeSessionBalance.push({
-                session_id: aSession,
-                start_value: aStartBalance
-            });
-            model.params.session_id = aSession;
-            ep.addEvent('newSession', {
-                session: aSession,
-                module: 'TradeSessions',
-                startB: aStartBalance
-            });
-            model.save();
-        } else {
-            Logger.warning('Ошибка при инициализации сессии');
-            //TODO выводить ошибку в сообщения
-        }
+        if (!aSession) {
+            aSession = session.getActiveTPSession();
+        };
+
+        model.qTradeSessionBalance.push({
+            session_id: aSession,
+            start_value: aStartBalance
+        });
+        model.params.session_id = aSession;
+        ep.addEvent('newSession', {
+            session: aSession,
+            module: 'TradeSessions',
+            startB: aStartBalance
+        });
+        model.save();
     };
 
     self.calculateFinalValues = function(aSession) {
@@ -246,9 +243,10 @@ function TradeSessions() {
      */
     self.processOrder = function(anOrderDetails) {
         var client = false;
-        if (!model.params.session_id) {
-            getCurrentSession();
-        }
+        getCurrentSession();
+//        if (!model.params.session_id) {
+//            getCurrentSession();
+//        }
 
        /* if (!checkOrderSum(anOrderDetails.orderItems, anOrderDetails.orderSum)) {
             ep.addEvent('sumDifference', {client: anOrderDetails, server: ServerSum});
