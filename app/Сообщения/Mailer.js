@@ -86,7 +86,7 @@ function Mailer() {
         properties.setProperty('mail.smtp.starttls.enable', 'true');
         var auth = new javax.mail.Authenticator() {
             getPasswordAuthentication: function() {
-                return new javax.mail.PasswordAuthentication("pikovartur@gmail.com", "Am4076Am4076");
+                return new javax.mail.PasswordAuthentication("erpcafe74@gmail.com", "erpcafecafeerp");
             }
         };
         return Session.getInstance(properties, auth);
