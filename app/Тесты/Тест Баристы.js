@@ -108,7 +108,7 @@ function testBarista() {
     function checkResult(before, after, aTypeOperation){
         var ChangeInCashBoxBalance = false;
         try {
-            ChangeInCashBoxBalance = TM.changeInCashBoxBalance(WH.getCurrentSession());
+            ChangeInCashBoxBalance = TM.changeInCashBoxBalance(session);
         } catch (e){
             error("Не удалось получить изменения в кассе. Возможно проблемы с сессией.");
             info(e);
@@ -185,7 +185,7 @@ function testBarista() {
             if (session){
                 info("Открыли сессию... " + session);
             } else {
-                error("Сессия не открыта!");
+                info("Сессия не открыта!");
                 info("Проводим ревизию");
                 try {
                     revision();
