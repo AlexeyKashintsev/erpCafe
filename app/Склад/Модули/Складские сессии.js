@@ -11,7 +11,7 @@ function WhSessionModule() {
     Session.set('WhSessionModule', this);
     var self = this, model = this.model;
     var ep = new EventProcessor();
-    var session = Modules.get("UserSession");
+    var session = Session.get("UserSession");
 
     self.WH_ADD_ITEMS = 1;
     self.WH_REMOVE_ITEMS = 2;

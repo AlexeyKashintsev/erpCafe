@@ -280,3 +280,23 @@ div.loadDiv {
     background: url("../img/loadingAnimation.gif") no-repeat scroll center center rgba(0, 0, 0, 0);
     height: 130px;
 }
+
+/* ### SESSION INDICATOR ###*/
+body > div.session_indicator {
+    display: block;
+    position: absolute;
+    height: 10px;
+    width: 10px;
+  }
+  
+  div.session_indicator_active {
+    background-color: green;
+  }
+  
+  div.session_indicator_ended {
+    background-color: red;
+  }
+  
+  div.session_indicator_broken {
+    background-color: orange;
+  }

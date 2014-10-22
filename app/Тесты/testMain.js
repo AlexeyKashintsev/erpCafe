@@ -8,13 +8,13 @@ function testMain() {
     var self = this, model = this.model;
     var log = document.getElementById("log");
     //login('testbar','testbar');
-    var testList = [{
+    var testList = [/*{
             name: 'testFranchaziCreate'
-        },
+        },*/
         {
-                name: 'testBarista',
-                login: 'testbar',
-                pass: 'testbar'
+            name: 'testBarista',
+            login: 'testbar',
+            pass: 'testbar'
         }
 //        ,
 //        {

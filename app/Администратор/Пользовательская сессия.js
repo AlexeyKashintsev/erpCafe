@@ -6,7 +6,7 @@
  */ 
 function UserSession() {
     var self = this, model = this.model;
-    var ep = Modules.get('EventProcessor');
+    var ep = new EventProcessor();
     var lastCheck = null;
     
     self.msg = {

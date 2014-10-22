@@ -64,10 +64,11 @@ function ServerSession() {
     }
     
     function watchDog() {
-        Logger.fine('New watchDog!');
+        Logger.info('New watchDog!');
         for (var j = 0; j < 60; j++)
             java.lang.Thread.sleep(1000);
         var checkTime = new Date();
+        Logger.info('WatchDog work');
         for (var j in sessions)
             if (sessions[j].lastTime.getTime() - checkTime > 60 * 1000 * IDLE_TIME) {
                 Logger.fine('Session timeout for user ' + j);

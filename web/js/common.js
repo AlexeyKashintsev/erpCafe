@@ -1,36 +1,11 @@
 var units = {};
 var cmn = {};
 var session = {};
-var sessionTimeout = 15 * 60 * 1000;
+
 
 var Logout = function() {
     logout();
     setTimeout(location.reload, 1000);
-};
-
-var keepSession = function(aCallBack) {
-    Logger.info('Проверка сессии...');
-    session.keepAlive(session.userName, function(aResult) {
-        if (!aResult) {    
-            if (aCallBack)
-                aCallBack(1);
-            else {
-                alert('Сессия истекла!');
-              //  location.reload();
-            }
-        } else {
-            Logger.info('Ok!');
-            if (aCallBack) aCallBack(0);
-        }
-    }, function(){
-        Logger.severe('Нет связи с сервером!');
-        if (aCallBack)
-                aCallBack(2);
-            else {
-                alert('Нет связи с сервером!');
-              //  location.reload();
-            }
-        });
 };
 
 cmn.showModal = function(aForm, aCallback) {

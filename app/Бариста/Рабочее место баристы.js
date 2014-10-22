@@ -34,7 +34,7 @@ function BaristaDesktop() {
                     session.tradeSession.initializeSession(session.activeSession, prompt("Введите остаток по кассе", "0"));
                     setSession(session.activeSession);
                 } else {
-                    alert('Склад не инициализирован'); //TODO Поправить
+                    alert('Склад не инициализирован');//TODO Запись в лог
                     var whInitializer = new WhRevisionByBarista();
                     whInitializer.setTradePoint(aTradePoint);
                     whInitializer.showModal(function() {
@@ -59,6 +59,7 @@ function BaristaDesktop() {
         
         self.orderList = new OrderList(self);
         
+        session.sessionKeeper.showIndicator(document.body);
     }
 
     function addTradeItem(aData) {
@@ -114,8 +115,9 @@ function BaristaDesktop() {
 
     function qTradePointOnRequeried(evt) {//GEN-FIRST:event_qTradePointOnRequeried
         if (!model.qTradePoint.empty) {
-            cmn.addHeaderLeft(model.qTradePoint.cursor.tp_name, "asterisk");
-            cmn.addHeaderLeft(model.qTradePoint.cursor.tp_address, "envelope");
+            cmn.addHeaderLeft(model.qTradePoint.cursor.tp_name + '<b> @ </b>' +
+                    model.qTradePoint.cursor.tp_address, "asterisk");
+            //cmn.addHeaderLeft(model.qTradePoint.cursor.tp_address, "envelope");
         }
     }//GEN-LAST:event_qTradePointOnRequeried
     

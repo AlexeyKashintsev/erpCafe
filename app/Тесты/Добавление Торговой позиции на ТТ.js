@@ -9,11 +9,11 @@ function testAddTradeItemsOnTradePoint() {
     self.name = 'Добавление Торговой позиции на Торговую Точку';
     self.roles = ['admin'];
     self.testsCount = 1;
-    var TM = new ServerModule("ServerModuleForTests");
+    var ServerTestModule = new ServerModule("ServerModuleForTests");
+    var WH = new ServerModule("WhSessionModule");
     var TS = new ServerModule("TradeSessions");
     var BM = new ServerModule("BillModule");
     var CM = new ServerModule("ClientServerModule");
-    var WH = new ServerModule("WhSessionModule");
     var TAM = new ServerModule("TradeAdminModule");
         
     var messages = {
@@ -50,7 +50,7 @@ function testAddTradeItemsOnTradePoint() {
     }
     
     function checkItem(data){
-        if (TM.checkItem(data)){
+        if (ServerTestModule.checkItem(data)){
             info("Товар есть на точке");
             return true;
         } else {
