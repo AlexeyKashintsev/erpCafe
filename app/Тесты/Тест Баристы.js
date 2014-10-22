@@ -9,7 +9,6 @@ function testBarista() {
     self.name = 'Создание франчази';
     self.roles = ['admin'];
     self.testsCount = 1;
-    var Session = new ServerModule("UserSession");
     var TM = new ServerModule("ServerModuleForTests");
     var TS = new ServerModule("TradeSessions");
     var BM = new ServerModule("BillModule");
@@ -248,7 +247,6 @@ function testBarista() {
     
     function doTest() {
         info("Начало теста");
-        Session.login();
         WH.setTradePoint(6);
         openSession();
         

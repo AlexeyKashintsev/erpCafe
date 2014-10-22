@@ -75,6 +75,7 @@ function testMain() {
                 console.log("Login Failed..");
             }
         });
+        var Session = new ServerModule("UserSession");
     }
     
     function createRequireList(){

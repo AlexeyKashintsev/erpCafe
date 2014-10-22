@@ -34,8 +34,8 @@ function ServerSession() {
         } return true;
     };
     
-    Session.keepAlive = function() {
-        var userName = self.principal.name;
+    Session.keepAlive = function(aUserName) {
+        var userName = aUserName ? aUserName : self.principal.name;
         sessions[userName].lastTime = new Date();
         Logger.finest('Keep session alive for user ' + userName);
     };
@@ -45,7 +45,7 @@ function ServerSession() {
         Logger.fine('New session for user ' + userName);
         sessions[userName] = {};
         loadModules[userName] = [];
-        Session.keepAlive();
+        Session.keepAlive(userName);
     };
     
     Session.logout = function(aSessionUser) {
@@ -59,7 +59,7 @@ function ServerSession() {
         var userName = self.principal.name;
         if (!sessions[userName])
             Session.login();
-        Session.keepAlive();
+        Session.keepAlive(userName);
         return userName;
     }
     
