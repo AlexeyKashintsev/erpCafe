@@ -72,7 +72,7 @@ function testMain() {
                 console.log("Log In! ");
             },
             error: function(e) {
-                console.log("Login Failed..")
+                console.log("Login Failed..");
             }
         });
     }

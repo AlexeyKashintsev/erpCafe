@@ -20,6 +20,13 @@ function ServerModuleForTests() {
         }
     };
     
+    self.checkOperationsSum = function(aSession, aTP){
+        model.tradeSessionDetails.params.session_id = aSession;
+        model.tradeSessionDetails.params.trade_point_id = aTP;
+        model.tradeSessionDetails.requery();
+        return model.tradeSessionDetails.cursor.operationsSum;
+    }
+    
     self.changeInCashBoxBalance = function(aSession){
         if (aSession){
             model.qTradeSessionBalance.params.trade_session = aSession;
