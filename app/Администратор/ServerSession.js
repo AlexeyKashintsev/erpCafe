@@ -4,7 +4,7 @@
  * @module
  * @resident
  */ 
-function clientServerSessionSynchronizer() {
+function ServerSession() {
     var self = this, model = this.model;
     var IDLE_TIME = 20;//In minutes
     var loadModules = [];
@@ -64,19 +64,19 @@ function clientServerSessionSynchronizer() {
     }
     
     function watchDog() {
-        (function () {
-            Logger.fine('New watchDog!');
-            var sleepTime = IDLE_TIME * 60 * 1000;
-            java.lang.Thread.sleep(sleepTime);
-            var checkTime = new Date();
-            for (var j in sessions)
-                if (sessions[j].lastTime.getTime() - checkTime > sleepTime) {
-                    Logger.fine('Session timeout for user ' + j);
-                    Session.logout(j);
-                }
-            watchDog();
-        }).invokeBackground();
+        Logger.fine('New watchDog!');
+        for (var j = 0; j < 60; j++)
+            java.lang.Thread.sleep(1000);
+        var checkTime = new Date();
+        for (var j in sessions)
+            if (sessions[j].lastTime.getTime() - checkTime > 60 * 1000 * IDLE_TIME) {
+                Logger.fine('Session timeout for user ' + j);
+                Session.logout(j);
+            }
+        watchDog();
     };
     
-    watchDog();
+    (function () {
+        watchDog();
+    }).invokeBackground();
 }

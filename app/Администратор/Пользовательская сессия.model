@@ -8,10 +8,10 @@
   <entity Name="qFrancByUserName" Title="" entityHeight="200" entityIconified="false" entityId="140617948140719" entityLocationX="224" entityLocationY="220" entityWidth="150" onRequeried="qFrancByUserNameOnRequeried" queryId="qFrancByUserName" tableName="" tableSchemaName=""/>
   <entity Name="usersByName" Title="" entityHeight="200" entityIconified="false" entityId="140617949812997" entityLocationX="224" entityLocationY="12" entityWidth="150" queryId="usersByName" tableName="" tableSchemaName=""/>
   <entity Name="qOpenedSession" Title="" entityHeight="200" entityIconified="false" entityId="140688378698013" entityLocationX="433" entityLocationY="17" entityWidth="150" queryId="qOpenedSession" tableName="" tableSchemaName=""/>
+  <relation leftEntityId="-1" leftEntityParameterName="userName" rightEntityId="140617949812997" rightEntityParameterName="usr_name"/>
   <relation leftEntityId="-1" leftEntityParameterName="userName" rightEntityId="140688378698013" rightEntityParameterName="user_name"/>
   <relation leftEntityId="-1" leftEntityParameterName="userName" rightEntityId="140617948140719" rightEntityParameterName="user_name"/>
-  <relation leftEntityId="-1" leftEntityParameterName="userName" rightEntityId="140617949812997" rightEntityParameterName="usr_name"/>
   <referenceRelation leftEntityFieldName="user_name" leftEntityId="140688378698013" rightEntityFieldName="usr_name" rightEntityId="140617949812997"/>
-  <referenceRelation leftEntityFieldName="user_name" leftEntityId="140617948140719" rightEntityFieldName="usr_name" rightEntityId="140617949812997"/>
   <referenceRelation leftEntityFieldName="user_name" leftEntityId="141156072792179" rightEntityFieldName="usr_name" rightEntityId="140617949812997"/>
+  <referenceRelation leftEntityFieldName="user_name" leftEntityId="140617948140719" rightEntityFieldName="usr_name" rightEntityId="140617949812997"/>
 </datamodel>
