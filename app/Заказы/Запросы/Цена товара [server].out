@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?><outputFields>
+  <field bindedColumn="selected" sqlType="16"/>
+  <field bindedColumn="item_count" sqlType="2"/>
+</outputFields>

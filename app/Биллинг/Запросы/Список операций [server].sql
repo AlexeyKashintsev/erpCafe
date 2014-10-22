@@ -1,9 +1,7 @@
 /**
- * @public
  * @author minya92
- * @name qBillOperationsList
- * @readonly
- * @public
+ * @name qBillOperationsListServer
+ * @writable bill_operations
  */ 
 Select * 
 From bill_operations t1

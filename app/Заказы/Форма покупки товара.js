@@ -112,7 +112,7 @@ function BuyItemsForm() {
         list = null;
         $(".Items").html(" ");
         list = new List(document.getElementById("Items"));
-        $(".Items, #nextButton").show();
+        $(".Items, #nextButton, .selection_result").show();
         $("#prevButton, #doneButton, #homeButton, .Bills, .Thanks").hide();
     }
     

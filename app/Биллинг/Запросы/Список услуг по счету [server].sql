@@ -1,8 +1,6 @@
 /**
- * @readonly
  * @author minya92
- * @name qServiceListByAccount
- * @public
+ * @name qServiceListByAccountServer
  */ 
 Select * ,
 case 

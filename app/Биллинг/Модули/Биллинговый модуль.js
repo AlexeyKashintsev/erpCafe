@@ -57,22 +57,22 @@ function BillModule() {
     }
     
     function reqBillAccounts(anAccountId, aFranchaziId, aType){
-        model.qBillAccount.params.type = aType;
-        model.qBillAccount.params.franchazi_id = aFranchaziId;
-        model.qBillAccount.params.account_id = anAccountId;
-        model.qBillAccount.requery();
+        model.qBillAccountServer.params.type = aType;
+        model.qBillAccountServer.params.franchazi_id = aFranchaziId;
+        model.qBillAccountServer.params.account_id = anAccountId;
+        model.qBillAccountServer.requery();
     }
     /*
      * Создает новый биллинговый аккаунт и возвращает его ID
      * @param {type} aFrancId
      * @param {type} aType
      * @param {type} aSum
-     * @returns {@this;@pro;model.qBillAccount.cursor.bill_accounts_id}
+     * @returns {@this;@pro;model.qBillAccountServer.cursor.bill_accounts_id}
      */
     self.createBillAccount = function(aType, aUserId) {
         if (!aType)
             aType = self.ACCOUNT_TYPE_DEFAULT;
-        model.qBillAccount.push({
+        model.qBillAccountServer.push({
             franchazi_id: aUserId,
             account_type: aType,
             currnt_sum: 0,
@@ -83,7 +83,7 @@ function BillModule() {
             franchazi_id: aUserId,
             account_type: aType
         });
-        return model.qBillAccount.cursor.bill_accounts_id;
+        return model.qBillAccountServer.cursor.bill_accounts_id;
     };
     /*
      * Получить быстрый баланс счета по ID
@@ -93,7 +93,7 @@ function BillModule() {
      */
     self.getQuickSumFromAccountId = function(anAccountId) {
         reqBillAccounts(anAccountId, null, null);
-        if (model.qBillAccount.length > 0) return model.qBillAccount.cursor.currnt_sum;
+        if (model.qBillAccountServer.length > 0) return model.qBillAccountServer.cursor.currnt_sum;
         else return false;
     };
      /*
@@ -105,13 +105,13 @@ function BillModule() {
         model.qGetAccountBalance.params.account_id = anAccountId;
         reqBillAccounts(anAccountId, null, null);
         model.qGetAccountBalance.requery();
-        if(model.qBillAccount.cursor.currnt_sum != model.qGetAccountBalance.cursor.account_balance){
+        if(model.qBillAccountServer.cursor.currnt_sum != model.qGetAccountBalance.cursor.account_balance){
             eventProcessor.addEvent("accountCurrentSumChanged", {
                 account_id: anAccountId,
-                old_sum: model.qBillAccount.cursor.currnt_sum,
+                old_sum: model.qBillAccountServer.cursor.currnt_sum,
                 new_sum: model.qGetAccountBalance.cursor.account_balance
             });
-            model.qBillAccount.cursor.currnt_sum = model.qGetAccountBalance.cursor.account_balance;
+            model.qBillAccountServer.cursor.currnt_sum = model.qGetAccountBalance.cursor.account_balance;
             model.save();
         }
         if (model.qGetAccountBalance.length > 0) return model.qGetAccountBalance.cursor.account_balance;
@@ -166,7 +166,7 @@ function BillModule() {
         }
         var accountType;
         reqBillAccounts(anAccountId, null, null);
-        accountType = model.qBillAccount.cursor.account_type;
+        accountType = model.qBillAccountServer.cursor.account_type;
         if ((multiplier === -1) && (aStatus === self.OP_STATUS_SUCCESS || aStatus === self.OP_STATUS_PAID) && (anOperationType != self.OPERATION_DEL_SERVICE) && (accountType != self.ACCOUNT_TYPE_CREDIT)) {
             ERROR_SHORTAGE_MONEY = checkMoneyOnAccount(anAccountId, aSum);
         }
@@ -175,15 +175,15 @@ function BillModule() {
             eventProcessor.addEvent('errorLostMoney', obj);
             return false;
         } else {
-            model.qBillOperationsList.push(obj);
+            model.qBillOperationsListServer.push(obj);
             if (aStatus === self.OP_STATUS_SUCCESS) {
                 reqBillAccounts(anAccountId, null, null);
-                if (model.qBillAccount.length > 0)
-                    model.qBillAccount.cursor.currnt_sum = model.qBillAccount.cursor.currnt_sum + aSum * multiplier;
+                if (model.qBillAccountServer.length > 0)
+                    model.qBillAccountServer.cursor.currnt_sum = model.qBillAccountServer.cursor.currnt_sum + aSum * multiplier;
             }
             model.save();
             eventProcessor.addEvent('addBillOperation', obj);
-            return model.qBillOperationsList.cursor.bill_operations_id;
+            return model.qBillOperationsListServer.cursor.bill_operations_id;
         }
     };
     /*
@@ -194,13 +194,13 @@ function BillModule() {
      */
     self.addItemsOnOperation = function(anOpId, anItems) {
         model.params.operation_id = anOpId;
-        model.qBillOperationsList.requery(function() {});
-        if (model.qBillOperationsList.length > 0) {
+        model.qBillOperationsListServer.requery(function() {});
+        if (model.qBillOperationsListServer.length > 0) {
             for (var id in anItems) {
                 model.qItemBillCost.params.item_id = anItems[id].item_id;
                 model.qItemBillCost.requery(function() {
                     model.qAddItemsOnOperation.push({
-                        operation_id: model.qBillOperationsList.cursor.bill_operations_id,
+                        operation_id: model.qBillOperationsListServer.cursor.bill_operations_id,
                         cost_id: model.qItemBillCost.cursor.bill_item_cost_id
                     });
                 });
@@ -217,32 +217,32 @@ function BillModule() {
     self.setStatusBillOperation = function(anOperationId, aStatus) {
         var ERROR_SHORTAGE_MONEY = false;
         model.params.operation_id = anOperationId;
-        model.qBillOperationsList.requery(function() {});
-        if (model.qBillOperationsList.length > 0) {
+        model.qBillOperationsListServer.requery(function() {});
+        if (model.qBillOperationsListServer.length > 0) {
             if (aStatus == self.OP_STATUS_SUCCESS) {
-                reqBillAccounts(model.qBillOperationsList.cursor.account_id, null, null);
-                ERROR_SHORTAGE_MONEY = checkMoneyOnAccount(model.qBillOperationsList.cursor.account_id, model.qBillOperationsList.cursor.operation_sum);
+                reqBillAccounts(model.qBillOperationsListServer.cursor.account_id, null, null);
+                ERROR_SHORTAGE_MONEY = checkMoneyOnAccount(model.qBillOperationsListServer.cursor.account_id, model.qBillOperationsListServer.cursor.operation_sum);
                 if(!ERROR_SHORTAGE_MONEY)
-                    model.qBillAccount.cursor.currnt_sum = model.qBillAccount.cursor.currnt_sum + model.qBillOperationsList.cursor.operation_sum * model.qBillOperationsList.cursor.multiplier;
+                    model.qBillAccountServer.cursor.currnt_sum = model.qBillAccountServer.cursor.currnt_sum + model.qBillOperationsListServer.cursor.operation_sum * model.qBillOperationsListServer.cursor.multiplier;
             }
             if (!self.ERROR_SHORTAGE_MONEY) {
-                model.qBillOperationsList.cursor.operation_status = aStatus;
+                model.qBillOperationsListServer.cursor.operation_status = aStatus;
                 model.save();
-                self.getSumFromAccountId(model.qBillOperationsList.cursor.account_id);
+                self.getSumFromAccountId(model.qBillOperationsListServer.cursor.account_id);
                 eventProcessor.addEvent('setStatusBillOperation', {
-                    operation_id: model.qBillOperationsList.cursor.bill_operations_id,
+                    operation_id: model.qBillOperationsListServer.cursor.bill_operations_id,
                     status: aStatus
                 });
                 return true;
             } else {
                 return addErrorToLogger('errorSetStatusBillOperation', {
-                    operation_id: model.qBillOperationsList.cursor.bill_operations_id,
+                    operation_id: model.qBillOperationsListServer.cursor.bill_operations_id,
                     status: aStatus
                 }, ERRORS.LOST_MONEY);
             }
         } else {
             return addErrorToLogger('errorSetStatusBillOperation', {
-                    operation_id: model.qBillOperationsList.cursor.bill_operations_id,
+                    operation_id: model.qBillOperationsListServer.cursor.bill_operations_id,
                     status: aStatus
                 }, ERRORS.INVALID_OP_ID);
         }
@@ -253,7 +253,7 @@ function BillModule() {
      */
     self.getBillAccount = function(aFranId){
         reqBillAccounts(null, aFranId, null);
-        return model.qBillAccount.cursor.bill_accounts_id;
+        return model.qBillAccountServer.cursor.bill_accounts_id;
     };
     
     /*
@@ -279,8 +279,8 @@ function BillModule() {
     self.addCashToFranchazi = function(aSum, aType, aFranchaziId){
         var franchaziId = aFranchaziId ? aFranchaziId : session.getFranchazi();
         reqBillAccounts(null, franchaziId, self.ACCOUNT_TYPE_DEFAULT);
-        if(model.qBillAccount.length > 0){
-            var accountId = model.qBillAccount.cursor.bill_accounts_id;
+        if(model.qBillAccountServer.length > 0){
+            var accountId = model.qBillAccountServer.cursor.bill_accounts_id;
             if (aType === "bonus"){
                 var multiplier = 0.05;
                 return self.addBillOperation(accountId, self.OPERATION_ADD_CASH, aSum * multiplier);

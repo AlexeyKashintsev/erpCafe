@@ -15,10 +15,6 @@ function BillItems() {
         model.requery();
     };
     
-    function buttonActionPerformed(evt) {//GEN-FIRST:event_buttonActionPerformed
-
-    }//GEN-LAST:event_buttonActionPerformed
-
     function formWindowOpened(evt) {//GEN-FIRST:event_formWindowOpened
 
     }//GEN-LAST:event_formWindowOpened

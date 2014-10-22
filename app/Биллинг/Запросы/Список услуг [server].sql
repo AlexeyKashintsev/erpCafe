@@ -1,8 +1,6 @@
 /**
- * @readonly
  * @author minya92
- * @name qServiceList
- * @public
+ * @name qServiceListServer
  */ 
 Select * 
 From bill_services t1

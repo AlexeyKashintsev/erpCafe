@@ -35,16 +35,16 @@ function ServiceModule() {
      */
     self.AddService = function(anAccountId, aServiceId) {
         model.params.service_id = aServiceId;
-        model.qBillAccount.params.type = null;
-        model.qBillAccount.params.franchazi_id = null;
-        model.qBillAccount.params.account_id = anAccountId;
+        model.qBillAccountServer.params.type = null;
+        model.qBillAccountServer.params.franchazi_id = null;
+        model.qBillAccountServer.params.account_id = anAccountId;
         model.qAddService.params.account_id = anAccountId;
         model.qAddService.params.service_id = aServiceId;
         model.requery(function() {});
         if (model.qServiceList.length > 0) {
-            if (model.qBillAccount.length > 0) {
+            if (model.qBillAccountServer.length > 0) {
                 if (model.qAddService.length == 0) {
-                    if (bm.getSumFromAccountId(model.qBillAccount.cursor.bill_accounts_id) >= model.qServiceList.cursor.item_cost) {
+                    if (bm.getSumFromAccountId(model.qBillAccountServer.cursor.bill_accounts_id) >= model.qServiceList.cursor.item_cost) {
                         var payDate = new Date();
                         bm.addBillOperation(anAccountId, bm.OPERATION_DEL_SERVICE, model.qServiceList.cursor.item_cost);
                         if (model.qServiceList.cursor.service_month) {
