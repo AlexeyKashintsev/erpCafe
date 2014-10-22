@@ -7,14 +7,16 @@
 function testMain() {
     var self = this, model = this.model;
     var log = document.getElementById("log");
-    //login('testbar','testbar');
+    var testRun = false;
+    var currentTest = 0;
+    var testMaker = null;
     var testList = [{
             name: 'testFranchaziCreate'
         },
         {
-                name: 'testBarista',
-                login: 'testbar',
-                pass: 'testbar'
+            name        : 'testBarista',
+            login       : 'testbar',
+            password    : 'testbar'
         }
 //        ,
 //        {
@@ -25,12 +27,17 @@ function testMain() {
     ];
     var useHTMLLog = true;
     var messages = {
-        loadModules : 'Загрузка модулей',
+        loadModule  : 'Загрузка модуля',
         ok          : 'ok',
         error       : 'ошибка',
         fault       : 'Крах теста',
         loadReady   : 'Готов. Всего тестов',
-        test        : 'Тест'
+        test        : 'Тест',
+        login       : 'Вход в систему от имени пользователя ',
+        loadOk      : 'Загрузка завершена. Инициализация',
+        logOk       : 'Вход выполнен',
+        logout      : 'Выход'
+        
     };
     
     function message(aMsg, aClass) {
@@ -63,56 +70,98 @@ function testMain() {
     };
     
     function login(aUserName, aPassword) {
+        message(messages.login + ' ' + aUserName);
         $.ajax({
             url: "/erpCafe/j_security_check",
             data: { j_username: aUserName, j_password: aPassword },
             type: "POST",
             async: false,
             success: function() {
-                console.log("Log In! ");
+                message(messages.logOk);
+                test(currentTest);
             },
             error: function(e) {
-                console.log("Login Failed..")
+                message(messages.error);
             }
         });
     }
     
-    function createRequireList(){
-        var testListReq = [];
-        for (var j in testList) {
-            testListReq[j] = testList[j].name;
+    function logout() {
+        //http://localhost:8080/erpCafe/application/api?__type=12
+        message(messages.logout);
+        var result = false;
+        $.ajax({
+            url: "/erpCafe/application/api?__type=18",
+            type: "POST",
+            async: false,
+            success: function() {
+                message(messages.ok);
+                result = true;
+            },
+            error: function(e) {
+                message(messages.error);
+                result = false;
+            }
+        });
+    }
+    
+    function test() {
+        message(messages.loadModule + ' ' + (testList[currentTest].name ? testList[currentTest].name : '---'));
+        require(testList[currentTest].name, function() {
+            try {
+                message(messages.loadOk);
+//                if (testList[currentTest].login && testList[currentTest].password)
+//                    login(testList[currentTest].login, testList[currentTest].password);
+                var test = new Module(testList[currentTest].name);
+                test.init(self);
+                test.doTest();
+                /*if (test.doTest())
+                    ok++;
+                else
+                    bad++;*/
+            } catch (e) {
+                message(message.fault);
+            }
+            finally {
+                logout();
+                currentTest++;
+                testRun = false;
+            }
+        });
+    }
+    
+    function doTest() {
+        message(messages.test + ' №' + currentTest + testList[currentTest].name);
+        testRun = true;
+        var ok = true;
+        var doLogin = testList[currentTest].login && testList[currentTest].password;
+        if (doLogin) {
+            logout();
+            ok = login(testList[currentTest].login, testList[currentTest].password);
         }
-        return testListReq;
+        if (ok) {
+            test(currentTest);
+        }
     }
     
     function doTests() {
-        message(messages.loadModules, '');
-        var ok = 0;
-        var bad = 0;
-        require(createRequireList(), function() {
-            self.success('Ok');
-            for (var j in testList) {
-                message(messages.test + " " + j + " " + testList[j].name, '');
-                try {
-                    if (testList[j].login && testList[j].pass)
-                        login(testList[j].login, testList[j].pass);
-                    var test = new Module(testList[j].name);
-                    test.init(self);
-                    if (test.doTest())
-                        ok++;
-                    else
-                        bad++;
-                } catch (e) {
-                    self.error(messages.fault + " " + testList[j] + ". " + messages.error +": " + e);
-                    bad++;
-                }
+        testMaker = setInterval(function() {
+            if (!testRun) {
+                if (currentTest < testList.length)
+                    doTest();
+                else
+                    finish();
             }
-        });
+        }, 500);
     }
     
     function initialize() {
         document.getElementById('startTest').onclick = doTests;
         message(messages.loadReady + " " + testList.length, 'sysInfo');
+    }
+    
+    function finish() {
+        clearInterval(testMaker);
     }
     
     initialize();
