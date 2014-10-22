@@ -5,10 +5,9 @@
  * @module
  */ 
 function UserSession() {
-    Session.login();
-    Session.set('UserSession', this);
     var self = this, model = this.model;
     var ep = Modules.get('EventProcessor');
+    var lastCheck = null;
     
     self.msg = {
         MSG_ERROR_INACTIVE_USER         :   'Ваша учетная запись неактивна!\nОбратитесь к администратору',
@@ -17,30 +16,37 @@ function UserSession() {
     };
     
     self.login = function() {
+        Session.login();
+        Session.set('UserSession', this);
         model.params.userName = self.principal.name;
         if (!self.principal.hasRole('client'))
             model.qFrancByUserName.requery();
         ep.addEvent('userLogin', null);
+        lastCheck = new Date();
         return self.getUserRole();//model.params.franchaziId;
     };
     
+    self.logout = function() {
+        Logger.info('Session closed');
+        Session.logout();
+    };
+    
     self.keepAlive = function(aUserName) {
+        Session.keepAlive();
         return (aUserName == self.principal.name);
     };
     
-    function sync() {
-        Logger.info('Synchronizing');
+    function refresh() {
         model.params.userName = self.principal.name;
-        if (!self.principal.hasRole('client'))
-            model.qFrancByUserName.execute();
-        if (model.qFrancByUserName.cursor){
+        model.qFrancByUserName.execute();
+        if (!model.qFrancByUserName.empty){
             model.params.franchaziId = model.qFrancByUserName.franchazi_id;
         }
     }
     
     self.getFranchazi = function() {
         if (!model.params.franchaziId)
-            sync();
+            refresh();
         return model.params.franchaziId;
     };
     

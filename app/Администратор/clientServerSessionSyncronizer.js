@@ -6,49 +6,77 @@
  */ 
 function clientServerSessionSynchronizer() {
     var self = this, model = this.model;
-    var getLock = new Lock();
+    var IDLE_TIME = 20;//In minutes
     var loadModules = [];
     Session = {};
+    var sessions = {};
     
     Session.get = function(aModuleName) {
         var userName = getSessionUserName();
-        if (!Session[userName][aModuleName]) {
+        if (!sessions[userName][aModuleName]) {
             loadModules[userName][aModuleName] = true;
-            Session[userName][aModuleName] = new Module(aModuleName);
-            Session[userName][aModuleName].createOnGet = true;
+            sessions[userName][aModuleName] = new Module(aModuleName);
+            sessions[userName][aModuleName].createOnGet = true;
             loadModules[userName][aModuleName] = false;
         }
-        return Session[userName][aModuleName];
+        return sessions[userName][aModuleName];
     };
     
     Session.set = function(aModuleName, aModule) {
         var userName = getSessionUserName();
         if (!loadModules[userName][aModuleName]) {
-            if (!Session[userName][aModuleName] || Session[userName][aModuleName].createOnGet) {
-                Session[userName][aModuleName] = aModule;
-                Session[userName][aModuleName].createOnGet = false;
+            if (!sessions[userName][aModuleName] || sessions[userName][aModuleName].createOnGet) {
+                sessions[userName][aModuleName] = aModule;
+                sessions[userName][aModuleName].createOnGet = false;
                 return true;
             } else 
-                return Session[userName][aModuleName];
+                return sessions[userName][aModuleName];
         } return true;
+    };
+    
+    Session.keepAlive = function() {
+        var userName = self.principal.name;
+        sessions[userName].lastTime = new Date();
+        Logger.finest('Keep session alive for user ' + userName);
     };
     
     Session.login = function() {
         var userName = self.principal.name;
-        Session[userName] = {};
+        Logger.fine('New session for user ' + userName);
+        sessions[userName] = {};
         loadModules[userName] = [];
+        Session.keepAlive();
     };
     
-    Session.logout = function() {
-        var userName = self.principal.name;
-        delete Session[userName];
+    Session.logout = function(aSessionUser) {
+        var userName = aSessionUser ? aSessionUser : self.principal.name;
+        Logger.fine('Closing session for user ' + userName);
+        delete sessions[userName];
         delete loadModules[userName];
     };
     
     function getSessionUserName() {
         var userName = self.principal.name;
-        if (!Session[userName])
+        if (!sessions[userName])
             Session.login();
+        Session.keepAlive();
         return userName;
     }
+    
+    function watchDog() {
+        (function () {
+            Logger.fine('New watchDog!');
+            var sleepTime = IDLE_TIME * 60 * 1000;
+            java.lang.Thread.sleep(sleepTime);
+            var checkTime = new Date();
+            for (var j in sessions)
+                if (sessions[j].lastTime.getTime() - checkTime > sleepTime) {
+                    Logger.fine('Session timeout for user ' + j);
+                    Session.logout(j);
+                }
+            watchDog();
+        }).invokeBackground();
+    };
+    
+    watchDog();
 }
