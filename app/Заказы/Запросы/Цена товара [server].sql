@@ -1,8 +1,7 @@
 /**
- * @public
  * @author minya92
- * @name qItemBillCost
- * @readonly
+ * @name qItemBillCostServer
+ * @writable bill_item_cost
  */ 
 Select * ,
 false as selected, 1 as item_count

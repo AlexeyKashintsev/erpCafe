@@ -1,8 +1,6 @@
 /**
- * @readonly
  * @author minya92
- * @name qBillAccount
- * @public
+ * @name qBillAccountServer
  */ 
 Select * 
 From bill_accounts t1

@@ -1,9 +1,7 @@
 /**
- *
  * @author minya92
  * @name qDelServiceFromAccount
  * @manual 
- * @public
  */ 
 Delete 
 From bill_services_accounts t1

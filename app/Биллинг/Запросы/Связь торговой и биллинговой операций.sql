@@ -1,5 +1,4 @@
 /**
- *
  * @author Work
  * @name qConnectTradeAndBillOperations
  */ 

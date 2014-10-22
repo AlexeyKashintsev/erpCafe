@@ -2,7 +2,6 @@
  * 
  * @author minya92
  * @name qDeleteBillAccount
- * @public
  * @manual
  */
 UPDATE bill_accounts

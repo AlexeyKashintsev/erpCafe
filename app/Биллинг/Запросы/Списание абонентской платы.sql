@@ -2,7 +2,6 @@
  *
  * @author minya92
  * @name qPaymentService
- * @public
  */ 
 Select * 
 From bill_services_accounts t1
