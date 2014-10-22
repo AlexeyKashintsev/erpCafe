@@ -13,7 +13,7 @@ if (!platypus) {
 platypus.ready = function() {
     require(['getUserSession'], function() {
         session = getUserSession();
-        session.login(function(anUserRole){
+        session.getUserRole(function(anUserRole){
                 session.userRole = anUserRole;
                 session.userName = session.getUserName();
                 cmn.addHeaderLeft(session.userName, "user");

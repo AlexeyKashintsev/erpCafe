@@ -15,16 +15,13 @@ function UserSession() {
         MSG_ERROR_NOT_UNDER_BROWSER     :   'Данный функционал не работает под браузером'
     };
     
-    self.login = function() {
-        Session.login();
-        Session.set('UserSession', this);
-        model.params.userName = self.principal.name;
-        if (!self.principal.hasRole('client'))
-            model.qFrancByUserName.requery();
-        ep.addEvent('userLogin', null);
-        lastCheck = new Date();
-        return self.getUserRole();//model.params.franchaziId;
-    };
+    Session.login();
+    Session.set('UserSession', this);
+    model.params.userName = self.principal.name;
+    if (!self.principal.hasRole('client'))
+        model.qFrancByUserName.requery();
+    ep.addEvent('userLogin', null);
+    lastCheck = new Date();
     
     self.logout = function() {
         Logger.info('Session closed');

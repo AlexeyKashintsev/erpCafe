@@ -6,6 +6,7 @@ function tradeOperaionsByTP(aTradePoint, aContainer) {
     var self = this, model = this.model;
     var shown = false;
     var content = null;
+    var sessionDetailsView = null;
     var sessions = [];
     
     self.setWarehouse = function(aWarehouse) {
@@ -37,6 +38,9 @@ function tradeOperaionsByTP(aTradePoint, aContainer) {
             var endTime = cmn.createElement('th', 'session-desc', aContainer);
             endTime.innerHTML = cmn.getTimeString(aData.end_date);
             if (!aData.revision) {
+                aContainer.onclick = function() {
+                    showSessionDetails(aData.org_session_id);
+                };
                 var startValue = cmn.createElement('th', 'session-desc', aContainer);
                 startValue.innerHTML = aData.start_value;
                 var cashValue = cmn.createElement('th', 'session-desc', aContainer);
@@ -91,7 +95,6 @@ function tradeOperaionsByTP(aTradePoint, aContainer) {
                     display : tr,
                     data    : new SessionData(model.qTradeSessionsInPeriod.cursor, tr)
                 };
-                
             }
     };
     
@@ -141,7 +144,13 @@ function tradeOperaionsByTP(aTradePoint, aContainer) {
                     initDatePicker(sStart, sEnd);
                 });
             });
-        }
-        
+        }  
     };
+    
+    function showSessionDetails(aSessionId) {
+        if (!sessionDetailsView)
+            sessionDetailsView = new mSessionData();
+        sessionDetailsView.parent = self;
+        sessionDetailsView.show(aSessionId);
+    }
 }
