@@ -7,7 +7,7 @@
   <entity Name="queryOpenedSession" Title="" entityHeight="200" entityIconified="false" entityId="141105013593905" entityLocationX="377" entityLocationY="240" entityWidth="150" queryId="queryOpenedSession" tableName="" tableSchemaName=""/>
   <entity Name="qLastClosedSessionOnTradePoint" Title="" entityHeight="200" entityIconified="false" entityId="141104998127576" entityLocationX="201" entityLocationY="241" entityWidth="150" queryId="qLastClosedSessionOnTradePoint" tableName="" tableSchemaName=""/>
   <entity Name="qWHSessionBalance" Title="" entityHeight="200" entityIconified="false" entityId="141104997139589" entityLocationX="391" entityLocationY="13" entityWidth="150" queryId="qWHSessionBalance" tableName="" tableSchemaName=""/>
-  <relation leftEntityId="-1" leftEntityParameterName="trade_point_id" rightEntityId="141104844547669" rightEntityParameterName="trade_point_id"/>
   <relation leftEntityId="-1" leftEntityParameterName="trade_point_id" rightEntityId="141104998127576" rightEntityParameterName="trade_point_id"/>
+  <relation leftEntityId="-1" leftEntityParameterName="trade_point_id" rightEntityId="141104844547669" rightEntityParameterName="trade_point_id"/>
   <relation leftEntityId="-1" leftEntityParameterName="trade_point_id" rightEntityId="141105013593905" rightEntityParameterName="trade_point_id"/>
 </datamodel>

@@ -4,11 +4,13 @@
  * @public
  */
 function ClientServerModule() {
+    Session.set('ClientServerModule', this);
+    //TODO Проверить запросить из сессии
     var self = this, model = this.model;
     var sender = new MessageSender();                                            
     var userModule = new UserModule();
     var adminFunctions = new AdminFunctions();
-    var billModule = new BillModule();
+    var billModule = Session.get('BillModule');
 
     function ClientConstructor(aPhone) {
         model.qPersonalData.params.phone = aPhone;

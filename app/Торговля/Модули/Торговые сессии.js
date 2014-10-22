@@ -5,12 +5,13 @@
  * @public
  */
 function TradeSessions() {
+    Session.set('TradeSessions', this);
     var self = this, model = this.model;
-    var whSession = Modules.get('WhSessionModule');
-    var clientModule = Modules.get('ClientServerModule');
-    var billing = Modules.get('BillModule');
-    var ep = Modules.get('EventProcessor');
-    var session = Modules.get("UserSession");
+    var whSession = Session.get('WhSessionModule');
+    var clientModule = Session.get('ClientServerModule');
+    var billing = Session.get('BillModule');
+    var ep = new EventProcessor();
+    var session = Session.get("UserSession");
     var sessionItems = {};
     
     /*
@@ -39,7 +40,7 @@ function TradeSessions() {
      * @returns {undefined}
      */
     self.initializeSession = function(aSession, aStartBalance) {
-        if (aSession && !session.getActiveTPSession()) {
+        if (aSession === session.getActiveTPSession()) {
             //aSession = session.getActiveTPSession();
         //};
             model.qTradeSessionBalance.push({

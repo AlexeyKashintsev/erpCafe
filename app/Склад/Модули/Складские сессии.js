@@ -8,6 +8,7 @@
  * @public
  */
 function WhSessionModule() {
+    Session.set('WhSessionModule', this);
     var self = this, model = this.model;
     var ep = new EventProcessor();
     var session = Modules.get("UserSession");

@@ -5,9 +5,10 @@
  * @public
  */
 function BillModule() {
+    Session.set('BillModule', this);
     var self = this, model = this.model;
     var eventProcessor = new EventProcessor();
-    var session = Modules.get("UserSession");
+    var session = Session.get("UserSession");
     var sender = new MessageSender();
     
     // Типы операций

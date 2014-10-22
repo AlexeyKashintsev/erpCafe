@@ -1,7 +1,6 @@
 /**
  * 
  * @author Alexey
- * @module
  */
 function WHSessionBalance(aWarehouse, aContainer) {
     var self = this, model = this.model;
