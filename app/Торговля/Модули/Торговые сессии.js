@@ -247,9 +247,10 @@ function TradeSessions() {
      */
     self.processOrder = function(anOrderDetails) {
         var client = false;
-        if (!model.params.session_id) {
-            getCurrentSession();
-        }
+        getCurrentSession();
+//        if (!model.params.session_id) {
+//            getCurrentSession();
+//        }
 
        /* if (!checkOrderSum(anOrderDetails.orderItems, anOrderDetails.orderSum)) {
             ep.addEvent('sumDifference', {client: anOrderDetails, server: ServerSum});

@@ -15,8 +15,6 @@ function RevisionForm() {
         model.params.trade_point_id = aTradePointId;
         whSessionModule.setTradePoint(model.params.trade_point_id);
         self.session_id = whSessionModule.createSession(false, true);
-        whSessionModule.setStartValuesAuto();
-        
         self.items = whSessionModule.getCurrentStartValues();
         console.log(self.items);
         if (!model.itemsByTP.empty) {
@@ -28,7 +26,7 @@ function RevisionForm() {
     };
     
     function closeSession(anItems){
-        if(whSessionModule.closeSessionByRevision(anItems))
+        if(whSessionModule.closeSession(anItems))
             alert("Ревизя успешно проведена");
         else alert("Возникли ошибки");
     }
@@ -55,7 +53,7 @@ function RevisionForm() {
     function formWindowClosing(evt) {//GEN-FIRST:event_formWindowClosing
         if(!self.closing){
             if(confirm("Отменить ревизию? Несохраненные данные будут потеряны!")){
-                whSessionModule.delRevision(self.session_id);
+                whSessionModule.cancelRevision(self.session_id);
             } else return false;
         }
     }//GEN-LAST:event_formWindowClosing
@@ -72,7 +70,7 @@ function RevisionForm() {
 
     function btnCancelActionPerformed(evt) {//GEN-FIRST:event_btnCancelActionPerformed
         if(self.session_id){
-            whSessionModule.delRevision(self.session_id);
+            whSessionModule.cancelRevision(self.session_id);
             self.closing = true;
         }
         form.close(true);

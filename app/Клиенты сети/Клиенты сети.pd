@@ -6,7 +6,7 @@
   <fieldsEntity entityHeight="87" entityIconified="false" entityId="140776288796211" entityLocationX="219" entityLocationY="326" entityWidth="150" tableName="client_bonus_category"/>
   <fieldsEntity entityHeight="162" entityIconified="false" entityId="140808564821418" entityLocationX="434" entityLocationY="21" entityWidth="150" tableName="bill_accounts"/>
   <fieldsEntity entityHeight="97" entityIconified="false" entityId="140740511305702" entityLocationX="869" entityLocationY="90" entityWidth="150" tableName="trade_operations"/>
-  <fieldsEntity entityHeight="122" entityIconified="false" entityId="140776430873952" entityLocationX="453" entityLocationY="330" entityWidth="261" tableName="bonus_rate_for_trade_items"/>
+  <fieldsEntity entityHeight="122" entityIconified="false" entityId="140776430873952" entityLocationX="454" entityLocationY="330" entityWidth="261" tableName="bonus_rate_for_trade_items"/>
   <fieldsEntity entityHeight="129" entityIconified="false" entityId="140776449086523" entityLocationX="858" entityLocationY="317" entityWidth="150" tableName="trade_items"/>
   <fieldsEntity entityHeight="290" entityIconified="false" entityId="140740346128201" entityLocationX="213" entityLocationY="20" entityWidth="183" tableName="client_personal_data"/>
 </datamodel>

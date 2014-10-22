@@ -10,3 +10,4 @@ From trade_items t1
  Where (:franchazi_id = t1.franchazi_id or t1.franchazi_id is null)
  and (:item_type = t1.item_type or :item_type is null or :item_type = 0)
  and :show_type = t1.franchazi_id
+ and (:item_id = t1.trade_items_id or :item_id is null)
