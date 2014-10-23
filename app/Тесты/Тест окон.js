@@ -38,10 +38,8 @@ function testFrame() {
     
     function doTest() {
         info("Начало теста");
-        var win = window.open("/erpCafe/application/api?__type=18","test");
-        setTimeout(function(){
-            win.document.close();
-        }, 4000);
+        var win = window.open("/erpCafe/application-start.html","test");
+        
 
     }
     

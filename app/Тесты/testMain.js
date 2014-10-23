@@ -13,8 +13,13 @@ function testMain() {
     var testList = [/*{
             name: 'testFranchaziCreate'
         },*/
+//        {
+//            name: 'testBarista',
+//            login: 'testbar',
+//            password: 'testbar'
+//        },
         {
-            name: 'testBarista',
+            name: 'testFrame',
             login: 'testbar',
             password: 'testbar'
         }
@@ -77,11 +82,11 @@ function testMain() {
             type: "GET",
             async: false,
             success: function() {
-                message('messages.logOk');
+                message(messages.ok);
                 
             },
             error: function(e) {
-                message('messages.error');
+                message(messages.error);
             }
         });
 
@@ -101,7 +106,6 @@ function testMain() {
     }
     
     function logout() {
-        //http://localhost:8080/erpCafe/application/api?__type=12
         message(messages.logout);
         var result = false;
         $.ajax({
