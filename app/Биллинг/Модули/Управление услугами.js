@@ -33,13 +33,16 @@ function ServiceModule() {
     /*
      * Добавление услуги на лицевой счет 
      */
-    self.AddService = function(anAccountId, aServiceId) {
+    self.AddService = function(anAccountId, aServiceId, aFranchaziId) {
+        if(aFranchaziId){
+           anAccountId = bm.getBillAccount(aFranchaziId);
+        }
         model.params.service_id = aServiceId;
         model.qBillAccountServer.params.type = null;
         model.qBillAccountServer.params.franchazi_id = null;
         model.qBillAccountServer.params.account_id = anAccountId;
-        model.qAddService.params.account_id = anAccountId;
-        model.qAddService.params.service_id = aServiceId;
+        model.qServiceList.params.account_id = anAccountId;
+        model.qServiceList. params.service_id = aServiceId;
         model.requery(function() {});
         if (model.qServiceList.length > 0) {
             if (model.qBillAccountServer.length > 0) {
