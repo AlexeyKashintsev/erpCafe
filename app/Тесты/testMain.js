@@ -16,7 +16,7 @@ function testMain() {
         {
             name: 'testBarista',
             login: 'testbar',
-            pass: 'testbar'
+            password: 'testbar'
         }
 //        ,
 //        {
@@ -71,6 +71,20 @@ function testMain() {
     
     function login(aUserName, aPassword) {
         message(messages.login + ' ' + aUserName);
+        $.ajax({  
+            url: "/erpCafe/application-start.html",
+            data: { j_username: aUserName, j_password: aPassword },
+            type: "GET",
+            async: false,
+            success: function() {
+                message('messages.logOk');
+                
+            },
+            error: function(e) {
+                message('messages.error');
+            }
+        });
+
         $.ajax({
             url: "/erpCafe/j_security_check",
             data: { j_username: aUserName, j_password: aPassword },
