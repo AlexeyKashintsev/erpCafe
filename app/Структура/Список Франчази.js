@@ -7,6 +7,7 @@
 
 function SelectFranchaziAdminForm() {
 var self = this, model = this.model, form = this;
+var bm = new ServerModule("BillModule");
 
 function btnReqActionPerformed(evt) {//GEN-FIRST:event_btnReqActionPerformed
     if (self.model.modified&&confirm('Сохранить изменения?')){
@@ -42,7 +43,13 @@ function formWindowClosing(evt) {//GEN-FIRST:event_formWindowClosing
     }//GEN-LAST:event_listFranchaziOnRequeried
 
     function btnAddActionPerformed(evt) {//GEN-FIRST:event_btnAddActionPerformed
-        model.listFranchazi.insert();
+        var franName = prompt("Введите имя нового франчази:");
+        if(franName){
+            model.listFranchazi.insert();
+            model.listFranchazi.cursor.f_name = franName;
+            bm.createBillAccount(false, model.listFranchazi.cursor.org_franchazi_id);
+            model.save();
+        }
     }//GEN-LAST:event_btnAddActionPerformed
 
     function btnDelActionPerformed(evt) {//GEN-FIRST:event_btnDelActionPerformed

@@ -69,18 +69,18 @@ function BillModule() {
      * @param {type} aSum
      * @returns {@this;@pro;model.qBillAccountServer.cursor.bill_accounts_id}
      */
-    self.createBillAccount = function(aType, aUserId) {
+    self.createBillAccount = function(aType, aFranchaziId) {
         if (!aType)
             aType = self.ACCOUNT_TYPE_DEFAULT;
         model.qBillAccountServer.push({
-            franchazi_id: aUserId,
+            franchazi_id: aFranchaziId,
             account_type: aType,
             currnt_sum: 0,
             active: true
         });
         model.save();
         eventProcessor.addEvent('billCreated', {
-            franchazi_id: aUserId,
+            franchazi_id: aFranchaziId,
             account_type: aType
         });
         return model.qBillAccountServer.cursor.bill_accounts_id;
@@ -105,7 +105,8 @@ function BillModule() {
         model.qGetAccountBalance.params.account_id = anAccountId;
         reqBillAccounts(anAccountId, null, null);
         model.qGetAccountBalance.requery();
-        if(model.qBillAccountServer.cursor.currnt_sum != model.qGetAccountBalance.cursor.account_balance){
+        var account_balance = model.qGetAccountBalance.empty ? 0 : model.qGetAccountBalance.cursor.account_balance;
+        if(model.qBillAccountServer.cursor.currnt_sum != account_balance){
             eventProcessor.addEvent("accountCurrentSumChanged", {
                 account_id: anAccountId,
                 old_sum: model.qBillAccountServer.cursor.currnt_sum,
