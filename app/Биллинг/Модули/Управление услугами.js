@@ -6,7 +6,7 @@
 function ServiceModule() {
     var self = this, model = this.model;
     var eventProcessor = new EventProcessor();
-    var bm = Modules.get("BillModule");
+    var bm = Modules.get("BillModule"); //Modules.get - устарел, использовать Session.get
     var session = Modules.get("UserSession");
     
     var ERRORS = {

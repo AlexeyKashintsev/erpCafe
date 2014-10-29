@@ -32,6 +32,7 @@ function TradeItemsOnTradePoint() {
     };
 
 function btnReqActionPerformed(evt) {//GEN-FIRST:event_btnReqActionPerformed
+        model.params.actual_date = new Date();
         alert(model.params.franchazi_id + '\\' + model.params.trade_point_id + '\\' + model.params.actual_date);
         if (self.model.modified && confirm('Сохранить изменения?')) {
             modelSave();

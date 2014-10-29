@@ -9,5 +9,6 @@ function mSessionData() {
     self.show = function(aSessionId) {
         model.params.session_id = aSessionId;
         $('#modalForm').modal('toggle');
+        $('#modal-title').html('Данные торговой сессии')
     };
 }

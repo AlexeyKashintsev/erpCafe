@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?><datamodel>
+  <parametersEntity entityHeight="200" entityIconified="false" entityLocationX="12" entityLocationY="12" entityWidth="150"/>
+  <entity Name="dsSubscriberByInn" Title="Абонент по ИНН" entityHeight="200" entityIconified="false" entityId="139461519352590" entityLocationX="227" entityLocationY="241" entityWidth="150" queryId="subscriber_by_inn" tableName="" tableSchemaName=""/>
+  <entity Name="dsExistingOperationByPayment" Title="Платежная операция по платежу из внешней системы" entityHeight="200" entityIconified="false" entityId="139452296643949" entityLocationX="524" entityLocationY="14" entityWidth="321" queryId="135903463361678" tableName="" tableSchemaName=""/>
+  <entity Name="dsSubscriber" Title="Абонент" entityHeight="200" entityIconified="false" entityId="139452177599676" entityLocationX="215" entityLocationY="13" entityWidth="244" queryId="135902327570645" tableName="" tableSchemaName=""/>
+  <referenceRelation leftEntityFieldName="confirmed_operation" leftEntityId="139452296643949" rightEntityFieldName="tr_payment_operations_id" rightEntityId="139452296643949"/>
+  <referenceRelation leftEntityFieldName="parentagent" leftEntityId="139452177599676" rightEntityFieldName="tr_agents_id" rightEntityId="139452177599676"/>
+  <referenceRelation leftEntityFieldName="integrator" leftEntityId="139452177599676" rightEntityFieldName="tr_agents_id" rightEntityId="139461519352590"/>
+  <referenceRelation leftEntityFieldName="integrator" leftEntityId="139452177599676" rightEntityFieldName="tr_agents_id" rightEntityId="139452177599676"/>
+  <referenceRelation leftEntityFieldName="integrator" leftEntityId="139461519352590" rightEntityFieldName="tr_agents_id" rightEntityId="139452177599676"/>
+  <referenceRelation leftEntityFieldName="subscriber_id" leftEntityId="139452296643949" rightEntityFieldName="tr_agents_id" rightEntityId="139452177599676"/>
+  <referenceRelation leftEntityFieldName="subscriber_id" leftEntityId="139452296643949" rightEntityFieldName="tr_agents_id" rightEntityId="139461519352590"/>
+  <referenceRelation leftEntityFieldName="parentagent" leftEntityId="139461519352590" rightEntityFieldName="tr_agents_id" rightEntityId="139452177599676"/>
+  <referenceRelation leftEntityFieldName="parentagent" leftEntityId="139461519352590" rightEntityFieldName="tr_agents_id" rightEntityId="139461519352590"/>
+  <referenceRelation leftEntityFieldName="parentagent" leftEntityId="139452177599676" rightEntityFieldName="tr_agents_id" rightEntityId="139461519352590"/>
+  <referenceRelation leftEntityFieldName="integrator" leftEntityId="139461519352590" rightEntityFieldName="tr_agents_id" rightEntityId="139461519352590"/>
+</datamodel>
