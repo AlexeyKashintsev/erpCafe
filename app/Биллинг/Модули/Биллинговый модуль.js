@@ -10,7 +10,7 @@ function BillModule() {
     var eventProcessor = new EventProcessor();
     var session = Session.get("UserSession");
     var sender = new MessageSender();
-    
+    var af = new AdminFunctions();
     // Типы операций
     self.OPERATION_ADD_CASH     = 1; //Добавление средств на счет
     self.OPERATION_ADD_BONUS    = 2; //
@@ -324,8 +324,26 @@ function BillModule() {
         model.save();
     };
     
-    self.getYandexMoneyInfo = function(test, shopId){
-        Logger.info(test);
-        Logger.info(shopId);
+    self.yandexReciver = function(){
+        var r = {
+            requestDatetime     : self.http.request.params.requestDatetime,
+            action              : self.http.request.params.action,
+            md5                 : self.http.request.params.md5,
+            shopId              : self.http.request.params.shopId,
+            shopArticleId       : self.http.request.params.shopArticleId,
+            invoiceId           : self.http.request.params.invoiceId,
+            orderNumber         : self.http.request.params.orderNumber,
+            customerNumber      : self.http.request.params.customerNumber,
+            orderCreatedDatetime: self.http.request.params.orderCreatedDatetime,
+            orderSumAmount      : self.http.request.params.orderSumAmount,
+            orderSumCurrencyPaycash:self.http.request.params.orderSumCurrencyPaycash,
+            orderSumBankPaycash : self.http.request.params.orderSumBankPaycash,
+            shopSumAmount       : self.http.request.params.shopSumAmount,
+            shopSumCurrencyPaycash:self.http.request.params.shopSumCurrencyPaycash,
+            shopSumBankPaycash  : self.http.request.params.shopSumBankPaycash,
+            paymentPayerCode    : self.http.request.params.paymentPayerCode,
+            paymentType         : self.http.request.params.paymentType
+        };
+        var hash = af.MD5(r.action+";"+r.orderSumAmount+";"+r.orderSumCurrencyPaycash+";"+r.orderSumBankPaycash+";"+r.shopId+";"+r.invoiceId+";"+r.customerNumber+";"+shopPassword);
     };
 }
