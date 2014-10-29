@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Пополнение счета через яндекс деньги</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+    </head>
+    <body>
+        <form action="http://localhost:8080/erpCafe/application/api?__type=14&__moduleName=BillModule&__methodName=getYandexMoneyInfo" method="post"> 
+        <input name="test" value="1234" type="hidden"/> 
+        <!-- Обязательные поля --> 
+        <input name="shopId" value="1234" type="hidden"/> 
+        <input name="scid" value="4321" type="hidden"/> 
+        <input name="sum" value="100.50" type="text"> 
+        <input name="customerNumber" value="abc000" type="hidden"/> 
+
+        <!-- Необязательные поля --> 
+        <!--input name="shopArticleId" value="567890" type="hidden"/--> 
+        <input name="paymentType" value="AC" type="hidden"/> 
+        <input name="orderNumber" value="abc1111111" type="hidden"/> 
+        <input name="cps_phone" value="79110000000" type="text"/> 
+        <input name="cps_email" value="user@domain.com" type="text"/> 
+
+        <input type="submit" value="Заплатить"/> 
+        </form>
+    </body>
+</html>

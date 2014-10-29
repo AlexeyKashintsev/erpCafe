@@ -323,4 +323,9 @@ function BillModule() {
         }
         model.save();
     };
+    
+    self.getYandexMoneyInfo = function(test, shopId){
+        Logger.info(test);
+        Logger.info(shopId);
+    };
 }

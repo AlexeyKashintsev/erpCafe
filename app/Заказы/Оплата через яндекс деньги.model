@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?><datamodel>
+  <parametersEntity entityHeight="200" entityIconified="false" entityLocationX="12" entityLocationY="12" entityWidth="150"/>
+  <entity Name="qBillAccount" Title="" entityHeight="200" entityIconified="false" entityId="141139035758512" entityLocationX="181" entityLocationY="11" entityWidth="150" queryId="qBillAccount" tableName="" tableSchemaName=""/>
+  <entity Name="qAccountType" Title="" entityHeight="200" entityIconified="false" entityId="141145822427753" entityLocationX="378" entityLocationY="5" entityWidth="150" queryId="qAccountType" tableName="" tableSchemaName=""/>
+  <referenceRelation leftEntityFieldName="account_type" leftEntityId="141139035758512" rightEntityFieldName="bill_account_types_id" rightEntityId="141145822427753"/>
+</datamodel>
