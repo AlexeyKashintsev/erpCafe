@@ -54,28 +54,31 @@ function ClientServerModule() {
         if (!anUserName) {
             anUserName = aPhone;
         }
-        var pass = genPass();
-        Logger.info("Пароль пользователя: " + pass);
-        userModule.createUser(anUserName, adminFunctions.MD5(pass), 'client', anEmail, aPhone);
-        model.qPersonalData.insert();
-        model.qPersonalData.cursor.client_id = billModule.createBillAccount(billModule.ACCOUNT_TYPE_CLIENT);
-        model.qPersonalData.cursor.first_name = aFirstName;
-        model.qPersonalData.cursor.middle_name = aMiddleName;
-        model.qPersonalData.cursor.last_name = aLastName;
-        model.qPersonalData.cursor.birthday = aBirthday;
-        model.qPersonalData.cursor.address = anAddress;
-        model.qPersonalData.cursor.phone = aPhone;
-        model.qPersonalData.cursor.email = anEmail;
-        model.qPersonalData.cursor.usr_name = anUserName;
-        model.qPersonalData.cursor.reg_date = new Date();
-        model.save();
-        self.setBonusCategory(anUserName, aBonusCategory ? aBonusCategory : 1);
-        sender.sendMessage(sender.REGISTRATION_SUCCESS, {
-            phone: model.qPersonalData.cursor.phone,
-            username: model.qPersonalData.cursor.first_name,
-            email: model.qPersonalData.cursor.email,
-            password: pass
-        });
+        if (!self.checkIfPhoneExist(aPhone) && !self.checkIfEmailExist(anEmail)){
+            var pass = genPass();
+            Logger.info("Пароль пользователя: " + pass);
+            userModule.createUser(anUserName, adminFunctions.MD5(pass), 'client', anEmail, aPhone);
+            model.qPersonalData.insert();
+            model.qPersonalData.cursor.client_id = billModule.createBillAccount(billModule.ACCOUNT_TYPE_CLIENT);
+            model.qPersonalData.cursor.first_name = aFirstName;
+            model.qPersonalData.cursor.middle_name = aMiddleName;
+            model.qPersonalData.cursor.last_name = aLastName;
+            model.qPersonalData.cursor.birthday = aBirthday;
+            model.qPersonalData.cursor.address = anAddress;
+            model.qPersonalData.cursor.phone = aPhone;
+            model.qPersonalData.cursor.email = anEmail;
+            model.qPersonalData.cursor.usr_name = anUserName;
+            model.qPersonalData.cursor.reg_date = new Date();
+            model.save();
+            self.setBonusCategory(anUserName, aBonusCategory ? aBonusCategory : 1);
+            sender.sendMessage(sender.REGISTRATION_SUCCESS, {
+                phone: model.qPersonalData.cursor.phone,
+                username: model.qPersonalData.cursor.first_name,
+                email: model.qPersonalData.cursor.email,
+                password: pass
+            });
+            return model.qPersonalData.cursor.client_id;
+        } else return false;
     };
 
     self.checkIfPhoneExist = function(aPhone) {
