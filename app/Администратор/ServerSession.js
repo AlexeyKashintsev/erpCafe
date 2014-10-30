@@ -69,8 +69,8 @@ function ServerSession() {
             java.lang.Thread.sleep(1000);
         var checkTime = new Date();
         Logger.info('WatchDog work');
-        for (var j in sessions)
-            if (sessions[j].lastTime.getTime() - checkTime > 60 * 1000 * IDLE_TIME) {
+        for (var j in sessions) 
+            if (checkTime - sessions[j].lastTime > 60 * 1000 * IDLE_TIME) {
                 Logger.fine('Session timeout for user ' + j);
                 Session.logout(j);
             }
