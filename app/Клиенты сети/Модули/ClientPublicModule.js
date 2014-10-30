@@ -6,8 +6,8 @@
  */
 function ClientPublicModule() {
     var self = this, model = this.model;
-    var CSM = new ClientServerModule();
-    var BM = new BillModule();
+    var BM = Session.get("BillModule");
+    var CSM = Session.get("ClientServerModule");
     
     self.CreateUser = function (aPhone, anEmail, aFirstName, aMiddleName, aLastName, aBirthday, anAddress, anUserName){
         if (aPhone && anEmail){
