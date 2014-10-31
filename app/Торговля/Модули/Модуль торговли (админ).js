@@ -118,12 +118,20 @@ function TradeAdminModule() {
         model.getSessions.params.session_id = aSessionId;
         model.getSessions.requery();
         if(model.getSessions.length > 0){
-            model.qTradeOperationBySession.insert();
+            //TODO НЕ РАБОТАЕТ INSERT!!!
+            /*model.qTradeOperationBySession.insert();
             model.qTradeOperationBySession.cursor.operation_sum = aSum;
             model.qTradeOperationBySession.cursor.operation_date = new Date();
             model.qTradeOperationBySession.cursor.operation_type = self.OP_TYPE_REMOVE_CASH;
             model.qTradeOperationBySession.cursor.session_id = aSessionId;
-            model.qTradeOperationBySession.cursor.user_name = session.getUserName();
+            model.qTradeOperationBySession.cursor.user_name = session.getUserName();*/
+            model.qTradeOperationBySession.push({
+                operation_sum : aSum,
+                operation_date : new Date(),
+                operation_type : self.OP_TYPE_REMOVE_CASH,
+                session_id : aSessionId,
+                user_name : session.getUserName()
+            });
             model.save();
             return model.qTradeOperationBySession.cursor.trade_cash_box_operation_id;
         } else return false;

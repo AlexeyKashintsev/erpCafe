@@ -102,7 +102,7 @@ function TradePointCommonInfo(aTradePointDetails, aContainer) {
             
             var opSum = tradePointDetails.operationsSum ?  tradePointDetails.operationsSum : 0;
             var startValue = tradePointDetails.start_value ? tradePointDetails.start_value : 0;
-            var income = tradePointDetails.incomeSum ? tradePointDetails.incomeSum : 0;
+            income = tradePointDetails.incomeSum ? tradePointDetails.incomeSum : 0;
             cashBox = startValue + opSum;
             setAdditionalInfo(income, cashBox);
             
