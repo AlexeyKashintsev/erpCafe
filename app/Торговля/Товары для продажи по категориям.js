@@ -18,6 +18,7 @@ function btnReqActionPerformed(evt) {//GEN-FIRST:event_btnReqActionPerformed
             model.save();
         }
         model.qTradeItems.requery();
+        model.qTradeItemContents.requery();
 }//GEN-LAST:event_btnReqActionPerformed
 
 function formWindowOpened(evt) {//GEN-FIRST:event_formWindowOpened
@@ -104,7 +105,9 @@ function formWindowClosing(evt) {//GEN-FIRST:event_formWindowClosing
     }//GEN-LAST:event_btnItemEditContentActionPerformed
 
     function selectOnSelect(aEditor) {//GEN-FIRST:event_selectOnSelect
-        model.save();
+                model.save();
+                model.qTradeItems.requery();
+                model.qTradeItemContents.requery();
                 Logger.info(model.qTradeItems.cursor.trade_items_id);
                 contentTradeItem.setTradeItem(model.qTradeItems.cursor.trade_items_id);
                 contentTradeItem.showModal(function(){
@@ -116,11 +119,22 @@ function formWindowClosing(evt) {//GEN-FIRST:event_formWindowClosing
     function qTradeItemsOnChanged(evt) {//GEN-FIRST:event_qTradeItemsOnChanged
         if(!evt.object.franchazi_id){
             if(flag == 0){
-                model.qTradeItems.insert(
-                    model.qTradeItems.schema.franchazi_id, model.params.franchazi_id,
-                    model.qTradeItems.schema.item_type, model.qTradeItemTypes.cursor.trade_item_type_id,
-                    model.qTradeItems.schema.original_id, model.qTradeItems.cursor.trade_items_id
-                );
+               
+                model.qTradeItemContents.beforeFirst();
+                while(model.qTradeItemContents.next()){
+                    if(model.qTradeItemContents.cursor.trade_items_id == model.qTradeItems.cursor.trade_items_id){
+                        model.qTradeItems.insert(
+                            model.qTradeItems.schema.franchazi_id, model.params.franchazi_id,
+                            model.qTradeItems.schema.item_type, model.qTradeItems.cursor.item_type,
+                            model.qTradeItems.schema.original_id, model.qTradeItems.cursor.trade_items_id
+                        ); 
+                        model.qTradeItemContents.insert(
+                            model.qTradeItemContents.schema.trade_items_id, model.qTradeItems.cursor.trade_items_id,
+                            model.qTradeItemContents.schema.contents, model.qTradeItemContents.cursor.contents
+                        );
+                    }
+                }
+
                 flag = 1;
                 
                 model.qContents.params.trade_item_id = evt.object.trade_items_id;
@@ -156,12 +170,22 @@ function formWindowClosing(evt) {//GEN-FIRST:event_formWindowClosing
 
     function btnItemCreateDoubleActionPerformed(evt) {//GEN-FIRST:event_btnItemCreateDoubleActionPerformed
         model.qContents.params.trade_item_id = model.qTradeItems.cursor.trade_items_id;
-        model.qTradeItems.insert(
-            model.qTradeItems.schema.franchazi_id, model.params.franchazi_id,
-            model.qTradeItems.schema.item_type, model.qTradeItemTypes.cursor.trade_item_type_id,
-            model.qTradeItems.schema.item_name, model.qTradeItems.cursor.item_name,
-            model.qTradeItems.schema.original_id, model.qTradeItems.cursor.trade_items_id
-        ); 
+        model.qTradeItemContents.beforeFirst();
+        while(model.qTradeItemContents.next()){
+            if(model.qTradeItemContents.cursor.trade_items_id == model.qTradeItems.cursor.trade_items_id){
+                model.qTradeItems.insert(
+                    model.qTradeItems.schema.franchazi_id, model.params.franchazi_id,
+                    model.qTradeItems.schema.item_type, model.qTradeItems.cursor.item_type,
+                    model.qTradeItems.schema.item_name, model.qTradeItems.cursor.item_name + " - копия",
+                    model.qTradeItems.schema.original_id, model.qTradeItems.cursor.trade_items_id
+                ); 
+                model.qTradeItemContents.insert(
+                    model.qTradeItemContents.schema.trade_items_id, model.qTradeItems.cursor.trade_items_id,
+                    model.qTradeItemContents.schema.contents, model.qTradeItemContents.cursor.contents
+                );
+            }
+        }
+        
         model.qContents.requery(function(){
             if(model.qContents.length > 0){
                 model.qContents.beforeFirst();
