@@ -54,7 +54,8 @@ function ClientServerModule() {
         if (!anUserName) {
             anUserName = aPhone;
         }
-        if (!self.checkIfPhoneExist(aPhone) && !self.checkIfEmailExist(anEmail)){
+        if (anEmail === "") anEmail = null;
+        if (aPhone && !self.checkIfPhoneExist(aPhone) && !self.checkIfEmailExist(anEmail)){
             var pass = genPass();
             Logger.info("Пароль пользователя: " + pass);
             userModule.createUser(anUserName, adminFunctions.MD5(pass), 'client', anEmail, aPhone);
@@ -78,10 +79,14 @@ function ClientServerModule() {
                 password: pass
             });
             return model.qPersonalData.cursor.client_id;
-        } else return false;
+        } else{
+            Logger.warning("Регистрация этого клиента запрещена " + model.qPersonalData);
+            return false;
+        }
     };
 
     self.checkIfPhoneExist = function(aPhone) {
+        if (aPhone === "") aPhone = null;
         model.qPersonalData.params.phone = aPhone;
         model.qPersonalData.params.email = null;
         model.qPersonalData.params.user_name = aPhone;
@@ -110,6 +115,7 @@ function ClientServerModule() {
     };
 
     self.checkIfEmailExist = function(anEmail) {
+        if (anEmail === "") anEmail = null;
         model.qPersonalData.params.phone = null;
         model.qPersonalData.params.email = anEmail;
         model.qPersonalData.params.user_name = null;
