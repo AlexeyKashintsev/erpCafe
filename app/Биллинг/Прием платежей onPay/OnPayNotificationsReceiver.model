@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?><datamodel>
+  <parametersEntity entityHeight="200" entityIconified="false" entityLocationX="12" entityLocationY="12" entityWidth="150"/>
+  <entity Name="dsSettings" Title="Настройки для работы с финансами" entityHeight="200" entityIconified="false" entityId="135903574153434" entityLocationX="231" entityLocationY="14" entityWidth="403" queryId="135893597927073" tableName="" tableSchemaName=""/>
+</datamodel>

@@ -5,7 +5,7 @@
  */
 function AddTradePoint2Franchazi() {
     var self = this, model = this.model, form = this;
-    
+    var sm = new ServerModule("ServiceModule");
     self.setFranchazi = function(aFranchazi) {
         model.params.franchazi_id = aFranchazi;
     };
@@ -28,6 +28,18 @@ function AddTradePoint2Franchazi() {
         } else {
             alert("Не заполнены все поля!");
         }
+ 
+//        if (model.listTradePoints.cursor.tp_address !== "" &&
+//                model.listTradePoints.cursor.tp_name !== "") {
+//                if(sm.AddService(false, 1, model.params.franchazi_id)){
+//                    model.save();
+//                    form.close(true);
+//                }   else alert("Недостаточно средств на лицеовм счету!");
+//                
+//        } else {
+//            alert("Не заполнены все поля!");
+//        }
+        
     }//GEN-LAST:event_buttonActionPerformed
 
     function formWindowClosing(evt) {//GEN-FIRST:event_formWindowClosing

@@ -39,7 +39,7 @@ function tradeOperaionsByTP(aTradePoint, aContainer) {
             endTime.innerHTML = cmn.getTimeString(aData.end_date);
             if (!aData.revision) {
                 aContainer.onclick = function() {
-                    showSessionDetails(aData.org_session_id);
+                    showSessionDetails(aData);
                 };
                 var startValue = cmn.createElement('th', 'session-desc', aContainer);
                 startValue.innerHTML = aData.start_value;
@@ -147,10 +147,10 @@ function tradeOperaionsByTP(aTradePoint, aContainer) {
         }  
     };
     
-    function showSessionDetails(aSessionId) {
+    function showSessionDetails(aData) {
         if (!sessionDetailsView)
             sessionDetailsView = new mSessionData();
         sessionDetailsView.parent = self;
-        sessionDetailsView.show(aSessionId);
+        sessionDetailsView.show(aData);
     }
 }

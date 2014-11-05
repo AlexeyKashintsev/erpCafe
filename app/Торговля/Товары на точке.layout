@@ -16,6 +16,8 @@
   </widget>
   <widget name="modelGrid1" parent="panel1" prefHeight="267px" prefWidth="782px" type="DbGridDesignInfo">
     <column name="colItem_name" readonly="true" title="Наименование">
+      <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
+      <datamodelElement entityId="141319793264641" fieldName="r_name"/>
       <columnsDatasource/>
       <columnsDisplayField/>
       <cellsDatasource/>
@@ -27,10 +29,10 @@
       <headerStyle>
         <nativeFont name="Dialog" size="15"/>
       </headerStyle>
-      <datamodelElement entityId="141319793264641" fieldName="r_name"/>
-      <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
     </column>
     <column name="colCost" title="Цена">
+      <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
+      <datamodelElement entityId="141319793264641" fieldName="r_cost"/>
       <columnsDatasource/>
       <columnsDisplayField/>
       <cellsDatasource/>
@@ -42,10 +44,10 @@
       <headerStyle>
         <nativeFont name="Dialog" size="13"/>
       </headerStyle>
-      <datamodelElement entityId="141319793264641" fieldName="r_cost"/>
-      <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
     </column>
     <column name="select" title=" " width="8">
+      <controlInfo classHint="DbCheckDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
+      <datamodelElement entityId="141319793264641" fieldName="r_selected"/>
       <columnsDatasource/>
       <columnsDisplayField/>
       <cellsDatasource/>
@@ -57,8 +59,6 @@
       <headerStyle>
         <nativeFont name="Dialog" size="15"/>
       </headerStyle>
-      <datamodelElement entityId="141319793264641" fieldName="r_selected"/>
-      <controlInfo classHint="DbCheckDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
     </column>
     <rowsColumnsDesignInfo>
       <rowsDatasource entityId="141319793264641" field="false"/>

@@ -6,7 +6,9 @@
 function ServiceModule() {
     var self = this, model = this.model;
     var eventProcessor = new EventProcessor();
-    var bm = Modules.get("BillModule");
+    var bm = Modules.get("BillModule"); //Modules.get - устарел, использовать Session.get
+    var session = Modules.get("UserSession");
+    
     var ERRORS = {
         FIND_ACCOUNT_ID: "Аккаунт с таким ID не найден",
         FIND_SERVICE_ID: "Услуга с таким ID не найдена",
@@ -33,13 +35,16 @@ function ServiceModule() {
     /*
      * Добавление услуги на лицевой счет 
      */
-    self.AddService = function(anAccountId, aServiceId) {
+    self.AddService = function(anAccountId, aServiceId, aFranchaziId) {
+        if(aFranchaziId){
+           anAccountId = bm.getBillAccount(aFranchaziId);
+        }
         model.params.service_id = aServiceId;
         model.qBillAccountServer.params.type = null;
         model.qBillAccountServer.params.franchazi_id = null;
         model.qBillAccountServer.params.account_id = anAccountId;
-        model.qAddService.params.account_id = anAccountId;
-        model.qAddService.params.service_id = aServiceId;
+        model.qServiceList.params.account_id = anAccountId;
+        model.qServiceList. params.service_id = aServiceId;
         model.requery(function() {});
         if (model.qServiceList.length > 0) {
             if (model.qBillAccountServer.length > 0) {
@@ -74,6 +79,16 @@ function ServiceModule() {
             return addErrorToLogger('errorAddServiceOnAccount', obj, ERRORS.FIND_SERVICE_ID);
         }
     };
+    
+    /*
+     * @rolesAllowed admin
+     * @param {type} anAccountId
+     * @returns {undefined}
+     */
+    function delLockedServiceFromAccount(anAccountId, aServiceId){
+        
+    }
+    
     /*
      * Удаление услуги с лицевого счета
      * @param {type} anAccountId
@@ -85,7 +100,7 @@ function ServiceModule() {
         model.qServiceListByAccount.params.account_id = anAccountId;
         model.qServiceListByAccount.requery(function() {});
         if (model.qServiceListByAccount.length > 0) {
-            if (!model.qServiceListByAccount.cursor.locked) {
+            if ((session.getUserRole() == "franchazi" && !model.qServiceListByAccount.cursor.locked) || session.getUserRole() == "admin") {
                 model.qDelServiceFromAccount.params.account_id = anAccountId;
                 model.qDelServiceFromAccount.params.service_id = model.qServiceListByAccount.cursor.bill_item_cost_id;
                 model.qDelServiceFromAccount.params.service_account_id = model.qServiceListByAccount.cursor.bill_services_accounts_id;

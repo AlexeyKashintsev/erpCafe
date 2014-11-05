@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><layout defaultCloseOperation="2" name="Form" prefHeight="195px" prefWidth="283px" windowOpened="formWindowOpened">
+<?xml version="1.0" encoding="UTF-8"?><layout defaultCloseOperation="2" name="Form" prefHeight="166px" prefWidth="283px" windowOpened="formWindowOpened">
   <widget buttonGroup="buttonGroup" enabled="false" name="radioButton1" parent="Form" prefHeight="23px" prefWidth="228px" text="Яндекс деньги" type="RadioDesignInfo">
     <constraints height="23px" left="24px" top="84px" type="MarginConstraintsDesignInfo" width="228px"/>
   </widget>
@@ -15,7 +15,7 @@
     <constraints height="23px" left="24px" top="48px" type="MarginConstraintsDesignInfo" width="228px"/>
   </widget>
   <widget actionPerformed="buttonActionPerformed" name="button" parent="Form" prefHeight="23px" prefWidth="228px" text="Пополнить баланс" type="ButtonDesignInfo">
-    <constraints height="23px" left="24px" top="144px" type="MarginConstraintsDesignInfo" width="228px"/>
+    <constraints bottom="11px" height="23px" left="24px" type="MarginConstraintsDesignInfo" width="228px"/>
   </widget>
   <nonvisual name="buttonGroup" type="ButtonGroupDesignInfo"/>
   <layout type="MarginLayoutDesignInfo"/>

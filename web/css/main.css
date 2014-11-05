@@ -20,6 +20,10 @@
           box-sizing: border-box;
 }
 
+* {
+  vertical-align: top!important;
+}
+
 body {
   margin-top: 50px!important;
   margin-bottom: 50px!important;
