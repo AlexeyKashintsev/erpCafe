@@ -2,10 +2,9 @@
  *
  * @author mike
  * @name listUsersFranchaziOrTP
- * @writable mtd_users
+ * @readonly
  * @public
  * @rolesAllowed franchazi admin
- TODO Not public
  */ 
 Select t1.usr_name, t1.usr_passwd, t1.usr_form
 , t1.usr_context, t1.usr_roles, t1.usr_phone

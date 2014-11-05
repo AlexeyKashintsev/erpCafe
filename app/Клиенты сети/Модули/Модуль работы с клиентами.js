@@ -5,7 +5,7 @@
  */
 function ClientServerModule() {
     Session.set('ClientServerModule', this);
-    //TODO Проверить запросить из сессии
+    //TODO ak
     var self = this, model = this.model;
     var sender = new MessageSender();                                            
     var userModule = new UserModule();

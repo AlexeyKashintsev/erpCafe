@@ -64,14 +64,14 @@ function UserCreateAndEditForm() {
     function formWindowOpened(evt) {//GEN-FIRST:event_formWindowOpened
         form.lbInfo.text = "";
         if(model.params.user_name){
-            model.usersByName.requery(function(){
+            model.usersByNameReadonly.requery(function(){
                 userNew = false; //говорим что это не новый пользователь
                 form.tfLogin.enabled = false;
                 form.panelBarist.visible = false;
-                form.tfLogin.text = model.usersByName.cursor.usr_name;
+                form.tfLogin.text = model.usersByNameReadonly.cursor.usr_name;
                 form.tfPass.text = "********";
-                form.tfEmail.text = model.usersByName.cursor.usr_email;
-                form.tfPhone.text = model.usersByName.cursor.usr_phone;
+                form.tfEmail.text = model.usersByNameReadonly.cursor.usr_email;
+                form.tfPhone.text = model.usersByNameReadonly.cursor.usr_phone;
                 if(!model.createFrancizerUser.cursor.franc_users_active)
                     form.rbDisable.selected = true; 
                 else  form.rbEnable.selected = true; 
