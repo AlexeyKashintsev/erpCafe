@@ -32,8 +32,8 @@ function TradeItemsOnTradePoint() {
     };
 
 function btnReqActionPerformed(evt) {//GEN-FIRST:event_btnReqActionPerformed
-        model.params.actual_date = new Date();
-        alert(model.params.franchazi_id + '\\' + model.params.trade_point_id + '\\' + model.params.actual_date);
+        //model.params.actual_date = new Date();
+        //alert(model.params.franchazi_id + '\\' + model.params.trade_point_id + '\\' + model.params.actual_date);
         if (self.model.modified && confirm('Сохранить изменения?')) {
             modelSave();
         }
@@ -95,7 +95,7 @@ function btnSaveActionPerformed(evt) {//GEN-FIRST:event_btnSaveActionPerformed
     }//GEN-LAST:event_btnSelectActionPerformed
 
     function qTradeItemsAndTypeOnChanged(evt) {//GEN-FIRST:event_qTradeItemsAndTypeOnChanged
-        if (evt.propertyName === 'r_cost' || evt.propertyName === 'r_selected') {
+       // if (evt.propertyName === 'r_cost' || evt.propertyName === 'r_selected') {
             if (model.qTradeItemsAndType.cursor.r_cost && (model.qTradeItemsAndType.cursor.r_id.match(/type/gi))) {
                 //alert ('Нельзя устанавливать цену на категорию');
                 model.qTradeItemsAndType.cursor.r_cost = null;
@@ -105,7 +105,7 @@ function btnSaveActionPerformed(evt) {//GEN-FIRST:event_btnSaveActionPerformed
                     model.qTradeItemsAndType.cursor.add2TP = (aResult === 1);
                 });
             }
-        }
+        //}
     }//GEN-LAST:event_qTradeItemsAndTypeOnChanged
 
     function formWindowOpened(evt) {//GEN-FIRST:event_formWindowOpened
