@@ -30,6 +30,7 @@ function saveModel(){
                     user_name: model.params.usr_name 
                 };
                 model.createTradePointUser.push(createBarist);
+                model.save();
             } else {
                 model.deleteUserFromTradePoint.params.trade_point_id = model.tradePointsBarist.org_trade_point_id;
                 model.deleteUserFromTradePoint.params.user_name = model.params.usr_name;
@@ -37,22 +38,22 @@ function saveModel(){
             }
         }
     }
-    model.save();
 }
 
 function formWindowOpened(evt) {//GEN-FIRST:event_formWindowOpened
     form.lblNameBarista.text = model.params.usr_name;
+    model.tradePointsBarist.requery();
 }//GEN-LAST:event_formWindowOpened
 
 function formWindowClosing(evt) {//GEN-FIRST:event_formWindowClosing
-    if (self.model.modified&&confirm('Сохранить изменения?')){
-        saveModel();
-    }
+//    if (self.model.modified && confirm('Сохранить изменения?')){
+//        saveModel();
+//    }
 }//GEN-LAST:event_formWindowClosing
 
     function btnSaveActionPerformed(evt) {//GEN-FIRST:event_btnSaveActionPerformed
         saveModel();
-        form.close();
+        form.close(true);
     }//GEN-LAST:event_btnSaveActionPerformed
 
     function btnCancelActionPerformed(evt) {//GEN-FIRST:event_btnCancelActionPerformed

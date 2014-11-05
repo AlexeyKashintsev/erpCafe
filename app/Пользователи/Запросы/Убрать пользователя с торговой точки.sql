@@ -1,5 +1,4 @@
 /**
- * 
  * @manual 
  * @author mike
  * @public
