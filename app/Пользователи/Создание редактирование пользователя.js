@@ -152,7 +152,7 @@ function UserCreateAndEditForm() {
     }//GEN-LAST:event_btnCancelActionPerformed
 
     function tfLoginKeyPressed(evt) {//GEN-FIRST:event_tfLoginKeyPressed
-//        TODO Асинхронный код
+//        Асинхронный код
 //        
 //        userModule.checkLogin(form.tfLogin.text, function(aResult){
 //            if(!aResult){
@@ -199,7 +199,7 @@ function UserCreateAndEditForm() {
     }//GEN-LAST:event_tfEmailKeyReleased
 
     function validatePhone(){
-        var re = new RegExp("");  //TODO Написать регулярку для телефонов.
+        var re = /^\8\d{10}$/i;
         if (re.test(form.tfPhone.text)){
             return true;
         } else return false;

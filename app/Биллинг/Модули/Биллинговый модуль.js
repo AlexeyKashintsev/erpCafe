@@ -154,10 +154,10 @@ function BillModule() {
         switch (anOperationType) {
             case self.OPERATION_ADD_CASH:
                 multiplier = 1.0;
-                break;//TODO Есть ли смысл такого разделения?
+                break;
             case self.OPERATION_ADD_BONUS:
                 multiplier = 1.0;
-                break;//Относиться к бонусам
+                break;//Относится к бонусам
             case self.OPERATION_DEL_BUY:
                 multiplier = -1.0;
                 break;

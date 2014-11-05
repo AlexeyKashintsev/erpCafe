@@ -56,7 +56,6 @@ function TradeSessions() {
             model.save();
         } else {
             Logger.warning('Ошибка при инициализации сессии');
-            //TODO выводить ошибку в сообщения
         }
     };
 
@@ -129,7 +128,7 @@ function TradeSessions() {
         model.qContents.beforeFirst();
         while (model.qContents.next()) {
             empty = false;
-            if (WhItemsConsump[model.qContents.cursor.wh_item]) {///Что-то здесь поправил!!!!! TODO Проверить
+            if (WhItemsConsump[model.qContents.cursor.wh_item]) {
                 WhItemsConsump[model.qContents.cursor.wh_item] += model.qContents.cursor.usage_quantity * aQuantity;
             } else {
                 WhItemsConsump[model.qContents.cursor.wh_item] = model.qContents.cursor.usage_quantity * aQuantity;
@@ -154,9 +153,6 @@ function TradeSessions() {
         }
     }
 
-    //TODO Написать функцию возвращающую список всех товаров на точке со всем и возможными бонусами
-    //Обращение к БД всего один раз + передача списка доступных товаров на сторону клента (см tradeItemsByTradePointWithCost)
-    //TODO - я кому предыдущий комент написал?
     function getTradeItemsByTradePointWithCostAndBonuses(){
         model.tradeItemsByTradePointWithCost.params.actual_date = new Date();
         model.tradeItemsByTradePointWithCost.params.franchazi_id = session.getFranchazi();

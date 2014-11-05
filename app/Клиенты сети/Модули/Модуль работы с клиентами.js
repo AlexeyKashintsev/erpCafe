@@ -37,13 +37,6 @@ function ClientServerModule() {
         return new ClientConstructor(self.principal.name);
     };
 
-    /*
-     * @rolesallowed admin franchazi
-     * TODO зачем две одинаковые функции?
-     self.getClientDataByPhone = function(aPhone) {
-     return new ClientConstructor(aPhone);
-     };*/
-
     function genPass() {
         return Math.random().toString(36).slice(2, 8);
     }

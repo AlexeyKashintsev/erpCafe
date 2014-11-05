@@ -1,6 +1,7 @@
 /**
  * 
  * @author stipjey
+ * TODO Это вообще где-то используется?
  */
 function BonusRateForItemsAdd() {
     var self = this, model = this.model, form = this;
@@ -21,6 +22,6 @@ function BonusRateForItemsAdd() {
     }//GEN-LAST:event_qTradeItemsOnScrolled
 
     function qBonusRateForItemsEditOnChanged(evt) {//GEN-FIRST:event_qBonusRateForItemsEditOnChanged
-        model.save();//TODO Кнопка сохранить. Вообще, для таких форм есть шаблон
+        model.save();
     }//GEN-LAST:event_qBonusRateForItemsEditOnChanged
 }
