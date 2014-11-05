@@ -10,5 +10,4 @@ function tstFrom() {
     self.show = function() {
         form.show();
     };
-    // TODO : place your code here
 }

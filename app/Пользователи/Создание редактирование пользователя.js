@@ -177,19 +177,15 @@ function UserCreateAndEditForm() {
     }
 
     function tfEmailFocusLost(evt) {//GEN-FIRST:event_tfEmailFocusLost
-        // TODO Добавьте свой код:
     }//GEN-LAST:event_tfEmailFocusLost
 
     function tfEmailKeyPressed(evt) {//GEN-FIRST:event_tfEmailKeyPressed
-        // TODO Добавьте свой код:
     }//GEN-LAST:event_tfEmailKeyPressed
 
     function tfPhoneFocusLost(evt) {//GEN-FIRST:event_tfPhoneFocusLost
-        // TODO Добавьте свой код:
     }//GEN-LAST:event_tfPhoneFocusLost
 
     function tfPhoneKeyPressed(evt) {//GEN-FIRST:event_tfPhoneKeyPressed
-        // TODO Добавьте свой код:
     }//GEN-LAST:event_tfPhoneKeyPressed
 
     function tfEmailKeyReleased(evt) {//GEN-FIRST:event_tfEmailKeyReleased
@@ -220,6 +216,5 @@ function UserCreateAndEditForm() {
     }//GEN-LAST:event_tfPhoneKeyReleased
 
     function tfPhoneActionPerformed(evt) {//GEN-FIRST:event_tfPhoneActionPerformed
-        // TODO Добавьте свой код:
     }//GEN-LAST:event_tfPhoneActionPerformed
 }

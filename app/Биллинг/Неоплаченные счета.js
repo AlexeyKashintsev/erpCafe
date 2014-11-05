@@ -6,10 +6,8 @@ function UnpaidBills() {
     var self = this, model = this.model, form = this;
     var billModule  = new ServerModule("BillModule");
     model.qBillOperationsList.params.status = 3;
-    // TODO : place your code here
 
     function formWindowOpened(evt) {//GEN-FIRST:event_formWindowOpened
-        // TODO Добавьте свой код:
     }//GEN-LAST:event_formWindowOpened
 
     function buttonActionPerformed(evt) {//GEN-FIRST:event_buttonActionPerformed

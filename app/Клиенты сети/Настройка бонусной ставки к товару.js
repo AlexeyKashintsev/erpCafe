@@ -5,8 +5,6 @@
 function BonusRateForItemsAdd() {
     var self = this, model = this.model, form = this;
     
-    // TODO : place your code here
-
     function qTradeItemsOnScrolled(evt) {//GEN-FIRST:event_qTradeItemsOnScrolled
         model.qBonusRateForItemsEdit.params.item_id = model.qTradeItems.cursor.trade_items_id;
         model.qBonusRateForItemsEdit.requery(function(){

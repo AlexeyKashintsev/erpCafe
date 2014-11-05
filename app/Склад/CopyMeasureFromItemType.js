@@ -5,8 +5,6 @@
 function CopyMeasureFromItemType() {
     var self = this, model = this.model, form = this;
     
-    // TODO : place your code here
-
     function formWindowOpened(evt) {//GEN-FIRST:event_formWindowOpened
         model.requery();
     }//GEN-LAST:event_formWindowOpened

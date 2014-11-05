@@ -201,7 +201,6 @@ function formWindowClosing(evt) {//GEN-FIRST:event_formWindowClosing
     }//GEN-LAST:event_btnItemCreateDoubleActionPerformed
 
     function paramsOnChanged(evt) {//GEN-FIRST:event_paramsOnChanged
-        // TODO Добавьте здесь свой код:
     }//GEN-LAST:event_paramsOnChanged
 
     function rbAllActionPerformed(evt) {//GEN-FIRST:event_rbAllActionPerformed
