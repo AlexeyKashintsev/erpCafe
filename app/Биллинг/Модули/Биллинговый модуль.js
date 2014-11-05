@@ -30,7 +30,10 @@ function BillModule() {
     self.OP_STATUS_PAID         = 7;    //Оплачен
     self.OP_STATUS_SEND         = 8;    //Товар Отправлен
     self.OP_STATUS_RECIVED      = 9;   //Товар получен 
-    
+    //Варианты ответа для яндекс денег
+    self.RESPONSE_SUCCESS       = 0;   //Все хорошо
+    self.RESPONSE_FAIL_HASH     = 1;   //Несовпали хэши
+    self.RESPONSE_FAIL          = 200; //Ошибка разбора
     self.getSelfPropertyValue = function(aPropertyName) {
         return self[aPropertyName];
     };
@@ -325,7 +328,7 @@ function BillModule() {
     };
     
     self.yandexReciver = function(){
-        var r = {
+        /*var r = {
             requestDatetime     : self.http.request.params.requestDatetime,
             action              : self.http.request.params.action,
             md5                 : self.http.request.params.md5,
@@ -343,7 +346,20 @@ function BillModule() {
             shopSumBankPaycash  : self.http.request.params.shopSumBankPaycash,
             paymentPayerCode    : self.http.request.params.paymentPayerCode,
             paymentType         : self.http.request.params.paymentType
-        };
+        };*/
+        var r = self.http.request.params;
         var hash = af.MD5(r.action+";"+r.orderSumAmount+";"+r.orderSumCurrencyPaycash+";"+r.orderSumBankPaycash+";"+r.shopId+";"+r.invoiceId+";"+r.customerNumber+";"+shopPassword);
+        if(hash === r.md5){
+            var xmlhttp = getXmlHttp();
+            xmlhttp.open('GET', '/xhr/test.html', true);
+            xmlhttp.onreadystatechange = function() {
+              if (xmlhttp.readyState == 4) {
+                 if(xmlhttp.status == 200) {
+                   alert(xmlhttp.responseText);
+                     }
+              }
+            };
+            xmlhttp.send(null);
+        }
     };
 }
