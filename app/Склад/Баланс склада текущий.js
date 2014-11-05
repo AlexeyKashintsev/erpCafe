@@ -1,13 +1,12 @@
 /**
  * 
  * @author Alexey
+ * @public
  */
-function WHSessionBalance(aContainer) {
+function WHBalance(aWarehouse, aContainer) {
     var self = this, model = this.model;
-    self.container = cmn.createElement("table", "table table-hover whSessionBalance", aContainer);
     var items = [];
     var shown = false;
-    var doUpdate = false;
     
     function showItems() {
         Logger.info("Отображение данных для торговой точки " + model.params.trade_point_id);
@@ -112,12 +111,11 @@ function WHSessionBalance(aContainer) {
 
     self.setSession = function(aSession) {
         model.qWHSessionBalance.params.session_id = aSession;
-        if (doUpdate) updateSessionData();
-        doUpdate = true;
+        updateSessionData();
     };
     
     function updateSessionData() {
-        Logger.info("Получение баланса. Склад: " + model.params.trade_point_id + ", идентификатор сессии " + model.qWHSessionBalance.params.session_id);
+        Logger.info("Получение баланса. Склад: " + aWarehouse + ", идентификатор сессии " + model.qWHSessionBalance.params.session_id);
         model.qWHSessionBalance.execute(function() {
             model.qWHSessionBalance.beforeFirst();
             while (model.qWHSessionBalance.next()) {
@@ -126,17 +124,43 @@ function WHSessionBalance(aContainer) {
             showItems();
         });
     };
+    /**
+     * 
+     * @param {type} aWarehouse - TradePoint ID
+     * @returns none
+     */
+    self.getCurrentBalance = function(aWarehouse) {
+        if (aWarehouse)
+            self.setWarehouse(aWarehouse);
+        Logger.info("Получение сессии для склада: " + model.params.trade_point_id);
+        model.queryOpenedSession.requery(function(){proceedLast();});
+        model.qLastClosedSessionOnTradePoint.requery(function(){proceedLast();});
+        
+        var pLEC = 0;//Счетчик запусков для определения последней сессии
+        function proceedLast() {
+            pLEC++;
+            if (model.queryOpenedSession.length > 0 && pLEC < 3) {
+                self.setSession(model.queryOpenedSession.cursor.org_session_id);
+                pLEC = 10;
+            } else if (pLEC === 2 && model.qLastClosedSessionOnTradePoint.length > 0) {
+                self.setSession(model.qLastClosedSessionOnTradePoint.cursor.org_session_id);
+            }
+        }
+    };
+    
+    self.container = cmn.createElement("table", "table table-hover whSessionBalance", aContainer);
+    if (aWarehouse)
+        self.setWarehouse(aWarehouse);
 
     function itemsByTPOnRequeried(evt) {//GEN-FIRST:event_itemsByTPOnRequeried
-        Logger.info("Получены складские позиции по точке: " + model.params.trade_point_id 
-                + ' В количестве ' + model.itemsByTP.length);
+      //  Logger.info("Получены складские позиции по складу: " + model.params.trade_point_id 
+      //          + ", Количество записей: " + model.itemsByTP.length);
         model.itemsByTP.beforeFirst();
         for (var j in items)
             items[j].destroy();
         while (model.itemsByTP.next()) {
             items[model.itemsByTP.cursor.item_id] = new Item(model.itemsByTP.cursor);
         }
-        if (doUpdate) updateSessionData();
-        doUpdate = true;
+        if (!shown) self.getCurrentBalance();
     }//GEN-LAST:event_itemsByTPOnRequeried
 }

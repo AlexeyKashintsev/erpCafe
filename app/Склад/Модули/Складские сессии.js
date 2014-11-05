@@ -35,7 +35,7 @@ function WhSessionModule() {
             model.params.session_id = aSessionID;
             model.params.trade_point_id = aTradePointId;
         } catch(e) {
-            Logger.warning(e);//TODO Добавить запись в лог
+            Logger.warning(e);
         }
     }
 
@@ -128,7 +128,8 @@ function WhSessionModule() {
                 return model.params.session_id;
             } else {
                 model.revert();
-                return false; //TODO Возвращать код ошибки, записывать в события
+                return false; 
+                Logger.warning("Сессия не инициализирована. " + aSessionId);
             }
         }
     };

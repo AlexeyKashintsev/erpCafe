@@ -13,25 +13,39 @@ function ServerSession() {
     
     Session.get = function(aModuleName) {
         var userName = getSessionUserName();
+        Logger.finest('Get module ' + aModuleName);
         if (!sessions[userName][aModuleName]) {
+            Logger.finest('Module isn\'t loaded yet');
             loadModules[userName][aModuleName] = true;
             sessions[userName][aModuleName] = new Module(aModuleName);
+            if (!sessions[userName][aModuleName])
+                Logger.info('!');
             sessions[userName][aModuleName].createOnGet = true;
             loadModules[userName][aModuleName] = false;
+            Logger.finest('Ok! Module successufully loaded');
+        } else {
+            Logger.finest('Ok! Module exists');
         }
         return sessions[userName][aModuleName];
     };
     
     Session.set = function(aModuleName, aModule) {
+        Logger.finest('Module created ' + aModuleName);
         var userName = getSessionUserName();
         if (!loadModules[userName][aModuleName]) {
+            Logger.finest('Ok! Module isn\'t exist in session');
             if (!sessions[userName][aModuleName] || sessions[userName][aModuleName].createOnGet) {
                 sessions[userName][aModuleName] = aModule;
                 sessions[userName][aModuleName].createOnGet = false;
                 return true;
-            } else 
+            } else {
+                Logger.finest('Fail! Module is in session already');
                 return sessions[userName][aModuleName];
-        } return true;
+            }
+        } else {
+            Logger.finest('Ok! Module is in get process');
+            return true;
+        }
     };
     
     Session.keepAlive = function(aUserName) {

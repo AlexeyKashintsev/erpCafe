@@ -6,8 +6,6 @@ function HistoryOrders() {
     var self = this, model = this.model, form = this;
     var billModule  = new ServerModule("BillModule");
     
-    // TODO : place your code here
-
     function btnReqActionPerformed(evt) {//GEN-FIRST:event_btnReqActionPerformed
     if (self.model.modified&&confirm('Сохранить изменения?')){
         self.model.save();

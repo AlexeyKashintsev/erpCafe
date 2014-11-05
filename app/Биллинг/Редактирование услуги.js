@@ -46,7 +46,6 @@ function EditServiceForm() {
     }//GEN-LAST:event_formWindowOpened
 
     function tfSumActionPerformed(evt) {//GEN-FIRST:event_tfSumActionPerformed
-        // TODO Добавьте свой код:
     }//GEN-LAST:event_tfSumActionPerformed
 
     function formWindowClosing(evt) {//GEN-FIRST:event_formWindowClosing

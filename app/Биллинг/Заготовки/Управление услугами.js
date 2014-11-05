@@ -6,7 +6,6 @@ function CreateServiceForm() {
     var self = this, model = this.model, form = this;
     var serviceModule = new ServerModule("ServiceModule");
     var editServiceForm = new EditServiceForm;
-    // TODO : place your code here
 
     function btnSaveActionPerformed(evt) {//GEN-FIRST:event_btnSaveActionPerformed
         serviceModule.CreateService(form.tfName.text, form.tfSum.text, form.tfDays.text);

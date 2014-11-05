@@ -64,14 +64,14 @@ function UserCreateAndEditForm() {
     function formWindowOpened(evt) {//GEN-FIRST:event_formWindowOpened
         form.lbInfo.text = "";
         if(model.params.user_name){
-            model.usersByName.requery(function(){
+            model.usersByNameReadonly.requery(function(){
                 userNew = false; //говорим что это не новый пользователь
                 form.tfLogin.enabled = false;
                 form.panelBarist.visible = false;
-                form.tfLogin.text = model.usersByName.cursor.usr_name;
+                form.tfLogin.text = model.usersByNameReadonly.cursor.usr_name;
                 form.tfPass.text = "********";
-                form.tfEmail.text = model.usersByName.cursor.usr_email;
-                form.tfPhone.text = model.usersByName.cursor.usr_phone;
+                form.tfEmail.text = model.usersByNameReadonly.cursor.usr_email;
+                form.tfPhone.text = model.usersByNameReadonly.cursor.usr_phone;
                 if(!model.createFrancizerUser.cursor.franc_users_active)
                     form.rbDisable.selected = true; 
                 else  form.rbEnable.selected = true; 
@@ -152,7 +152,7 @@ function UserCreateAndEditForm() {
     }//GEN-LAST:event_btnCancelActionPerformed
 
     function tfLoginKeyPressed(evt) {//GEN-FIRST:event_tfLoginKeyPressed
-//        TODO Асинхронный код
+//        Асинхронный код
 //        
 //        userModule.checkLogin(form.tfLogin.text, function(aResult){
 //            if(!aResult){
@@ -177,19 +177,15 @@ function UserCreateAndEditForm() {
     }
 
     function tfEmailFocusLost(evt) {//GEN-FIRST:event_tfEmailFocusLost
-        // TODO Добавьте свой код:
     }//GEN-LAST:event_tfEmailFocusLost
 
     function tfEmailKeyPressed(evt) {//GEN-FIRST:event_tfEmailKeyPressed
-        // TODO Добавьте свой код:
     }//GEN-LAST:event_tfEmailKeyPressed
 
     function tfPhoneFocusLost(evt) {//GEN-FIRST:event_tfPhoneFocusLost
-        // TODO Добавьте свой код:
     }//GEN-LAST:event_tfPhoneFocusLost
 
     function tfPhoneKeyPressed(evt) {//GEN-FIRST:event_tfPhoneKeyPressed
-        // TODO Добавьте свой код:
     }//GEN-LAST:event_tfPhoneKeyPressed
 
     function tfEmailKeyReleased(evt) {//GEN-FIRST:event_tfEmailKeyReleased
@@ -203,7 +199,7 @@ function UserCreateAndEditForm() {
     }//GEN-LAST:event_tfEmailKeyReleased
 
     function validatePhone(){
-        var re = new RegExp("");  //TODO Написать регулярку для телефонов.
+        var re = /^\8\d{10}$/i;
         if (re.test(form.tfPhone.text)){
             return true;
         } else return false;
@@ -220,6 +216,5 @@ function UserCreateAndEditForm() {
     }//GEN-LAST:event_tfPhoneKeyReleased
 
     function tfPhoneActionPerformed(evt) {//GEN-FIRST:event_tfPhoneActionPerformed
-        // TODO Добавьте свой код:
     }//GEN-LAST:event_tfPhoneActionPerformed
 }

@@ -3,7 +3,6 @@
  * @author Alexey
  * @name qOpenedSession
  * @manual
- * @public TODO Nonpublic
  */ 
 Select * 
 From org_session t1

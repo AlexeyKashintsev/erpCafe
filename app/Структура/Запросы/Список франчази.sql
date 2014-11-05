@@ -3,7 +3,7 @@
  * @author mike
  * @name listFranchazi
  * @public
-TODO roles admin
+TODO Продублировать запрос с защитой
  */ 
 Select * 
 From org_franchazi t1

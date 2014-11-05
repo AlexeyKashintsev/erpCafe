@@ -11,8 +11,6 @@ function AddEditServiceForm() {
         self.service_id = aServiceId;
     }
     
-    // TODO : place your code here
-
     function btnSaveActionPerformed(evt) {//GEN-FIRST:event_btnSaveActionPerformed
         
         self.service_id = false;
