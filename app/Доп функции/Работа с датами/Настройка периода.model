@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<datamodel>
+  <parameters>
+    <parameter description="Начало интервала" name="parBegDate" nullable="true" parameterMode="0" precision="0" scale="0" selectionForm="null" signed="true" size="100" type="91" typeName="DATE"/>
+    <parameter description="Конец интервала" name="parEndDate" nullable="true" parameterMode="0" precision="0" scale="0" selectionForm="null" signed="true" size="100" type="91" typeName="DATE"/>
+    <parameter description="Точка актуальности" name="parTA" nullable="true" parameterMode="0" precision="0" scale="0" selectionForm="null" signed="true" size="100" type="91" typeName="DATE"/>
+    <parameter description="Дней до точки актуальности" name="parDaysBeforeTA" nullable="true" parameterMode="0" precision="0" scale="0" selectionForm="null" signed="true" size="0" type="2" typeName="NUMERIC"/>
+    <parameter description="Дней после точки актуальности" name="parDaysAfterTA" nullable="true" parameterMode="0" precision="0" scale="0" selectionForm="null" signed="true" size="0" type="2" typeName="NUMERIC"/>
+    <parameter description="Рабочий период?" name="parIsWorkPeriod" nullable="true" parameterMode="0" precision="0" scale="0" selectionForm="null" signed="true" size="0" type="2" typeName="NUMERIC"/>
+    <parameter description="Год" name="parYear" nullable="true" parameterMode="0" precision="0" scale="0" selectionForm="null" signed="true" size="100" type="91" typeName="DATE"/>
+    <parameter description="Месяц" name="parMonth" nullable="true" parameterMode="0" precision="0" scale="0" selectionForm="null" signed="true" size="100" type="91" typeName="DATE"/>
+    <parameter description="День" name="parDay" nullable="true" parameterMode="0" precision="0" scale="0" selectionForm="null" signed="true" size="100" type="91" typeName="DATE"/>
+  </parameters>
+  <parametersEntity entityHeight="278" entityIconified="false" entityLocationX="11" entityLocationY="13" entityWidth="216" onAfterChange="onChanged"/>
+</datamodel>
