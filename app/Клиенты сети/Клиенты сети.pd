@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?><datamodel datamodelDbId="null">
-  <fieldsEntity entityHeight="105" entityIconified="false" entityId="141347872711089" entityLocationX="671" entityLocationY="216" entityWidth="150" tableName="trade_item_type"/>
-  <fieldsEntity entityHeight="200" entityIconified="false" entityId="140740324295851" entityLocationX="9" entityLocationY="225" entityWidth="150" tableName="mtd_groups"/>
-  <fieldsEntity entityHeight="200" entityIconified="false" entityId="140740488097055" entityLocationX="674" entityLocationY="11" entityWidth="150" tableName="trade_cash_box_operation"/>
-  <fieldsEntity entityHeight="200" entityIconified="false" entityId="140740323163330" entityLocationX="10" entityLocationY="20" entityWidth="150" tableName="mtd_users"/>
-  <fieldsEntity entityHeight="87" entityIconified="false" entityId="140776288796211" entityLocationX="219" entityLocationY="326" entityWidth="150" tableName="client_bonus_category"/>
-  <fieldsEntity entityHeight="162" entityIconified="false" entityId="140808564821418" entityLocationX="434" entityLocationY="21" entityWidth="150" tableName="bill_accounts"/>
-  <fieldsEntity entityHeight="97" entityIconified="false" entityId="140740511305702" entityLocationX="869" entityLocationY="90" entityWidth="150" tableName="trade_operations"/>
-  <fieldsEntity entityHeight="122" entityIconified="false" entityId="140776430873952" entityLocationX="454" entityLocationY="330" entityWidth="261" tableName="bonus_rate_for_trade_items"/>
-  <fieldsEntity entityHeight="129" entityIconified="false" entityId="140776449086523" entityLocationX="858" entityLocationY="317" entityWidth="150" tableName="trade_items"/>
-  <fieldsEntity entityHeight="290" entityIconified="false" entityId="140740346128201" entityLocationX="213" entityLocationY="20" entityWidth="183" tableName="client_personal_data"/>
+  <fieldsEntity entityHeight="105" entityIconified="false" entityId="141347872711089" entityLocationX="495" entityLocationY="399" entityWidth="150" tableName="trade_item_type"/>
+  <fieldsEntity entityHeight="169" entityIconified="false" entityId="140740488097055" entityLocationX="390" entityLocationY="12" entityWidth="150" tableName="trade_cash_box_operation"/>
+  <fieldsEntity entityHeight="87" entityIconified="false" entityId="140776288796211" entityLocationX="51" entityLocationY="250" entityWidth="150" tableName="client_bonus_category"/>
+  <fieldsEntity entityHeight="162" entityIconified="false" entityId="140808564821418" entityLocationX="223" entityLocationY="9" entityWidth="150" tableName="bill_accounts"/>
+  <fieldsEntity entityHeight="97" entityIconified="false" entityId="140740511305702" entityLocationX="570" entityLocationY="11" entityWidth="150" tableName="trade_operations"/>
+  <fieldsEntity entityHeight="122" entityIconified="false" entityId="140776430873952" entityLocationX="234" entityLocationY="314" entityWidth="214" tableName="bonus_rate_for_trade_items"/>
+  <fieldsEntity entityHeight="129" entityIconified="false" entityId="140776449086523" entityLocationX="552" entityLocationY="217" entityWidth="150" tableName="trade_items"/>
+  <fieldsEntity entityHeight="231" entityIconified="false" entityId="140740346128201" entityLocationX="22" entityLocationY="11" entityWidth="183" tableName="client_personal_data"/>
 </datamodel>
