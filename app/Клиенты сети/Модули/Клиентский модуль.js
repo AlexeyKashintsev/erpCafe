@@ -53,7 +53,7 @@ function ClientServerModule() {
             Logger.info("Пароль пользователя: " + pass);
             userModule.createUser(anUserName, adminFunctions.MD5(pass), 'client', anEmail, aPhone);
             model.qPersonalData.insert();
-            model.qPersonalData.cursor.client_id = billModule.createBillAccount(billModule.ACCOUNT_TYPE_CLIENT);
+            model.qPersonalData.cursor.client_id = billModule.createBillAccount(billModule.ACCOUNT_TYPE_BONUS);
             model.qPersonalData.cursor.first_name = aFirstName;
             model.qPersonalData.cursor.middle_name = aMiddleName;
             model.qPersonalData.cursor.last_name = aLastName;
@@ -63,6 +63,7 @@ function ClientServerModule() {
             model.qPersonalData.cursor.email = anEmail;
             model.qPersonalData.cursor.usr_name = anUserName;
             model.qPersonalData.cursor.reg_date = new Date();
+            model.qPersonalData.cursor.product_bill = billModule.createBillAccount(billModule.ACCOUNT_TYPE_PRODUCT);
             model.save();
             self.setBonusCategory(anUserName, aBonusCategory ? aBonusCategory : 1);
             sender.sendMessage(sender.REGISTRATION_SUCCESS, {
@@ -160,8 +161,10 @@ function ClientServerModule() {
                                         'client', 
                                         model.qGetPersonalDataOfAllClients.cursor.email, 
                                         model.qGetPersonalDataOfAllClients.cursor.phone);
-                var clientID = billModule.createBillAccount(billModule.ACCOUNT_TYPE_CLIENT);
+                var clientID = billModule.createBillAccount(billModule.ACCOUNT_TYPE_BONUS);
+                var product_bill = billModule.createBillAccount(billModule.ACCOUNT_TYPE_PRODUCT);
                 model.qGetPersonalDataOfAllClients.cursor.client_id = clientID;
+                model.qGetPersonalDataOfAllClients.cursor.product_bill = product_bill;
             }
         }
         model.save();
