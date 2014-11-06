@@ -2,6 +2,7 @@
  *
  * @name usersByName
  * @rolesallowed admin franchazi
+ * TODO NONPUBLIC!!!! 
  */ 
 Select * 
 From mtd_users t1

@@ -8,7 +8,7 @@ function ClientServerModule() {
     //TODO ak
     var self = this, model = this.model;
     var sender = new MessageSender();                                            
-    var userModule = new UserModule();
+    var userModule = Session.get('UserModule');
     var adminFunctions = new AdminFunctions();
     var billModule = Session.get('BillModule');
 

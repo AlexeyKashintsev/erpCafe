@@ -7,7 +7,7 @@ function UserCreateAndEditForm() {
     var self = this, model = this.model, form = this;
     var adminFunctions = new ServerModule("AdminFunctions");
     var changePassView = new ChangePassView();
-    var userModule = new ServerModule("UserModule");
+    var userModule = Session.get('UserModule');
     
     var userNew = false;
     var validateLogin = false;

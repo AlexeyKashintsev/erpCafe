@@ -9,7 +9,7 @@ function ClientPublicModule() {
     var BM = Session.get("BillModule");
     var CSM = Session.get("ClientServerModule");
     
-    self.CreateUser = function (aPhone, anEmail, aFirstName, aMiddleName, aLastName, aBirthday, anAddress, anUserName){
+    self.CreateUserWithBonuses = function (aPhone, anEmail, aFirstName, aMiddleName, aLastName, aBirthday, anAddress, anUserName){
         if (aPhone && anEmail){
             var account = CSM.createUser(aPhone, anEmail, aFirstName, aMiddleName, aLastName, aBirthday, anAddress, anUserName, 1);
             if(account){
