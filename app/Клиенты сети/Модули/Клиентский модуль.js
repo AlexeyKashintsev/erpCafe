@@ -63,7 +63,6 @@ function ClientServerModule() {
             model.qPersonalData.cursor.email = anEmail;
             model.qPersonalData.cursor.usr_name = anUserName;
             model.qPersonalData.cursor.reg_date = new Date();
-            model.qPersonalData.cursor.product_bill = billModule.createBillAccount(billModule.ACCOUNT_TYPE_PRODUCT);
             model.save();
             self.setBonusCategory(anUserName, aBonusCategory ? aBonusCategory : 1);
             sender.sendMessage(sender.REGISTRATION_SUCCESS, {
@@ -162,9 +161,7 @@ function ClientServerModule() {
                                         model.qGetPersonalDataOfAllClients.cursor.email, 
                                         model.qGetPersonalDataOfAllClients.cursor.phone);
                 var clientID = billModule.createBillAccount(billModule.ACCOUNT_TYPE_BONUS);
-                var product_bill = billModule.createBillAccount(billModule.ACCOUNT_TYPE_PRODUCT);
                 model.qGetPersonalDataOfAllClients.cursor.client_id = clientID;
-                model.qGetPersonalDataOfAllClients.cursor.product_bill = product_bill;
             }
         }
         model.save();

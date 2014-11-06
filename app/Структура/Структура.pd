@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?><datamodel datamodelDbId="null">
+  <fieldsEntity entityHeight="200" entityIconified="false" entityId="141529293393675" entityLocationX="768" entityLocationY="26" entityWidth="150" tableName="org_cities"/>
   <fieldsEntity entityHeight="200" entityIconified="false" entityId="140446013471536" entityLocationX="19" entityLocationY="227" entityWidth="150" tableName="org_contragent"/>
   <fieldsEntity entityHeight="200" entityIconified="false" entityId="140471806350831" entityLocationX="396" entityLocationY="10" entityWidth="150" tableName="org_trade_point"/>
   <fieldsEntity entityHeight="200" entityIconified="false" entityId="141146551738888" entityLocationX="33" entityLocationY="446" entityWidth="150" tableName="ord_bills"/>

@@ -19,7 +19,6 @@ function BillModule() {
     self.ACCOUNT_TYPE_DEFAULT   = 1; //Основной 
     self.ACCOUNT_TYPE_CREDIT    = 2; //Кредитный
     self.ACCOUNT_TYPE_BONUS    = 3; //Клиентский бонусный
-    self.ACCOUNT_TYPE_PRODUCT   = 4; //Клиентский продуктовый
     //Статусы операций
     self.OP_STATUS_SUCCESS      = 1;
     self.OP_STATUS_FAIL         = 2;

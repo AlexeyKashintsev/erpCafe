@@ -7,4 +7,5 @@
   <fieldsEntity entityHeight="122" entityIconified="false" entityId="140776430873952" entityLocationX="234" entityLocationY="314" entityWidth="214" tableName="bonus_rate_for_trade_items"/>
   <fieldsEntity entityHeight="129" entityIconified="false" entityId="140776449086523" entityLocationX="552" entityLocationY="217" entityWidth="150" tableName="trade_items"/>
   <fieldsEntity entityHeight="231" entityIconified="false" entityId="140740346128201" entityLocationX="22" entityLocationY="11" entityWidth="183" tableName="client_personal_data"/>
+  <fieldsEntity entityHeight="84" entityIconified="false" entityId="141529295592602" entityLocationX="459" entityLocationY="223" entityWidth="150" tableName="org_cities"/>
 </datamodel>
