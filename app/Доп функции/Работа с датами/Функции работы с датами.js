@@ -1,4 +1,5 @@
 /** 
+ * @public
  * Функции для работы с датами
  * @name DatesUtils
  * @author ml
@@ -6,11 +7,7 @@
  */
 
 function DatesUtils() {
-
-
-    var self = this;
-
-
+    var self = this, model = this.model;
     /* Прежде чем добавить - поищи! */
 
 //Типы временных интервалов для группировки данных в отчетах. 

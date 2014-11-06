@@ -118,13 +118,6 @@ function TradeAdminModule() {
         model.getSessions.params.session_id = aSessionId;
         model.getSessions.requery();
         if(model.getSessions.length > 0){
-            //TODO НЕ РАБОТАЕТ INSERT!!!
-            /*model.qTradeOperationBySession.insert();
-            model.qTradeOperationBySession.cursor.operation_sum = aSum;
-            model.qTradeOperationBySession.cursor.operation_date = new Date();
-            model.qTradeOperationBySession.cursor.operation_type = self.OP_TYPE_REMOVE_CASH;
-            model.qTradeOperationBySession.cursor.session_id = aSessionId;
-            model.qTradeOperationBySession.cursor.user_name = session.getUserName();*/
             model.qTradeOperationBySession.push({
                 operation_sum : aSum,
                 operation_date : new Date(),
