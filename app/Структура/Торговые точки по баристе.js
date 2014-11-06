@@ -30,19 +30,28 @@ function saveModel(){
                     user_name: model.params.usr_name 
                 };
                 model.createTradePointUser.push(createBarist);
-                model.save();
+                
             } else {
-                model.deleteUserFromTradePoint.params.trade_point_id = model.tradePointsBarist.org_trade_point_id;
-                model.deleteUserFromTradePoint.params.user_name = model.params.usr_name;
-                model.deleteUserFromTradePoint.executeUpdate();
+               model.deleteUserFromTradePoint.beforeFirst();
+               while(model.deleteUserFromTradePoint.next()){
+                   if(model.deleteUserFromTradePoint.cursor.trade_point_id == model.tradePointsBarist.cursor.org_trade_point_id)
+                       model.deleteUserFromTradePoint.deleteRow();
+               }
+                //model.deleteUserFromTradePoint.params.user_name = model.params.usr_name;
+                //model.deleteUserFromTradePoint.endUpdate();
+//                model.deleteUserFromTradePoint.requery();
+//                model.deleteUserFromTradePoint.deleteRow();
+//                 model.save();
+                //model.deleteUserFromTradePoint.executeUpdate();
             }
         }
     }
+    model.save();
 }
 
 function formWindowOpened(evt) {//GEN-FIRST:event_formWindowOpened
     form.lblNameBarista.text = model.params.usr_name;
-    model.tradePointsBarist.requery();
+    model.requery();
 }//GEN-LAST:event_formWindowOpened
 
 function formWindowClosing(evt) {//GEN-FIRST:event_formWindowClosing
