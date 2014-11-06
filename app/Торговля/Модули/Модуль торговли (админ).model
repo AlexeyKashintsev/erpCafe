@@ -7,18 +7,19 @@
   </parameters>
   <parametersEntity entityHeight="200" entityIconified="false" entityLocationX="12" entityLocationY="12" entityWidth="150"/>
   <entity Name="qTIbyTP" Title="" entityHeight="245" entityIconified="false" entityId="140672633656010" entityLocationX="298" entityLocationY="15" entityWidth="150" queryId="tradeItemsByTP" tableName="" tableSchemaName=""/>
-  <entity Name="qLastClosedSessionOnTradePoint" Title="" entityHeight="66" entityIconified="false" entityId="141338139419273" entityLocationX="21" entityLocationY="395" entityWidth="150" queryId="qLastClosedSessionOnTradePoint" tableName="" tableSchemaName=""/>
+  <entity Name="qLastClosedSessionOnTradePoint" Title="" entityHeight="66" entityIconified="false" entityId="141338139419273" entityLocationX="21" entityLocationY="395" entityWidth="153" queryId="qLastClosedSessionOnTradePoint" tableName="" tableSchemaName=""/>
+  <entity Name="qOpenedOrLastSession" Title="" entityHeight="59" entityIconified="false" entityId="141529641957798" entityLocationX="24" entityLocationY="465" entityWidth="150" queryId="qOpenedOrLastSession" tableName="" tableSchemaName=""/>
   <entity Name="prCloseItemCost" Title="" entityHeight="200" entityIconified="false" entityId="141457198820454" entityLocationX="653" entityLocationY="256" entityWidth="150" queryId="prCloseItemCost" tableName="" tableSchemaName=""/>
   <entity Name="qTradeOperationBySession" Title="" entityHeight="170" entityIconified="false" entityId="141285077401886" entityLocationX="18" entityLocationY="219" entityWidth="150" queryId="qTradeOperationBySession" tableName="" tableSchemaName=""/>
-  <entity Name="qLastClosedSessionOnTradePoint" Title="" entityHeight="66" entityIconified="false" entityId="141338137783773" entityLocationX="21" entityLocationY="464" entityWidth="150" queryId="qLastClosedSessionOnTradePoint" tableName="" tableSchemaName=""/>
   <entity Name="getSessions" Title="" entityHeight="200" entityIconified="false" entityId="141285162304332" entityLocationX="216" entityLocationY="266" entityWidth="150" queryId="getSessions" tableName="" tableSchemaName=""/>
   <entity Name="queryItemsInWH" Title="" entityHeight="200" entityIconified="false" entityId="140722330417523" entityLocationX="462" entityLocationY="13" entityWidth="150" queryId="queryItemsInWH" tableName="" tableSchemaName=""/>
   <entity Name="qContents" Title="" entityHeight="200" entityIconified="false" entityId="140722325021382" entityLocationX="650" entityLocationY="9" entityWidth="150" queryId="qContents" tableName="" tableSchemaName=""/>
   <entity Name="listTradePoints" Title="" entityHeight="200" entityIconified="false" entityId="140722745993322" entityLocationX="463" entityLocationY="219" entityWidth="150" queryId="listTradePoints" tableName="" tableSchemaName=""/>
+  <referenceRelation leftEntityFieldName="session_id" leftEntityId="141285077401886" rightEntityFieldName="org_session_id" rightEntityId="141529641957798"/>
   <referenceRelation leftEntityFieldName="trade_point" leftEntityId="141285162304332" rightEntityFieldName="org_trade_point_id" rightEntityId="140722745993322"/>
-  <referenceRelation leftEntityFieldName="session_id" leftEntityId="141285077401886" rightEntityFieldName="org_session_id" rightEntityId="141338137783773"/>
   <referenceRelation leftEntityFieldName="session_id" leftEntityId="141285077401886" rightEntityFieldName="org_session_id" rightEntityId="141338139419273"/>
   <referenceRelation leftEntityFieldName="session_id" leftEntityId="141285077401886" rightEntityFieldName="org_session_id" rightEntityId="141285162304332"/>
   <referenceRelation leftEntityFieldName="trade_point_id" leftEntityId="140672633656010" rightEntityFieldName="org_trade_point_id" rightEntityId="140722745993322"/>
   <referenceRelation leftEntityFieldName="warehouse" leftEntityId="140722330417523" rightEntityFieldName="org_trade_point_id" rightEntityId="140722745993322"/>
+  <referenceRelation leftEntityFieldName="trade_point" leftEntityId="141529641957798" rightEntityFieldName="org_trade_point_id" rightEntityId="140722745993322"/>
 </datamodel>
