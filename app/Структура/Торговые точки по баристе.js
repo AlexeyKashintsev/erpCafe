@@ -37,12 +37,6 @@ function saveModel(){
                    if(model.deleteUserFromTradePoint.cursor.trade_point_id == model.tradePointsBarist.cursor.org_trade_point_id)
                        model.deleteUserFromTradePoint.deleteRow();
                }
-                //model.deleteUserFromTradePoint.params.user_name = model.params.usr_name;
-                //model.deleteUserFromTradePoint.endUpdate();
-//                model.deleteUserFromTradePoint.requery();
-//                model.deleteUserFromTradePoint.deleteRow();
-//                 model.save();
-                //model.deleteUserFromTradePoint.executeUpdate();
             }
         }
     }

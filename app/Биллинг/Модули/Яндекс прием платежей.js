@@ -18,17 +18,12 @@ function YandexPaymentReceiver() {
     /*
      * TODO Сделать как надо!
      */
-    function sendToYandex(performedDatetime, code, shopId, invoiceId, orderSumAmount, message){
-        var xmlhttp = getXmlHttp();
-        xmlhttp.open('POST', 'http://money.yandex.ru/eshop.xml', true);
-        xmlhttp.onreadystatechange = function() {
-            if (xmlhttp.readyState == 4) {
-                if(xmlhttp.status == 200) {
-                    alert(xmlhttp.responseText);
-                }
-            }
-        };
-        xmlhttp.send(null);
+    function xmlToYandex(code, shopId, invoiceId, orderSumAmount, message){
+        var d = new Date();
+        var date = d.getFullYear() + "-" + d.getMonth() + "-" + d.getDay();
+        return '<?xml version="1.0" encoding="UTF-8"?> <checkOrderResponse performedDatetime="'+
+                date+'" code="'+code+'" invoiceId="'+invoiceId+'" orderSumAmount="'+
+                orderSumAmount+'" shopId="'+shopId+'" message="'+message+'" />';
     }
     
     /*
@@ -46,9 +41,9 @@ function YandexPaymentReceiver() {
                           r.customerNumber + ";" +self.SHOP_PASSWORD);
         if(hash === r.md5){
             //TODO Перечислить денюжки франчайзе
-            sendToYandex(new Date(), self.RESPONSE_SUCCESS, r.shopId, r.invoiceId, r.orderSumAmount);
+            return xmlToYandex(self.RESPONSE_SUCCESS, r.shopId, r.invoiceId, r.orderSumAmount);
         } else {
-            sendToYandex(new Date(), self.RESPONSE_FAIL_HASH, r.shopId, r.invoiceId, r.orderSumAmount);
+            return xmlToYandex(self.RESPONSE_FAIL_HASH, r.shopId, r.invoiceId, r.orderSumAmount, false);
         }
     };
     
