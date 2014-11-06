@@ -9,9 +9,10 @@ function ClientPublicModule() {
     var BM = Session.get("BillModule");
     var CSM = Session.get("ClientServerModule");
     
-    self.CreateUserWithBonuses = function (aPhone, anEmail, aFirstName, aMiddleName, aLastName, aBirthday, anAddress, anUserName){
-        if (aPhone && anEmail){
-            var account = CSM.createUser(aPhone, anEmail, aFirstName, aMiddleName, aLastName, aBirthday, anAddress, anUserName, 1);
+    self.CreateUserWithBonuses = function (){
+        var post = self.http.request.params;
+        if (post.phone && post.first_name){
+            var account = CSM.createUser(post.phone, post.email, post.first_name, post.middle_name, post.last_name, post.birthday, post.address, post.username, 1);
             if(account){
                 BM.addBillOperation(account, BM.OPERATION_ADD_BONUS, 100);
             }
