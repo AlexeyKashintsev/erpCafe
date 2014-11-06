@@ -29,6 +29,7 @@ function MessageSender() {
             aClient.email = model.usersByName.cursor.usr_email;
             aClient.username = model.usersByName.cursor.usr_name;
         }
+        aClient.phone = fixphone(aClient.phone);
         model.qGetSendParams.params.eventType = anEventType;
         model.qGetSendParams.requery();
         var textMessage = model.qGetSendParams.cursor.message;
@@ -54,6 +55,12 @@ function MessageSender() {
             //TODO Сделать показ сообщения на экран
         }
     };
+    
+    function fixphone(aPhone){
+        var num = aPhone.replace(/\D+/g,"");
+        num = "8" + num.slice(-10);
+        return num;
+    }
     
 //Рудимент ------------------------------------------------------------------------------- 
 //TODO Удалить перед релизом
