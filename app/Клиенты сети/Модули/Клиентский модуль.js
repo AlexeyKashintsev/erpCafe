@@ -140,28 +140,39 @@ function ClientServerModule() {
         return model.qPersonalData.cursor.client_id;
     };
     
+    function fixphone(aPhone){
+        var num = aPhone.replace(/\D+/g,"");
+        num = "8" + num.slice(-10);
+        return num;
+    }
+    
     self.clientInitialize = function(){
         model.qGetPersonalDataOfAllClients.requery();
         model.qGetPersonalDataOfAllClients.beforeFirst();
         while(model.qGetPersonalDataOfAllClients.next()){
-            var clientphone = model.qGetPersonalDataOfAllClients.cursor.phone;
+            model.qGetPersonalDataOfAllClients.cursor.phone = fixphone(model.qGetPersonalDataOfAllClients.cursor.phone);
             if (!model.qGetPersonalDataOfAllClients.cursor.usr_name){
                 model.qGetPersonalDataOfAllClients.cursor.usr_name = model.qGetPersonalDataOfAllClients.cursor.phone;
             }
-            var clientusername = model.qGetPersonalDataOfAllClients.cursor.usr_name;
             if (!model.qGetPersonalDataOfAllClients.cursor.bonus_category){
                 model.qGetPersonalDataOfAllClients.cursor.bonus_category = 1;
             }
-            if (!userModule.checkIfPhoneExists(clientphone) && !userModule.checkIfLoginExists(clientusername)){
-                userModule.createUser(model.qGetPersonalDataOfAllClients.cursor.usr_name ? 
-                                        model.qGetPersonalDataOfAllClients.cursor.usr_name : 
-                                        model.qGetPersonalDataOfAllClients.cursor.phone, 
-                                        adminFunctions.MD5("password"), 
-                                        'client', 
-                                        model.qGetPersonalDataOfAllClients.cursor.email, 
-                                        model.qGetPersonalDataOfAllClients.cursor.phone);
+            if (!model.qGetPersonalDataOfAllClients.cursor.reg_date){
+                model.qGetPersonalDataOfAllClients.cursor.reg_date = new Date();
+            }
+            if (!model.qGetPersonalDataOfAllClients.cursor.client_id){
                 var clientID = billModule.createBillAccount(billModule.ACCOUNT_TYPE_BONUS);
                 model.qGetPersonalDataOfAllClients.cursor.client_id = clientID;
+                if (model.qGetPersonalDataOfAllClients.cursor.address){
+                    var bonuscount = toNumber(model.qGetPersonalDataOfAllClients.cursor.address);
+                    if (!isNaN(bonuscount)) {
+                        try {
+                            billModule.addBillOperation(clientID, billModule.OPERATION_ADD_BONUS, bonuscount);
+                        } catch (e){
+                            Logger.warning(e);
+                        }
+                    }
+                }
             }
         }
         model.save();
