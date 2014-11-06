@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?><datamodel>
+  <parameters>
+    <parameter description="Дата 1" name="parDate1" nullable="true" parameterMode="0" precision="0" scale="0" selectionForm="null" signed="true" size="100" type="91" typeName="DATE"/>
+    <parameter description="Дата 2" name="parDate2" nullable="true" parameterMode="0" precision="0" scale="0" selectionForm="null" signed="true" size="100" type="91" typeName="DATE"/>
+    <parameter description="Количество" name="parAmount" nullable="true" parameterMode="0" precision="0" scale="0" selectionForm="null" signed="true" size="0" type="2" typeName="NUMERIC"/>
+    <parameter description="" name="parDescription" nullable="true" parameterMode="0" precision="0" scale="0" selectionForm="null" signed="true" size="100" type="12" typeName="VARCHAR"/>
+    <parameter description="Высокосный год?" name="parIsLeapYear" nullable="true" parameterMode="0" precision="0" scale="0" selectionForm="null" signed="true" size="0" type="2" typeName="NUMERIC"/>
+    <parameter description="Номер" name="parNum" nullable="true" parameterMode="0" precision="0" scale="0" selectionForm="null" signed="true" size="0" type="2" typeName="NUMERIC"/>
+    <parameter description="Год" name="parYear" nullable="true" parameterMode="0" precision="0" scale="0" selectionForm="null" signed="true" size="0" type="2" typeName="NUMERIC"/>
+    <parameter description="Месяц" name="parMonth" nullable="true" parameterMode="0" precision="0" scale="0" selectionForm="null" signed="true" size="0" type="2" typeName="NUMERIC"/>
+    <parameter description="День" name="parDay" nullable="true" parameterMode="0" precision="0" scale="0" selectionForm="null" signed="true" size="0" type="2" typeName="NUMERIC"/>
+    <parameter description="Час" name="parHour" nullable="true" parameterMode="0" precision="0" scale="0" selectionForm="null" signed="true" size="0" type="2" typeName="NUMERIC"/>
+    <parameter description="Минута" name="parMinute" nullable="true" parameterMode="0" precision="0" scale="0" selectionForm="null" signed="true" size="0" type="2" typeName="NUMERIC"/>
+    <parameter description="Секунда" name="parSecond" nullable="true" parameterMode="0" precision="0" scale="0" selectionForm="null" signed="true" size="0" type="2" typeName="NUMERIC"/>
+    <parameter description="Милисекунда" name="parMillisecond" nullable="true" parameterMode="0" precision="0" scale="0" selectionForm="null" signed="true" size="0" type="2" typeName="NUMERIC"/>
+  </parameters>
+  <parametersEntity entityHeight="200" entityIconified="false" entityLocationX="9" entityLocationY="20" entityWidth="150"/>
+</datamodel>

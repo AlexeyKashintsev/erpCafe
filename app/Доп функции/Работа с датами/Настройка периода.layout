@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout defaultCloseOperation="2" name="Form" prefHeight="330px" prefWidth="525px" windowOpened="formWindowOpened">
+  <widget name="lblPeriod" parent="Form" prefHeight="20px" prefWidth="526px" text="Период не установлен" type="LabelDesignInfo">
+    <constraints height="20px" left="0px" right="-1px" top="0px" type="MarginConstraintsDesignInfo"/>
+  </widget>
+  <widget name="tab" parent="Form" prefHeight="258px" prefWidth="526px" stateChanged="tabStateChanged" type="TabsDesignInfo">
+    <constraints bottom="40px" left="0px" right="-1px" top="32px" type="MarginConstraintsDesignInfo"/>
+  </widget>
+  <widget name="pnlInterval" parent="tab" prefHeight="230px" prefWidth="521px" type="PanelDesignInfo">
+    <layout type="MarginLayoutDesignInfo"/>
+    <constraints tabTitle="Интервал" type="TabsConstraintsDesignInfo"/>
+  </widget>
+  <widget name="jPanel" parent="pnlInterval" prefHeight="226px" prefWidth="246px" type="PanelDesignInfo">
+    <layout type="MarginLayoutDesignInfo"/>
+    <constraints bottom="4px" left="0px" right="275px" top="0px" type="MarginConstraintsDesignInfo"/>
+  </widget>
+  <widget actionPerformed="rbBD_NoValueActionPerformed" buttonGroup="rbgBD" name="rbBD_NoValue" parent="jPanel" prefHeight="20px" prefWidth="164px" text="Без ограничения" type="RadioDesignInfo">
+    <constraints height="20px" left="1px" top="5px" type="MarginConstraintsDesignInfo" width="164px"/>
+  </widget>
+  <widget actionPerformed="rbBD_daysBeforeTAActionPerformed" buttonGroup="rbgBD" name="rbBD_daysBeforeTA" parent="jPanel" prefHeight="22px" prefWidth="22px" text="&lt;html&gt;&amp;nbsp;" type="RadioDesignInfo">
+    <constraints height="22px" left="1px" top="30px" type="MarginConstraintsDesignInfo" width="22px"/>
+  </widget>
+  <widget name="edBD_daysBeforeTA" parent="jPanel" prefHeight="22px" prefWidth="90px" type="DbSpinDesignInfo">
+    <datamodelElement entityId="-1" fieldName="parDaysBeforeTA"/>
+    <constraints height="22px" left="27px" top="30px" type="MarginConstraintsDesignInfo" width="90px"/>
+  </widget>
+  <widget name="jETALabel" parent="jPanel" prefHeight="20px" prefWidth="98px" text="дн. до раб. даты" type="LabelDesignInfo">
+    <constraints height="20px" left="124px" top="30px" type="MarginConstraintsDesignInfo" width="98px"/>
+  </widget>
+  <widget actionPerformed="rbBD_beginOfYearActionPerformed" buttonGroup="rbgBD" name="rbBD_beginOfYear" parent="jPanel" prefHeight="20px" prefWidth="164px" text="Начало года" type="RadioDesignInfo">
+    <constraints height="20px" left="1px" top="55px" type="MarginConstraintsDesignInfo" width="164px"/>
+  </widget>
+  <widget actionPerformed="rbBD_beginOfQuartActionPerformed" buttonGroup="rbgBD" name="rbBD_beginOfQuart" parent="jPanel" prefHeight="20px" prefWidth="164px" text="Начало квартала" type="RadioDesignInfo">
+    <constraints height="20px" left="1px" top="80px" type="MarginConstraintsDesignInfo" width="164px"/>
+  </widget>
+  <widget actionPerformed="rbBD_beginOfMonthActionPerformed" buttonGroup="rbgBD" name="rbBD_beginOfMonth" parent="jPanel" prefHeight="20px" prefWidth="164px" text="Начало месяца" type="RadioDesignInfo">
+    <constraints height="20px" left="1px" top="105px" type="MarginConstraintsDesignInfo" width="164px"/>
+  </widget>
+  <widget actionPerformed="rbBD_beginOfWeekActionPerformed" buttonGroup="rbgBD" name="rbBD_beginOfWeek" parent="jPanel" prefHeight="20px" prefWidth="164px" text="Начало недели" type="RadioDesignInfo">
+    <constraints height="20px" left="1px" top="130px" type="MarginConstraintsDesignInfo" width="164px"/>
+  </widget>
+  <widget actionPerformed="rbBD_beginOfDayActionPerformed" buttonGroup="rbgBD" name="rbBD_beginOfDay" parent="jPanel" prefHeight="20px" prefWidth="164px" text="Начало дня" type="RadioDesignInfo">
+    <constraints height="20px" left="1px" top="155px" type="MarginConstraintsDesignInfo" width="164px"/>
+  </widget>
+  <widget actionPerformed="rbBD_anyDateActionPerformed" buttonGroup="rbgBD" name="rbBD_anyDate" parent="jPanel" prefHeight="22px" prefWidth="22px" text="&lt;html&gt;&amp;nbsp;" type="RadioDesignInfo">
+    <constraints height="22px" left="1px" top="180px" type="MarginConstraintsDesignInfo" width="22px"/>
+  </widget>
+  <widget dateFormat="dd.MM.yyyy HH:mm:ss" name="edBD_anyDate" parent="jPanel" prefHeight="22px" prefWidth="201px" type="DbDateDesignInfo">
+    <datamodelElement entityId="-1" fieldName="parBegDate"/>
+    <constraints height="22px" left="24px" top="180px" type="MarginConstraintsDesignInfo" width="201px"/>
+  </widget>
+  <widget name="jPanel1" parent="pnlInterval" prefHeight="226px" prefWidth="269px" type="PanelDesignInfo">
+    <layout type="MarginLayoutDesignInfo"/>
+    <constraints bottom="4px" left="252px" right="0px" top="0px" type="MarginConstraintsDesignInfo"/>
+  </widget>
+  <widget actionPerformed="rbED_NoValueActionPerformed" buttonGroup="rbgED" name="rbED_NoValue" parent="jPanel1" prefHeight="20px" prefWidth="163px" text="Без ограничения" type="RadioDesignInfo">
+    <constraints height="20px" left="1px" top="5px" type="MarginConstraintsDesignInfo" width="163px"/>
+  </widget>
+  <widget actionPerformed="rbED_daysAfterTAActionPerformed" buttonGroup="rbgED" name="rbED_daysAfterTA" parent="jPanel1" prefHeight="22px" prefWidth="22px" text="&lt;html&gt;&amp;nbsp;" type="RadioDesignInfo">
+    <constraints height="22px" left="1px" top="30px" type="MarginConstraintsDesignInfo" width="22px"/>
+  </widget>
+  <widget name="edED_daysAfterTA" parent="jPanel1" prefHeight="22px" prefWidth="90px" type="DbSpinDesignInfo">
+    <datamodelElement entityId="-1" fieldName="parDaysAfterTA"/>
+    <constraints height="22px" left="27px" top="30px" type="MarginConstraintsDesignInfo" width="90px"/>
+  </widget>
+  <widget name="jETALabel1" parent="jPanel1" prefHeight="20px" prefWidth="116px" text="дн. после раб. даты" type="LabelDesignInfo">
+    <constraints height="20px" left="125px" top="30px" type="MarginConstraintsDesignInfo" width="116px"/>
+  </widget>
+  <widget actionPerformed="rbED_endOfYearActionPerformed" buttonGroup="rbgED" name="rbED_endOfYear" parent="jPanel1" prefHeight="20px" prefWidth="163px" text="Конец года" type="RadioDesignInfo">
+    <constraints height="20px" left="1px" top="55px" type="MarginConstraintsDesignInfo" width="163px"/>
+  </widget>
+  <widget actionPerformed="rbED_endOfQuartActionPerformed" buttonGroup="rbgED" name="rbED_endOfQuart" parent="jPanel1" prefHeight="20px" prefWidth="163px" text="Конец квартала" type="RadioDesignInfo">
+    <constraints height="20px" left="1px" top="80px" type="MarginConstraintsDesignInfo" width="163px"/>
+  </widget>
+  <widget actionPerformed="rbED_endOfMonthActionPerformed" buttonGroup="rbgED" name="rbED_endOfMonth" parent="jPanel1" prefHeight="20px" prefWidth="163px" text="Конец месяца" type="RadioDesignInfo">
+    <constraints height="20px" left="1px" top="105px" type="MarginConstraintsDesignInfo" width="163px"/>
+  </widget>
+  <widget actionPerformed="rbED_endOfWeekActionPerformed" buttonGroup="rbgED" name="rbED_endOfWeek" parent="jPanel1" prefHeight="20px" prefWidth="163px" text="Конец недели" type="RadioDesignInfo">
+    <constraints height="20px" left="1px" top="130px" type="MarginConstraintsDesignInfo" width="163px"/>
+  </widget>
+  <widget actionPerformed="rbED_endOfDayActionPerformed" buttonGroup="rbgED" name="rbED_endOfDay" parent="jPanel1" prefHeight="20px" prefWidth="163px" text="Конец дня" type="RadioDesignInfo">
+    <constraints height="20px" left="1px" top="155px" type="MarginConstraintsDesignInfo" width="163px"/>
+  </widget>
+  <widget actionPerformed="rbED_anyDateActionPerformed" buttonGroup="rbgED" name="rbED_anyDate" parent="jPanel1" prefHeight="22px" prefWidth="22px" text="&lt;html&gt;&amp;nbsp;" type="RadioDesignInfo">
+    <constraints height="22px" left="1px" top="180px" type="MarginConstraintsDesignInfo" width="22px"/>
+  </widget>
+  <widget dateFormat="dd.MM.yyyy HH:mm:ss" name="edED_anyDate" parent="jPanel1" prefHeight="22px" prefWidth="202px" type="DbDateDesignInfo">
+    <datamodelElement entityId="-1" fieldName="parEndDate"/>
+    <constraints height="22px" left="24px" top="180px" type="MarginConstraintsDesignInfo" width="202px"/>
+  </widget>
+  <widget name="pnlPeriod" parent="tab" prefHeight="230px" prefWidth="521px" type="PanelDesignInfo" visible="false">
+    <layout type="MarginLayoutDesignInfo"/>
+    <constraints tabTitle="Период" type="TabsConstraintsDesignInfo"/>
+  </widget>
+  <widget name="jETALabel2" parent="pnlPeriod" prefHeight="20px" prefWidth="22px" text="по:" type="LabelDesignInfo">
+    <constraints height="20px" left="41px" top="163px" type="MarginConstraintsDesignInfo" width="22px"/>
+  </widget>
+  <widget name="jETALabel3" parent="pnlPeriod" prefHeight="20px" prefWidth="12px" text="с:" type="LabelDesignInfo">
+    <constraints height="20px" left="51px" top="135px" type="MarginConstraintsDesignInfo" width="12px"/>
+  </widget>
+  <widget actionPerformed="rbAnyPeriodActionPerformed" buttonGroup="rbgPeriods" name="rbAnyPeriod" parent="pnlPeriod" prefHeight="20px" prefWidth="216px" text="Произвольный интервал:" type="RadioDesignInfo">
+    <constraints height="20px" left="1px" top="109px" type="MarginConstraintsDesignInfo" width="216px"/>
+  </widget>
+  <widget actionPerformed="rbDayActionPerformed" buttonGroup="rbgPeriods" name="rbDay" parent="pnlPeriod" prefHeight="20px" prefWidth="76px" text="День" type="RadioDesignInfo">
+    <constraints height="20px" left="1px" top="84px" type="MarginConstraintsDesignInfo" width="76px"/>
+  </widget>
+  <widget actionPerformed="rbMonthActionPerformed" buttonGroup="rbgPeriods" name="rbMonth" parent="pnlPeriod" prefHeight="20px" prefWidth="76px" text="Месяц" type="RadioDesignInfo">
+    <constraints height="20px" left="1px" top="55px" type="MarginConstraintsDesignInfo" width="76px"/>
+  </widget>
+  <widget actionPerformed="rbYearActionPerformed" buttonGroup="rbgPeriods" name="rbYear" parent="pnlPeriod" prefHeight="20px" prefWidth="76px" text="Год" type="RadioDesignInfo">
+    <constraints height="20px" left="1px" top="26px" type="MarginConstraintsDesignInfo" width="76px"/>
+  </widget>
+  <widget name="chkIsWorkPeriod" parent="pnlPeriod" prefHeight="20px" prefWidth="193px" text="Рабочий период" toolTipText="Если флажок установлен, то разрешен выбор только из текущих рабочих периодов. Иначе - изменение и выбор любого периода." type="DbCheckDesignInfo">
+    <datamodelElement entityId="-1" fieldName="parIsWorkPeriod"/>
+    <constraints height="20px" left="1px" top="1px" type="MarginConstraintsDesignInfo" width="193px"/>
+  </widget>
+  <widget dateFormat="yyyy" name="edYear" parent="pnlPeriod" prefHeight="22px" prefWidth="135px" type="DbDateDesignInfo">
+    <datamodelElement entityId="-1" fieldName="parYear"/>
+    <constraints height="22px" left="78px" top="26px" type="MarginConstraintsDesignInfo" width="135px"/>
+  </widget>
+  <widget dateFormat="MM.yyyy" name="edMonth" parent="pnlPeriod" prefHeight="22px" prefWidth="135px" type="DbDateDesignInfo">
+    <datamodelElement entityId="-1" fieldName="parMonth"/>
+    <constraints height="22px" left="78px" top="55px" type="MarginConstraintsDesignInfo" width="135px"/>
+  </widget>
+  <widget dateFormat="dd.MM.yyyy" name="edDay" parent="pnlPeriod" prefHeight="22px" prefWidth="135px" type="DbDateDesignInfo">
+    <datamodelElement entityId="-1" fieldName="parDay"/>
+    <constraints height="22px" left="78px" top="84px" type="MarginConstraintsDesignInfo" width="135px"/>
+  </widget>
+  <widget dateFormat="dd.MM.yyyy HH:mm:ss" name="edAnyBegDay" parent="pnlPeriod" prefHeight="22px" prefWidth="202px" type="DbDateDesignInfo">
+    <datamodelElement entityId="-1" fieldName="parBegDate"/>
+    <constraints height="22px" left="67px" top="135px" type="MarginConstraintsDesignInfo" width="202px"/>
+  </widget>
+  <widget dateFormat="dd.MM.yyyy HH:mm:ss" name="edAnyEndDay" parent="pnlPeriod" prefHeight="22px" prefWidth="202px" type="DbDateDesignInfo">
+    <datamodelElement entityId="-1" fieldName="parEndDate"/>
+    <constraints height="22px" left="67px" top="163px" type="MarginConstraintsDesignInfo" width="202px"/>
+  </widget>
+  <widget actionPerformed="btnCloseActionPerformed" name="btnClose" parent="Form" prefHeight="25px" prefWidth="100px" text="Закрыть" type="ButtonDesignInfo">
+    <constraints bottom="5px" height="25px" right="5px" type="MarginConstraintsDesignInfo" width="100px"/>
+  </widget>
+  <widget actionPerformed="btnSelectActionPerformed" name="btnSelect" parent="Form" prefHeight="25px" prefWidth="100px" text="Выбрать" type="ButtonDesignInfo">
+    <constraints bottom="5px" height="25px" right="107px" type="MarginConstraintsDesignInfo" width="100px"/>
+  </widget>
+  <nonvisual name="rbgBD" type="ButtonGroupDesignInfo"/>
+  <nonvisual name="rbgED" type="ButtonGroupDesignInfo"/>
+  <nonvisual name="rbgPeriods" type="ButtonGroupDesignInfo"/>
+  <layout type="MarginLayoutDesignInfo"/>
+</layout>

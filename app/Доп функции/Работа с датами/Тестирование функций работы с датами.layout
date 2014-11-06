@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="UTF-8"?><layout defaultCloseOperation="2" name="Form" prefHeight="373px" prefWidth="646px">
+  <widget name="tabTestDatesFunctions" parent="Form" prefHeight="374px" prefWidth="646px" tabPlacement="2" type="TabsDesignInfo">
+    <constraints bottom="-1px" left="0px" right="0px" top="0px" type="MarginConstraintsDesignInfo"/>
+  </widget>
+  <widget name="jPanel" parent="tabTestDatesFunctions" prefHeight="367px" prefWidth="452px" type="PanelDesignInfo">
+    <layout type="MarginLayoutDesignInfo"/>
+    <constraints tabTitle="Текущие значения" type="TabsConstraintsDesignInfo"/>
+  </widget>
+  <widget backgroundColor="#ece9d8" dateFormat="dd.MM.yyyy HH:mm:ss" foregroundColor="#000000" name="dbDate" parent="jPanel" prefHeight="20px" prefWidth="121px" type="DbDateDesignInfo">
+    <datamodelElement entityId="-1" fieldName="parDate1"/>
+    <constraints height="20px" left="10px" top="11px" type="MarginConstraintsDesignInfo" width="121px"/>
+  </widget>
+  <widget actionPerformed="btnCurrentDateTime_actionPerformed" name="btnCurrentDateTime" parent="jPanel" prefHeight="23px" prefWidth="121px" text="currentDateTime()" toolTipText="Получить текущую дату со временем" type="ButtonDesignInfo">
+    <constraints height="23px" left="10px" top="57px" type="MarginConstraintsDesignInfo" width="121px"/>
+  </widget>
+  <widget actionPerformed="btnCurrentDate_actionPerformed" name="btnCurrentDate" parent="jPanel" prefHeight="23px" prefWidth="121px" text="currentDate()" toolTipText="Получить текущую дату со &quot;обнуленным&quot; временем" type="ButtonDesignInfo">
+    <constraints height="23px" left="10px" top="86px" type="MarginConstraintsDesignInfo" width="121px"/>
+  </widget>
+  <widget actionPerformed="btnCurrentTime_actionPerformed" name="btnCurrentTime" parent="jPanel" prefHeight="23px" prefWidth="121px" text="currentTime()" toolTipText="Получить текущее время (дата == 1 января 1970 года)" type="ButtonDesignInfo">
+    <constraints height="23px" left="10px" top="120px" type="MarginConstraintsDesignInfo" width="121px"/>
+  </widget>
+  <widget name="jPanel1" parent="tabTestDatesFunctions" prefHeight="367px" prefWidth="452px" type="PanelDesignInfo" visible="false">
+    <layout type="MarginLayoutDesignInfo"/>
+    <constraints tabTitle="Увеличение даты" type="TabsConstraintsDesignInfo"/>
+  </widget>
+  <widget backgroundColor="#ece9d8" dateFormat="dd.MM.yyyy HH:mm:ss" foregroundColor="#000000" name="dbDate1" parent="jPanel1" prefHeight="22px" prefWidth="180px" toolTipText="Начальная дата" type="DbDateDesignInfo">
+    <datamodelElement entityId="-1" fieldName="parDate1"/>
+    <constraints height="22px" left="10px" top="11px" type="MarginConstraintsDesignInfo" width="180px"/>
+  </widget>
+  <widget actionPerformed="bntIncDay_actionPerformed" name="bntIncDay" parent="jPanel1" prefHeight="23px" prefWidth="100px" text="incDay()" toolTipText="Увеличить дату на количество дней (время не изменяется)" type="ButtonDesignInfo">
+    <constraints height="23px" left="167px" top="112px" type="MarginConstraintsDesignInfo" width="100px"/>
+  </widget>
+  <widget backgroundColor="#ece9d8" foregroundColor="#000000" name="dbSpin" parent="jPanel1" prefHeight="22px" prefWidth="71px" toolTipText="Количество (дней, месяцев, лет)" type="DbSpinDesignInfo">
+    <datamodelElement entityId="-1" fieldName="parAmount"/>
+    <constraints height="22px" left="196px" top="11px" type="MarginConstraintsDesignInfo" width="71px"/>
+  </widget>
+  <widget backgroundColor="#ece9d8" dateFormat="dd.MM.yyyy HH:mm:ss" foregroundColor="#000000" name="dbDate2" parent="jPanel1" prefHeight="22px" prefWidth="180px" toolTipText="Результат функции" type="DbDateDesignInfo">
+    <datamodelElement entityId="-1" fieldName="parDate2"/>
+    <constraints height="22px" left="273px" top="11px" type="MarginConstraintsDesignInfo" width="180px"/>
+    <easFont name="Dialog" style="1"/>
+  </widget>
+  <widget actionPerformed="btnIncMonth_actionPerformed" name="btnIncMonth" parent="jPanel1" prefHeight="23px" prefWidth="100px" text="inсMonth()" toolTipText="Увеличить дату на количество месяцев (время не изменяется)" type="ButtonDesignInfo">
+    <constraints height="23px" left="167px" top="146px" type="MarginConstraintsDesignInfo" width="100px"/>
+  </widget>
+  <widget actionPerformed="btnIncYear_actionPerformed" name="btnIncYear" parent="jPanel1" prefHeight="23px" prefWidth="100px" text="inсYear()" toolTipText="Увеличить дату на количество лет(время не изменяется)" type="ButtonDesignInfo">
+    <constraints height="23px" left="167px" top="180px" type="MarginConstraintsDesignInfo" width="100px"/>
+  </widget>
+  <widget actionPerformed="btnIncMinute_actionPerformed" name="btnIncMinute" parent="jPanel1" prefHeight="23px" prefWidth="100px" text="incMinute()" type="ButtonDesignInfo">
+    <constraints height="23px" left="167px" top="44px" type="MarginConstraintsDesignInfo" width="100px"/>
+  </widget>
+  <widget actionPerformed="btnIncHour_actionPerformed" name="btnIncHour" parent="jPanel1" prefHeight="23px" prefWidth="100px" text="incHour()" type="ButtonDesignInfo">
+    <constraints height="23px" left="167px" top="78px" type="MarginConstraintsDesignInfo" width="100px"/>
+  </widget>
+  <widget name="jPanel2" parent="tabTestDatesFunctions" prefHeight="367px" prefWidth="452px" type="PanelDesignInfo" visible="false">
+    <layout type="MarginLayoutDesignInfo"/>
+    <constraints tabTitle="Начало, конец ..." type="TabsConstraintsDesignInfo"/>
+  </widget>
+  <widget backgroundColor="#ece9d8" dateFormat="dd.MM.yyyy HH:mm:ss" foregroundColor="#000000" name="dbDate3" parent="jPanel2" prefHeight="22px" prefWidth="180px" toolTipText="Начальная дата" type="DbDateDesignInfo">
+    <datamodelElement entityId="-1" fieldName="parDate1"/>
+    <constraints height="22px" left="10px" top="11px" type="MarginConstraintsDesignInfo" width="180px"/>
+  </widget>
+  <widget actionPerformed="btnBeginOfDay_actionPerformed" name="btnBeginOfDay" parent="jPanel2" prefHeight="23px" prefWidth="105px" text="beginOfDay()" toolTipText="Получить начало дня" type="ButtonDesignInfo">
+    <constraints height="23px" left="10px" top="45px" type="MarginConstraintsDesignInfo" width="105px"/>
+  </widget>
+  <widget actionPerformed="btnEndOfDay_actionPerformed" name="btnEndOfDay" parent="jPanel2" prefHeight="23px" prefWidth="105px" text="endOfDay()" toolTipText="Получить конец дня" type="ButtonDesignInfo">
+    <constraints height="23px" left="10px" top="74px" type="MarginConstraintsDesignInfo" width="105px"/>
+  </widget>
+  <widget backgroundColor="#ece9d8" dateFormat="dd.MM.yyyy HH:mm:ss" foregroundColor="#000000" name="dbDate4" parent="jPanel2" prefHeight="22px" prefWidth="180px" toolTipText="Результат функции" type="DbDateDesignInfo">
+    <datamodelElement entityId="-1" fieldName="parDate2"/>
+    <constraints height="22px" left="200px" top="11px" type="MarginConstraintsDesignInfo" width="180px"/>
+    <easFont name="Dialog" style="1"/>
+  </widget>
+  <widget actionPerformed="btnBeginOfWeek_actionPerformed" name="btnBeginOfWeek" parent="jPanel2" prefHeight="23px" prefWidth="105px" text="beginOfWeek()" toolTipText="Получить начало недели" type="ButtonDesignInfo">
+    <constraints height="23px" left="10px" top="103px" type="MarginConstraintsDesignInfo" width="105px"/>
+  </widget>
+  <widget actionPerformed="btnEndOfWeek_actionPerformed" name="btnEndOfWeek" parent="jPanel2" prefHeight="23px" prefWidth="109px" text="endOfWeek()" toolTipText="Получить конец недели" type="ButtonDesignInfo">
+    <constraints height="23px" left="10px" top="132px" type="MarginConstraintsDesignInfo" width="109px"/>
+  </widget>
+  <widget actionPerformed="btnBeginOfMonth_actionPerformed" name="btnBeginOfMonth" parent="jPanel2" prefHeight="23px" prefWidth="109px" text="beginOfMonth()" toolTipText="Получить начало месяца" type="ButtonDesignInfo">
+    <constraints height="23px" left="10px" top="161px" type="MarginConstraintsDesignInfo" width="109px"/>
+  </widget>
+  <widget actionPerformed="btnEndOfMonth_actionPerformed" name="btnEndOfMonth" parent="jPanel2" prefHeight="23px" prefWidth="109px" text="endOfMonth()" toolTipText="Получить конец месяца" type="ButtonDesignInfo">
+    <constraints height="23px" left="10px" top="190px" type="MarginConstraintsDesignInfo" width="109px"/>
+  </widget>
+  <widget actionPerformed="btnBeginOfYear_actionPerformed" name="btnBeginOfYear" parent="jPanel2" prefHeight="23px" prefWidth="109px" text="beginOfYear()" toolTipText="Получить начало года" type="ButtonDesignInfo">
+    <constraints height="23px" left="10px" top="277px" type="MarginConstraintsDesignInfo" width="109px"/>
+  </widget>
+  <widget actionPerformed="btnEndOfYear_actionPerformed" name="btnEndOfYear" parent="jPanel2" prefHeight="23px" prefWidth="109px" text="endOfYear()" toolTipText="Получить конец года" type="ButtonDesignInfo">
+    <constraints height="23px" left="10px" top="306px" type="MarginConstraintsDesignInfo" width="109px"/>
+  </widget>
+  <widget actionPerformed="btnBeginOfQuart_actionPerformed" name="btnBeginOfQuart" parent="jPanel2" prefHeight="23px" prefWidth="109px" text="beginOfQuart()" toolTipText="Получить начало квартала" type="ButtonDesignInfo">
+    <constraints height="23px" left="10px" top="219px" type="MarginConstraintsDesignInfo" width="109px"/>
+  </widget>
+  <widget actionPerformed="btnEndOfQuart_actionPerformed" name="btnEndOfQuart" parent="jPanel2" prefHeight="23px" prefWidth="109px" text="endOfQuart()" toolTipText="Получить конец квартала" type="ButtonDesignInfo">
+    <constraints height="23px" left="10px" top="248px" type="MarginConstraintsDesignInfo" width="109px"/>
+  </widget>
+  <widget actionPerformed="btnUnpreciseDate_actionPerformed" name="btnUnpreciseDate" parent="jPanel2" prefHeight="23px" prefWidth="109px" text="unpreciseDate()" type="ButtonDesignInfo">
+    <constraints height="23px" left="10px" top="335px" type="MarginConstraintsDesignInfo" width="109px"/>
+  </widget>
+  <widget actionPerformed="btnDaysDescription_actionPerformed" name="btnDaysDescription" parent="jPanel2" prefHeight="23px" prefWidth="117px" text="daysDescription()" type="ButtonDesignInfo">
+    <constraints height="23px" left="200px" top="59px" type="MarginConstraintsDesignInfo" width="117px"/>
+  </widget>
+  <widget backgroundColor="#ece9d8" foregroundColor="#000000" name="dbLabel" parent="jPanel2" prefHeight="23px" prefWidth="117px" type="DbLabelDesignInfo">
+    <datamodelElement entityId="-1" fieldName="parDescription"/>
+    <constraints height="23px" left="200px" top="93px" type="MarginConstraintsDesignInfo" width="117px"/>
+  </widget>
+  <widget name="jPanel3" parent="tabTestDatesFunctions" prefHeight="367px" prefWidth="452px" type="PanelDesignInfo" visible="false">
+    <layout type="MarginLayoutDesignInfo"/>
+    <constraints tabTitle="Год, месяц, день, ..." type="TabsConstraintsDesignInfo"/>
+  </widget>
+  <widget backgroundColor="#ece9d8" dateFormat="dd.MM.yyyy HH:mm:ss" foregroundColor="#000000" name="dbDate5" parent="jPanel3" prefHeight="22px" prefWidth="180px" type="DbDateDesignInfo">
+    <datamodelElement entityId="-1" fieldName="parDate1"/>
+    <constraints height="22px" left="10px" top="11px" type="MarginConstraintsDesignInfo" width="180px"/>
+  </widget>
+  <widget backgroundColor="#ece9d8" foregroundColor="#000000" name="dbSpin1" parent="jPanel3" prefHeight="22px" prefWidth="84px" toolTipText="Результат (год, месяц, день, ...)" type="DbSpinDesignInfo">
+    <datamodelElement entityId="-1" fieldName="parAmount"/>
+    <constraints height="22px" left="208px" top="11px" type="MarginConstraintsDesignInfo" width="84px"/>
+    <easFont name="Dialog" style="1"/>
+  </widget>
+  <widget actionPerformed="btnYearOf_actionPerformed" name="btnYearOf" parent="jPanel3" prefHeight="23px" prefWidth="103px" text="yearOf()" toolTipText="Получить год" type="ButtonDesignInfo">
+    <constraints height="23px" left="10px" top="44px" type="MarginConstraintsDesignInfo" width="103px"/>
+  </widget>
+  <widget actionPerformed="btnMonthOf_actionPerformed" name="btnMonthOf" parent="jPanel3" prefHeight="23px" prefWidth="103px" text="monthOf()" toolTipText="Получить месяц" type="ButtonDesignInfo">
+    <constraints height="23px" left="10px" top="73px" type="MarginConstraintsDesignInfo" width="103px"/>
+  </widget>
+  <widget actionPerformed="btnDayOf_actionPerformed" name="btnDayOf" parent="jPanel3" prefHeight="23px" prefWidth="103px" text="dayOf()" toolTipText="Получить день месяца" type="ButtonDesignInfo">
+    <constraints height="23px" left="10px" top="102px" type="MarginConstraintsDesignInfo" width="103px"/>
+  </widget>
+  <widget actionPerformed="btnHourOf_actionPerformed" name="btnHourOf" parent="jPanel3" prefHeight="23px" prefWidth="103px" text="hourOf()" toolTipText="Получить час" type="ButtonDesignInfo">
+    <constraints height="23px" left="10px" top="131px" type="MarginConstraintsDesignInfo" width="103px"/>
+  </widget>
+  <widget actionPerformed="btnMinuteOf_actionPerformed" name="btnMinuteOf" parent="jPanel3" prefHeight="23px" prefWidth="103px" text="minuteOf()" toolTipText="Получить минуту" type="ButtonDesignInfo">
+    <constraints height="23px" left="10px" top="160px" type="MarginConstraintsDesignInfo" width="103px"/>
+  </widget>
+  <widget actionPerformed="btnWeekOfYear_actionPerformed" name="btnWeekOfYear" parent="jPanel3" prefHeight="23px" prefWidth="103px" text=" weekOfYear()" toolTipText="Получить неделю года" type="ButtonDesignInfo">
+    <constraints height="23px" left="10px" top="247px" type="MarginConstraintsDesignInfo" width="103px"/>
+  </widget>
+  <widget actionPerformed="btnDayOfYear_actionPerformed" name="btnDayOfYear" parent="jPanel3" prefHeight="23px" prefWidth="103px" text="dayOfYear()" toolTipText="Получить день года" type="ButtonDesignInfo">
+    <constraints height="23px" left="10px" top="276px" type="MarginConstraintsDesignInfo" width="103px"/>
+  </widget>
+  <widget actionPerformed="btnDayOfWeek_actionPerformed" name="btnDayOfWeek" parent="jPanel3" prefHeight="23px" prefWidth="103px" text="dayOfWeek()" toolTipText="Получить день недели" type="ButtonDesignInfo">
+    <constraints height="23px" left="10px" top="305px" type="MarginConstraintsDesignInfo" width="103px"/>
+  </widget>
+  <widget actionPerformed="btnSecondOf_actionPerformed" name="btnSecondOf" parent="jPanel3" prefHeight="23px" prefWidth="103px" text="secondOf()" toolTipText="Получить секунду" type="ButtonDesignInfo">
+    <constraints height="23px" left="10px" top="189px" type="MarginConstraintsDesignInfo" width="103px"/>
+  </widget>
+  <widget actionPerformed="btnMillisecondOf_actionPerformed" name="btnMillisecondOf" parent="jPanel3" prefHeight="23px" prefWidth="103px" text="millisecondOf()" toolTipText="Получить милисекунду" type="ButtonDesignInfo">
+    <constraints height="23px" left="10px" top="218px" type="MarginConstraintsDesignInfo" width="103px"/>
+  </widget>
+  <widget name="jPanel4" parent="tabTestDatesFunctions" prefHeight="367px" prefWidth="452px" type="PanelDesignInfo" visible="false">
+    <layout type="MarginLayoutDesignInfo"/>
+    <constraints tabTitle="Дней в году, месяце" type="TabsConstraintsDesignInfo"/>
+  </widget>
+  <widget backgroundColor="#ece9d8" dateFormat="dd.MM.yyyy HH:mm:ss" foregroundColor="#000000" name="dbDate6" parent="jPanel4" prefHeight="22px" prefWidth="180px" type="DbDateDesignInfo">
+    <datamodelElement entityId="-1" fieldName="parDate1"/>
+    <constraints height="22px" left="10px" top="12px" type="MarginConstraintsDesignInfo" width="180px"/>
+  </widget>
+  <widget backgroundColor="#ece9d8" foregroundColor="#000000" name="dbSpin2" parent="jPanel4" prefHeight="22px" prefWidth="100px" toolTipText="Результат (количество дней)" type="DbSpinDesignInfo">
+    <datamodelElement entityId="-1" fieldName="parAmount"/>
+    <constraints height="22px" left="200px" top="12px" type="MarginConstraintsDesignInfo" width="100px"/>
+    <easFont name="Dialog" style="1"/>
+  </widget>
+  <widget actionPerformed="btnDaysInYear_actionPerformed" name="btnDaysInYear" parent="jPanel4" prefHeight="23px" prefWidth="137px" text="daysInYear()" toolTipText="Получить количество дней в году" type="ButtonDesignInfo">
+    <constraints height="23px" left="10px" top="40px" type="MarginConstraintsDesignInfo" width="137px"/>
+  </widget>
+  <widget actionPerformed="btnDaysInMonth_actionPerformed" name="btnDaysInMonth" parent="jPanel4" prefHeight="23px" prefWidth="137px" text="daysInMonth()" toolTipText="Получить количество дней в месяце" type="ButtonDesignInfo">
+    <constraints height="23px" left="10px" top="69px" type="MarginConstraintsDesignInfo" width="137px"/>
+  </widget>
+  <widget actionPerformed="btnDaysInMonthByNum_actionPerformed" name="btnDaysInMonthByNum" parent="jPanel4" prefHeight="23px" prefWidth="137px" text="daysInMonthByNum()" toolTipText="Получить количество дней в месяце по его порядковому номеру" type="ButtonDesignInfo">
+    <constraints height="23px" left="10px" top="98px" type="MarginConstraintsDesignInfo" width="137px"/>
+  </widget>
+  <widget backgroundColor="#ece9d8" foregroundColor="#000000" name="dbSpin3" parent="jPanel4" prefHeight="23px" prefWidth="100px" toolTipText="Номер месяца в году" type="DbSpinDesignInfo">
+    <datamodelElement entityId="-1" fieldName="parNum"/>
+    <constraints height="23px" left="10px" top="146px" type="MarginConstraintsDesignInfo" width="100px"/>
+  </widget>
+  <widget backgroundColor="#ece9d8" foregroundColor="#000000" name="dbCheck" parent="jPanel4" prefHeight="23px" prefWidth="100px" text="Високосный" toolTipText="Признак високосного года" type="DbCheckDesignInfo">
+    <datamodelElement entityId="-1" fieldName="parIsLeapYear"/>
+    <constraints height="23px" left="318px" top="11px" type="MarginConstraintsDesignInfo" width="100px"/>
+  </widget>
+  <widget name="jPanel5" parent="tabTestDatesFunctions" prefHeight="367px" prefWidth="452px" type="PanelDesignInfo" visible="false">
+    <layout type="MarginLayoutDesignInfo"/>
+    <constraints tabTitle="Кадровые (ночные, ...)" type="TabsConstraintsDesignInfo"/>
+  </widget>
+  <widget name="jETALabel" parent="jPanel5" prefHeight="20px" prefWidth="53px" text="Начало:" type="LabelDesignInfo">
+    <constraints height="20px" left="10px" top="11px" type="MarginConstraintsDesignInfo" width="53px"/>
+  </widget>
+  <widget backgroundColor="#ece9d8" dateFormat="dd.MM.yyyy HH:mm:ss" foregroundColor="#000000" name="dbDate7" parent="jPanel5" prefHeight="20px" prefWidth="148px" type="DbDateDesignInfo">
+    <datamodelElement entityId="-1" fieldName="parDate1"/>
+    <constraints height="20px" left="67px" top="11px" type="MarginConstraintsDesignInfo" width="148px"/>
+  </widget>
+  <widget name="jETALabel1" parent="jPanel5" prefHeight="20px" prefWidth="31px" text="Конец" type="LabelDesignInfo">
+    <constraints height="20px" left="233px" top="11px" type="MarginConstraintsDesignInfo" width="31px"/>
+  </widget>
+  <widget backgroundColor="#ece9d8" dateFormat="dd.MM.yyyy HH:mm:ss" foregroundColor="#000000" name="dbDate8" parent="jPanel5" prefHeight="20px" prefWidth="151px" type="DbDateDesignInfo">
+    <datamodelElement entityId="-1" fieldName="parDate2"/>
+    <constraints height="20px" left="268px" top="11px" type="MarginConstraintsDesignInfo" width="151px"/>
+  </widget>
+  <widget actionPerformed="btnNightCalc_actionPerformed" name="btnNightCalc" parent="jPanel5" prefHeight="23px" prefWidth="53px" text="Calc" type="ButtonDesignInfo">
+    <constraints height="23px" left="10px" top="42px" type="MarginConstraintsDesignInfo" width="53px"/>
+  </widget>
+  <widget backgroundColor="#ece9d8" foregroundColor="#000000" name="dbLabel1" parent="jPanel5" prefHeight="23px" prefWidth="100px" type="DbLabelDesignInfo">
+    <datamodelElement entityId="-1" fieldName="parAmount"/>
+    <constraints height="23px" left="69px" top="42px" type="MarginConstraintsDesignInfo" width="100px"/>
+  </widget>
+  <widget name="jPanel6" parent="tabTestDatesFunctions" prefHeight="367px" prefWidth="452px" type="PanelDesignInfo" visible="false">
+    <layout type="MarginLayoutDesignInfo"/>
+    <constraints tabTitle="Составная дата" type="TabsConstraintsDesignInfo"/>
+  </widget>
+  <widget backgroundColor="#ece9d8" foregroundColor="#000000" name="dbSpin4" parent="jPanel6" prefHeight="20px" prefWidth="100px" toolTipText="Год" type="DbSpinDesignInfo">
+    <datamodelElement entityId="-1" fieldName="parYear"/>
+    <constraints height="20px" left="92px" top="11px" type="MarginConstraintsDesignInfo" width="100px"/>
+  </widget>
+  <widget name="jETALabel2" parent="jPanel6" prefHeight="20px" prefWidth="78px" text="Год:" type="LabelDesignInfo">
+    <constraints height="20px" left="10px" top="11px" type="MarginConstraintsDesignInfo" width="78px"/>
+  </widget>
+  <widget name="jETALabel3" parent="jPanel6" prefHeight="20px" prefWidth="78px" text="Месяц:" type="LabelDesignInfo">
+    <constraints height="20px" left="10px" top="37px" type="MarginConstraintsDesignInfo" width="78px"/>
+  </widget>
+  <widget backgroundColor="#ece9d8" foregroundColor="#000000" name="dbSpin5" parent="jPanel6" prefHeight="20px" prefWidth="100px" toolTipText="Месяц" type="DbSpinDesignInfo">
+    <datamodelElement entityId="-1" fieldName="parMonth"/>
+    <constraints height="20px" left="92px" top="37px" type="MarginConstraintsDesignInfo" width="100px"/>
+  </widget>
+  <widget name="jETALabel4" parent="jPanel6" prefHeight="20px" prefWidth="78px" text="День:" type="LabelDesignInfo">
+    <constraints height="20px" left="10px" top="63px" type="MarginConstraintsDesignInfo" width="78px"/>
+  </widget>
+  <widget backgroundColor="#ece9d8" foregroundColor="#000000" name="dbSpin6" parent="jPanel6" prefHeight="20px" prefWidth="100px" toolTipText="День" type="DbSpinDesignInfo">
+    <datamodelElement entityId="-1" fieldName="parDay"/>
+    <constraints height="20px" left="92px" top="63px" type="MarginConstraintsDesignInfo" width="100px"/>
+  </widget>
+  <widget name="jETALabel5" parent="jPanel6" prefHeight="23px" prefWidth="78px" text="Час:" type="LabelDesignInfo">
+    <constraints height="23px" left="10px" top="89px" type="MarginConstraintsDesignInfo" width="78px"/>
+  </widget>
+  <widget backgroundColor="#ece9d8" foregroundColor="#000000" name="dbSpin7" parent="jPanel6" prefHeight="23px" prefWidth="100px" toolTipText="Час" type="DbSpinDesignInfo">
+    <datamodelElement entityId="-1" fieldName="parHour"/>
+    <constraints height="23px" left="102px" top="89px" type="MarginConstraintsDesignInfo" width="100px"/>
+  </widget>
+  <widget name="jETALabel6" parent="jPanel6" prefHeight="20px" prefWidth="78px" text="Минута:" type="LabelDesignInfo">
+    <constraints height="20px" left="10px" top="118px" type="MarginConstraintsDesignInfo" width="78px"/>
+  </widget>
+  <widget name="jETALabel7" parent="jPanel6" prefHeight="20px" prefWidth="78px" text="Секунда:" type="LabelDesignInfo">
+    <constraints height="20px" left="10px" top="144px" type="MarginConstraintsDesignInfo" width="78px"/>
+  </widget>
+  <widget name="jETALabel8" parent="jPanel6" prefHeight="20px" prefWidth="78px" text="Миллисекунда:" type="LabelDesignInfo">
+    <constraints height="20px" left="10px" top="170px" type="MarginConstraintsDesignInfo" width="78px"/>
+  </widget>
+  <widget backgroundColor="#ece9d8" foregroundColor="#000000" name="dbSpin8" parent="jPanel6" prefHeight="20px" prefWidth="100px" toolTipText="Минута" type="DbSpinDesignInfo">
+    <datamodelElement entityId="-1" fieldName="parMinute"/>
+    <constraints height="20px" left="92px" top="118px" type="MarginConstraintsDesignInfo" width="100px"/>
+  </widget>
+  <widget backgroundColor="#ece9d8" foregroundColor="#000000" name="dbSpin9" parent="jPanel6" prefHeight="20px" prefWidth="100px" toolTipText="Секунда" type="DbSpinDesignInfo">
+    <datamodelElement entityId="-1" fieldName="parSecond"/>
+    <constraints height="20px" left="92px" top="144px" type="MarginConstraintsDesignInfo" width="100px"/>
+  </widget>
+  <widget backgroundColor="#ece9d8" foregroundColor="#000000" name="dbSpin10" parent="jPanel6" prefHeight="20px" prefWidth="100px" toolTipText="Милисекунда" type="DbSpinDesignInfo">
+    <datamodelElement entityId="-1" fieldName="parMillisecond"/>
+    <constraints height="20px" left="88px" top="170px" type="MarginConstraintsDesignInfo" width="100px"/>
+  </widget>
+  <widget actionPerformed="btnDate_actionPerformed" name="btnDate" parent="jPanel6" prefHeight="23px" prefWidth="63px" text="date()" toolTipText="&quot;Собрать&quot; дату из составных частей" type="ButtonDesignInfo">
+    <constraints height="23px" left="212px" top="89px" type="MarginConstraintsDesignInfo" width="63px"/>
+  </widget>
+  <widget backgroundColor="#ece9d8" dateFormat="dd.MM.yyyy HH:mm:ss" foregroundColor="#000000" name="dbDate9" parent="jPanel6" prefHeight="23px" prefWidth="180px" toolTipText="Результат функции" type="DbDateDesignInfo">
+    <datamodelElement entityId="-1" fieldName="parDate1"/>
+    <constraints height="23px" left="281px" top="89px" type="MarginConstraintsDesignInfo" width="180px"/>
+    <easFont name="Dialog" style="1"/>
+  </widget>
+  <widget name="jPanel7" parent="tabTestDatesFunctions" prefHeight="367px" prefWidth="452px" type="PanelDesignInfo" visible="false">
+    <layout type="MarginLayoutDesignInfo"/>
+    <constraints tabTitle="Равенство дат" type="TabsConstraintsDesignInfo"/>
+  </widget>
+  <widget backgroundColor="#ece9d8" dateFormat="dd.MM.yyyy HH:mm:ss" foregroundColor="#000000" name="dbDate10" parent="jPanel7" prefHeight="20px" prefWidth="180px" toolTipText="Дата 1" type="DbDateDesignInfo">
+    <datamodelElement entityId="-1" fieldName="parDate1"/>
+    <constraints height="20px" left="10px" top="18px" type="MarginConstraintsDesignInfo" width="180px"/>
+  </widget>
+  <widget backgroundColor="#ece9d8" dateFormat="dd.MM.yyyy HH:mm:ss" foregroundColor="#000000" name="dbDate14" parent="jPanel7" prefHeight="20px" prefWidth="180px" toolTipText="Дата 2" type="DbDateDesignInfo">
+    <datamodelElement entityId="-1" fieldName="parDate2"/>
+    <constraints height="20px" left="297px" top="18px" type="MarginConstraintsDesignInfo" width="180px"/>
+  </widget>
+  <widget actionPerformed="btnEqualActionPerformed" name="btnEqual" parent="jPanel7" prefHeight="23px" prefWidth="67px" text="equal()" type="ButtonDesignInfo">
+    <constraints height="23px" left="10px" top="44px" type="MarginConstraintsDesignInfo" width="67px"/>
+  </widget>
+  <widget name="lblEqualResult" parent="jPanel7" prefHeight="23px" prefWidth="414px" text="&lt;Результат&gt;" type="LabelDesignInfo">
+    <constraints height="23px" left="81px" top="44px" type="MarginConstraintsDesignInfo" width="414px"/>
+  </widget>
+  <widget actionPerformed="bntCopyValueActionPerformed" name="bntCopyValue" parent="jPanel7" prefHeight="20px" prefWidth="95px" text="&gt;copy&gt;" toolTipText="Копировать значение &quot;Дата 1&quot; в &quot;Дата 2&quot;" type="ButtonDesignInfo">
+    <constraints height="20px" left="196px" top="18px" type="MarginConstraintsDesignInfo" width="95px"/>
+  </widget>
+  <layout type="MarginLayoutDesignInfo"/>
+</layout>
