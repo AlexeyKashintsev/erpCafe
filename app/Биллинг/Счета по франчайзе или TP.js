@@ -93,7 +93,6 @@ function formWindowClosing(evt) {//GEN-FIRST:event_formWindowClosing
     }//GEN-LAST:event_btnDel1ActionPerformed
 
     function btnReq1ActionPerformed(evt) {//GEN-FIRST:event_btnReq1ActionPerformed
-        // TODO Добавьте свой код:
     }//GEN-LAST:event_btnReq1ActionPerformed
 
     function btnSave1ActionPerformed(evt) {//GEN-FIRST:event_btnSave1ActionPerformed

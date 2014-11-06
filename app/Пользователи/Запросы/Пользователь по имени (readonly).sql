@@ -1,8 +1,8 @@
 /**
  *
- * @name usersByName
- * @rolesallowed admin franchazi
- * TODO NONPUBLIC!!!! 
+ * @name usersByNameReadonly
+ * @public
+ * @readonly
  */ 
 Select * 
 From mtd_users t1

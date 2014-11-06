@@ -30,10 +30,19 @@ function saveModel(){
                     user_name: model.params.usr_name 
                 };
                 model.createTradePointUser.push(createBarist);
+                
             } else {
-                model.deleteUserFromTradePoint.params.trade_point_id = model.tradePointsBarist.org_trade_point_id;
-                model.deleteUserFromTradePoint.params.user_name = model.params.usr_name;
-                model.deleteUserFromTradePoint.executeUpdate();
+               model.deleteUserFromTradePoint.beforeFirst();
+               while(model.deleteUserFromTradePoint.next()){
+                   if(model.deleteUserFromTradePoint.cursor.trade_point_id == model.tradePointsBarist.cursor.org_trade_point_id)
+                       model.deleteUserFromTradePoint.deleteRow();
+               }
+                //model.deleteUserFromTradePoint.params.user_name = model.params.usr_name;
+                //model.deleteUserFromTradePoint.endUpdate();
+//                model.deleteUserFromTradePoint.requery();
+//                model.deleteUserFromTradePoint.deleteRow();
+//                 model.save();
+                //model.deleteUserFromTradePoint.executeUpdate();
             }
         }
     }
@@ -42,17 +51,18 @@ function saveModel(){
 
 function formWindowOpened(evt) {//GEN-FIRST:event_formWindowOpened
     form.lblNameBarista.text = model.params.usr_name;
+    model.requery();
 }//GEN-LAST:event_formWindowOpened
 
 function formWindowClosing(evt) {//GEN-FIRST:event_formWindowClosing
-    if (self.model.modified&&confirm('Сохранить изменения?')){
-        saveModel();
-    }
+//    if (self.model.modified && confirm('Сохранить изменения?')){
+//        saveModel();
+//    }
 }//GEN-LAST:event_formWindowClosing
 
     function btnSaveActionPerformed(evt) {//GEN-FIRST:event_btnSaveActionPerformed
         saveModel();
-        form.close();
+        form.close(true);
     }//GEN-LAST:event_btnSaveActionPerformed
 
     function btnCancelActionPerformed(evt) {//GEN-FIRST:event_btnCancelActionPerformed

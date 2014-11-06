@@ -5,10 +5,10 @@
  */
 function ClientServerModule() {
     Session.set('ClientServerModule', this);
-    //TODO Проверить запросить из сессии
+    //TODO ak
     var self = this, model = this.model;
     var sender = new MessageSender();                                            
-    var userModule = new UserModule();
+    var userModule = Session.get('UserModule');
     var adminFunctions = new AdminFunctions();
     var billModule = Session.get('BillModule');
 
@@ -36,13 +36,6 @@ function ClientServerModule() {
     self.getClientData = function() {
         return new ClientConstructor(self.principal.name);
     };
-
-    /*
-     * @rolesallowed admin franchazi
-     * TODO зачем две одинаковые функции?
-     self.getClientDataByPhone = function(aPhone) {
-     return new ClientConstructor(aPhone);
-     };*/
 
     function genPass() {
         return Math.random().toString(36).slice(2, 8);

@@ -4,7 +4,7 @@
 function ChangePassView(){
     var self = this, model = self.model, form = this;
     var adminFunctions = new ServerModule("AdminFunctions");
-    var userModule = new UserModule();
+    var userModule = Session.get('UserModule');
     var userName = null;
     
     self.setUserName = function(aUserName){

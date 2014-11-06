@@ -6,8 +6,6 @@
 function messengerSettings() {
     var self = this, model = this.model, form = this;
     
-    // TODO : place your code here
-
     function btnSaveMouseClicked(evt) {//GEN-FIRST:event_btnSaveMouseClicked
         self.model.save();
     }//GEN-LAST:event_btnSaveMouseClicked

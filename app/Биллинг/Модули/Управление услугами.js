@@ -6,8 +6,8 @@
 function ServiceModule() {
     var self = this, model = this.model;
     var eventProcessor = new EventProcessor();
-    var bm = Modules.get("BillModule"); //Modules.get - устарел, использовать Session.get
-    var session = Modules.get("UserSession");
+    var bm = Session.get("BillModule"); //Modules.get - устарел, использовать Session.get
+    var session = Session.get("UserSession");
     
     var ERRORS = {
         FIND_ACCOUNT_ID: "Аккаунт с таким ID не найден",

@@ -6,7 +6,6 @@ function GetUserPhoneForm() {
     var self = this, model = this.model, form = this;
     self.tradeSession = null;
     var clientReg = new ClientRegistrationByBarist();
-    // TODO : place your code here
 
     function buttonActionPerformed(evt) {//GEN-FIRST:event_buttonActionPerformed
         if (form.tfPhone.text === ""){
