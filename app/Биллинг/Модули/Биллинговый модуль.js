@@ -15,10 +15,11 @@ function BillModule() {
     self.OPERATION_ADD_BONUS    = 2; //
     self.OPERATION_DEL_BUY      = 3; //Списание средств
     self.OPERATION_DEL_SERVICE  = 4; //
+    self.OPERATION_ADD_ITEM_TYPE= 5; // Добавление бонусов на лицевой счет
     // Типы аккаунтов
     self.ACCOUNT_TYPE_DEFAULT   = 1; //Основной 
     self.ACCOUNT_TYPE_CREDIT    = 2; //Кредитный
-    self.ACCOUNT_TYPE_BONUS    = 3; //Клиентский бонусный
+    self.ACCOUNT_TYPE_BONUS     = 3; //Клиентский бонусный
     //Статусы операций
     self.OP_STATUS_SUCCESS      = 1;
     self.OP_STATUS_FAIL         = 2;
@@ -151,18 +152,11 @@ function BillModule() {
         };
         var multiplier;
         switch (anOperationType) {
-            case self.OPERATION_ADD_CASH:
-                multiplier = 1.0;
-                break;
-            case self.OPERATION_ADD_BONUS:
-                multiplier = 1.0;
-                break;//Относится к бонусам
-            case self.OPERATION_DEL_BUY:
-                multiplier = -1.0;
-                break;
-            case self.OPERATION_DEL_SERVICE:
-                multiplier = -1.0;
-                break;
+            case self.OPERATION_ADD_CASH:     multiplier = 1.0; break;
+            case self.OPERATION_ADD_BONUS:    multiplier = 1.0; break;//Относится к бонусам
+            case self.OPERATION_DEL_BUY:      multiplier = -1.0; break;
+            case self.OPERATION_DEL_SERVICE:  multiplier = -1.0; break;
+            case self.OPERATION_ADD_ITEM_TYPE: multiplier = 0; break;
         }
         var accountType;
         reqBillAccounts(anAccountId, null, null);
@@ -185,6 +179,27 @@ function BillModule() {
             eventProcessor.addEvent('addBillOperation', obj);
             return model.qBillOperationsListServer.cursor.bill_operations_id;
         }
+    };
+    /*
+     * Добавление типа товара на лицевой счет
+     * @param {type} anAccountId
+     * @param {type} aBonusSum
+     * @returns {undefined}
+     */
+    self.addItemTypeToAccount = function(anAccountId, anItemType){
+        var opId = self.addBillOperation(anAccountId, self.OPERATION_ADD_ITEM_TYPE, 0);
+        if(opId){
+            reqBillAccounts(anAccountId, null, null);
+            if(model.qBillAccountServer.cursor.account_type === self.ACCOUNT_TYPE_BONUS){
+                model.qBillProductLink.push({
+                    bill_product_links_id   : opId,
+                    account_id              : anAccountId,
+                    item_type               : anItemType
+                });
+                model.save();
+                return true;
+            } else return false;
+        }     else return false;
     };
     /*
      * Добавление товаров на счет
