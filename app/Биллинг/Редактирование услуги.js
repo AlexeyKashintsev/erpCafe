@@ -23,8 +23,8 @@ function EditServiceForm() {
 
     function btnSaveActionPerformed(evt) {//GEN-FIRST:event_btnSaveActionPerformed
         if(self.serviceId)
-            serviceModule.editService(self.serviceId, form.tfName.text, form.tfSum.text, form.tfDays.text, form.checkBox.selected);
-        else serviceModule.CreateService(form.tfName.text, form.tfSum.text, form.tfDays.text, form.checkBox.selected);
+            serviceModule.editService(self.serviceId, form.tfName.text, form.tfSum.text, form.tfDays.text, form.checkBox.selected, form.tfAfterMonth.text);
+        else serviceModule.CreateService(form.tfName.text, form.tfSum.text, form.tfDays.text, form.checkBox.selected, form.tfAfterMonth.text);
         form.close(true);
     }//GEN-LAST:event_btnSaveActionPerformed
 
@@ -35,12 +35,14 @@ function EditServiceForm() {
                 form.tfName.text = model.qServiceList.cursor.service_name;
                 form.tfSum.text = model.qServiceList.cursor.item_cost;
                 form.tfDays.text = model.qServiceList.cursor.service_days;
+                form.tfAfterMonth.text = model.qServiceList.cursor.after_month;
                 form.checkBox.selected = model.qServiceList.cursor.locked;                
             });
         } else {
             form.tfName.text = "";
             form.tfSum.text = "";
             form.tfDays.text = "";
+            form.tfAfterMonth.text = "0";
             form.checkBox.selected = false;    
         }
     }//GEN-LAST:event_formWindowOpened
@@ -51,4 +53,8 @@ function EditServiceForm() {
     function formWindowClosing(evt) {//GEN-FIRST:event_formWindowClosing
 
     }//GEN-LAST:event_formWindowClosing
+
+    function tfAfterMonthActionPerformed(evt) {//GEN-FIRST:event_tfAfterMonthActionPerformed
+        // TODO Добавьте свой код:
+    }//GEN-LAST:event_tfAfterMonthActionPerformed
 }

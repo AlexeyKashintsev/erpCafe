@@ -55,12 +55,21 @@ function BillModule() {
         if(sum >= aSum) return false;
         else return true;
     }
-    
+
     function reqBillAccounts(anAccountId, aFranchaziId, aType){
         model.qBillAccountServer.params.type = aType;
         model.qBillAccountServer.params.franchazi_id = aFranchaziId;
         model.qBillAccountServer.params.account_id = anAccountId;
         model.qBillAccountServer.requery();
+    }
+    
+    function getMultiplier(aOperationType){
+        model.qBillOperationTypes.beforeFirst();
+        while(model.qBillOperationTypes.next()){
+            if(model.qBillOperationTypes.cursor.bill_operations_type_id == aOperationType)
+                return model.qBillOperationTypes.cursor.multiplier;
+        }
+        return false;
     }
     /*
      * Создает новый биллинговый аккаунт и возвращает его ID
@@ -147,25 +156,15 @@ function BillModule() {
             operation_date: new Date(),
             operation_type: anOperationType,
             operation_status: aStatus,
-            //user_name_perfomed: session.getUserName()
             user_name_perfomed: self.principal.name
         };
-        var multiplier;
-        switch (anOperationType) {
-            case self.OPERATION_ADD_CASH:     multiplier = 1.0; break;
-            case self.OPERATION_ADD_BONUS:    multiplier = 1.0; break;//Относится к бонусам
-            case self.OPERATION_DEL_BUY:      multiplier = -1.0; break;
-            case self.OPERATION_DEL_SERVICE:  multiplier = -1.0; break;
-            case self.OPERATION_ADD_ITEM_TYPE: multiplier = 0; break;
-        }
-        var accountType;
         reqBillAccounts(anAccountId, null, null);
-        accountType = model.qBillAccountServer.cursor.account_type;
+        var accountType = model.qBillAccountServer.cursor.account_type;
+        var multiplier = getMultiplier(anOperationType);
         if ((multiplier === -1) && (aStatus === self.OP_STATUS_SUCCESS || aStatus === self.OP_STATUS_PAID) && (anOperationType != self.OPERATION_DEL_SERVICE) && (accountType != self.ACCOUNT_TYPE_CREDIT)) {
             ERROR_SHORTAGE_MONEY = checkMoneyOnAccount(anAccountId, aSum);
         }
         if (ERROR_SHORTAGE_MONEY) {
-            Logger.info(ERRORS.LOST_MONEY);
             eventProcessor.addEvent('errorLostMoney', obj);
             return false;
         } else {
@@ -178,6 +177,46 @@ function BillModule() {
             model.save();
             eventProcessor.addEvent('addBillOperation', obj);
             return model.qBillOperationsListServer.cursor.bill_operations_id;
+        }
+    };
+
+    /*
+     * Изменение статуса операции по счету
+     * @param {type} anOperationId
+     * @param {type} aStatus
+     * @returns {undefined}
+     */
+    self.setStatusBillOperation = function(anOperationId, aStatus) {
+        var ERROR_SHORTAGE_MONEY = false;
+        model.params.operation_id = anOperationId;
+        model.qBillOperationsListServer.requery(function() {});
+        if (model.qBillOperationsListServer.length > 0) {
+            if (aStatus == self.OP_STATUS_SUCCESS) {
+                reqBillAccounts(model.qBillOperationsListServer.cursor.account_id, null, null);
+                ERROR_SHORTAGE_MONEY = checkMoneyOnAccount(model.qBillOperationsListServer.cursor.account_id, model.qBillOperationsListServer.cursor.operation_sum);
+                if(!ERROR_SHORTAGE_MONEY)
+                    model.qBillAccountServer.cursor.currnt_sum = model.qBillAccountServer.cursor.currnt_sum + model.qBillOperationsListServer.cursor.operation_sum * model.qBillOperationsListServer.cursor.multiplier;
+            }
+            if (!self.ERROR_SHORTAGE_MONEY) {
+                model.qBillOperationsListServer.cursor.operation_status = aStatus;
+                model.save();
+                self.getSumFromAccountId(model.qBillOperationsListServer.cursor.account_id);
+                eventProcessor.addEvent('setStatusBillOperation', {
+                    operation_id: model.qBillOperationsListServer.cursor.bill_operations_id,
+                    status: aStatus
+                });
+                return true;
+            } else {
+                return addErrorToLogger('errorSetStatusBillOperation', {
+                    operation_id: model.qBillOperationsListServer.cursor.bill_operations_id,
+                    status: aStatus
+                }, ERRORS.LOST_MONEY);
+            }
+        } else {
+            return addErrorToLogger('errorSetStatusBillOperation', {
+                    operation_id: model.qBillOperationsListServer.cursor.bill_operations_id,
+                    status: aStatus
+                }, ERRORS.INVALID_OP_ID);
         }
     };
     /*
@@ -223,46 +262,7 @@ function BillModule() {
             model.save();
         }
     };
-    /*
-     * Изменение статуса операции
-     * @param {type} anOperationId
-     * @param {type} aStatus
-     * @returns {undefined}
-     */
-    self.setStatusBillOperation = function(anOperationId, aStatus) {
-        var ERROR_SHORTAGE_MONEY = false;
-        model.params.operation_id = anOperationId;
-        model.qBillOperationsListServer.requery(function() {});
-        if (model.qBillOperationsListServer.length > 0) {
-            if (aStatus == self.OP_STATUS_SUCCESS) {
-                reqBillAccounts(model.qBillOperationsListServer.cursor.account_id, null, null);
-                ERROR_SHORTAGE_MONEY = checkMoneyOnAccount(model.qBillOperationsListServer.cursor.account_id, model.qBillOperationsListServer.cursor.operation_sum);
-                if(!ERROR_SHORTAGE_MONEY)
-                    model.qBillAccountServer.cursor.currnt_sum = model.qBillAccountServer.cursor.currnt_sum + model.qBillOperationsListServer.cursor.operation_sum * model.qBillOperationsListServer.cursor.multiplier;
-            }
-            if (!self.ERROR_SHORTAGE_MONEY) {
-                model.qBillOperationsListServer.cursor.operation_status = aStatus;
-                model.save();
-                self.getSumFromAccountId(model.qBillOperationsListServer.cursor.account_id);
-                eventProcessor.addEvent('setStatusBillOperation', {
-                    operation_id: model.qBillOperationsListServer.cursor.bill_operations_id,
-                    status: aStatus
-                });
-                return true;
-            } else {
-                return addErrorToLogger('errorSetStatusBillOperation', {
-                    operation_id: model.qBillOperationsListServer.cursor.bill_operations_id,
-                    status: aStatus
-                }, ERRORS.LOST_MONEY);
-            }
-        } else {
-            return addErrorToLogger('errorSetStatusBillOperation', {
-                    operation_id: model.qBillOperationsListServer.cursor.bill_operations_id,
-                    status: aStatus
-                }, ERRORS.INVALID_OP_ID);
-        }
-    };
-    
+
     /*
      * Получение счета по франчайзе
      */
@@ -270,7 +270,7 @@ function BillModule() {
         reqBillAccounts(null, aFranId, null);
         return model.qBillAccountServer.cursor.bill_accounts_id;
     };
-    
+        
     /*
      * Связь биллинговой операции с торговой
      * @param {type} aTradeOperation

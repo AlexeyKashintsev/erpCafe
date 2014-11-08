@@ -49,11 +49,12 @@ function ServiceModule() {
         if (model.qServiceList.length > 0) {
             if (model.qBillAccountServer.length > 0) {
                 if (model.qAddService.length == 0) {
-                    if (bm.getSumFromAccountId(model.qBillAccountServer.cursor.bill_accounts_id) >= model.qServiceList.cursor.item_cost) {
+                    if ((bm.getSumFromAccountId(model.qBillAccountServer.cursor.bill_accounts_id) >= model.qServiceList.cursor.item_cost) || model.qServiceList.cursor.after_month) {
                         var payDate = new Date();
-                        bm.addBillOperation(anAccountId, bm.OPERATION_DEL_SERVICE, model.qServiceList.cursor.item_cost);
+                        //bm.addBillOperation(anAccountId, bm.OPERATION_DEL_SERVICE, model.qServiceList.cursor.item_cost);
                         if (model.qServiceList.cursor.service_month) {
-                            payDate.setMonth(payDate.getMonth() + 1);
+                            var months = model.qServiceList.cursor.after_month ? model.qServiceList.cursor.after_month : 0;
+                            payDate.setMonth(payDate.getMonth() + months);
                         } else {
                             payDate.setDate(payDate.getDate() + model.qServiceList.cursor.service_days);
                         }
@@ -79,15 +80,6 @@ function ServiceModule() {
             return addErrorToLogger('errorAddServiceOnAccount', obj, ERRORS.FIND_SERVICE_ID);
         }
     };
-    
-    /*
-     * @rolesAllowed admin
-     * @param {type} anAccountId
-     * @returns {undefined}
-     */
-    function delLockedServiceFromAccount(anAccountId, aServiceId){
-        
-    }
     
     /*
      * Удаление услуги с лицевого счета
@@ -133,7 +125,7 @@ function ServiceModule() {
      * @param {type} aDays
      * @returns {Boolean}
      */
-    self.CreateService = function(aName, aSum, aDays, aLock) {
+    self.CreateService = function(aName, aSum, aDays, aLock, anAfterMonth) {
         var aMonth = false;
         if (aDays == false || aDays == 0 || aDays == null || aDays === undefined || !aDays){
             aMonth = true;
@@ -154,6 +146,7 @@ function ServiceModule() {
         model.qServiceList.cursor.service_name = aName;
         model.qServiceList.cursor.locked = aLock;
         model.qServiceList.cursor.start_date = new Date();
+        model.qServiceList.cursor.after_month = anAfterMonth;
         model.save();
         eventProcessor.addEvent('serviceCreated', obj);
         return true;
@@ -181,7 +174,7 @@ function ServiceModule() {
     /*
      * Редактирование услуги
      */
-    self.editService = function(aServiceId, aName, aSum, aDays, aLock) {
+    self.editService = function(aServiceId, aName, aSum, aDays, aLock, anAfterMonth) {
         var aMonth = false;
         if (aDays == false || aDays == 0 || aDays == null || aDays === undefined)
             aMonth = true;
@@ -197,7 +190,8 @@ function ServiceModule() {
                 item_cost: aSum,
                 service_days: aDays,
                 service_month: aMonth,
-                start_date: new Date()
+                start_date: new Date(),
+                after_month: anAfterMonth
             };
             model.qServiseCostAdd.push(obj);
             model.qService.cursor.service_name = aName;

@@ -13,6 +13,7 @@ var serviceModule = new ServerModule("ServiceModule");
 var addServiceForm = new AddServiceForm();
 var addBillOperation = new AddBillOperation();
 var historyOperations = new HistoryOperations();
+var billServerModule = new ServerModule("BillServerModule");
 
 model.params.franchazi_id = null;
 
@@ -99,4 +100,8 @@ function formWindowClosing(evt) {//GEN-FIRST:event_formWindowClosing
         historyOperations.setAccountId(model.qBillAccount.cursor.bill_accounts_id);
         historyOperations.showModal(function(){});
     }//GEN-LAST:event_btnSave1ActionPerformed
+
+    function buttonActionPerformed(evt) {//GEN-FIRST:event_buttonActionPerformed
+       billServerModule.paymentForServices();
+    }//GEN-LAST:event_buttonActionPerformed
 }
