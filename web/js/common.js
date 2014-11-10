@@ -1,7 +1,7 @@
-var units = {};
+﻿var units = {};
 var cmn = {};
 var session = {};
-var Session = (function() {
+var Session = new (function() {
         var servModules = {};
         this.get = function(aModuleName) {
             if (!servModules[aModuleName]) {
