@@ -4,13 +4,13 @@
     <parameter description="" name="trade_point_id" nullable="true" parameterMode="1" precision="0" scale="0" selectionForm="null" signed="true" size="0" type="2" typeName="NUMERIC"/>
   </parameters>
   <parametersEntity entityHeight="200" entityIconified="false" entityLocationX="8" entityLocationY="7" entityWidth="150"/>
-  <entity Title="" entityHeight="186" entityIconified="false" entityId="140725576379449" entityLocationX="184" entityLocationY="7" entityWidth="150" tableAlias="t1" tableName="org_session" tableSchemaName=""/>
-  <entity Title="" entityHeight="112" entityIconified="false" entityId="140725582003312" entityLocationX="502" entityLocationY="7" entityWidth="150" tableAlias="t2" tableName="trade_cash_box_operation" tableSchemaName=""/>
-  <entity Title="" entityHeight="78" entityIconified="false" entityId="140725579832900" entityLocationX="345" entityLocationY="7" entityWidth="150" tableAlias="t" tableName="trade_cash_box_balance" tableSchemaName=""/>
   <entity Title="" entityHeight="79" entityIconified="false" entityId="140725588052337" entityLocationX="671" entityLocationY="7" entityWidth="150" tableAlias="t3" tableName="trade_operations" tableSchemaName=""/>
-  <relation leftEntityId="-1" leftEntityParameterName="session_id" rightEntityFieldName="org_session_id" rightEntityId="140725576379449"/>
+  <entity Title="" entityHeight="186" entityIconified="false" entityId="140725576379449" entityLocationX="184" entityLocationY="7" entityWidth="150" tableAlias="t1" tableName="org_session" tableSchemaName=""/>
+  <entity Title="" entityHeight="78" entityIconified="false" entityId="140725579832900" entityLocationX="345" entityLocationY="7" entityWidth="150" tableAlias="t" tableName="trade_cash_box_balance" tableSchemaName=""/>
+  <entity Title="" entityHeight="148" entityIconified="false" entityId="140725582003312" entityLocationX="502" entityLocationY="7" entityWidth="150" tableAlias="t2" tableName="trade_cash_box_operation" tableSchemaName=""/>
   <relation leftEntityFieldName="cash_box_operation" leftEntityId="140725588052337" rightEntityFieldName="trade_cash_box_operation_id" rightEntityId="140725582003312"/>
-  <relation leftEntityFieldName="session_id" leftEntityId="140725582003312" rightEntityFieldName="org_session_id" rightEntityId="140725576379449"/>
   <relation leftEntityFieldName="session_id" leftEntityId="140725579832900" rightEntityFieldName="org_session_id" rightEntityId="140725576379449"/>
+  <relation leftEntityFieldName="session_id" leftEntityId="140725582003312" rightEntityFieldName="org_session_id" rightEntityId="140725576379449"/>
   <relation leftEntityId="-1" leftEntityParameterName="trade_point_id" rightEntityFieldName="trade_point" rightEntityId="140725576379449"/>
+  <relation leftEntityId="-1" leftEntityParameterName="session_id" rightEntityFieldName="org_session_id" rightEntityId="140725576379449"/>
 </datamodel>

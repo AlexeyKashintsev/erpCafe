@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?><datamodel datamodelDbId="null">
+  <fieldsEntity entityHeight="200" entityIconified="false" entityId="141562894711262" entityLocationX="186" entityLocationY="61" entityWidth="150" tableName="bill_accounts"/>
+  <fieldsEntity entityHeight="200" entityIconified="false" entityId="141562894710842" entityLocationX="15" entityLocationY="249" entityWidth="150" tableName="bill_account_types"/>
+  <fieldsEntity entityHeight="200" entityIconified="false" entityId="141562894711466" entityLocationX="664" entityLocationY="305" entityWidth="150" tableName="bill_item_cost"/>
+  <fieldsEntity entityHeight="200" entityIconified="false" entityId="141562894711733" entityLocationX="664" entityLocationY="94" entityWidth="150" tableName="bill_operations_items"/>
+  <fieldsEntity entityHeight="157" entityIconified="false" entityId="141562894712117" entityLocationX="441" entityLocationY="230" entityWidth="150" tableName="bill_services_accounts"/>
+  <fieldsEntity entityHeight="200" entityIconified="false" entityId="141562894711559" entityLocationX="440" entityLocationY="19" entityWidth="150" tableName="bill_operations"/>
+  <fieldsEntity entityHeight="125" entityIconified="false" entityId="141562894711959" entityLocationX="186" entityLocationY="389" entityWidth="150" tableName="bill_services"/>
+  <fieldsEntity entityHeight="124" entityIconified="false" entityId="141562918315305" entityLocationX="441" entityLocationY="400" entityWidth="150" tableName="org_trade_point"/>
+</datamodel>
