@@ -1,6 +1,15 @@
 var units = {};
 var cmn = {};
 var session = {};
+var Session = (function() {
+        var servModules = {};
+        this.get = function(aModuleName) {
+            if (!servModules[aModuleName]) {
+                servModules[aModuleName] = new ServerModule(aModuleName);
+            }
+            return servModules[aModuleName];
+        }
+    })();
 
 
 var Logout = function() {
