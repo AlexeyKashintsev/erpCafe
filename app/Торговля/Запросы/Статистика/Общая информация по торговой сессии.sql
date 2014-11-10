@@ -9,7 +9,6 @@ Select t1.org_session_id, t1.trade_point, t1.user_name, t1.start_date, t1.end_da
 , sum(t2.operation_sum) as operationsSum
 , count(t2.operation_sum) as operationsCount
 , count(t3.items_quantity) as soldItemsQuantity
-, sum(case when 
 From org_session t1
  Inner Join trade_cash_box_balance t on t.session_id = t1.org_session_id
  Inner Join trade_cash_box_operation t2 on t2.session_id = t1.org_session_id
