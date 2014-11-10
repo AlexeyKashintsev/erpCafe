@@ -11,6 +11,7 @@
   <relation leftEntityId="-1" leftEntityParameterName="franchazi_id" rightEntityId="141095450421562" rightEntityParameterName="franchazi_id"/>
   <referenceRelation leftEntityFieldName="account_id" leftEntityId="141095893247393" rightEntityFieldName="bill_accounts_id" rightEntityId="141095450421562"/>
   <referenceRelation leftEntityFieldName="account_type" leftEntityId="141095450421562" rightEntityFieldName="bill_account_types_id" rightEntityId="141095471990432"/>
-  <referenceRelation leftEntityFieldName="account_type" leftEntityId="141095893247393" rightEntityFieldName="bill_account_types_id" rightEntityId="141095471990432"/>
   <referenceRelation leftEntityFieldName="service_id" leftEntityId="141095893247393" rightEntityFieldName="bill_services_id" rightEntityId="141095893247393"/>
+  <referenceRelation leftEntityFieldName="account_type" leftEntityId="141095893247393" rightEntityFieldName="bill_account_types_id" rightEntityId="141095471990432"/>
+  <referenceRelation leftEntityFieldName="account_service_id" leftEntityId="141095893247393" rightEntityFieldName="bill_services_id" rightEntityId="141095893247393"/>
 </datamodel>
