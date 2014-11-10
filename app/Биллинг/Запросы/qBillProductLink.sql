@@ -1,6 +1,7 @@
 /**
  * @author minya92
  * @name qBillProductLink
+ TODO Тоже будет косяк
  */ 
 Select * 
 From bill_product_links t1

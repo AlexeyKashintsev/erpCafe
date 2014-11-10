@@ -147,6 +147,7 @@ function ClientServerModule() {
     }
     
     self.clientInitialize = function(){
+        Logger.info('Начало ахтунга!!!');
         model.qGetPersonalDataOfAllClients.requery();
         model.qGetPersonalDataOfAllClients.beforeFirst();
         while(model.qGetPersonalDataOfAllClients.next()){

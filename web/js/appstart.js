@@ -17,7 +17,7 @@ function SessionKeeper() {
     var indicatorContainer = null;
     var ind = null;
     
-    this.statuses = ['Сессия активна', 'Сессия истекла', 'Нет связи с сервером'];
+    var statuses = ['Сессия активна', 'Сессия истекла', 'Нет связи с сервером'];
     var statCSS = ['active', 'ended', 'broken'];
     
     function indicator() {
@@ -34,7 +34,7 @@ function SessionKeeper() {
         session.keepAlive(session.userName, function(aResult) {
             status = aResult ? 0 : 1;
             indicator();
-            alert([statuses[status]]);
+            //alert([statuses[status]]);
             if (aCallBack) {
                 aCallBack(status);
             }

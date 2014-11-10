@@ -2,7 +2,7 @@
  * @author minya92
  * @name qCloseItemCost
  * @manual
- * @public
+ * @public TODO А так ли это?
  */ 
 
 UPDATE bill_item_cost

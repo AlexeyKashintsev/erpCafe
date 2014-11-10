@@ -10,3 +10,4 @@ From bill_operations t1
  Where (:operation_id = t1.bill_operations_id or :operation_id is null)
  and (:account_id = t1.account_id or :account_id is null)
  and (:status = t1.operation_status or :status is null)
+ and (:operation_id is not null or :account_id is not null or :status is not null)
