@@ -1,7 +1,9 @@
 /**
  * @author minya92
- * @name qCloseItemCost
+ * @name qCloseItemCostAdmin
  * @manual
+ * @public
+ * @rolesAllowedToWrite admin
  */ 
 
 UPDATE bill_item_cost

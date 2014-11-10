@@ -4,13 +4,10 @@
  * @name qServiceListByAccount
  * @public
  */ 
-Select * ,
-case 
-    when t.end_date is not null
-    then true    
-    else false
-end as modifyd
-From bill_services_accounts t1
- Inner Join bill_item_cost t on t1.service_cost_id = t.bill_item_cost_id
- Inner Join bill_services t2 on t.service_id = t2.bill_services_id
- Where :account_id = t1.account_id and (:service_id = t2.bill_services_id or :service_id is null)
+Select * 
+From bill_services t1
+ Inner Join bill_services_accounts t on t1.bill_services_id = t.account_service_id
+ Inner Join bill_item_cost t2 on t.account_service_id = t2.service_id
+ Where (:service_id = t1.bill_services_id or :service_id is null)
+ and t2.end_date is null
+ and :account_id = t.account_id
