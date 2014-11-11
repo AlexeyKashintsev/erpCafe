@@ -3,10 +3,12 @@
     <parameter description="" name="user_name" nullable="true" parameterMode="1" precision="0" scale="0" selectionForm="null" signed="true" size="100" type="12" typeName="VARCHAR"/>
     <parameter description="" name="phone" nullable="true" parameterMode="1" precision="0" scale="0" selectionForm="null" signed="true" size="100" type="12" typeName="VARCHAR"/>
     <parameter description="" name="email" nullable="true" parameterMode="1" precision="0" scale="0" selectionForm="null" signed="true" size="100" type="12" typeName="VARCHAR"/>
+    <parameter description="" name="id" nullable="true" parameterMode="1" precision="0" scale="0" selectionForm="null" signed="true" size="0" type="2" typeName="NUMERIC"/>
   </parameters>
   <parametersEntity entityHeight="200" entityIconified="false" entityLocationX="8" entityLocationY="7" entityWidth="150"/>
   <entity Title="" entityHeight="229" entityIconified="false" entityId="140741507605114" entityLocationX="229" entityLocationY="6" entityWidth="150" tableAlias="t1" tableName="client_personal_data" tableSchemaName=""/>
-  <relation leftEntityId="-1" leftEntityParameterName="phone" rightEntityFieldName="phone" rightEntityId="140741507605114"/>
-  <relation leftEntityId="-1" leftEntityParameterName="user_name" rightEntityFieldName="usr_name" rightEntityId="140741507605114"/>
   <relation leftEntityId="-1" leftEntityParameterName="email" rightEntityFieldName="email" rightEntityId="140741507605114"/>
+  <relation leftEntityId="-1" leftEntityParameterName="phone" rightEntityFieldName="phone" rightEntityId="140741507605114"/>
+  <relation leftEntityId="-1" leftEntityParameterName="id" rightEntityFieldName="client_id" rightEntityId="140741507605114"/>
+  <relation leftEntityId="-1" leftEntityParameterName="user_name" rightEntityFieldName="usr_name" rightEntityId="140741507605114"/>
 </datamodel>

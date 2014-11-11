@@ -8,8 +8,8 @@ function ClientServerModule() {
     //TODO ak
     var self = this, model = this.model;
     var sender = new MessageSender();                                            
-    var userModule = Session.get('UserModule');
-    var adminFunctions = new AdminFunctions();
+//    var userModule = Session.get('UserModule');
+//    var adminFunctions = new AdminFunctions();
     var billModule = Session.get('BillModule');
 
     function ClientConstructor(aPhone) {
@@ -37,39 +37,45 @@ function ClientServerModule() {
         return new ClientConstructor(self.principal.name);
     };
 
-    function genPass() {
-        return Math.random().toString(36).slice(2, 8);
-    }
+//    function genPass() {
+//        return Math.random().toString(36).slice(2, 8);
+//    }
 
-    self.createUser = function(aPhone, anEmail, aFirstName,
-            aMiddleName, aLastName, aBirthday,
-            anAddress, anUserName, aBonusCategory) {
-        if (!anUserName) {
-            anUserName = aPhone;
-        }
+    self.createUser = function( aPhone, anEmail, aFirstName,
+                                aMiddleName, aLastName, aBirthday,
+                                anAddress, anUserName, aBonusCategory) {
+        if (!anUserName) anUserName = aPhone;
         if (anEmail === "") anEmail = null;
         if (aPhone && !self.checkIfPhoneExist(aPhone) && !self.checkIfEmailExist(anEmail)){
-            var pass = genPass();
-            Logger.info("Пароль пользователя: " + pass);
-            userModule.createUser(anUserName, adminFunctions.MD5(pass), 'client', anEmail, aPhone);
-            model.qPersonalData.insert();
-            model.qPersonalData.cursor.client_id = billModule.createBillAccount(billModule.ACCOUNT_TYPE_BONUS);
-            model.qPersonalData.cursor.first_name = aFirstName;
-            model.qPersonalData.cursor.middle_name = aMiddleName;
-            model.qPersonalData.cursor.last_name = aLastName;
-            model.qPersonalData.cursor.birthday = aBirthday;
-            model.qPersonalData.cursor.address = anAddress;
-            model.qPersonalData.cursor.phone = aPhone;
-            model.qPersonalData.cursor.email = anEmail;
-            model.qPersonalData.cursor.usr_name = anUserName;
-            model.qPersonalData.cursor.reg_date = new Date();
+//            Перестали создавать пользователей в mtd_users
+//            var pass = genPass();
+//            Logger.info("Пароль пользователя: " + pass);
+//            userModule.createUser(anUserName, adminFunctions.MD5(pass), 'client', anEmail, aPhone);
+//            model.qPersonalData.cursor.client_id = billModule.createBillAccount(billModule.ACCOUNT_TYPE_BONUS);
+            model.qPersonalData.push({
+                first_name  :   aFirstName,
+                middle_name :   aMiddleName,
+                last_name   :   aLastName,
+                birthday    :   aBirthday,
+                address     :   anAddress,
+                phone       :   aPhone,
+                email       :   anEmail,
+                usr_name    :   anUserName,
+                reg_date    :   new Date()
+            });
             model.save();
+            billModule.createBillAccount(billModule.ACCOUNT_TYPE_BONUS, null, model.qPersonalData.cursor.client_id);
             self.setBonusCategory(anUserName, aBonusCategory ? aBonusCategory : 1);
+//            sender.sendMessage(sender.REGISTRATION_SUCCESS, {
+//                phone: model.qPersonalData.cursor.phone,
+//                username: model.qPersonalData.cursor.first_name,
+//                email: model.qPersonalData.cursor.email,
+//                password: pass
+//            });
             sender.sendMessage(sender.REGISTRATION_SUCCESS, {
                 phone: model.qPersonalData.cursor.phone,
                 username: model.qPersonalData.cursor.first_name,
-                email: model.qPersonalData.cursor.email,
-                password: pass
+                email: model.qPersonalData.cursor.email
             });
             return model.qPersonalData.cursor.client_id;
         } else{
@@ -135,15 +141,28 @@ function ClientServerModule() {
     self.getBonusBill = function(aPhone) {
         if (!aPhone)
             return 0;
-        model.qPersonalData.params.phone = aPhone;
-        model.qPersonalData.execute();
-        return model.qPersonalData.cursor.client_id;
+        model.qGetBonusBill.params.phone = aPhone;
+        model.qGetBonusBill.execute();
+        return model.qGetBonusBill.cursor.bill_accounts_id;
     };
     
     function fixphone(aPhone){
         var num = aPhone.replace(/\D+/g,"");
         num = "8" + num.slice(-10);
         return num;
+    }
+    
+    self.clientInitialize2 = function(){
+        model.qGetAllBills.requery();
+        model.qGetAllBills.beforeFirst();
+        while (model.qGetAllBills.next()){
+            model.qPersonalData.params.id = model.qGetAllBills.cursor.bill_accounts_id;
+            model.qPersonalData.requery();
+            if (model.qPersonalData.length > 0){
+                model.qGetAllBills.cursor.client_id = model.qPersonalData.cursor.client_id;
+            }
+        }
+        model.save();
     }
     
     self.clientInitialize = function(){

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?><datamodel>
+  <parameters>
+    <parameter description="" name="phone" nullable="true" parameterMode="1" precision="0" scale="0" selectionForm="null" signed="true" size="100" type="12" typeName="VARCHAR"/>
+  </parameters>
+  <parametersEntity entityHeight="200" entityIconified="false" entityLocationX="8" entityLocationY="7" entityWidth="150"/>
+  <entity Title="" entityHeight="200" entityIconified="false" entityId="141570727519828" entityLocationX="184" entityLocationY="6" entityWidth="150" tableAlias="t" tableName="client_personal_data" tableSchemaName=""/>
+  <entity Title="" entityHeight="200" entityIconified="false" entityId="141570720194866" entityLocationX="388" entityLocationY="13" entityWidth="150" tableAlias="t1" tableName="bill_accounts" tableSchemaName=""/>
+  <relation leftEntityId="-1" leftEntityParameterName="phone" rightEntityFieldName="phone" rightEntityId="141570727519828"/>
+  <relation leftEntityFieldName="client_id" leftEntityId="141570720194866" rightEntityFieldName="client_id" rightEntityId="141570727519828"/>
+</datamodel>
