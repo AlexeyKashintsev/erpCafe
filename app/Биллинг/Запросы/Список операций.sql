@@ -4,6 +4,7 @@
  * @name qBillOperationsList
  * @readonly
  * @public
+ * @manual
  */ 
 Select * 
 From bill_operations t1

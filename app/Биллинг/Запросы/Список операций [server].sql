@@ -2,6 +2,7 @@
  * @author minya92
  * @name qBillOperationsListServer
  * @writable bill_operations
+ * @manual
  */ 
 Select * 
 From bill_operations t1

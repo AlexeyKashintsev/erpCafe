@@ -61,7 +61,9 @@ function ServiceModule() {
                         var obj = {
                             account_id: anAccountId,
                             service_cost_id: model.qServiceList.cursor.bill_item_cost_id,
-                            payment_date: payDate
+                            payment_date: payDate,
+                            account_service_id: aServiceId,
+                            service_start_date: new Date()
                         };
                         model.qAddService.push(obj);
                         model.save();
@@ -96,7 +98,8 @@ function ServiceModule() {
                 model.qDelServiceFromAccount.params.account_id = anAccountId;
                 model.qDelServiceFromAccount.params.service_id = model.qServiceListByAccount.cursor.bill_item_cost_id;
                 model.qDelServiceFromAccount.params.service_account_id = model.qServiceListByAccount.cursor.bill_services_accounts_id;
-                model.qDelServiceFromAccount.executeUpdate();
+                model.qDelServiceFromAccount.requery();
+                model.qDelServiceFromAccount.deleteRow();
                 model.save();
                 eventProcessor.addEvent('delServiceFromAccount', {
                     account_id: anAccountId,

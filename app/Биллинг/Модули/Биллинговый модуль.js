@@ -78,14 +78,15 @@ function BillModule() {
      * @param {type} aSum
      * @returns {@this;@pro;model.qBillAccountServer.cursor.bill_accounts_id}
      */
-    self.createBillAccount = function(aType, aFranchaziId) {
+    self.createBillAccount = function(aType, aFranchaziId, aClientId) {
         if (!aType)
             aType = self.ACCOUNT_TYPE_DEFAULT;
         model.qBillAccountServer.push({
             franchazi_id: aFranchaziId,
             account_type: aType,
             currnt_sum: 0,
-            active: true
+            active: true,
+            client_id : aClientId
         });
         model.save();
         eventProcessor.addEvent('billCreated', {
