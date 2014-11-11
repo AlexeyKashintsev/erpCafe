@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?><layout defaultCloseOperation="2" name="Form" prefHeight="360px" prefWidth="241px" windowClosing="formWindowClosing" windowOpened="formWindowOpened">
-  <nonvisual name="buttonGroup" type="ButtonGroupDesignInfo"/>
   <widget actionPerformed="tfAfterMonthActionPerformed" name="tfAfterMonth" parent="Form" prefHeight="24px" prefWidth="192px" text="0" type="TextFieldDesignInfo">
     <constraints height="24px" left="24px" top="240px" type="MarginConstraintsDesignInfo" width="192px"/>
   </widget>
@@ -30,8 +29,9 @@
   <widget name="checkBox" parent="Form" prefHeight="23px" prefWidth="192px" text="Заблокировать" type="CheckDesignInfo">
     <constraints bottom="60px" height="23px" left="24px" type="MarginConstraintsDesignInfo" width="192px"/>
   </widget>
-  <widget name="label2" parent="Form" prefHeight="24px" prefWidth="192px" text="Первое списание (месяцы)" type="LabelDesignInfo">
+  <widget name="label2" parent="Form" prefHeight="24px" prefWidth="192px" text="Первое списание через (дни)" type="LabelDesignInfo">
     <constraints height="24px" left="24px" top="216px" type="MarginConstraintsDesignInfo" width="192px"/>
   </widget>
+  <nonvisual name="buttonGroup" type="ButtonGroupDesignInfo"/>
   <layout type="MarginLayoutDesignInfo"/>
 </layout>

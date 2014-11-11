@@ -49,12 +49,15 @@ function ServiceModule() {
         if (model.qServiceList.length > 0) {
             if (model.qBillAccountServer.length > 0) {
                 if (model.qAddService.length == 0) {
-                    if ((bm.getSumFromAccountId(model.qBillAccountServer.cursor.bill_accounts_id) >= model.qServiceList.cursor.item_cost) || model.qServiceList.cursor.after_month) {
+                    if ((bm.getSumFromAccountId(model.qBillAccountServer.cursor.bill_accounts_id) >= model.qServiceList.cursor.item_cost) || model.qServiceList.cursor.after_days) {
                         var payDate = new Date();
                         //bm.addBillOperation(anAccountId, bm.OPERATION_DEL_SERVICE, model.qServiceList.cursor.item_cost);
-                        if (model.qServiceList.cursor.service_month) {
-                            var months = model.qServiceList.cursor.after_month ? model.qServiceList.cursor.after_month : 0;
-                            payDate.setMonth(payDate.getMonth() + months);
+                        if (model.qServiceList.cursor.after_days) {
+                            var days = model.qServiceList.cursor.after_days ? model.qServiceList.cursor.after_days : 0;
+                            payDate.setDate(payDate.getDate() + days);
+                        }
+                        if (model.qServiceList.cursor.service_month){
+                            payDate.setMonth(payDate.getMonth() + 1);
                         } else {
                             payDate.setDate(payDate.getDate() + model.qServiceList.cursor.service_days);
                         }
@@ -96,7 +99,7 @@ function ServiceModule() {
         if (model.qServiceListByAccount.length > 0) {
             if ((session.getUserRole() == "franchazi" && !model.qServiceListByAccount.cursor.locked) || session.getUserRole() == "admin") {
                 model.qDelServiceFromAccount.params.account_id = anAccountId;
-                model.qDelServiceFromAccount.params.service_id = model.qServiceListByAccount.cursor.bill_item_cost_id;
+                model.qDelServiceFromAccount.params.service_id = aServiceId;
                 model.qDelServiceFromAccount.params.service_account_id = model.qServiceListByAccount.cursor.bill_services_accounts_id;
                 model.qDelServiceFromAccount.requery();
                 model.qDelServiceFromAccount.deleteRow();
@@ -149,7 +152,7 @@ function ServiceModule() {
         model.qServiceList.cursor.service_name = aName;
         model.qServiceList.cursor.locked = aLock;
         model.qServiceList.cursor.start_date = new Date();
-        model.qServiceList.cursor.after_month = anAfterMonth;
+        model.qServiceList.cursor.after_days = anAfterMonth;
         model.save();
         eventProcessor.addEvent('serviceCreated', obj);
         return true;
@@ -194,7 +197,7 @@ function ServiceModule() {
                 service_days: aDays,
                 service_month: aMonth,
                 start_date: new Date(),
-                after_month: anAfterMonth
+                after_days: anAfterMonth
             };
             model.qServiseCostAdd.push(obj);
             model.qService.cursor.service_name = aName;

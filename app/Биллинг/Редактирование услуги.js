@@ -35,7 +35,7 @@ function EditServiceForm() {
                 form.tfName.text = model.qServiceList.cursor.service_name;
                 form.tfSum.text = model.qServiceList.cursor.item_cost;
                 form.tfDays.text = model.qServiceList.cursor.service_days;
-                form.tfAfterMonth.text = model.qServiceList.cursor.after_month;
+                form.tfAfterMonth.text = model.qServiceList.cursor.after_days;
                 form.checkBox.selected = model.qServiceList.cursor.locked;                
             });
         } else {
