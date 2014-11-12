@@ -10,6 +10,6 @@ From bill_accounts t1
  and t1.active = true)
  and ((:type = t1.account_type or :type is null)
  and t1.active = true)
- and (:franchazi_id is not null or :account_id is not null or :type is not null)
+ and (:franchazi_id is not null or :account_id is not null or :type is not null or :client_id is not null)
  and ((:client_id = t1.client_id or :client_id is null) 
  and t1.active = true)

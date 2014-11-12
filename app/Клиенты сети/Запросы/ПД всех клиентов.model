@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?><datamodel>
   <parametersEntity entityHeight="200" entityIconified="false" entityLocationX="8" entityLocationY="7" entityWidth="150"/>
+  <entity Title="" entityHeight="200" entityIconified="false" entityId="141581268313542" entityLocationX="360" entityLocationY="7" entityWidth="150" tableAlias="tc" tableName="bill_accounts" tableSchemaName=""/>
   <entity Title="" entityHeight="200" entityIconified="false" entityId="141225867032878" entityLocationX="178" entityLocationY="4" entityWidth="150" tableAlias="t1" tableName="client_personal_data" tableSchemaName=""/>
+  <relation leftEntityFieldName="client_id" leftEntityId="141581268313542" rightEntityFieldName="client_id" rightEntityId="141225867032878"/>
 </datamodel>
