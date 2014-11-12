@@ -17,7 +17,8 @@ function ClientServerModule() {
         model.qPersonalData.execute();
         Logger.info(model.qPersonalData);
         this.phone = aPhone;
-        this.bonusBill = model.qPersonalData.cursor.client_id;
+        this.clientId = model.qPersonalData.cursor.client_id;
+        this.bonusBill = billModule.getBillAccountClient(model.qPersonalData.cursor.client_id);
         this.firstName = model.qPersonalData.cursor.first_name;
         this.middleName = model.qPersonalData.cursor.middle_name;
         this.lastName = model.qPersonalData.cursor.last_name;
