@@ -9,6 +9,7 @@ function ItemsForTrade() {
     var contentTradeItem = new ContentTradeItem();
     var session = new ServerReport("UserSession");
     var bonus = new ServerModule("BonusModule");
+    
     self.setFranchazi = function(aFranchazi) {
         model.params.franchazi_id = aFranchazi;
     };
@@ -93,15 +94,24 @@ function formWindowClosing(evt) {//GEN-FIRST:event_formWindowClosing
                 }
                 Logger.info(model.qTradeItems.cursor.trade_items_id);
                 contentTradeItem.setTradeItem(model.qTradeItems.cursor.trade_items_id);
+                contentTradeItem.setBlock(false);
                 contentTradeItem.showModal(function(){
-                   /* model.qTradeItemContents.requery();
+                   /* model.qTradeItemContents.requery();                   .* ьщвудюйЕкфвуШеуьСщтеутеыюкуйгукн()ж
+
                     model.qTradeItems.requery();*/
                     model.requery();
                 });
             } else {
                 alert('Вы не выбрали товар!');
             }
-        } else  alert("Сначала продублируйте товар!");
+        } else {
+            contentTradeItem.setTradeItem(model.qTradeItems.cursor.trade_items_id);
+            contentTradeItem.setBlock(true);
+            //alert("Сначала продублируйте товар!");
+            contentTradeItem.showModal(function(){
+                    model.requery();
+                });
+        }
     }//GEN-LAST:event_btnItemEditContentActionPerformed
 
     function selectOnSelect(aEditor) {//GEN-FIRST:event_selectOnSelect

@@ -47,7 +47,15 @@ function YandexPaymentReceiverTest() {
                           r.orderSumBankPaycash + ";" + r.shopId + ";" + r.invoiceId + ";" +
                           r.customerNumber + ";" +self.SHOP_PASSWORD);
         if(hash === r.md5){
-            return xmlToYandex(self.RESPONSE_SUCCESS, r.shopId, r.invoiceId, r.orderSumAmount);
+            if(r.billAccountId && r.billOperationId){
+                model.qBillOperationsListServer.params.operation_id = r.billOperationId;
+                model.qBillOperationsListServer.params.account_id = r.billAccountId;
+                model.qBillOperationsListServer.requery();
+                if(!model.qBillOperationsListServer.empty){
+                    bm.setStatusBillOperation();
+                }
+                return xmlToYandex(self.RESPONSE_SUCCESS, r.shopId, r.invoiceId, r.orderSumAmount);
+            }
         } else {
             return xmlToYandex(self.RESPONSE_FAIL_HASH, r.shopId, r.invoiceId, r.orderSumAmount, false);
         }

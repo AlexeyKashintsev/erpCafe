@@ -9,10 +9,15 @@ function ContentTradeItem() {
 var self = this, model = this.model, form = this; 
 var warehouseItemList = new WarehouseItemList();
 self.productName = '';
+self.block = false;
 
 self.setTradeItem = function (aTradeItem){
     model.params.trade_item = aTradeItem;
 };
+
+self.setBlock = function(aBlock){
+    self.block = aBlock;
+}
 
 function btnReqActionPerformed(evt) {//GEN-FIRST:event_btnReqActionPerformed
     if (model.modified&&confirm('Сохранить изменения?')){
@@ -23,6 +28,18 @@ function btnReqActionPerformed(evt) {//GEN-FIRST:event_btnReqActionPerformed
 
 function formWindowOpened(evt) {//GEN-FIRST:event_formWindowOpened
     form.title = "Состав товара " + self.productName;
+    if(self.block) {
+        form.modelGrid.editable = false;
+        form.btnAdd.visible = false;
+        form.btnDel.visible = false;
+        form.btnSelect.visible = false;
+    }
+    else{
+        form.modelGrid.editable = true;
+        form.btnAdd.visible = true;
+        form.btnDel.visible = true;
+        form.btnSelect.visible = true;
+    }
 }//GEN-LAST:event_formWindowOpened
 
 function formWindowClosing(evt) {//GEN-FIRST:event_formWindowClosing
