@@ -56,10 +56,11 @@ function BillModule() {
         else return true;
     }
 
-    function reqBillAccounts(anAccountId, aFranchaziId, aType){
+    function reqBillAccounts(anAccountId, aFranchaziId, aType, aClientId){
         model.qBillAccountServer.params.type = aType;
         model.qBillAccountServer.params.franchazi_id = aFranchaziId;
         model.qBillAccountServer.params.account_id = anAccountId;
+        model.qBillAccountServer.params.client_id = aClientId;
         model.qBillAccountServer.requery();
     }
     
@@ -102,7 +103,7 @@ function BillModule() {
      * @returns {undefined}
      */
     self.getQuickSumFromAccountId = function(anAccountId) {
-        reqBillAccounts(anAccountId, null, null);
+        reqBillAccounts(anAccountId, null, null, null);
         if (model.qBillAccountServer.length > 0) return model.qBillAccountServer.cursor.currnt_sum;
         else return false;
     };
@@ -113,7 +114,7 @@ function BillModule() {
      */
     self.getSumFromAccountId = function(anAccountId) {
         model.qGetAccountBalance.params.account_id = anAccountId;
-        reqBillAccounts(anAccountId, null, null);
+        reqBillAccounts(anAccountId, null, null, null);
         model.qGetAccountBalance.requery();
         var account_balance = model.qGetAccountBalance.empty ? 0 : model.qGetAccountBalance.cursor.account_balance;
         if(model.qBillAccountServer.cursor.currnt_sum != account_balance){
@@ -142,14 +143,19 @@ function BillModule() {
     };
     /*
      * Добавление новой опреции по счету
-     * anAccountId - Id франчайзе
+     * anAccountId - номер счета
      * aType - тип операции (списание или пополнение)
      * aSum - сумма денежных средств
      * aStatus - статус операции (успешно, провалено, выставлен счет, в обработке)
      */
-    self.addBillOperation = function(anAccountId, anOperationType, aSum, aStatus) {
+    self.addBillOperation = function(anAccountId, anOperationType, aSum, aStatus, aClientId) {
         if (!aStatus)
             aStatus = self.OP_STATUS_SUCCESS;
+        if(aClientId){
+            self.getBillAccountClient(aClientId);
+            if(model.qBillAccountServer.empty) return false;
+            else anAccountId = model.qBillAccountServer.cursor.bill_accounts_id;
+        }
         var ERROR_SHORTAGE_MONEY = false;
         var obj = {
             account_id: anAccountId,
@@ -159,7 +165,7 @@ function BillModule() {
             operation_status: aStatus,
             user_name_perfomed: self.principal.name
         };
-        reqBillAccounts(anAccountId, null, null);
+        reqBillAccounts(anAccountId, null, null, null);
         var accountType = model.qBillAccountServer.cursor.account_type;
         var multiplier = getMultiplier(anOperationType);
         if ((multiplier === -1) && (aStatus === self.OP_STATUS_SUCCESS || aStatus === self.OP_STATUS_PAID) && (anOperationType != self.OPERATION_DEL_SERVICE) && (accountType != self.ACCOUNT_TYPE_CREDIT)) {
@@ -171,7 +177,7 @@ function BillModule() {
         } else {
             model.qBillOperationsListServer.push(obj);
             if (aStatus === self.OP_STATUS_SUCCESS) {
-                reqBillAccounts(anAccountId, null, null);
+                reqBillAccounts(anAccountId, null, null, null);
                 if (model.qBillAccountServer.length > 0)
                     model.qBillAccountServer.cursor.currnt_sum = model.qBillAccountServer.cursor.currnt_sum + aSum * multiplier;
             }
@@ -193,7 +199,7 @@ function BillModule() {
         model.qBillOperationsListServer.requery(function() {});
         if (model.qBillOperationsListServer.length > 0) {
             if (aStatus == self.OP_STATUS_SUCCESS) {
-                reqBillAccounts(model.qBillOperationsListServer.cursor.account_id, null, null);
+                reqBillAccounts(model.qBillOperationsListServer.cursor.account_id, null, null, null);
                 ERROR_SHORTAGE_MONEY = checkMoneyOnAccount(model.qBillOperationsListServer.cursor.account_id, model.qBillOperationsListServer.cursor.operation_sum);
                 if(!ERROR_SHORTAGE_MONEY)
                     model.qBillAccountServer.cursor.currnt_sum = model.qBillAccountServer.cursor.currnt_sum + model.qBillOperationsListServer.cursor.operation_sum * model.qBillOperationsListServer.cursor.multiplier;
@@ -229,7 +235,7 @@ function BillModule() {
     self.addItemTypeToAccount = function(anAccountId, anItemType){
         var opId = self.addBillOperation(anAccountId, self.OPERATION_ADD_ITEM_TYPE, 0);
         if(opId){
-            reqBillAccounts(anAccountId, null, null);
+            reqBillAccounts(anAccountId, null, null, null);
             if(model.qBillAccountServer.cursor.account_type === self.ACCOUNT_TYPE_BONUS){
                 model.qBillProductLink.push({
                     bill_product_links_id   : opId,
@@ -268,7 +274,16 @@ function BillModule() {
      * Получение счета по франчайзе
      */
     self.getBillAccount = function(aFranId){
-        reqBillAccounts(null, aFranId, null);
+        reqBillAccounts(null, aFranId, null, null);
+        return model.qBillAccountServer.cursor.bill_accounts_id;
+    };
+    
+    /*
+     * Получение счетов клинта
+     */
+    self.getBillAccountClient = function(aClientId, aType){
+        if(!aType) aType = null;
+        reqBillAccounts(null, null, aType, aClientId);
         return model.qBillAccountServer.cursor.bill_accounts_id;
     };
         
@@ -294,7 +309,7 @@ function BillModule() {
      */
     self.addCashToFranchazi = function(aSum, aType, aFranchaziId){
         var franchaziId = aFranchaziId ? aFranchaziId : session.getFranchazi();
-        reqBillAccounts(null, franchaziId, self.ACCOUNT_TYPE_DEFAULT);
+        reqBillAccounts(null, franchaziId, self.ACCOUNT_TYPE_DEFAULT, null);
         if(model.qBillAccountServer.length > 0){
             var accountId = model.qBillAccountServer.cursor.bill_accounts_id;
             if (aType === "bonus"){
