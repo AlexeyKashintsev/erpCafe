@@ -5,7 +5,7 @@
 function BuyItemsForm() {
     var self = this, model = this.model, form = this;
     var billItemsModule = new ServerModule("BillItemsModule");
-    var userSession = new ServerModule("UserSession");
+   // var userSession = new ServerModule("UserSession");
 
     var list = null;  
     var sum;
@@ -79,7 +79,7 @@ function BuyItemsForm() {
         while(model.qAccountType.next()){
             AccountTypes[model.qAccountType.cursor.bill_account_types_id] = model.qAccountType.cursor.type_name;
         }
-        model.qBillAccount.params.franchazi_id = userSession.getFranchazi();
+        model.qBillAccount.params.franchazi_id = 1;//userSession.getFranchazi();
         model.qBillAccount.requery(function(){
             model.qBillAccount.beforeFirst();
             var i = 1, selected = '';
@@ -101,6 +101,7 @@ function BuyItemsForm() {
         $("#prevButton, #doneButton, .Bills").show();
         $('.Bills').html('');
         ListBills(document.getElementById("Bills"));
+       // $("#yandexModal").modal('show');
     }
     
     function prevButtonClick() {
@@ -158,5 +159,26 @@ function BuyItemsForm() {
         document.getElementById('prevButton').onclick = prevButtonClick;
         document.getElementById('doneButton').onclick = doneButtonClick;
         document.getElementById('homeButton').onclick = homeButtonClick;
+        
+        //Yandex Form Modal
+        cmn.createElement("div", "yandex", aContainer, "yandex");
+        $("#yandex").html('<div class="modal fade" id="yandexModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">'+
+                                '<div class="modal-dialog">'+
+                                 ' <div class="modal-content">'+
+                                    '<div class="modal-header">'+
+                                      '<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>'+
+                                      '<h4 class="modal-title" id="myModalLabel">Modal title</h4>'+
+                                    '</div>'+
+                                    '<div class="modal-body">'+
+                                     ' ... '+
+                                   ' </div>'+
+                                    '<div class="modal-footer">'+
+                                      '<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>'+
+                                      '<button type="button" class="btn btn-primary">Save changes</button>'+
+                                    '</div>'+
+                                  '</div>'+
+                                '</div>'+
+                              '</div>'
+        );
     };
 }
