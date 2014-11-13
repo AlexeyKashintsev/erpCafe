@@ -5,7 +5,7 @@
 function BuyItemsForm() {
     var self = this, model = this.model, form = this;
     var billItemsModule = new ServerModule("BillItemsModule");
-   // var userSession = new ServerModule("UserSession");
+    var userSession = new ServerModule("UserSession");
 
     var list = null;  
     var sum;
@@ -79,7 +79,7 @@ function BuyItemsForm() {
         while(model.qAccountType.next()){
             AccountTypes[model.qAccountType.cursor.bill_account_types_id] = model.qAccountType.cursor.type_name;
         }
-        model.qBillAccount.params.franchazi_id = 1;//userSession.getFranchazi();
+        model.qBillAccount.params.franchazi_id = userSession.getFranchazi();
         model.qBillAccount.requery(function(){
             model.qBillAccount.beforeFirst();
             var i = 1, selected = '';
