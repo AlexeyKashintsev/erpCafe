@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?><layout defaultCloseOperation="2" name="Form" prefHeight="357px" prefWidth="400px">
+  <widget name="radioButton3" parent="Form" prefHeight="23px" prefWidth="81px" text="radioButton" type="RadioDesignInfo">
+    <constraints height="23px" right="7px" top="84px" type="MarginConstraintsDesignInfo" width="81px"/>
+  </widget>
+  <widget name="radioButton2" parent="Form" prefHeight="23px" prefWidth="81px" text="radioButton" type="RadioDesignInfo">
+    <constraints height="23px" left="228px" top="84px" type="MarginConstraintsDesignInfo" width="81px"/>
+  </widget>
+  <widget name="radioButton1" parent="Form" prefHeight="23px" prefWidth="81px" text="radioButton" type="RadioDesignInfo">
+    <constraints height="23px" left="144px" top="84px" type="MarginConstraintsDesignInfo" width="81px"/>
+  </widget>
+  <widget name="textField" parent="Form" prefHeight="24px" prefWidth="324px" text="textField" type="TextFieldDesignInfo">
+    <constraints height="24px" left="60px" top="120px" type="MarginConstraintsDesignInfo" width="324px"/>
+  </widget>
+  <widget name="scrollPane" parent="Form" prefHeight="156px" prefWidth="360px" type="ScrollDesignInfo">
+    <constraints height="156px" left="24px" top="156px" type="MarginConstraintsDesignInfo" width="360px"/>
+  </widget>
+  <widget name="textArea" parent="scrollPane" prefHeight="154px" prefWidth="358px" type="TextPaneDesignInfo"/>
+  <widget name="label" parent="Form" prefHeight="26px" prefWidth="36px" text="Тема:" type="LabelDesignInfo">
+    <constraints height="26px" left="24px" top="120px" type="MarginConstraintsDesignInfo" width="36px"/>
+  </widget>
+  <widget name="label1" parent="Form" prefHeight="24px" prefWidth="36px" text="Кому:" type="LabelDesignInfo">
+    <constraints height="24px" left="24px" top="84px" type="MarginConstraintsDesignInfo" width="36px"/>
+  </widget>
+  <widget name="radioButton" parent="Form" prefHeight="23px" prefWidth="81px" text="radioButton" type="RadioDesignInfo">
+    <constraints height="23px" left="60px" top="84px" type="MarginConstraintsDesignInfo" width="81px"/>
+  </widget>
+  <nonvisual name="buttonGroup" type="ButtonGroupDesignInfo"/>
+  <layout type="MarginLayoutDesignInfo"/>
+</layout>

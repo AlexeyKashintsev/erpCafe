@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?><datamodel>
   <parametersEntity entityHeight="200" entityIconified="false" entityLocationX="12" entityLocationY="12" entityWidth="150"/>
+  <entity Name="qGetClientEmail" Title="" entityHeight="200" entityIconified="false" entityId="141588655713898" entityLocationX="796" entityLocationY="7" entityWidth="150" queryId="qGetClientEmail" tableName="" tableSchemaName=""/>
   <entity Name="qGetSendParams" Title="" entityHeight="200" entityIconified="false" entityId="141113163227676" entityLocationX="173" entityLocationY="9" entityWidth="150" queryId="qGetSendParams" tableName="" tableSchemaName=""/>
-  <entity Name="usersByName" Title="" entityHeight="200" entityIconified="false" entityId="141208553365833" entityLocationX="357" entityLocationY="13" entityWidth="150" queryId="usersByName" tableName="" tableSchemaName=""/>
+  <entity Name="usersByName" Title="" entityHeight="200" entityIconified="false" entityId="141208553365833" entityLocationX="331" entityLocationY="11" entityWidth="150" queryId="usersByName" tableName="" tableSchemaName=""/>
+  <entity Name="qGetFranchaziEmail" Title="" entityHeight="200" entityIconified="false" entityId="141588655959665" entityLocationX="643" entityLocationY="9" entityWidth="150" queryId="qGetFranchaziEmail" tableName="" tableSchemaName=""/>
+  <entity Name="qGetBaristaEmail" Title="" entityHeight="200" entityIconified="false" entityId="141588655440042" entityLocationX="490" entityLocationY="10" entityWidth="150" queryId="qGetBaristaEmail" tableName="" tableSchemaName=""/>
 </datamodel>

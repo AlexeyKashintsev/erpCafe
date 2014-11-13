@@ -62,6 +62,70 @@ function MessageSender() {
         return num;
     }
     
+    function getFranchaziEmails(){
+        var mass = [];
+        model.qGetFranchaziEmail.requery();
+        model.qGetFranchaziEmail.beforeFirst();
+        while (model.qGetFranchaziEmail.next()){
+            mass[mass.length] = model.qGetFranchaziEmail.cursor.usr_email;
+        }
+        return mass;
+    }
+    
+    function getBaristaEmails(){
+        var mass = [];
+        model.qGetBaristaEmail.requery();
+        model.qGetBaristaEmail.beforeFirst();
+        while (model.qGetBaristaEmail.next()){
+            mass[mass.length] = model.qGetBaristaEmail.cursor.usr_email;
+        }
+        return mass;
+    }
+    
+    function getClientEmails(city_id){
+        var mass = [];
+        if (city_id) model.qGetClientEmail.params.city_id = city_id;
+        model.qGetClientEmail.requery();
+        model.qGetClientEmail.beforeFirst();
+        while (model.qGetClientEmail.next()){
+            mass[mass.length] = model.qGetClientEmail.cursor.email;
+        }
+        return mass;
+    }
+    
+    function createListEmails(userType, city_id){
+        var listEmails = [];
+        switch (userType){
+            case "franchazi" :
+                listEmails.concat(getFranchaziEmails());
+                break;
+            case "barista" : 
+                listEmails.concat(getBaristaEmails());
+                break;
+            case "client" :
+                listEmails.concat(getClientEmails());
+                break;
+            default :
+                listEmails.concat(getFranchaziEmails(), getBaristaEmails(), getClientEmails(city_id) );
+                break;
+        }
+        return listEmails;
+    }
+    
+    function massSendEmails(listEmails, text, subject){
+        if (!subject || subject === "") subject = "Рассылка rcCoffee";
+        
+        for (var email in listEmails){
+            emailSender.sendEmail("rcCoffee", email, subject, text);
+        }
+    }
+    
+    self.mailing = function(text, userType, city_id, subject){
+        var list = createListEmails(userType, city_id);
+        massSendEmails(list, text, subject);
+    };
+    
+    
 //Рудимент ------------------------------------------------------------------------------- 
 //TODO Удалить перед релизом
     function sendSMS(aMsg, aPhone){
