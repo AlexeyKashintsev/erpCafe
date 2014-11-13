@@ -181,20 +181,20 @@ function ClientServerModule() {
             if (!model.qGetPersonalDataOfAllClients.cursor.reg_date){
                 model.qGetPersonalDataOfAllClients.cursor.reg_date = new Date();
             }
-            if (!model.qGetPersonalDataOfAllClients.cursor.bill_client_id){
-                var bill_id = billModule.createBillAccount(billModule.ACCOUNT_TYPE_BONUS, null, model.qGetPersonalDataOfAllClients.cursor.client_id);
-                if (model.qGetPersonalDataOfAllClients.cursor.address){
-                    var bonuscount = Number(model.qGetPersonalDataOfAllClients.cursor.address);
-                    if (!isNaN(bonuscount)) {
-                        try {
-                            billModule.addBillOperation(bill_id, billModule.OPERATION_ADD_BONUS, bonuscount);
-                            model.qGetPersonalDataOfAllClients.cursor.address = null;
-                        } catch (e){
-                            Logger.warning(e);
-                        }
+
+            var bill_id = billModule.createBillAccount(billModule.ACCOUNT_TYPE_BONUS, null, model.qGetPersonalDataOfAllClients.cursor.client_id);
+            if (model.qGetPersonalDataOfAllClients.cursor.address){
+                var bonuscount = Number(model.qGetPersonalDataOfAllClients.cursor.address);
+                if (!isNaN(bonuscount)) {
+                    try {
+                        billModule.addBillOperation(bill_id, billModule.OPERATION_ADD_BONUS, bonuscount);
+                        model.qGetPersonalDataOfAllClients.cursor.address = null;
+                    } catch (e){
+                        Logger.warning(e);
                     }
                 }
             }
+            
         }
         model.save();
     };
