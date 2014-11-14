@@ -58,8 +58,10 @@ function MessageSender() {
     
     function fixphone(aPhone){
         var num = aPhone.replace(/\D+/g,"");
-        num = "8" + num.slice(-10);
-        return num;
+        if (num.length >= 10){
+            num = "8" + num.slice(-10);
+            return num;
+        } else return null;
     }
     
     function getFranchaziPhones(){
@@ -67,7 +69,7 @@ function MessageSender() {
         model.qGetFranchaziPhones.requery();
         model.qGetFranchaziPhones.beforeFirst();
         while (model.qGetFranchaziPhones.next()){
-            mass[mass.length] = model.qGetFranchaziPhones.cursor.usr_email;
+            mass[mass.length] = model.qGetFranchaziPhones.cursor.usr_phone;
         }
         return mass;
     }
@@ -77,7 +79,7 @@ function MessageSender() {
         model.qGetBaristaPhones.requery();
         model.qGetBaristaPhones.beforeFirst();
         while (model.qGetBaristaPhones.next()){
-            mass[mass.length] = model.qGetBaristaPhones.cursor.usr_email;
+            mass[mass.length] = model.qGetBaristaPhones.cursor.usr_phone;
         }
         return mass;
     }
@@ -88,7 +90,7 @@ function MessageSender() {
         model.qGetClientPhones.requery();
         model.qGetClientPhones.beforeFirst();
         while (model.qGetClientPhones.next()){
-            mass[mass.length] = model.qGetClientPhones.cursor.email;
+            mass[mass.length] = model.qGetClientPhones.cursor.phone;
         }
         return mass;
     }
@@ -97,16 +99,16 @@ function MessageSender() {
         var listPhones = [];
         switch (userType){
             case "franchazi" :
-                listPhones.concat(getFranchaziPhones());
+                listPhones = listPhones.concat(getFranchaziPhones());
                 break;
             case "barista" : 
-                listPhones.concat(getBaristaPhones());
+                listPhones = listPhones.concat(getBaristaPhones());
                 break;
             case "client" :
-                listPhones.concat(getClientPhones());
+                listPhones = listPhones.concat(getClientPhones());
                 break;
             default :
-                listPhones.concat(getFranchaziEmails(), getBaristaEmails(), getClientEmails(city_id) );
+                listPhones = listPhones.concat(getFranchaziPhones(), getBaristaPhones(), getClientPhones(city_id)); 
                 break;
         }
         return listPhones;
@@ -114,7 +116,9 @@ function MessageSender() {
     
     function massSendSMS(listPhones, text){
         for (var phone in listPhones){
-            smsSender.sendSms(phone, text);
+            listPhones[phone] = fixphone(listPhones[phone]);
+            if (listPhones[phone])
+                smsSender.sendSms(listPhones[phone], text);
         }
     }
     
