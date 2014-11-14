@@ -16,12 +16,7 @@ function AddBillOperation() {
         var operation;
         if(form.rbAdd.selected) operation = "OPERATION_ADD_CASH";
         else operation = "OPERATION_DEL_BUY";
-        if(!billModule.addBillOperation(self.account_id, billModule.getSelfPropertyValue(operation), form.tfSum.text, billModule.getSelfPropertyValue("OP_STATUS_SUCCESS")))
-        {
-            if(confirm("У вас недосточно средств на счету!\nСохранить заказ?")){
-                billModule.addBillOperation(self.account_id, operation, form.tfSum.text, billModule.getSelfPropertyValue("OP_STATUS_FAIL"));
-            }
-        }
+        billModule.addBillOperation(self.account_id, billModule.getSelfPropertyValue(operation), form.tfSum.text, billModule.getSelfPropertyValue("OP_STATUS_SUCCESS"));
         form.close(true);
     }//GEN-LAST:event_btnSaveActionPerformed
 }

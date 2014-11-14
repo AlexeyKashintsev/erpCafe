@@ -31,15 +31,17 @@ function btnReqActionPerformed(evt) {//GEN-FIRST:event_btnReqActionPerformed
 }//GEN-LAST:event_btnReqActionPerformed
 
 function btnSaveActionPerformed(evt) {//GEN-FIRST:event_btnSaveActionPerformed
-    //TODO Наверное так делать не безопасно, хз как правильно сделать
+    //Не позволит пополнить счет не админу на стороне сервера.
     if(session.getUserRole()== "admin"){
         addBillOperation.setAccountId(model.qBillAccount.cursor.bill_accounts_id);
         addBillOperation.showModal(function(aResult){
+            model.qBillAccount.requery();
             model.requery();
         });
     } else {
         var addBalance = new AddBalance(model.qBillAccount.cursor.bill_accounts_id);
         addBalance.showModal(function(){
+            model.qBillAccount.requery();
             model.requery();
         });
     }
