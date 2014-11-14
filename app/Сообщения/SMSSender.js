@@ -9,7 +9,7 @@ function SmsSender(anEmail, aPassword) {
     var urlHandler = new URL_handler();
     var defUrl = 'https://api.sms24x7.ru/';
     var sid = null;
-    var defSign = 'APMA';
+    var defSign = 'rcCoffee';
     var sessionBalance = 0;
     
     self.smsAuth = function(anEmail, aPassword){

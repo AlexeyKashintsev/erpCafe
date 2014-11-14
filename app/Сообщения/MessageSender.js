@@ -20,7 +20,7 @@ function MessageSender() {
     
     self.sendMessage = function(anEventType, aClient, aParams){
         if (!aParams) aParams = {};
-        if (typeof (aClient) != "object"){
+        if (typeof (aClient) !== "object"){
             model.usersByName.params.usr_name = aClient;
             model.usersByName.requery();
             if (model.usersByName.length === 0) return "error";
@@ -62,67 +62,65 @@ function MessageSender() {
         return num;
     }
     
-    function getFranchaziEmails(){
+    function getFranchaziPhones(){
         var mass = [];
-        model.qGetFranchaziEmail.requery();
-        model.qGetFranchaziEmail.beforeFirst();
-        while (model.qGetFranchaziEmail.next()){
-            mass[mass.length] = model.qGetFranchaziEmail.cursor.usr_email;
+        model.qGetFranchaziPhones.requery();
+        model.qGetFranchaziPhones.beforeFirst();
+        while (model.qGetFranchaziPhones.next()){
+            mass[mass.length] = model.qGetFranchaziPhones.cursor.usr_email;
         }
         return mass;
     }
     
-    function getBaristaEmails(){
+    function getBaristaPhones(){
         var mass = [];
-        model.qGetBaristaEmail.requery();
-        model.qGetBaristaEmail.beforeFirst();
-        while (model.qGetBaristaEmail.next()){
-            mass[mass.length] = model.qGetBaristaEmail.cursor.usr_email;
+        model.qGetBaristaPhones.requery();
+        model.qGetBaristaPhones.beforeFirst();
+        while (model.qGetBaristaPhones.next()){
+            mass[mass.length] = model.qGetBaristaPhones.cursor.usr_email;
         }
         return mass;
     }
     
-    function getClientEmails(city_id){
+    function getClientPhones(city_id){
         var mass = [];
-        if (city_id) model.qGetClientEmail.params.city_id = city_id;
-        model.qGetClientEmail.requery();
-        model.qGetClientEmail.beforeFirst();
-        while (model.qGetClientEmail.next()){
-            mass[mass.length] = model.qGetClientEmail.cursor.email;
+        if (city_id) model.qGetClientPhones.params.city_id = city_id;
+        model.qGetClientPhones.requery();
+        model.qGetClientPhones.beforeFirst();
+        while (model.qGetClientPhones.next()){
+            mass[mass.length] = model.qGetClientPhones.cursor.email;
         }
         return mass;
     }
     
-    function createListEmails(userType, city_id){
-        var listEmails = [];
+    function createListPhones(userType, city_id){
+        var listPhones = [];
         switch (userType){
             case "franchazi" :
-                listEmails.concat(getFranchaziEmails());
+                listPhones.concat(getFranchaziPhones());
                 break;
             case "barista" : 
-                listEmails.concat(getBaristaEmails());
+                listPhones.concat(getBaristaPhones());
                 break;
             case "client" :
-                listEmails.concat(getClientEmails());
+                listPhones.concat(getClientPhones());
                 break;
             default :
-                listEmails.concat(getFranchaziEmails(), getBaristaEmails(), getClientEmails(city_id) );
+                listPhones.concat(getFranchaziEmails(), getBaristaEmails(), getClientEmails(city_id) );
                 break;
         }
-        return listEmails;
+        return listPhones;
     }
     
-    function massSendEmails(listEmails, text, subject){
-        if (!subject || subject === "") subject = "Рассылка rcCoffee";
-        
-        for (var email in listEmails){
-            emailSender.sendEmail("rcCoffee", email, subject, text);
+    function massSendSMS(listPhones, text){
+        for (var phone in listPhones){
+            smsSender.sendSms(phone, text);
         }
     }
     
-    self.mailing = function(text, userType, city_id, subject){
-        var list = createListEmails(userType, city_id);
-        massSendEmails(list, text, subject);
+    self.massSending = function(text, userType, city_id){
+        var list = createListPhones(userType, city_id);
+        massSendSMS(list, text);
     };
     
     
