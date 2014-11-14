@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?><datamodel>
+  <parametersEntity entityHeight="200" entityIconified="false" entityLocationX="8" entityLocationY="7" entityWidth="150"/>
+  <entity Title="" entityHeight="200" entityIconified="false" entityId="141588768989275" entityLocationX="177" entityLocationY="9" entityWidth="150" tableAlias="t1" tableName="mtd_users" tableSchemaName=""/>
+  <entity Title="" entityHeight="200" entityIconified="false" entityId="141588769609837" entityLocationX="364" entityLocationY="14" entityWidth="150" tableAlias="t" tableName="mtd_groups" tableSchemaName=""/>
+  <relation leftEntityFieldName="usr_name" leftEntityId="141588768989275" rightEntityFieldName="usr_name" rightEntityId="141588769609837"/>
+</datamodel>

@@ -55,6 +55,10 @@ function StartMasterAdminForm() {
             display     :   "Настройка сообщений",
             dispForm    :   "messengerSettings"
         },
+        massSendSMS     :   {
+            display     :   "Массовая рассылка СМС",
+            dispForm    :   "msgMassSendForm"
+        },
         initClients     :   {
             display     :   "Восстановление пользователей",
             dispForm    :   "initClientsForm"
