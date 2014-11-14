@@ -56,11 +56,11 @@ function ServiceModule() {
                             var days = model.qServiceList.cursor.after_days ? model.qServiceList.cursor.after_days : 0;
                             payDate.setDate(payDate.getDate() + days);
                         }
-                        if (model.qServiceList.cursor.service_month){
-                            payDate.setMonth(payDate.getMonth() + 1);
-                        } else {
-                            payDate.setDate(payDate.getDate() + model.qServiceList.cursor.service_days);
-                        }
+//                        if (model.qServiceList.cursor.service_month){
+//                            payDate.setMonth(payDate.getMonth() + 1);
+//                        } else {
+//                            payDate.setDate(payDate.getDate() + model.qServiceList.cursor.service_days);
+//                        }
                         var obj = {
                             account_id: anAccountId,
                             service_cost_id: model.qServiceList.cursor.bill_item_cost_id,
