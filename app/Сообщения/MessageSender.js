@@ -20,7 +20,7 @@ function MessageSender() {
     
     self.sendMessage = function(anEventType, aClient, aParams){
         if (!aParams) aParams = {};
-        if (typeof (aClient) != "object"){
+        if (typeof (aClient) !== "object"){
             model.usersByName.params.usr_name = aClient;
             model.usersByName.requery();
             if (model.usersByName.length === 0) return "error";
@@ -58,9 +58,75 @@ function MessageSender() {
     
     function fixphone(aPhone){
         var num = aPhone.replace(/\D+/g,"");
-        num = "8" + num.slice(-10);
-        return num;
+        if (num.length >= 10){
+            num = "8" + num.slice(-10);
+            return num;
+        } else return null;
     }
+    
+    function getFranchaziPhones(){
+        var mass = [];
+        model.qGetFranchaziPhones.requery();
+        model.qGetFranchaziPhones.beforeFirst();
+        while (model.qGetFranchaziPhones.next()){
+            mass[mass.length] = model.qGetFranchaziPhones.cursor.usr_phone;
+        }
+        return mass;
+    }
+    
+    function getBaristaPhones(){
+        var mass = [];
+        model.qGetBaristaPhones.requery();
+        model.qGetBaristaPhones.beforeFirst();
+        while (model.qGetBaristaPhones.next()){
+            mass[mass.length] = model.qGetBaristaPhones.cursor.usr_phone;
+        }
+        return mass;
+    }
+    
+    function getClientPhones(city_id){
+        var mass = [];
+        if (city_id) model.qGetClientPhones.params.city_id = city_id;
+        model.qGetClientPhones.requery();
+        model.qGetClientPhones.beforeFirst();
+        while (model.qGetClientPhones.next()){
+            mass[mass.length] = model.qGetClientPhones.cursor.phone;
+        }
+        return mass;
+    }
+    
+    function createListPhones(userType, city_id){
+        var listPhones = [];
+        switch (userType){
+            case "franchazi" :
+                listPhones = listPhones.concat(getFranchaziPhones());
+                break;
+            case "barista" : 
+                listPhones = listPhones.concat(getBaristaPhones());
+                break;
+            case "client" :
+                listPhones = listPhones.concat(getClientPhones());
+                break;
+            default :
+                listPhones = listPhones.concat(getFranchaziPhones(), getBaristaPhones(), getClientPhones(city_id)); 
+                break;
+        }
+        return listPhones;
+    }
+    
+    function massSendSMS(listPhones, text){
+        for (var phone in listPhones){
+            listPhones[phone] = fixphone(listPhones[phone]);
+            if (listPhones[phone])
+                smsSender.sendSms(listPhones[phone], text);
+        }
+    }
+    
+    self.massSending = function(text, userType, city_id){
+        var list = createListPhones(userType, city_id);
+        massSendSMS(list, text);
+    };
+    
     
 //Рудимент ------------------------------------------------------------------------------- 
 //TODO Удалить перед релизом

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?><layout defaultCloseOperation="2" name="Form" prefHeight="215px" prefWidth="384px">
+  <widget name="label1" parent="Form" prefHeight="24px" prefWidth="36px" text="Кому:" type="LabelDesignInfo">
+    <constraints height="24px" left="24px" top="24px" type="MarginConstraintsDesignInfo" width="36px"/>
+  </widget>
+  <widget buttonGroup="buttonGroup" name="rbAll" parent="Form" prefHeight="23px" prefWidth="81px" selected="true" text="Все" type="RadioDesignInfo">
+    <constraints height="23px" right="7px" top="24px" type="MarginConstraintsDesignInfo" width="81px"/>
+  </widget>
+  <widget buttonGroup="buttonGroup" name="rbClient" parent="Form" prefHeight="23px" prefWidth="81px" text="Клиенты" type="RadioDesignInfo">
+    <constraints height="23px" left="228px" top="24px" type="MarginConstraintsDesignInfo" width="81px"/>
+  </widget>
+  <widget buttonGroup="buttonGroup" name="rbBar" parent="Form" prefHeight="23px" prefWidth="81px" text="Баристы" type="RadioDesignInfo">
+    <constraints height="23px" left="144px" top="24px" type="MarginConstraintsDesignInfo" width="81px"/>
+  </widget>
+  <widget buttonGroup="buttonGroup" name="rbFran" parent="Form" prefHeight="23px" prefWidth="81px" text="Франчайзи" type="RadioDesignInfo">
+    <constraints height="23px" left="60px" top="24px" type="MarginConstraintsDesignInfo" width="81px"/>
+  </widget>
+  <widget name="scrollPane" parent="Form" prefHeight="72px" prefWidth="336px" type="ScrollDesignInfo">
+    <constraints height="72px" left="24px" top="60px" type="MarginConstraintsDesignInfo" width="336px"/>
+  </widget>
+  <widget name="textArea" parent="scrollPane" prefHeight="70px" prefWidth="334px" type="TextPaneDesignInfo"/>
+  <widget actionPerformed="buttonActionPerformed" name="button" parent="Form" prefHeight="23px" prefWidth="113px" text="Отправить" type="ButtonDesignInfo">
+    <constraints bottom="23px" height="23px" left="240px" type="MarginConstraintsDesignInfo" width="113px"/>
+  </widget>
+  <widget actionPerformed="button1ActionPerformed" name="button1" parent="Form" prefHeight="24px" prefWidth="71px" text="Отмена" type="ButtonDesignInfo">
+    <constraints bottom="22px" height="24px" left="36px" type="MarginConstraintsDesignInfo" width="71px"/>
+  </widget>
+  <nonvisual name="buttonGroup" type="ButtonGroupDesignInfo"/>
+  <layout type="MarginLayoutDesignInfo"/>
+</layout>
