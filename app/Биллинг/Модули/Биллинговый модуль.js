@@ -8,8 +8,12 @@ function BillModule() {
     Session.set('BillModule', this);
     var self = this, model = this.model;
     var eventProcessor = new EventProcessor();
+    var af = new AdminFunctions();
     var session = Session.get("UserSession");
     var sender = new MessageSender();
+    
+    var SALT = "UGjkergUJHfre86456ergBdeptr4gFH84bef";
+    
     // Типы операций
     self.OPERATION_ADD_CASH     = 1; //Добавление средств на счет
     self.OPERATION_ADD_BONUS    = 2; //
@@ -147,8 +151,9 @@ function BillModule() {
      * aType - тип операции (списание или пополнение)
      * aSum - сумма денежных средств
      * aStatus - статус операции (успешно, провалено, выставлен счет, в обработке)
+     * TODO добавить MD5 проверку!!!
      */
-    self.addBillOperation = function(anAccountId, anOperationType, aSum, aStatus, aClientId) {
+    self.addBillOperation = function(anAccountId, anOperationType, aSum, aStatus, aClientId, aMD5) {
         if (!aStatus)
             aStatus = self.OP_STATUS_SUCCESS;
         if(aClientId){
@@ -168,6 +173,10 @@ function BillModule() {
         reqBillAccounts(anAccountId, null, null, null);
         var accountType = model.qBillAccountServer.cursor.account_type;
         var multiplier = getMultiplier(anOperationType);
+        var MD5 = af.MD5(SALT);
+        //Проверка безопасного проведенеия операции пополнения счета
+        if(session.getUserRole() != "admin" && MD5 != aMD5 && anOperationType == self.OPERATION_ADD_CASH && aSum > 0 && aStatus == self.OP_STATUS_SUCCESS && multiplier > 0)
+            return false;
         if ((multiplier === -1) && (aStatus === self.OP_STATUS_SUCCESS || aStatus === self.OP_STATUS_PAID) && (anOperationType != self.OPERATION_DEL_SERVICE) && (accountType != self.ACCOUNT_TYPE_CREDIT)) {
             ERROR_SHORTAGE_MONEY = checkMoneyOnAccount(anAccountId, aSum);
         }
@@ -193,12 +202,16 @@ function BillModule() {
      * @param {type} aStatus
      * @returns {undefined}
      */
-    self.setStatusBillOperation = function(anOperationId, aStatus) {
+    self.setStatusBillOperation = function(anOperationId, aStatus, aMD5) {
         var ERROR_SHORTAGE_MONEY = false;
         model.params.operation_id = anOperationId;
         model.qBillOperationsListServer.requery(function() {});
         if (model.qBillOperationsListServer.length > 0) {
             if (aStatus == self.OP_STATUS_SUCCESS) {
+                var MD5 = af.MD5(SALT);
+                //Проверка безопасного проведенеия операции пополнения счета
+                if(session.getUserRole() != "admin" && MD5 != aMD5 && aStatus == self.OP_STATUS_SUCCESS)
+                    return false;
                 reqBillAccounts(model.qBillOperationsListServer.cursor.account_id, null, null, null);
                 ERROR_SHORTAGE_MONEY = checkMoneyOnAccount(model.qBillOperationsListServer.cursor.account_id, model.qBillOperationsListServer.cursor.operation_sum);
                 if(!ERROR_SHORTAGE_MONEY)
@@ -225,27 +238,6 @@ function BillModule() {
                     status: aStatus
                 }, ERRORS.INVALID_OP_ID);
         }
-    };
-    /*
-     * Добавление типа товара на лицевой счет
-     * @param {type} anAccountId
-     * @param {type} aBonusSum
-     * @returns {undefined}
-     */
-    self.addItemTypeToAccount = function(anAccountId, anItemType){
-        var opId = self.addBillOperation(anAccountId, self.OPERATION_ADD_ITEM_TYPE, 0);
-        if(opId){
-            reqBillAccounts(anAccountId, null, null, null);
-            if(model.qBillAccountServer.cursor.account_type === self.ACCOUNT_TYPE_BONUS){
-                model.qBillProductLink.push({
-                    bill_product_links_id   : opId,
-                    account_id              : anAccountId,
-                    item_type               : anItemType
-                });
-                model.save();
-                return true;
-            } else return false;
-        }     else return false;
     };
     /*
      * Добавление товаров на счет
@@ -314,10 +306,10 @@ function BillModule() {
             var accountId = model.qBillAccountServer.cursor.bill_accounts_id;
             if (aType === "bonus"){
                 var multiplier = 0.05;
-                return self.addBillOperation(accountId, self.OPERATION_ADD_CASH, aSum * multiplier);
+                return self.addBillOperation(accountId, self.OPERATION_ADD_CASH, aSum * multiplier, false, false, af.MD5(SALT));
             }
             if (aType === "money")
-                return self.addBillOperation(accountId, self.OPERATION_ADD_CASH, aSum);
+                return self.addBillOperation(accountId, self.OPERATION_ADD_CASH, aSum, false, false, af.MD5(SALT));
         } else 
             return false;
     };

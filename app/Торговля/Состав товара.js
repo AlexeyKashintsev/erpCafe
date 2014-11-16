@@ -33,12 +33,14 @@ function formWindowOpened(evt) {//GEN-FIRST:event_formWindowOpened
         form.btnAdd.visible = false;
         form.btnDel.visible = false;
         form.btnSelect.visible = false;
+        form.label.visible = true;
     }
     else{
         form.modelGrid.editable = true;
         form.btnAdd.visible = true;
         form.btnDel.visible = true;
         form.btnSelect.visible = true;
+        form.label.visible = false;
     }
 }//GEN-LAST:event_formWindowOpened
 

@@ -19,25 +19,29 @@ model.params.franchazi_id = null;
 
 self.setFranchaziId = function(aFranchaziId){
     model.params.franchazi_id = aFranchaziId;
-    model.listTradePoints.requery();
+    model.qBillAccount.params.franchazi_id = aFranchaziId;
+    model.qBillAccount.requery();
 };
 function btnReqActionPerformed(evt) {//GEN-FIRST:event_btnReqActionPerformed
     if (self.model.modified&&confirm('Сохранить изменения?')){
         self.model.save();
     }
+    model.qBillAccount.requery();
     model.requery();
 }//GEN-LAST:event_btnReqActionPerformed
 
 function btnSaveActionPerformed(evt) {//GEN-FIRST:event_btnSaveActionPerformed
-    //TODO Наверное так делать не безопасно, хз как правильно сделать
+    //Не позволит пополнить счет не админу на стороне сервера.
     if(session.getUserRole()== "admin"){
         addBillOperation.setAccountId(model.qBillAccount.cursor.bill_accounts_id);
         addBillOperation.showModal(function(aResult){
+            model.qBillAccount.requery();
             model.requery();
         });
     } else {
         var addBalance = new AddBalance(model.qBillAccount.cursor.bill_accounts_id);
         addBalance.showModal(function(){
+            model.qBillAccount.requery();
             model.requery();
         });
     }
@@ -45,8 +49,11 @@ function btnSaveActionPerformed(evt) {//GEN-FIRST:event_btnSaveActionPerformed
 }//GEN-LAST:event_btnSaveActionPerformed
 
 function formWindowOpened(evt) {//GEN-FIRST:event_formWindowOpened
-    if(!model.params.franchazi_id)
+    if(!model.params.franchazi_id){
         model.params.franchazi_id = session.getFranchazi();
+        model.qBillAccount.params.franchazi_id = session.getFranchazi();
+        model.qBillAccount.requery();
+    }
 }//GEN-LAST:event_formWindowOpened
 
 function formWindowClosing(evt) {//GEN-FIRST:event_formWindowClosing
@@ -93,9 +100,6 @@ function formWindowClosing(evt) {//GEN-FIRST:event_formWindowClosing
         }
     }//GEN-LAST:event_btnDel1ActionPerformed
 
-    function btnReq1ActionPerformed(evt) {//GEN-FIRST:event_btnReq1ActionPerformed
-    }//GEN-LAST:event_btnReq1ActionPerformed
-
     function btnSave1ActionPerformed(evt) {//GEN-FIRST:event_btnSave1ActionPerformed
         historyOperations.setAccountId(model.qBillAccount.cursor.bill_accounts_id);
         historyOperations.showModal(function(){});
@@ -104,4 +108,8 @@ function formWindowClosing(evt) {//GEN-FIRST:event_formWindowClosing
     function buttonActionPerformed(evt) {//GEN-FIRST:event_buttonActionPerformed
        billServerModule.paymentForServices();
     }//GEN-LAST:event_buttonActionPerformed
+
+    function btnReq1ActionPerformed(evt) {//GEN-FIRST:event_btnReq1ActionPerformed
+        model.qServiceListByAccount.requery();
+    }//GEN-LAST:event_btnReq1ActionPerformed
 }

@@ -57,4 +57,9 @@ function AddBalance(anAccountId) {
         });
         return res;
      }
+
+    function radioButton1ActionPerformed(evt) {//GEN-FIRST:event_radioButton1ActionPerformed
+        $("#yandexModal").modal('show');
+       // form.close();
+    }//GEN-LAST:event_radioButton1ActionPerformed
 }
