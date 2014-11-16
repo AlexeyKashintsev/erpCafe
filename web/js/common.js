@@ -1,7 +1,12 @@
-﻿var units = {};
+var units = {};
 var cmn = {};
-var session = {};
-var Session = new (function() {
+var session = {/*
+    userRole
+    userName
+    activeSession
+    tradePoint
+    franchaziId*/};
+var Session = (function() {
         var servModules = {};
         this.get = function(aModuleName) {
             if (!servModules[aModuleName]) {

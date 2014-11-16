@@ -3,6 +3,6 @@
     <parameter description="" name="session_id" nullable="true" parameterMode="1" precision="0" scale="0" selectionForm="null" signed="true" size="0" type="2" typeName="NUMERIC"/>
   </parameters>
   <parametersEntity entityHeight="200" entityIconified="false" entityLocationX="12" entityLocationY="12" entityWidth="150"/>
-  <entity Name="tradeSessionDetails" Title="" entityHeight="238" entityIconified="false" entityId="141562035195744" entityLocationX="246" entityLocationY="18" entityWidth="150" queryId="tradeSessionDetails" tableName="" tableSchemaName=""/>
+  <entity Name="tradeSessionDetails" Title="" entityHeight="238" entityIconified="false" entityId="141562035195744" entityLocationX="234" entityLocationY="11" entityWidth="150" onRequeried="tradeSessionDetailsOnRequeried" queryId="tradeSessionDetails" tableName="" tableSchemaName=""/>
   <relation leftEntityId="-1" leftEntityParameterName="session_id" rightEntityId="141562035195744" rightEntityParameterName="session_id"/>
 </datamodel>
