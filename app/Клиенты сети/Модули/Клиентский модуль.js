@@ -84,6 +84,13 @@ function ClientServerModule() {
             return false;
         }
     };
+    
+    self.setClientCityByPhone = function(aPhone, aCityId){
+        model.qPersonalData.params.phone = aPhone;
+        model.qPersonalData.execute();
+        model.qPersonalData.cursor.city = aCityId;
+        model.save();
+    };
 
     self.checkIfPhoneExist = function(aPhone) {
         if (aPhone === "") aPhone = null;
