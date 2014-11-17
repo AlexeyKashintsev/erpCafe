@@ -5,6 +5,9 @@
 function TradePoint() {
     var self = this, model = this.model, form = this;
     
+    var fmCity = new ChooseCityForm();
+    fmCity.showOnPanel(form.pnlGeneral);
+    
     var fmWarehouse = new SelectItemsInWH();
     fmWarehouse.showOnPanel(form.pnlWarehouse);
     
@@ -19,6 +22,7 @@ function TradePoint() {
         fmWarehouse.setFranchazi(aFranchazi);
         fmTradeItems.setFranchazi(aFranchazi);
         fmFranchaziUsers.setFranchazi(aFranchazi);
+        fmCity.setFranchazi(aFranchazi);
     };
     
     self.setTradePoint = function(aTradePoint) {
@@ -26,5 +30,6 @@ function TradePoint() {
         fmWarehouse.setTradePoint(aTradePoint);
         fmTradeItems.setTradePoint(aTradePoint);
         fmFranchaziUsers.setTradePoint(aTradePoint);
+        fmCity.setTradePoint(aTradePoint);
     };
 }
