@@ -9,7 +9,7 @@ function ItemsForTrade() {
     var contentTradeItem = new ContentTradeItem();
     var session = new ServerReport("UserSession");
     var bonus = new ServerModule("BonusModule");
-    
+
     self.setFranchazi = function(aFranchazi) {
         model.params.franchazi_id = aFranchazi;
     };
@@ -28,18 +28,18 @@ function formWindowOpened(evt) {//GEN-FIRST:event_formWindowOpened
 
 function formWindowClosing(evt) {//GEN-FIRST:event_formWindowClosing
         if (model.modified && confirm('Сохранить изменения?')) {
-           model.save();
+            model.save();
         }
 }//GEN-LAST:event_formWindowClosing
 
     function btnAddActionPerformed(evt) {//GEN-FIRST:event_btnAddActionPerformed
-        if(model.qTradeItemTypes.cursor.trade_item_type_id <= 0) {
+        if (model.qTradeItemTypes.cursor.trade_item_type_id <= 0) {
             alert("Выберите тип товара отличный от \"Все товары\" и \"Мои товары\"");
         } else {
             model.qTradeItems.insert(
                     model.qTradeItems.schema.franchazi_id, model.params.franchazi_id,
                     model.qTradeItems.schema.item_type, model.qTradeItemTypes.cursor.trade_item_type_id
-            );
+                    );
         }
     }//GEN-LAST:event_btnAddActionPerformed
 
@@ -71,7 +71,7 @@ function formWindowClosing(evt) {//GEN-FIRST:event_formWindowClosing
     }//GEN-LAST:event_btnAddParentActionPerformed
 
     function btnDel1ActionPerformed(evt) {//GEN-FIRST:event_btnDel1ActionPerformed
-        if(session.userRole === 'admin') {
+        if (session.userRole === 'admin') {
             if (confirm('Вы уверены что хотите удалить эту категорию?'))
                 model.qTradeItemTypes.deleteRow();
         } else {
@@ -80,25 +80,25 @@ function formWindowClosing(evt) {//GEN-FIRST:event_formWindowClosing
     }//GEN-LAST:event_btnDel1ActionPerformed
 
     function btnReq1ActionPerformed(evt) {//GEN-FIRST:event_btnReq1ActionPerformed
-    if (model.modified&&confirm('Сохранить изменения?')){
-        model.save();
-    }
-    model.qTradeItemTypes.requery();
+        if (model.modified && confirm('Сохранить изменения?')) {
+            model.save();
+        }
+        model.qTradeItemTypes.requery();
     }//GEN-LAST:event_btnReq1ActionPerformed
 
     function btnItemEditContentActionPerformed(evt) {//GEN-FIRST:event_btnItemEditContentActionPerformed
-        if(model.qTradeItems.cursor.franchazi_id || session.userRole === 'admin'){
-            if(model.qTradeItems.length > 0) {
-                if (model.modified&&confirm('Сохранить изменения?')){
+        if (model.qTradeItems.cursor.franchazi_id || session.userRole === 'admin') {
+            if (model.qTradeItems.length > 0) {
+                if (model.modified && confirm('Сохранить изменения?')) {
                     model.save();
                 }
                 Logger.info(model.qTradeItems.cursor.trade_items_id);
                 contentTradeItem.setTradeItem(model.qTradeItems.cursor.trade_items_id);
                 contentTradeItem.setBlock(false);
-                contentTradeItem.showModal(function(){
-                   /* model.qTradeItemContents.requery();                   .* ьщвудюйЕкфвуШеуьСщтеутеыюкуйгукн()ж
-
-                    model.qTradeItems.requery();*/
+                contentTradeItem.showModal(function() {
+                    /* model.qTradeItemContents.requery();                   .* ьщвудюйЕкфвуШеуьСщтеутеыюкуйгукн()ж
+                     
+                     model.qTradeItems.requery();*/
                     model.requery();
                 });
             } else {
@@ -108,67 +108,67 @@ function formWindowClosing(evt) {//GEN-FIRST:event_formWindowClosing
             contentTradeItem.setTradeItem(model.qTradeItems.cursor.trade_items_id);
             contentTradeItem.setBlock(true);
             //alert("Сначала продублируйте товар!");
-            contentTradeItem.showModal(function(){
-                    model.requery();
-                });
+            contentTradeItem.showModal(function() {
+                model.requery();
+            });
         }
     }//GEN-LAST:event_btnItemEditContentActionPerformed
 
     function selectOnSelect(aEditor) {//GEN-FIRST:event_selectOnSelect
-                model.save();
-                model.qTradeItems.requery();
-                model.qTradeItemContents.requery();
-                Logger.info(model.qTradeItems.cursor.trade_items_id);
-                contentTradeItem.setTradeItem(model.qTradeItems.cursor.trade_items_id);
-                contentTradeItem.showModal(function(){
-                    model.qTradeItemContents.requery();
-                    model.qTradeItems.requery();
-                });
+        model.save();
+        model.qTradeItems.requery();
+        model.qTradeItemContents.requery();
+        Logger.info(model.qTradeItems.cursor.trade_items_id);
+        contentTradeItem.setTradeItem(model.qTradeItems.cursor.trade_items_id);
+        contentTradeItem.showModal(function() {
+            model.qTradeItemContents.requery();
+            model.qTradeItems.requery();
+        });
     }//GEN-LAST:event_selectOnSelect
     var flag = 0;
     function qTradeItemsOnChanged(evt) {//GEN-FIRST:event_qTradeItemsOnChanged
-        if(!evt.object.franchazi_id){
-            if(flag == 0){
-               
+        if (!evt.object.franchazi_id) {
+            if (flag == 0) {
+
                 model.qTradeItemContents.beforeFirst();
-                while(model.qTradeItemContents.next()){
-                    if(model.qTradeItemContents.cursor.trade_items_id == model.qTradeItems.cursor.trade_items_id){
+                while (model.qTradeItemContents.next()) {
+                    if (model.qTradeItemContents.cursor.trade_items_id == model.qTradeItems.cursor.trade_items_id) {
                         model.qTradeItems.insert(
-                            model.qTradeItems.schema.franchazi_id, model.params.franchazi_id,
-                            model.qTradeItems.schema.item_type, model.qTradeItems.cursor.item_type,
-                            model.qTradeItems.schema.original_id, model.qTradeItems.cursor.trade_items_id
-                        ); 
+                                model.qTradeItems.schema.franchazi_id, model.params.franchazi_id,
+                                model.qTradeItems.schema.item_type, model.qTradeItems.cursor.item_type,
+                                model.qTradeItems.schema.original_id, model.qTradeItems.cursor.trade_items_id
+                                );
                         model.qTradeItemContents.insert(
-                            model.qTradeItemContents.schema.trade_items_id, model.qTradeItems.cursor.trade_items_id,
-                            model.qTradeItemContents.schema.contents, model.qTradeItemContents.cursor.contents
-                        );
+                                model.qTradeItemContents.schema.trade_items_id, model.qTradeItems.cursor.trade_items_id,
+                                model.qTradeItemContents.schema.contents, model.qTradeItemContents.cursor.contents
+                                );
                     }
                 }
 
                 flag = 1;
-                
+
                 model.qContents.params.trade_item_id = evt.object.trade_items_id;
-                model.qContents.requery(function(){
-                    if(model.qContents.length > 0){
+                model.qContents.requery(function() {
+                    if (model.qContents.length > 0) {
                         model.qContents.beforeFirst();
-                        while(model.qContents.next()){
+                        while (model.qContents.next()) {
                             model.qContents.insert(
-                                model.qContents.schema.wh_item, model.qContents.cursor.wh_item,
-                                model.qContents.schema.usage_quantity, model.qContents.cursor.usage_quantity,
-                                model.qContents.schema.trade_item, model.qTradeItems.cursor.trade_items_id
-                            );
+                                    model.qContents.schema.wh_item, model.qContents.cursor.wh_item,
+                                    model.qContents.schema.usage_quantity, model.qContents.cursor.usage_quantity,
+                                    model.qContents.schema.trade_item, model.qTradeItems.cursor.trade_items_id
+                                    );
                         }
                     }
                     alert("Товар продублирован!");
                     model.qTradeItems.beforeFirst();
-                    while(model.qTradeItems.next()){
-                        if(model.qTradeItems.cursor.item_name == evt.newValue){
+                    while (model.qTradeItems.next()) {
+                        if (model.qTradeItems.cursor.item_name == evt.newValue) {
                             model.qTradeItems.cursor.item_name = evt.oldValue;
                             flag = 0;
-                        } 
-                        if(!model.qTradeItems.cursor.item_name)
+                        }
+                        if (!model.qTradeItems.cursor.item_name)
                             model.qTradeItems.cursor.item_name = evt.newValue;
-                    } 
+                    }
                 });
             }
         }
@@ -181,30 +181,30 @@ function formWindowClosing(evt) {//GEN-FIRST:event_formWindowClosing
     function btnItemCreateDoubleActionPerformed(evt) {//GEN-FIRST:event_btnItemCreateDoubleActionPerformed
         model.qContents.params.trade_item_id = model.qTradeItems.cursor.trade_items_id;
         model.qTradeItemContents.beforeFirst();
-        while(model.qTradeItemContents.next()){
-            if(model.qTradeItemContents.cursor.trade_items_id == model.qTradeItems.cursor.trade_items_id){
+        while (model.qTradeItemContents.next()) {
+            if (model.qTradeItemContents.cursor.trade_items_id == model.qTradeItems.cursor.trade_items_id) {
                 model.qTradeItems.insert(
-                    model.qTradeItems.schema.franchazi_id, model.params.franchazi_id,
-                    model.qTradeItems.schema.item_type, model.qTradeItems.cursor.item_type,
-                    model.qTradeItems.schema.item_name, model.qTradeItems.cursor.item_name + " - копия",
-                    model.qTradeItems.schema.original_id, model.qTradeItems.cursor.trade_items_id
-                ); 
+                        model.qTradeItems.schema.franchazi_id, model.params.franchazi_id,
+                        model.qTradeItems.schema.item_type, model.qTradeItems.cursor.item_type,
+                        model.qTradeItems.schema.item_name, model.qTradeItems.cursor.item_name + " - копия",
+                        model.qTradeItems.schema.original_id, model.qTradeItems.cursor.trade_items_id
+                        );
                 model.qTradeItemContents.insert(
-                    model.qTradeItemContents.schema.trade_items_id, model.qTradeItems.cursor.trade_items_id,
-                    model.qTradeItemContents.schema.contents, model.qTradeItemContents.cursor.contents
-                );
+                        model.qTradeItemContents.schema.trade_items_id, model.qTradeItems.cursor.trade_items_id,
+                        model.qTradeItemContents.schema.contents, model.qTradeItemContents.cursor.contents
+                        );
             }
         }
-        
-        model.qContents.requery(function(){
-            if(model.qContents.length > 0){
+
+        model.qContents.requery(function() {
+            if (model.qContents.length > 0) {
                 model.qContents.beforeFirst();
-                while(model.qContents.next()){
+                while (model.qContents.next()) {
                     model.qContents.insert(
-                        model.qContents.schema.wh_item, model.qContents.cursor.wh_item,
-                        model.qContents.schema.usage_quantity, model.qContents.cursor.usage_quantity,
-                        model.qContents.schema.trade_item, model.qTradeItems.cursor.trade_items_id
-                    );
+                            model.qContents.schema.wh_item, model.qContents.cursor.wh_item,
+                            model.qContents.schema.usage_quantity, model.qContents.cursor.usage_quantity,
+                            model.qContents.schema.trade_item, model.qTradeItems.cursor.trade_items_id
+                            );
                 }
             }
         });    
@@ -224,10 +224,11 @@ function formWindowClosing(evt) {//GEN-FIRST:event_formWindowClosing
     function qTradeItemsOnScrolled(evt) {//GEN-FIRST:event_qTradeItemsOnScrolled
         model.qBonusCountForTradeItemReadonly.params.trade_item = model.qTradeItems.cursor.trade_items_id;
         model.qBonusCountForTradeItemReadonly.params.trade_type = null;
-        model.qBonusCountForTradeItemReadonly.requery(function(){
-            if(model.qBonusCountForTradeItemReadonly.length > 0){
-                 form.lbItem.text = "Бонусная ставка по товару: " + model.qBonusCountForTradeItemReadonly.cursor.bonus_rate + "%";
-                 if(model.qTradeItems.cursor.franchazi_id) form.btnResetItems.visible = true;
+        model.qBonusCountForTradeItemReadonly.requery(function() {
+            if (model.qBonusCountForTradeItemReadonly.length > 0) {
+                form.lbItem.text = "Бонусная ставка по товару: " + model.qBonusCountForTradeItemReadonly.cursor.bonus_rate + "%";
+                if (model.qTradeItems.cursor.franchazi_id)
+                    form.btnResetItems.visible = true;
             } else {
                 form.lbItem.text = "Бонусная ставка по товару не назначена";
                 form.btnResetItems.visible = false;
@@ -239,10 +240,11 @@ function formWindowClosing(evt) {//GEN-FIRST:event_formWindowClosing
         //alert(model.qTradeItemTypes.cursor.trade_item_type_id);
         model.qBonusCountForTradeItemReadonly.params.trade_type = model.qTradeItemTypes.cursor.trade_item_type_id;
         model.qBonusCountForTradeItemReadonly.params.trade_item = null;
-        model.qBonusCountForTradeItemReadonly.requery(function(){
-            if(!model.qBonusCountForTradeItemReadonly.empty){
-                 form.lbCategory.text = "Бонусная ставка по категории товара: " + model.qBonusCountForTradeItemReadonly.cursor.bonus_rate + "%";
-                 if(session.getUserRole() === "admin") form.btnResetCategory.visible = true;
+        model.qBonusCountForTradeItemReadonly.requery(function() {
+            if (!model.qBonusCountForTradeItemReadonly.empty) {
+                form.lbCategory.text = "Бонусная ставка по категории товара: " + model.qBonusCountForTradeItemReadonly.cursor.bonus_rate + "%";
+                if (session.getUserRole() === "admin")
+                    form.btnResetCategory.visible = true;
             } else {
                 form.lbCategory.text = "Бонусная ставка по категории товара не назначена";
                 form.btnResetCategory.visible = false;
@@ -251,9 +253,9 @@ function formWindowClosing(evt) {//GEN-FIRST:event_formWindowClosing
     }//GEN-LAST:event_qTradeItemTypesOnScrolled
 
     function lbCategoryMouseClicked(evt) {//GEN-FIRST:event_lbCategoryMouseClicked
-        if(evt.clickCount > 1 && session.getUserRole() === "admin") {
-            var rate =prompt("Введите бонусную ставку для категории товара: " + model.qTradeItemTypes.cursor.type_name, 0);
-            if(rate){
+        if (evt.clickCount > 1 && session.getUserRole() === "admin") {
+            var rate = prompt("Введите бонусную ставку для категории товара: " + model.qTradeItemTypes.cursor.type_name, 0);
+            if (rate) {
                 model.qBonusCountForTradeItemReadonly.params.trade_type = model.qTradeItemTypes.cursor.trade_item_type_id;
                 model.qBonusCountForTradeItemReadonly.params.trade_item = null;
                 bonus.setBonusRate(null, model.qTradeItemTypes.cursor.trade_item_type_id, rate);
@@ -264,10 +266,11 @@ function formWindowClosing(evt) {//GEN-FIRST:event_formWindowClosing
     function qTradeItemTypesOnRequeried(evt) {//GEN-FIRST:event_qTradeItemTypesOnRequeried
         model.qBonusCountForTradeItemReadonly.params.trade_type = model.qTradeItemTypes.cursor.trade_item_type_id;
         model.qBonusCountForTradeItemReadonly.params.trade_item = null;
-        model.qBonusCountForTradeItemReadonly.requery(function(){
-            if(model.qBonusCountForTradeItemReadonly.length > 0){
-                 form.lbCategory.text = "Бонусная ставка по категории товара: " + model.qBonusCountForTradeItemReadonly.cursor.bonus_rate + "%";
-                 if(session.getUserRole() === "admin") form.btnResetCategory.visible = true;
+        model.qBonusCountForTradeItemReadonly.requery(function() {
+            if (model.qBonusCountForTradeItemReadonly.length > 0) {
+                form.lbCategory.text = "Бонусная ставка по категории товара: " + model.qBonusCountForTradeItemReadonly.cursor.bonus_rate + "%";
+                if (session.getUserRole() === "admin")
+                    form.btnResetCategory.visible = true;
             } else {
                 form.lbCategory.text = "Бонусная ставка по категории товара не назначена";
                 form.btnResetCategory.visible = false;
@@ -276,9 +279,9 @@ function formWindowClosing(evt) {//GEN-FIRST:event_formWindowClosing
     }//GEN-LAST:event_qTradeItemTypesOnRequeried
 
     function lbItemMouseClicked(evt) {//GEN-FIRST:event_lbItemMouseClicked
-         if((evt.clickCount > 1 && model.qTradeItems.cursor.franchazi_id) || (evt.clickCount > 1 &&session.getUserRole() === "admin")) {
+        if ((evt.clickCount > 1 && model.qTradeItems.cursor.franchazi_id) || (evt.clickCount > 1 && session.getUserRole() === "admin")) {
             var rate = prompt("Введите бонусную ставку для товара: " + model.qTradeItems.cursor.item_name, 0);
-            if(rate){
+            if (rate) {
                 bonus.setBonusRate(model.qTradeItems.cursor.trade_items_id, null, rate);
             }
         }
