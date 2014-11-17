@@ -50,38 +50,38 @@ function SmsSender(anEmail, aPassword) {
         }
     };
     
-    self.sendSms = function(aNumber, aMsg, aSign){
-        Logger.info("Сообщение отправлено " + aNumber);
-    };
-    
 //    self.sendSms = function(aNumber, aMsg, aSign){
-//        if (!sid) {
-//            Logger.warning('Невозможно отправить СМС! Сервис не авторизирован');
-//            return false;
-//        } else {
-//            var params = {
-//                method     : 'push_msg',
-//                format     : 'JSON',
-//                api_v      : '1.1',
-//                sid        : sid,
-//                text       : aMsg,
-//                sender_name: aSign ? aSign : defSign
-//            };
-//            if (typeof aNumber === 'string')
-//                params.phone = aNumber;
-//            else
-//                params.phones = aNumber;
-//            var response = sendRequest(params);
-//            if (response.msg.err_code === 0) {
-//                Logger.finest('СМС отправлено успешно, ID СМС: ' + response.data.id + ' Ответ: ' + response.msg.text);
-//                sessionBalance += response.data.credits * response.data.n_raw_sms;
-//                return response.data.id;
-//            } else {
-//                Logger.warning('СМС не отправлено: Код ошибки: ' + response.msg.err_code + ' ( ' + response.msg.text + ')');
-//                return false;
-//            }
-//        };
+//        Logger.info("Сообщение отправлено " + aNumber);
 //    };
+    
+    self.sendSms = function(aNumber, aMsg, aSign){
+        if (!sid) {
+            Logger.warning('Невозможно отправить СМС! Сервис не авторизирован');
+            return false;
+        } else {
+            var params = {
+                method     : 'push_msg',
+                format     : 'JSON',
+                api_v      : '1.1',
+                sid        : sid,
+                text       : aMsg,
+                sender_name: aSign ? aSign : defSign
+            };
+            if (typeof aNumber === 'string')
+                params.phone = aNumber;
+            else
+                params.phones = aNumber;
+            var response = sendRequest(params);
+            if (response.msg.err_code === 0) {
+                Logger.finest('СМС отправлено успешно, ID СМС: ' + response.data.id + ' Ответ: ' + response.msg.text);
+                sessionBalance += response.data.credits * response.data.n_raw_sms;
+                return response.data.id;
+            } else {
+                Logger.warning('СМС не отправлено: Код ошибки: ' + response.msg.err_code + ' ( ' + response.msg.text + ')');
+                return false;
+            }
+        };
+    };
     
     self.getSmsStatus = function(aSmsId){
         if (!sid) {
