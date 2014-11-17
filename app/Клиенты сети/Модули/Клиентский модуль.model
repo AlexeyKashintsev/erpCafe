@@ -5,10 +5,10 @@
   <entity Name="qGetPhoneByFourDigit" Title="" entityHeight="200" entityIconified="false" entityId="141164560534937" entityLocationX="387" entityLocationY="21" entityWidth="150" queryId="qGetPhoneByFourDigit" tableName="" tableSchemaName=""/>
   <entity Name="qGetBonusBill" Title="" entityHeight="76" entityIconified="false" entityId="141570922065902" entityLocationX="740" entityLocationY="25" entityWidth="150" queryId="qGetBonusBill" tableName="" tableSchemaName=""/>
   <entity Name="qGetAllBills" Title="" entityHeight="200" entityIconified="false" entityId="141571225949593" entityLocationX="741" entityLocationY="130" entityWidth="150" queryId="qGetAllBills" tableName="" tableSchemaName=""/>
-  <referenceRelation leftEntityFieldName="client_id" leftEntityId="141571225949593" rightEntityFieldName="client_id" rightEntityId="140750750145989"/>
+  <referenceRelation leftEntityFieldName="bill_client_id" leftEntityId="141225869504716" rightEntityFieldName="client_id" rightEntityId="140750750145989"/>
   <referenceRelation leftEntityFieldName="client_id" leftEntityId="141571225949593" rightEntityFieldName="client_id" rightEntityId="141225869504716"/>
+  <referenceRelation leftEntityFieldName="client_id" leftEntityId="141571225949593" rightEntityFieldName="client_id" rightEntityId="140750750145989"/>
   <referenceRelation leftEntityFieldName="bill_client_id" leftEntityId="141225869504716" rightEntityFieldName="client_id" rightEntityId="141225869504716"/>
   <referenceRelation leftEntityFieldName="client_id" leftEntityId="141571225949593" rightEntityFieldName="client_id" rightEntityId="141164560534937"/>
-  <referenceRelation leftEntityFieldName="bill_client_id" leftEntityId="141225869504716" rightEntityFieldName="client_id" rightEntityId="140750750145989"/>
   <referenceRelation leftEntityFieldName="bill_client_id" leftEntityId="141225869504716" rightEntityFieldName="client_id" rightEntityId="141164560534937"/>
 </datamodel>

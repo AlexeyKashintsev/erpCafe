@@ -9,6 +9,7 @@ function BonusModule() {
     var bm      = Session.get("BillModule");
     var sender  = Session.get("MessageSender");
     var af      = Session.get("AdminFunctions");
+    var client  = Session.get("ClientServerModule");
     var SALT = "UGjkergUJHfre86456ergBdeptr4gFH84bef";
     
     self.setBonusRate = function(anItemId, aTypeId, aBonusRate, aBonusCategory) {
@@ -102,6 +103,7 @@ function BonusModule() {
             connectBillAndTradeOperation(aTradeOperationId, BillOperation);
         }
          // Проведение бонусной операции со счетом клиента
+        client.setClientCityByPhone(aClient.phone, session.getCityByTradePoint());
         var BillOperation = bm.addBillOperation(aClient.bonusBill, aBonusOperation, aCount);
         connectBillAndTradeOperation(aTradeOperationId, BillOperation);
         if (aBonusOperation === bm.OPERATION_ADD_BONUS){

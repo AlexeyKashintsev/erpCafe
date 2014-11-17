@@ -59,6 +59,13 @@ function UserSession() {
                 model.qOpenedSession.cursor.trade_point;
     };
     
+    self.getCityByTradePoint = function() {
+        model.qTradePoint.params.trade_point_id = self.getTradePoint();
+        model.qTradePoint.requery();
+        return model.qTradePoint.empty ? 0 : 
+                model.qTradePoint.cursor.tp_city;
+    };
+    
     self.getUserName = function() {
         return self.principal.name;
     };
