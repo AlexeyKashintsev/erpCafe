@@ -61,6 +61,20 @@ function BaristaDesktop() {
         self.orderList = new OrderList(self);
         
         session.sessionKeeper.showIndicator(document.body);
+        
+        openWindow();
+        
+        setInterval(setData(), 10000);
+        
+    }
+    
+    function openWindow(){
+        WREF = window.open("menu.html","menu",'width=550,height=650');
+        if(!WREF.opener){ WREF.opener = this.window; }
+    }
+    
+    function setData(){
+        WREF.globalSetMessage('test');
     }
 
     function addTradeItem(aData) {
