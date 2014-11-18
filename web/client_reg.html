@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Client registration test</title>
+    <script type="text/javascript" src="js/jquery.js"></script>
+</head>
+
+<body>
+    <form class="sr-box" method="post" action="https://smartresponder.ru/subscribe.html" target="_blank" name="SR_form_1_90">
+        <h2 style="width: 350px;">Тест регистрации клиента в сети</h2>
+            <input name="field_name" class="sr-name" type="text">
+            <div id="sr-preload_" style="display: none; background-color: #f6f6f6; opacity: 0.5; position: absolute; z-index: 100; text-align: center; font: bold 15px Arial;">Загрузка...</div>
+            <input placeholder="Ваше имя:" name="field_name_first" type="text">
+            <input placeholder="Ваш email-адрес:" name="field_email" class="sr-required" type="text">
+            <input placeholder="Ваш мобильный телефон:" name="field_phone_mobile" type="text">
+            <input name="subscribe" value="Отправить" type="submit">
+            <input name="uid" value="579541" type="hidden">
+        <input type='submit_reg' value="https://imgs.smartresponder.ru/on/dc47aab649ed2857667697cf94fb8cd110e6f38f/1_90" name="script_url_1_90" type="hidden"><input name="did[]" value="702283" type="hidden"><input name="tid" value="0" type="hidden"><input name="lang" value="ru" type="hidden">
+        <!-- SmartResponder.ru subscribe form code (end) -->
+        <div class="info"></div>
+    </form>
+<script>
+$(".submit_reg").bind("click", function(){ $.ajax({
+type: "POST",
+url: 'http://localhost:8080/erpCafe/application/api?__type=14&__moduleName=ClientPublicModule&__methodName=CreateUserWithBonuses&name=$name&fone=$fone',
+data: 'data'
+});});
+</script>
+</body>
+</html>
