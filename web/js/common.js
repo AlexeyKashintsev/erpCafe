@@ -6,14 +6,14 @@ var session = {/*
     activeSession
     tradePoint
     franchaziId*/};
-var Session = (function() {
+var Session = new (function() {
         var servModules = {};
         this.get = function(aModuleName) {
             if (!servModules[aModuleName]) {
                 servModules[aModuleName] = new ServerModule(aModuleName);
             }
             return servModules[aModuleName];
-        }
+        };
     })();
 
 
