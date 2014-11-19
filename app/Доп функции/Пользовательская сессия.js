@@ -14,7 +14,7 @@ function UserSession() {
         MSG_ERROR_NO_FRANCHAZI_4USER    :   'Пользователь не закреплен за франчази!\nОбратитесь к администратору',
         MSG_ERROR_NOT_UNDER_BROWSER     :   'Данный функционал не работает под браузером'
     };
-    
+    //test
     Session.login();
     Session.set('UserSession', this);
     model.params.userName = self.principal.name;
@@ -57,6 +57,13 @@ function UserSession() {
         model.qOpenedSession.requery();
         return model.qOpenedSession.empty ? false : 
                 model.qOpenedSession.cursor.trade_point;
+    };
+    
+    self.getCityByTradePoint = function() {
+        model.qTradePoint.params.trade_point_id = self.getTradePoint();
+        model.qTradePoint.requery();
+        return model.qTradePoint.empty ? 0 : 
+                model.qTradePoint.cursor.tp_city;
     };
     
     self.getUserName = function() {

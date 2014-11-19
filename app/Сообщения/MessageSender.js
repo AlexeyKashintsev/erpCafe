@@ -18,40 +18,51 @@ function MessageSender() {
     self.BONUS_ADD = 2;
     self.BONUS_REMOVE = 3;
     
-    self.sendMessage = function(anEventType, aClient, aParams){
+    self.sendMessage = function(anEventType, aUser, aParams, SendParams){
         if (!aParams) aParams = {};
-        if (typeof (aClient) !== "object"){
-            model.usersByName.params.usr_name = aClient;
-            model.usersByName.requery();
-            if (model.usersByName.length === 0) return "error";
-            aClient = {};
-            aClient.phone = model.usersByName.cursor.usr_phone;
-            aClient.email = model.usersByName.cursor.usr_email;
-            aClient.username = model.usersByName.cursor.usr_name;
+        if (typeof (aUser) !== "object"){
+            model.qPersonalData.params.phone = aUser;
+            model.qPersonalData.requery();
+            aUser = {};
+            if (model.qPersonalData.length === 0) {
+                aUser.phone = model.qPersonalData.params.phone;
+            } else {
+                aUser.phone = model.qPersonalData.cursor.phone;
+                aUser.email = model.qPersonalData.cursor.email;
+                aUser.name = model.qPersonalData.cursor.first_name;
+            }
         }
-        aClient.phone = fixphone(aClient.phone);
-        model.qGetSendParams.params.eventType = anEventType;
-        model.qGetSendParams.requery();
-        var textMessage = model.qGetSendParams.cursor.message;
-        for (param in aClient){
-            aParams[param] = aClient[param];
+        aUser.phone = fixphone(aUser.phone);
+        if (!SendParams){
+            model.qGetSendParams.params.eventType = anEventType;
+            model.qGetSendParams.requery();
+            SendParams = {
+                display :   model.qGetSendParams.cursor.display,
+                sms     :   model.qGetSendParams.cursor.sms,
+                email   :   model.qGetSendParams.cursor.email,
+                message :   model.qGetSendParams.cursor.message
+            };
+        }
+        var textMessage = SendParams.message;
+        for (param in aUser){
+            aParams[param] = aUser[param];
         }
         for (param in aParams){
            textMessage = textMessage.replace(new RegExp("%" + param + "%",'g'), aParams[param]);
         }
         
-        if (model.qGetSendParams.cursor.sms){
+        if (SendParams.sms){
             if (aParams.phone){
                 smsSender.sendSms(aParams.phone, textMessage, aParams.sign);
             }
         }
-        if (model.qGetSendParams.cursor.email){
+        if (SendParams.email){
             if (aParams.email){
                 if (!aParams.subject) aParams.subject = "Информационное сообщение сети кафе ЕРП";
                 emailSender.sendEmail("rcCoffee", aParams.email, aParams.subject, textMessage);
             }
         }
-        if (model.qGetSendParams.cursor.display){
+        if (SendParams.display){
             //TODO Сделать показ сообщения на экран
         }
     };
@@ -116,9 +127,7 @@ function MessageSender() {
     
     function massSendSMS(listPhones, text){
         for (var phone in listPhones){
-            listPhones[phone] = fixphone(listPhones[phone]);
-            if (listPhones[phone])
-                smsSender.sendSms(listPhones[phone], text);
+            self.sendMessage(150, listPhones[phone], null, {message:text, sms:true});
         }
     }
     

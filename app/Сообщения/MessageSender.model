@@ -4,5 +4,6 @@
   <entity Name="qGetBaristaPhones" Title="" entityHeight="200" entityIconified="false" entityId="141596821692815" entityLocationX="494" entityLocationY="10" entityWidth="150" queryId="qGetBaristaPhones" tableName="" tableSchemaName=""/>
   <entity Name="qGetSendParams" Title="" entityHeight="200" entityIconified="false" entityId="141113163227676" entityLocationX="173" entityLocationY="9" entityWidth="150" queryId="qGetSendParams" tableName="" tableSchemaName=""/>
   <entity Name="usersByName" Title="" entityHeight="200" entityIconified="false" entityId="141208553365833" entityLocationX="331" entityLocationY="11" entityWidth="150" queryId="usersByName" tableName="" tableSchemaName=""/>
+  <entity Name="qPersonalData" Title="" entityHeight="200" entityIconified="false" entityId="141624279775792" entityLocationX="13" entityLocationY="216" entityWidth="150" queryId="qPersonalData" tableName="" tableSchemaName=""/>
   <entity Name="qGetFranchaziPhones" Title="" entityHeight="200" entityIconified="false" entityId="141596825656425" entityLocationX="653" entityLocationY="10" entityWidth="150" queryId="qGetFranchaziPhones" tableName="" tableSchemaName=""/>
 </datamodel>

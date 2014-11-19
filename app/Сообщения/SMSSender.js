@@ -50,6 +50,10 @@ function SmsSender(anEmail, aPassword) {
         }
     };
     
+//    self.sendSms = function(aNumber, aMsg, aSign){
+//        Logger.info("Сообщение отправлено " + aNumber);
+//    };
+    
     self.sendSms = function(aNumber, aMsg, aSign){
         if (!sid) {
             Logger.warning('Невозможно отправить СМС! Сервис не авторизирован');

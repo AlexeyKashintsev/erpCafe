@@ -10,6 +10,7 @@ function TradeItemsOnTradePoint() {
     var self = this, model = this.model, form = this;
 
     self.selectForm = false;
+    var changed = false;
     
     /*model.params.beginUpdate();
     model.params.item_type = null;
@@ -95,7 +96,8 @@ function btnSaveActionPerformed(evt) {//GEN-FIRST:event_btnSaveActionPerformed
     }//GEN-LAST:event_btnSelectActionPerformed
 
     function qTradeItemsAndTypeOnChanged(evt) {//GEN-FIRST:event_qTradeItemsAndTypeOnChanged
-       // if (evt.propertyName === 'r_cost' || evt.propertyName === 'r_selected') {
+        //if (evt.propertyName === 'r_cost' || evt.propertyName === 'r_selected') {
+        if (!changed) {
             if (model.qTradeItemsAndType.cursor.r_cost && (model.qTradeItemsAndType.cursor.r_id.match(/type/gi))) {
                 //alert ('Нельзя устанавливать цену на категорию');
                 model.qTradeItemsAndType.cursor.r_cost = null;
@@ -105,7 +107,8 @@ function btnSaveActionPerformed(evt) {//GEN-FIRST:event_btnSaveActionPerformed
                     model.qTradeItemsAndType.cursor.add2TP = (aResult === 1);
                 });
             }
-        //}
+            changed = true;
+        } else changed = false;
     }//GEN-LAST:event_qTradeItemsAndTypeOnChanged
 
     function formWindowOpened(evt) {//GEN-FIRST:event_formWindowOpened

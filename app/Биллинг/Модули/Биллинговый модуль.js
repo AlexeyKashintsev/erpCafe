@@ -8,10 +8,8 @@ function BillModule() {
     Session.set('BillModule', this);
     var self = this, model = this.model;
     var eventProcessor = new EventProcessor();
-    var af = new AdminFunctions();
     var session = Session.get("UserSession");
-    var sender = new MessageSender();
-    
+    var af      = Session.get("AdminFunctions");
     var SALT = "UGjkergUJHfre86456ergBdeptr4gFH84bef";
     
     // Типы операций
@@ -277,72 +275,5 @@ function BillModule() {
         if(!aType) aType = null;
         reqBillAccounts(null, null, aType, aClientId);
         return model.qBillAccountServer.cursor.bill_accounts_id;
-    };
-        
-    /*
-     * Связь биллинговой операции с торговой
-     * @param {type} aTradeOperation
-     * @param {type} aBillOperation
-     * @returns {undefined}
-     */
-    function connectBillAndTradeOperation(aTradeOperation, aBillOperation){
-        if (!!aTradeOperation && !!aBillOperation)
-            model.qConnectTradeAndBillOperations.push({
-                trade_cashbox_operation: aTradeOperation,
-                bill_operation: aBillOperation
-            });
-    }
-    /*
-     * Добавление денег франчайзе за попукупку бонусами
-     * @param {type} aSum
-     * @param {type} aType
-     * @param {type} aFranchaziId
-     * @returns {@this;@pro;model.qBillOperationsList.cursor.bill_operations_id|Boolean}
-     */
-    self.addCashToFranchazi = function(aSum, aType, aFranchaziId){
-        var franchaziId = aFranchaziId ? aFranchaziId : session.getFranchazi();
-        reqBillAccounts(null, franchaziId, self.ACCOUNT_TYPE_DEFAULT, null);
-        if(model.qBillAccountServer.length > 0){
-            var accountId = model.qBillAccountServer.cursor.bill_accounts_id;
-            if (aType === "bonus"){
-                var multiplier = 0.05;
-                return self.addBillOperation(accountId, self.OPERATION_ADD_CASH, aSum * multiplier, false, false, af.MD5(SALT));
-            }
-            if (aType === "money")
-                return self.addBillOperation(accountId, self.OPERATION_ADD_CASH, aSum, false, false, af.MD5(SALT));
-        } else 
-            return false;
-    };
-    
-    /*
-     * Проведение бонусной операции и начаисление денег на счет франчайзе
-     */
-    self.bonusOperation = function(aClient, aBonusOperation, aCount, aTradeOperationId) {
-        // Если идет списание средст с бонусного счета клиента, то начислить деньги на счет франчази
-        if (aBonusOperation === self.OPERATION_DEL_BUY) {
-            var BillOperation = self.addCashToFranchazi(aCount, "bonus");
-            connectBillAndTradeOperation(aTradeOperationId, BillOperation);
-        }
-         // Проведение бонусной операции со счетом клиента
-        var BillOperation = self.addBillOperation(aClient.bonusBill, aBonusOperation, aCount);
-        connectBillAndTradeOperation(aTradeOperationId, BillOperation);
-        if (aBonusOperation === self.OPERATION_ADD_BONUS){
-            sender.sendMessage(sender.BONUS_ADD, {
-                username:   aClient.firstName,
-                count   :   aCount,
-                phone   :   aClient.phone,
-                email   :   aClient.email,
-                subject :   "Информационное сообщение сети кафе ERP"
-            });
-        }else if (aBonusOperation === self.OPERATION_DEL_BUY){
-            sender.sendMessage(sender.BONUS_REMOVE, {
-                username:   aClient.firstName,
-                count   :   aCount,
-                phone   :   aClient.phone,
-                email   :   aClient.email,
-                subject :   "Информационное сообщение сети кафе ERP"
-            });
-        }
-        model.save();
     };
 }

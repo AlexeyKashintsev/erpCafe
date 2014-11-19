@@ -10,6 +10,7 @@ function TradeSessions() {
     var whSession = Session.get('WhSessionModule');
     var clientModule = Session.get('ClientServerModule');
     var billing = Session.get('BillModule');
+    var bonuses = Session.get('BonusModule');
     var ep = new EventProcessor();
     var session = Session.get("UserSession");
     var sessionItems = {};
@@ -113,7 +114,6 @@ function TradeSessions() {
         });
     }
 
-
     /*
      * Расчет потребления складских позиций
      * @param {type} anItemId
@@ -165,39 +165,10 @@ function TradeSessions() {
             sessionItems[model.tradeItemsByTradePointWithCost.cursor.item_id].name = model.tradeItemsByTradePointWithCost.cursor.item_name;
             sessionItems[model.tradeItemsByTradePointWithCost.cursor.item_id].bonus_category = [];
             for (var i = 1; i<=3; i++){
-                sessionItems[model.tradeItemsByTradePointWithCost.cursor.item_id].bonus_category[i] = getCountBonusesByItem(model.tradeItemsByTradePointWithCost.cursor.item_id, i);
+                sessionItems[model.tradeItemsByTradePointWithCost.cursor.item_id].bonus_category[i] = bonuses.getCountBonusesByItem(model.tradeItemsByTradePointWithCost.cursor.item_id, i);
             }
         }
         return sessionItems;
-    }
-    
-    
-    /*
-     * Получение количества бонусов за товар
-     * TODO Переделать, чтобы все возвращалось одним запросом
-     * @param {type} anItem
-     * @returns {Number|@this;@pro;model.tradeItemCost.cursor.item_cost|@this;@pro;model.qBonusRateForItemsEdit.cursor.bonus_rate|@this;@pro;model.qGetBonusCategories.cursor.category_bonus_rate}
-     */
-    function getCountBonusesByItem(anItem, aBonusCategory) {
-        model.qBonusRateForItemsEdit.params.item_id = anItem;
-        model.qBonusRateForItemsEdit.params.bonus_category = aBonusCategory;
-        model.qBonusRateForItemsEdit.requery();
-        if (model.qBonusRateForItemsEdit.length > 0) {
-            return model.qBonusRateForItemsEdit.cursor.bonus_rate;
-        } else {
-            return getCountBonusesByCategory(model.qBonusRateForItemsEdit.params.bonus_category) / 100;
-        }
-    }
-    
-    /*
-     * Получение количества бонусов за товар в зависимости от категории пользователя.
-     * @param {type} aCatId
-     * @returns {@this;@pro;model.qGetBonusCategories.cursor.category_bonus_rate}
-     */
-    function getCountBonusesByCategory(aCatId) {
-        model.qGetBonusCategories.params.category_id = aCatId;
-        model.qGetBonusCategories.requery();
-        return model.qGetBonusCategories.cursor.category_bonus_rate;
     }
 
     /*
@@ -301,7 +272,7 @@ function TradeSessions() {
             model.save();
 
             if (client.bonusBill) {
-                billing.bonusOperation(client, BonusOperation, BonusCount, TradeOperationId);
+                bonuses.bonusOperation(client, BonusOperation, BonusCount, TradeOperationId);
             }
 
         };
