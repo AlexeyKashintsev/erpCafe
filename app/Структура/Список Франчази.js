@@ -7,7 +7,6 @@
 
 function SelectFranchaziAdminForm() {
 var self = this, model = this.model, form = this;
-var bm = Session.get("BillModule");
 
 function btnReqActionPerformed(evt) {//GEN-FIRST:event_btnReqActionPerformed
     if (self.model.modified&&confirm('Сохранить изменения?')){
@@ -44,6 +43,8 @@ function formWindowClosing(evt) {//GEN-FIRST:event_formWindowClosing
 
     function btnAddActionPerformed(evt) {//GEN-FIRST:event_btnAddActionPerformed
         var franName = prompt("Введите имя нового франчази:");
+        //TODO Что-то тут не так, не работет Session.get
+        var bm = new ServerModule("BillModule");
         if(franName){
             model.listFranchazi.insert();
             model.listFranchazi.cursor.f_name = franName;

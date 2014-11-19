@@ -28,7 +28,7 @@ function editMessageForm() {
 
     function btnSaveActionPerformed(evt) {//GEN-FIRST:event_btnSaveActionPerformed
         model.save();
-        form.close(true);
+        form.close(model.qGetSendParams.cursor.message);
     }//GEN-LAST:event_btnSaveActionPerformed
 
     function btnCancelActionPerformed(evt) {//GEN-FIRST:event_btnCancelActionPerformed

@@ -29,7 +29,7 @@ function MessageSender() {
             } else {
                 aUser.phone = model.qPersonalData.cursor.phone;
                 aUser.email = model.qPersonalData.cursor.email;
-                aUser.username = model.qPersonalData.cursor.first_name;
+                aUser.name = model.qPersonalData.cursor.first_name;
             }
         }
         aUser.phone = fixphone(aUser.phone);
@@ -127,7 +127,7 @@ function MessageSender() {
     
     function massSendSMS(listPhones, text){
         for (var phone in listPhones){
-            self.sendMessage('MassSend', listPhones[phone], null, {message:text, sms:true});
+            self.sendMessage(150, listPhones[phone], null, {message:text, sms:true});
         }
     }
     

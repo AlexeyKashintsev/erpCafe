@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?><datamodel datamodelDbId="null">
+  <fieldsEntity entityHeight="200" entityIconified="false" entityId="141631649238468" entityLocationX="191" entityLocationY="4" entityWidth="150" tableName="cheklist_usage"/>
+  <fieldsEntity entityHeight="200" entityIconified="false" entityId="141631384133814" entityLocationX="0" entityLocationY="0" entityWidth="150" tableName="cheklist_data"/>
+  <fieldsEntity entityHeight="80" entityIconified="false" entityId="141631391294215" entityLocationX="4" entityLocationY="216" entityWidth="150" tableName="cheklist_type"/>
+  <fieldsEntity entityHeight="200" entityIconified="false" entityId="141631463014991" entityLocationX="375" entityLocationY="3" entityWidth="150" tableName="org_trade_point"/>
+</datamodel>
