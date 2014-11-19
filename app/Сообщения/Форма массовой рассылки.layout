@@ -1,17 +1,17 @@
-<?xml version="1.0" encoding="UTF-8"?><layout defaultCloseOperation="2" name="Form" prefHeight="399px" prefWidth="384px" windowOpened="formWindowOpened">
-  <widget name="label1" parent="Form" prefHeight="24px" prefWidth="36px" text="Кому:" type="LabelDesignInfo">
-    <constraints height="24px" left="24px" top="24px" type="MarginConstraintsDesignInfo" width="36px"/>
+<?xml version="1.0" encoding="UTF-8"?><layout backgroundColor="#664a37" defaultCloseOperation="2" name="Form" prefHeight="399px" prefWidth="384px" windowOpened="formWindowOpened">
+  <widget foregroundColor="#ffffff" name="label1" parent="Form" prefHeight="23px" prefWidth="36px" text="Кому:" type="LabelDesignInfo">
+    <constraints height="23px" left="24px" top="24px" type="MarginConstraintsDesignInfo" width="36px"/>
   </widget>
-  <widget buttonGroup="buttonGroup" name="rbAll" parent="Form" prefHeight="23px" prefWidth="81px" selected="true" text="Все" type="RadioDesignInfo">
+  <widget buttonGroup="buttonGroup" foregroundColor="#ffffff" name="rbAll" parent="Form" prefHeight="23px" prefWidth="81px" selected="true" text="Все" type="RadioDesignInfo">
     <constraints height="23px" right="7px" top="24px" type="MarginConstraintsDesignInfo" width="81px"/>
   </widget>
-  <widget buttonGroup="buttonGroup" name="rbClient" parent="Form" prefHeight="23px" prefWidth="81px" text="Клиенты" type="RadioDesignInfo">
+  <widget buttonGroup="buttonGroup" foregroundColor="#ffffff" name="rbClient" parent="Form" prefHeight="23px" prefWidth="81px" text="Клиенты" type="RadioDesignInfo">
     <constraints height="23px" left="216px" top="24px" type="MarginConstraintsDesignInfo" width="81px"/>
   </widget>
-  <widget buttonGroup="buttonGroup" name="rbBar" parent="Form" prefHeight="23px" prefWidth="81px" text="Баристы" type="RadioDesignInfo">
+  <widget buttonGroup="buttonGroup" foregroundColor="#ffffff" name="rbBar" parent="Form" prefHeight="23px" prefWidth="81px" text="Баристы" type="RadioDesignInfo">
     <constraints height="23px" left="144px" top="24px" type="MarginConstraintsDesignInfo" width="81px"/>
   </widget>
-  <widget buttonGroup="buttonGroup" name="rbFran" parent="Form" prefHeight="23px" prefWidth="81px" text="Франчайзи" type="RadioDesignInfo">
+  <widget buttonGroup="buttonGroup" foregroundColor="#ffffff" name="rbFran" parent="Form" prefHeight="23px" prefWidth="81px" text="Франчайзи" type="RadioDesignInfo">
     <constraints height="23px" left="60px" top="24px" type="MarginConstraintsDesignInfo" width="81px"/>
   </widget>
   <widget actionPerformed="buttonActionPerformed" name="button" parent="Form" prefHeight="23px" prefWidth="113px" text="Отправить" type="ButtonDesignInfo">
@@ -24,11 +24,14 @@
     <datamodelElement entityId="141631323691206" fieldName="message"/>
     <constraints height="180px" left="24px" top="120px" type="MarginConstraintsDesignInfo" width="324px"/>
   </widget>
-  <widget name="modelCombo" parent="Form" prefHeight="20px" prefWidth="100px" type="DbComboDesignInfo">
+  <widget name="modelCombo" parent="Form" prefHeight="20px" prefWidth="264px" type="DbComboDesignInfo">
     <valueField entityId="141631365536196" fieldName="org_cities_id"/>
     <displayField entityId="141631365536196" fieldName="city"/>
     <datamodelElement entityId="-1" fieldName="city"/>
-    <constraints height="20px" left="228px" top="60px" type="MarginConstraintsDesignInfo" width="100px"/>
+    <constraints height="20px" left="84px" top="60px" type="MarginConstraintsDesignInfo" width="264px"/>
+  </widget>
+  <widget foregroundColor="#ffffff" name="label" parent="Form" prefHeight="14px" prefWidth="48px" text="Город:" type="LabelDesignInfo">
+    <constraints height="14px" left="24px" top="63px" type="MarginConstraintsDesignInfo" width="48px"/>
   </widget>
   <nonvisual name="buttonGroup" type="ButtonGroupDesignInfo"/>
   <layout type="MarginLayoutDesignInfo"/>

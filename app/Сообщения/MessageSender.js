@@ -127,7 +127,7 @@ function MessageSender() {
     
     function massSendSMS(listPhones, text){
         for (var phone in listPhones){
-            self.sendMessage('MassSend', listPhones[phone], null, {message:text, sms:true});
+            self.sendMessage(150, listPhones[phone], null, {message:text, sms:true});
         }
     }
     
