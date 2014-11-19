@@ -41,15 +41,17 @@ function mSessionData() {
     }
     
     self.show = function(aSessionData) {
-        var modalBody = document.getElementById("modal-body-window");
+        var modal = new cmn.Modal('Данные торговой сессии');
+        var modalBody = modal.getModalBody();
+        
         var btnGroup = cmn.createElement('div', null, modalBody);
         var sessionData = cmn.createElement('div', null, modalBody);
-        $('#modalForm').modal('toggle');
-        $('#modal-title').html('Данные торговой сессии');
         panels.wharH.display = new WHSessionBalance(sessionData);
         panels.tradeOp.display = new commonSessionInfo(sessionData);
         self.setTradePoint(aSessionData.trade_point);
         self.setSession(aSessionData.org_session_id);
         buttonsSelector = new cmn.ButtonGroup(panels, btnGroup, "btn btn-info btn-xs", showPanel);
+        
+        modal.show();
     };
 }

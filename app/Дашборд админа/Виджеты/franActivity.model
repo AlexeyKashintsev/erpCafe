@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?><datamodel>
+  <parameters>
+    <parameter description="" name="franchaziId" nullable="true" parameterMode="1" precision="0" scale="0" selectionForm="null" signed="true" size="0" type="2" typeName="NUMERIC"/>
+  </parameters>
+  <parametersEntity entityHeight="200" entityIconified="false" entityLocationX="12" entityLocationY="12" entityWidth="150"/>
+  <entity Name="listTradePoints" Title="" entityHeight="200" entityIconified="false" entityId="141640147750165" entityLocationX="201" entityLocationY="12" entityWidth="150" onRequeried="listTradePointsOnRequeried" queryId="listTradePoints" tableName="" tableSchemaName=""/>
+  <entity Name="listFranchazi" Title="" entityHeight="200" entityIconified="false" entityId="141640163270258" entityLocationX="410" entityLocationY="17" entityWidth="150" onRequeried="listFranchaziOnRequeried" queryId="listFranchazi" tableName="" tableSchemaName=""/>
+  <relation leftEntityId="-1" leftEntityParameterName="franchaziId" rightEntityId="141640163270258" rightEntityParameterName="franchazi_id"/>
+  <relation leftEntityId="-1" leftEntityParameterName="franchaziId" rightEntityId="141640147750165" rightEntityParameterName="franchazi_id"/>
+  <referenceRelation leftEntityFieldName="franchazi_id" leftEntityId="141640147750165" rightEntityFieldName="org_franchazi_id" rightEntityId="141640163270258"/>
+</datamodel>
