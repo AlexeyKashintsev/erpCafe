@@ -51,6 +51,7 @@ function BaristaDesktop() {
     }
 
     function startBaristaDesktop() {
+        cmn.addTopRightControl("Меню в окне", "plus-sign", openDigitalMenu);
         cmn.addTopRightControl("Прием товара", "plus-sign", btnWarehouseAddActionPerformed);
         cmn.addTopRightControl("Закрыть смену", "log-out", btnSessionCloseActionPerformed);
         cmn.addTopRightControl("Выход", "log-out", Logout);
@@ -62,16 +63,13 @@ function BaristaDesktop() {
         self.orderList = new OrderList(self);
         
         session.sessionKeeper.showIndicator(document.body);
-        
-        openWindow();    
     }
     
-    var WREF = null;
-    function openWindow(){
-        //WREF = window.open("menu.html","menu",'width=550,height=650');
+    function openDigitalMenu(){
+        MenuWindow = window.open("menu.html","menu",'width=550,height=650');
         //if (!WREF.opener){ WREF.opener = this.window; }
         //if (!WREF.platypus){ WREF.platypus = platypus; }
-        //WREF.start();
+       // setTimeout(MenuWindow.makeACall('куку'), 1000);
     }
     
     function setData(){
@@ -85,6 +83,7 @@ function BaristaDesktop() {
             new widgetCreator.tradeItem("mainArea", data,
                 function(aData) {
                     self.orderList.addItem(aData);
+                    MenuWindow.makeACall(aData.item_name);
                 });
         }
     }//GEN-LAST:event_tradeItemsByTradePointWithCostOnRequeried
