@@ -10,6 +10,8 @@ function BaristaDesktop() {
     self.userName = session.getUserName();
     var whAdd = null;
     var widgetCreator = new WidgetCreator();
+    
+    var types_body = cmn.createElement('div', 'item_type_selector row', "mainArea");
 
     function setSession(aSession) {
         if (aSession) {
@@ -97,6 +99,11 @@ function BaristaDesktop() {
             model.tradeItemsByTradePointWithCost.params.actual_date = new Date();
             model.tradeItemsByTradePointWithCost.params.trade_point_id = session.tradePoint;
             model.tradeItemsByTradePointWithCost.execute();
+            
+            model.tradeTypes4TP.params.franchazi_id = session.franchaziId;
+            model.tradeTypes4TP.params.actual_date = new Date();
+            model.tradeTypes4TP.params.trade_point_id = session.tradePoint;
+            model.tradeTypes4TP.execute();
         }
     }//GEN-LAST:event_getSessionsOnRequeried
 
@@ -123,4 +130,28 @@ function BaristaDesktop() {
     }//GEN-LAST:event_qTradePointOnRequeried
     
     startBaristaDesktop();
+    
+    var onTypeClick = function(aTypeID) {
+        if (aTypeID == 0) {
+            $('.itemDescription').show();
+        } else {
+            $('.itemDescription').hide();
+            $('.itemDescription.tt_' + aTypeID).show();
+        }
+    };
+    
+    function tradeTypes4TPOnRequeried(evt) {//GEN-FIRST:event_tradeTypes4TPOnRequeried
+        if (!model.tradeTypes4TP.empty) {
+            var buttons = [{d_name : 'Все'}];
+            model.tradeTypes4TP.beforeFirst();
+            while (model.tradeTypes4TP.next()) {
+                var data = model.tradeTypes4TP.cursor;
+                buttons[data.trade_item_type_id] = {
+                    d_name  :   data.type_name,
+                    d_title :   null                    
+                };
+            }
+            new cmn.ButtonGroup(buttons, types_body, "typeSelector", onTypeClick);
+        }
+    }//GEN-LAST:event_tradeTypes4TPOnRequeried
 }

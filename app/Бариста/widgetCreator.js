@@ -13,8 +13,9 @@ function WidgetCreator() {
         var itemHeading = cmn.createElement("div", "panel-heading", itemPanel);
         var itemDesc = cmn.createElement("h3", "panel-title itemDesc", itemHeading);
         var itemContent = cmn.createElement("div", "panel-body", itemPanel);
-        var itemCost = cmn.createElement("h1", "itemCost", itemContent);
         var itemType = cmn.createElement("p", "itemType", itemContent);
+        var itemCost = cmn.createElement("h1", "itemCost", itemContent);
+        
 
         itemDesc.innerHTML = aData.item_name;
         itemType.innerHTML = aData.type_name;
@@ -25,9 +26,23 @@ function WidgetCreator() {
         };
     };
     
-    self.typeItem = function(aContainer, typeData, onClick) {
-        var itemContainer = cmn.createElement("div", "itemDescription tt_"
+    self.typeItem = function(aContainer, aData, onClick) {
+        var obj = this;
+        obj.itemContainer = cmn.createElement("div", "typeSelector tt_"
                 + aData.trade_item_type_id + (aData.classtag ? " " + aData.classtag : ""), aContainer);
-        //var
+        obj.itemName = cmn.createElement("div", "type_name", obj.itemContainer);
+        obj.itemName.innerHTML = aData.type_name;
+        
+        obj.selected = false;
+        obj.active = true;
+        
+        obj.itemContainer.onclick = function () {
+            onClick(obj);
+        };
+        
+        obj.setState = function (aState) {
+            obj.active = aState.active;
+            obj.selected = aState.selected;
+        };
     };
 }

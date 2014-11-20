@@ -63,7 +63,8 @@ cmn.ButtonGroup = function(aButtons, aContainer, aBtnClass, aFunction, aClass) {
     }
     
     for (var j in aButtons) {
-        buttons[j] = cmn.createElement("button", aBtnClass, divBtnGroup);
+        buttons[j] = cmn.createElement("button", aBtnClass + (aButtons[j].special_class ? ' ' + aButtons[j].special_class : '')
+                                       , divBtnGroup);
         buttons[j].innerHTML = aButtons[j].d_name;
         buttons[j].title = aButtons[j].d_title;
         buttons[j].fParam = j;
