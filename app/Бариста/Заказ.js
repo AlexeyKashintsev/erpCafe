@@ -247,7 +247,7 @@ function OrderList(aParent) {
         dockElement.appendChild(newHTMLElement);
 
         newHTMLElement = document.createElement('button');
-        newHTMLElement.innerHTML = 'Пробить чек';
+        newHTMLElement.innerHTML = 'Оплатить';
         newHTMLElement.className = 'btnOk';
         dockElement.appendChild(newHTMLElement);
         newHTMLElement.onclick = self.acceptOrder;
