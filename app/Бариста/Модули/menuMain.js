@@ -7,9 +7,12 @@
 function menuMain() {
     var self = this, model = this.model;
     
-    self.makeACall = function (aMessage) {
-        document.getElementById('message').innerHTML = aMessage;
+    var widgetCreator = new WidgetCreator();
+    widgetCreator.createOrderListPane();
+    
+    self.addItem = function (aMessage) {
+        
     };
     
-    makeACall = self.makeACall;
+    addItem = self.addItem;
 }

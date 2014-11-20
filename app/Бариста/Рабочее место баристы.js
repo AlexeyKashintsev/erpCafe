@@ -9,7 +9,7 @@ function BaristaDesktop() {
     session.tradeSession = new ServerModule("TradeSessions");
     self.userName = session.getUserName();
     var whAdd = null;
-    var widgetCreator = new WidgetCreator();
+    self.widgetCreator = new WidgetCreator();
 
     function setSession(aSession) {
         if (aSession) {
@@ -67,23 +67,21 @@ function BaristaDesktop() {
     
     function openDigitalMenu(){
         MenuWindow = window.open("menu.html","menu",'width=550,height=650');
-        //if (!WREF.opener){ WREF.opener = this.window; }
-        //if (!WREF.platypus){ WREF.platypus = platypus; }
-       // setTimeout(MenuWindow.makeACall('куку'), 1000);
     }
     
-    function setData(){
-        //WREF.makeACall('test');
-    }
+
 
     function tradeItemsByTradePointWithCostOnRequeried(evt) {//GEN-FIRST:event_tradeItemsByTradePointWithCostOnRequeried
         model.tradeItemsByTradePointWithCost.beforeFirst();
         while (model.tradeItemsByTradePointWithCost.next()) {
             var data = model.tradeItemsByTradePointWithCost.cursor;
-            new widgetCreator.tradeItem("mainArea", data,
+            new self.widgetCreator.tradeItem("mainArea", data,
                 function(aData) {
                     self.orderList.addItem(aData);
-                    MenuWindow.makeACall(aData.item_name);
+                    if (MenuWindow){
+                        MenuWindow.addItem(aData.item_name);
+                        
+                    }
                 });
         }
     }//GEN-LAST:event_tradeItemsByTradePointWithCostOnRequeried
@@ -117,7 +115,6 @@ function BaristaDesktop() {
         if (!model.qTradePoint.empty) {
             cmn.addHeaderLeft(model.qTradePoint.cursor.tp_name + '<b> @ </b>' +
                     model.qTradePoint.cursor.tp_address, "asterisk");
-            //cmn.addHeaderLeft(model.qTradePoint.cursor.tp_address, "envelope");
         }
     }//GEN-LAST:event_qTradePointOnRequeried
     
