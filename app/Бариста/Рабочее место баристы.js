@@ -78,25 +78,6 @@ function BaristaDesktop() {
         //WREF.makeACall('test');
     }
 
-    function addTradeItem(aData) {
-        var itemContainer = cmn.createElement("div", "itemDescription col-xs-4 col-sm-3 col-lg-2 tt_"
-                + aData.trade_item_type_id + (aData.classtag ? " " + aData.classtag : ""), "mainArea");
-        var itemPanel = cmn.createElement("div", "panel panel-primary", itemContainer);
-        var itemHeading = cmn.createElement("div", "panel-heading", itemPanel);
-        var itemDesc = cmn.createElement("h3", "panel-title itemDesc", itemHeading);
-        var itemContent = cmn.createElement("div", "panel-body", itemPanel);
-        var itemCost = cmn.createElement("h1", "itemCost", itemContent);
-        var itemType = cmn.createElement("p", "itemType", itemContent);
-
-        itemDesc.innerHTML = aData.item_name;
-        itemType.innerHTML = aData.type_name;
-        itemCost.innerHTML = aData.item_cost + 'р.';
-
-        itemPanel.onclick = function() {
-            setData();
-        };
-    }
-
     function tradeItemsByTradePointWithCostOnRequeried(evt) {//GEN-FIRST:event_tradeItemsByTradePointWithCostOnRequeried
         model.tradeItemsByTradePointWithCost.beforeFirst();
         while (model.tradeItemsByTradePointWithCost.next()) {
