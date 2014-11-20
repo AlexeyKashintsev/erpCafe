@@ -108,6 +108,10 @@ self.showFormAsInternal = function(aForm) {
         billAndServices :   {
             display     :   "Счета и услуги",
             dispForm    :   "BillsFranchazi"
+        },
+        checklist :   {
+            display     :   "Чеклисты",
+            dispForm    :   "CheklistForm"
         }
     };
     
