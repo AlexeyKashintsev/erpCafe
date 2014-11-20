@@ -53,6 +53,7 @@ function BaristaDesktop() {
     }
 
     function startBaristaDesktop() {
+        cmn.addTopRightControl("Меню в окне", "plus-sign", openDigitalMenu);
         cmn.addTopRightControl("Прием товара", "plus-sign", btnWarehouseAddActionPerformed);
         cmn.addTopRightControl("Закрыть смену", "log-out", btnSessionCloseActionPerformed);
         cmn.addTopRightControl("Выход", "log-out", Logout);
@@ -64,29 +65,25 @@ function BaristaDesktop() {
         self.orderList = new OrderList(self);
         
         session.sessionKeeper.showIndicator(document.body);
-        
-        openWindow();    
     }
     
-    var WREF = null;
-    function openWindow(){
-        //WREF = window.open("menu.html","menu",'width=550,height=650');
-        //if (!WREF.opener){ WREF.opener = this.window; }
-        //if (!WREF.platypus){ WREF.platypus = platypus; }
-        //WREF.start();
+    function openDigitalMenu(){
+        MenuWindow = window.open("menu.html","menu",'width=550,height=650');
     }
     
-    function setData(){
-        //WREF.makeACall('test');
-    }
+
 
     function tradeItemsByTradePointWithCostOnRequeried(evt) {//GEN-FIRST:event_tradeItemsByTradePointWithCostOnRequeried
         model.tradeItemsByTradePointWithCost.beforeFirst();
         while (model.tradeItemsByTradePointWithCost.next()) {
             var data = model.tradeItemsByTradePointWithCost.cursor;
-            new widgetCreator.tradeItem("mainArea", data,
+            new self.widgetCreator.tradeItem("mainArea", data,
                 function(aData) {
                     self.orderList.addItem(aData);
+                    if (MenuWindow){
+                        MenuWindow.addItem(aData, self.orderList);
+                        
+                    }
                 });
         }
     }//GEN-LAST:event_tradeItemsByTradePointWithCostOnRequeried
@@ -125,7 +122,6 @@ function BaristaDesktop() {
         if (!model.qTradePoint.empty) {
             cmn.addHeaderLeft(model.qTradePoint.cursor.tp_name + '<b> @ </b>' +
                     model.qTradePoint.cursor.tp_address, "asterisk");
-            //cmn.addHeaderLeft(model.qTradePoint.cursor.tp_address, "envelope");
         }
     }//GEN-LAST:event_qTradePointOnRequeried
     
