@@ -9,6 +9,9 @@ function BaristaDesktop() {
     session.tradeSession = new ServerModule("TradeSessions");
     self.userName = session.getUserName();
     var whAdd = null;
+    widgetCreator = new WidgetCreator();
+    
+    var types_body = cmn.createElement('div', 'item_type_selector row', "mainArea");
 
     function setSession(aSession) {
         if (aSession) {
@@ -50,6 +53,7 @@ function BaristaDesktop() {
     }
 
     function startBaristaDesktop() {
+        cmn.addTopRightControl("Меню в окне", "plus-sign", openDigitalMenu);
         cmn.addTopRightControl("Прием товара", "plus-sign", btnWarehouseAddActionPerformed);
         cmn.addTopRightControl("Закрыть смену", "log-out", btnSessionCloseActionPerformed);
         cmn.addTopRightControl("Выход", "log-out", Logout);
@@ -62,30 +66,25 @@ function BaristaDesktop() {
         
         session.sessionKeeper.showIndicator(document.body);
     }
-
-    function addTradeItem(aData) {
-        var itemContainer = cmn.createElement("div", "itemDescription col-xs-4 col-sm-3 col-lg-2 tt_"
-                + aData.trade_item_type_id + (aData.classtag ? " " + aData.classtag : ""), "mainArea");
-        var itemPanel = cmn.createElement("div", "panel panel-primary", itemContainer);
-        var itemHeading = cmn.createElement("div", "panel-heading", itemPanel);
-        var itemDesc = cmn.createElement("h3", "panel-title itemDesc", itemHeading);
-        var itemContent = cmn.createElement("div", "panel-body", itemPanel);
-        var itemCost = cmn.createElement("h1", "itemCost", itemContent);
-        var itemType = cmn.createElement("p", "itemType", itemContent);
-
-        itemDesc.innerHTML = aData.item_name;
-        itemType.innerHTML = aData.type_name;
-        itemCost.innerHTML = aData.item_cost + 'р.';
-
-        itemPanel.onclick = function() {
-            self.orderList.addItem(aData);
-        };
+    
+    function openDigitalMenu(){
+        MenuWindow = window.open("menu.html","menu",'width=550,height=650');
     }
+    
+
 
     function tradeItemsByTradePointWithCostOnRequeried(evt) {//GEN-FIRST:event_tradeItemsByTradePointWithCostOnRequeried
         model.tradeItemsByTradePointWithCost.beforeFirst();
         while (model.tradeItemsByTradePointWithCost.next()) {
-                addTradeItem(model.tradeItemsByTradePointWithCost.cursor);
+            var data = model.tradeItemsByTradePointWithCost.cursor;
+            new widgetCreator.tradeItem("mainArea", data,
+                function(aData) {
+                    self.orderList.addItem(aData);
+                    if (MenuWindow){
+                        MenuWindow.addItem(aData, self.orderList);
+                        
+                    }
+                });
         }
     }//GEN-LAST:event_tradeItemsByTradePointWithCostOnRequeried
 
@@ -97,6 +96,11 @@ function BaristaDesktop() {
             model.tradeItemsByTradePointWithCost.params.actual_date = new Date();
             model.tradeItemsByTradePointWithCost.params.trade_point_id = session.tradePoint;
             model.tradeItemsByTradePointWithCost.execute();
+            
+            model.tradeTypes4TP.params.franchazi_id = session.franchaziId;
+            model.tradeTypes4TP.params.actual_date = new Date();
+            model.tradeTypes4TP.params.trade_point_id = session.tradePoint;
+            model.tradeTypes4TP.execute();
         }
     }//GEN-LAST:event_getSessionsOnRequeried
 
@@ -118,9 +122,32 @@ function BaristaDesktop() {
         if (!model.qTradePoint.empty) {
             cmn.addHeaderLeft(model.qTradePoint.cursor.tp_name + '<b> @ </b>' +
                     model.qTradePoint.cursor.tp_address, "asterisk");
-            //cmn.addHeaderLeft(model.qTradePoint.cursor.tp_address, "envelope");
         }
     }//GEN-LAST:event_qTradePointOnRequeried
     
     startBaristaDesktop();
+    
+    var onTypeClick = function(aTypeID) {
+        if (aTypeID == 0) {
+            $('.itemDescription').show();
+        } else {
+            $('.itemDescription').hide();
+            $('.itemDescription.tt_' + aTypeID).show();
+        }
+    };
+    
+    function tradeTypes4TPOnRequeried(evt) {//GEN-FIRST:event_tradeTypes4TPOnRequeried
+        if (!model.tradeTypes4TP.empty) {
+            var buttons = [{d_name : 'Все'}];
+            model.tradeTypes4TP.beforeFirst();
+            while (model.tradeTypes4TP.next()) {
+                var data = model.tradeTypes4TP.cursor;
+                buttons[data.trade_item_type_id] = {
+                    d_name  :   data.type_name,
+                    d_title :   null                    
+                };
+            }
+            new cmn.ButtonGroup(buttons, types_body, "typeSelector", onTypeClick);
+        }
+    }//GEN-LAST:event_tradeTypes4TPOnRequeried
 }

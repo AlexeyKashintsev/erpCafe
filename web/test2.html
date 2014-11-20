@@ -1,0 +1,17 @@
+<html>
+<head>
+</head>
+<body>
+<script LANGUAGE="JavaScript" TYPE="text/javascript">
+    document.write("This is 5 x 7: " + opener.globalGetValue(7));
+    
+    function makeACall(aMessage) {
+        document.getElementById('messages').innerHTML = aMessage;
+    }
+    
+    var globalSetMessage = this.makeACall;
+</script>
+
+<div id='messages'></div>
+</body>
+</html>
