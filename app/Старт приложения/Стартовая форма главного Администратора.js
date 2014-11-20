@@ -7,6 +7,10 @@ function StartMasterAdminForm() {
     var self = this, model = this.model, form = this;
     
     self.actionList = {
+        dashboard   :   {
+            display     :   "Дашборд",
+            dispForm    :   "AdminDashboard"
+        },
         franchazi   :   {
             display     :   "Франчази и торговые точки",
             dispForm    :   "FranchaziAndTradePoints"

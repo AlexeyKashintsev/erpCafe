@@ -35,6 +35,10 @@ function ChartsByTP(aTradePointDetails, aContainer) {
         selectedChart = charts[aChartName];
         createChart();
     };
+    
+    self.getChart = function() {
+        return chart;
+    };
 
     function createChart() {
         if (!!selectedPeriod && !!selectedChart) {            
@@ -67,6 +71,10 @@ function ChartsByTP(aTradePointDetails, aContainer) {
                 }];
                 
                 chart = chartMaker.Chart(data, chartOptions, selectedPeriod);
+                
+                setTimeout(function() {
+                    chart.reflow();
+                }, 500);
             });
         }
     }

@@ -32,7 +32,7 @@ body {
 
 div.actionPanel {
   background-image: URL('../img/action_panel.jpg');
-  border-right: dotted 3px;
+  /*border-right: dotted 3px;*/
 }
 
 a.list-group-item {
@@ -116,19 +116,35 @@ button.btnCancel {
   width: 25%;
 }
 
+/* TRADE ITEMS */
+
 .itemDescription {
     cursor: pointer;
-    max-height: 180px;
-    margin-bottom: 20px;
+    margin-bottom: 0px;
+    padding: 10px;
+    display: inline-block;
 }
 
 .itemDescription > div.panel {
-  height: 170px;
+  height: 120px;
+  width: 120px;
+  margin-bottom: 0px;
+}
+
+p.itemType {
+  font-size: 10px;
+}
+
+h3.panel-title.itemDesc {
+  font-size: 12px;
 }
 
 h1.itemCost {
   margin-top: 0px!important;
+  font-size: 22px;
 }
+
+/* TRADE ITEMS */
 
 .orderItems {
   background-color: #D2D7D3;
@@ -156,7 +172,7 @@ h1.itemCost {
   display: inline-block;
   padding-right: 5px;
   position: relative;
-  font-family: Segoe UI;
+  /*font-family: Segoe UI;*/
 }
 
 .orderItem h4.itemName {
@@ -306,3 +322,55 @@ body > div.session_indicator {
   div.session_indicator_broken {
     background-color: orange;
   }
+  
+/* ### ADMIN WIDGETS ### */
+.fran_info  {
+  background-color: white;
+  padding: 10px 15px 0px 15px;
+  margin: 0px -15px 15px -15px;
+}
+
+.fran_info div.row {
+  background-color: #664a37;
+  padding: 10px;
+  
+}
+
+div.widget_body {
+  /*border: solid 5px #664a37;*/
+  margin: 5px;
+  background-color: whitesmoke;
+  min-height: 90px;
+  cursor: pointer;
+}
+
+div.widget_body.active {
+  background-color: lightseagreen;
+  color: white;
+}
+
+div.widget_body.work_bad {
+  background-color: orange;
+  color: white;
+}
+
+div.widget_body.not_work {
+  background-color: indianred;
+  color: white;
+}
+
+div.widget_body:hover {
+  background-color: white;
+}
+
+div.widget_body.active:hover {
+  background-color: #22beb6;
+}
+
+div.widget_body.work_bad:hover {
+  background-color: #ffc006;
+}
+
+div.widget_body.not_work:hover {
+  background-color: #ed6969;
+}

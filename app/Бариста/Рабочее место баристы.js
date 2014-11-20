@@ -9,6 +9,7 @@ function BaristaDesktop() {
     session.tradeSession = new ServerModule("TradeSessions");
     self.userName = session.getUserName();
     var whAdd = null;
+    var widgetCreator = new WidgetCreator();
 
     function setSession(aSession) {
         if (aSession) {
@@ -99,7 +100,11 @@ function BaristaDesktop() {
     function tradeItemsByTradePointWithCostOnRequeried(evt) {//GEN-FIRST:event_tradeItemsByTradePointWithCostOnRequeried
         model.tradeItemsByTradePointWithCost.beforeFirst();
         while (model.tradeItemsByTradePointWithCost.next()) {
-                addTradeItem(model.tradeItemsByTradePointWithCost.cursor);
+            var data = model.tradeItemsByTradePointWithCost.cursor;
+            new widgetCreator.tradeItem("mainArea", data,
+                function(aData) {
+                    self.orderList.addItem(aData);
+                });
         }
     }//GEN-LAST:event_tradeItemsByTradePointWithCostOnRequeried
 

@@ -6,14 +6,14 @@ var session = {/*
     activeSession
     tradePoint
     franchaziId*/};
-var Session = (function() {
+var Session = new (function() {
         var servModules = {};
         this.get = function(aModuleName) {
             if (!servModules[aModuleName]) {
                 servModules[aModuleName] = new ServerModule(aModuleName);
             }
             return servModules[aModuleName];
-        }
+        };
     })();
 
 
@@ -21,6 +21,19 @@ var Logout = function() {
     logout();
     setTimeout(location.reload, 1000);
 };
+
+cmn.Modal = function(aTitle) {
+    var modalBody = document.getElementById("modal-body-window");
+    $('#modal-title').html(aTitle);
+    
+    this.show = function() {
+        $('#modalForm').modal('toggle');
+    };
+    
+    this.getModalBody = function() {
+        return modalBody;
+    }
+}
 
 cmn.showModal = function(aForm, aCallback) {
     aForm.showOnPanel('modalFormContent');
@@ -173,9 +186,7 @@ cmn.ActionList = function(anActions, aParentContainer) {
     }
     
     this.actionList = {};
-    this.dockDiv = document.createElement('div');
-    this.dockDiv.classname = 'list-group';
-    aParentContainer.appendChild(this.dockDiv);
+    this.dockDiv = cmn.createElement('div', 'list-group', aParentContainer);
     
     for (var j in anActions) {
         this.actionList[j] = new ActionListElement(anActions[j], this.dockDiv)
