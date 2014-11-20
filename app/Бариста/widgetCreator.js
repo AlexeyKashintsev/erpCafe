@@ -25,7 +25,9 @@ function WidgetCreator() {
         };
     };
     
-    self.typeItem = function(aContainer, typeData) {
-        
+    self.typeItem = function(aContainer, typeData, onClick) {
+        var itemContainer = cmn.createElement("div", "itemDescription tt_"
+                + aData.trade_item_type_id + (aData.classtag ? " " + aData.classtag : ""), aContainer);
+        //var
     };
 }
