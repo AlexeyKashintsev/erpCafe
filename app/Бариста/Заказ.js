@@ -6,85 +6,10 @@ function OrderList(aParent) {
     var self = this, model = this.model, form = this;
     self.orderDetails = {};
     var lastDiv = null;
-    session.clientModule = new ServerModule("ClientServerModule");
+    var clientSelector = new ClientPhoneSelector();
     var choiceMethodOfPayment = new ChoiceMethodOfPayment();
     
-    var client = false;
-    var clientPane = null;
-    var clientRegPane = null;
-    var inpPhone = null;
-    var clientReg = new ClientRegistrationByBarist();
-    
-    function clearClient() {
-        client = false;
-        inpPhone.value = "";
-        checkIfClientPhoneExists();
-    }
-    
-    function checkIfClientPhoneExists() {
-        if (inpPhone.value !== "") {
-            $(".client-phone-reset").addClass("active");
-            var response = session.clientModule.getClientsByFourDigits(inpPhone.value);
-            if (response){
-                $(inpPhone).removeClass("red");
-                $(inpPhone).addClass("green");
-                $(clientRegPane).hide();
-                $(clientPane).show();
-                if (response.count > 1){
-                    clientPhoneDiv = cmn.getElement("div", '', clientPane, "clientPhoneDiv");
-                    clientPhoneDiv.innerHTML = "Найдено больше одной записи! Пожалуйста, уточните запрос.";
-                } else {
-                    inpPhone.value = response[0].phone;
-                    client = response[0];
-                    var clientPhoneDiv = cmn.getElement("div", '', clientPane, "clientPhoneDiv");
-                    clientPhoneDiv.innerHTML = "Клиент: " + client.firstName;
-                    var clientBonusDiv = cmn.getElement("div", '', clientPane, "clientBonusDiv");
-                    clientBonusDiv.innerHTML = "На счету: <b>" + client.bonusCount + "</b> бонусов";
-                }
-             } else {
-                 client = false;
-                 $(inpPhone).removeClass("green");
-                 $(inpPhone).addClass("red");
-                 $(clientPane).hide();
-                 $(clientRegPane).show();
-                 clientRegPane.innerHTML = "Клиент не найден<br>";
-                 var btnRegister = cmn.getElement("button", 'btnRegister', clientRegPane, "btnRegister");
-                 btnRegister.innerHTML = "Зарегистрировать";
-                 btnRegister.onclick = function() {
-                     clientReg.setPhone(inpPhone.value);
-                     clientReg.showModal(function(aPhone) {
-                         if (inpPhone.value === aPhone) {
-                             checkIfClientPhoneExists();
-                         } else {
-                             inpPhone.value = aPhone;
-                         }
-                     });
-                 };
-             }
-         } else {
-             $(".client-phone-reset").removeClass("active");
-             $(inpPhone).removeClass("green");
-             $(inpPhone).removeClass("red");
-             $(clientPane).hide();
-             $(clientRegPane).hide();
-             clientPane.innerHTML = "";
-         }
-    }
 
-    function createClientSelectPane() {
-        var dockElement = cmn.createElement("div", 'baristaOrder panel panel-primary', "actionPanel");
-        var clientLabel = cmn.createElement("h4", 'clientLabel', dockElement, 'clientLabel');
-        clientLabel.innerHTML = "Введите номер телефона клиента";
-        inpPhone = cmn.createElement("input", "client-phone-input", dockElement);
-        inpPhone.onchange = checkIfClientPhoneExists;
-        var btnDeletePhone = cmn.createElement("button", "client-phone-reset", dockElement);
-        btnDeletePhone.innerHTML = '<span class="glyphicon glyphicon-remove"></span>';
-        btnDeletePhone.onclick = clearClient;
-        clientPane = cmn.createElement("div", 'clientInfo', dockElement, "clientPane");
-        clientRegPane = cmn.createElement("div", 'clientInfo', dockElement, "clientRegPane");
-        $(clientPane).hide();
-        $(clientRegPane).hide();
-    }
 
     function alerter(anAlert, aType, aText, aClosable, aCloseTimeOut) {
         if (!anAlert) {
@@ -270,7 +195,7 @@ function OrderList(aParent) {
         var anOrderDetails = {
             orderSum: 0,
             orderItems: [],
-            clientData: client,
+            clientData: clientSelector.getClient(),
             session_id: session.activeSession
         };
         var ic = 0;//items count
@@ -285,7 +210,7 @@ function OrderList(aParent) {
                 ic++;
             }
         }
-        clearClient();
+        clientSelector.clearClient();
         self.deleteOrder();
         if (ic > 0) {
             //Если сумма заказа покрывается бонусами на счету, то предложить оплату бонусами
@@ -328,7 +253,7 @@ function OrderList(aParent) {
         newHTMLElement.onclick = self.acceptOrder;
     }
 
-    createClientSelectPane();
+    clientSelector.show("actionPanel"); //createClientSelectPane();
     createOrderListPane();
 
     function btnOkActionPerformed(evt) {

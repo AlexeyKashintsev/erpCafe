@@ -1,8 +1,8 @@
-<?xml version="1.0" encoding="UTF-8"?><layout defaultCloseOperation="2" name="Form" prefHeight="140px" prefWidth="400px">
-  <widget keyReleased="tfPhoneKeyReleased" name="tfPhone" parent="Form" prefHeight="24px" prefWidth="348px" type="TextFieldDesignInfo">
+<?xml version="1.0" encoding="UTF-8"?><layout defaultCloseOperation="2" name="Form" prefHeight="97px" prefWidth="400px">
+  <widget name="tfPhone" parent="Form" prefHeight="24px" prefWidth="348px" type="TextFieldDesignInfo">
     <constraints height="24px" left="24px" top="24px" type="MarginConstraintsDesignInfo" width="348px"/>
   </widget>
-  <widget actionPerformed="buttonActionPerformed" name="button" parent="Form" prefHeight="29px" prefWidth="132px" text="Подтвердить" type="ButtonDesignInfo">
+  <widget name="button" parent="Form" prefHeight="29px" prefWidth="132px" text="Подтвердить" type="ButtonDesignInfo">
     <constraints height="29px" left="240px" top="60px" type="MarginConstraintsDesignInfo" width="132px"/>
   </widget>
   <widget name="label" parent="Form" prefHeight="24px" prefWidth="204px" text="Это новый клиент" type="LabelDesignInfo">
