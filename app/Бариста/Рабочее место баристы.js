@@ -79,7 +79,7 @@ function BaristaDesktop() {
                 function(aData) {
                     self.orderList.addItem(aData);
                     if (MenuWindow){
-                        MenuWindow.addItem(aData.item_name);
+                        MenuWindow.addItem(aData, self.orderList);
                         
                     }
                 });

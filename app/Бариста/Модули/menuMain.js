@@ -10,8 +10,8 @@ function menuMain() {
     var widgetCreator = new WidgetCreator();
     widgetCreator.createOrderListPane();
     
-    self.addItem = function (aMessage) {
-        
+    self.addItem = function (anItemData, aOrderList) {
+        widgetCreator.orderItem(anItemData, aOrderList)
     };
     
     addItem = self.addItem;
