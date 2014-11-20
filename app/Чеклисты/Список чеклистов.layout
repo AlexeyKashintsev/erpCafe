@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?><layout defaultCloseOperation="2" name="Form" prefHeight="378px" prefWidth="588px" windowOpened="formWindowOpened">
+  <widget borderPainted="false" floatable="false" name="toolBar11" parent="Form" prefHeight="17px" prefWidth="104px" rollover="true" type="ToolbarDesignInfo">
+    <constraints height="17px" left="450px" top="10px" type="MarginConstraintsDesignInfo" width="104px"/>
+  </widget>
+  <widget actionPerformed="rbAllActionPerformed" name="rbAll" parent="toolBar11" prefHeight="15px" prefWidth="35px" text="Все" type="RadioDesignInfo"/>
+  <widget actionPerformed="rbMyActionPerformed" name="rbMy" parent="toolBar11" prefHeight="15px" prefWidth="37px" text="Мои" type="RadioDesignInfo"/>
+  <widget floatable="false" name="toolBar" parent="Form" prefHeight="36px" prefWidth="588px" rollover="true" type="ToolbarDesignInfo">
+    <constraints height="36px" left="0px" top="0px" type="MarginConstraintsDesignInfo" width="588px"/>
+  </widget>
+  <widget actionPerformed="btnAddActionPerformed" focusable="false" horizontalTextPosition="0" icon="icons/22x22/actions/list-add.png" name="btnAdd" parent="toolBar" prefHeight="29px" prefWidth="29px" toolTipText="Добавить" type="ButtonDesignInfo" verticalTextPosition="3"/>
+  <widget actionPerformed="btnDelActionPerformed" focusable="false" horizontalTextPosition="0" icon="icons/22x22/actions/list-remove.png" name="btnDel" parent="toolBar" prefHeight="29px" prefWidth="29px" toolTipText="Удалить" type="ButtonDesignInfo" verticalTextPosition="3"/>
+  <widget actionPerformed="btnReqActionPerformed" focusable="false" horizontalTextPosition="0" icon="icons/22x22/actions/new-view-refresh.png" name="btnReq" parent="toolBar" prefHeight="29px" prefWidth="29px" toolTipText="Обновить" type="ButtonDesignInfo" verticalTextPosition="3"/>
+  <widget actionPerformed="btnItemEditContentActionPerformed" focusable="false" horizontalTextPosition="4" icon="icons/22x22/actions/manilla-document-open.png" name="btnItemEditContent" parent="toolBar" prefHeight="29px" prefWidth="29px" toolTipText="Редактировать" type="ButtonDesignInfo" verticalTextPosition="3"/>
+  <widget actionPerformed="btnItemCreateDoubleActionPerformed" focusable="false" horizontalTextPosition="4" icon="icons/22x22/actions/document-revert.png" name="btnItemCreateDouble" parent="toolBar" prefHeight="29px" prefWidth="29px" toolTipText="Дублировать" type="ButtonDesignInfo" verticalTextPosition="3"/>
+  <widget name="panel" parent="Form" prefHeight="348px" prefWidth="588px" type="PanelDesignInfo">
+    <layout type="MarginLayoutDesignInfo"/>
+    <constraints height="348px" left="0px" top="36px" type="MarginConstraintsDesignInfo" width="588px"/>
+  </widget>
+  <widget deletable="false" editable="false" insertable="false" mouseClicked="modelGridMouseClicked" name="modelGrid" parent="panel" prefHeight="300px" prefWidth="588px" type="DbGridDesignInfo">
+    <rowsColumnsDesignInfo>
+      <rowsDatasource entityId="141648129217993" field="false"/>
+    </rowsColumnsDesignInfo>
+    <treeDesignInfo/>
+    <column name="colCheklist_title" title="Название">
+      <headerStyle>
+        <nativeFont name="Tahoma" size="11"/>
+      </headerStyle>
+      <datamodelElement entityId="141648129217993" fieldName="cheklist_title"/>
+      <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
+      <columnsDatasource/>
+      <cellsDatasource/>
+      <cellDesignInfo>
+        <rowsKeyField/>
+        <columnsKeyField/>
+        <cellValueField/>
+      </cellDesignInfo>
+      <columnsDisplayField/>
+    </column>
+    <column name="colCheklist_text" title="Содержание">
+      <headerStyle>
+        <nativeFont name="Tahoma" size="11"/>
+      </headerStyle>
+      <datamodelElement entityId="141648129217993" fieldName="cheklist_text"/>
+      <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
+      <columnsDatasource/>
+      <cellsDatasource/>
+      <cellDesignInfo>
+        <rowsKeyField/>
+        <columnsKeyField/>
+        <cellValueField/>
+      </cellDesignInfo>
+      <columnsDisplayField/>
+    </column>
+    <column name="colCheklist_type" title="Тип">
+      <headerStyle>
+        <nativeFont name="Tahoma" size="11"/>
+      </headerStyle>
+      <datamodelElement entityId="141648129217993" fieldName="cheklist_type"/>
+      <controlInfo classHint="DbSpinDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
+      <columnsDatasource/>
+      <cellsDatasource/>
+      <cellDesignInfo>
+        <rowsKeyField/>
+        <columnsKeyField/>
+        <cellValueField/>
+      </cellDesignInfo>
+      <columnsDisplayField/>
+    </column>
+    <constraints height="300px" left="0px" top="0px" type="MarginConstraintsDesignInfo" width="588px"/>
+  </widget>
+  <widget actionPerformed="buttonActionPerformed" name="button" parent="panel" prefHeight="23px" prefWidth="132px" text="Сохранить" type="ButtonDesignInfo">
+    <constraints bottom="13px" height="23px" right="12px" type="MarginConstraintsDesignInfo" width="132px"/>
+  </widget>
+  <layout type="MarginLayoutDesignInfo"/>
+</layout>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?><datamodel>
+  <parameters>
+    <parameter description="" name="franchazi_id" nullable="true" parameterMode="1" precision="0" scale="0" selectionForm="null" signed="true" size="0" type="2" typeName="NUMERIC"/>
+    <parameter description="" name="checklist_id" nullable="true" parameterMode="1" precision="0" scale="0" selectionForm="null" signed="true" size="0" type="2" typeName="NUMERIC"/>
+  </parameters>
+  <parametersEntity entityHeight="200" entityIconified="false" entityLocationX="8" entityLocationY="7" entityWidth="150"/>
+  <entity Title="" entityHeight="200" entityIconified="false" entityId="141649737494361" entityLocationX="185" entityLocationY="6" entityWidth="150" tableAlias="t1" tableName="org_trade_point" tableSchemaName=""/>
+  <entity Title="" entityHeight="200" entityIconified="false" entityId="141649738137338" entityLocationX="380" entityLocationY="4" entityWidth="150" tableAlias="t" tableName="cheklist_usage" tableSchemaName=""/>
+  <relation leftEntityFieldName="trade_point_id" leftEntityId="141649738137338" rightEntityFieldName="org_trade_point_id" rightEntityId="141649737494361"/>
+  <relation leftEntityId="-1" leftEntityParameterName="franchazi_id" rightEntityFieldName="franchazi_id" rightEntityId="141649737494361"/>
+  <relation leftEntityFieldName="cheklist_id" leftEntityId="141649738137338" rightEntityId="-1" rightEntityParameterName="checklist_id"/>
+</datamodel>
