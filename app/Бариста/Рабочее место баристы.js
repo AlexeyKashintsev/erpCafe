@@ -9,7 +9,7 @@ function BaristaDesktop() {
     session.tradeSession = new ServerModule("TradeSessions");
     self.userName = session.getUserName();
     var whAdd = null;
-    var widgetCreator = new WidgetCreator();
+    widgetCreator = new WidgetCreator();
     
     var types_body = cmn.createElement('div', 'item_type_selector row', "mainArea");
 
@@ -77,7 +77,7 @@ function BaristaDesktop() {
         model.tradeItemsByTradePointWithCost.beforeFirst();
         while (model.tradeItemsByTradePointWithCost.next()) {
             var data = model.tradeItemsByTradePointWithCost.cursor;
-            new self.widgetCreator.tradeItem("mainArea", data,
+            new widgetCreator.tradeItem("mainArea", data,
                 function(aData) {
                     self.orderList.addItem(aData);
                     if (MenuWindow){
