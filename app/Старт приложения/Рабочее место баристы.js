@@ -62,19 +62,19 @@ function BaristaDesktop() {
         
         session.sessionKeeper.showIndicator(document.body);
         
-        openWindow();
-        
-        setInterval(setData(), 10000);
-        
+        openWindow();    
     }
     
+    var WREF = null;
     function openWindow(){
-        WREF = window.open("menu.html","menu",'width=550,height=650');
-        if(!WREF.opener){ WREF.opener = this.window; }
+        //WREF = window.open("menu.html","menu",'width=550,height=650');
+        //if (!WREF.opener){ WREF.opener = this.window; }
+        //if (!WREF.platypus){ WREF.platypus = platypus; }
+        //WREF.start();
     }
     
     function setData(){
-        WREF.globalSetMessage('test');
+        //WREF.makeACall('test');
     }
 
     function addTradeItem(aData) {
@@ -92,7 +92,7 @@ function BaristaDesktop() {
         itemCost.innerHTML = aData.item_cost + 'р.';
 
         itemPanel.onclick = function() {
-            self.orderList.addItem(aData);
+            setData();
         };
     }
 
