@@ -92,7 +92,7 @@ function OrderList(aParent) {
         if (!!self.orderDetails[anItemData.item_id]) {
             self.orderDetails[anItemData.item_id].increase();
         } else {
-            self.orderDetails[anItemData.item_id] = aParent.widgetCreator.orderItem(anItemData, self);
+            self.orderDetails[anItemData.item_id] = widgetCreator.orderItem(anItemData, self);
             self.calculateOrder();
         }
     };
