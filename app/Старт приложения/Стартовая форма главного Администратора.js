@@ -59,6 +59,10 @@ function StartMasterAdminForm() {
             display     :   "Настройка сообщений",
             dispForm    :   "messengerSettings"
         },
+        cheklist     :   {
+            display     :   "Чеклисты",
+            dispForm    :   "CheklistForm"
+        },
         massSendSMS     :   {
             display     :   "Массовая рассылка СМС",
             dispForm    :   "msgMassSendForm"

@@ -4,7 +4,7 @@
  */
 function ChooseCityForm() {
     var self = this, model = this.model, form = this;
-    
+    model.params.cheklist_open = 0;
     self.setFranchazi = function(aFranchaziId) {
         model.params.franchazi_id = aFranchaziId;
     };
