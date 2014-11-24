@@ -10,7 +10,7 @@ function BaristaDesktop() {
     self.userName = session.getUserName();
     var whAdd = null;
     var types_body;
-    widgetCreator = new WidgetCreator();
+    widgetCreator = new WidgetCreatorBaristaDesktop();
 
     function setSession(aSession) {
         if (aSession) {
@@ -69,11 +69,12 @@ function BaristaDesktop() {
     
     function openDigitalMenu(){
         MenuWindow = window.open("menu.html","menu",'width=550,height=650');
+        
     }
     
     function addItemToOrder(anItemData) {
         self.orderList.addItem(anItemData);
-        if (MenuWindow) {
+        if (MenuWindow) { 
             MenuWindow.addItem(anItemData, self.orderList);
         }
     }

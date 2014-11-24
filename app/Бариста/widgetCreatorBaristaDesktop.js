@@ -3,7 +3,7 @@
  * @author Alexey
  * @module
  */ 
-function WidgetCreator() {
+function WidgetCreatorBaristaDesktop() {
     var self = this, model = this.model;
     
     self.tradeItem = function(aContainer, aData, onClick) {
