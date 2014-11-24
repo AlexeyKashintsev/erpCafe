@@ -44,5 +44,5 @@ function OrderProcessor() {
                     unprocessedOrders.addOrder(anOrderDetails);
                 }
             });
-    }
+    };
 }

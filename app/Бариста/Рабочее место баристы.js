@@ -10,6 +10,7 @@ function BaristaDesktop() {
     self.userName = session.getUserName();
     var whAdd = null;
     var types_body;
+    var items_body;
     widgetCreator = new WidgetCreator();
 
     function setSession(aSession) {
@@ -62,6 +63,7 @@ function BaristaDesktop() {
         });
         
         types_body = cmn.createElement('div', 'item_type_selector row', "mainArea");
+        items_body = cmn.createElement('div', 'row items_select', "mainArea");
         self.orderList = new OrderList(self);
         
         session.sessionKeeper.showIndicator(document.body);
@@ -82,8 +84,11 @@ function BaristaDesktop() {
         model.tradeItemsByTradePointWithCost.beforeFirst();
         while (model.tradeItemsByTradePointWithCost.next()) {
             var data = model.tradeItemsByTradePointWithCost.cursor;
-            new widgetCreator.tradeItem("mainArea", data, addItemToOrder);
+            new widgetCreator.tradeItem(items_body, data, addItemToOrder);
         }
+        $( ".items_select" ).sortable({dropOnEmpty : false, containment : "parent",
+            opacity:0.55, revert: true, helper: 'clone'});
+        $( ".itemDescription" ).disableSelection();
     }//GEN-LAST:event_tradeItemsByTradePointWithCostOnRequeried
 
     function getSessionsOnRequeried(evt) {//GEN-FIRST:event_getSessionsOnRequeried
