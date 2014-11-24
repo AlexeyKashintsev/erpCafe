@@ -16,60 +16,63 @@
     <layout type="MarginLayoutDesignInfo"/>
     <constraints height="348px" left="0px" top="36px" type="MarginConstraintsDesignInfo" width="588px"/>
   </widget>
+  <widget actionPerformed="button1ActionPerformed" name="button1" parent="panel" prefHeight="23px" prefWidth="132px" text="Выбрать" type="ButtonDesignInfo">
+    <constraints bottom="13px" height="23px" right="12px" type="MarginConstraintsDesignInfo" width="132px"/>
+  </widget>
   <widget deletable="false" editable="false" insertable="false" mouseClicked="modelGridMouseClicked" name="modelGrid" parent="panel" prefHeight="300px" prefWidth="588px" type="DbGridDesignInfo">
+    <column name="colCheklist_title" title="Название">
+      <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
+      <datamodelElement entityId="141648129217993" fieldName="cheklist_title"/>
+      <columnsDatasource/>
+      <columnsDisplayField/>
+      <cellsDatasource/>
+      <cellDesignInfo>
+        <columnsKeyField/>
+        <cellValueField/>
+        <rowsKeyField/>
+      </cellDesignInfo>
+      <headerStyle>
+        <nativeFont name="Tahoma" size="11"/>
+      </headerStyle>
+    </column>
+    <column name="colCheklist_text" title="Содержание">
+      <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
+      <datamodelElement entityId="141648129217993" fieldName="cheklist_text"/>
+      <columnsDatasource/>
+      <columnsDisplayField/>
+      <cellsDatasource/>
+      <cellDesignInfo>
+        <columnsKeyField/>
+        <cellValueField/>
+        <rowsKeyField/>
+      </cellDesignInfo>
+      <headerStyle>
+        <nativeFont name="Tahoma" size="11"/>
+      </headerStyle>
+    </column>
+    <column name="colCheklist_type" title="Тип">
+      <controlInfo classHint="DbSpinDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
+      <datamodelElement entityId="141648129217993" fieldName="cheklist_type"/>
+      <columnsDatasource/>
+      <columnsDisplayField/>
+      <cellsDatasource/>
+      <cellDesignInfo>
+        <columnsKeyField/>
+        <cellValueField/>
+        <rowsKeyField/>
+      </cellDesignInfo>
+      <headerStyle>
+        <nativeFont name="Tahoma" size="11"/>
+      </headerStyle>
+    </column>
     <rowsColumnsDesignInfo>
       <rowsDatasource entityId="141648129217993" field="false"/>
     </rowsColumnsDesignInfo>
     <treeDesignInfo/>
-    <column name="colCheklist_title" title="Название">
-      <headerStyle>
-        <nativeFont name="Tahoma" size="11"/>
-      </headerStyle>
-      <datamodelElement entityId="141648129217993" fieldName="cheklist_title"/>
-      <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
-      <columnsDatasource/>
-      <cellsDatasource/>
-      <cellDesignInfo>
-        <rowsKeyField/>
-        <columnsKeyField/>
-        <cellValueField/>
-      </cellDesignInfo>
-      <columnsDisplayField/>
-    </column>
-    <column name="colCheklist_text" title="Содержание">
-      <headerStyle>
-        <nativeFont name="Tahoma" size="11"/>
-      </headerStyle>
-      <datamodelElement entityId="141648129217993" fieldName="cheklist_text"/>
-      <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
-      <columnsDatasource/>
-      <cellsDatasource/>
-      <cellDesignInfo>
-        <rowsKeyField/>
-        <columnsKeyField/>
-        <cellValueField/>
-      </cellDesignInfo>
-      <columnsDisplayField/>
-    </column>
-    <column name="colCheklist_type" title="Тип">
-      <headerStyle>
-        <nativeFont name="Tahoma" size="11"/>
-      </headerStyle>
-      <datamodelElement entityId="141648129217993" fieldName="cheklist_type"/>
-      <controlInfo classHint="DbSpinDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
-      <columnsDatasource/>
-      <cellsDatasource/>
-      <cellDesignInfo>
-        <rowsKeyField/>
-        <columnsKeyField/>
-        <cellValueField/>
-      </cellDesignInfo>
-      <columnsDisplayField/>
-    </column>
     <constraints height="300px" left="0px" top="0px" type="MarginConstraintsDesignInfo" width="588px"/>
   </widget>
   <widget actionPerformed="buttonActionPerformed" name="button" parent="panel" prefHeight="23px" prefWidth="132px" text="Сохранить" type="ButtonDesignInfo">
-    <constraints bottom="13px" height="23px" right="12px" type="MarginConstraintsDesignInfo" width="132px"/>
+    <constraints bottom="13px" height="23px" left="300px" type="MarginConstraintsDesignInfo" width="132px"/>
   </widget>
   <layout type="MarginLayoutDesignInfo"/>
 </layout>

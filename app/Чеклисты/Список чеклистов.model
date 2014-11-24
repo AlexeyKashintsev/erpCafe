@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?><datamodel>
+  <parameters>
+    <parameter description="" name="type" nullable="true" parameterMode="1" precision="0" scale="0" selectionForm="null" signed="true" size="0" type="2" typeName="NUMERIC"/>
+  </parameters>
   <parametersEntity entityHeight="200" entityIconified="false" entityLocationX="12" entityLocationY="12" entityWidth="150"/>
   <entity Name="qListCheklist" Title="" entityHeight="200" entityIconified="false" entityId="141648129217993" entityLocationX="194" entityLocationY="11" entityWidth="150" queryId="qListCheklist" tableName="" tableSchemaName=""/>
+  <relation leftEntityId="-1" leftEntityParameterName="type" rightEntityId="141648129217993" rightEntityParameterName="type"/>
 </datamodel>

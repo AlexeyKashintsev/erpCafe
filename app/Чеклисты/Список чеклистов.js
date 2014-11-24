@@ -7,9 +7,16 @@ function CheklistForm() {
     var cheklistContent = new CheklistContent();
     var userSession = new ServerModule("UserSession");
     var franchazi_id = null;
+    model.params.type = null;
+    
+    self.setCheklistType = function(aType){
+        model.params.type = aType;
+    };
     
     function btnAddActionPerformed(evt) {//GEN-FIRST:event_btnAddActionPerformed
-        model.qListCheklist.insert(model.qListCheklist.schema.franchazi_id, franchazi_id);
+        model.qListCheklist.insert(model.qListCheklist.schema.franchazi_id, franchazi_id,
+                                   model.qListCheklist.schema.cheklist_type, model.params.type
+        );
         model.save();
         cheklistContent.setCheklistId(model.qListCheklist.cursor.cheklist_data_id);
         cheklistContent.showModal(function(){
@@ -76,4 +83,10 @@ function CheklistForm() {
             });
         }
     }//GEN-LAST:event_modelGridMouseClicked
+
+    function button1ActionPerformed(evt) {//GEN-FIRST:event_button1ActionPerformed
+        model.save();
+       
+        form.close(model.qListCheklist.cursor);
+    }//GEN-LAST:event_button1ActionPerformed
 }

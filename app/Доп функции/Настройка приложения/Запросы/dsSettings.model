@@ -3,10 +3,12 @@
     <parameter description="" name="franchazi_id" nullable="true" parameterMode="1" precision="0" scale="0" selectionForm="null" signed="true" size="0" type="2" typeName="NUMERIC"/>
     <parameter description="" name="trade_point_id" nullable="true" parameterMode="1" precision="0" scale="0" selectionForm="null" signed="true" size="0" type="2" typeName="NUMERIC"/>
     <parameter description="" name="usr_name" nullable="true" parameterMode="1" precision="1" scale="0" selectionForm="null" signed="true" size="100" type="12" typeName="VARCHAR"/>
+    <parameter description="" name="setting_name" nullable="true" parameterMode="1" precision="0" scale="0" selectionForm="null" signed="true" size="100" type="12" typeName="VARCHAR"/>
   </parameters>
   <parametersEntity entityHeight="200" entityIconified="false" entityLocationX="8" entityLocationY="7" entityWidth="150"/>
   <entity Title="" entityHeight="200" entityIconified="false" entityId="141631807060755" entityLocationX="328" entityLocationY="0" entityWidth="150" tableAlias="t1" tableName="adm_settings" tableSchemaName=""/>
-  <relation leftEntityId="-1" leftEntityParameterName="franchazi_id" rightEntityFieldName="franchazi_id" rightEntityId="141631807060755"/>
+  <relation leftEntityId="-1" leftEntityParameterName="setting_name" rightEntityFieldName="setting_name" rightEntityId="141631807060755"/>
   <relation leftEntityId="-1" leftEntityParameterName="usr_name" rightEntityFieldName="usr_name" rightEntityId="141631807060755"/>
   <relation leftEntityId="-1" leftEntityParameterName="trade_point_id" rightEntityFieldName="trade_point_id" rightEntityId="141631807060755"/>
+  <relation leftEntityId="-1" leftEntityParameterName="franchazi_id" rightEntityFieldName="franchazi_id" rightEntityId="141631807060755"/>
 </datamodel>

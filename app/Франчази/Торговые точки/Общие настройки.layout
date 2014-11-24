@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?><layout backgroundColor="#f4f4f4" defaultCloseOperation="2" name="Form" prefHeight="300px" prefWidth="492px" undecorated="true" windowOpened="formWindowOpened">
+  <widget name="cmbCitySelect" parent="Form" prefHeight="24px" prefWidth="332px" type="DbComboDesignInfo">
+    <valueField entityId="141623000801670" fieldName="org_cities_id"/>
+    <displayField entityId="141623000801670" fieldName="city"/>
+    <datamodelElement entityId="141623069358671" fieldName="tp_city"/>
+    <constraints height="24px" left="144px" right="16px" top="12px" type="MarginConstraintsDesignInfo"/>
+  </widget>
+  <widget name="label" parent="Form" prefHeight="24px" prefWidth="48px" text="Город" type="LabelDesignInfo">
+    <constraints height="24px" left="12px" top="12px" type="MarginConstraintsDesignInfo" width="48px"/>
+  </widget>
+  <widget actionPerformed="btnSaveActionPerformed" name="btnSave" parent="Form" prefHeight="23px" prefWidth="113px" text="Сохранить" type="ButtonDesignInfo">
+    <constraints bottom="13px" height="23px" right="11px" type="MarginConstraintsDesignInfo" width="113px"/>
+  </widget>
+  <widget name="label1" parent="Form" prefHeight="14px" prefWidth="132px" text="Чеклист на открытие:" type="LabelDesignInfo">
+    <constraints height="14px" left="12px" top="64px" type="MarginConstraintsDesignInfo" width="132px"/>
+  </widget>
+  <widget name="label2" parent="Form" prefHeight="14px" prefWidth="120px" text="Чеклист на закрытие:" type="LabelDesignInfo">
+    <constraints height="14px" left="12px" top="112px" type="MarginConstraintsDesignInfo" width="120px"/>
+  </widget>
+  <widget actionPerformed="btnOpenChooseActionPerformed" name="btnOpenChoose" parent="Form" prefHeight="23px" prefWidth="116px" text="Выбрать" type="ButtonDesignInfo">
+    <constraints height="23px" right="16px" top="60px" type="MarginConstraintsDesignInfo" width="116px"/>
+  </widget>
+  <widget actionPerformed="btnCloseChooseActionPerformed" name="btnCloseChoose" parent="Form" prefHeight="23px" prefWidth="116px" text="Выбрать" type="ButtonDesignInfo">
+    <constraints height="23px" right="16px" top="108px" type="MarginConstraintsDesignInfo" width="116px"/>
+  </widget>
+  <widget name="lbOpen" parent="Form" prefHeight="14px" prefWidth="216px" text="Не задан" type="LabelDesignInfo">
+    <constraints height="14px" left="132px" top="64px" type="MarginConstraintsDesignInfo" width="216px"/>
+  </widget>
+  <widget name="lbClose" parent="Form" prefHeight="14px" prefWidth="216px" text="Не задан" type="LabelDesignInfo">
+    <constraints height="14px" left="132px" top="112px" type="MarginConstraintsDesignInfo" width="216px"/>
+  </widget>
+  <layout type="MarginLayoutDesignInfo"/>
+</layout>
