@@ -9,9 +9,8 @@ function BaristaDesktop() {
     session.tradeSession = new ServerModule("TradeSessions");
     self.userName = session.getUserName();
     var whAdd = null;
+    var types_body;
     widgetCreator = new WidgetCreator();
-    
-    var types_body = cmn.createElement('div', 'item_type_selector row', "mainArea");
 
     function setSession(aSession) {
         if (aSession) {
@@ -62,6 +61,7 @@ function BaristaDesktop() {
             setSession(aSession);
         });
         
+        types_body = cmn.createElement('div', 'item_type_selector row', "mainArea");
         self.orderList = new OrderList(self);
         
         session.sessionKeeper.showIndicator(document.body);
@@ -71,20 +71,18 @@ function BaristaDesktop() {
         MenuWindow = window.open("menu.html","menu",'width=550,height=650');
     }
     
-
+    function addItemToOrder(anItemData) {
+        self.orderList.addItem(anItemData);
+        if (MenuWindow) {
+            MenuWindow.addItem(anItemData, self.orderList);
+        }
+    }
 
     function tradeItemsByTradePointWithCostOnRequeried(evt) {//GEN-FIRST:event_tradeItemsByTradePointWithCostOnRequeried
         model.tradeItemsByTradePointWithCost.beforeFirst();
         while (model.tradeItemsByTradePointWithCost.next()) {
             var data = model.tradeItemsByTradePointWithCost.cursor;
-            new widgetCreator.tradeItem("mainArea", data,
-                function(aData) {
-                    self.orderList.addItem(aData);
-                    if (MenuWindow){
-                        MenuWindow.addItem(aData, self.orderList);
-                        
-                    }
-                });
+            new widgetCreator.tradeItem("mainArea", data, addItemToOrder);
         }
     }//GEN-LAST:event_tradeItemsByTradePointWithCostOnRequeried
 
@@ -138,13 +136,13 @@ function BaristaDesktop() {
     
     function tradeTypes4TPOnRequeried(evt) {//GEN-FIRST:event_tradeTypes4TPOnRequeried
         if (!model.tradeTypes4TP.empty) {
-            var buttons = [{d_name : 'Все'}];
+            var buttons = [{d_name : 'Все', active : true}];
             model.tradeTypes4TP.beforeFirst();
             while (model.tradeTypes4TP.next()) {
                 var data = model.tradeTypes4TP.cursor;
                 buttons[data.trade_item_type_id] = {
                     d_name  :   data.type_name,
-                    d_title :   null                    
+                    d_title :   null
                 };
             }
             new cmn.ButtonGroup(buttons, types_body, "typeSelector", onTypeClick);

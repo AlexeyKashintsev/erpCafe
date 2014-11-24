@@ -69,85 +69,116 @@ function WidgetCreator() {
         newHTMLElement.className = 'btnOk';
         dockElement.appendChild(newHTMLElement);
         newHTMLElement.onclick = aParent.acceptOrder;
+        
+        this.orderItem = function(anItemData, aOrderList) {
+            var obj = {};
+
+            obj.docDiv = document.getElementById("orderItems");
+            obj.divEl = document.createElement("div");
+            obj.divEl.className = "orderItem";
+            obj.docDiv.appendChild(obj.divEl);
+
+            obj.label = document.createElement("h4");
+            obj.divEl.appendChild(obj.label);
+            obj.label.className = "itemName";
+
+            obj.count = document.createElement("h4");
+            obj.divEl.appendChild(obj.count);
+            obj.count.className = "itemCount";
+
+            obj.btnRemove = document.createElement("button");
+            obj.btnRemove.innerHTML = '<span class="glyphicon glyphicon-minus"></span>';
+            obj.btnRemove.className = "removeBtn";
+
+            obj.btnDelete = document.createElement("button");
+            obj.btnDelete.innerHTML = '<span class="glyphicon glyphicon-remove"></span>';
+            obj.btnDelete.className = "deleteBtn";
+
+            obj.divEl.appendChild(obj.btnRemove);
+            obj.divEl.appendChild(obj.btnDelete);
+
+            obj.updateText = 
+            obj.show = function() {
+                obj.label.innerHTML = obj.itemName;
+                obj.count.innerHTML = obj.orderQuantity + ' шт. ' + obj.orderSum + " р.";
+                //  obj.sum.innerHTML = obj.orderSum + " р.";
+                obj.parent.calculateOrder();
+            };
+
+            obj.orderQuantity = 1;
+            obj.itemId = anItemData.item_id;
+            obj.itemName = anItemData.item_name;
+            obj.itemCost = anItemData.item_cost;
+            obj.orderSum = anItemData.item_cost;
+            obj.parent = aOrderList;
+            obj.stop = false;
+
+            obj.increase = function() {
+                obj.orderSum = ++obj.orderQuantity * obj.itemCost;
+                obj.updateText();
+            };
+
+            obj.decrease = function() {
+                if (obj.orderQuantity > 1)
+                    obj.orderSum = --obj.orderQuantity * obj.itemCost;
+                else
+                    obj.delete();
+                obj.updateText();
+            };
+
+            obj.delete = function() {
+                obj.orderSum = obj.orderQuantity = 0;
+                delete(obj.parent.orderDetails[obj.itemId]);
+                obj.parent.pnlOrderList.remove(obj.panel);
+                obj.parent.calculateOrder();
+                obj.docDiv.removeChild(obj.divEl);
+            };
+
+            obj.divEl.onclick = function() {
+                if (!obj.stop)
+                    obj.increase();
+                else
+                    obj.stop = false;
+            };
+            obj.btnRemove.onclick = function() {
+                obj.decrease();
+                obj.stop = true;
+            };
+            obj.btnDelete.onclick = obj.delete;
+
+            obj.show();
+            return obj;
+        };
     };
     
-    self.orderItem = function(anItemData, aOrderList) {
-        var obj = {};
+    var lastAlert = null;
+    self.Alerter = function(anAlert, aType, aText, aClosable, aCloseTimeOut, aContainer) {
+        if (!anAlert) {
+            var divEl = cmn.createElement("div", "alert " + aType, 
+                                          aContainer ? aContainer : "actionPanel",
+                                          null, lastAlert ? lastAlert : false);
+            divEl.role = "alert";
+            lastAlert = divEl;
+        } else {
+            divEl = anAlert;
+            if (aType)
+                divEl.className = "alert " + aType;
+        }
 
-        obj.docDiv = document.getElementById("orderItems");
-        obj.divEl = document.createElement("div");
-        obj.divEl.className = "orderItem";
-        obj.docDiv.appendChild(obj.divEl);
+        divEl.innerHTML = aText;
 
-        obj.label = document.createElement("h4");
-        obj.divEl.appendChild(obj.label);
-        obj.label.className = "itemName";
+        function closeIt() {
+            divEl.parentNode.removeChild(divEl);
+            if (lastAlert === divEl)
+                lastAlert = null;
+        }
 
-        obj.count = document.createElement("h4");
-        obj.divEl.appendChild(obj.count);
-        obj.count.className = "itemCount";
+        if (aClosable)
+            divEl.onclick = closeIt;
 
-        obj.btnRemove = document.createElement("button");
-        obj.btnRemove.innerHTML = '<span class="glyphicon glyphicon-minus"></span>';
-        obj.btnRemove.className = "removeBtn";
+        if (aCloseTimeOut)
+            setTimeout(closeIt, aCloseTimeOut);
 
-        obj.btnDelete = document.createElement("button");
-        obj.btnDelete.innerHTML = '<span class="glyphicon glyphicon-remove"></span>';
-        obj.btnDelete.className = "deleteBtn";
-
-        obj.divEl.appendChild(obj.btnRemove);
-        obj.divEl.appendChild(obj.btnDelete);
-
-        obj.updateText = 
-        obj.show = function() {
-            obj.label.innerHTML = obj.itemName;
-            obj.count.innerHTML = obj.orderQuantity + ' шт. ' + obj.orderSum + " р.";
-            //  obj.sum.innerHTML = obj.orderSum + " р.";
-            obj.parent.calculateOrder();
-        };
-        
-        obj.orderQuantity = 1;
-        obj.itemId = anItemData.item_id;
-        obj.itemName = anItemData.item_name;
-        obj.itemCost = anItemData.item_cost;
-        obj.orderSum = anItemData.item_cost;
-        obj.parent = aOrderList;
-        obj.stop = false;
-
-        obj.increase = function() {
-            obj.orderSum = ++obj.orderQuantity * obj.itemCost;
-            obj.updateText();
-        };
-
-        obj.decrease = function() {
-            if (obj.orderQuantity > 1)
-                obj.orderSum = --obj.orderQuantity * obj.itemCost;
-            else
-                obj.delete();
-            obj.updateText();
-        };
-
-        obj.delete = function() {
-            obj.orderSum = obj.orderQuantity = 0;
-            delete(obj.parent.orderDetails[obj.itemId]);
-            obj.parent.pnlOrderList.remove(obj.panel);
-            obj.parent.calculateOrder();
-            obj.docDiv.removeChild(obj.divEl);
-        };
-
-        obj.divEl.onclick = function() {
-            if (!obj.stop)
-                obj.increase();
-            else
-                obj.stop = false;
-        };
-        obj.btnRemove.onclick = function() {
-            obj.decrease();
-            obj.stop = true;
-        };
-        obj.btnDelete.onclick = obj.delete;
-
-        obj.show();
-        return obj;
-    };
+        return divEl;
+    }
 }

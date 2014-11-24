@@ -12,7 +12,7 @@
   <entity Name="tradeItemsByTradePointWithCost" Title="" entityHeight="200" entityIconified="false" entityId="140684385538744" entityLocationX="192" entityLocationY="22" entityWidth="150" onRequeried="tradeItemsByTradePointWithCostOnRequeried" queryId="TradeItemsByTradePointWithCost" tableName="" tableSchemaName=""/>
   <relation leftEntityId="-1" leftEntityParameterName="session_id" rightEntityId="140688477684616" rightEntityParameterName="session_id"/>
   <relation leftEntityId="-1" leftEntityParameterName="trade_point_id" rightEntityId="141153927151931" rightEntityParameterName="trade_point_id"/>
-  <referenceRelation leftEntityFieldName="parent_type" leftEntityId="141649180667338" rightEntityFieldName="trade_item_type_id" rightEntityId="140684385538744"/>
   <referenceRelation leftEntityFieldName="parent_type" leftEntityId="141649180667338" rightEntityFieldName="trade_item_type_id" rightEntityId="141649180667338"/>
   <referenceRelation leftEntityFieldName="trade_point" leftEntityId="140688477684616" rightEntityFieldName="org_trade_point_id" rightEntityId="141153927151931"/>
+  <referenceRelation leftEntityFieldName="parent_type" leftEntityId="141649180667338" rightEntityFieldName="trade_item_type_id" rightEntityId="140684385538744"/>
 </datamodel>
