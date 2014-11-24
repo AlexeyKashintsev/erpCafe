@@ -46,7 +46,7 @@ function WidgetCreator() {
         };
     };
 
-    self.createOrderListPane = function() {
+    self.OrderListPane = function(aParent) {
         var dockElement = cmn.createElement("div", 'baristaOrder panel panel-primary', "actionPanel");
 
         var newHTMLElement = document.createElement('div');
@@ -61,18 +61,14 @@ function WidgetCreator() {
         var newHTMLElement = document.createElement('button');
         newHTMLElement.innerHTML = 'Отменить';
         newHTMLElement.className = 'btnCancel';
-        newHTMLElement.onclick = self.deleteOrder;
+        newHTMLElement.onclick = aParent.deleteOrder;
         dockElement.appendChild(newHTMLElement);
 
         newHTMLElement = document.createElement('button');
         newHTMLElement.innerHTML = 'Оплатить';
         newHTMLElement.className = 'btnOk';
         dockElement.appendChild(newHTMLElement);
-        newHTMLElement.onclick = self.acceptOrder;
-    };
-    
-    self.typeItem = function(aContainer, typeData) {
-        
+        newHTMLElement.onclick = aParent.acceptOrder;
     };
     
     self.orderItem = function(anItemData, aOrderList) {
@@ -90,15 +86,6 @@ function WidgetCreator() {
         obj.count = document.createElement("h4");
         obj.divEl.appendChild(obj.count);
         obj.count.className = "itemCount";
-
-        /*    obj.sum = document.createElement("h4");
-         obj.divEl.appendChild(obj.sum);
-         obj.sum.className = "itemSum";*/
-
-        /*obj.btnAdd = document.createElement("button");
-         obj.btnAdd.innerHTML = '<span class="glyphicon glyphicon-plus"></span>';
-         obj.btnAdd.className = "addBtn";
-         obj.divEl.appendChild(obj.btnAdd);*/
 
         obj.btnRemove = document.createElement("button");
         obj.btnRemove.innerHTML = '<span class="glyphicon glyphicon-minus"></span>';

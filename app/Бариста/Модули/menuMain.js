@@ -8,7 +8,7 @@ function menuMain() {
     var self = this, model = this.model;
     
     var widgetCreator = new WidgetCreator();
-    widgetCreator.createOrderListPane();
+    widgetCreator.OrderListPane();
     
     self.addItem = function (anItemData, aOrderList) {
         widgetCreator.orderItem(anItemData, aOrderList)

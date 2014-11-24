@@ -140,7 +140,7 @@ function OrderList(aParent) {
     };
 
     clientSelector.show("actionPanel"); //createClientSelectPane();
-    widgetCreator.createOrderListPane();
+    widgetCreator.OrderListPane(self);
 
     function btnOkActionPerformed(evt) {
         self.acceptOrder();
