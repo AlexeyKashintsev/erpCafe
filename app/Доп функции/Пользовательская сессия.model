@@ -11,11 +11,11 @@
   <entity Name="qTradePoint" Title="" entityHeight="200" entityIconified="false" entityId="141623878086346" entityLocationX="18" entityLocationY="235" entityWidth="150" queryId="qTradePoint" tableName="" tableSchemaName=""/>
   <entity Name="qOpenedSession" Title="" entityHeight="200" entityIconified="false" entityId="140688378698013" entityLocationX="433" entityLocationY="17" entityWidth="150" queryId="qOpenedSession" tableName="" tableSchemaName=""/>
   <relation leftEntityId="-1" leftEntityParameterName="userName" rightEntityId="140617949812997" rightEntityParameterName="usr_name"/>
-  <relation leftEntityId="-1" leftEntityParameterName="userName" rightEntityId="140617948140719" rightEntityParameterName="user_name"/>
   <relation leftEntityId="-1" leftEntityParameterName="userName" rightEntityId="140688378698013" rightEntityParameterName="user_name"/>
-  <referenceRelation leftEntityFieldName="user_name" leftEntityId="140688378698013" rightEntityFieldName="usr_name" rightEntityId="140617949812997"/>
-  <referenceRelation leftEntityFieldName="trade_point" leftEntityId="141156072792179" rightEntityFieldName="org_trade_point_id" rightEntityId="141623878086346"/>
-  <referenceRelation leftEntityFieldName="user_name" leftEntityId="140617948140719" rightEntityFieldName="usr_name" rightEntityId="140617949812997"/>
-  <referenceRelation leftEntityFieldName="user_name" leftEntityId="141156072792179" rightEntityFieldName="usr_name" rightEntityId="140617949812997"/>
+  <relation leftEntityId="-1" leftEntityParameterName="userName" rightEntityId="140617948140719" rightEntityParameterName="user_name"/>
   <referenceRelation leftEntityFieldName="trade_point" leftEntityId="140688378698013" rightEntityFieldName="org_trade_point_id" rightEntityId="141623878086346"/>
+  <referenceRelation leftEntityFieldName="user_name" leftEntityId="140688378698013" rightEntityFieldName="usr_name" rightEntityId="140617949812997"/>
+  <referenceRelation leftEntityFieldName="user_name" leftEntityId="141156072792179" rightEntityFieldName="usr_name" rightEntityId="140617949812997"/>
+  <referenceRelation leftEntityFieldName="user_name" leftEntityId="140617948140719" rightEntityFieldName="usr_name" rightEntityId="140617949812997"/>
+  <referenceRelation leftEntityFieldName="trade_point" leftEntityId="141156072792179" rightEntityFieldName="org_trade_point_id" rightEntityId="141623878086346"/>
 </datamodel>

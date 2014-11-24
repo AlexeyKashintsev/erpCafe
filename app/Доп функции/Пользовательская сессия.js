@@ -15,7 +15,7 @@ function UserSession() {
         MSG_ERROR_NOT_UNDER_BROWSER     :   'Данный функционал не работает под браузером'
     };
     //test
-    Session.login();
+    //Session.login();
     Session.set('UserSession', this);
     model.params.userName = self.principal.name;
     if (!self.principal.hasRole('client'))
