@@ -2,7 +2,7 @@
  * 
  * @author Work
  */
-function ChooseCityForm() {
+function TPCommonSettings() {
     var self = this, model = this.model, form = this;
     var cheklistForm = new CheklistForm();
     var settings = new ServerModule("Settings");
@@ -35,7 +35,6 @@ function ChooseCityForm() {
     }
     
     function btnSaveActionPerformed(evt) {//GEN-FIRST:event_btnSaveActionPerformed
-        //console.log(cheklistSettings);
         model.save();
         getSettings();
     }//GEN-LAST:event_btnSaveActionPerformed
@@ -67,8 +66,4 @@ function ChooseCityForm() {
             }
         });
     }//GEN-LAST:event_btnCloseChooseActionPerformed
-
-    function formWindowOpened(evt) {//GEN-FIRST:event_formWindowOpened
-       // getSettings();
-    }//GEN-LAST:event_formWindowOpened
 }

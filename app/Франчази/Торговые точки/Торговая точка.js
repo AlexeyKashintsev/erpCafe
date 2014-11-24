@@ -5,7 +5,7 @@
 function TradePoint() {
     var self = this, model = this.model, form = this;
     
-    var fmCity = new ChooseCityForm();
+    var fmCity = new TPCommonSettings();
     fmCity.showOnPanel(form.pnlGeneral);
     
     var fmWarehouse = new SelectItemsInWH();

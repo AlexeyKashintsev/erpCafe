@@ -18,7 +18,7 @@ function ChartMaker() {
         },
         week: {
             days: 7,
-            interval: 1, //Измеряется в часах
+            interval: 24, //Измеряется в часах
             g_value : "YY/MM/DD/HH24",
             d_format: "HH24:00",
             d_name  : "Неделя",
