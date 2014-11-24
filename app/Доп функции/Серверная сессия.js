@@ -8,6 +8,7 @@ function ServerSession() {
     var self = this, model = this.model;
     var IDLE_TIME = 20;//In minutes
     var loadModules = [];
+    var eventProcessor = new EventProcessor();
     Session = {};
     var sessions = {};
     
@@ -18,11 +19,14 @@ function ServerSession() {
             Logger.finest('Module isn\'t loaded yet');
             loadModules[userName][aModuleName] = true;
             sessions[userName][aModuleName] = new Module(aModuleName);
-            if (!sessions[userName][aModuleName])
-                Logger.info('!');
-            sessions[userName][aModuleName].createOnGet = true;
-            loadModules[userName][aModuleName] = false;
-            Logger.finest('Ok! Module successufully loaded');
+            if (!sessions[userName][aModuleName]) {
+                eventProcessor.addEvent("moduleIsNotCreated", {moduleName : aModuleName, userName : userName});
+                Logger.warning('Module ' + aModuleName + ' wasn\'t created for user ' + userName );
+            } else {
+                sessions[userName][aModuleName].createOnGet = true;
+                loadModules[userName][aModuleName] = false;
+                Logger.finest('Ok! Module successufully loaded');
+            }
         } else {
             Logger.finest('Ok! Module exists');
         }

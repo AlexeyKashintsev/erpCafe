@@ -3,13 +3,12 @@
  * @author Alexey
  * @module
  */ 
-function WidgetCreatorBaristaDesktop() {
+function WidgetCreatorDigitalMenu() {
     var self = this, model = this.model;
     
     self.tradeItem = function(aContainer, aData, onClick) {
-        var itemContainer = cmn.createElement("div", "Sortable itemDescription tt_"
-            + aData.trade_item_type_id + (aData.classtag ? " " + aData.classtag : ""),
-            aContainer, "tt_" + aData.trade_item_type_id);
+        var itemContainer = cmn.createElement("div", "itemDescription tt_"
+                + aData.trade_item_type_id + (aData.classtag ? " " + aData.classtag : ""), aContainer);
         var itemPanel = cmn.createElement("div", "panel panel-primary", itemContainer);
         var itemHeading = cmn.createElement("div", "panel-heading", itemPanel);
         var itemDesc = cmn.createElement("h3", "panel-title itemDesc", itemHeading);
@@ -23,9 +22,7 @@ function WidgetCreatorBaristaDesktop() {
         itemCost.innerHTML = aData.item_cost + 'р.';
 
         itemPanel.onclick = function() {
- 
-                onClick(aData);
- 
+            onClick(aData);
         };
     };
     
