@@ -9,11 +9,22 @@ function Settings() {
     
     var userSession = Session.get('UserSession');
     
-    self.getSettings = function(aFranchazi, aTradePoint, aUserName) {
+    self.updateSettingsParams = function(aFranchazi, aTradePoint, aUserName) {
         model.dsSettings.params.franchazi_id =  aFranchazi ? aFranchazi : userSession.getFranchazi();
         model.dsSettings.params.trade_point_id = aTradePoint ? aTradePoint : userSession.getTradePoint();
         model.dsSettings.params.usr_name = aUserName ? aUserName : userSession.getUserName();
         model.dsSettings.execute();
+    };
+    
+    self.getSettings = function(aFranchazi, aTradePoint, aUserName) {
+        self.updateSettingsParams(aFranchazi, aTradePoint, aUserName);
+        var res = {};
+        model.dsSettings.beforeFirst();
+        while (model.dsSettings.next()) {
+            res[model.dsSettings.cursor.setting_name] = 
+                    self.getSettingByName(model.dsSettings.cursor.setting_name);
+        }
+        return res;
     };
 
     self.getSettingByName = function(aSettingName) {
@@ -34,7 +45,9 @@ function Settings() {
             }
             else 
                 setting = settings[0].setting_data;
-            return JSON.parse(setting);
+            var res = JSON.parse(setting);
+            res.priority = used_prior;
+            return res;
         } else return null;
     };
     

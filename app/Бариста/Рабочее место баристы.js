@@ -12,6 +12,7 @@ function BaristaDesktop() {
     var types_body;
     var items_body;
     widgetCreator = new WidgetCreatorBaristaDesktop();
+    var set = new SettingsClientSide();
 
     function setSession(aSession) {
         if (aSession) {

@@ -15,7 +15,7 @@ var Session = new (function() {
             return servModules[aModuleName];
         };
     })();
-
+//var settings = Session.get('Settings'); //глобальная переменная для всего проекта на стороне клиента
 
 var Logout = function() {
     logout();
