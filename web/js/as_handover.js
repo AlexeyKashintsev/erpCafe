@@ -4,7 +4,7 @@ if (!platypus) {
 
 
 platypus.ready = function() {
-    require(['menuMain'], function() {
-       menu = new menuMain();
+    require(['as_handover'], function() {
+       menu = new as_handover();
     });
 };

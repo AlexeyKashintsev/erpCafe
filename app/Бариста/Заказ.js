@@ -15,6 +15,9 @@ function OrderList(aParent) {
             orderSum += self.orderDetails[i].orderSum;
         }
         document.getElementById("orderSum").innerHTML = '<h3>Итого: <b>' + orderSum + '</b> рублей</h3>';
+        if (typeof(MenuWindow) !== "undefined") {
+            MenuWindow.setOrder(self, orderSum);
+        }
         return orderSum;
     };
 

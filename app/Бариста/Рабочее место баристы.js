@@ -88,15 +88,13 @@ function BaristaDesktop() {
     }
     
     function openDigitalMenu(){
-        MenuWindow = window.open("menu.html","menu",'width=550,height=650');
+        MenuWindow = window.open("as_menu.html","menu",'width=550,height=650');
         
     }
     
     function addItemToOrder(anItemData) {
         self.orderList.addItem(anItemData);
-        if (MenuWindow) {
-            MenuWindow.addItem(anItemData, self.orderList);
-        }
+        
     }
 
     function tradeItemsByTradePointWithCostOnRequeried(evt) {//GEN-FIRST:event_tradeItemsByTradePointWithCostOnRequeried
