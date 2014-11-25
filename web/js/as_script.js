@@ -4,7 +4,7 @@ if (!platypus) {
 
 
 platypus.ready = function() {
-    require(['as_menu'], function() {
-       menu = new as_menu();
+    require(['as_script'], function() {
+       menu = new as_script();
     });
 };
