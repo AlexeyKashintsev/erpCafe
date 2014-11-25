@@ -12,8 +12,26 @@ function BaristaDesktop() {
     var types_body;
     var items_body;
     widgetCreator = new WidgetCreatorBaristaDesktop();
-    var set = new SettingsClientSide();
-
+    var settings = new SettingsClientSide();
+    
+    /*
+     * aName - Название чеклиста (cheklist_open, cheklist_close)
+     * return object{
+     *      cheklist_text  : 
+     *      cheklist_title :
+     *      cheklist_type  :
+     * }
+     */
+    function getChecklist(aName){
+        settings.getSettings(false, session.tradePoint);
+        var checklist = settings.getSettingByName(aName);
+        model.qListCheklist.params.checklist_id = checklist.id;
+        model.qListCheklist.requery(function(){});
+        if(model.qListCheklist.length > 0)
+              return model.qListCheklist.cursor;
+        else  return false;
+    }
+    
     function setSession(aSession) {
         if (aSession) {
             Logger.info('Сессия открыта ' + aSession);
@@ -71,15 +89,13 @@ function BaristaDesktop() {
     }
     
     function openDigitalMenu(){
-        MenuWindow = window.open("menu.html","menu",'width=550,height=650');
+        MenuWindow = window.open("as_menu.html","menu",'width=550,height=650');
         
     }
     
     function addItemToOrder(anItemData) {
         self.orderList.addItem(anItemData);
-        if (MenuWindow) {
-            MenuWindow.addItem(anItemData, self.orderList);
-        }
+        
     }
 
     function tradeItemsByTradePointWithCostOnRequeried(evt) {//GEN-FIRST:event_tradeItemsByTradePointWithCostOnRequeried

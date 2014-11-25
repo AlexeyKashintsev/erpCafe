@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?><datamodel>
   <parameters>
     <parameter description="" name="type" nullable="true" parameterMode="1" precision="0" scale="0" selectionForm="null" signed="true" size="0" type="2" typeName="NUMERIC"/>
+    <parameter description="" name="franchazi_id" nullable="true" parameterMode="1" precision="0" scale="0" selectionForm="null" signed="true" size="0" type="2" typeName="NUMERIC"/>
   </parameters>
   <parametersEntity entityHeight="200" entityIconified="false" entityLocationX="12" entityLocationY="12" entityWidth="150"/>
-  <entity Name="qListCheklist" Title="" entityHeight="200" entityIconified="false" entityId="141648129217993" entityLocationX="194" entityLocationY="11" entityWidth="150" queryId="qListCheklist" tableName="" tableSchemaName=""/>
+  <entity Name="qListCheklist" Title="" entityHeight="200" entityIconified="false" entityId="141648129217993" entityLocationX="193" entityLocationY="11" entityWidth="150" onAfterChange="qListCheklistOnChanged" onAfterScroll="qListCheklistOnScrolled" onRequeried="qListCheklistOnRequeried" queryId="qListCheklist" tableName="" tableSchemaName=""/>
+  <entity Name="qCheklistTypes" Title="" entityHeight="80" entityIconified="false" entityId="141691288020382" entityLocationX="383" entityLocationY="9" entityWidth="150" queryId="qCheklistTypes" tableName="" tableSchemaName=""/>
+  <relation leftEntityId="-1" leftEntityParameterName="franchazi_id" rightEntityId="141648129217993" rightEntityParameterName="franchazi_id"/>
   <relation leftEntityId="-1" leftEntityParameterName="type" rightEntityId="141648129217993" rightEntityParameterName="type"/>
+  <referenceRelation leftEntityFieldName="cheklist_type" leftEntityId="141648129217993" rightEntityFieldName="cheklist_type_id" rightEntityId="141691288020382"/>
 </datamodel>

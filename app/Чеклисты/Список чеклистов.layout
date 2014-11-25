@@ -1,58 +1,55 @@
-<?xml version="1.0" encoding="UTF-8"?><layout defaultCloseOperation="2" name="Form" prefHeight="378px" prefWidth="588px" windowOpened="formWindowOpened">
-  <widget borderPainted="false" floatable="false" name="toolBar11" parent="Form" prefHeight="17px" prefWidth="104px" rollover="true" type="ToolbarDesignInfo">
-    <constraints height="17px" left="450px" top="10px" type="MarginConstraintsDesignInfo" width="104px"/>
+<?xml version="1.0" encoding="UTF-8"?><layout defaultCloseOperation="2" name="Form" prefHeight="407px" prefWidth="662px" windowClosed="formWindowClosed" windowClosing="formWindowClosing" windowOpened="formWindowOpened">
+  <widget name="pnlSelLock" parent="Form" prefHeight="60px" prefWidth="660px" type="PanelDesignInfo">
+    <layout type="MarginLayoutDesignInfo"/>
+    <constraints bottom="0px" height="60px" right="0px" type="MarginConstraintsDesignInfo" width="660px"/>
   </widget>
-  <widget actionPerformed="rbAllActionPerformed" name="rbAll" parent="toolBar11" prefHeight="15px" prefWidth="35px" text="Все" type="RadioDesignInfo"/>
-  <widget actionPerformed="rbMyActionPerformed" name="rbMy" parent="toolBar11" prefHeight="15px" prefWidth="37px" text="Мои" type="RadioDesignInfo"/>
-  <widget floatable="false" name="toolBar" parent="Form" prefHeight="36px" prefWidth="588px" rollover="true" type="ToolbarDesignInfo">
-    <constraints height="36px" left="0px" top="0px" type="MarginConstraintsDesignInfo" width="588px"/>
+  <widget actionPerformed="btnSelectActionPerformed" icon="icons/22x22/actions/dialog-apply.png" name="btnSelect" parent="pnlSelLock" prefHeight="35px" prefWidth="125px" text="Выбрать" type="ButtonDesignInfo">
+    <constraints height="35px" right="19px" top="12px" type="MarginConstraintsDesignInfo" width="125px"/>
+  </widget>
+  <widget backgroundColor="#cdd9e8" borderPainted="false" floatable="false" name="toolBar11" parent="Form" prefHeight="17px" prefWidth="104px" rollover="true" type="ToolbarDesignInfo">
+    <constraints height="17px" right="0px" top="10px" type="MarginConstraintsDesignInfo" width="104px"/>
+  </widget>
+  <widget actionPerformed="rbAllActionPerformed" buttonGroup="buttonGroup" name="rbAll" parent="toolBar11" prefHeight="15px" prefWidth="35px" text="Все" type="RadioDesignInfo"/>
+  <widget actionPerformed="rbMyActionPerformed" buttonGroup="buttonGroup" name="rbMy" parent="toolBar11" prefHeight="15px" prefWidth="37px" text="Мои" type="RadioDesignInfo"/>
+  <widget backgroundColor="#cdd9e8" floatable="false" name="toolBar" parent="Form" prefHeight="36px" prefWidth="662px" rollover="true" type="ToolbarDesignInfo">
+    <constraints height="36px" left="0px" right="0px" top="0px" type="MarginConstraintsDesignInfo"/>
   </widget>
   <widget actionPerformed="btnAddActionPerformed" focusable="false" horizontalTextPosition="0" icon="icons/22x22/actions/list-add.png" name="btnAdd" parent="toolBar" prefHeight="29px" prefWidth="29px" toolTipText="Добавить" type="ButtonDesignInfo" verticalTextPosition="3"/>
   <widget actionPerformed="btnDelActionPerformed" focusable="false" horizontalTextPosition="0" icon="icons/22x22/actions/list-remove.png" name="btnDel" parent="toolBar" prefHeight="29px" prefWidth="29px" toolTipText="Удалить" type="ButtonDesignInfo" verticalTextPosition="3"/>
   <widget actionPerformed="btnReqActionPerformed" focusable="false" horizontalTextPosition="0" icon="icons/22x22/actions/new-view-refresh.png" name="btnReq" parent="toolBar" prefHeight="29px" prefWidth="29px" toolTipText="Обновить" type="ButtonDesignInfo" verticalTextPosition="3"/>
-  <widget actionPerformed="btnItemEditContentActionPerformed" focusable="false" horizontalTextPosition="4" icon="icons/22x22/actions/manilla-document-open.png" name="btnItemEditContent" parent="toolBar" prefHeight="29px" prefWidth="29px" toolTipText="Редактировать" type="ButtonDesignInfo" verticalTextPosition="3"/>
+  <widget actionPerformed="btnItemEditContentActionPerformed" focusable="false" horizontalTextPosition="4" icon="icons/22x22/actions/gtk-floppy.png" name="btnItemEditContent" parent="toolBar" prefHeight="29px" prefWidth="29px" toolTipText="Сохранить" type="ButtonDesignInfo" verticalTextPosition="3"/>
   <widget actionPerformed="btnItemCreateDoubleActionPerformed" focusable="false" horizontalTextPosition="4" icon="icons/22x22/actions/document-revert.png" name="btnItemCreateDouble" parent="toolBar" prefHeight="29px" prefWidth="29px" toolTipText="Дублировать" type="ButtonDesignInfo" verticalTextPosition="3"/>
-  <widget name="panel" parent="Form" prefHeight="348px" prefWidth="588px" type="PanelDesignInfo">
+  <widget dividerLocation="300" leftComponent="panel" name="splitPane" parent="Form" prefHeight="312px" prefWidth="662px" rightComponent="panel1" type="SplitDesignInfo">
+    <constraints bottom="59px" left="0px" right="0px" top="36px" type="MarginConstraintsDesignInfo"/>
+  </widget>
+  <widget backgroundColor="#cdd9e8" name="panel" parent="splitPane" prefHeight="310px" prefWidth="299px" type="PanelDesignInfo">
     <layout type="MarginLayoutDesignInfo"/>
-    <constraints height="348px" left="0px" top="36px" type="MarginConstraintsDesignInfo" width="588px"/>
   </widget>
-  <widget actionPerformed="button1ActionPerformed" name="button1" parent="panel" prefHeight="23px" prefWidth="132px" text="Выбрать" type="ButtonDesignInfo">
-    <constraints bottom="13px" height="23px" right="12px" type="MarginConstraintsDesignInfo" width="132px"/>
-  </widget>
-  <widget deletable="false" editable="false" insertable="false" mouseClicked="modelGridMouseClicked" name="modelGrid" parent="panel" prefHeight="300px" prefWidth="588px" type="DbGridDesignInfo">
-    <column name="colCheklist_title" title="Название">
+  <widget deletable="false" insertable="false" mouseClicked="modelGridMouseClicked" name="modelGrid" parent="panel" prefHeight="312px" prefWidth="306px" type="DbGridDesignInfo">
+    <rowsColumnsDesignInfo>
+      <rowsDatasource entityId="141648129217993" field="false"/>
+    </rowsColumnsDesignInfo>
+    <treeDesignInfo/>
+    <column name="colCheklist_title" title="Название" width="100">
       <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
+      <columnsDatasource/>
+      <columnsDisplayField/>
+      <cellsDatasource/>
+      <cellDesignInfo>
+        <columnsKeyField/>
+        <cellValueField/>
+        <rowsKeyField/>
+      </cellDesignInfo>
       <datamodelElement entityId="141648129217993" fieldName="cheklist_title"/>
-      <columnsDatasource/>
-      <columnsDisplayField/>
-      <cellsDatasource/>
-      <cellDesignInfo>
-        <columnsKeyField/>
-        <cellValueField/>
-        <rowsKeyField/>
-      </cellDesignInfo>
-      <headerStyle>
-        <nativeFont name="Tahoma" size="11"/>
-      </headerStyle>
-    </column>
-    <column name="colCheklist_text" title="Содержание">
-      <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
-      <datamodelElement entityId="141648129217993" fieldName="cheklist_text"/>
-      <columnsDatasource/>
-      <columnsDisplayField/>
-      <cellsDatasource/>
-      <cellDesignInfo>
-        <columnsKeyField/>
-        <cellValueField/>
-        <rowsKeyField/>
-      </cellDesignInfo>
       <headerStyle>
         <nativeFont name="Tahoma" size="11"/>
       </headerStyle>
     </column>
     <column name="colCheklist_type" title="Тип">
-      <controlInfo classHint="DbSpinDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
-      <datamodelElement entityId="141648129217993" fieldName="cheklist_type"/>
+      <controlInfo classHint="DbComboDesignInfo" name="view" prefHeight="0px" prefWidth="0px">
+        <valueField entityId="141691288020382" fieldName="cheklist_type_id"/>
+        <displayField entityId="141691288020382" fieldName="type_name"/>
+      </controlInfo>
       <columnsDatasource/>
       <columnsDisplayField/>
       <cellsDatasource/>
@@ -61,18 +58,23 @@
         <cellValueField/>
         <rowsKeyField/>
       </cellDesignInfo>
+      <datamodelElement entityId="141648129217993" fieldName="cheklist_type"/>
       <headerStyle>
         <nativeFont name="Tahoma" size="11"/>
       </headerStyle>
     </column>
-    <rowsColumnsDesignInfo>
-      <rowsDatasource entityId="141648129217993" field="false"/>
-    </rowsColumnsDesignInfo>
-    <treeDesignInfo/>
-    <constraints height="300px" left="0px" top="0px" type="MarginConstraintsDesignInfo" width="588px"/>
+    <constraints bottom="-2px" left="0px" right="-7px" top="0px" type="MarginConstraintsDesignInfo"/>
   </widget>
-  <widget actionPerformed="buttonActionPerformed" name="button" parent="panel" prefHeight="23px" prefWidth="132px" text="Сохранить" type="ButtonDesignInfo">
-    <constraints bottom="13px" height="23px" left="300px" type="MarginConstraintsDesignInfo" width="132px"/>
+  <widget backgroundColor="#cdd9e8" name="panel1" parent="splitPane" prefHeight="310px" prefWidth="356px" type="PanelDesignInfo">
+    <layout type="MarginLayoutDesignInfo"/>
   </widget>
+  <widget name="scrollPane" parent="panel1" prefHeight="276px" prefWidth="350px" type="ScrollDesignInfo">
+    <constraints bottom="-2px" left="0px" right="6px" top="36px" type="MarginConstraintsDesignInfo"/>
+  </widget>
+  <widget focusLost="taContentFocusLost" mouseExited="taContentMouseExited" name="taContent" parent="scrollPane" prefHeight="274px" prefWidth="348px" type="TextPaneDesignInfo"/>
+  <widget name="label" parent="panel1" prefHeight="14px" prefWidth="168px" text="Содержание" type="LabelDesignInfo">
+    <constraints height="14px" left="12px" top="12px" type="MarginConstraintsDesignInfo" width="168px"/>
+  </widget>
+  <nonvisual name="buttonGroup" type="ButtonGroupDesignInfo"/>
   <layout type="MarginLayoutDesignInfo"/>
 </layout>
