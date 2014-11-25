@@ -12,7 +12,26 @@ function BaristaDesktop() {
     var types_body;
     var items_body;
     widgetCreator = new WidgetCreatorBaristaDesktop();
-
+    var settings = new ServerModule("Settings");
+    
+    /*
+     * aName - Название чеклиста (cheklist_open, cheklist_close)
+     * return object{
+     *      cheklist_text  : 
+     *      cheklist_title :
+     *      cheklist_type  :
+     * }
+     */
+    function getChecklist(aName){
+        settings.getSettings(false, session.tradePoint);
+        var checklist = settings.getSettingByName(aName);
+        model.qListCheklist.params.checklist_id = checklist.id;
+        model.qListCheklist.requery(function(){});
+        if(model.qListCheklist.length > 0)
+              return model.qListCheklist.cursor;
+        else  return false;
+    }
+    
     function setSession(aSession) {
         if (aSession) {
             Logger.info('Сессия открыта ' + aSession);

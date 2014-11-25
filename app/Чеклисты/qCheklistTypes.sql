@@ -1,5 +1,5 @@
 /**
- *
+ * @public
  * @author minya92
  * @name qCheklistTypes
  */ 
