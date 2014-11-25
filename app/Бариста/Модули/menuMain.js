@@ -6,12 +6,13 @@
 function menuMain() {
     var self = this, model = this.model;
     
-    var widgetCreator = new WidgetCreatorBaristaDesktop();
-    widgetCreator.OrderListPane();
     
-    self.addItem = function (anItemData, aOrderList) {
-        widgetCreator.OrderListPane.orderItem(anItemData, aOrderList);
+    
+    self.setOrder = function (anOrder, orderSum) {
+        var OR = new OrderRepeater(anOrder, orderSum);
     };
     
-    addItem = self.addItem;
+    
+    
+    setOrder = self.setOrder;
 }
