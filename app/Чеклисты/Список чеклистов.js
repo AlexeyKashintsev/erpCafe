@@ -4,7 +4,6 @@
  */
 function CheklistForm() {
     var self = this, model = this.model, form = this;
-    var cheklistContent = new CheklistContent();
     var userSession = new ServerModule("UserSession");
     var franchazi_id = null;
     model.params.type = null;
@@ -41,9 +40,10 @@ function CheklistForm() {
 
     function btnItemCreateDoubleActionPerformed(evt) {//GEN-FIRST:event_btnItemCreateDoubleActionPerformed
         model.qListCheklist.insert(
-                model.qListCheklist.schema.cheklist_title, model.qListCheklist.cursor.cheklist_title,
+                model.qListCheklist.schema.cheklist_title, model.qListCheklist.cursor.cheklist_title + ' - копия',
                 model.qListCheklist.schema.cheklist_text, model.qListCheklist.cursor.cheklist_text,
-                model.qListCheklist.schema.franchazi_id, franchazi_id
+                model.qListCheklist.schema.franchazi_id, franchazi_id,
+                model.qListCheklist.schema.cheklist_type, model.qListCheklist.cursor.cheklist_type
                 );
     }//GEN-LAST:event_btnItemCreateDoubleActionPerformed
 
