@@ -3,12 +3,12 @@
  * @author Work
  * @module 
  */
-function as_welcome() {
+function as_menu() {
     var self = this, model = this.model;
 
-    self.func = function () {
-
+    self.setOrder = function (anOrder, orderSum) {
+        var OR = new OrderRepeater(anOrder, orderSum);
     };
 
-    func = self.func;
+    setOrder = self.setOrder;
 }

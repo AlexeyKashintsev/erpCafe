@@ -33,6 +33,7 @@ function OrderList(aParent) {
     self.deleteOrder = function() {
         for (var i in self.orderDetails)
             self.orderDetails[i].delete();
+        //TODO MenuWindow.location = "as_welcome.html";
     };
 
     self.acceptOrder = function() {
