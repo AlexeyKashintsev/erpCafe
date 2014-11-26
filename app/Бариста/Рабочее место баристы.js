@@ -12,7 +12,10 @@ function BaristaDesktop() {
     var types_body;
     var items_body;
     widgetCreator = new WidgetCreatorBaristaDesktop();
-    var settings = new SettingsClientSide();
+//    var fmDev = new fmDevMode();
+//    fmDev.show();
+    var settings = new ServerModule('Settings');
+    settings.updateSettingsParams();
     
     /*
      * aName - Название чеклиста (cheklist_open, cheklist_close)
@@ -104,9 +107,20 @@ function BaristaDesktop() {
             var data = model.tradeItemsByTradePointWithCost.cursor;
             new widgetCreator.tradeItem(items_body, data, addItemToOrder);
         }
+        
         $( ".items_select" ).sortable({dropOnEmpty : false, containment : "parent",
-            opacity:0.55, revert: true, helper: 'clone'});
+            opacity:0.55, revert: true, helper: 'clone', update:
+                function() {
+                    var order = $(this).sortable('serialize');
+                    settings.setSettings('TradeItemsOrder', order, null, model.params.trade_point_id);
+                }});
         $( ".itemDescription" ).disableSelection();
+        
+        var sortOrder = settings.getSettingByName('TradeItemsOrder');
+        sortOrder = sortOrder.split('&');
+        $.each(sortOrder, function () {
+            $('#' + this.replace('[]=', '_')).appendTo(".items_select");
+        });
     }//GEN-LAST:event_tradeItemsByTradePointWithCostOnRequeried
 
     function getSessionsOnRequeried(evt) {//GEN-FIRST:event_getSessionsOnRequeried

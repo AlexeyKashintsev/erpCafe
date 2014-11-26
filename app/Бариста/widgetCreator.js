@@ -9,7 +9,7 @@ function WidgetCreatorBaristaDesktop() {
     self.tradeItem = function(aContainer, aData, onClick) {
         var itemContainer = cmn.createElement("div", "Sortable itemDescription tt_"
             + aData.trade_item_type_id + (aData.classtag ? " " + aData.classtag : ""),
-            aContainer, "tt_" + aData.trade_item_type_id);
+            aContainer, "tt_" + aData.item_id);
         var itemPanel = cmn.createElement("div", "panel panel-primary", itemContainer);
         var itemHeading = cmn.createElement("div", "panel-heading", itemPanel);
         var itemDesc = cmn.createElement("h3", "panel-title itemDesc", itemHeading);
@@ -183,5 +183,5 @@ function WidgetCreatorBaristaDesktop() {
             setTimeout(closeIt, aCloseTimeOut);
 
         return divEl;
-    }
+    };
 }

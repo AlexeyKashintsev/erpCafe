@@ -64,10 +64,10 @@ function Settings() {
             model.dsSettings.cursor.setting_data = settingData;
         } else {
             model.dsSettings.insert(
-                    model.dsSettings.schema.usr_name, aUserName,
+                    model.dsSettings.schema.usr_name, aUserName ? aUserName : null,
                     model.dsSettings.schema.setting_name, aSettingsName,
-                    model.dsSettings.schema.trade_point_id, aTradePoint,
-                    model.dsSettings.schema.franchazi_id, aFranchazi,
+                    model.dsSettings.schema.trade_point_id, aTradePoint ? aTradePoint : null,
+                    model.dsSettings.schema.franchazi_id, aFranchazi ? aFranchazi : null,
                     model.dsSettings.schema.setting_data, settingData
                 );
         }
