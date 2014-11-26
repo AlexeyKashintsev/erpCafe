@@ -14,6 +14,7 @@ function BaristaDesktop() {
     widgetCreator = new WidgetCreatorBaristaDesktop();
 //    var fmDev = new fmDevMode();
 //    fmDev.show();
+    var chekLists = new CheckLists();
     var settings = new ServerModule('Settings');
     settings.updateSettingsParams();
     
@@ -25,13 +26,10 @@ function BaristaDesktop() {
      *      cheklist_type  :
      * }
      */
-    function getChecklist(aName){
+    function showChecklist(aName){
         settings.getSettings(false, session.tradePoint);
         var checklist = settings.getSettingByName(aName);
-        var lst = model.qListCheklist.find(model.qListCheklist.schema.cheklist_data_id, checklist.id);
-        if (lst.length > 0 && model.qListCheklist.scrollTo(lst[0])) {
-               return model.qListCheklist.cursor;
-        } else return false;
+        checklist = chekLists.showCheklist(checklist.id);
     }
     
     function setSession(aSession) {
@@ -39,7 +37,7 @@ function BaristaDesktop() {
             Logger.info('Сессия открыта ' + aSession);
             model.params.session_id = aSession;
             session.activeSession = aSession;
-            //session.whSession.setCurrentSession(aSession);
+            showChecklist('cheklist_open');
             model.getSessions.requery();
         } else {//открываем новую сессию
             //Выбираем торговую точку
@@ -139,6 +137,7 @@ function BaristaDesktop() {
     }//GEN-LAST:event_getSessionsOnRequeried
 
     function btnSessionCloseActionPerformed(evt) {//GEN-FIRST:event_btnSessionCloseActionPerformed
+        showChecklist('cheklist_close');
         session.tradeSession.calculateFinalValues();
         session.whSession.closeSession();
         Logout();

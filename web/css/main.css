@@ -122,6 +122,9 @@ div.item_type_selector {
   padding-left: 15px;
   margin-bottom: 5px;
   border-bottom: solid 3px;
+  margin-top: -15px;
+  padding-top: 15px;
+  background-color: #4f3024;
 }
 
 button.typeSelector {

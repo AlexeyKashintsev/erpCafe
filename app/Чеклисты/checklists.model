@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?><datamodel>
+  <parameters>
+    <parameter description="" name="cheklist_id" nullable="true" parameterMode="1" precision="0" scale="0" selectionForm="null" signed="true" size="0" type="2" typeName="NUMERIC"/>
+  </parameters>
+  <parametersEntity entityHeight="200" entityIconified="false" entityLocationX="12" entityLocationY="12" entityWidth="150"/>
+  <entity Name="qListCheklist" Title="" entityHeight="200" entityIconified="false" entityId="141699830810169" entityLocationX="257" entityLocationY="18" entityWidth="150" queryId="qListCheklist" tableName="" tableSchemaName=""/>
+</datamodel>
