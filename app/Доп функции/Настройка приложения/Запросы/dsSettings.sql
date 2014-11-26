@@ -3,6 +3,7 @@
  * @author Alexey
  * @name dsSettings
  * @manual
+ * @public
  */ 
 Select * 
 From adm_settings t1

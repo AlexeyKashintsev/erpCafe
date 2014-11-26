@@ -1,0 +1,60 @@
+body {
+    background-image: URL('../img/banner_bg.jpg');
+    background-size: cover;
+}
+
+.blurred {
+    background-color: white;
+    opacity:    0.3!important;
+}
+
+
+div.pasp_form {
+    z-index: 2;
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    width: 600px;
+    height: 460px;
+    
+    margin-left: -300px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin-top: -230px;
+    opacity: 1;
+    text-align: center;
+    color: white;
+}
+
+div.pasp_form input {
+    font-size: 13px;
+    font-weight: 300;
+    height: 45px;
+    padding: 0 9px;
+    margin: 10px;
+    border: 0;
+    outline: 0;
+    width: 40%;
+}
+
+div.pasp_form input[type=file] {
+    color: white;
+    cursor: pointer;
+}
+
+
+div.pasp_form input[type=submit] {
+    color: white;
+    background-color: #e26036;
+    cursor: pointer;
+}
+
+div.pasp_form input[type=submit]:hover {
+    background-color: #e95959;
+}
+
+form.passp_fill h1{
+    font-size: 24px;
+    margin: 22px;
+}
+

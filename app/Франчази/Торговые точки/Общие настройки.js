@@ -17,26 +17,26 @@ function TPCommonSettings() {
 
     self.setTradePoint = function(aTradePointId) {
         model.params.trade_point_id = aTradePointId;
-        getSettings();
+        setChecklistTitles();
     };
-
-    function getSettings(){
+    
+    function getChecklistTitle(aName){
         settings.getSettings(false, model.params.trade_point_id);
-        settingOpen = settings.getSettingByName("cheklist_open");
-        settingClose = settings.getSettingByName("cheklist_close");
-        
-        if(settingOpen)
-              form.lbOpen.text = settingOpen.title;
-        else  form.lbOpen.text = "Не задано";
-        
-        if(settingClose)
-              form.lbClose.text = settingClose.title;
-        else  form.lbClose.text = "Не задано";
+        var checklist = settings.getSettingByName(aName);
+        var lst = model.qListCheklist.find(model.qListCheklist.schema.cheklist_data_id, checklist.id);
+        if (lst.length > 0 && model.qListCheklist.scrollTo(lst[0])) {
+               return model.qListCheklist.cursor.cheklist_title;
+        } else return "Не задан";
+    }
+    
+    function setChecklistTitles(){
+        form.lbOpen.text = getChecklistTitle("cheklist_open");
+        form.lbClose.text = getChecklistTitle("cheklist_close");
     }
     
     function btnSaveActionPerformed(evt) {//GEN-FIRST:event_btnSaveActionPerformed
         model.save();
-        getSettings();
+        setChecklistTitles();
     }//GEN-LAST:event_btnSaveActionPerformed
 
     function btnOpenChooseActionPerformed(evt) {//GEN-FIRST:event_btnOpenChooseActionPerformed
@@ -45,8 +45,7 @@ function TPCommonSettings() {
             if(aCheklist){
                 form.lbOpen.text =aCheklist.cheklist_title;
                 cheklistOpen = {
-                    id:    aCheklist.cheklist_data_id,
-                    title: aCheklist.cheklist_title
+                    id:    aCheklist.cheklist_data_id
                 };
                  settings.setSettings("cheklist_open", cheklistOpen, null, model.params.trade_point_id, model.params.franchazi_id);
             }
@@ -59,8 +58,7 @@ function TPCommonSettings() {
             if(aCheklist){
                 form.lbClose.text = aCheklist.cheklist_title;
                 cheklistClose = {
-                    id:    aCheklist.cheklist_data_id,
-                    title: aCheklist.cheklist_title
+                    id:    aCheklist.cheklist_data_id
                 };
                 settings.setSettings("cheklist_close", cheklistClose, null, model.params.trade_point_id, model.params.franchazi_id);
             }

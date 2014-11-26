@@ -28,11 +28,10 @@ function BaristaDesktop() {
     function getChecklist(aName){
         settings.getSettings(false, session.tradePoint);
         var checklist = settings.getSettingByName(aName);
-        model.qListCheklist.params.checklist_id = checklist.id;
-        model.qListCheklist.requery(function(){});
-        if(model.qListCheklist.length > 0)
-              return model.qListCheklist.cursor;
-        else  return false;
+        var lst = model.qListCheklist.find(model.qListCheklist.schema.cheklist_data_id, checklist.id);
+        if (lst.length > 0 && model.qListCheklist.scrollTo(lst[0])) {
+               return model.qListCheklist.cursor;
+        } else return false;
     }
     
     function setSession(aSession) {
