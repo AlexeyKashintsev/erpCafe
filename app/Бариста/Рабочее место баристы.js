@@ -94,9 +94,11 @@ function BaristaDesktop() {
     }
     
     function addItemToOrder(anItemData) {
+        if (typeof(MenuWindow) !== "undefined") {
+            if (MenuWindow.location.pathname !== "/erpCafe/as_menu.html")
+                MenuWindow.location = "as_menu.html";
+        }
         self.orderList.addItem(anItemData);
-        if (MenuWindow.location.pathname !== "/erpCafe/as_menu.html")
-            MenuWindow.location = "as_menu.html";
     }
 
     function tradeItemsByTradePointWithCostOnRequeried(evt) {//GEN-FIRST:event_tradeItemsByTradePointWithCostOnRequeried

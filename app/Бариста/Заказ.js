@@ -16,10 +16,17 @@ function OrderList(aParent) {
         }
         document.getElementById("orderSum").innerHTML = '<h3>Итого: <b>' + orderSum + '</b> рублей</h3>';
         if (typeof(MenuWindow) !== "undefined") {
-            MenuWindow.setOrder(self, orderSum);
+            if (typeof(MenuWindow.setOrder) !== "undefined") {
+                MenuWindow.setOrder(self, orderSum);
+            }
         }
         return orderSum;
     };
+    
+    self.getOrder = function(){
+        return self;
+    }
+    getOrder = self.getOrder;
 
     self.addItem = function(anItemData) {
         if (!!self.orderDetails[anItemData.item_id]) {
@@ -33,7 +40,7 @@ function OrderList(aParent) {
     self.deleteOrder = function() {
         for (var i in self.orderDetails)
             self.orderDetails[i].delete();
-        //TODO MenuWindow.location = "as_welcome.html";
+        MenuWindow.location = "as_welcome.html";
     };
 
     self.acceptOrder = function() {
