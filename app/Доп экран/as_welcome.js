@@ -6,9 +6,9 @@
 function as_welcome() {
     var self = this, model = this.model;
 
-    self.setOrder = function (anOrder, orderSum) {
-        var OR = new OrderRepeater(anOrder, orderSum);
+    self.func = function () {
+        
     };
 
-    setOrder = self.setOrder;
+    func = self.func;
 }
