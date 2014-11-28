@@ -1,0 +1,3 @@
+Select * 
+From trade_cash_box_operation_types t1
+where :only_input is null or :only_input = false or t1.cash_multiplier >= 0;

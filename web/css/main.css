@@ -280,6 +280,99 @@ div.clientBonusDiv {
   font-size: large;
 }
 
+/* ### CASHBACK ### */
+div.top_head {
+  position: relative;
+  width: 442px;
+  height: 60px;
+  z-index: 10;
+  font-size: 36px;
+  text-align: right;
+  padding: 2px 15px;
+  color: white;
+  font-weight: 100;
+}
+
+div.cash {
+  display: inline-block;
+  padding-top: 14px;
+}
+
+div.cash_back {
+  float: left;
+}
+
+div.top_head > div.label {
+  font-size: 10px;
+  color: white;
+  z-index: 10;
+  position: absolute;
+  font-weight: 100;
+}
+
+div.top_head > div.money_get {
+  float: right;
+  right: 0px;
+}
+
+div.top_head > div.cashback {
+  float: left;
+  left: 0px;
+}
+
+div.top_head.glass {
+  position: relative;
+  margin-top: -60px;
+  background-color: black;
+  opacity: 0.5;
+  z-index: 5!important;
+}
+
+div.btn_block {
+  display: inline-block;
+}
+
+div.btn_block.predefined > * {
+  background-color: rgb(247, 147, 49);
+  color: white;
+}
+
+div.btn_block.predefined > *:active {
+  background-color: rgb(196, 115, 37);
+}
+
+div.btn_block.predefined {
+  border-top: solid 1px gray;
+  width: 120px;
+}
+
+div.btn_block.predefined > div.calc {
+  width: 120px;
+}
+
+div.btn_block.manual {
+  width: 181px;
+  border-left: solid 1px gray;
+  border-top: solid 1px gray;
+}
+
+div.calc_button {
+  display: inline-block;
+  width: 60px;
+  height: 60px;
+  background-color: white;
+  padding-top: 17px;
+  text-align: center;
+  border-right: solid 1px gray;
+  border-bottom: solid 1px gray;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+div.calc_button:active {
+  background-color: rgb(178, 178, 178);
+}
+
 /* ### FRANCHAZI ### */
 .trade_point > .panel-heading > * {
   display: inline-block;

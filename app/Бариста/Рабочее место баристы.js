@@ -70,7 +70,11 @@ function BaristaDesktop() {
             });
         }
     }
-
+    
+    function closeSessionAndLogout() {
+        //TODO subj и добавить в асинхронный вызов после отображения чеклиста
+    }
+    
     function startBaristaDesktop() {
         cmn.addTopRightControl("Меню в окне", "plus-sign", openDigitalMenu);
         cmn.addTopRightControl("Прием товара", "plus-sign", btnWarehouseAddActionPerformed);

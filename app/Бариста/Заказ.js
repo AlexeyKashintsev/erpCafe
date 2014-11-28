@@ -34,8 +34,12 @@ function OrderList(aParent) {
         for (var i in self.orderDetails)
             self.orderDetails[i].delete();
     };
-
+    
     self.acceptOrder = function() {
+        var cashBackCalc = new CashBackCalculator();
+    };
+
+    self.acceptOrderOld = function() {
         var anOrderDetails = {
             orderSum: 0,
             orderItems: [],
