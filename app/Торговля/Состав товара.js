@@ -73,4 +73,8 @@ function formWindowClosing(evt) {//GEN-FIRST:event_formWindowClosing
         model.save();
         form.close(true);
     }//GEN-LAST:event_btnSelectActionPerformed
+
+    function btnDelActionPerformed(evt) {//GEN-FIRST:event_btnDelActionPerformed
+        model.qContents.deleteRow();
+    }//GEN-LAST:event_btnDelActionPerformed
 }
