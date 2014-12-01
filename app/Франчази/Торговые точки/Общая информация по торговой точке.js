@@ -39,7 +39,7 @@ function TradePointCommonInfo(aTradePointDetails, aContainer) {
     }
     
     function btnWHRevisionOnClick(){
-        if(!tradePointDetails.end_date){
+        if(!tradePointDetails.end_date&&tradePointDetails.start_date){
             alert("Сначала нужно закрыть смену!");
         } else {
             var revisionForm = new RevisionForm();
@@ -132,6 +132,10 @@ function TradePointCommonInfo(aTradePointDetails, aContainer) {
             panelContent.innerHTML =
                     '<span class="label label-warning">\n\
 <span class="glyphicon glyphicon-user"></span>   <strong>Нет данных!</strong> Возможно, эта точка еще не открывалась</span>';
+            var btnWHRevision = cmn.createElement("button", "btn btn-success btn-xs", panelContent);
+            btnWHRevision.setAttribute('style','float: right; margin-top : -5px');
+            btnWHRevision.innerHTML = 'Провести ревизию';
+            btnWHRevision.onclick = btnWHRevisionOnClick;
             Logger.warning(e);
         }
     }
