@@ -59,7 +59,7 @@ function RevisionForm() {
     }//GEN-LAST:event_formWindowClosing
 
     function itemsByTPOnRequeried(evt) {//GEN-FIRST:event_itemsByTPOnRequeried
-        Logger.info('!!!');
+        //Logger.info('!!!');
         if (!self.items.empty) {
             model.itemsByTP.beforeFirst();
             while (model.itemsByTP.next()) {

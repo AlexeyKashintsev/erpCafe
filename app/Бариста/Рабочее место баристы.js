@@ -57,16 +57,17 @@ function BaristaDesktop() {
                     session.tradeSession.initializeSession(session.activeSession, prompt("Введите остаток по кассе", "0"));
                     setSession(session.activeSession);
                 } else {
-                    alert('Склад не инициализирован');
+                    alert('Склад не инициализирован! Проведите ревизию');
                     Logger.warning("Склад не инициализирован. Инфо о сессии " + session);
-                    var whInitializer = new WhRevisionByBarista();
+                    Logout();
+                  /*  var whInitializer = new WhRevisionByBarista();
                     whInitializer.setTradePoint(aTradePoint);
                     whInitializer.showModal(function() {
-                        session.getActiveTPSession(function(aSession) {
-                            session.tradeSession.initializeSession(aSession, prompt("Введите остаток по кассе", "0")); // Ввести остаток по кассе, иницировать сессию
-                            setSession(aSession);
-                        });
-                    });
+                        session.getActiveTPSession(function(aSession) {*/
+                            //session.tradeSession.initializeSession(aSession, prompt("Введите остаток по кассе", "0")); // Ввести остаток по кассе, иницировать сессию
+                            //setSession(aSession);
+                      //  });
+                  //  });
                 }
             });
         }
