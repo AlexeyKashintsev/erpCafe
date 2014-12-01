@@ -13,7 +13,8 @@ function YandexPaymentReceiver() {
     self.RESPONSE_FAIL_HASH     = 1;   //Несовпали хэши
     self.RESPONSE_FAIL          = 200; //Ошибка разбора
     
-    self.SHOP_PASSWORD = "";           //Секретное слово TODO Расхардкодить!
+    self.SHOP_PASSWORD = "Yw559fyo3yBDFNy708rK";           //Секретное слово TODO Расхардкодить!
+    var SALT = "UGjkergUJHfre86456ergBdeptr4gFH84bef";
     
     /*
      * Преобразование числа к двухзначному виду
@@ -46,9 +47,13 @@ function YandexPaymentReceiver() {
         var hash = af.MD5(r.action + ";" + r.orderSumAmount + ";" + r.orderSumCurrencyPaycash + ";" +
                           r.orderSumBankPaycash + ";" + r.shopId + ";" + r.invoiceId + ";" +
                           r.customerNumber + ";" +self.SHOP_PASSWORD);
-        if(hash === r.md5){
+        model.params.operation_id = r.billOperation;
+        if(hash === r.md5 && model.qBillOperationsListServer.length > 0){
+            //Новый статус операции (в процессе)
+            bm.setStatusBillOperation(r.billOperation, bm.OP_YANDEX_PROCESSING);
             return xmlToYandex(self.RESPONSE_SUCCESS, r.shopId, r.invoiceId, r.orderSumAmount);
         } else {
+            bm.setStatusBillOperation(r.billOperation, bm.OP_YANDEX_ERROR);
             return xmlToYandex(self.RESPONSE_FAIL_HASH, r.shopId, r.invoiceId, r.orderSumAmount, false);
         }
     };
@@ -64,10 +69,13 @@ function YandexPaymentReceiver() {
         var hash = af.MD5(r.action + ";" + r.orderSumAmount + ";" + r.orderSumCurrencyPaycash + ";" +
                           r.orderSumBankPaycash + ";" + r.shopId + ";" + r.invoiceId + ";" +
                           r.customerNumber + ";" +self.SHOP_PASSWORD);
-        if(hash === r.md5){
-            //TODO Вот тут перечислить денюжки франчайзе
+        model.params.operation_id = r.billOperation;
+        if(hash === r.md5 && model.qBillOperationsListServer.length > 0){
+            //Новый статус операции (деньги переведены)
+            bm.setStatusBillOperation(r.billOperation, bm.OP_STATUS_SUCCESS, af.MD5(SALT));
             return xmlToYandex(self.RESPONSE_SUCCESS, r.shopId, r.invoiceId, r.orderSumAmount);
         } else {
+            bm.setStatusBillOperation(r.billOperation, bm.OP_YANDEX_ERROR);
             return xmlToYandex(self.RESPONSE_FAIL_HASH, r.shopId, r.invoiceId, r.orderSumAmount, false);
         }
     };

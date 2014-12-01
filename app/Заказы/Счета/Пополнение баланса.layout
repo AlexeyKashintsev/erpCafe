@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?><layout defaultCloseOperation="2" name="Form" prefHeight="166px" prefWidth="283px" windowOpened="formWindowOpened">
-  <widget actionPerformed="radioButton1ActionPerformed" buttonGroup="buttonGroup" name="radioButton1" parent="Form" prefHeight="23px" prefWidth="228px" text="Яндекс деньги" type="RadioDesignInfo">
+  <widget actionPerformed="rbYandexActionPerformed" buttonGroup="buttonGroup" name="rbYandex" parent="Form" prefHeight="23px" prefWidth="228px" text="Яндекс деньги" type="RadioDesignInfo">
     <constraints height="23px" left="24px" top="84px" type="MarginConstraintsDesignInfo" width="228px"/>
   </widget>
   <widget name="label11" parent="Form" prefHeight="14px" prefWidth="48px" text="руб." type="LabelDesignInfo">
@@ -11,7 +11,7 @@
   <widget name="textField" parent="Form" prefHeight="20px" prefWidth="108px" type="TextFieldDesignInfo">
     <constraints height="20px" left="84px" top="12px" type="MarginConstraintsDesignInfo" width="108px"/>
   </widget>
-  <widget buttonGroup="buttonGroup" name="radioButton" parent="Form" prefHeight="23px" prefWidth="228px" selected="true" text="Выставить счет" type="RadioDesignInfo">
+  <widget buttonGroup="buttonGroup" name="rbPrice" parent="Form" prefHeight="23px" prefWidth="228px" selected="true" text="Выставить счет" type="RadioDesignInfo">
     <constraints height="23px" left="24px" top="48px" type="MarginConstraintsDesignInfo" width="228px"/>
   </widget>
   <widget actionPerformed="buttonActionPerformed" name="button" parent="Form" prefHeight="23px" prefWidth="228px" text="Пополнить баланс" type="ButtonDesignInfo">
