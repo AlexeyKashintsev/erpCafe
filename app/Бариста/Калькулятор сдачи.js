@@ -8,6 +8,7 @@ function CashBackCalculator(aParent) {
     var purchaseSum = 0;
     var prevSum = 0;
     var bonusCount = 0;
+    var canSell = false;
     
     var container = cmn.createElement('div', 'cash_calculator', 'mainArea');
     $( ".cash_calculator" ).disableSelection();
@@ -44,6 +45,7 @@ function CashBackCalculator(aParent) {
     self.show = function() {
         $('.calc').removeClass('disabled');
         $( ".cash_calculator" ).show();
+        canSell = true;
     };
     
     self.hide = function() {
@@ -51,6 +53,8 @@ function CashBackCalculator(aParent) {
         purchaseSum = 0;
         prevSum = 0;
         bonusCount = 0;
+        cash.innerHTML = '0';
+        canSell = false;
         $( ".cash_calculator" ).hide();
     };
     self.hide();
@@ -58,7 +62,25 @@ function CashBackCalculator(aParent) {
     var selectedMethod = 0;
     var spmBtnGrp = null;
     function selectPaymentMethod(aMethod) {
-        selectedMethod = aMethod;
+        selectedMethod = parseInt(aMethod);
+        calculateCashBack();
+        if (selectedMethod === 1) {//Бонусы
+            sellAllowed(bonusCount > purchaseSum ? true : false);
+        }
+        if (selectedMethod === 10) 
+            sellAllowed(true);
+    }
+    
+    function sellAllowed(anAllowed) {
+        canSell = anAllowed;
+        if (canSell)
+            $('.calc').removeClass('disabled')
+        else
+            $('.calc').addClass('disabled');
+    }
+    
+    function disableButtons() {
+        
     }
     
     model.tradeOperationTypes.params.only_input = true;
@@ -66,12 +88,12 @@ function CashBackCalculator(aParent) {
     function calculateCashBack() {
         var inpSum = prevSum !== 0 ? prevSum : cash.innerHTML;
         cashBackSum = inpSum - purchaseSum;
-        if (cashBackSum > 0) {
-            $('.calc').removeClass('disabled');
+        if (cashBackSum >= 0 && purchaseSum > 0) {
+            sellAllowed(true);
             cashback.innerHTML = cashBackSum;
         } else {
-            $('.calc').addClass('disabled');
             cashback.innerHTML = 0;
+            sellAllowed(false);
         }
     }
     
@@ -136,9 +158,9 @@ function CashBackCalculator(aParent) {
     };
 
     self.getPaymentMethod = function() {
-        return {
+        return canSell ? {
             paymentMethod   :   selectedMethod,
             additionalBonus :   0
-        };
+        } : false;
     };
 }

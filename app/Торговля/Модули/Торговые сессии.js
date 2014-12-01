@@ -14,16 +14,6 @@ function TradeSessions() {
     var ep = new EventProcessor();
     var session = Session.get("UserSession");
     var sessionItems = {};
-    
-    /*
-     * Типы операций
-     * Деньги: 0
-     * Бонусы: 1
-     * Безнал: 10
-     */
-    var PAYMENT_TYPE_MONEY = 0;
-    var PAYMENT_TYPE_BONUS = 1;
-    var PAYMENT_TYPE_CARD = 10;
 
     self.getInfoForErrors = function(anError) {
         switch (anError) {
@@ -234,15 +224,15 @@ function TradeSessions() {
         }
 
         if (model.params.session_id) {
+            var OperationType = anOrderDetails.methodOfPayment;
+            
             switch (anOrderDetails.methodOfPayment) {
-                case "money":
+                case 0: //Деньги
                     var BonusCount = 0;
                     var BonusOperation = billing.OPERATION_ADD_BONUS;
-                    var OperationType = PAYMENT_TYPE_MONEY;
                     break;
-                case "bonus":
+                case 1: //"bonus":
                     BonusOperation = billing.OPERATION_DEL_BUY;
-                    OperationType = PAYMENT_TYPE_BONUS;
                     BonusCount = anOrderDetails.orderSum;
                     if (client.bonusBill) {
                         if (client.bonusCount < anOrderDetails.orderSum) {
@@ -251,6 +241,7 @@ function TradeSessions() {
                         }
                     }
                     break;
+                case 10 : break;
                 default:
                     ep.addEvent('errorMethodOfPaymentIsNull', anOrderDetails);
                     return "error";

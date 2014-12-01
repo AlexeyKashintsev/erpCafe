@@ -11,6 +11,7 @@ function BaristaDesktop() {
     var whAdd = null;
     var types_body;
     var items_body;
+    
     widgetCreator = new WidgetCreatorBaristaDesktop();
 //    var fmDev = new fmDevMode();
 //    fmDev.show();
@@ -101,8 +102,12 @@ function BaristaDesktop() {
     
     function addItemToOrder(anItemData) {
         self.orderList.addItem(anItemData);
-        if (MenuWindow.location.pathname !== "/erpCafe/as_menu.html")
-            MenuWindow.location = "as_menu.html";
+        try {
+            if (MenuWindow.location.pathname !== "/erpCafe/as_menu.html")
+                MenuWindow.location = "as_menu.html";
+        } catch (e) {
+            Logger.info('No menu');
+        }
     }
 
     function tradeItemsByTradePointWithCostOnRequeried(evt) {//GEN-FIRST:event_tradeItemsByTradePointWithCostOnRequeried

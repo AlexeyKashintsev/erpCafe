@@ -18,8 +18,12 @@ function OrderList(aParent) {
         }
         document.getElementById("orderSum").innerHTML = '<h3>Итого: <b>' + orderSum + '</b> рублей</h3>';
         
-        if (typeof(MenuWindow) !== "undefined") {
-            MenuWindow.setOrder(self, orderSum);
+        try {
+            if (!!MenuWindow) {
+                MenuWindow.setOrder(self, orderSum);
+            }
+        } catch (e) {
+            Logger.info('No MenuWindow!');
         }
         return orderSum;
     };
@@ -40,56 +44,60 @@ function OrderList(aParent) {
         //TODO MenuWindow.location = "as_welcome.html";
     };
     
-    var acceptOrderClick = 0;
-    self.acceptOrder = function(aPayDetails) {
+    self.acceptOrder = function() {
         if (orderChanged) {
             var orderSum = self.calculateOrder();
             orderChanged = false;
-            acceptOrderClick = 0;
-        }
-        acceptOrderClick++;
-        if (acceptOrderClick < 2) {
-            aParent.cashBackCalc.show();
             aParent.cashBackCalc.setPurchaseSum(orderSum);
-        } else {
-            aPayDetails = aPayDetails ? aPayDetails : aParent.cashBackCalc.getPaymentMethod();
         }
+        
+        var pm = aParent.cashBackCalc.getPaymentMethod();
+        //if (true) {
+            if (!pm) {
+                aParent.cashBackCalc.show();
+            } else {
+                self.acceptOrderFinal(pm);
+            }
+//        } else {
+//            aParent.cashBackCalc.hide();
+//        }
     };
 
-    self.acceptOrderOld = function() {
-        var anOrderDetails = {
-            orderSum: 0,
-            orderItems: [],
-            clientData: clientSelector.getClient(),
-            session_id: session.activeSession
-        };
-        var ic = 0;//items count
+    self.acceptOrderFinal = function(aPayDetails) {
+        if (aPayDetails) {
+            var anOrderDetails = {
+                orderSum: 0,
+                orderItems: [],
+                clientData: clientSelector.getClient(),
+                session_id: session.activeSession
+            };
+            var ic = 0;//items count
 
-        if (self.orderDetails) {              
-            for (var i in self.orderDetails) {
-                anOrderDetails.orderSum += self.orderDetails[i].orderSum;
-                anOrderDetails.orderItems.push({
-                    itemId: self.orderDetails[i].itemId,
-                    quantity: self.orderDetails[i].orderQuantity
-                });
-                ic++;
+            if (self.orderDetails) {              
+                for (var i in self.orderDetails) {
+                    anOrderDetails.orderSum += self.orderDetails[i].orderSum;
+                    anOrderDetails.orderItems.push({
+                        itemId: self.orderDetails[i].itemId,
+                        quantity: self.orderDetails[i].orderQuantity
+                    });
+                    ic++;
+                }
             }
-        }
-        clientSelector.clearClient();
-        self.deleteOrder();
-        if (ic > 0) {
-            //Если сумма заказа покрывается бонусами на счету, то предложить оплату бонусами
-            if (anOrderDetails.orderSum <= anOrderDetails.clientData.bonusCount) {
-                choiceMethodOfPayment.showModal(function(aResult) {
-                    anOrderDetails.methodOfPayment = aResult ? aResult : "money";
+            clientSelector.clearClient();
+            self.deleteOrder();
+            if (ic > 0) {
+                /*/Если сумма заказа покрывается бонусами на счету, то предложить оплату бонусами
+                if (anOrderDetails.orderSum <= anOrderDetails.clientData.bonusCount) {
+                    choiceMethodOfPayment.showModal(function(aResult) {
+                        anOrderDetails.methodOfPayment = aResult ? aResult : "money";
+                        orderProcessor.processOrder(anOrderDetails);
+                    });
+                } else {*/
+                    anOrderDetails.methodOfPayment = aPayDetails.paymentMethod;//"money";
                     orderProcessor.processOrder(anOrderDetails);
-                });
             } else {
-                anOrderDetails.methodOfPayment = "money";
-                orderProcessor.processOrder(anOrderDetails);
+                alert("Ничего не выбрано");
             }
-        } else {
-            alert("Ничего не выбрано");
         }
     };
 

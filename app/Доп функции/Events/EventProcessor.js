@@ -20,14 +20,20 @@ function EventProcessor() {
     }
     
     self.addEvent = function(aEventType, aEventData){
-        var evt = JSON.stringify(aEventData);
-        model.eventById.push({
-            event_type  :   aEventType,
-            event_user  :   self.principal.name,
-            event_data  :   evt,
-            event_date  :   new Date()
-        });
-        model.save();
-        Logger.info(evt);
+        try {
+            var evt = JSON.stringify(aEventData); //BUG Ошибка при добавлении ошибки failure ;)
+            model.eventById.push({
+                event_type  :   aEventType,
+                event_user  :   self.principal.name,
+                event_data  :   evt,
+                event_date  :   new Date()
+            });
+            model.save();
+            Logger.info(evt);
+        } catch (e) {
+            model.revert();
+            failure(e, aEventType, aEventData);
+            Logger.warning(e);
+        }
     };
 }
