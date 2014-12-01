@@ -14,6 +14,7 @@ function BaristaDesktop() {
     widgetCreator = new WidgetCreatorBaristaDesktop();
 //    var fmDev = new fmDevMode();
 //    fmDev.show();
+    self.cashBackCalc = new CashBackCalculator(self);
     var chekLists = new CheckLists();
     var settings = new ServerModule('Settings');
     settings.updateSettingsParams();

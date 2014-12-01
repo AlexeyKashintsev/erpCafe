@@ -281,10 +281,15 @@ div.clientBonusDiv {
 }
 
 /* ### CASHBACK ### */
+div.cash_calculator {
+  height: 305px;
+  margin: -6px 0px 35px -15px;
+}
+
 div.top_head {
   position: relative;
   width: 442px;
-  height: 60px;
+  height: 64px;
   z-index: 10;
   font-size: 36px;
   text-align: right;
@@ -303,7 +308,7 @@ div.cash_back {
 }
 
 div.top_head > div.label {
-  font-size: 10px;
+  font-size: 12px;
   color: white;
   z-index: 10;
   position: absolute;
@@ -328,6 +333,13 @@ div.top_head.glass {
   z-index: 5!important;
 }
 
+div.button_area {
+  background-color: silver;
+  display: block;
+  float: left;
+  
+}
+
 div.btn_block {
   display: inline-block;
 }
@@ -348,6 +360,12 @@ div.btn_block.predefined {
 
 div.btn_block.predefined > div.calc {
   width: 120px;
+  background-color: #26A65B;
+}
+
+div.btn_block.predefined > div.calc.disabled {
+  background-color: grey;
+  cursor: default;
 }
 
 div.btn_block.manual {
