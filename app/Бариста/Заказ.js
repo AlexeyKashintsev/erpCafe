@@ -8,13 +8,16 @@ function OrderList(aParent) {
     var clientSelector = new ClientPhoneSelector();
     var choiceMethodOfPayment = new ChoiceMethodOfPayment();
     var orderProcessor = new OrderProcessor();
+    var orderChanged = false;
 
     self.calculateOrder = function() {
         var orderSum = 0;
+        orderChanged = true;
         for (var i in self.orderDetails) {
             orderSum += self.orderDetails[i].orderSum;
         }
         document.getElementById("orderSum").innerHTML = '<h3>Итого: <b>' + orderSum + '</b> рублей</h3>';
+        
         if (typeof(MenuWindow) !== "undefined") {
             MenuWindow.setOrder(self, orderSum);
         }
@@ -33,10 +36,27 @@ function OrderList(aParent) {
     self.deleteOrder = function() {
         for (var i in self.orderDetails)
             self.orderDetails[i].delete();
+        aParent.cashBackCalc.hide();
         //TODO MenuWindow.location = "as_welcome.html";
     };
+    
+    var acceptOrderClick = 0;
+    self.acceptOrder = function(aPayDetails) {
+        if (orderChanged) {
+            var orderSum = self.calculateOrder();
+            orderChanged = false;
+            acceptOrderClick = 0;
+        }
+        acceptOrderClick++;
+        if (acceptOrderClick < 2) {
+            aParent.cashBackCalc.show();
+            aParent.cashBackCalc.setPurchaseSum(orderSum);
+        } else {
+            aPayDetails = aPayDetails ? aPayDetails : aParent.cashBackCalc.getPaymentMethod();
+        }
+    };
 
-    self.acceptOrder = function() {
+    self.acceptOrderOld = function() {
         var anOrderDetails = {
             orderSum: 0,
             orderItems: [],

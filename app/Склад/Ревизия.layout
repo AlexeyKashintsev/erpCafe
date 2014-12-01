@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?><layout defaultCloseOperation="2" name="Form" prefHeight="325px" prefWidth="517px" windowClosing="formWindowClosing" windowOpened="formWindowOpened">
   <widget deletable="false" insertable="false" name="modelGrid" parent="Form" prefHeight="252px" prefWidth="516px" type="DbGridDesignInfo">
     <column name="colItem_name" readonly="true" title="Название">
-      <datamodelElement entityId="141269220987888" fieldName="item_name"/>
       <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
       <columnsDatasource/>
       <columnsDisplayField/>
@@ -14,9 +13,9 @@
       <headerStyle>
         <nativeFont name="Tahoma" size="11"/>
       </headerStyle>
+      <datamodelElement entityId="141269220987888" fieldName="item_name"/>
     </column>
     <column name="colStart_value" title="Начальное значение">
-      <datamodelElement entityId="141269220987888" fieldName="start_value"/>
       <controlInfo classHint="DbSpinDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
       <columnsDatasource/>
       <columnsDisplayField/>
@@ -29,9 +28,9 @@
       <headerStyle>
         <nativeFont name="Tahoma" size="11"/>
       </headerStyle>
+      <datamodelElement entityId="141269220987888" fieldName="start_value"/>
     </column>
     <column name="end_value" title="Конечное значение">
-      <datamodelElement entityId="141269220987888" fieldName="end_value"/>
       <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
       <columnsDatasource/>
       <columnsDisplayField/>
@@ -44,6 +43,7 @@
       <headerStyle>
         <nativeFont name="Tahoma" size="11"/>
       </headerStyle>
+      <datamodelElement entityId="141269220987888" fieldName="end_value"/>
     </column>
     <rowsColumnsDesignInfo>
       <rowsDatasource entityId="141269220987888" field="false"/>
