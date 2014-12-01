@@ -6,7 +6,6 @@ function OrderList(aParent) {
     var self = this, model = this.model, form = this;
     self.orderDetails = {};
     var clientSelector = new ClientPhoneSelector();
-    var choiceMethodOfPayment = new ChoiceMethodOfPayment();
     var orderProcessor = new OrderProcessor();
     var orderChanged = false;
 
@@ -47,20 +46,20 @@ function OrderList(aParent) {
     self.acceptOrder = function() {
         if (orderChanged) {
             var orderSum = self.calculateOrder();
-            orderChanged = false;
             aParent.cashBackCalc.setPurchaseSum(orderSum);
         }
         
         var pm = aParent.cashBackCalc.getPaymentMethod();
-        //if (true) {
+        if (!orderChanged || orderSum > 0) {
+            orderChanged = false;
             if (!pm) {
                 aParent.cashBackCalc.show();
             } else {
                 self.acceptOrderFinal(pm);
             }
-//        } else {
-//            aParent.cashBackCalc.hide();
-//        }
+        } else {
+            aParent.cashBackCalc.hide();
+        }
     };
 
     self.acceptOrderFinal = function(aPayDetails) {
@@ -86,15 +85,8 @@ function OrderList(aParent) {
             clientSelector.clearClient();
             self.deleteOrder();
             if (ic > 0) {
-                /*/Если сумма заказа покрывается бонусами на счету, то предложить оплату бонусами
-                if (anOrderDetails.orderSum <= anOrderDetails.clientData.bonusCount) {
-                    choiceMethodOfPayment.showModal(function(aResult) {
-                        anOrderDetails.methodOfPayment = aResult ? aResult : "money";
-                        orderProcessor.processOrder(anOrderDetails);
-                    });
-                } else {*/
-                    anOrderDetails.methodOfPayment = aPayDetails.paymentMethod;//"money";
-                    orderProcessor.processOrder(anOrderDetails);
+                anOrderDetails.methodOfPayment = aPayDetails.paymentMethod;//"money";
+                orderProcessor.processOrder(anOrderDetails);
             } else {
                 alert("Ничего не выбрано");
             }
