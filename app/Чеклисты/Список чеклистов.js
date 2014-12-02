@@ -69,7 +69,7 @@ function CheklistForm() {
     
     var flag = 0;
     function qListCheklistOnChanged(evt) {//GEN-FIRST:event_qListCheklistOnChanged
-        if (franchazi_id) {
+      /*  if (franchazi_id) {
             if (evt.object.franchazi_id !== franchazi_id) {
                 if (flag === 0) {
                     flag = 1;
@@ -94,7 +94,7 @@ function CheklistForm() {
                     flag = 0;
                 }
             }
-        }
+        }*/
         
     }//GEN-LAST:event_qListCheklistOnChanged
 
