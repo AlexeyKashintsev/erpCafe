@@ -282,13 +282,13 @@ div.clientBonusDiv {
 
 /* ### CASHBACK ### */
 div.cash_calculator {
-  height: 305px;
+  display: inline-block;
   margin: -6px 0px 35px -15px;
 }
 
 div.top_head {
   position: relative;
-  width: 442px;
+  width: 100%;
   height: 64px;
   z-index: 10;
   font-size: 36px;

@@ -111,11 +111,13 @@ function CashBackCalculator(aParent) {
             case 1: {
                     sellAllowed(bonusCount > purchaseSum ? true : false);
                     disableButtons();
+                    cash.innerHTML = purchaseSum;
                     break;
             }
             case 10: {
                     sellAllowed(true);
                     disableButtons();
+                    cash.innerHTML = purchaseSum;
                     break;
             }
         }
