@@ -119,18 +119,21 @@ function WhSessionModule() {
                 model.qOpenedSession.cursor.org_session_id = aSessionId;
             model.params.session_id = model.qOpenedSession.cursor.org_session_id;
             
-            if (initializeSessionBalance(aStartValues)) {
+            var initSessionResult = initializeSessionBalance(aStartValues);
+            
+//            if (initializeSessionBalance(aStartValues)) {
                 ep.addEvent('newSession', {
                     session: model.params.session_id,
                     module: 'whSessions'
                 });
                 model.save();
                 return model.params.session_id;
-            } else {
-                model.revert();
-                return false; 
-                Logger.warning("Сессия не инициализирована. " + aSessionId);
-            }
+//                TODO Завести соответсвующее событие !ВАЖНО!
+//            } else {
+//                model.revert();
+//                return false; 
+//                Logger.warning("Сессия не инициализирована. " + aSessionId);
+//            }
         }
     };
     

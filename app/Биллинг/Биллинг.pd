@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?><datamodel datamodelDbId="null">
   <fieldsEntity entityHeight="92" entityIconified="false" entityId="140783408624612" entityLocationX="702" entityLocationY="379" entityWidth="150" tableName="bill_services"/>
   <fieldsEntity entityHeight="200" entityIconified="false" entityId="140922596486692" entityLocationX="944" entityLocationY="23" entityWidth="150" tableName="wh_measures"/>
+  <fieldsEntity entityHeight="76" entityIconified="false" entityId="141744051201402" entityLocationX="16" entityLocationY="231" entityWidth="150" tableName="bill_salt"/>
   <fieldsEntity entityHeight="135" entityIconified="false" entityId="141018314336365" entityLocationX="469" entityLocationY="372" entityWidth="150" tableName="org_trade_point"/>
   <fieldsEntity entityHeight="87" entityIconified="false" entityId="140776434172822" entityLocationX="37" entityLocationY="32" entityWidth="150" tableName="bill_operations_type"/>
   <fieldsEntity entityHeight="200" entityIconified="false" entityId="140448308377715" entityLocationX="228" entityLocationY="35" entityWidth="178" tableName="bill_operations"/>

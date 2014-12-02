@@ -2,9 +2,6 @@
   <widget name="tfPhone" parent="Form" prefHeight="24px" prefWidth="348px" type="TextFieldDesignInfo">
     <constraints height="24px" left="24px" top="24px" type="MarginConstraintsDesignInfo" width="348px"/>
   </widget>
-  <widget name="button" parent="Form" prefHeight="29px" prefWidth="132px" text="Подтвердить" type="ButtonDesignInfo">
-    <constraints height="29px" left="240px" top="60px" type="MarginConstraintsDesignInfo" width="132px"/>
-  </widget>
   <widget name="label" parent="Form" prefHeight="24px" prefWidth="204px" text="Это новый клиент" type="LabelDesignInfo">
     <constraints height="24px" left="24px" top="60px" type="MarginConstraintsDesignInfo" width="204px"/>
   </widget>

@@ -11,9 +11,11 @@ function BaristaDesktop() {
     var whAdd = null;
     var types_body;
     var items_body;
+    
     widgetCreator = new WidgetCreatorBaristaDesktop();
 //    var fmDev = new fmDevMode();
 //    fmDev.show();
+    self.cashBackCalc = new CashBackCalculator(self);
     var chekLists = new CheckLists();
     var settings = new ServerModule('Settings');
     settings.updateSettingsParams();
@@ -56,21 +58,26 @@ function BaristaDesktop() {
                     session.tradeSession.initializeSession(session.activeSession, prompt("Введите остаток по кассе", "0"));
                     setSession(session.activeSession);
                 } else {
-                    alert('Склад не инициализирован');
+                    alert('Склад не инициализирован! Проведите ревизию');
                     Logger.warning("Склад не инициализирован. Инфо о сессии " + session);
-                    var whInitializer = new WhRevisionByBarista();
+                    Logout();
+                  /*  var whInitializer = new WhRevisionByBarista();
                     whInitializer.setTradePoint(aTradePoint);
                     whInitializer.showModal(function() {
-                        session.getActiveTPSession(function(aSession) {
-                            session.tradeSession.initializeSession(aSession, prompt("Введите остаток по кассе", "0")); // Ввести остаток по кассе, иницировать сессию
-                            setSession(aSession);
-                        });
-                    });
+                        session.getActiveTPSession(function(aSession) {*/
+                            //session.tradeSession.initializeSession(aSession, prompt("Введите остаток по кассе", "0")); // Ввести остаток по кассе, иницировать сессию
+                            //setSession(aSession);
+                      //  });
+                  //  });
                 }
             });
         }
     }
-
+    
+    function closeSessionAndLogout() {
+        //TODO subj и добавить в асинхронный вызов после отображения чеклиста
+    }
+    
     function startBaristaDesktop() {
         cmn.addTopRightControl("Меню в окне", "plus-sign", openDigitalMenu);
         cmn.addTopRightControl("Прием товара", "plus-sign", btnWarehouseAddActionPerformed);
@@ -99,6 +106,12 @@ function BaristaDesktop() {
                 MenuWindow.location = "as_menu.html";
         }
         self.orderList.addItem(anItemData);
+        try {
+            if (MenuWindow.location.pathname !== "/erpCafe/as_menu.html")
+                MenuWindow.location = "as_menu.html";
+        } catch (e) {
+            Logger.info('No menu');
+        }
     }
 
     function tradeItemsByTradePointWithCostOnRequeried(evt) {//GEN-FIRST:event_tradeItemsByTradePointWithCostOnRequeried

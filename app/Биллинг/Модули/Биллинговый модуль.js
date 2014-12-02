@@ -32,6 +32,10 @@ function BillModule() {
     self.OP_STATUS_PAID         = 7;    //Оплачен
     self.OP_STATUS_SEND         = 8;    //Товар Отправлен
     self.OP_STATUS_RECIVED      = 9;   //Товар получен 
+    //Яндекс
+    self.OP_YANDEX_CREATE       = 10;
+    self.OP_YANDEX_PROCESSING   = 11;
+    self.OP_YANDEX_ERROR        = 13;
     
     self.getSelfPropertyValue = function(aPropertyName) {
         return self[aPropertyName];

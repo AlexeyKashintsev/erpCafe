@@ -5,28 +5,29 @@
 function OrderList(aParent) {
     var self = this, model = this.model, form = this;
     self.orderDetails = {};
-    var clientSelector = new ClientPhoneSelector();
-    var choiceMethodOfPayment = new ChoiceMethodOfPayment();
+    var clientSelector = new ClientPhoneSelector(aParent);
     var orderProcessor = new OrderProcessor();
+    var orderChanged = false;
 
     self.calculateOrder = function() {
         var orderSum = 0;
+        orderChanged = true;
         for (var i in self.orderDetails) {
             orderSum += self.orderDetails[i].orderSum;
         }
         document.getElementById("orderSum").innerHTML = '<h3>Итого: <b>' + orderSum + '</b> рублей</h3>';
-        if (typeof(MenuWindow) !== "undefined") {
-            if (typeof(MenuWindow.setOrder) !== "undefined") {
+        
+        try {
+            if (!!MenuWindow) {
                 MenuWindow.setOrder(self, orderSum);
             }
+        } catch (e) {
+            Logger.info('No MenuWindow!');
         }
+        if (aParent.cashBackCalc.shown)
+            aParent.cashBackCalc.setPurchaseSum(orderSum);
         return orderSum;
     };
-    
-    self.getOrder = function(){
-        return self;
-    }
-    getOrder = self.getOrder;
 
     self.addItem = function(anItemData) {
         if (!!self.orderDetails[anItemData.item_id]) {
@@ -40,43 +41,58 @@ function OrderList(aParent) {
     self.deleteOrder = function() {
         for (var i in self.orderDetails)
             self.orderDetails[i].delete();
-        MenuWindow.location = "as_welcome.html";
+        aParent.cashBackCalc.hide();
+        //TODO MenuWindow.location = "as_welcome.html";
     };
-
+    
     self.acceptOrder = function() {
-        var anOrderDetails = {
-            orderSum: 0,
-            orderItems: [],
-            clientData: clientSelector.getClient(),
-            session_id: session.activeSession
-        };
-        var ic = 0;//items count
-
-        if (self.orderDetails) {              
-            for (var i in self.orderDetails) {
-                anOrderDetails.orderSum += self.orderDetails[i].orderSum;
-                anOrderDetails.orderItems.push({
-                    itemId: self.orderDetails[i].itemId,
-                    quantity: self.orderDetails[i].orderQuantity
-                });
-                ic++;
-            }
+        if (orderChanged) {
+            var orderSum = self.calculateOrder();
+            aParent.cashBackCalc.setPurchaseSum(orderSum);
         }
-        clientSelector.clearClient();
-        self.deleteOrder();
-        if (ic > 0) {
-            //Если сумма заказа покрывается бонусами на счету, то предложить оплату бонусами
-            if (anOrderDetails.orderSum <= anOrderDetails.clientData.bonusCount) {
-                choiceMethodOfPayment.showModal(function(aResult) {
-                    anOrderDetails.methodOfPayment = aResult ? aResult : "money";
-                    orderProcessor.processOrder(anOrderDetails);
-                });
+        
+        var pm = aParent.cashBackCalc.getPaymentMethod();
+        if (!orderChanged || orderSum > 0) {
+            orderChanged = false;
+            if (!pm) {
+                if (!aParent.cashBackCalc.shown)
+                    aParent.cashBackCalc.show();
             } else {
-                anOrderDetails.methodOfPayment = "money";
-                orderProcessor.processOrder(anOrderDetails);
+                self.acceptOrderFinal(pm);
             }
         } else {
-            alert("Ничего не выбрано");
+            aParent.cashBackCalc.hide();
+        }
+    };
+
+    self.acceptOrderFinal = function(aPayDetails) {
+        if (aPayDetails) {
+            var anOrderDetails = {
+                orderSum: 0,
+                orderItems: [],
+                clientData: clientSelector.getClient(),
+                session_id: session.activeSession
+            };
+            var ic = 0;//items count
+
+            if (self.orderDetails) {              
+                for (var i in self.orderDetails) {
+                    anOrderDetails.orderSum += self.orderDetails[i].orderSum;
+                    anOrderDetails.orderItems.push({
+                        itemId: self.orderDetails[i].itemId,
+                        quantity: self.orderDetails[i].orderQuantity
+                    });
+                    ic++;
+                }
+            }
+            clientSelector.clearClient();
+            self.deleteOrder();
+            if (ic > 0) {
+                anOrderDetails.methodOfPayment = aPayDetails.paymentMethod;//"money";
+                orderProcessor.processOrder(anOrderDetails);
+            } else {
+                alert("Ничего не выбрано");
+            }
         }
     };
 
