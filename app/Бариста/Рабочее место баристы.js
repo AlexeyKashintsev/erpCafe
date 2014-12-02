@@ -8,6 +8,7 @@ function BaristaDesktop() {
     session.whSession = new ServerModule("WhSessionModule");
     session.tradeSession = new ServerModule("TradeSessions");
     self.userName = session.getUserName();
+    var AS = new AdditionalScreen();
     var whAdd = null;
     var types_body;
     var items_body;
@@ -96,18 +97,11 @@ function BaristaDesktop() {
     }
     
     function openDigitalMenu(){
-        MenuWindow = window.open("as_menu.html","menu",'width=550,height=650');
-        
+       AS.openWin();
     }
     
     function addItemToOrder(anItemData) {
         self.orderList.addItem(anItemData);
-        try {
-            if (MenuWindow.location.pathname !== "/erpCafe/as_menu.html")
-                MenuWindow.location = "as_menu.html";
-        } catch (e) {
-            Logger.info('No menu');
-        }
     }
 
     function tradeItemsByTradePointWithCostOnRequeried(evt) {//GEN-FIRST:event_tradeItemsByTradePointWithCostOnRequeried
