@@ -74,7 +74,7 @@ function CashBackCalculator(aParent) {
     function sellAllowed(anAllowed) {
         canSell = anAllowed;
         if (canSell)
-            $('.calc').removeClass('disabled')
+            $('.calc').removeClass('disabled');
         else
             $('.calc').addClass('disabled');
     }
@@ -109,14 +109,22 @@ function CashBackCalculator(aParent) {
                 break;
             }
             case 1: {
-                    sellAllowed(bonusCount > purchaseSum ? true : false);
+                    var enougthBonuses = (bonusCount >= purchaseSum);
                     disableButtons();
-                    cash.innerHTML = purchaseSum;
+                    sellAllowed(enougthBonuses);
+                    if (!enougthBonuses) {
+                        cashback.innerHTML = "Не хватает бонусов!";
+                        cash.innerHTML = "";
+                    } else {
+                        cashback.innerHTML = "К списанию бонусов:";
+                        cash.innerHTML = purchaseSum;
+                    }
                     break;
             }
             case 10: {
                     sellAllowed(true);
                     disableButtons();
+                    cashback.innerHTML = "Платеж картой";
                     cash.innerHTML = purchaseSum;
                     break;
             }

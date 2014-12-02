@@ -55,7 +55,8 @@ function OrderList(aParent) {
         if (!orderChanged || orderSum > 0) {
             orderChanged = false;
             if (!pm) {
-                aParent.cashBackCalc.show();
+                if (!aParent.cashBackCalc.shown)
+                    aParent.cashBackCalc.show();
             } else {
                 self.acceptOrderFinal(pm);
             }
