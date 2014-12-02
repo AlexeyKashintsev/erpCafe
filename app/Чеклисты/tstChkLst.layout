@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?><layout defaultCloseOperation="2" name="Form" prefHeight="392px" prefWidth="588px">
+  <widget name="modelGrid" parent="Form" prefHeight="396px" prefWidth="288px" type="DbGridDesignInfo">
+    <column name="colCheklist_data_id">
+      <controlInfo classHint="DbSpinDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
+      <columnsDatasource/>
+      <columnsDisplayField/>
+      <cellsDatasource/>
+      <cellDesignInfo>
+        <rowsKeyField/>
+        <columnsKeyField/>
+        <cellValueField/>
+      </cellDesignInfo>
+      <headerStyle>
+        <nativeFont name="Lucida Grande" size="13"/>
+      </headerStyle>
+      <datamodelElement entityId="141752198913609" fieldName="cheklist_data_id"/>
+    </column>
+    <column name="colCheklist_title">
+      <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
+      <columnsDatasource/>
+      <columnsDisplayField/>
+      <cellsDatasource/>
+      <cellDesignInfo>
+        <rowsKeyField/>
+        <columnsKeyField/>
+        <cellValueField/>
+      </cellDesignInfo>
+      <headerStyle>
+        <nativeFont name="Lucida Grande" size="13"/>
+      </headerStyle>
+      <datamodelElement entityId="141752198913609" fieldName="cheklist_title"/>
+    </column>
+    <column name="colCheklist_text">
+      <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
+      <columnsDatasource/>
+      <columnsDisplayField/>
+      <cellsDatasource/>
+      <cellDesignInfo>
+        <rowsKeyField/>
+        <columnsKeyField/>
+        <cellValueField/>
+      </cellDesignInfo>
+      <headerStyle>
+        <nativeFont name="Lucida Grande" size="13"/>
+      </headerStyle>
+      <datamodelElement entityId="141752198913609" fieldName="cheklist_text"/>
+    </column>
+    <column name="colCheklist_type">
+      <controlInfo classHint="DbSpinDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
+      <columnsDatasource/>
+      <columnsDisplayField/>
+      <cellsDatasource/>
+      <cellDesignInfo>
+        <rowsKeyField/>
+        <columnsKeyField/>
+        <cellValueField/>
+      </cellDesignInfo>
+      <headerStyle>
+        <nativeFont name="Lucida Grande" size="13"/>
+      </headerStyle>
+      <datamodelElement entityId="141752198913609" fieldName="cheklist_type"/>
+    </column>
+    <column name="colFranchazi_id">
+      <controlInfo classHint="DbSpinDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
+      <columnsDatasource/>
+      <columnsDisplayField/>
+      <cellsDatasource/>
+      <cellDesignInfo>
+        <rowsKeyField/>
+        <columnsKeyField/>
+        <cellValueField/>
+      </cellDesignInfo>
+      <headerStyle>
+        <nativeFont name="Lucida Grande" size="13"/>
+      </headerStyle>
+      <datamodelElement entityId="141752198913609" fieldName="franchazi_id"/>
+    </column>
+    <rowsColumnsDesignInfo>
+      <rowsDatasource entityId="141752198913609" field="false"/>
+    </rowsColumnsDesignInfo>
+    <treeDesignInfo/>
+    <constraints height="396px" left="0px" top="0px" type="MarginConstraintsDesignInfo" width="288px"/>
+  </widget>
+  <widget name="modelTextArea" parent="Form" prefHeight="336px" prefWidth="288px" type="DbTextDesignInfo">
+    <datamodelElement entityId="141752198913609" fieldName="cheklist_text"/>
+    <constraints height="336px" left="300px" top="0px" type="MarginConstraintsDesignInfo" width="288px"/>
+  </widget>
+  <widget actionPerformed="buttonActionPerformed" name="button" parent="Form" prefHeight="29px" prefWidth="86px" text="button" type="ButtonDesignInfo">
+    <constraints bottom="15px" height="29px" right="-2px" type="MarginConstraintsDesignInfo" width="86px"/>
+  </widget>
+  <layout type="MarginLayoutDesignInfo"/>
+</layout>
