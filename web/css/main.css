@@ -344,12 +344,12 @@ div.btn_block {
   display: inline-block;
 }
 
-div.btn_block.predefined > * {
+div.btn_block.predefined > div.calc_button {
   background-color: rgb(247, 147, 49);
   color: white;
 }
 
-div.btn_block.predefined > *:active {
+div.btn_block.predefined > div.calc_button:active {
   background-color: rgb(196, 115, 37);
 }
 
@@ -360,11 +360,11 @@ div.btn_block.predefined {
 
 div.btn_block.predefined > div.calc {
   width: 120px;
-  background-color: #26A65B;
+  background-color: #26A65B!important;
 }
 
 div.btn_block.predefined > div.calc.disabled {
-  background-color: grey;
+  background-color: grey!important;
   cursor: default;
 }
 
@@ -389,6 +389,14 @@ div.calc_button {
 
 div.calc_button:active {
   background-color: rgb(178, 178, 178);
+}
+
+div.btn_block.disabled > div.calc_button {
+  background-color: lightgrey;
+}
+
+div.btn_block.predefined.disabled > div.calc_button {
+  background-color: darkgray;
 }
 
 /* ### FRANCHAZI ### */

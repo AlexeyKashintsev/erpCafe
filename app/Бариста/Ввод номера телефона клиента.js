@@ -2,7 +2,7 @@
  * 
  * @author Alexey
  */
-function ClientPhoneSelector() {
+function ClientPhoneSelector(aParent) {
     var self = this, model = this.model, form = this;
     session.clientModule = new ServerModule("ClientServerModule");
     
@@ -20,6 +20,7 @@ function ClientPhoneSelector() {
     
     function checkIfClientPhoneExists() {
         if (inpPhone.value !== "") {
+            aParent.cashBackCalc.setBonusCount(0);
             $(".client-phone-reset").addClass("active");
             var response = session.clientModule.getClientsByFourDigits(inpPhone.value);
             if (response){
@@ -37,6 +38,7 @@ function ClientPhoneSelector() {
                     clientPhoneDiv.innerHTML = "Клиент: " + client.firstName;
                     var clientBonusDiv = cmn.getElement("div", '', clientPane, "clientBonusDiv");
                     clientBonusDiv.innerHTML = "На счету: <b>" + client.bonusCount + "</b> бонусов";
+                    aParent.cashBackCalc.setBonusCount(client.bonusCount);
                 }
              } else {
                  client = false;

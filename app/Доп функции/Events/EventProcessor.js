@@ -32,7 +32,7 @@ function EventProcessor() {
             Logger.info(evt);
         } catch (e) {
             model.revert();
-            failure(e, aEventType, aEventData);
+          //  failure(e, aEventType, aEventData);
             Logger.warning(e);
         }
     };

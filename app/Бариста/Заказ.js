@@ -5,7 +5,7 @@
 function OrderList(aParent) {
     var self = this, model = this.model, form = this;
     self.orderDetails = {};
-    var clientSelector = new ClientPhoneSelector();
+    var clientSelector = new ClientPhoneSelector(aParent);
     var orderProcessor = new OrderProcessor();
     var orderChanged = false;
 
@@ -24,6 +24,8 @@ function OrderList(aParent) {
         } catch (e) {
             Logger.info('No MenuWindow!');
         }
+        if (aParent.cashBackCalc.shown)
+            aParent.cashBackCalc.setPurchaseSum(orderSum);
         return orderSum;
     };
 

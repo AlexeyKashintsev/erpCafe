@@ -9,6 +9,8 @@ function CashBackCalculator(aParent) {
     var prevSum = 0;
     var bonusCount = 0;
     var canSell = false;
+    var btnsSumEnabled = true;
+    self.shown = false;
     
     var container = cmn.createElement('div', 'cash_calculator', 'mainArea');
     $( ".cash_calculator" ).disableSelection();
@@ -46,6 +48,7 @@ function CashBackCalculator(aParent) {
         $('.calc').removeClass('disabled');
         $( ".cash_calculator" ).show();
         canSell = true;
+        self.shown = true;
     };
     
     self.hide = function() {
@@ -55,20 +58,17 @@ function CashBackCalculator(aParent) {
         bonusCount = 0;
         cash.innerHTML = '0';
         canSell = false;
+        selectedMethod = 0;
+        spmBtnGrp.setActiveButton(selectedMethod);
+        self.shown = false;
         $( ".cash_calculator" ).hide();
     };
-    self.hide();
     
     var selectedMethod = 0;
     var spmBtnGrp = null;
     function selectPaymentMethod(aMethod) {
         selectedMethod = parseInt(aMethod);
         calculateCashBack();
-        if (selectedMethod === 1) {//Бонусы
-            sellAllowed(bonusCount > purchaseSum ? true : false);
-        }
-        if (selectedMethod === 10) 
-            sellAllowed(true);
     }
     
     function sellAllowed(anAllowed) {
@@ -80,48 +80,73 @@ function CashBackCalculator(aParent) {
     }
     
     function disableButtons() {
-        
+        $('.btn_block.manual').addClass('disabled');
+        $('.btn_block.predefined').addClass('disabled');
+        btnsSumEnabled = false;
+    }
+    
+    function enableButtons() {
+        $('.btn_block.manual').removeClass('disabled');
+        $('.btn_block.predefined').removeClass('disabled');
+        btnsSumEnabled = true;
     }
     
     model.tradeOperationTypes.params.only_input = true;
     
     function calculateCashBack() {
-        var inpSum = prevSum !== 0 ? prevSum : cash.innerHTML;
-        cashBackSum = inpSum - purchaseSum;
-        if (cashBackSum >= 0 && purchaseSum > 0) {
-            sellAllowed(true);
-            cashback.innerHTML = cashBackSum;
-        } else {
-            cashback.innerHTML = 0;
-            sellAllowed(false);
+        switch (selectedMethod) {
+            case 0: {
+                var inpSum = prevSum !== 0 ? prevSum : cash.innerHTML;
+                cashBackSum = inpSum - purchaseSum;
+                if (cashBackSum >= 0 && purchaseSum > 0) {
+                    sellAllowed(true);
+                    cashback.innerHTML = cashBackSum;
+                } else {
+                    cashback.innerHTML = 0;
+                    sellAllowed(false);
+                }
+                enableButtons();
+                break;
+            }
+            case 1: {
+                    sellAllowed(bonusCount > purchaseSum ? true : false);
+                    disableButtons();
+                    break;
+            }
+            case 10: {
+                    sellAllowed(true);
+                    disableButtons();
+                    break;
+            }
         }
     }
     
     function buttonClick(aSum) {
         if ( cash.innerHTML === '0')
              cash.innerHTML = '';
-         
-        switch (true) {
-            case aSum < 10: {
-                cash.innerHTML += aSum;
-                prevSum = 0;
-                break;
+        
+        if (btnsSumEnabled)
+            switch (true) {
+                case aSum < 10: {
+                    cash.innerHTML += aSum;
+                    prevSum = 0;
+                    break;
+                }
+                case aSum >= 10: {
+                    prevSum += aSum;
+                    cash.innerHTML = prevSum;
+                    break;
+                }
+                case (aSum === 'C' || aSum === 'CE'): {
+                    cash.innerHTML = '0';
+                    prevSum = 0;
+                    break;
+                };
             }
-            case aSum >= 10: {
-                prevSum += aSum;
-                cash.innerHTML = prevSum;
-                break;
-            }
-            case (aSum === 'C' || aSum === 'CE'): {
-                cash.innerHTML = '0';
-                prevSum = 0;
-                break;
-            }
-            case (aSum === 'Оплата') : {
+        if (aSum === 'Оплата') {
                 if (!$('.calc').hasClass('disabled'))
                     aParent.orderList.acceptOrder();
             }
-        };
         calculateCashBack();
     }
     
@@ -147,14 +172,17 @@ function CashBackCalculator(aParent) {
         buttons[0].active = true;
         spmBtnGrp = new cmn.ButtonGroup(buttons, paymentMethodDiv, 'btn btn-info payType',
                                         selectPaymentMethod, 'btn-group-vertical btn-group-md');
+        self.hide();
     }//GEN-LAST:event_tradeOperationTypesOnRequeried
 
     self.setBonusCount = function(aBonuses) {
-        
+        bonusCount = aBonuses;
+        calculateCashBack();
     };
 
     self.setPurchaseSum = function(aSum) {
         purchaseSum = aSum;
+        calculateCashBack();
     };
 
     self.getPaymentMethod = function() {

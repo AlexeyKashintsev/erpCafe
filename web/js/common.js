@@ -51,6 +51,10 @@ cmn.ButtonGroup = function(aButtons, aContainer, aBtnClass, aFunction, aClass) {
     divBtnGroup.role = "toolbar";
     
     function setActiveButton(aBtn) {
+        if (typeof(aBtn) !== 'object') {
+            for (var j in buttons) 
+                if (buttons[j].fParam == aBtn) aBtn = buttons[j];
+        }
         for (var j in buttons) {
             $(buttons[j]).removeClass('active');
         }
@@ -78,6 +82,7 @@ cmn.ButtonGroup = function(aButtons, aContainer, aBtnClass, aFunction, aClass) {
         setActiveButton(buttons[active]);
         aFunction(buttons[active].fParam);
     }
+    this.setActiveButton = setActiveButton;
 }
 
 cmn.pFrameRunner = new function() {
