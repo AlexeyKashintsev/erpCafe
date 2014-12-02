@@ -8,6 +8,7 @@ function OrderList(aParent) {
     var clientSelector = new ClientPhoneSelector(aParent);
     var orderProcessor = new OrderProcessor();
     var orderChanged = false;
+    var AS = new AdditionalScreen();
 
     self.calculateOrder = function() {
         var orderSum = 0;
@@ -17,13 +18,8 @@ function OrderList(aParent) {
         }
         document.getElementById("orderSum").innerHTML = '<h3>Итого: <b>' + orderSum + '</b> рублей</h3>';
         
-        try {
-            if (!!MenuWindow) {
-                MenuWindow.setOrder(self, orderSum);
-            }
-        } catch (e) {
-            Logger.info('No MenuWindow!');
-        }
+        AS.updateOrder(self, orderSum);
+        
         if (aParent.cashBackCalc.shown)
             aParent.cashBackCalc.setPurchaseSum(orderSum);
         return orderSum;
@@ -42,7 +38,7 @@ function OrderList(aParent) {
         for (var i in self.orderDetails)
             self.orderDetails[i].delete();
         aParent.cashBackCalc.hide();
-        //TODO MenuWindow.location = "as_welcome.html";
+        AS.cancelOrder();
     };
     
     self.acceptOrder = function() {

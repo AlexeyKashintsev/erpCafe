@@ -1,10 +1,9 @@
-if (!platypus) {
-    var platypus = {};
+function as_welcome() {
+    var self = this, model = this.model;
+
+    self.func = function () {
+        
+    };
+
+    func = self.func;
 }
-
-
-platypus.ready = function() {
-    require(['as_welcome'], function() {
-       menu = new as_welcome();
-    });
-};

@@ -1,10 +1,4 @@
-/**
- * 
- * @author Alexey
- * @module
- */ 
 function OrderRepeater(anOrder, orderSum) {
-    var self = this, model = this.model;
     
     document.getElementById("actionPanel").innerHTML = "";
     var dockElement = cmn.createElement("div", 'baristaOrder panel panel-primary', "actionPanel");
@@ -54,3 +48,20 @@ function OrderRepeater(anOrder, orderSum) {
         return obj;
     };
 }
+
+function as_order() {
+    var self = this, model = this.model;
+    
+    function checkCache(){
+        window.opener.adPublicInterface.processCache();
+    };
+    
+    self.setOrder = function (anOrder, orderSum) {
+        var OR = new OrderRepeater(anOrder, orderSum);
+    };
+    
+    setOrder = self.setOrder;
+    
+    checkCache();
+}
+var order = new as_order();
