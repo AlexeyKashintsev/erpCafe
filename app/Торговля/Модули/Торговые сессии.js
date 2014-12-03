@@ -254,7 +254,7 @@ function TradeSessions() {
             for (var i in anOrderDetails.orderItems) {
                 processOrderItem(anOrderDetails.orderItems[i], TradeOperationId);
 
-                if (client && anOrderDetails.methodOfPayment === "money") {
+                if (client && anOrderDetails.methodOfPayment === 0) {
                     BonusCount += sessionItems[anOrderDetails.orderItems[i].itemId].bonus_category[client.bonusCategory]
                             * sessionItems[anOrderDetails.orderItems[i].itemId].cost//getCountBonusesByItem(anOrderDetails.orderItems[i].itemId, client.bonusCategory)
                             * anOrderDetails.orderItems[i].quantity;
