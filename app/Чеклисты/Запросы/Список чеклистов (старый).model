@@ -5,8 +5,8 @@
     <parameter description="" name="franchazi_id" nullable="true" parameterMode="1" precision="0" scale="0" selectionForm="null" signed="true" size="0" type="2" typeName="NUMERIC"/>
   </parameters>
   <parametersEntity entityHeight="200" entityIconified="false" entityLocationX="8" entityLocationY="7" entityWidth="150"/>
-  <entity Title="" entityHeight="200" entityIconified="false" entityId="141760243011434" entityLocationX="475" entityLocationY="25" entityWidth="150" tableAlias="t1" tableName="cheklist_data" tableSchemaName=""/>
-  <relation leftEntityId="-1" leftEntityParameterName="checklist_id" rightEntityFieldName="cheklist_data_id" rightEntityId="141760243011434"/>
-  <relation leftEntityId="-1" leftEntityParameterName="type" rightEntityFieldName="cheklist_type" rightEntityId="141760243011434"/>
-  <relation leftEntityId="-1" leftEntityParameterName="franchazi_id" rightEntityFieldName="franchazi_id" rightEntityId="141760243011434"/>
+  <entity Title="" entityHeight="200" entityIconified="false" entityId="141648052185242" entityLocationX="206" entityLocationY="7" entityWidth="150" tableAlias="t1" tableName="cheklist_data" tableSchemaName=""/>
+  <relation leftEntityId="-1" leftEntityParameterName="franchazi_id" rightEntityFieldName="franchazi_id" rightEntityId="141648052185242"/>
+  <relation leftEntityId="-1" leftEntityParameterName="type" rightEntityFieldName="cheklist_type" rightEntityId="141648052185242"/>
+  <relation leftEntityId="-1" leftEntityParameterName="checklist_id" rightEntityFieldName="cheklist_data_id" rightEntityId="141648052185242"/>
 </datamodel>

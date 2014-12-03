@@ -61,7 +61,7 @@ function StartMasterAdminForm() {
         },
         cheklist     :   {
             display     :   "Чеклисты",
-            dispForm    :   "tstChkLst"//CheklistForm"
+            dispForm    :   "CheklistForm"
         },
         massSendSMS     :   {
             display     :   "Массовая рассылка СМС",

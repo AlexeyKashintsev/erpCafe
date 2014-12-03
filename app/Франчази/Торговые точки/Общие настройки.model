@@ -5,7 +5,7 @@
     <parameter description="" name="cheklist_id" nullable="true" parameterMode="1" precision="0" scale="0" selectionForm="null" signed="true" size="0" type="2" typeName="NUMERIC"/>
   </parameters>
   <parametersEntity entityHeight="200" entityIconified="false" entityLocationX="12" entityLocationY="12" entityWidth="150"/>
-  <entity Name="qListCheklist" Title="" entityHeight="169" entityIconified="false" entityId="141693097877919" entityLocationX="439" entityLocationY="237" entityWidth="150" queryId="qListCheklist" tableName="" tableSchemaName=""/>
+  <entity Name="qListCheklist" Title="" entityHeight="169" entityIconified="false" entityId="141693097877919" entityLocationX="439" entityLocationY="237" entityWidth="150" queryId="qChecklists" tableName="" tableSchemaName=""/>
   <entity Name="qTradePoint" Title="" entityHeight="200" entityIconified="false" entityId="141623069358671" entityLocationX="440" entityLocationY="19" entityWidth="150" queryId="qTradePoint" tableName="" tableSchemaName=""/>
   <entity Name="qGetCities" Title="" entityHeight="74" entityIconified="false" entityId="141623000801670" entityLocationX="191" entityLocationY="14" entityWidth="150" queryId="qGetCities" tableName="" tableSchemaName=""/>
   <relation leftEntityId="-1" leftEntityParameterName="trade_point_id" rightEntityId="141623069358671" rightEntityParameterName="trade_point_id"/>

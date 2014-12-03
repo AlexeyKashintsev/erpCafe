@@ -67,14 +67,19 @@ function UserCreateAndEditForm() {
             model.usersByNameReadonly.requery(function(){
                 userNew = false; //говорим что это не новый пользователь
                 form.tfLogin.enabled = false;
-                form.panelBarist.visible = false;
+                form.panelBarist.visible = true;
+                form.rbAdmin.enabled = false;
+                form.rbBarista.enabled = false;
                 form.tfLogin.text = model.usersByNameReadonly.cursor.usr_name;
-                form.tfPass.text = "********";
+                form.tfPass.text = "Сменить пароль";
                 form.tfEmail.text = model.usersByNameReadonly.cursor.usr_email;
                 form.tfPhone.text = model.usersByNameReadonly.cursor.usr_phone;
                 if(!model.createFrancizerUser.cursor.franc_users_active)
                     form.rbDisable.selected = true; 
                 else  form.rbEnable.selected = true; 
+                if(model.usersByNameReadonly.cursor.group_name === "barista")
+                     form.rbBarista.selected = true;
+                else form.rbAdmin.selected = true;
             });      
         } else {
             //очищаем поля и разрешаем редактировать

@@ -111,7 +111,8 @@ function CheklistForm() {
     }//GEN-LAST:event_taContentFocusLost
 
     function taContentMouseExited(evt) {//GEN-FIRST:event_taContentMouseExited
-        model.qListCheklist.cursor.cheklist_text = form.taContent.text;
+        if(!model.qListCheklist.empty)
+            model.qListCheklist.cursor.cheklist_text = form.taContent.text;
     }//GEN-LAST:event_taContentMouseExited
 
     function formWindowClosed(evt) {//GEN-FIRST:event_formWindowClosed

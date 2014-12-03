@@ -1,7 +1,7 @@
 /**
  * @public
  * @author minya92
- * @name qChecklists
+ * @name qListCheklist
  */ 
 Select * 
 From cheklist_data t1

@@ -4,7 +4,9 @@
     <parameter description="" name="phone" nullable="true" parameterMode="1" precision="0" scale="0" selectionForm="null" signed="true" size="100" type="12" typeName="VARCHAR"/>
   </parameters>
   <parametersEntity entityHeight="200" entityIconified="false" entityLocationX="8" entityLocationY="7" entityWidth="150"/>
+  <entity Title="" entityHeight="200" entityIconified="false" entityId="141752707772773" entityLocationX="524" entityLocationY="18" entityWidth="150" tableAlias="t" tableName="mtd_groups" tableSchemaName=""/>
   <entity Title="" entityHeight="200" entityIconified="false" entityId="140488666404878" entityLocationX="281" entityLocationY="7" entityWidth="150" tableAlias="t1" tableName="mtd_users" tableSchemaName=""/>
-  <relation leftEntityId="-1" leftEntityParameterName="phone" rightEntityFieldName="usr_phone" rightEntityId="140488666404878"/>
   <relation leftEntityId="-1" leftEntityParameterName="usr_name" rightEntityFieldName="usr_name" rightEntityId="140488666404878"/>
+  <relation leftEntityFieldName="usr_name" leftEntityId="140488666404878" rightEntityFieldName="usr_name" rightEntityId="141752707772773"/>
+  <relation leftEntityId="-1" leftEntityParameterName="phone" rightEntityFieldName="usr_phone" rightEntityId="140488666404878"/>
 </datamodel>
