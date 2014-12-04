@@ -43,7 +43,12 @@ function btnReqActionPerformed(evt) {//GEN-FIRST:event_btnReqActionPerformed
                     model.queryItemsInWH.push(obj);
                 } else {
                     model.delItemsInWH.params.item_id = model.queryItems.cursor.wh_items_id;
-                    model.delItemsInWH.executeUpdate();
+                    try {
+                        model.delItemsInWH.execute();
+                    } catch(e) {
+                        Logger.info(e);
+                    }
+                    //model.delItemsInWH.executeUpdate();
                 }
             }
         }
