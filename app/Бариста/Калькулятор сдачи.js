@@ -14,7 +14,16 @@ function CashBackCalculator(aParent) {
     
     var container = cmn.createElement('div', 'cash_calculator', 'mainArea');
     $( ".cash_calculator" ).disableSelection();
-    
+        
+    function createButton(aClass, aContainer, aText, aValue, aTitle) {
+        var btn = cmn.createElement("div", aClass, aContainer);
+        btn.innerHTML = aText;
+        btn.value = aValue;
+        if (!!aTitle) btn.title = aTitle;
+        btn.onclick = function() {
+            buttonClick(this.value);
+        };
+    }    
     
     var cashback, cash, paymentMethodDiv, PayBtn;
     function render() {
@@ -159,16 +168,6 @@ function CashBackCalculator(aParent) {
             }
         calculateCashBack();
     }
-    
-    function createButton(aClass, aContainer, aText, aValue, aTitle) {
-        var btn = cmn.createElement("div", aClass, aContainer);
-        btn.innerHTML = aText;
-        btn.value = aValue;
-        if (!!aTitle) btn.title = aTitle;
-        btn.onclick = function() {
-            buttonClick(this.value);
-        };
-    }    
 
     function tradeOperationTypesOnRequeried(evt) {//GEN-FIRST:event_tradeOperationTypesOnRequeried
         model.tradeOperationTypes.beforeFirst();
