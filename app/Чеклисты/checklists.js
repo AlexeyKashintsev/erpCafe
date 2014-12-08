@@ -23,8 +23,8 @@ function CheckLists() {
                 var modalBody = modal.getModalBody();
 
                 var checkListText = cmn.createElement('div', null, modalBody);
-                checkListText.innerHTML = checkList.text;
-
+                checkListText.innerHTML = checkList.text.replace(new RegExp("\n",'g'),"<br>");
+                
                 modal.show();
             });
         }
