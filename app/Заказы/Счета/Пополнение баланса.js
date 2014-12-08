@@ -31,8 +31,8 @@ function AddBalance(anAccountId) {
                 var yandexForm = cmn.createElement("div", "yandexForm", modalBody, "yandexForm");
                 yandexForm.innerHTML =   
                         '<form role="form" id ="form" action="https://money.yandex.ru/eshop.xml" method="post" target="_blank">\n\
-                        <input name="shopId" value="1234" type="hidden"\n\
-                        <input name="scid" value="4321" type="hidden">\n\
+                        <input name="shopId" value="20474" type="hidden"\n\
+                        <input name="scid" value="10823" type="hidden">\n\
                         <input name="customerNumber" value="'+anAccountId+'" type="hidden">\n\
                         <input name="billOperation" id="billOperation" type="hidden">\n\
                         <div class="form-group">\n\
