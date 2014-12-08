@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?><datamodel datamodelDbId="null">
   <fieldsEntity entityHeight="200" entityIconified="false" entityId="141631384133814" entityLocationX="-1" entityLocationY="0" entityWidth="150" tableName="cheklist_data"/>
   <fieldsEntity entityHeight="80" entityIconified="false" entityId="141631391294215" entityLocationX="4" entityLocationY="216" entityWidth="150" tableName="cheklist_type"/>
+  <fieldsEntity entityHeight="200" entityIconified="false" entityId="141803005038043" entityLocationX="220" entityLocationY="4" entityWidth="150" tableName="adm_settings"/>
 </datamodel>

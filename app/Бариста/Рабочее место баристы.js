@@ -32,7 +32,10 @@ function BaristaDesktop() {
     function showChecklist(aName){
         settings.getSettings(false, session.tradePoint);
         var checklist = settings.getSettingByName(aName);
-        checklist = chekLists.showCheklist(checklist.id);
+        if(checklist){
+            checklist = chekLists.showCheklist(checklist.id);
+            return true;
+        } else return false; 
     }
     
     function setSession(aSession) {
@@ -143,10 +146,17 @@ function BaristaDesktop() {
     }//GEN-LAST:event_getSessionsOnRequeried
 
     function btnSessionCloseActionPerformed(evt) {//GEN-FIRST:event_btnSessionCloseActionPerformed
-        showChecklist('cheklist_close');
-        session.tradeSession.calculateFinalValues();
-        session.whSession.closeSession();
-        Logout();
+        if(showChecklist('cheklist_close')){
+            $('#modalForm').on('hidden.bs.modal', function (e) {
+                session.tradeSession.calculateFinalValues();
+                session.whSession.closeSession();
+                Logout();
+            });
+        } else {
+            session.tradeSession.calculateFinalValues();
+            session.whSession.closeSession();
+            Logout();   
+        }
     }//GEN-LAST:event_btnSessionCloseActionPerformed
 
     function btnWarehouseAddActionPerformed(evt) {//GEN-FIRST:event_btnWarehouseAddActionPerformed
