@@ -18,16 +18,22 @@
     <constraints height="14px" left="12px" top="112px" type="MarginConstraintsDesignInfo" width="120px"/>
   </widget>
   <widget actionPerformed="btnOpenChooseActionPerformed" name="btnOpenChoose" parent="Form" prefHeight="23px" prefWidth="116px" text="Выбрать" type="ButtonDesignInfo">
-    <constraints height="23px" right="16px" top="60px" type="MarginConstraintsDesignInfo" width="116px"/>
+    <constraints height="23px" right="112px" top="60px" type="MarginConstraintsDesignInfo" width="116px"/>
   </widget>
   <widget actionPerformed="btnCloseChooseActionPerformed" name="btnCloseChoose" parent="Form" prefHeight="23px" prefWidth="116px" text="Выбрать" type="ButtonDesignInfo">
-    <constraints height="23px" right="16px" top="108px" type="MarginConstraintsDesignInfo" width="116px"/>
+    <constraints height="23px" right="112px" top="108px" type="MarginConstraintsDesignInfo" width="116px"/>
   </widget>
   <widget name="lbOpen" parent="Form" prefHeight="14px" prefWidth="216px" text="Не задан" type="LabelDesignInfo">
     <constraints height="14px" left="132px" top="64px" type="MarginConstraintsDesignInfo" width="216px"/>
   </widget>
   <widget name="lbClose" parent="Form" prefHeight="14px" prefWidth="216px" text="Не задан" type="LabelDesignInfo">
     <constraints height="14px" left="132px" top="112px" type="MarginConstraintsDesignInfo" width="216px"/>
+  </widget>
+  <widget actionPerformed="btnCancelOpenActionPerformed" name="btnCancelOpen" parent="Form" prefHeight="23px" prefWidth="96px" text="Сброс" type="ButtonDesignInfo">
+    <constraints height="23px" right="0px" top="60px" type="MarginConstraintsDesignInfo" width="96px"/>
+  </widget>
+  <widget actionPerformed="btnCancelCloseActionPerformed" name="btnCancelClose" parent="Form" prefHeight="23px" prefWidth="96px" text="Сброс" type="ButtonDesignInfo">
+    <constraints height="23px" right="0px" top="108px" type="MarginConstraintsDesignInfo" width="96px"/>
   </widget>
   <layout type="MarginLayoutDesignInfo"/>
 </layout>
