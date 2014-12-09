@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?><datamodel datamodelDbId="null">
-  <fieldsEntity entityHeight="200" entityIconified="false" entityId="140566618112512" entityLocationX="618" entityLocationY="21" entityWidth="150" tableName="trade_item_type"/>
-  <fieldsEntity entityHeight="200" entityIconified="false" entityId="140566606737290" entityLocationX="13" entityLocationY="229" entityWidth="150" tableName="org_trade_point"/>
-  <fieldsEntity entityHeight="200" entityIconified="false" entityId="140566606736660" entityLocationX="10" entityLocationY="20" entityWidth="150" tableName="org_franchazi"/>
-  <fieldsEntity entityHeight="200" entityIconified="false" entityId="140566606737564" entityLocationX="417" entityLocationY="18" entityWidth="150" tableName="trade_items"/>
-  <fieldsEntity entityHeight="200" entityIconified="false" entityId="140566606737864" entityLocationX="227" entityLocationY="18" entityWidth="150" tableName="trade_items_cost"/>
   <fieldsEntity entityHeight="200" entityIconified="false" entityId="140566630452703" entityLocationX="417" entityLocationY="231" entityWidth="150" tableName="trade_item_settings"/>
+  <fieldsEntity entityHeight="200" entityIconified="false" entityId="140566606736660" entityLocationX="10" entityLocationY="20" entityWidth="150" tableName="org_franchazi"/>
+  <fieldsEntity entityHeight="200" entityIconified="false" entityId="140566606737864" entityLocationX="227" entityLocationY="18" entityWidth="150" tableName="trade_items_cost"/>
+  <fieldsEntity entityHeight="200" entityIconified="false" entityId="140566606737290" entityLocationX="13" entityLocationY="229" entityWidth="150" tableName="org_trade_point"/>
+  <fieldsEntity entityHeight="200" entityIconified="false" entityId="140566606737564" entityLocationX="417" entityLocationY="18" entityWidth="150" tableName="trade_items"/>
+  <fieldsEntity entityHeight="200" entityIconified="false" entityId="140566618112512" entityLocationX="618" entityLocationY="21" entityWidth="150" tableName="trade_item_type"/>
 </datamodel>

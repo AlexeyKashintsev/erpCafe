@@ -112,7 +112,7 @@ function BaristaDesktop() {
         }
         
         $( ".items_select" ).sortable({dropOnEmpty : false, containment : "parent",
-            opacity:0.55, revert: true, helper: 'clone', update:
+            opacity:0.55, revert: true, delay: 150, helper: 'clone', update:
                 function() {
                     var order = $(this).sortable('serialize');
                     settings.setSettings('TradeItemsOrder', order, null, model.params.trade_point_id);
