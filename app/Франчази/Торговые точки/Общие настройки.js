@@ -64,4 +64,14 @@ function TPCommonSettings() {
             }
         });
     }//GEN-LAST:event_btnCloseChooseActionPerformed
+
+    function btnCancelOpenActionPerformed(evt) {//GEN-FIRST:event_btnCancelOpenActionPerformed
+        settings.setSettings("cheklist_open", null, null, model.params.trade_point_id, model.params.franchazi_id, true);
+        form.lbOpen.text = "Не задан";
+    }//GEN-LAST:event_btnCancelOpenActionPerformed
+
+    function btnCancelCloseActionPerformed(evt) {//GEN-FIRST:event_btnCancelCloseActionPerformed
+        settings.setSettings("cheklist_close", null, null, model.params.trade_point_id, model.params.franchazi_id, true);
+        form.lbClose.text = "Не задан";
+    }//GEN-LAST:event_btnCancelCloseActionPerformed
 }

@@ -51,7 +51,7 @@ function Settings() {
         } else return null;
     };
     
-    self.setSettings = function(aSettingsName, aSettings, aUserName, aTradePoint, aFranchazi) {
+    self.setSettings = function(aSettingsName, aSettings, aUserName, aTradePoint, aFranchazi, aDelete) {
         var settingData = JSON.stringify(aSettings);
         var lst = model.dsSettings.find(model.dsSettings.schema.setting_name, aSettingsName,
                         aUserName   ? model.dsSettings.schema.usr_name : null,
@@ -61,7 +61,10 @@ function Settings() {
                         aFranchazi  ? model.dsSettings.schema.franchazi_id : null,
                         aFranchazi  ? aFranchazi : null);
         if (lst.length > 0 && self.model.dsSettings.scrollTo(lst[0])) {
-            model.dsSettings.cursor.setting_data = settingData;
+            if(aDelete)
+                model.dsSettings.deleteRow();
+            else
+                model.dsSettings.cursor.setting_data = settingData;
         } else {
             model.dsSettings.insert(
                     model.dsSettings.schema.usr_name, aUserName ? aUserName : null,

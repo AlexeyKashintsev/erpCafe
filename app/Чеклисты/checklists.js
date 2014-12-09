@@ -6,26 +6,27 @@
  */ 
 function CheckLists() {
     var self = this, model = this.model;
-    
-    self.getCheckList = function(aCheckListId) {
-        model.qListCheklist.params.checklist_id = aCheckListId;
-        model.qListCheklist.requery();
-        return {
-            title   :   model.qListCheklist.cursor.cheklist_title,
-            text    :   model.qListCheklist.cursor.cheklist_text
-        };
+    self.getCheckList = function(aCheckListId, aCallBack) {
+        model.params.cheklist_id = aCheckListId;
+        model.qListCheklist.requery(function(){
+            aCallBack({
+                title   :   model.qListCheklist.cursor.cheklist_title,
+                text    :   model.qListCheklist.cursor.cheklist_text
+            });
+        });
     };
     
     self.showCheklist = function(aCheckListId) {
         if (!!aCheckListId) {
-            var checkList = self.getCheckList(aCheckListId);
-            var modal = new cmn.Modal(checkList.title);
-            var modalBody = modal.getModalBody();
+            self.getCheckList(aCheckListId, function(checkList){
+                var modal = new cmn.Modal(checkList.title);
+                var modalBody = modal.getModalBody();
 
-            var checkListText = cmn.createElement('div', null, modalBody);
-            checkListText.innerHTML = checkList.text;
-
-            modal.show();
+                var checkListText = cmn.createElement('div', null, modalBody);
+                checkListText.innerHTML = checkList.text.replace(new RegExp("\n",'g'),"<br>");
+                
+                modal.show();
+            });
         }
     };
     
