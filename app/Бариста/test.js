@@ -2,7 +2,7 @@
  * 
  * @author Alexey
  */
-function test() {
+function testik() {
     var self = this, model = this.model, form = this;
     
     var stateModule = new ServerModule('testModule');
