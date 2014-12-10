@@ -70,8 +70,11 @@ function StartMasterAdminForm() {
         initClients     :   {
             display     :   "Восстановление пользователей",
             dispForm    :   "initClientsForm"
+        },
+        chat            :   {
+            display     :   "Супер чатик",
+            dispForm    :   "MyChat"
         }
-        
     };
     
     
