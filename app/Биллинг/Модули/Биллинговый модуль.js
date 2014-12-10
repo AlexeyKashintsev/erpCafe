@@ -9,8 +9,6 @@ function BillModule() {
     var self = this, model = this.model;
     var eventProcessor = new EventProcessor();
     var session = Session.get("UserSession");
-    var af      = Session.get("AdminFunctions");
-    var SALT = "UGjkergUJHfre86456ergBdeptr4gFH84bef";
     
     // Типы операций
     self.OPERATION_ADD_CASH     = 1; //Добавление средств на счет
@@ -155,7 +153,7 @@ function BillModule() {
      * aStatus - статус операции (успешно, провалено, выставлен счет, в обработке)
      * TODO добавить MD5 проверку!!!
      */
-    self.addBillOperation = function(anAccountId, anOperationType, aSum, aStatus, aClientId, aMD5) {
+    self.addBillOperation = function(anAccountId, anOperationType, aSum, aStatus, aClientId) {
         if (!aStatus)
             aStatus = self.OP_STATUS_SUCCESS;
         if(aClientId){
@@ -175,9 +173,8 @@ function BillModule() {
         reqBillAccounts(anAccountId, null, null, null);
         var accountType = model.qBillAccountServer.cursor.account_type;
         var multiplier = getMultiplier(anOperationType);
-        var MD5 = af.MD5(SALT);
         //Проверка безопасного проведенеия операции пополнения счета
-        if(session.getUserRole() != "admin" && MD5 != aMD5 && anOperationType == self.OPERATION_ADD_CASH && aSum > 0 && aStatus == self.OP_STATUS_SUCCESS && multiplier > 0)
+        if(session.getUserRole() != "admin" && anOperationType == self.OPERATION_ADD_CASH && aSum > 0 && aStatus == self.OP_STATUS_SUCCESS && multiplier > 0)
             return false;
         if ((multiplier === -1) && (aStatus === self.OP_STATUS_SUCCESS || aStatus === self.OP_STATUS_PAID) && (anOperationType != self.OPERATION_DEL_SERVICE) && (accountType != self.ACCOUNT_TYPE_CREDIT)) {
             ERROR_SHORTAGE_MONEY = checkMoneyOnAccount(anAccountId, aSum);
@@ -210,9 +207,8 @@ function BillModule() {
         model.qBillOperationsListServer.requery(function() {});
         if (model.qBillOperationsListServer.length > 0) {
             if (aStatus == self.OP_STATUS_SUCCESS) {
-                var MD5 = af.MD5(SALT);
                 //Проверка безопасного проведенеия операции пополнения счета
-                if(session.getUserRole() != "admin" && MD5 != aMD5 && aStatus == self.OP_STATUS_SUCCESS)
+                if(session.getUserRole() != "admin" && aStatus == self.OP_STATUS_SUCCESS)
                     return false;
                 reqBillAccounts(model.qBillOperationsListServer.cursor.account_id, null, null, null);
                 ERROR_SHORTAGE_MONEY = checkMoneyOnAccount(model.qBillOperationsListServer.cursor.account_id, model.qBillOperationsListServer.cursor.operation_sum);

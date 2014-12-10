@@ -14,7 +14,6 @@ function YandexPaymentReceiver() {
     self.RESPONSE_FAIL          = 200; //Ошибка разбора
     
     self.SHOP_PASSWORD = "Yw559fyo3yBDFNy708rK";           //Секретное слово TODO Расхардкодить!
-    var SALT = "UGjkergUJHfre86456ergBdeptr4gFH84bef";
     
     /*
      * Преобразование числа к двухзначному виду
@@ -72,7 +71,7 @@ function YandexPaymentReceiver() {
         model.params.operation_id = r.billOperation;
         if(hash === r.md5 && model.qBillOperationsListServer.length > 0){
             //Новый статус операции (деньги переведены)
-            bm.setStatusBillOperation(r.billOperation, bm.OP_STATUS_SUCCESS, af.MD5(SALT));
+            bm.setStatusBillOperation(r.billOperation, bm.OP_STATUS_SUCCESS);
             return xmlToYandex(self.RESPONSE_SUCCESS, r.shopId, r.invoiceId, r.orderSumAmount);
         } else {
             bm.setStatusBillOperation(r.billOperation, bm.OP_YANDEX_ERROR);
