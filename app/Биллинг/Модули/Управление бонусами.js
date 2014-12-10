@@ -21,7 +21,7 @@ function BonusModule() {
             if (model.qTradeItemsId.cursor.franchazi_id == session.getFranchazi() || session.getUserRole() === "admin") {
                 model.qBonusCountForTradeItem.push({
                     bonus_rate: aBonusRate,
-                    trade_item: model.qTradeItemsId.cursor.trade_items_id,
+                    trade_item: model.qTradeItemsId.cursor.wh_items_id,
                     client_bonus_category: aBonusCategory
                 });
             }

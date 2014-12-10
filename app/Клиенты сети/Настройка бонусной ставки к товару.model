@@ -3,6 +3,5 @@
   <entity Name="qGetBonusCategories" Title="" entityHeight="200" entityIconified="false" entityId="140802086147266" entityLocationX="516" entityLocationY="15" entityWidth="150" queryId="qGetBonusCategories" tableName="" tableSchemaName=""/>
   <entity Name="qBonusRateForItemsEdit" Title="" entityHeight="200" entityIconified="false" entityId="140801425518902" entityLocationX="176" entityLocationY="13" entityWidth="150" onAfterChange="qBonusRateForItemsEditOnChanged" queryId="qBonusRateForItemsEdit" tableName="" tableSchemaName=""/>
   <entity Name="qTradeItems" Title="" entityHeight="200" entityIconified="false" entityId="140801471027679" entityLocationX="346" entityLocationY="13" entityWidth="150" onAfterScroll="qTradeItemsOnScrolled" queryId="qTradeItems" tableName="" tableSchemaName=""/>
-  <referenceRelation leftEntityFieldName="trade_item" leftEntityId="140801425518902" rightEntityFieldName="trade_items_id" rightEntityId="140801471027679"/>
   <referenceRelation leftEntityFieldName="client_bonus_category" leftEntityId="140801425518902" rightEntityFieldName="client_bonus_category_id" rightEntityId="140802086147266"/>
 </datamodel>

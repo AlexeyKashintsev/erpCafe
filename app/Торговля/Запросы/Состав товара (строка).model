@@ -3,6 +3,6 @@
     <parameter description="" name="item_id" nullable="true" parameterMode="1" precision="0" scale="0" selectionForm="null" signed="true" size="0" type="2" typeName="NUMERIC"/>
   </parameters>
   <parametersEntity entityHeight="200" entityIconified="false" entityLocationX="4" entityLocationY="6" entityWidth="150"/>
-  <entity Title="" entityHeight="200" entityIconified="false" entityId="140568697405800" entityLocationX="239" entityLocationY="6" entityWidth="150" tableAlias="t1" tableName="trade_items" tableSchemaName=""/>
-  <relation leftEntityId="-1" leftEntityParameterName="item_id" rightEntityFieldName="trade_items_id" rightEntityId="140568697405800"/>
+  <entity Title="" entityHeight="200" entityIconified="false" entityId="141819966222454" entityLocationX="239" entityLocationY="6" entityWidth="150" tableAlias="t1" tableName="wh_items" tableSchemaName=""/>
+  <relation leftEntityId="-1" leftEntityParameterName="item_id" rightEntityFieldName="wh_items_id" rightEntityId="141819966222454"/>
 </datamodel>

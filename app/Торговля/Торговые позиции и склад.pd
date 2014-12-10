@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?><datamodel datamodelDbId="null">
   <fieldsEntity entityHeight="200" entityIconified="false" entityId="140560123292754" entityLocationX="466" entityLocationY="22" entityWidth="150" tableName="wh_items"/>
-  <fieldsEntity entityHeight="200" entityIconified="false" entityId="140560185877569" entityLocationX="247" entityLocationY="217" entityWidth="150" tableName="trade_operations"/>
-  <fieldsEntity entityHeight="200" entityIconified="false" entityId="140560123291397" entityLocationX="671" entityLocationY="125" entityWidth="150" tableName="trade_items_contents"/>
-  <fieldsEntity entityHeight="133" entityIconified="false" entityId="140558681192701" entityLocationX="453" entityLocationY="251" entityWidth="150" tableName="trade_items"/>
   <fieldsEntity entityHeight="200" entityIconified="false" entityId="140560765816897" entityLocationX="35" entityLocationY="85" entityWidth="150" tableName="wh_movements"/>
+  <fieldsEntity entityHeight="200" entityIconified="false" entityId="140560123291397" entityLocationX="651" entityLocationY="25" entityWidth="150" tableName="trade_items_contents"/>
+  <fieldsEntity entityHeight="200" entityIconified="false" entityId="140560185877569" entityLocationX="241" entityLocationY="116" entityWidth="150" tableName="trade_operations"/>
 </datamodel>

@@ -6,5 +6,5 @@
  * @rolesallowed admin franchazi
  */ 
 Select * 
-From trade_items t1
- Where :item_id = t1.trade_items_id
+From wh_items t1
+ Where :item_id = t1.wh_items_id
