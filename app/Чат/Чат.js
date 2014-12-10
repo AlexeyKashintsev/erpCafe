@@ -23,7 +23,7 @@ function MyChat() {
         console.log(webSocket);
         var test = webSocket;
         webSocket.onopen = function() {
-            webSocket.send("MyTag");
+            webSocket.send("default");
         };
 
         webSocket.onerror = function(aError) {
@@ -41,6 +41,6 @@ function MyChat() {
     }
 
     function btnUpActionPerformed(evt) {//GEN-FIRST:event_btnUpActionPerformed
-        sendChatMsg.pusher(form.formattedField.text);
+        sendChatMsg.pusher(form.textField.text);
     }//GEN-LAST:event_btnUpActionPerformed
 }

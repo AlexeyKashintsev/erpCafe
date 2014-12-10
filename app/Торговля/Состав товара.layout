@@ -25,33 +25,33 @@
         <valueField entityId="140567547607184" fieldName="wh_items_id"/>
         <displayField entityId="140567547607184" fieldName="item_name"/>
       </controlInfo>
-      <headerStyle>
-        <nativeFont name="Dialog" size="15"/>
-      </headerStyle>
       <datamodelElement entityId="140569000979898" fieldName="wh_item"/>
       <columnsDatasource/>
       <columnsDisplayField/>
       <cellsDatasource/>
       <cellDesignInfo>
-        <rowsKeyField/>
         <columnsKeyField/>
         <cellValueField/>
+        <rowsKeyField/>
       </cellDesignInfo>
-    </column>
-    <column name="colUsage_quantity" title="Количество">
-      <controlInfo classHint="DbSpinDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
       <headerStyle>
         <nativeFont name="Dialog" size="15"/>
       </headerStyle>
+    </column>
+    <column name="colUsage_quantity" title="Количество">
+      <controlInfo classHint="DbSpinDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
       <datamodelElement entityId="140569000979898" fieldName="usage_quantity"/>
       <columnsDatasource/>
       <columnsDisplayField/>
       <cellsDatasource/>
       <cellDesignInfo>
-        <rowsKeyField/>
         <columnsKeyField/>
         <cellValueField/>
+        <rowsKeyField/>
       </cellDesignInfo>
+      <headerStyle>
+        <nativeFont name="Dialog" size="15"/>
+      </headerStyle>
     </column>
     <rowsColumnsDesignInfo>
       <rowsDatasource entityId="140569000979898" field="false"/>

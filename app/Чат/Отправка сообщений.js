@@ -6,7 +6,7 @@
 function SendChatMsg() {
     var self = this; var model = this.model;
     self.pusher = function(aMsg, aTag) {
-        if(!aTag) aTag = "MyTag";
+        if(!aTag) aTag = "default";
         var pusher = com.eas.server.websocket.TaggedFeedEndPoint;
         pusher.broadcast(aTag, aMsg);
         model.qLastMessages.push({

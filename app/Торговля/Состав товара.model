@@ -7,4 +7,5 @@
   <entity Name="qContents" Title="" entityHeight="200" entityIconified="false" entityId="140569000979898" entityLocationX="223" entityLocationY="13" entityWidth="287" queryId="qContents" tableName="" tableSchemaName=""/>
   <relation leftEntityId="-1" leftEntityParameterName="trade_item" rightEntityId="140569000979898" rightEntityParameterName="trade_item_id"/>
   <referenceRelation leftEntityFieldName="wh_item" leftEntityId="140569000979898" rightEntityFieldName="wh_items_id" rightEntityId="140567547607184"/>
+  <referenceRelation leftEntityFieldName="trade_item" leftEntityId="140569000979898" rightEntityFieldName="wh_items_id" rightEntityId="140567547607184"/>
 </datamodel>
