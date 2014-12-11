@@ -55,10 +55,11 @@ function formWindowClosing(evt) {//GEN-FIRST:event_formWindowClosing
         warehouseItemList.setDialogMode();
         warehouseItemList.showModal(function(aResult){
             if(aResult){
-                model.qContents.insert(
-                    model.qContents.schema.trade_item, model.params.trade_item,
-                    model.qContents.schema.wh_item, aResult
-                );
+                console.log(aResult);
+                model.qContents.push({
+                    trade_item: model.params.trade_item,
+                    wh_item: aResult
+                });
             }
         });
     }//GEN-LAST:event_btnAddActionPerformed

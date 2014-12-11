@@ -35,8 +35,5 @@
   <widget actionPerformed="btnCancelCloseActionPerformed" name="btnCancelClose" parent="Form" prefHeight="23px" prefWidth="96px" text="Сброс" type="ButtonDesignInfo">
     <constraints height="23px" right="0px" top="108px" type="MarginConstraintsDesignInfo" width="96px"/>
   </widget>
-  <widget actionPerformed="buttonActionPerformed" name="button" parent="Form" prefHeight="83px" prefWidth="300px" text="Что это такое?" type="ButtonDesignInfo" visible="false">
-    <constraints bottom="49px" height="83px" left="72px" type="MarginConstraintsDesignInfo" width="300px"/>
-  </widget>
   <layout type="MarginLayoutDesignInfo"/>
 </layout>

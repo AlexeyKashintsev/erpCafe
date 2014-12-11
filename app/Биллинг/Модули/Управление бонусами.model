@@ -9,11 +9,11 @@
   <entity Name="qGetBonusCategories" Title="" entityHeight="120" entityIconified="false" entityId="141623497765844" entityLocationX="605" entityLocationY="196" entityWidth="179" queryId="qGetBonusCategories" tableName="" tableSchemaName=""/>
   <entity Name="qTradeItems" Title="" entityHeight="200" entityIconified="false" entityId="141389609091413" entityLocationX="13" entityLocationY="226" entityWidth="150" queryId="qTradeItems" tableName="" tableSchemaName=""/>
   <referenceRelation leftEntityFieldName="client_bonus_category" leftEntityId="141389511258279" rightEntityFieldName="client_bonus_category_id" rightEntityId="141623497765844"/>
-  <referenceRelation leftEntityFieldName="trade_item" leftEntityId="141623469336749" rightEntityFieldName="wh_items_id" rightEntityId="141390120808317"/>
-  <referenceRelation leftEntityFieldName="client_bonus_category" leftEntityId="141623469336749" rightEntityFieldName="client_bonus_category_id" rightEntityId="141623497765844"/>
+  <referenceRelation leftEntityFieldName="trade_item" leftEntityId="141623469336749" rightEntityFieldName="wh_items_id" rightEntityId="141389609091413"/>
+  <referenceRelation leftEntityFieldName="trade_item" leftEntityId="141389511258279" rightEntityFieldName="wh_items_id" rightEntityId="141390120808317"/>
   <referenceRelation leftEntityFieldName="parent_type" leftEntityId="141389809297552" rightEntityFieldName="trade_item_type_id" rightEntityId="141389809297552"/>
   <referenceRelation leftEntityFieldName="type_id" leftEntityId="141389511258279" rightEntityFieldName="trade_item_type_id" rightEntityId="141389809297552"/>
+  <referenceRelation leftEntityFieldName="client_bonus_category" leftEntityId="141623469336749" rightEntityFieldName="client_bonus_category_id" rightEntityId="141623497765844"/>
+  <referenceRelation leftEntityFieldName="trade_item" leftEntityId="141623469336749" rightEntityFieldName="wh_items_id" rightEntityId="141390120808317"/>
   <referenceRelation leftEntityFieldName="trade_item" leftEntityId="141389511258279" rightEntityFieldName="wh_items_id" rightEntityId="141389609091413"/>
-  <referenceRelation leftEntityFieldName="trade_item" leftEntityId="141389511258279" rightEntityFieldName="wh_items_id" rightEntityId="141390120808317"/>
-  <referenceRelation leftEntityFieldName="trade_item" leftEntityId="141623469336749" rightEntityFieldName="wh_items_id" rightEntityId="141389609091413"/>
 </datamodel>

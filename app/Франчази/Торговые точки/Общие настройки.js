@@ -74,9 +74,4 @@ function TPCommonSettings() {
         settings.setSettings("cheklist_close", null, null, model.params.trade_point_id, model.params.franchazi_id, true);
         form.lbClose.text = "Не задан";
     }//GEN-LAST:event_btnCancelCloseActionPerformed
-
-    function buttonActionPerformed(evt) {//GEN-FIRST:event_buttonActionPerformed
-        var webSockets = new WebSockets();
-        webSockets.show();
-    }//GEN-LAST:event_buttonActionPerformed
 }

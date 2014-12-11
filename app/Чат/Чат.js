@@ -5,6 +5,7 @@
 function MyChat() {
     var self = this, model = this.model, form = this;
     var sendChatMsg = new ServerModule("SendChatMsg");
+    var userSession = Session.get("UserSession");
     
     var webSocket = null;
     addEventsListener();
@@ -20,27 +21,34 @@ function MyChat() {
         if (window.location.protocol == 'https:')
             wsProtocol = "wss:";
         webSocket = new WebSocket(wsProtocol + "//" + window.location.host + window.location.pathname.substr(0, window.location.pathname.lastIndexOf("/")) + "/taggedfeed");
-        console.log(webSocket);
-        var test = webSocket;
+        //console.log(webSocket);
+        
         webSocket.onopen = function() {
-            webSocket.send("MyTag");
+            webSocket.send("default");
         };
 
         webSocket.onerror = function(aError) {
-            Logger.info("onError");
-            Logger.info(aError);
+            //Logger.info("onError");
+            //Logger.info(aError);
         };
-
+        
+        //Вот тут прилетает сообщение
         webSocket.onmessage = function(aEventData) {
-            Logger.info("onMessage here");
-            alert(aEventData.data);
+            var msg = JSON.parse(aEventData.data);
+            console.log(msg);
+            //alert(aEventData.data);
+            form.textArea.text += msg.user_name + ": "+ msg.text +"\n";
         };
+        
         webSocket.onclose = function() {
-            Logger.info("onClose");
+            //Logger.info("onClose");
         };
     }
 
     function btnUpActionPerformed(evt) {//GEN-FIRST:event_btnUpActionPerformed
-        sendChatMsg.pusher(form.formattedField.text);
+        sendChatMsg.pusher(JSON.stringify({
+            user_name: userSession.getUserName(),
+            text:      form.textField.text
+        }));
     }//GEN-LAST:event_btnUpActionPerformed
 }

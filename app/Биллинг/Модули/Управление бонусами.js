@@ -8,9 +8,7 @@ function BonusModule() {
     var session = Session.get("UserSession"); 
     var bm      = Session.get("BillModule");
     var sender  = Session.get("MessageSender");
-    var af      = Session.get("AdminFunctions");
     var client  = Session.get("ClientServerModule");
-    var SALT = "UGjkergUJHfre86456ergBdeptr4gFH84bef";
     
     self.setBonusRate = function(anItemId, aTypeId, aBonusRate, aBonusCategory) {
         if(!aBonusCategory) aBonusCategory = 1;
@@ -19,11 +17,19 @@ function BonusModule() {
         model.requery();
         if (!model.qTradeItemsId.empty && !aTypeId) {
             if (model.qTradeItemsId.cursor.franchazi_id == session.getFranchazi() || session.getUserRole() === "admin") {
-                model.qBonusCountForTradeItem.push({
-                    bonus_rate: aBonusRate,
-                    trade_item: model.qTradeItemsId.cursor.wh_items_id,
-                    client_bonus_category: aBonusCategory
-                });
+                model.qBonusCountForTradeItem.params.trade_item = anItemId;
+                model.qBonusCountForTradeItem.requery();
+                if(model.qBonusCountForTradeItem.empty){
+                    model.qBonusCountForTradeItem.push({
+                        bonus_rate: aBonusRate,
+                        trade_item: model.qTradeItemsId.cursor.wh_items_id,
+                        client_bonus_category: aBonusCategory
+                    });
+                } else {
+                    model.qBonusRateForItemsEdit.cursor.bonus_rate = aBonusRate;
+                    model.qBonusRateForItemsEdit.cursor.trade_item = model.qTradeItemsId.cursor.wh_items_id;
+                    model.qBonusRateForItemsEdit.cursor.client_bonus_category = aBonusCategory;
+                }
             }
         } else {
             if (session.getUserRole() === "admin") {
@@ -85,10 +91,10 @@ function BonusModule() {
             var accountId = model.qBillAccountServer.cursor.bill_accounts_id;
             if (aType === "bonus"){
                 var multiplier = 0.05;
-                return bm.addBillOperation(accountId, bm.OPERATION_ADD_CASH, aSum * multiplier, false, false, af.MD5(SALT));
+                return bm.addBillOperation(accountId, bm.OPERATION_ADD_CASH, aSum * multiplier, false, false);
             }
             if (aType === "money")
-                return bm.addBillOperation(accountId, bm.OPERATION_ADD_CASH, aSum, false, false, af.MD5(SALT));
+                return bm.addBillOperation(accountId, bm.OPERATION_ADD_CASH, aSum, false, false);
         } else 
             return false;
     };
