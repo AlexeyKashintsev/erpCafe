@@ -53,7 +53,7 @@ function TPCommonSettings() {
     }//GEN-LAST:event_btnOpenChooseActionPerformed
 
     function btnCloseChooseActionPerformed(evt) {//GEN-FIRST:event_btnCloseChooseActionPerformed
-        cheklistForm.setCheklistType(2);
+        cheklistForm.setCheklistType(10);
         cheklistForm.showModal(function(aCheklist){
             if(aCheklist){
                 form.lbClose.text = aCheklist.cheklist_title;

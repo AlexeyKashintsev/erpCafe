@@ -32,7 +32,10 @@ function SmsSender(anEmail, aPassword) {
             Logger.warning('Не удалось авторизироваться на сервисе отправки СМС. Код ошибки: ' + response.msg.err_code + ' ( ' + response.msg.text + ')');
         }
     };
-    self.smsAuth(anEmail, aPassword);
+    (function() {
+        //При медленном интернете на сервере подвисает рабочее место бариста
+        self.smsAuth(anEmail, aPassword);
+    }).invokeBackground();
     
     self.smsLogout = function(){
         var params = {

@@ -8,6 +8,6 @@ function authorizer() {
     
     // TODO Это плохо. Тут же теперь пользователь всегда будет кем угодно. Совсем плохо!!!
     self.isUserInRole = function(){
-        return true;
+        return false;
     };
 }

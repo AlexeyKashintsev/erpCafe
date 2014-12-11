@@ -7,5 +7,5 @@ From wh_movements t1
  Inner Join wh_items t3 on t1.item_id = t3.wh_items_id
  Where :trade_point_id = t2.trade_point
  and (:start_date < t2.end_date or t2.end_date is null)
- and (:end_date >= t2.start_date or :end_date is null)
+ and (:end_date >= t2.start_date)
 group by t1.item_id, t3.item_name

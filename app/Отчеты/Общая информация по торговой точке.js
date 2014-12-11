@@ -16,15 +16,18 @@ function TradePointCommonInfo(aTradePointDetails, aContainer) {
         charts  :   {
             d_name  :   '<span class="glyphicon glyphicon-stats"></span>',
             d_title :   'Графики',
+            module  :   'ChartsByTP',
             active  :   true
         },
         wharH   :   {
             d_name  :   '<span class="glyphicon glyphicon-book"></span>',
-            d_title :   'Склад'
+            d_title :   'Склад',
+            module  :   'WHBalance'
         },
         tradeOp :   {
             d_name  :   '<span class="glyphicon glyphicon-inbox"></span>',
-            d_title :   'Касса'
+            d_title :   'Касса',
+            module  :   'tradeOperaionsByTP'
         }
     };
     
@@ -119,7 +122,7 @@ function TradePointCommonInfo(aTradePointDetails, aContainer) {
             panels.charts.display = new ChartsByTP(tradePointDetails, panelData);
            
             /** !SHOW WAREHOUSE! **/
-            panels.wharH.display = new WHBalance(tradePointDetails.org_trade_point_id, panelData);
+            panels.wharH.display = new WHMowementsByPeriod(tradePointDetails.org_trade_point_id, panelData);
             
             /** !SHOW TRADE OPERATIONS! **/
             panels.tradeOp.display = new tradeOperaionsByTP(tradePointDetails.org_trade_point_id, panelData);

@@ -89,6 +89,10 @@ th.session-desc {
   cursor: pointer;
 }
 
+tr.clickable {
+  cursor: pointer;
+}
+
 /* ### BARISTA ### */
 .red {
   color: #E74C3C;

@@ -65,14 +65,6 @@ function BaristaDesktop() {
                     alert('Склад не инициализирован! Проведите ревизию');
                     Logger.warning("Склад не инициализирован. Инфо о сессии " + session);
                     Logout();
-                  /*  var whInitializer = new WhRevisionByBarista();
-                    whInitializer.setTradePoint(aTradePoint);
-                    whInitializer.showModal(function() {
-                        session.getActiveTPSession(function(aSession) {*/
-                            //session.tradeSession.initializeSession(aSession, prompt("Введите остаток по кассе", "0")); // Ввести остаток по кассе, иницировать сессию
-                            //setSession(aSession);
-                      //  });
-                  //  });
                 }
             });
         }
@@ -144,18 +136,18 @@ function BaristaDesktop() {
             model.tradeTypes4TP.execute();
         }
     }//GEN-LAST:event_getSessionsOnRequeried
-
+    
+    function closeSessionAndLogout() {
+        session.tradeSession.calculateFinalValues();
+        session.whSession.closeSession();
+        Logout();
+    };
+    
     function btnSessionCloseActionPerformed(evt) {//GEN-FIRST:event_btnSessionCloseActionPerformed
         if(showChecklist('cheklist_close')){
-            $('#modalForm').on('hidden.bs.modal', function (e) {
-                session.tradeSession.calculateFinalValues();
-                session.whSession.closeSession();
-                Logout();
-            });
+            $('#modalForm').on('hidden.bs.modal', closeSessionAndLogout);
         } else {
-            session.tradeSession.calculateFinalValues();
-            session.whSession.closeSession();
-            Logout();   
+            closeSessionAndLogout(); 
         }
     }//GEN-LAST:event_btnSessionCloseActionPerformed
 

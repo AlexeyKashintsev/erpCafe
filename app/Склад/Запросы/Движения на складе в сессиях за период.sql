@@ -2,6 +2,7 @@
  *
  * @author Alexey
  * @name dsWHMovementsByPeriod
+ * @public
  */ 
 Select t3.item_name, t1.value AS in_val
 , t1.value AS out_val

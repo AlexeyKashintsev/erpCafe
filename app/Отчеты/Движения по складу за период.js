@@ -3,31 +3,39 @@
  * @author Alexey
  * @module
  */ 
-function WHMowementsByPeriod(aContainer) {
+function WHMowementsByPeriod(aWarehouse, aContainer) {
     var self = this, model = this.model;
-    
-    
-    var tHeader = ["Наименование", "Приход", "Расход"];
-    
-    
-    function createTable(aContainer, aHeader, aData, aTableClass, aHeaderClass, aBodyClass) {
-        var content = cmn.createElement("table", "table table-hover " + aTableClass, aContainer);
-        var thead = cmn.createElement('thead', null, content, aHeaderClass);
-        var tr = cmn.createElement('tr', null, thead);
-        for (var j in aHeader) {
-            var th = cmn.createElement('th', 'table-title', tr);
-            th.innerHTML = aHeader[j];
-        }
-        var tbody = cmn.createElement('tbody', null, content, aBodyClass);
-        aData.forEach(function(aCursor) {
-            aCursor.forEach(function(aRowData) {
-                
-            });
-        });
-    }
+    var content = null;
+    var shown = false;
     
     self.setWarehouse = function(aTradePoint) {
         model.dsWHMovementsByPeriod.params.trade_point_id = aTradePoint;
     };
     self.setTradePoint = self.setWarehouse;
+    
+    self.setPeriod = function(aStartDate, anEndDate) {
+        Logger.info(aStartDate + " - " + anEndDate);
+        if (aStartDate) model.dsWHMovementsByPeriod.params.start_date = aStartDate;
+        if (anEndDate) model.dsWHMovementsByPeriod.params.end_date = anEndDate;
+        
+        sessions = [];
+        
+        grid.prepare();
+        model.dsWHMovementsByPeriod.execute(function() {
+            grid.setData(model.dsWHMovementsByPeriod);
+        });
+    };
+    
+    var tHeader = ["Наименование", "Приход", "Расход"];    
+    
+    self.container = cmn.createElement("div", "tbBalanceDetails", aContainer);
+    var controls = cmn.createElement('div', 'controls', self.container);
+    var dtPicker = new wf.DateTimePeriodPicker(controls, self.setPeriod);
+    var content = cmn.createElement('div', 'content', self.container);
+    var grid = new wf.Table(content, tHeader);
+    
+    self.showData = function() {
+        self.setTradePoint(aWarehouse);
+        dtPicker.init();
+    };
 }

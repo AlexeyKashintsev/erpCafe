@@ -83,7 +83,7 @@
   </widget>
   <widget name="modelTextArea" parent="Form" prefHeight="336px" prefWidth="288px" type="DbTextDesignInfo">
     <datamodelElement entityId="141752198913609" fieldName="cheklist_text"/>
-    <constraints height="336px" left="300px" top="0px" type="MarginConstraintsDesignInfo" width="288px"/>
+    <constraints bottom="56px" left="300px" right="0px" top="0px" type="MarginConstraintsDesignInfo"/>
   </widget>
   <widget actionPerformed="buttonActionPerformed" name="button" parent="Form" prefHeight="29px" prefWidth="86px" text="button" type="ButtonDesignInfo">
     <constraints bottom="15px" height="29px" right="-2px" type="MarginConstraintsDesignInfo" width="86px"/>

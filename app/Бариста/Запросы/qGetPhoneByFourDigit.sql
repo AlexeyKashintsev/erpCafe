@@ -5,4 +5,4 @@
  */ 
 Select * 
 From client_personal_data t1
-where phone like '%'||:digits
+where phone like '%'||:digits and length(:digits) > 3

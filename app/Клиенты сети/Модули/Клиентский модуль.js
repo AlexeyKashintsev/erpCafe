@@ -159,7 +159,8 @@ function ClientServerModule() {
         num = "8" + num.slice(-10);
         return num;
     }
-    
+        //TODO Написать зачем нужно
+
     self.clientInitialize2 = function(){
         model.qGetAllBills.requery();
         model.qGetAllBills.beforeFirst();
@@ -172,7 +173,7 @@ function ClientServerModule() {
         }
         model.save();
     };
-    
+    //TODO Написать зачем нужно
     self.clientInitialize = function(){
         Logger.info('Начало ахтунга!!!');
         model.qGetPersonalDataOfAllClients.requery();
