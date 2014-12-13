@@ -93,6 +93,19 @@ tr.clickable {
   cursor: pointer;
 }
 
+th.table-body.table-container  {
+  padding: 0px;
+}
+
+
+th.table-body.table-container > tbody > tr:first-child > th {
+  border-top: none;
+}
+
+th.table-body.table-container > tbody > tr {
+  background-color: lightyellow;
+}
+
 /* ### BARISTA ### */
 .red {
   color: #E74C3C;

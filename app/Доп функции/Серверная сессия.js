@@ -53,9 +53,13 @@ function ServerSession() {
     };
     
     Session.keepAlive = function(aUserName) {
-        var userName = aUserName ? aUserName : self.principal.name;
-        sessions[userName].lastTime = new Date();
-        Logger.finest('Keep session alive for user ' + userName);
+        try {
+            var userName = aUserName ? aUserName : self.principal.name;
+            sessions[userName].lastTime = new Date();
+            Logger.finest('Keep session alive for user ' + userName);
+        } catch (e) {
+            Logger.warning('No session for user ' + aUserName);
+        }
     };
     
     Session.login = function() {

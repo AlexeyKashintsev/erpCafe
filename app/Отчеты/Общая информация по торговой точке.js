@@ -122,7 +122,7 @@ function TradePointCommonInfo(aTradePointDetails, aContainer) {
             panels.charts.display = new ChartsByTP(tradePointDetails, panelData);
            
             /** !SHOW WAREHOUSE! **/
-            panels.wharH.display = new WHMowementsByPeriod(tradePointDetails.org_trade_point_id, panelData);
+            panels.wharH.display = new WHBalance(tradePointDetails.org_trade_point_id, panelData);//new WHMowementsByPeriod(tradePointDetails.org_trade_point_id, panelData);
             
             /** !SHOW TRADE OPERATIONS! **/
             panels.tradeOp.display = new tradeOperaionsByTP(tradePointDetails.org_trade_point_id, panelData);

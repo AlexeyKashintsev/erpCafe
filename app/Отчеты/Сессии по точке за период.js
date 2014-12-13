@@ -9,7 +9,6 @@ function tradeOperaionsByTP(aTradePoint, aContainer) {
     var sessionDetailsView = null;
     var tHeader = ["Бариста", "Дата", "Открытие", "Закрытие", "Касса открытие",
                    "Наличка", "Бонусы", "Безнал", "Доход", "Касса закрытие"];
-    var grid = null;
     
     self.setWarehouse = function(aWarehouse) {
         model.qTradeSessionsInPeriod.params.trade_point = aWarehouse;

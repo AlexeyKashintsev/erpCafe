@@ -4,10 +4,12 @@
   </parameters>
   <parametersEntity entityHeight="200" entityIconified="false" entityLocationX="8" entityLocationY="7" entityWidth="150"/>
   <entity Title="" entityHeight="200" entityIconified="false" entityId="141104749217362" entityLocationX="598" entityLocationY="8" entityWidth="150" tableAlias="t2" tableName="wh_movement_types" tableSchemaName=""/>
+  <entity Title="" entityHeight="200" entityIconified="false" entityId="141840605567147" entityLocationX="170" entityLocationY="227" entityWidth="150" tableAlias="t3" tableName="wh_items" tableSchemaName=""/>
   <entity Title="" entityHeight="200" entityIconified="false" entityId="141104746818478" entityLocationX="382" entityLocationY="9" entityWidth="150" tableAlias="t" tableName="wh_movements" tableSchemaName=""/>
   <entity Title="" entityHeight="200" entityIconified="false" entityId="141104745689084" entityLocationX="179" entityLocationY="9" entityWidth="150" tableAlias="t1" tableName="wh_session_balance" tableSchemaName=""/>
-  <relation leftEntityFieldName="movement_type" leftEntityId="141104746818478" rightEntityFieldName="wh_movement_types_id" rightEntityId="141104749217362"/>
   <relation leftEntityId="-1" leftEntityParameterName="session_id" rightEntityFieldName="session_id" rightEntityId="141104745689084"/>
-  <relation leftEntityFieldName="session_id" leftEntityId="141104745689084" rightEntityFieldName="session_id" rightEntityId="141104746818478"/>
+  <relation leftEntityFieldName="item_id" leftEntityId="141104745689084" rightEntityFieldName="wh_items_id" rightEntityId="141840605567147"/>
   <relation leftEntityFieldName="item_id" leftEntityId="141104745689084" rightEntityFieldName="item_id" rightEntityId="141104746818478"/>
+  <relation leftEntityFieldName="session_id" leftEntityId="141104745689084" rightEntityFieldName="session_id" rightEntityId="141104746818478"/>
+  <relation leftEntityFieldName="movement_type" leftEntityId="141104746818478" rightEntityFieldName="wh_movement_types_id" rightEntityId="141104749217362"/>
 </datamodel>

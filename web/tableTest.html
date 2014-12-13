@@ -1,0 +1,53 @@
+<html>
+<head>
+<script LANGUAGE="JavaScript" TYPE="text/javascript">
+    var WREF = null;
+    function openWindow(){
+        WREF = window.open("test2.html","test2",'width=550,height=650');
+        if(!WREF.opener){ WREF.opener = this.window; }
+    }
+    function getValue(val){
+        newVal = 5 * val;
+        return newVal;
+    }
+    var globalGetValue = this.getValue;
+</script>
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>Col 1</th>
+                <th>Col 2</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th>Row 1 Col 1</th>
+                <th>Row 1 Col 2</th>
+            </tr>
+            <tr>
+                <th>Row 2 Col 1</th>
+                <th>
+                    <table>
+                        <tbody>
+                            <tr>
+                                <th>Row 2-1 Col 1</th>
+                                <th>Row 2-1 Col 2</th>
+                            </tr>
+                            <tr>
+                                <th>Row 2-2 Col 1</th>
+                                <th>Row 2-2 Col 2</th>
+                            </tr>
+                        </tbody>
+                    </table>
+                </th>
+            </tr>
+            <tr>
+                <th>Row 3 Col 1</th>
+                <th>Row 3 Col 2</th>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

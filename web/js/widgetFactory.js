@@ -11,26 +11,42 @@ wf.Table = function(aContainer, aHeader, aData, aTableClass, aHeaderClass, aBody
     var tbody = null;
     
     function setData(aData, aFields) {
-        function setDataToRow(aData, aContainer) {
-            th = cmn.createElement('th', 'table-body', tr);
-            th.innerHTML = aData;
+        function applyDataToCell(aData, aContainer) {
+            th = cmn.createElement('th', 'table-body', aContainer);
+            
+            if ($.isArray(aData) || typeof aData == 'Object') {
+                $(th).addClass('table-container');
+                createTable(th, aData)
+            } else {
+                th.innerHTML = aData;
+            }
         }
         
         $(tbody).remove();
-        tbody = cmn.createElement('tbody', null, content, aBodyClass);
-        aData.forEach(function(aCursor) {
-            tr = cmn.createElement('tr', aCursor.onclick ? 'clickable' : null, tbody, null);
+        
+        function createTable(aContainer, aDataArray) {
+            var tBody = cmn.createElement('tbody', null, aContainer, aBodyClass);
+            aDataArray.forEach(function(aCursor) {
+                addTableRow(aCursor, tBody);
+            });
+            return tBody;
+        }
+        
+        function addTableRow(aCursor, aContainer) {
+            var tr = cmn.createElement('tr', aCursor.onclick ? 'clickable' : null, aContainer, null);
             if (aCursor.onclick) {
                 tr.onclick = aCursor.onclick;
             }
             
             if (!aFields)
                 for (var j = 0; j < aCursor.length; j++)
-                    setDataToRow(aCursor[j], tr);
+                    applyDataToCell(aCursor[j], tr);
             else
                 for (var j in aFields)
-                    setDataToRow(aCursor[j], tr);
-            });
+                    applyDataToCell(aCursor[j], tr);
+        }
+        
+        tbody = createTable(content, aData);
     }
     
     function loadShow() {

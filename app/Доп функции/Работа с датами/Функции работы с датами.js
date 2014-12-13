@@ -756,6 +756,18 @@ function DatesUtils() {
         }
         return null;
     };
+    
+    self.timeToShortString = function(aDate)
+    {
+        if (aDate) {
+            var h = aDate.getHours();
+            var mm = aDate.getMinutes();
+            var s = aDate.getSeconds();
+            return twoDigits(h) + ":" + twoDigits(mm);
+        }
+        return null;
+    };
+    
 
     /** (number) -> string
      * Возвращает строку формата ЧЧ:ММ:СС для интервала, переданного количеством миллисекунд.
