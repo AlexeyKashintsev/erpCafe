@@ -9,6 +9,7 @@ function BaristaDesktop() {
     session.tradeSession = new ServerModule("TradeSessions");
     self.userName = session.getUserName();
     var AS = new AdditionalScreen();
+    var BC = new addItem();
     var whAdd = null;
     var types_body;
     var items_body;
@@ -92,7 +93,8 @@ function BaristaDesktop() {
     }
     
     function openDigitalMenu(){
-       AS.openWin();
+       //AS.openWin();
+       BC.showModal();
     }
     
     function addItemToOrder(anItemData) {
