@@ -31,15 +31,14 @@ function AddBalance(anAccountId) {
                 var yandexForm = cmn.createElement("div", "yandexForm", modalBody, "yandexForm");
                 yandexForm.innerHTML =   
                         '<form role="form" id ="form" action="https://money.yandex.ru/eshop.xml" method="post" target="_blank">\n\
-                        <input name="shopId" value="20474" type="hidden"\n\
-                        <input name="scid" value="10823" type="hidden">\n\
-                        <input name="customerNumber" value="'+anAccountId+'" type="hidden">\n\
+                        <input name="shopId" value="20474" type="hidden"/>\n\
+                        <input name="scid" value="10823" type="hidden"/>\n\
                         <input name="billOperation" id="billOperation" type="hidden">\n\
                         <div class="form-group">\n\
                             <label for="sum">Сумма для пополнения</label>\n\
-                            <input type="number" name="sum" class="form-control" id="sum" placeholder="Введите сумму" value="'+form.textField.text+'">\n\
+                            <input type="numeric" name="sum" class="form-control" id="sum" placeholder="Введите сумму" value="'+form.textField.text+'">\n\
                         </div>\n\
-                        <div class="form-group">\n\
+                         <div class="form-group">\n\
                             <label for="cps_phone">Номер телефона</label>\n\
                             <input type="number" name="cps_phone" class="form-control" id="cps_phone" placeholder="Введите телефон">\n\
                         </div>\n\
@@ -47,6 +46,8 @@ function AddBalance(anAccountId) {
                             <label for="cps_email">Email</label>\n\
                             <input type="email" name="cps_email" class="form-control" id="cps_email" placeholder="Введите Email">\n\
                         </div>\n\
+                        <input name="customerNumber" value="abc000456" type="hidden"/>\n\
+                        <button type="submit" class="btn btn-default">Оплатить</button>\n\
                         </form>\n\
                         <button id="submit" class="btn btn-default">Оплатить</button>';
                 document.getElementById('submit').onclick = yandexSubmitOnClick;
@@ -94,6 +95,7 @@ function AddBalance(anAccountId) {
             cost: aSum,
             sum: aSum
         });
+        
         return res;
      }
 
