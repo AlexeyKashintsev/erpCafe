@@ -9,7 +9,8 @@ function BaristaDesktop() {
     session.tradeSession = new ServerModule("TradeSessions");
     self.userName = session.getUserName();
     var AS = new AdditionalScreen();
-    var BC = new addItem();
+    var BC = new addItemToDashboard();
+    //var BC = new addItem();
     var whAdd = null;
     var types_body;
     var items_body;

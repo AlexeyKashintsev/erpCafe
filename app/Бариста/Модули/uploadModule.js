@@ -4,12 +4,13 @@
  * @public
  * @module 
  */
-function uploadModule() {
+function UploadModule() {
     var self = this, model = this.model;
     
+    
     self.uploadFile = function(aFile){
-        upload(function(info){
+        aFile.upload(function(info){
             Logger.info(info);
-        })
+        });
     };
 }

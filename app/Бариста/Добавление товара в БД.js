@@ -5,6 +5,12 @@
 function addItem() {
     var self = this, model = this.model, form = this;
     
+    var Item = null;
+    
+    self.setItem = function(aItem){
+        Item = aItem;
+        fillFields();
+    };
     
     function searchInDataBase(anItemCode){
         model.qGetItemByBarCode.params.barcode = anItemCode;
@@ -32,12 +38,23 @@ function addItem() {
         });
     }
     
-    function addToDataBase(anItemCode, anItemName, anItemPicture, anItemDescription){
+    function addToDataBase(anItemCode, anItemName, anItemPicture, anItemDescription, anItemType, anItemMeasure, aFranchaziId, aFranchizeId){
         model.qGetItemByBarCode.push({
-            item_name   :   anItemName,
-            bar_code    :   anItemCode,
+            item_name           :   anItemName,
+            bar_code            :   anItemCode,
             item_description    :   anItemDescription,
-            item_picture    :   anItemPicture
+            item_picture        :   anItemPicture,
+            item_type           :   anItemType,
+            item_measure        :   anItemMeasure,
+            franchazi_id        :   aFranchaziId,
+            franchize_id        :   aFranchizeId
+        });
+    }
+    
+    function UpdateInDataBase(anItemCode, anItemName, anItemPicture, anItemDescription, anItemType, anItemMeasure, aFranchaziId, aFranchizeId){
+        model.qGetItemByBarCode.params.barcode = anItemCode;
+        model.qGetItemByBarCode.execute(function(){
+            
         });
     }
     
@@ -50,34 +67,38 @@ function addItem() {
     }
 
     function btnCheckActionPerformed(evt) {//GEN-FIRST:event_btnCheckActionPerformed
-        var BarCode = validateTF(form.tfBarcode.text);
+        var BarCode = validateTF(model.qTradeItems.cursor.bar_code);
         if (BarCode){
-            form.tfBarcode.text = BarCode;
-            var item = searchInDataBase(BarCode);
-            if (item) {
-                form.tfName.text = item.name;
-                form.tfDesc.text = item.desc;
-                form.tfImage.text = item.pic;
-            } else {
-                searchInInternetResource(BarCode, function(anItem){
-                    item = anItem;
-                    form.tfName.text = item.name;
-                    form.tfDesc.text = item.desc;
-                    form.tfImage.text = item.pic;
-                    form.htmlArea.text = "<img src='" + item.pic + "'>";
-                });            
-            };
+            model.qTradeItems.cursor.bar_code = BarCode;
+            searchInInternetResource(BarCode, function(anItem){
+                item = anItem;
+                model.qTradeItems.cursor.item_name = item.name;
+                model.qTradeItems.cursor.item_description = item.desc;
+                model.qTradeItems.cursor.item_picture = item.pic;
+                form.lblImageArea.text = "<html><img src='" + item.pic + "' style='max-width: 450px; max-height: 200px;'></html>";
+            });            
+ 
         }
     }//GEN-LAST:event_btnCheckActionPerformed
 
     function btnSaveActionPerformed(evt) {//GEN-FIRST:event_btnSaveActionPerformed
-        addToDataBase(form.tfBarcode.text, form.tfName.text, form.tfImage.text, form.tfDesc.text);
+        model.save();
     }//GEN-LAST:event_btnSaveActionPerformed
 
     function buttonActionPerformed(evt) {//GEN-FIRST:event_buttonActionPerformed
-        selectFile(function(data){
-            var UP = new ServerModule("uploadModule");
-            UP.uploadFile(data);
-        });        // TODO Добавьте свой код:
+        selectFile(function(aFile){
+            Resource.upload(aFile, function(url) {
+                model.qTradeItems.cursor.item_picture = url;
+                form.lblImageArea.text = "<html><img src='" + url + "' style='max-width: 250px; max-height: 250px;'></html>";
+            });
+        });
     }//GEN-LAST:event_buttonActionPerformed
+
+    function fillFields(){
+        model.qTradeItems.params.item_id = Item;
+        model.qTradeItems.requery();
+    }
+    
+    
+
 }
