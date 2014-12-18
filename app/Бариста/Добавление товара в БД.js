@@ -5,12 +5,17 @@
 function addItem() {
     var self = this, model = this.model, form = this;
     
-    var Item = null;
+    var imgH = 190;
+    var imgW = 190;
     
+  
     self.setItem = function(aItem){
-        Item = aItem;
-        fillFields();
+        fillFields(aItem);
     };
+    
+    self.addNew = function(){
+        model.qTradeItems.insert();
+    }
     
     function searchInDataBase(anItemCode){
         model.qGetItemByBarCode.params.barcode = anItemCode;
@@ -38,27 +43,10 @@ function addItem() {
         });
     }
     
-    function addToDataBase(anItemCode, anItemName, anItemPicture, anItemDescription, anItemType, anItemMeasure, aFranchaziId, aFranchizeId){
-        model.qGetItemByBarCode.push({
-            item_name           :   anItemName,
-            bar_code            :   anItemCode,
-            item_description    :   anItemDescription,
-            item_picture        :   anItemPicture,
-            item_type           :   anItemType,
-            item_measure        :   anItemMeasure,
-            franchazi_id        :   aFranchaziId,
-            franchize_id        :   aFranchizeId
-        });
-    }
-    
-    function UpdateInDataBase(anItemCode, anItemName, anItemPicture, anItemDescription, anItemType, anItemMeasure, aFranchaziId, aFranchizeId){
-        model.qGetItemByBarCode.params.barcode = anItemCode;
-        model.qGetItemByBarCode.execute(function(){
-            
-        });
-    }
-    
+        
+       
     function validateTF(anBarCode){
+        anBarCode += "";
         anBarCode = anBarCode.replace(/\D+/g,"");
         if (anBarCode.length === 13)
             return anBarCode;
@@ -71,11 +59,12 @@ function addItem() {
         if (BarCode){
             model.qTradeItems.cursor.bar_code = BarCode;
             searchInInternetResource(BarCode, function(anItem){
-                item = anItem;
-                model.qTradeItems.cursor.item_name = item.name;
-                model.qTradeItems.cursor.item_description = item.desc;
-                model.qTradeItems.cursor.item_picture = item.pic;
-                form.lblImageArea.text = "<html><img src='" + item.pic + "' style='max-width: 450px; max-height: 200px;'></html>";
+                if (anItem){
+                    model.qTradeItems.cursor.item_name = anItem.name;
+                    model.qTradeItems.cursor.item_description = anItem.desc;
+                    model.qTradeItems.cursor.item_picture = anItem.pic;
+                    form.lblImageArea.text = "<html><img src='" + anItem.pic + "' style='max-width: " + imgW +"px; max-height: " + imgH +"px;'></html>";
+                }
             });            
  
         }
@@ -89,16 +78,38 @@ function addItem() {
         selectFile(function(aFile){
             Resource.upload(aFile, function(url) {
                 model.qTradeItems.cursor.item_picture = url;
-                form.lblImageArea.text = "<html><img src='" + url + "' style='max-width: 250px; max-height: 250px;'></html>";
+                form.lblImageArea.text = "<html><img src='" + url + "' style='max-width: " + imgW +"px; max-height: " + imgH +"px;'></html>";
             });
         });
     }//GEN-LAST:event_buttonActionPerformed
 
-    function fillFields(){
-        model.qTradeItems.params.item_id = Item;
-        model.qTradeItems.requery();
+    function fillFields(anItem){
+        model.qTradeItems.params.item_id = anItem;
+        model.qTradeItems.requery(function(){
+            if (model.qTradeItems.cursor.item_picture)
+                form.lblImageArea.text = "<html><img src='" + model.qTradeItems.cursor.item_picture + "' style='max-width: " + imgW +"px; max-height: " + imgH +"px;'></html>";
+            else 
+                form.lblImageArea.text = "Изображение отсутствует!";
+        });
+        
     }
     
     
 
+
+    function button1ActionPerformed(evt) {//GEN-FIRST:event_button1ActionPerformed
+        model.qTradeItems.cursor.item_picture = confirm("Введите URL картинки");
+        
+    }//GEN-LAST:event_button1ActionPerformed
+
+    function qTradeItemsOnChanged(evt) {//GEN-FIRST:event_qTradeItemsOnChanged
+        if (model.qTradeItems.cursor.item_picture)
+            form.lblImageArea.text = "<html><img src='" + model.qTradeItems.cursor.item_picture + "' style='max-width: " + imgW +"px; max-height: " + imgH +"px;'></html>";
+        else 
+            form.lblImageArea.text = "Изображение отсутствует!";
+    }//GEN-LAST:event_qTradeItemsOnChanged
+
+    function btnCancelActionPerformed(evt) {//GEN-FIRST:event_btnCancelActionPerformed
+        form.close();
+    }//GEN-LAST:event_btnCancelActionPerformed
 }

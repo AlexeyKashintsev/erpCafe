@@ -26,4 +26,17 @@ function addItemToDashboard() {
             AI.showModal();
         }
     }//GEN-LAST:event_modelGrid1MouseClicked
+
+    function btnAddToDashboardActionPerformed(evt) {//GEN-FIRST:event_btnAddToDashboardActionPerformed
+        
+    }//GEN-LAST:event_btnAddToDashboardActionPerformed
+
+    function btnNewItemActionPerformed(evt) {//GEN-FIRST:event_btnNewItemActionPerformed
+        AI.addNew();
+        AI.showModal();
+    }//GEN-LAST:event_btnNewItemActionPerformed
+
+    function btnCancelActionPerformed(evt) {//GEN-FIRST:event_btnCancelActionPerformed
+        form.close();
+    }//GEN-LAST:event_btnCancelActionPerformed
 }
