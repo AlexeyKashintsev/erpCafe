@@ -25,7 +25,7 @@ function OrederItems() {
     }//GEN-LAST:event_btnReciveActionPerformed
 
     function qOrederItemsOnScrolled(evt) {//GEN-FIRST:event_qOrederItemsOnScrolled
-        if(model.qOrederItems.cursor.operation_status >= billModule.getSelfPropertyValue("OP_STATUS_PAID")){
+        if(model.qOrederItems.cursor.operation_status == billModule.getSelfPropertyValue("OP_STATUS_PAID")){
             form.btnRecive.enabled = true;
         } else form.btnRecive.enabled = false;
         model.params.operation_id = model.qOrederItems.cursor.bill_operations_id;
@@ -33,10 +33,23 @@ function OrederItems() {
     }//GEN-LAST:event_qOrederItemsOnScrolled
 
     function qOrederItemsOnRequeried(evt) {//GEN-FIRST:event_qOrederItemsOnRequeried
-        if(model.qOrederItems.cursor.operation_status >= billModule.getSelfPropertyValue("OP_STATUS_PAID")){
+        if(model.qOrederItems.cursor.operation_status == billModule.getSelfPropertyValue("OP_STATUS_PAID")){
             form.btnRecive.enabled = true;
         } else form.btnRecive.enabled = false;
         model.params.operation_id = model.qOrederItems.cursor.bill_operations_id;
         model.qOperationsItems.requery();
     }//GEN-LAST:event_qOrederItemsOnRequeried
+
+    function rbPaidActionPerformed(evt) {//GEN-FIRST:event_rbPaidActionPerformed
+        model.params.status = 7;
+    }//GEN-LAST:event_rbPaidActionPerformed
+
+    function rbSentActionPerformed(evt) {//GEN-FIRST:event_rbSentActionPerformed
+        model.params.status = 8;
+    }//GEN-LAST:event_rbSentActionPerformed
+
+    function formWindowOpened(evt) {//GEN-FIRST:event_formWindowOpened
+        form.rbPaid.selected = true;
+        model.params.status = 7;
+    }//GEN-LAST:event_formWindowOpened
 }

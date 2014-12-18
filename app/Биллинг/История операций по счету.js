@@ -1,5 +1,5 @@
 /**
- * 
+ * @public
  * @author minya92
  */
 function HistoryOperations() {
@@ -12,14 +12,13 @@ function HistoryOperations() {
     };
     
 
-    function btnSelectActionPerformed(evt) {//GEN-FIRST:event_btnSelectActionPerformed
+    function formWindowOpened(evt) {//GEN-FIRST:event_formWindowOpened
+        model.params.op_status = 0;
+    }//GEN-LAST:event_formWindowOpened
+
+    function paramsOnChanged(evt) {//GEN-FIRST:event_paramsOnChanged
         model.qBillOperationsList.params.account_id = self.account_id;
         model.qBillOperationsList.params.status = model.params.op_status;
-        model.requery();
-    }//GEN-LAST:event_btnSelectActionPerformed
-
-    function formWindowOpened(evt) {//GEN-FIRST:event_formWindowOpened
-        model.qBillOperationsList.params.account_id = self.account_id;
-        model.requery();
-    }//GEN-LAST:event_formWindowOpened
+        model.qBillOperationsList.execute();
+    }//GEN-LAST:event_paramsOnChanged
 }

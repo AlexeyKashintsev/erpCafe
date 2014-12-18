@@ -1,5 +1,5 @@
 /**
- * @author jskonst
+ * @author minya92
  * @authorizer
  * @stateless
  */ 

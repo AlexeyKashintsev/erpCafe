@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><layout defaultCloseOperation="2" name="Form" prefHeight="306px" prefWidth="533px">
+<?xml version="1.0" encoding="UTF-8"?><layout defaultCloseOperation="2" name="Form" prefHeight="306px" prefWidth="533px" windowOpened="formWindowOpened">
   <widget actionPerformed="btnUpActionPerformed" name="btnUp" parent="Form" prefHeight="29px" prefWidth="72px" text="Submit" type="ButtonDesignInfo">
     <constraints bottom="25px" height="29px" right="17px" type="MarginConstraintsDesignInfo" width="72px"/>
   </widget>
