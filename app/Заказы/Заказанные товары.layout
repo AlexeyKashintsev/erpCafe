@@ -1,21 +1,46 @@
-<?xml version="1.0" encoding="UTF-8"?><layout defaultCloseOperation="2" name="Form" prefHeight="609px" prefWidth="583px">
+<?xml version="1.0" encoding="UTF-8"?><layout defaultCloseOperation="2" name="Form" prefHeight="609px" prefWidth="583px" windowOpened="formWindowOpened">
   <widget dividerLocation="300" leftComponent="panel" name="splitPane" orientation="0" parent="Form" prefHeight="612px" prefWidth="588px" rightComponent="panel1" type="SplitDesignInfo">
     <constraints bottom="-3px" left="0px" right="-5px" top="0px" type="MarginConstraintsDesignInfo"/>
   </widget>
   <widget name="panel" parent="splitPane" prefHeight="299px" prefWidth="586px" type="PanelDesignInfo">
     <layout type="MarginLayoutDesignInfo"/>
   </widget>
+  <widget name="panel2" parent="panel" prefHeight="34px" prefWidth="299px" type="PanelDesignInfo">
+    <layout type="MarginLayoutDesignInfo"/>
+    <constraints height="34px" left="288px" top="-5px" type="MarginConstraintsDesignInfo" width="299px"/>
+  </widget>
+  <widget actionPerformed="rbSentActionPerformed" buttonGroup="buttonGroup" name="rbSent" parent="panel2" prefHeight="23px" prefWidth="120px" text="Отправленные" type="RadioDesignInfo">
+    <constraints height="23px" left="168px" top="12px" type="MarginConstraintsDesignInfo" width="120px"/>
+  </widget>
+  <widget actionPerformed="rbPaidActionPerformed" buttonGroup="buttonGroup" name="rbPaid" parent="panel2" prefHeight="23px" prefWidth="108px" text="Оплаченные" type="RadioDesignInfo">
+    <constraints height="23px" left="60px" top="12px" type="MarginConstraintsDesignInfo" width="108px"/>
+  </widget>
   <widget name="toolBar" parent="panel" prefHeight="36px" prefWidth="588px" rollover="true" type="ToolbarDesignInfo">
     <constraints height="36px" left="0px" right="-2px" top="0px" type="MarginConstraintsDesignInfo"/>
   </widget>
   <widget actionPerformed="btnReqActionPerformed" focusable="false" horizontalTextPosition="0" icon="icons/22x22/actions/new-view-refresh.png" name="btnReq" parent="toolBar" prefHeight="29px" prefWidth="29px" toolTipText="Обновить" type="ButtonDesignInfo" verticalTextPosition="3"/>
-  <widget actionPerformed="btnSaveActionPerformed" focusable="false" horizontalTextPosition="4" icon="icons/22x22/actions/edit-select-all.png" name="btnSave" parent="toolBar" prefHeight="29px" prefWidth="107px" text="Принять заказ" toolTipText="Пополнить баланс" type="ButtonDesignInfo" verticalTextPosition="3" visible="false"/>
-  <widget actionPerformed="btnReciveActionPerformed" enabled="false" focusable="false" horizontalTextPosition="4" icon="icons/22x22/actions/dialog-apply.png" name="btnRecive" parent="toolBar" prefHeight="29px" prefWidth="121px" text="Отправить товар" toolTipText="Отправить товар" type="ButtonDesignInfo" verticalTextPosition="3"/>
+  <widget actionPerformed="btnSaveActionPerformed" focusable="false" horizontalTextPosition="4" icon="icons/22x22/actions/edit-select-all.png" name="btnSave" parent="toolBar" prefHeight="29px" prefWidth="107px" text="Принять заказ" toolTipText="Пополнить баланс" type="ButtonDesignInfo" visible="false"/>
+  <widget actionPerformed="btnReciveActionPerformed" enabled="false" focusable="false" horizontalTextPosition="4" icon="icons/22x22/actions/dialog-apply.png" name="btnRecive" parent="toolBar" prefHeight="29px" prefWidth="121px" text="Отправить товар" toolTipText="Отправить товар" type="ButtonDesignInfo"/>
   <widget deletable="false" editable="false" insertable="false" name="modelGrid" parent="panel" prefHeight="264px" prefWidth="576px" type="DbGridDesignInfo">
     <rowsColumnsDesignInfo>
       <rowsDatasource entityId="141209122106028" field="false"/>
     </rowsColumnsDesignInfo>
     <treeDesignInfo/>
+    <column name="colFranchazi" title="Франчази">
+      <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
+      <datamodelElement entityId="141209122106028" fieldName="f_name"/>
+      <headerStyle>
+        <nativeFont name="Tahoma" size="11"/>
+      </headerStyle>
+      <columnsDatasource/>
+      <columnsDisplayField/>
+      <cellsDatasource/>
+      <cellDesignInfo>
+        <rowsKeyField/>
+        <columnsKeyField/>
+        <cellValueField/>
+      </cellDesignInfo>
+    </column>
     <column name="colOperation_date" title="Дата">
       <controlInfo classHint="DbDateDesignInfo" dateFormat="dd.MM.yyyy HH:mm:ss" name="view" prefHeight="0px" prefWidth="0px"/>
       <datamodelElement entityId="141209122106028" fieldName="operation_date"/>
@@ -133,5 +158,6 @@
     </column>
     <constraints bottom="6px" left="0px" right="10px" top="0px" type="MarginConstraintsDesignInfo"/>
   </widget>
+  <nonvisual name="buttonGroup" type="ButtonGroupDesignInfo"/>
   <layout type="MarginLayoutDesignInfo"/>
 </layout>

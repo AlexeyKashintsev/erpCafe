@@ -50,5 +50,15 @@ function MyChat() {
             user_name: userSession.getUserName(),
             text:      form.textField.text
         }));
+        form.textField.text = "";
     }//GEN-LAST:event_btnUpActionPerformed
+
+    function formWindowOpened(evt) {//GEN-FIRST:event_formWindowOpened
+       model.qLastMessages.requery(function(){
+            model.qLastMessages.beforeFirst();
+            while(model.qLastMessages.next()){
+                form.textArea.text += model.qLastMessages.cursor.user_name + ": "+ model.qLastMessages.cursor.msg_text +"\n";
+            }
+       });
+    }//GEN-LAST:event_formWindowOpened
 }

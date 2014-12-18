@@ -5,132 +5,147 @@
   <widget name="panel" parent="splitPane" prefHeight="299px" prefWidth="586px" type="PanelDesignInfo">
     <layout type="MarginLayoutDesignInfo"/>
   </widget>
+  <widget name="panel2" parent="panel" prefHeight="34px" prefWidth="299px" type="PanelDesignInfo">
+    <layout type="MarginLayoutDesignInfo"/>
+    <constraints height="34px" left="298px" top="-5px" type="MarginConstraintsDesignInfo" width="299px"/>
+  </widget>
+  <widget actionPerformed="rbPaid1ActionPerformed" buttonGroup="buttonGroup" name="rbPaid1" parent="panel2" prefHeight="23px" prefWidth="84px" text="Созданные" type="RadioDesignInfo">
+    <constraints height="23px" left="0px" top="12px" type="MarginConstraintsDesignInfo" width="84px"/>
+  </widget>
+  <widget actionPerformed="rbSentActionPerformed" buttonGroup="buttonGroup" name="rbSent" parent="panel2" prefHeight="23px" prefWidth="108px" text="Принятые" type="RadioDesignInfo">
+    <constraints height="23px" left="180px" top="12px" type="MarginConstraintsDesignInfo" width="108px"/>
+  </widget>
+  <widget actionPerformed="rbPaidActionPerformed" buttonGroup="buttonGroup" name="rbPaid" parent="panel2" prefHeight="23px" prefWidth="96px" selected="true" text="Оплаченные" type="RadioDesignInfo">
+    <constraints height="23px" left="84px" top="12px" type="MarginConstraintsDesignInfo" width="96px"/>
+  </widget>
   <widget name="toolBar" parent="panel" prefHeight="36px" prefWidth="592px" rollover="true" type="ToolbarDesignInfo">
     <constraints height="36px" left="0px" right="-6px" top="0px" type="MarginConstraintsDesignInfo"/>
   </widget>
   <widget actionPerformed="btnReqActionPerformed" focusable="false" horizontalTextPosition="0" icon="icons/22x22/actions/new-view-refresh.png" name="btnReq" parent="toolBar" prefHeight="29px" prefWidth="29px" toolTipText="Обновить" type="ButtonDesignInfo" verticalTextPosition="3"/>
-  <widget actionPerformed="btnReciveActionPerformed" enabled="false" focusable="false" horizontalTextPosition="4" icon="icons/22x22/actions/dialog-apply.png" name="btnRecive" parent="toolBar" prefHeight="29px" prefWidth="107px" text="Заказ получен" toolTipText="Товар получен" type="ButtonDesignInfo" verticalTextPosition="3"/>
+  <widget actionPerformed="btnReciveActionPerformed" enabled="false" focusable="false" horizontalTextPosition="4" icon="icons/22x22/actions/dialog-apply.png" name="btnRecive" parent="toolBar" prefHeight="29px" prefWidth="107px" text="Заказ получен" toolTipText="Товар получен" type="ButtonDesignInfo"/>
+  <widget actionPerformed="btnSendAgainActionPerformed" enabled="false" focusable="false" horizontalTextPosition="4" icon="icons/22x22/actions/new-go-last.png" name="btnSendAgain" parent="toolBar" prefHeight="29px" prefWidth="119px" text="Отправить заказ" toolTipText="Отправить заказ" type="ButtonDesignInfo"/>
   <widget deletable="false" editable="false" insertable="false" name="modelGrid" parent="panel" prefHeight="264px" prefWidth="576px" type="DbGridDesignInfo">
-    <rowsColumnsDesignInfo>
-      <rowsDatasource entityId="141156193438016" field="false"/>
-    </rowsColumnsDesignInfo>
-    <treeDesignInfo/>
     <column name="colOperation_date" title="Дата заказа">
       <controlInfo classHint="DbDateDesignInfo" dateFormat="dd.MM.yyyy HH:mm:ss" name="view" prefHeight="0px" prefWidth="0px"/>
       <datamodelElement entityId="141156193438016" fieldName="operation_date"/>
-      <headerStyle>
-        <nativeFont name="Tahoma" size="11"/>
-      </headerStyle>
       <columnsDatasource/>
       <columnsDisplayField/>
       <cellsDatasource/>
       <cellDesignInfo>
-        <rowsKeyField/>
         <columnsKeyField/>
         <cellValueField/>
+        <rowsKeyField/>
       </cellDesignInfo>
+      <headerStyle>
+        <nativeFont name="Tahoma" size="11"/>
+      </headerStyle>
     </column>
     <column name="colOperation_sum" title="Сумма">
       <controlInfo classHint="DbSpinDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
       <datamodelElement entityId="141156193438016" fieldName="operation_sum"/>
-      <headerStyle>
-        <nativeFont name="Tahoma" size="11"/>
-      </headerStyle>
       <columnsDatasource/>
       <columnsDisplayField/>
       <cellsDatasource/>
       <cellDesignInfo>
-        <rowsKeyField/>
         <columnsKeyField/>
         <cellValueField/>
+        <rowsKeyField/>
       </cellDesignInfo>
+      <headerStyle>
+        <nativeFont name="Tahoma" size="11"/>
+      </headerStyle>
     </column>
     <column name="colStatus_name" title="Статус заказа">
       <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
       <datamodelElement entityId="141156193438016" fieldName="status_name"/>
-      <headerStyle>
-        <nativeFont name="Tahoma" size="11"/>
-      </headerStyle>
       <columnsDatasource/>
       <columnsDisplayField/>
       <cellsDatasource/>
       <cellDesignInfo>
-        <rowsKeyField/>
         <columnsKeyField/>
         <cellValueField/>
+        <rowsKeyField/>
       </cellDesignInfo>
+      <headerStyle>
+        <nativeFont name="Tahoma" size="11"/>
+      </headerStyle>
     </column>
+    <rowsColumnsDesignInfo>
+      <rowsDatasource entityId="141156193438016" field="false"/>
+    </rowsColumnsDesignInfo>
+    <treeDesignInfo/>
     <constraints bottom="-1px" left="0px" right="10px" top="36px" type="MarginConstraintsDesignInfo"/>
   </widget>
   <widget name="panel1" parent="splitPane" prefHeight="306px" prefWidth="586px" type="PanelDesignInfo">
     <layout type="MarginLayoutDesignInfo"/>
   </widget>
   <widget deletable="false" editable="false" insertable="false" name="modelGrid1" parent="panel1" prefHeight="300px" prefWidth="576px" type="DbGridDesignInfo">
-    <rowsColumnsDesignInfo>
-      <rowsDatasource entityId="141156478723655" field="false"/>
-    </rowsColumnsDesignInfo>
-    <treeDesignInfo/>
     <column name="column" title="Название товара">
       <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
       <datamodelElement entityId="141156478723655" fieldName="item_name"/>
-      <headerStyle>
-        <nativeFont name="Tahoma" size="11"/>
-      </headerStyle>
       <columnsDatasource/>
       <columnsDisplayField/>
       <cellsDatasource/>
       <cellDesignInfo>
-        <rowsKeyField/>
         <columnsKeyField/>
         <cellValueField/>
+        <rowsKeyField/>
       </cellDesignInfo>
+      <headerStyle>
+        <nativeFont name="Tahoma" size="11"/>
+      </headerStyle>
     </column>
     <column name="colItem_cost" title="Стоимость">
       <controlInfo classHint="DbSpinDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
       <datamodelElement entityId="141156478723655" fieldName="item_cost"/>
-      <headerStyle>
-        <nativeFont name="Tahoma" size="11"/>
-      </headerStyle>
       <columnsDatasource/>
       <columnsDisplayField/>
       <cellsDatasource/>
       <cellDesignInfo>
-        <rowsKeyField/>
         <columnsKeyField/>
         <cellValueField/>
+        <rowsKeyField/>
       </cellDesignInfo>
+      <headerStyle>
+        <nativeFont name="Tahoma" size="11"/>
+      </headerStyle>
     </column>
     <column name="colItems_count" title="Количество">
       <controlInfo classHint="DbSpinDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
       <datamodelElement entityId="141156478723655" fieldName="items_count"/>
-      <headerStyle>
-        <nativeFont name="Tahoma" size="11"/>
-      </headerStyle>
       <columnsDatasource/>
       <columnsDisplayField/>
       <cellsDatasource/>
       <cellDesignInfo>
-        <rowsKeyField/>
         <columnsKeyField/>
         <cellValueField/>
+        <rowsKeyField/>
       </cellDesignInfo>
+      <headerStyle>
+        <nativeFont name="Tahoma" size="11"/>
+      </headerStyle>
     </column>
     <column name="colBill_measure" title="Ед. измерения">
       <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
       <datamodelElement entityId="141156478723655" fieldName="bill_measure"/>
-      <headerStyle>
-        <nativeFont name="Tahoma" size="11"/>
-      </headerStyle>
       <columnsDatasource/>
       <columnsDisplayField/>
       <cellsDatasource/>
       <cellDesignInfo>
-        <rowsKeyField/>
         <columnsKeyField/>
         <cellValueField/>
+        <rowsKeyField/>
       </cellDesignInfo>
+      <headerStyle>
+        <nativeFont name="Tahoma" size="11"/>
+      </headerStyle>
     </column>
+    <rowsColumnsDesignInfo>
+      <rowsDatasource entityId="141156478723655" field="false"/>
+    </rowsColumnsDesignInfo>
+    <treeDesignInfo/>
     <constraints bottom="6px" left="0px" right="10px" top="0px" type="MarginConstraintsDesignInfo"/>
   </widget>
+  <nonvisual name="buttonGroup" type="ButtonGroupDesignInfo"/>
   <layout type="MarginLayoutDesignInfo"/>
 </layout>

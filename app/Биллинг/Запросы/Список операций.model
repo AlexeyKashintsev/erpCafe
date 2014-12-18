@@ -5,12 +5,16 @@
     <parameter description="" name="status" nullable="true" parameterMode="1" precision="0" scale="0" selectionForm="null" signed="true" size="0" type="2" typeName="NUMERIC"/>
   </parameters>
   <parametersEntity entityHeight="200" entityIconified="false" entityLocationX="20" entityLocationY="7" entityWidth="150"/>
-  <entity Title="" entityHeight="200" entityIconified="false" entityId="140784667760050" entityLocationX="259" entityLocationY="7" entityWidth="150" tableAlias="t1" tableName="bill_operations" tableSchemaName=""/>
-  <entity Title="" entityHeight="200" entityIconified="false" entityId="140784669167197" entityLocationX="490" entityLocationY="6" entityWidth="150" tableAlias="t" tableName="bill_operations_type" tableSchemaName=""/>
+  <entity Title="" entityHeight="200" entityIconified="false" entityId="140784667760050" entityLocationX="228" entityLocationY="7" entityWidth="181" tableAlias="t1" tableName="bill_operations" tableSchemaName=""/>
+  <entity Title="" entityHeight="158" entityIconified="false" entityId="141889537145005" entityLocationX="143" entityLocationY="214" entityWidth="150" tableAlias="t3" tableName="bill_accounts" tableSchemaName=""/>
+  <entity Title="" entityHeight="110" entityIconified="false" entityId="140784669167197" entityLocationX="490" entityLocationY="6" entityWidth="150" tableAlias="t" tableName="bill_operations_type" tableSchemaName=""/>
   <entity Title="" entityHeight="200" entityIconified="false" entityId="140852002294749" entityLocationX="708" entityLocationY="21" entityWidth="150" tableAlias="t2" tableName="bill_operations_status" tableSchemaName=""/>
-  <relation leftEntityId="-1" leftEntityParameterName="operation_id" rightEntityFieldName="bill_operations_id" rightEntityId="140784667760050"/>
+  <entity Title="" entityHeight="130" entityIconified="false" entityId="141889545654422" entityLocationX="489" entityLocationY="140" entityWidth="150" tableAlias="t4" tableName="org_franchazi" tableSchemaName=""/>
+  <relation leftEntityFieldName="bill_operations_type_id" leftEntityId="140784669167197" rightEntityFieldName="operation_type" rightEntityId="140784667760050"/>
+  <relation leftEntityFieldName="account_id" leftEntityId="140784667760050" rightEntityFieldName="bill_accounts_id" rightEntityId="141889537145005"/>
   <relation leftEntityId="-1" leftEntityParameterName="account_id" rightEntityFieldName="account_id" rightEntityId="140784667760050"/>
   <relation leftEntityId="-1" leftEntityParameterName="status" rightEntityFieldName="operation_status" rightEntityId="140784667760050"/>
-  <relation leftEntityFieldName="bill_operations_type_id" leftEntityId="140784669167197" rightEntityFieldName="operation_type" rightEntityId="140784667760050"/>
   <relation leftEntityFieldName="bill_operations_status_id" leftEntityId="140852002294749" rightEntityFieldName="operation_status" rightEntityId="140784667760050"/>
+  <relation leftEntityFieldName="franchazi_id" leftEntityId="141889537145005" rightEntityFieldName="org_franchazi_id" rightEntityId="141889545654422"/>
+  <relation leftEntityId="-1" leftEntityParameterName="operation_id" rightEntityFieldName="bill_operations_id" rightEntityId="140784667760050"/>
 </datamodel>
