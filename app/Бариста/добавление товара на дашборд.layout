@@ -3,17 +3,11 @@
     <constraints bottom="17px" height="48px" right="151px" type="MarginConstraintsDesignInfo" width="168px"/>
   </widget>
   <widget mouseClicked="modelGridMouseClicked" name="modelGrid" parent="Form" prefHeight="276px" prefWidth="276px" type="DbGridDesignInfo">
-    <rowsColumnsDesignInfo>
-      <rowsDatasource entityId="141882836911917" field="false"/>
-    </rowsColumnsDesignInfo>
-    <treeDesignInfo>
-      <unaryLinkField entityId="141882836911917" fieldName="parent_type"/>
-    </treeDesignInfo>
     <column name="colType_description">
+      <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
       <headerStyle>
         <nativeFont name="Tahoma" size="11"/>
       </headerStyle>
-      <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
       <datamodelElement entityId="141882836911917" fieldName="type_name"/>
       <columnsDatasource/>
       <columnsDisplayField/>
@@ -24,18 +18,20 @@
         <cellValueField/>
       </cellDesignInfo>
     </column>
+    <rowsColumnsDesignInfo>
+      <rowsDatasource entityId="141882836911917" field="false"/>
+    </rowsColumnsDesignInfo>
+    <treeDesignInfo>
+      <unaryLinkField entityId="141882836911917" fieldName="parent_type"/>
+    </treeDesignInfo>
     <constraints bottom="77px" left="12px" top="72px" type="MarginConstraintsDesignInfo" width="276px"/>
   </widget>
   <widget deletable="false" editable="false" insertable="false" mouseClicked="modelGrid1MouseClicked" name="modelGrid1" parent="Form" prefHeight="276px" prefWidth="480px" type="DbGridDesignInfo">
-    <rowsColumnsDesignInfo>
-      <rowsDatasource entityId="141882843342797" field="false"/>
-    </rowsColumnsDesignInfo>
-    <treeDesignInfo/>
     <column name="colItem_name">
+      <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
       <headerStyle>
         <nativeFont name="Tahoma" size="11"/>
       </headerStyle>
-      <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
       <datamodelElement entityId="141882843342797" fieldName="item_name"/>
       <columnsDatasource/>
       <columnsDisplayField/>
@@ -46,6 +42,10 @@
         <cellValueField/>
       </cellDesignInfo>
     </column>
+    <rowsColumnsDesignInfo>
+      <rowsDatasource entityId="141882843342797" field="false"/>
+    </rowsColumnsDesignInfo>
+    <treeDesignInfo/>
     <constraints bottom="77px" left="288px" right="7px" top="72px" type="MarginConstraintsDesignInfo"/>
   </widget>
   <widget name="label" parent="Form" prefHeight="14px" prefWidth="204px" text="Штрих код или наименование товара" type="LabelDesignInfo">

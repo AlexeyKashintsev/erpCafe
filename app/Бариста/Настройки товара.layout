@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?><layout defaultCloseOperation="2" name="Form" prefHeight="362px" prefWidth="661px" windowOpened="formWindowOpened">
+  <widget name="tabbedPane" parent="Form" prefHeight="348px" prefWidth="636px" type="TabsDesignInfo">
+    <constraints height="348px" left="12px" top="12px" type="MarginConstraintsDesignInfo" width="636px"/>
+  </widget>
+  <widget name="pnlGeneral" parent="tabbedPane" prefHeight="320px" prefWidth="631px" type="PanelDesignInfo">
+    <layout type="MarginLayoutDesignInfo"/>
+    <constraints tabTitle="Общее" type="TabsConstraintsDesignInfo"/>
+  </widget>
+  <widget buttonGroup="buttonGroup" name="radioButton2" parent="pnlGeneral" prefHeight="23px" prefWidth="528px" text="Не учитывать" type="RadioDesignInfo">
+    <constraints height="23px" left="48px" top="84px" type="MarginConstraintsDesignInfo" width="528px"/>
+  </widget>
+  <widget buttonGroup="buttonGroup" name="radioButton1" parent="pnlGeneral" prefHeight="23px" prefWidth="528px" text="Сложный состав" type="RadioDesignInfo">
+    <constraints height="23px" left="48px" top="60px" type="MarginConstraintsDesignInfo" width="528px"/>
+  </widget>
+  <widget buttonGroup="buttonGroup" name="radioButton" parent="pnlGeneral" prefHeight="23px" prefWidth="528px" text="Учитывать на складе" type="RadioDesignInfo">
+    <constraints height="23px" left="48px" top="36px" type="MarginConstraintsDesignInfo" width="528px"/>
+  </widget>
+  <widget name="pnlContent" parent="tabbedPane" prefHeight="320px" prefWidth="631px" type="PanelDesignInfo" visible="false">
+    <layout type="MarginLayoutDesignInfo"/>
+    <constraints tabTitle="Состав товара" type="TabsConstraintsDesignInfo"/>
+  </widget>
+  <widget name="panel2" parent="tabbedPane" prefHeight="320px" prefWidth="631px" type="PanelDesignInfo" visible="false">
+    <layout type="MarginLayoutDesignInfo"/>
+    <constraints tabTitle="Цена" type="TabsConstraintsDesignInfo"/>
+  </widget>
+  <widget name="panel3" parent="tabbedPane" prefHeight="320px" prefWidth="631px" type="PanelDesignInfo" visible="false">
+    <layout type="MarginLayoutDesignInfo"/>
+    <constraints tabTitle="Бонусы" type="TabsConstraintsDesignInfo"/>
+  </widget>
+  <nonvisual name="buttonGroup" type="ButtonGroupDesignInfo"/>
+  <layout type="MarginLayoutDesignInfo"/>
+</layout>

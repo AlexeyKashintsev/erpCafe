@@ -5,6 +5,7 @@
 function addItemToDashboard() {
     var self = this, model = this.model, form = this;
     var AI = new addItem();
+    var settingsOfItem = new SettingsOfItem();
     // TODO : place your code here
 
     function modelGridMouseClicked(evt) {//GEN-FIRST:event_modelGridMouseClicked
@@ -28,7 +29,8 @@ function addItemToDashboard() {
     }//GEN-LAST:event_modelGrid1MouseClicked
 
     function btnAddToDashboardActionPerformed(evt) {//GEN-FIRST:event_btnAddToDashboardActionPerformed
-        
+        settingsOfItem.setTradeItem(model.qTradeItems.cursor.wh_items_id)
+        settingsOfItem.showModal();
     }//GEN-LAST:event_btnAddToDashboardActionPerformed
 
     function btnNewItemActionPerformed(evt) {//GEN-FIRST:event_btnNewItemActionPerformed

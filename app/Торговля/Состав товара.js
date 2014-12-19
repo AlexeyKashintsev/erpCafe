@@ -72,7 +72,6 @@ function formWindowClosing(evt) {//GEN-FIRST:event_formWindowClosing
 
     function btnSelectActionPerformed(evt) {//GEN-FIRST:event_btnSelectActionPerformed
         model.save();
-        form.close(true);
     }//GEN-LAST:event_btnSelectActionPerformed
 
     function btnDelActionPerformed(evt) {//GEN-FIRST:event_btnDelActionPerformed
