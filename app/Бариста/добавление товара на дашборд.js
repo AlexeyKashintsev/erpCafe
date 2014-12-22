@@ -4,8 +4,7 @@
  */
 function addItemToDashboard() {
     var self = this, model = this.model, form = this;
-    var AI = new addItem();
-    var settingsOfItem = new SettingsOfItem();
+    var Settings = new SettingsOfItem();
     // TODO : place your code here
 
     function modelGridMouseClicked(evt) {//GEN-FIRST:event_modelGridMouseClicked
@@ -23,19 +22,19 @@ function addItemToDashboard() {
 
     function modelGrid1MouseClicked(evt) {//GEN-FIRST:event_modelGrid1MouseClicked
         if (evt.clickCount > 1){
-            AI.setItem(model.qTradeItems.cursor.wh_items_id);
-            AI.showModal();
+            Settings.setTradeItem(model.qTradeItems.cursor.wh_items_id);
+            Settings.showModal();
         }
     }//GEN-LAST:event_modelGrid1MouseClicked
 
     function btnAddToDashboardActionPerformed(evt) {//GEN-FIRST:event_btnAddToDashboardActionPerformed
-        settingsOfItem.setTradeItem(model.qTradeItems.cursor.wh_items_id)
-        settingsOfItem.showModal();
+        Settings.setTradeItem(model.qTradeItems.cursor.wh_items_id)
+        Settings.showModal();
     }//GEN-LAST:event_btnAddToDashboardActionPerformed
 
     function btnNewItemActionPerformed(evt) {//GEN-FIRST:event_btnNewItemActionPerformed
-        AI.addNew();
-        AI.showModal();
+        Settings.addNew();
+        Settings.showModal();
     }//GEN-LAST:event_btnNewItemActionPerformed
 
     function btnCancelActionPerformed(evt) {//GEN-FIRST:event_btnCancelActionPerformed
