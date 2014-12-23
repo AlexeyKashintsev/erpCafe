@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?><datamodel>
   <parametersEntity entityHeight="200" entityIconified="false" entityLocationX="12" entityLocationY="12" entityWidth="150"/>
-  <entity Name="listTradePoints" Title="" entityHeight="200" entityIconified="false" entityId="141925766209530" entityLocationX="275" entityLocationY="43" entityWidth="150" queryId="listTradePoints" tableName="" tableSchemaName=""/>
+  <entity Name="listTradePoints" Title="" entityHeight="200" entityIconified="false" entityId="141925766209530" entityLocationX="247" entityLocationY="10" entityWidth="150" queryId="listTradePoints" tableName="" tableSchemaName=""/>
 </datamodel>

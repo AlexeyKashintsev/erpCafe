@@ -15,7 +15,14 @@ function tpMap(aContainer) {
         model.listTradePoints.params.franchazi_id = null;
         model.listTradePoints.params.trade_point = aTradePoint;
         model.listTradePoints.requery(function() {
-            
+            if(!model.listTradePoints.empty){
+                if(model.listTradePoints.cursor.tp_geoposition){
+                    tpMarker = JSON.parse(model.listTradePoints.cursor.tp_geoposition);
+                } else if(model.listTradePoints.cursor.tp_city){
+                    //var geoCodingUtils = new Session.get("GeoCodingUtils");
+                    //Вот тут парсить город   
+                }
+            }
         });
     };
     
@@ -91,6 +98,16 @@ function tpMap(aContainer) {
         } else {
             aContainer.append(self.container);
         }
+        
+        $('#modalForm').on('hidden.bs.modal', function (e) {
+                if(tpMarker){
+                    alert(tpMarker.getLatLng());
+                    if(!model.listTradePoints.empty){
+                            model.listTradePoints.cursor.tp_geoposition = JSON.stringify(tpMarker.getLatLng());
+                            model.save();
+                    }
+                }
+        });
     };
     if (aContainer) self.manualShow(aContainer);
     
@@ -99,5 +116,6 @@ function tpMap(aContainer) {
         var modalBody = modal.getModalBody();
         self.manualShow(modalBody);
         modal.show();
+        
     };
 }
