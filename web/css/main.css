@@ -165,22 +165,26 @@ button.typeSelector {
 }
 
 .itemDescription > div.panel {
-  height: 120px;
+  height: 80px;
   width: 120px;
-  margin-bottom: 0px;
+  margin: 0px;
+  position: relative;
+  #border: none;
 }
 
 p.itemType {
   font-size: 10px;
 }
 
-h3.panel-title.itemDesc {
+h3.itemDesc {
   font-size: 12px;
+  margin: 0px;
 }
 
 h1.itemCost {
-  margin-top: 0px!important;
   font-size: 22px;
+  position: absolute;
+  bottom: 0px;
 }
 
 /* TRADE ITEMS */

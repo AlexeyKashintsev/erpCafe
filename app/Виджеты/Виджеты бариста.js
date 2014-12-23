@@ -11,17 +11,17 @@ function WidgetCreatorBaristaDesktop() {
             + aData.trade_item_type_id + (aData.classtag ? " " + aData.classtag : ""),
             aContainer, "tt_" + aData.item_id);
         var itemPanel = cmn.createElement("div", "panel panel-primary", itemContainer);
-        var itemHeading = cmn.createElement("div", "panel-heading", itemPanel);
-        var itemDesc = cmn.createElement("h3", "panel-title itemDesc", itemHeading);
+        //var itemHeading = cmn.createElement("div", "panel-heading", itemPanel);
         var itemContent = cmn.createElement("div", "panel-body", itemPanel);
-        var itemType = cmn.createElement("p", "itemType", itemContent);
+        //var itemType = cmn.createElement("p", "itemType", itemContent);
+        var itemDesc = cmn.createElement("h3", "itemDesc", itemContent);//itemHeading);
         var itemCost = cmn.createElement("h1", "itemCost", itemContent);
         
 
         itemDesc.innerHTML = aData.item_name;
-        itemType.innerHTML = aData.type_name;
+        //itemType.innerHTML = aData.type_name;
         itemCost.innerHTML = aData.item_cost + 'р.';
-
+        
         itemPanel.onclick = function() {
  
                 onClick(aData);
