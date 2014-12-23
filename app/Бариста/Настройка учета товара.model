@@ -1,5 +1,8 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<datamodel>
-    <parametersEntity Title="Параметры" entityHeight="200" entityIconified="false" entityLocationX="12" entityLocationY="12" entityWidth="150">
-    </parametersEntity>
+<?xml version="1.0" encoding="UTF-8"?><datamodel>
+  <parameters>
+    <parameter description="" name="item_id" nullable="true" parameterMode="1" precision="0" scale="0" selectionForm="null" signed="true" size="100" type="12" typeName="VARCHAR"/>
+  </parameters>
+  <parametersEntity entityHeight="200" entityIconified="false" entityLocationX="12" entityLocationY="12" entityWidth="150"/>
+  <entity Name="qContents" Title="" entityHeight="200" entityIconified="false" entityId="141934872134838" entityLocationX="228" entityLocationY="27" entityWidth="262" queryId="qContents" tableName="" tableSchemaName=""/>
+  <relation leftEntityId="-1" leftEntityParameterName="item_id" rightEntityId="141934872134838" rightEntityParameterName="trade_item_id"/>
 </datamodel>
