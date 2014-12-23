@@ -2,6 +2,7 @@
  * 
  * @author Алексей
  * @module
+ * @public
  */ 
 function tpMap(aContainer) {
     var self = this, model = this.model;
@@ -58,15 +59,15 @@ function tpMap(aContainer) {
             map.addLayer(mapTilesLayer);
             map.fitWorld();
             
-            if (!!model.listTradePoints.params.trade_point) {
+          //  if (!!model.listTradePoints.params.trade_point) {
                 L.easyButton('fa-map-marker', 
-                    function (){
-                        workWithMarker = true;
+                    function () {
+                        alert(tpMarker.getLatLng());
                     },
                     'Установить маркер',
                     map
                 );
-            }
+           // }
             
             setTimeout(function() {
                 map.invalidateSize(true);
@@ -97,7 +98,6 @@ function tpMap(aContainer) {
         var modal = new cmn.Modal('Расположение торговой точки');
         var modalBody = modal.getModalBody();
         self.manualShow(modalBody);
-        
         modal.show();
     };
 }
