@@ -1,4 +1,3 @@
 <?xml version="1.0" encoding="UTF-8"?><datamodel>
   <parametersEntity entityHeight="200" entityIconified="false" entityLocationX="12" entityLocationY="12" entityWidth="150"/>
-  <entity Name="dsFullAddress" Title="Полный адрес с наименованием типов" entityHeight="200" entityIconified="false" entityId="133492770843738" entityLocationX="178" entityLocationY="18" entityWidth="150" queryId="127054057118691" tableName="" tableSchemaName=""/>
 </datamodel>

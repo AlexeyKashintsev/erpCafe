@@ -66,7 +66,7 @@ function GeoCodingUtils() {
     /**
      *  Создать геообъект из данных, полученных с внутреннего сервера.
      */
-    function constructInternalGeoObjectFromBase(adressId) {
+  /*  function constructInternalGeoObjectFromBase(adressId) {
         self.model.dsFullAddress.params.address.value = adressId;
         self.model.dsFullAddress.execute();
         if (self.model.dsFullAddress.empty) {
@@ -93,7 +93,7 @@ function GeoCodingUtils() {
         } else {
             return null;
         }
-    }
+    }*/
 
     /**
      *  Получить координаты объекта по его имени(yandex).
@@ -132,6 +132,7 @@ function GeoCodingUtils() {
                 } else
                     getCoordinatesFromYandex(objName, yaKey, aCallBack);
             }
+            return {lat:osmGeoObject[0].lat, lng:osmGeoObject[0].lon, address:constructOSMAddress(osmGeoObject[0].address)};
         });
     }
 
@@ -190,7 +191,7 @@ function GeoCodingUtils() {
      * @returns {undefined}
      */
     self.getCoordinates4GeoObject = function(objName, aCallBack) {
-        getCoordinatesFromOSM(objName, aCallBack);
+        return getCoordinatesFromOSM(objName, aCallBack);
     };
 
     /**

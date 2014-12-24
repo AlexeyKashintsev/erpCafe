@@ -10,18 +10,49 @@ function tpMap(aContainer) {
     var tpMarker;
     var workWithMarker = false;
     var btnPanel;
+    var geoCodingUtils = new ServerModule("GeoCodingUtils");
+    
+    function newMarker(aPosition) {
+        var marker = L.marker(aPosition,
+                    {
+                        icon        :   new L.Icon.Default(),
+                        draggable   :   true
+                    });
+        marker.addTo(map);
+        return marker;
+    }
+    
+    function saveMarker() {
+        if(tpMarker){
+            if(!model.listTradePoints.empty){
+                    model.listTradePoints.cursor.tp_geoposition = JSON.stringify(tpMarker.getLatLng());
+                    model.save();
+            }
+        }
+        $('#modalForm').off('hidden.bs.modal', saveMarker);
+    }
     
     self.setTradePoint = function(aTradePoint) {
         model.listTradePoints.params.franchazi_id = null;
         model.listTradePoints.params.trade_point = aTradePoint;
         model.listTradePoints.requery(function() {
-            if(!model.listTradePoints.empty){
-                if(model.listTradePoints.cursor.tp_geoposition){
-                    tpMarker = JSON.parse(model.listTradePoints.cursor.tp_geoposition);
-                } else if(model.listTradePoints.cursor.tp_city){
-                    //var geoCodingUtils = new Session.get("GeoCodingUtils");
-                    //Вот тут парсить город   
+            if(!model.listTradePoints.empty) {
+                if (model.listTradePoints.cursor.tp_geoposition) {
+                    var center = JSON.parse(model.listTradePoints.cursor.tp_geoposition);
+                    tpMarker = newMarker(center);
+                    map.setView(center, 14);
+                } else if(model.listTradePoints.cursor.tp_city) {
+                    geoCodingUtils.getCoordinates4GeoObject(model.listTradePoints.cursor.city,
+                            function(aCenter) {
+                                if (!!aCenter)
+                                
+                                    map.setView({
+                                            lat : aCenter.lat,
+                                            lng : aCenter.lng
+                                        }, 11);
+                            });
                 }
+                
             }
         });
     };
@@ -82,14 +113,9 @@ function tpMap(aContainer) {
             
             map.on('click', function(evt) {
                 if (!tpMarker) {
-                        tpMarker = L.marker(evt.latlng,
-                                    {
-                                        icon        :   new L.Icon.Default(),
-                                        draggable   :   true
-                                    });
-                        tpMarker.addTo(map);
+                        tpMarker = newMarker(evt.latlng);
                     } else {
-                        //Маркер утановлен
+                        //Маркер установлен
                     }
             });
             /*serverUnits.settingsUnit.getMapPosition(function(aPosition) {
@@ -99,15 +125,7 @@ function tpMap(aContainer) {
             aContainer.append(self.container);
         }
         
-        $('#modalForm').on('hidden.bs.modal', function (e) {
-                if(tpMarker){
-                    alert(tpMarker.getLatLng());
-                    if(!model.listTradePoints.empty){
-                            model.listTradePoints.cursor.tp_geoposition = JSON.stringify(tpMarker.getLatLng());
-                            model.save();
-                    }
-                }
-        });
+        $('#modalForm').on('hidden.bs.modal', saveMarker);
     };
     if (aContainer) self.manualShow(aContainer);
     
@@ -116,6 +134,5 @@ function tpMap(aContainer) {
         var modalBody = modal.getModalBody();
         self.manualShow(modalBody);
         modal.show();
-        
     };
 }
