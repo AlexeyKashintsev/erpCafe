@@ -5,6 +5,7 @@
 function addItemToDashboard() {
     var self = this, model = this.model, form = this;
     var Settings = new SettingsOfItem();
+    var ItemCard = new addItem();
     // TODO : place your code here
 
     function modelGridMouseClicked(evt) {//GEN-FIRST:event_modelGridMouseClicked
@@ -13,7 +14,7 @@ function addItemToDashboard() {
     }//GEN-LAST:event_modelGridMouseClicked
 
     function qTradeItemTypesOnChanged(evt) {//GEN-FIRST:event_qTradeItemTypesOnChanged
-        
+        model.qTradeItems.requery();
     }//GEN-LAST:event_qTradeItemTypesOnChanged
 
     function qTradeItemTypesOnScrolled(evt) {//GEN-FIRST:event_qTradeItemTypesOnScrolled
@@ -28,13 +29,17 @@ function addItemToDashboard() {
     }//GEN-LAST:event_modelGrid1MouseClicked
 
     function btnAddToDashboardActionPerformed(evt) {//GEN-FIRST:event_btnAddToDashboardActionPerformed
-        Settings.setTradeItem(model.qTradeItems.cursor.wh_items_id)
-        Settings.showModal();
+        //Settings.setTradeItem(model.qTradeItems.cursor.wh_items_id);
+        //Settings.showModal();
     }//GEN-LAST:event_btnAddToDashboardActionPerformed
 
     function btnNewItemActionPerformed(evt) {//GEN-FIRST:event_btnNewItemActionPerformed
-        Settings.addNew();
-        Settings.showModal();
+        ItemCard.addNew();
+        ItemCard.showModal(function(result){
+            if (result){
+                model.qTradeItems.requery();
+            }
+        });
     }//GEN-LAST:event_btnNewItemActionPerformed
 
     function btnCancelActionPerformed(evt) {//GEN-FIRST:event_btnCancelActionPerformed

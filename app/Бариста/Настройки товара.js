@@ -8,6 +8,7 @@ function SettingsOfItem() {
     itemCard.showOnPanel(form.pnlCard);
     var controlOfWH = new ControlOnWarehouse();
     controlOfWH.showOnPanel(form.pnlControlWH);
+    controlOfWH.setParent(self);
     var contentTradeItem = new ContentTradeItem();
     contentTradeItem.showOnPanel(form.pnlContent);
     

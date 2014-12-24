@@ -112,4 +112,8 @@ function addItem() {
     function btnCancelActionPerformed(evt) {//GEN-FIRST:event_btnCancelActionPerformed
         form.close();
     }//GEN-LAST:event_btnCancelActionPerformed
+
+    function paramsOnChanged(evt) {//GEN-FIRST:event_paramsOnChanged
+        // TODO Добавьте здесь свой код:
+    }//GEN-LAST:event_paramsOnChanged
 }
