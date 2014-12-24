@@ -96,16 +96,7 @@ function tpMap(aContainer) {
 
             map.addLayer(mapTilesLayer);
             map.fitWorld();
-            
-          //  if (!!model.listTradePoints.params.trade_point) {
-                L.easyButton('fa-map-marker', 
-                    function () {
-                        alert(tpMarker.getLatLng());
-                    },
-                    'Установить маркер',
-                    map
-                );
-           // }
+            map.setZoom(3);
             
             setTimeout(function() {
                 map.invalidateSize(true);

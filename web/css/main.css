@@ -479,6 +479,10 @@ div.modal-body > div.map-container {
     height : 500px;
 }
 
+div.modal {
+    z-index : 10000;
+}
+
 /* ### ADMIN WIDGETS ### */
 .fran_info  {
   background-color: white;
