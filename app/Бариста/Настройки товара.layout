@@ -22,7 +22,7 @@
     <layout type="MarginLayoutDesignInfo"/>
     <constraints tabTitle="Цена" type="TabsConstraintsDesignInfo"/>
   </widget>
-  <widget name="panel3" parent="tabbedPane" prefHeight="440px" prefWidth="631px" type="PanelDesignInfo" visible="false">
+  <widget name="pnlBonus" parent="tabbedPane" prefHeight="440px" prefWidth="631px" type="PanelDesignInfo" visible="false">
     <layout type="MarginLayoutDesignInfo"/>
     <constraints tabTitle="Бонусы" type="TabsConstraintsDesignInfo"/>
   </widget>

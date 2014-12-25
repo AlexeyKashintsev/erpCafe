@@ -27,6 +27,7 @@ function btnReqActionPerformed(evt) {//GEN-FIRST:event_btnReqActionPerformed
 }//GEN-LAST:event_btnReqActionPerformed
 
 function formWindowOpened(evt) {//GEN-FIRST:event_formWindowOpened
+    model.qContents.requery();
     form.title = "Состав товара " + self.productName;
     if(self.block) {
         form.modelGrid.editable = false;

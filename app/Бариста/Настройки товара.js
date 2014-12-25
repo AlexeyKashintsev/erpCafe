@@ -11,12 +11,15 @@ function SettingsOfItem() {
     controlOfWH.setParent(self);
     var contentTradeItem = new ContentTradeItem();
     contentTradeItem.showOnPanel(form.pnlContent);
+    //var bonusPanel = new BonusRateForm();
+    //bonusPanel.showOnPanel(form.pnlBonus);
     
     self.setTradeItem = function(anItem){
         Item = anItem;
         itemCard.setItem(anItem);
         controlOfWH.setTradeItem(anItem);
         contentTradeItem.setTradeItem(anItem);
+        //bonusPanel.setTradeItem(anItem);
     };
     
     function formWindowOpened(evt) {//GEN-FIRST:event_formWindowOpened

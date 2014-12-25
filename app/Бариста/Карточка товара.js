@@ -103,10 +103,7 @@ function addItem() {
     }//GEN-LAST:event_button1ActionPerformed
 
     function qTradeItemsOnChanged(evt) {//GEN-FIRST:event_qTradeItemsOnChanged
-        if (model.qTradeItems.cursor.item_picture)
-            form.lblImageArea.text = "<html><img src='" + model.qTradeItems.cursor.item_picture + "' style='max-width: " + imgW +"px; max-height: " + imgH +"px;'></html>";
-        else 
-            form.lblImageArea.text = "Изображение отсутствует!";
+        btnCheckActionPerformed();
     }//GEN-LAST:event_qTradeItemsOnChanged
 
     function btnCancelActionPerformed(evt) {//GEN-FIRST:event_btnCancelActionPerformed
