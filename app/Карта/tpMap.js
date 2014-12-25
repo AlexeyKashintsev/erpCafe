@@ -10,7 +10,16 @@ function tpMap(aContainer) {
     var tpMarker;
     var workWithMarker = false;
     var btnPanel;
-    var geoCodingUtils = new ServerModule("GeoCodingUtils");
+    var center;
+    var urlOSM = "http://nominatim.openstreetmap.org/search/{0}?format=json&polygon=1&addressdetails=1";
+    
+    function format(aObj, aArguments) {
+        var formatted = aObj;
+        for (var arg in aArguments) {
+            formatted = formatted.replace("{" + arg + "}", aArguments[arg]);
+        }
+        return formatted;
+    };
     
     function newMarker(aPosition) {
         var marker = L.marker(aPosition,
@@ -32,6 +41,18 @@ function tpMap(aContainer) {
         $('#modalForm').off('hidden.bs.modal', saveMarker);
     }
     
+    function invalidate() {
+        setTimeout(function() {
+                map.invalidateSize(false);
+            }, 500);
+    }
+    
+    function setView(aCenter) {
+        setTimeout(function() {
+            map.setView( aCenter, 14);
+        }, 800);
+    }
+    
     self.setTradePoint = function(aTradePoint) {
         model.listTradePoints.params.franchazi_id = null;
         model.listTradePoints.params.trade_point = aTradePoint;
@@ -40,17 +61,22 @@ function tpMap(aContainer) {
                 if (model.listTradePoints.cursor.tp_geoposition) {
                     var center = JSON.parse(model.listTradePoints.cursor.tp_geoposition);
                     tpMarker = newMarker(center);
-                    map.setView(center, 14);
-                } else if(model.listTradePoints.cursor.tp_city) {
-                    geoCodingUtils.getCoordinates4GeoObject(model.listTradePoints.cursor.city,
-                            function(aCenter) {
-                                if (!!aCenter)
-                                
-                                    map.setView({
-                                            lat : aCenter.lat,
-                                            lng : aCenter.lng
-                                        }, 11);
-                            });
+                    setView(center);
+                } else if (model.listTradePoints.cursor.tp_city) {
+                    var link = format(urlOSM, [model.listTradePoints.cursor.city + 
+                            (!!model.listTradePoints.cursor.tp_address ?
+                            (', ' + model.listTradePoints.cursor.tp_address) : '')]);
+                    $.get(link, function(osmGeoObject) {
+                        if (osmGeoObject) {
+                            tpMarker = newMarker(osmGeoObject[0]);
+                            var center = {
+                                lat : osmGeoObject[0].lat,
+                                lon : osmGeoObject[0].lon
+                            };
+                            tpMarker = newMarker(center);
+                            setView(center);
+                        }
+                    });
                 }
                 
             }
@@ -75,7 +101,7 @@ function tpMap(aContainer) {
                     "http://t{s}maps.mail.ru/tiles/scheme/{z}/{y}/{x}.png",
                     {
                         "subdomains": ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"],
-                        "attribution": "Powered by 4R. Вендор подложки: Карты@Mail.Ru",
+                        "attribution": "Mail.ru",
                         "detectRetina": true
                     }
             );
@@ -98,9 +124,7 @@ function tpMap(aContainer) {
             map.fitWorld();
             map.setZoom(3);
             
-            setTimeout(function() {
-                map.invalidateSize(true);
-            }, 500);
+            invalidate();
             
             map.on('click', function(evt) {
                 if (!tpMarker) {
@@ -120,10 +144,11 @@ function tpMap(aContainer) {
     };
     if (aContainer) self.manualShow(aContainer);
     
-    self.showModal = function() {
+    self.showModal = function(aTradePoint) {
         var modal = new cmn.Modal('Расположение торговой точки');
         var modalBody = modal.getModalBody();
         self.manualShow(modalBody);
         modal.show();
+        self.setTradePoint(aTradePoint);
     };
 }

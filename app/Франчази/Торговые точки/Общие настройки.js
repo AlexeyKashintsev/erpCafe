@@ -76,8 +76,11 @@ function TPCommonSettings() {
     }//GEN-LAST:event_btnCancelCloseActionPerformed
 
     function btnSetMarkerActionPerformed(evt) {//GEN-FIRST:event_btnSetMarkerActionPerformed
-        var tMap = new tpMap();
-        tMap.setTradePoint(model.params.trade_point_id);
-        tMap.showModal();
+        model.save(function() {
+            var tMap = new tpMap();
+            tMap.showModal(model.params.trade_point_id);
+            //tMap.setTradePoint(model.params.trade_point_id);
+        });
+        
     }//GEN-LAST:event_btnSetMarkerActionPerformed
 }
