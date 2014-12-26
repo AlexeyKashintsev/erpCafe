@@ -1,28 +1,28 @@
-<?xml version="1.0" encoding="UTF-8"?><layout defaultCloseOperation="2" name="Form" prefHeight="491px" prefWidth="661px" windowOpened="formWindowOpened">
-  <widget name="tabbedPane" parent="Form" prefHeight="468px" prefWidth="636px" type="TabsDesignInfo">
-    <constraints height="468px" left="12px" top="12px" type="MarginConstraintsDesignInfo" width="636px"/>
+<?xml version="1.0" encoding="UTF-8"?><layout backgroundColor="#ededed" defaultCloseOperation="2" name="Form" prefHeight="491px" prefWidth="661px" windowOpened="formWindowOpened">
+  <widget backgroundColor="#ededed" name="tabbedPane" parent="Form" prefHeight="491px" prefWidth="661px" type="TabsDesignInfo">
+    <constraints bottom="0px" left="0px" right="0px" top="0px" type="MarginConstraintsDesignInfo"/>
   </widget>
-  <widget name="pnlGeneral" parent="tabbedPane" prefHeight="440px" prefWidth="631px" type="PanelDesignInfo">
+  <widget backgroundColor="#ededed" name="pnlGeneral" parent="tabbedPane" prefHeight="445px" prefWidth="640px" type="PanelDesignInfo">
     <layout type="MarginLayoutDesignInfo"/>
     <constraints tabTitle="Общее" type="TabsConstraintsDesignInfo"/>
   </widget>
-  <widget name="pnlCard" parent="pnlGeneral" prefHeight="300px" prefWidth="624px" type="PanelDesignInfo">
+  <widget backgroundColor="#ededed" name="pnlCard" parent="pnlGeneral" prefHeight="305px" prefWidth="640px" type="PanelDesignInfo">
     <layout type="MarginLayoutDesignInfo"/>
-    <constraints bottom="140px" left="0px" right="7px" top="0px" type="MarginConstraintsDesignInfo"/>
+    <constraints bottom="140px" left="0px" right="0px" top="0px" type="MarginConstraintsDesignInfo"/>
   </widget>
-  <widget name="pnlControlWH" parent="pnlGeneral" prefHeight="132px" prefWidth="624px" type="PanelDesignInfo">
+  <widget backgroundColor="#ededed" name="pnlControlWH" parent="pnlGeneral" prefHeight="139px" prefWidth="640px" type="PanelDesignInfo">
     <layout type="MarginLayoutDesignInfo"/>
-    <constraints bottom="-4px" left="0px" right="7px" top="312px" type="MarginConstraintsDesignInfo"/>
+    <constraints bottom="0px" left="0px" right="0px" top="306px" type="MarginConstraintsDesignInfo"/>
   </widget>
-  <widget name="pnlContent" parent="tabbedPane" prefHeight="440px" prefWidth="631px" type="PanelDesignInfo" visible="false">
+  <widget backgroundColor="#ededed" name="pnlContent" parent="tabbedPane" prefHeight="445px" prefWidth="640px" type="PanelDesignInfo" visible="false">
     <layout type="MarginLayoutDesignInfo"/>
     <constraints tabTitle="Состав товара" type="TabsConstraintsDesignInfo"/>
   </widget>
-  <widget name="panel2" parent="tabbedPane" prefHeight="440px" prefWidth="631px" type="PanelDesignInfo" visible="false">
+  <widget backgroundColor="#ededed" name="panel2" parent="tabbedPane" prefHeight="445px" prefWidth="640px" type="PanelDesignInfo" visible="false">
     <layout type="MarginLayoutDesignInfo"/>
     <constraints tabTitle="Цена" type="TabsConstraintsDesignInfo"/>
   </widget>
-  <widget name="pnlBonus" parent="tabbedPane" prefHeight="440px" prefWidth="631px" type="PanelDesignInfo" visible="false">
+  <widget backgroundColor="#ededed" name="pnlBonus" parent="tabbedPane" prefHeight="445px" prefWidth="640px" type="PanelDesignInfo" visible="false">
     <layout type="MarginLayoutDesignInfo"/>
     <constraints tabTitle="Бонусы" type="TabsConstraintsDesignInfo"/>
   </widget>

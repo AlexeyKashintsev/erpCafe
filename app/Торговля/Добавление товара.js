@@ -45,4 +45,11 @@ function addItemToDashboard() {
     function btnCancelActionPerformed(evt) {//GEN-FIRST:event_btnCancelActionPerformed
         form.close();
     }//GEN-LAST:event_btnCancelActionPerformed
+
+    function paramsOnChanged(evt) {//GEN-FIRST:event_paramsOnChanged
+        form.tfSearch.focus();
+        alert('!');
+    }//GEN-LAST:event_paramsOnChanged
+
+    form.tfSearch.focus();
 }

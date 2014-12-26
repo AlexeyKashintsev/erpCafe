@@ -11,6 +11,7 @@ function TradeItemsOnTradePoint() {
 
     self.selectForm = false;
     var changed = false;
+    var addTradeItem;
     
     /*model.params.beginUpdate();
     model.params.item_type = null;
@@ -75,11 +76,9 @@ function btnSaveActionPerformed(evt) {//GEN-FIRST:event_btnSaveActionPerformed
 }//GEN-LAST:event_btnSaveActionPerformed
 
     function btnAddActionPerformed(evt) {//GEN-FIRST:event_btnAddActionPerformed
-        model.qTradeItemsAndType.insert(model.qTradeItemsAndType.schema.item_type, model.itemType.cursor.wh_item_types_id,
-                                model.qTradeItemsAndType.schema.franchazi_id, model.params.franchazi_id,
-                                model.qTradeItemsAndType.schema.warehouse, model.params.trade_point_id
-                                );
-        model.qTradeItemsAndType.cursor.item_id = model.qTradeItemsAndType.cursor.wh_items_id;
+        if (!addTradeItem)
+            addTradeItem = new addItemToDashboard();
+        addTradeItem.showModal();
     }//GEN-LAST:event_btnAddActionPerformed
 
     function btnDelActionPerformed(evt) {//GEN-FIRST:event_btnDelActionPerformed
