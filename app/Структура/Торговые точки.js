@@ -57,4 +57,11 @@ function formWindowClosing(evt) {//GEN-FIRST:event_formWindowClosing
     function btnDelActionPerformed(evt) {//GEN-FIRST:event_btnDelActionPerformed
         model.listTradePoints.cursor.tp_active = !model.listTradePoints.cursor.tp_active;
     }//GEN-LAST:event_btnDelActionPerformed
+
+    function buttonActionPerformed(evt) {//GEN-FIRST:event_buttonActionPerformed
+        var tpSettings = new TradePoint();
+        tpSettings.setFranchazi(model.params.franchazi_id);
+        tpSettings.setTradePoint(model.listTradePoints.cursor.org_trade_point_id);
+        tpSettings.showModal();
+    }//GEN-LAST:event_buttonActionPerformed
 }

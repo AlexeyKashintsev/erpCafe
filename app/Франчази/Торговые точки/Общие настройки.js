@@ -74,4 +74,13 @@ function TPCommonSettings() {
         settings.setSettings("cheklist_close", null, null, model.params.trade_point_id, model.params.franchazi_id, true);
         form.lbClose.text = "Не задан";
     }//GEN-LAST:event_btnCancelCloseActionPerformed
+
+    function btnSetMarkerActionPerformed(evt) {//GEN-FIRST:event_btnSetMarkerActionPerformed
+        model.save(function() {
+            var tMap = new tpMap();
+            tMap.showModal(model.params.trade_point_id);
+            //tMap.setTradePoint(model.params.trade_point_id);
+        });
+        
+    }//GEN-LAST:event_btnSetMarkerActionPerformed
 }

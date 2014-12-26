@@ -141,10 +141,10 @@ function BaristaDesktop() {
     }//GEN-LAST:event_getSessionsOnRequeried
     
     function closeSessionAndLogout() {
-        session.tradeSession.calculateFinalValues();
-        session.whSession.closeSession();
-        Logout();
-    };
+                session.tradeSession.calculateFinalValues();
+                session.whSession.closeSession();
+                Logout();
+            });
     
     function btnSessionCloseActionPerformed(evt) {//GEN-FIRST:event_btnSessionCloseActionPerformed
         if(showChecklist('cheklist_close')){

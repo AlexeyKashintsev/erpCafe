@@ -63,14 +63,14 @@ function TradePointCommonInfo(aTradePointDetails, aContainer) {
     }
     
     function btnEmptyCashBoxOnClick(){
-        var sum = prompt("Сколько денег вы хотите снять?", 0);
+        var sum = prompt("Сумма к списанию?", 0);
         if(cashBox >= sum){
             if(tradeAdminModule.takeMoneyFromCashbox(false, sum, tradePointDetails.org_trade_point_id)){
                 cashBox = cashBox - sum;
                 setAdditionalInfo(income, cashBox);
                 alert("Деньги списаны.");
             }
-        } else  alert("В кассе нет "+sum+" рублей");
+        } else  alert("В кассе нет " + sum + " рублей");
     }
     
     function setAdditionalInfo(aDohod, aKassa){
@@ -82,8 +82,8 @@ function TradePointCommonInfo(aTradePointDetails, aContainer) {
     }
     
     function showOnContainer() {
-        var heading = cmn.createElement("div", "panel-heading", container);
-        heading.innerHTML = '<h3 class="panel-title">' + tradePointDetails.tp_name + '</h3>';
+        var heading = cmn.createElement("div", "panel-heading", container);        
+        heading.innerHTML += '<h3 class="panel-title">' + tradePointDetails.tp_name + '</h3>';
         var tpAddress = cmn.createElement("span", "label label-bw", heading);
         tpAddress.innerHTML = tradePointDetails.tp_address;
         
@@ -106,7 +106,7 @@ function TradePointCommonInfo(aTradePointDetails, aContainer) {
             income = tradePointDetails.incomeSum ? tradePointDetails.incomeSum : 0;
             cashBox = startValue + opSum;
             setAdditionalInfo(income, cashBox);
-            
+     
             var btnEmptyCashBox = cmn.createElement("button", "btn btn-success btn-xs btn-block", currentSession);
             btnEmptyCashBox.innerHTML = 'Снять кассу';
             btnEmptyCashBox.onclick = btnEmptyCashBoxOnClick;
