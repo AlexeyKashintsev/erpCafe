@@ -47,9 +47,21 @@ function addItemToDashboard() {
     }//GEN-LAST:event_btnCancelActionPerformed
 
     function paramsOnChanged(evt) {//GEN-FIRST:event_paramsOnChanged
-        form.tfSearch.focus();
-        alert('!');
+        model.qTradeItems.requery(function(){
+            if (model.qTradeItems.length === 0)
+                btnNewItemActionPerformed();
+            form.tfSearch.focus();
+            $("#x-widget-10-input").select();
+        });
+        
     }//GEN-LAST:event_paramsOnChanged
 
-    form.tfSearch.focus();
+    function btnSearchActionPerformed(evt) {//GEN-FIRST:event_btnSearchActionPerformed
+        model.requery();
+    }//GEN-LAST:event_btnSearchActionPerformed
+
+    function buttonActionPerformed(evt) {//GEN-FIRST:event_buttonActionPerformed
+        model.params.item_search = null;
+        form.tfSearch.focus();
+    }//GEN-LAST:event_buttonActionPerformed
 }
