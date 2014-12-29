@@ -83,4 +83,8 @@ function TPCommonSettings() {
         });
         
     }//GEN-LAST:event_btnSetMarkerActionPerformed
+
+    function btnDelMarkerActionPerformed(evt) {//GEN-FIRST:event_btnDelMarkerActionPerformed
+        model.qTradePoint.cursor.tp_geoposition = null;
+    }//GEN-LAST:event_btnDelMarkerActionPerformed
 }
