@@ -45,5 +45,8 @@
   <widget actionPerformed="btnSetMarkerActionPerformed" name="btnSetMarker" parent="Form" prefHeight="23px" prefWidth="132px" text="Указать на карте" type="ButtonDesignInfo">
     <constraints height="23px" left="12px" top="84px" type="MarginConstraintsDesignInfo" width="132px"/>
   </widget>
+  <widget actionPerformed="btnDelMarkerActionPerformed" name="btnDelMarker" parent="Form" prefHeight="23px" prefWidth="132px" text="Сбросить маркер" type="ButtonDesignInfo">
+    <constraints height="23px" left="156px" top="84px" type="MarginConstraintsDesignInfo" width="132px"/>
+  </widget>
   <layout type="MarginLayoutDesignInfo"/>
 </layout>
