@@ -2,10 +2,11 @@
  * 
  * @author Work
  */
-function SettingsOfItem() {
+function SettingsOfItem(aTradeItemId) {
     var self = this, model = this.model, form = this;
     var itemCard = new addItem();
     itemCard.showOnPanel(form.pnlCard);
+    
     var controlOfWH = new ControlOnWarehouse();
     controlOfWH.showOnPanel(form.pnlControlWH);
     controlOfWH.setParent(self);
@@ -14,13 +15,16 @@ function SettingsOfItem() {
     //var bonusPanel = new BonusRateForm();
     //bonusPanel.showOnPanel(form.pnlBonus);
     
-    self.setTradeItem = function(anItem){
-        Item = anItem;
-        itemCard.setItem(anItem);
-        controlOfWH.setTradeItem(anItem);
-        contentTradeItem.setTradeItem(anItem);
+    self.setTradeItem = function(anItemId){
+        //Item = anItemId; TODO Это вот зачем так сделано?
+        itemCard.setItem(anItemId);
+        controlOfWH.setTradeItem(anItemId);
+        contentTradeItem.setTradeItem(anItemId);
         //bonusPanel.setTradeItem(anItem);
     };
+    
+    if (aTradeItemId)
+        self.setTradeItem(aTradeItemId);
     
     function formWindowOpened(evt) {//GEN-FIRST:event_formWindowOpened
         

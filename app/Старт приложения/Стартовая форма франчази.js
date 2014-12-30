@@ -88,7 +88,7 @@ self.showFormAsInternal = function(aForm) {
             display     :   "История заказов",
             dispForm    :   "HistoryOrders"
         },
-        warehouse       :   {
+     /*   warehouse       :   {
             display     :   "Склад",
             dispForm    :   "WarehouseItemList",
             inner   :   {
@@ -99,7 +99,7 @@ self.showFormAsInternal = function(aForm) {
         tradePositions  :   {
             display     :   "Торговые позиции",
             dispForm    :   "ItemsForTrade"
-        },
+        },*/
         tradePoints :   {
             display     :   "Торговые точки",
           //  glyph       :   "glyphicon glyphicon-cog",

@@ -5,8 +5,7 @@
 function addItemToDashboard() {
     var self = this, model = this.model, form = this;
     var Settings = new SettingsOfItem();
-    var ItemCard = new addItem();
-    // TODO : place your code here
+    var itemCard = new ItemCard();
 
     function modelGridMouseClicked(evt) {//GEN-FIRST:event_modelGridMouseClicked
         model.qTradeItems.params.item_type = model.qTradeItemTypes.cursor.trade_item_type_id;
@@ -34,8 +33,8 @@ function addItemToDashboard() {
     }//GEN-LAST:event_btnAddToDashboardActionPerformed
 
     function btnNewItemActionPerformed(evt) {//GEN-FIRST:event_btnNewItemActionPerformed
-        ItemCard.addNew();
-        ItemCard.showModal(function(result){
+        itemCard.addNew();
+        itemCard.showModal(function(result){
             if (result){
                 model.qTradeItems.requery();
             }

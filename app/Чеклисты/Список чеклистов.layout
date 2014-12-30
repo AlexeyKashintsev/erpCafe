@@ -9,29 +9,26 @@
   <widget backgroundColor="#cdd9e8" borderPainted="false" floatable="false" name="toolBar11" parent="Form" prefHeight="17px" prefWidth="104px" rollover="true" type="ToolbarDesignInfo">
     <constraints height="17px" right="0px" top="10px" type="MarginConstraintsDesignInfo" width="104px"/>
   </widget>
-  <widget actionPerformed="rbAllActionPerformed" buttonGroup="buttonGroup" name="rbAll" parent="toolBar11" prefHeight="15px" prefWidth="35px" text="Все" type="RadioDesignInfo"/>
-  <widget actionPerformed="rbMyActionPerformed" buttonGroup="buttonGroup" name="rbMy" parent="toolBar11" prefHeight="15px" prefWidth="37px" text="Мои" type="RadioDesignInfo"/>
-  <widget backgroundColor="#cdd9e8" floatable="false" name="toolBar" parent="Form" prefHeight="36px" prefWidth="662px" rollover="true" type="ToolbarDesignInfo">
+  <widget actionPerformed="rbAllActionPerformed" buttonGroup="buttonGroup" name="rbAll" parent="toolBar11" prefHeight="13px" prefWidth="53px" text="Все" type="RadioDesignInfo"/>
+  <widget actionPerformed="rbMyActionPerformed" buttonGroup="buttonGroup" name="rbMy" parent="toolBar11" prefHeight="13px" prefWidth="59px" text="Мои" type="RadioDesignInfo"/>
+  <widget backgroundColor="#ededed" floatable="false" name="toolBar" parent="Form" prefHeight="36px" prefWidth="662px" rollover="true" type="ToolbarDesignInfo">
     <constraints height="36px" left="0px" right="0px" top="0px" type="MarginConstraintsDesignInfo"/>
   </widget>
-  <widget actionPerformed="btnAddActionPerformed" focusable="false" horizontalTextPosition="0" icon="icons/22x22/actions/list-add.png" name="btnAdd" parent="toolBar" prefHeight="29px" prefWidth="29px" toolTipText="Добавить" type="ButtonDesignInfo" verticalTextPosition="3"/>
-  <widget actionPerformed="btnDelActionPerformed" focusable="false" horizontalTextPosition="0" icon="icons/22x22/actions/list-remove.png" name="btnDel" parent="toolBar" prefHeight="29px" prefWidth="29px" toolTipText="Удалить" type="ButtonDesignInfo" verticalTextPosition="3"/>
-  <widget actionPerformed="btnReqActionPerformed" focusable="false" horizontalTextPosition="0" icon="icons/22x22/actions/new-view-refresh.png" name="btnReq" parent="toolBar" prefHeight="29px" prefWidth="29px" toolTipText="Обновить" type="ButtonDesignInfo" verticalTextPosition="3"/>
-  <widget actionPerformed="btnItemEditContentActionPerformed" focusable="false" horizontalTextPosition="4" icon="icons/22x22/actions/gtk-floppy.png" name="btnItemEditContent" parent="toolBar" prefHeight="29px" prefWidth="29px" toolTipText="Сохранить" type="ButtonDesignInfo" verticalTextPosition="3"/>
-  <widget actionPerformed="btnItemCreateDoubleActionPerformed" focusable="false" horizontalTextPosition="4" icon="icons/22x22/actions/document-revert.png" name="btnItemCreateDouble" parent="toolBar" prefHeight="29px" prefWidth="29px" toolTipText="Дублировать" type="ButtonDesignInfo" verticalTextPosition="3"/>
+  <widget actionPerformed="btnAddActionPerformed" focusable="false" horizontalTextPosition="0" icon="icons/22x22/actions/list-add.png" name="btnAdd" parent="toolBar" prefHeight="26px" prefWidth="34px" toolTipText="Добавить" type="ButtonDesignInfo" verticalTextPosition="3"/>
+  <widget actionPerformed="btnDelActionPerformed" focusable="false" horizontalTextPosition="0" icon="icons/22x22/actions/list-remove.png" name="btnDel" parent="toolBar" prefHeight="26px" prefWidth="34px" toolTipText="Удалить" type="ButtonDesignInfo" verticalTextPosition="3"/>
+  <widget actionPerformed="btnReqActionPerformed" focusable="false" horizontalTextPosition="0" icon="icons/22x22/actions/new-view-refresh.png" name="btnReq" parent="toolBar" prefHeight="26px" prefWidth="34px" toolTipText="Обновить" type="ButtonDesignInfo" verticalTextPosition="3"/>
+  <widget actionPerformed="btnItemEditContentActionPerformed" focusable="false" horizontalTextPosition="4" icon="icons/22x22/actions/gtk-floppy.png" name="btnItemEditContent" parent="toolBar" prefHeight="26px" prefWidth="34px" toolTipText="Сохранить" type="ButtonDesignInfo" verticalTextPosition="3"/>
+  <widget actionPerformed="btnItemCreateDoubleActionPerformed" focusable="false" horizontalTextPosition="4" icon="icons/22x22/actions/document-revert.png" name="btnItemCreateDouble" parent="toolBar" prefHeight="26px" prefWidth="34px" toolTipText="Дублировать" type="ButtonDesignInfo" verticalTextPosition="3"/>
   <widget dividerLocation="300" leftComponent="panel" name="splitPane" parent="Form" prefHeight="312px" prefWidth="662px" rightComponent="panel1" type="SplitDesignInfo">
     <constraints bottom="59px" left="0px" right="0px" top="36px" type="MarginConstraintsDesignInfo"/>
   </widget>
-  <widget backgroundColor="#cdd9e8" name="panel" parent="splitPane" prefHeight="310px" prefWidth="299px" type="PanelDesignInfo">
+  <widget backgroundColor="#cdd9e8" name="panel" parent="splitPane" prefHeight="308px" prefWidth="298px" type="PanelDesignInfo">
     <layout type="MarginLayoutDesignInfo"/>
   </widget>
-  <widget deletable="false" insertable="false" mouseClicked="modelGridMouseClicked" name="modelGrid" parent="panel" prefHeight="312px" prefWidth="306px" type="DbGridDesignInfo">
+  <widget deletable="false" insertable="false" mouseClicked="modelGridMouseClicked" name="modelGrid" parent="panel" prefHeight="310px" prefWidth="305px" type="DbGridDesignInfo">
     <column name="colCheklist_title" title="Название" width="100">
       <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
       <datamodelElement entityId="141648129217993" fieldName="cheklist_title"/>
-      <headerStyle>
-        <nativeFont name="Tahoma" size="11"/>
-      </headerStyle>
       <columnsDatasource/>
       <columnsDisplayField/>
       <cellsDatasource/>
@@ -40,6 +37,9 @@
         <columnsKeyField/>
         <cellValueField/>
       </cellDesignInfo>
+      <headerStyle>
+        <nativeFont name="Tahoma" size="11"/>
+      </headerStyle>
     </column>
     <column name="colCheklist_type" title="Тип">
       <controlInfo classHint="DbComboDesignInfo" name="view" prefHeight="0px" prefWidth="0px">
@@ -47,9 +47,6 @@
         <displayField entityId="141691288020382" fieldName="type_name"/>
       </controlInfo>
       <datamodelElement entityId="141648129217993" fieldName="cheklist_type"/>
-      <headerStyle>
-        <nativeFont name="Tahoma" size="11"/>
-      </headerStyle>
       <columnsDatasource/>
       <columnsDisplayField/>
       <cellsDatasource/>
@@ -58,6 +55,9 @@
         <columnsKeyField/>
         <cellValueField/>
       </cellDesignInfo>
+      <headerStyle>
+        <nativeFont name="Tahoma" size="11"/>
+      </headerStyle>
     </column>
     <rowsColumnsDesignInfo>
       <rowsDatasource entityId="141648129217993" field="false"/>
@@ -65,13 +65,13 @@
     <treeDesignInfo/>
     <constraints bottom="-2px" left="0px" right="-7px" top="0px" type="MarginConstraintsDesignInfo"/>
   </widget>
-  <widget backgroundColor="#cdd9e8" name="panel1" parent="splitPane" prefHeight="310px" prefWidth="356px" type="PanelDesignInfo">
+  <widget backgroundColor="#ededed" name="panel1" parent="splitPane" prefHeight="308px" prefWidth="355px" type="PanelDesignInfo">
     <layout type="MarginLayoutDesignInfo"/>
   </widget>
-  <widget name="scrollPane" parent="panel1" prefHeight="276px" prefWidth="360px" type="ScrollDesignInfo">
-    <constraints bottom="-2px" left="0px" right="-4px" top="36px" type="MarginConstraintsDesignInfo"/>
+  <widget name="scrollPane" parent="panel1" prefHeight="272px" prefWidth="355px" type="ScrollDesignInfo">
+    <constraints bottom="0px" left="0px" right="0px" top="36px" type="MarginConstraintsDesignInfo"/>
   </widget>
-  <widget focusLost="taContentFocusLost" mouseExited="taContentMouseExited" name="taContent" parent="scrollPane" prefHeight="274px" prefWidth="358px" type="TextPaneDesignInfo"/>
+  <widget focusLost="taContentFocusLost" mouseExited="taContentMouseExited" name="taContent" parent="scrollPane" prefHeight="268px" prefWidth="351px" type="TextPaneDesignInfo"/>
   <widget name="label" parent="panel1" prefHeight="14px" prefWidth="168px" text="Содержание" type="LabelDesignInfo">
     <constraints height="14px" left="12px" top="12px" type="MarginConstraintsDesignInfo" width="168px"/>
   </widget>

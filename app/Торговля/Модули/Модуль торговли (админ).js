@@ -64,17 +64,11 @@ function TradeAdminModule() {
         }
     }
     
-    function closeItemOnTradePointOrFranchazi(anItem, aTradePoint, aFranchazi, anEndDate) {
-        /*if (setTradeItemOnTradePoint(anItem, aTradePoint, aFranchazi)) {
-            model.qTIbyTP.beforeFirst();
-            while (model.qTIbyTP.next())
-                model.qTIbyTP.cursor.end_date = aEndDate ? aEndDate : new Date();
-            model.save();
-        }*/
+    function closeItemOnTradePointOrFranchazi(anItem, aTradePoint, aFranchazi, aPriceType) {
         model.prCloseItemCost.params.franchazi_id = aFranchazi;
         model.prCloseItemCost.params.trade_point_id = aTradePoint;
         model.prCloseItemCost.params.item_id = anItem;
-        //model.prCloseItemCost.params.stop_date = Date(anEndDate);
+        model.prCloseItemCost.params.price_type = aPriceType;
         model.prCloseItemCost.executeUpdate();
     }
     /*
@@ -94,14 +88,14 @@ function TradeAdminModule() {
     /*
      * TO DO Добавить обход остальных торговых точек точек франчази, если не указана торговая точка
      */
-    self.setCost4TradeItemOnTradePointOrFranchzi = function(anItem, aTradePoint, aFranchazi, aCost) {
+    self.setCost4TradeItemOnTradePointOrFranchzi = function(anItem, aTradePoint, aFranchazi, aCost, aPriceType) {
         closeItemOnTradePointOrFranchazi(anItem, aTradePoint, aFranchazi);
         addNewItemToTradePointOrFranchazi(anItem, aTradePoint, aFranchazi, aCost);
         model.save();
     };
     
-    self.setEndDateForTradeItem = function(anItem, aTradePoint, aFranchazi, aEndDate) {
-        closeItemOnTradePointOrFranchazi(anItem, aTradePoint, aFranchazi, aEndDate);
+    self.setEndDateForTradeItem = function(anItem, aTradePoint, aFranchazi, aEndDate, aPriceType) {
+        closeItemOnTradePointOrFranchazi(anItem, aTradePoint, aFranchazi, aEndDate, aPriceType);
         model.save();
     };
     /*
@@ -112,7 +106,6 @@ function TradeAdminModule() {
         if(!aSessionId){
             model.qOpenedOrLastSession.params.trade_point = aTradePoint;
             model.qOpenedOrLastSession.requery();
-            //model.qLastClosedSessionOnTradePoint.executeUpdate();
             aSessionId = model.qOpenedOrLastSession.cursor.org_session_id;
         }
         model.getSessions.params.session_id = aSessionId;

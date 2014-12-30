@@ -144,7 +144,7 @@ function BaristaDesktop() {
                 session.tradeSession.calculateFinalValues();
                 session.whSession.closeSession();
                 Logout();
-            });
+    };
     
     function btnSessionCloseActionPerformed(evt) {//GEN-FIRST:event_btnSessionCloseActionPerformed
         if(showChecklist('cheklist_close')){

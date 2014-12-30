@@ -80,15 +80,8 @@
   <widget actionPerformed="btnDelActionPerformed" focusable="false" horizontalTextPosition="0" icon="icons/22x22/actions/list-remove.png" name="btnDel" parent="toolBar" prefHeight="26px" prefWidth="34px" toolTipText="Удалить" type="ButtonDesignInfo" verticalTextPosition="3"/>
   <widget actionPerformed="btnReqActionPerformed" focusable="false" horizontalTextPosition="0" icon="icons/22x22/actions/new-view-refresh.png" name="btnReq" parent="toolBar" prefHeight="26px" prefWidth="34px" toolTipText="Обновить" type="ButtonDesignInfo" verticalTextPosition="3"/>
   <widget actionPerformed="btnSaveActionPerformed" focusable="false" horizontalTextPosition="0" icon="icons/22x22/actions/document-save.png" name="btnSave" parent="toolBar" prefHeight="26px" prefWidth="34px" toolTipText="Сохранить" type="ButtonDesignInfo" verticalTextPosition="3"/>
-  <widget actionPerformed="tbExistsActionPerformed" focusable="false" horizontalTextPosition="4" icon="icons/22x22/apps/abiword.png" name="tbExists" parent="toolBar" prefHeight="27px" prefWidth="141px" text="Товары в продаже" type="ToggleButtonDesignInfo"/>
-  <widget actionPerformed="tbSortByTypeActionPerformed" focusable="false" horizontalTextPosition="4" icon="icons/22x22/places/human-folder-open.png" name="tbSortByType" parent="toolBar" prefHeight="27px" prefWidth="169px" text="Сгруппировать по типу" type="ToggleButtonDesignInfo"/>
-  <widget name="modelCheckBox" parent="toolBar" prefHeight="27px" prefWidth="150px" text="Товары в продаже" type="DbCheckDesignInfo" visible="false">
-    <datamodelElement entityId="-1" fieldName="show_only_present"/>
-  </widget>
-  <widget name="modelCheckBox1" parent="toolBar" prefHeight="27px" prefWidth="182px" text="Сгруппировать по типу" type="DbCheckDesignInfo" visible="false">
-    <datamodelElement entityId="-1" fieldName="sort_by_type"/>
-  </widget>
-  <widget actionPerformed="buttonActionPerformed" focusable="false" horizontalTextPosition="0" name="button" parent="toolBar" prefHeight="18px" prefWidth="48px" text="button" type="ButtonDesignInfo" verticalTextPosition="3" visible="false"/>
+  <widget actionPerformed="tbExistsActionPerformed" focusable="false" horizontalTextPosition="4" icon="icons/22x22/apps/abiword.png" name="tbExists" parent="toolBar" prefHeight="27px" prefWidth="141px" selected="true" text="Товары в продаже" type="ToggleButtonDesignInfo"/>
+  <widget actionPerformed="tbSortByTypeActionPerformed" focusable="false" horizontalTextPosition="4" icon="icons/22x22/places/human-folder-open.png" name="tbSortByType" parent="toolBar" prefHeight="27px" prefWidth="169px" selected="true" text="Сгруппировать по типу" type="ToggleButtonDesignInfo"/>
   <nonvisual name="buttonGroup" type="ButtonGroupDesignInfo"/>
   <layout type="BorderLayoutDesignInfo"/>
 </layout>

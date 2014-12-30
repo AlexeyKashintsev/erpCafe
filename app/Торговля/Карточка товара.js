@@ -2,7 +2,7 @@
  * 
  * @author Work
  */
-function addItem() {
+function ItemCard() {
     var self = this, model = this.model, form = this;
     
     var imgH = 190;
@@ -15,7 +15,7 @@ function addItem() {
     
     self.addNew = function(){
         model.qTradeItems.insert();
-    }
+    };
     
     function searchInDataBase(anItemCode){
         model.qGetItemByBarCode.params.barcode = anItemCode;
