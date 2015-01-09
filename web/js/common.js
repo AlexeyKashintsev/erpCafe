@@ -98,7 +98,7 @@ cmn.pFrameRunner = new function() {
     this.show = function(aFormName, aCaption) {
         if (!frames[aFormName]) {
             frames[aFormName] = {};
-            frames[aFormName].div = cmn.createElement('div', 'formContainer', 'mainArea', aFormName);
+            frames[aFormName].div = cmn.createElement('div', 'form-container', 'mainArea', aFormName);
             if (aCaption) {
                 var header = cmn.createElement('div', 'navbar navbar-default navbar-static-top', frames[aFormName].div, '');
                 header.innerHTML = '<div class="container"><h2>' + aCaption + '</h2></div>';

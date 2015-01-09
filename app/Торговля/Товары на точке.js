@@ -11,13 +11,14 @@ function TradeItemsOnTradePoint() {
 
     self.selectForm = false;
     var changed = false;
+    var addTradeItem;
     
-    /*model.params.beginUpdate();
+    model.params.beginUpdate();
     model.params.item_type = null;
     model.params.show_only_present = true;
     model.params.sort_by_type = true;
     model.params.actual_date = new Date();
-    model.params.endUpdate();*/
+    model.params.endUpdate();
     
     
     var TradeAdminModule = new ServerModule('TradeAdminModule');
@@ -75,15 +76,13 @@ function btnSaveActionPerformed(evt) {//GEN-FIRST:event_btnSaveActionPerformed
 }//GEN-LAST:event_btnSaveActionPerformed
 
     function btnAddActionPerformed(evt) {//GEN-FIRST:event_btnAddActionPerformed
-        model.qTradeItemsAndType.insert(model.qTradeItemsAndType.schema.item_type, model.itemType.cursor.wh_item_types_id,
-                                model.qTradeItemsAndType.schema.franchazi_id, model.params.franchazi_id,
-                                model.qTradeItemsAndType.schema.warehouse, model.params.trade_point_id
-                                );
-        model.qTradeItemsAndType.cursor.item_id = model.qTradeItemsAndType.cursor.wh_items_id;
+        if (!addTradeItem)
+            addTradeItem = new addItemToDashboard();
+        addTradeItem.showModal();
     }//GEN-LAST:event_btnAddActionPerformed
 
     function btnDelActionPerformed(evt) {//GEN-FIRST:event_btnDelActionPerformed
-        if (confirm('Вы уверены что хотите удалить этот товар?'))
+        if (confirm('Вы уверены что хотите удалить этот товар с точки?'))
             model.qTradeItemsAndType.deleteRow();
     }//GEN-LAST:event_btnDelActionPerformed
 
@@ -144,11 +143,6 @@ function btnSaveActionPerformed(evt) {//GEN-FIRST:event_btnSaveActionPerformed
                     "\nSbT: " + model.qTradeItemsAndType.params.sort_by_type +
                     "\nAcD: " + model.qTradeItemsAndType.params.actual_date);
     }//GEN-LAST:event_qTradeItemsAndTypeOnRequeried
-
-    function buttonActionPerformed(evt) {//GEN-FIRST:event_buttonActionPerformed
-        model.params.show_only_present = null;
-        //model.params.sort_by_type = null;
-    }//GEN-LAST:event_buttonActionPerformed
 
     function tbExistsActionPerformed(evt) {//GEN-FIRST:event_tbExistsActionPerformed
         model.params.show_only_present = this.selected ? true : null;

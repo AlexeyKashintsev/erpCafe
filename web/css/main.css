@@ -133,7 +133,7 @@ button.btnCancel {
   width: 25%;
 }
 
-/* TRATDE TYPES */
+/* TRADE TYPES */
 div.item_type_selector {
   padding-bottom: 5px;
   padding-left: 15px;
@@ -431,6 +431,10 @@ div.btn_block.predefined.disabled > div.calc_button {
   width: 100%;
 }
 
+.map-marker {
+    cursor: pointer;
+}
+
 .whTitleContainer > div {
   background-color: rgb(102, 74, 55);
   display: inline-block;
@@ -484,7 +488,23 @@ body > div.session_indicator {
   div.session_indicator_broken {
     background-color: orange;
   }
-  
+/* ### MAP ### */
+div.form-container {
+    height : 100%;
+}
+
+div.map-container {
+    height : 100%;
+}
+
+div.modal-body > div.map-container {
+    height : 500px;
+}
+
+div.modal {
+    z-index : 10000;
+}
+
 /* ### ADMIN WIDGETS ### */
 .fran_info  {
   background-color: white;

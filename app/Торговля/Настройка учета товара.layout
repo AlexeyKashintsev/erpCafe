@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?><layout defaultCloseOperation="2" name="Form" prefHeight="127px" prefWidth="400px">
+  <widget actionPerformed="btnNotSaveInWHActionPerformed" buttonGroup="buttonGroup" name="btnNotSaveInWH" parent="Form" prefHeight="23px" prefWidth="528px" text="Не учитывать" type="RadioDesignInfo">
+    <constraints height="23px" left="12px" top="72px" type="MarginConstraintsDesignInfo" width="528px"/>
+  </widget>
+  <widget actionPerformed="btnComplexContentActionPerformed" buttonGroup="buttonGroup" name="btnComplexContent" parent="Form" prefHeight="23px" prefWidth="528px" text="Сложный состав" type="RadioDesignInfo">
+    <constraints height="23px" left="12px" top="48px" type="MarginConstraintsDesignInfo" width="528px"/>
+  </widget>
+  <widget actionPerformed="btnSaveInWHActionPerformed" buttonGroup="buttonGroup" name="btnSaveInWH" parent="Form" prefHeight="23px" prefWidth="528px" text="Учитывать на складе" type="RadioDesignInfo">
+    <constraints height="23px" left="12px" top="24px" type="MarginConstraintsDesignInfo" width="528px"/>
+  </widget>
+  <widget actionPerformed="buttonActionPerformed" name="button" parent="Form" prefHeight="23px" prefWidth="120px" text="Сохранить" type="ButtonDesignInfo">
+    <constraints bottom="8px" height="23px" right="16px" type="MarginConstraintsDesignInfo" width="120px"/>
+  </widget>
+  <nonvisual name="buttonGroup" type="ButtonGroupDesignInfo"/>
+  <layout type="MarginLayoutDesignInfo"/>
+</layout>

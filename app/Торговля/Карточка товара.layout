@@ -1,62 +1,60 @@
-<?xml version="1.0" encoding="UTF-8"?><layout defaultCloseOperation="2" name="Form" prefHeight="302px" prefWidth="400px">
-  <widget actionPerformed="tbBlueActionPerformed" backgroundColor="#0000ff" buttonGroup="ColorButtons" focusable="false" foregroundColor="#0000ff" horizontalTextPosition="0" name="tbBlue" parent="Form" prefHeight="29px" prefWidth="24px" toolTipText="" type="ToggleButtonDesignInfo" verticalTextPosition="3">
-    <constraints bottom="30px" height="29px" left="36px" type="MarginConstraintsDesignInfo" width="24px"/>
+<?xml version="1.0" encoding="UTF-8"?><layout backgroundColor="#ededed" defaultCloseOperation="2" name="Form" prefHeight="292px" prefWidth="583px">
+  <widget name="label1" parent="Form" prefHeight="12px" prefWidth="60px" text="Описание" type="LabelDesignInfo">
+    <constraints height="12px" left="12px" top="186px" type="MarginConstraintsDesignInfo" width="60px"/>
   </widget>
-  <widget actionPerformed="tbGreyActionPerformed" backgroundColor="#999999" buttonGroup="ColorButtons" focusable="false" foregroundColor="#999999" horizontalTextPosition="0" name="tbGrey" parent="Form" prefHeight="29px" prefWidth="24px" toolTipText="" type="ToggleButtonDesignInfo" verticalTextPosition="3">
-    <constraints bottom="30px" height="29px" left="60px" type="MarginConstraintsDesignInfo" width="24px"/>
+  <widget actionPerformed="btnCheckActionPerformed" name="btnCheck" parent="Form" prefHeight="23px" prefWidth="132px" text="Проверить" type="ButtonDesignInfo">
+    <constraints height="23px" right="239px" top="12px" type="MarginConstraintsDesignInfo" width="132px"/>
   </widget>
-  <widget actionPerformed="tbGreenActionPerformed" backgroundColor="#00cc00" buttonGroup="ColorButtons" focusable="false" foregroundColor="#00cc00" horizontalTextPosition="0" name="tbGreen" parent="Form" prefHeight="29px" prefWidth="24px" toolTipText="" type="ToggleButtonDesignInfo" verticalTextPosition="3">
-    <constraints bottom="30px" height="29px" left="84px" type="MarginConstraintsDesignInfo" width="24px"/>
+  <widget name="label" parent="Form" prefHeight="12px" prefWidth="60px" text="Название" type="LabelDesignInfo">
+    <constraints height="12px" left="12px" top="52px" type="MarginConstraintsDesignInfo" width="60px"/>
   </widget>
-  <widget actionPerformed="tbBlackActionPerformed" backgroundColor="#000000" buttonGroup="ColorButtons" focusable="false" horizontalTextPosition="0" name="tbBlack" parent="Form" prefHeight="29px" prefWidth="24px" toolTipText="" type="ToggleButtonDesignInfo" verticalTextPosition="3">
-    <constraints bottom="30px" height="29px" left="108px" type="MarginConstraintsDesignInfo" width="24px"/>
+  <widget actionPerformed="btnSaveActionPerformed" name="btnSave" parent="Form" prefHeight="23px" prefWidth="125px" text="Сохранить" type="ButtonDesignInfo">
+    <constraints bottom="6px" height="23px" right="136px" type="MarginConstraintsDesignInfo" width="125px"/>
   </widget>
-  <widget actionPerformed="tbRedActionPerformed" backgroundColor="#ff0000" buttonGroup="ColorButtons" focusable="false" foregroundColor="#ff0000" horizontalTextPosition="0" name="tbRed" parent="Form" prefHeight="29px" prefWidth="24px" toolTipText="" type="ToggleButtonDesignInfo" verticalTextPosition="3">
-    <constraints bottom="30px" height="29px" left="132px" type="MarginConstraintsDesignInfo" width="24px"/>
+  <widget actionPerformed="buttonActionPerformed" name="button" parent="Form" prefHeight="23px" prefWidth="132px" text="Загрузить фото" type="ButtonDesignInfo">
+    <constraints height="23px" right="91px" top="218px" type="MarginConstraintsDesignInfo" width="132px"/>
   </widget>
-  <widget actionPerformed="tbYellowActionPerformed" backgroundColor="#ffff33" buttonGroup="ColorButtons" focusable="false" foregroundColor="#ffff33" horizontalTextPosition="0" name="tbYellow" parent="Form" prefHeight="29px" prefWidth="24px" toolTipText="" type="ToggleButtonDesignInfo" verticalTextPosition="3">
-    <constraints bottom="30px" height="29px" left="12px" type="MarginConstraintsDesignInfo" width="24px"/>
+  <widget backgroundColor="#ffffff" horizontalAlignment="0" horizontalTextPosition="0" name="lblImageArea" parent="Form" prefHeight="192px" prefWidth="204px" type="LabelDesignInfo" verticalAlignment="1">
+    <constraints height="192px" right="23px" top="12px" type="MarginConstraintsDesignInfo" width="204px"/>
   </widget>
-  <widget name="label" parent="Form" prefHeight="16px" prefWidth="108px" text="Наименование" type="LabelDesignInfo">
-    <constraints height="16px" left="12px" top="54px" type="MarginConstraintsDesignInfo" width="108px"/>
+  <widget name="mcType" parent="Form" prefHeight="20px" prefWidth="260px" type="DbComboDesignInfo">
+    <valueField entityId="141882721078197" fieldName="wh_item_types_id"/>
+    <displayField entityId="141882721078197" fieldName="type_description"/>
+    <datamodelElement entityId="141883094763783" fieldName="item_type"/>
+    <constraints height="20px" left="84px" right="239px" top="84px" type="MarginConstraintsDesignInfo"/>
   </widget>
-  <widget name="label1" parent="Form" prefHeight="16px" prefWidth="108px" text="Описание" type="LabelDesignInfo">
-    <constraints height="16px" left="12px" top="90px" type="MarginConstraintsDesignInfo" width="108px"/>
+  <widget name="mcMeasure" parent="Form" prefHeight="20px" prefWidth="260px" type="DbComboDesignInfo">
+    <valueField entityId="141882722753056" fieldName="wh_measures_id"/>
+    <displayField entityId="141882722753056" fieldName="measure_desc"/>
+    <datamodelElement entityId="141883094763783" fieldName="item_measure"/>
+    <constraints height="20px" left="84px" right="239px" top="120px" type="MarginConstraintsDesignInfo"/>
   </widget>
-  <widget name="label2" parent="Form" prefHeight="16px" prefWidth="108px" text="Штрих-код" type="LabelDesignInfo">
-    <constraints height="16px" left="12px" top="18px" type="MarginConstraintsDesignInfo" width="108px"/>
+  <widget name="tfBarCode" parent="Form" prefHeight="20px" prefWidth="116px" type="DbLabelDesignInfo">
+    <datamodelElement entityId="141883094763783" fieldName="bar_code"/>
+    <constraints height="20px" left="84px" right="383px" top="13px" type="MarginConstraintsDesignInfo"/>
   </widget>
-  <widget name="label3" parent="Form" prefHeight="16px" prefWidth="108px" text="Цена" type="LabelDesignInfo">
-    <constraints bottom="71px" height="16px" left="12px" type="MarginConstraintsDesignInfo" width="108px"/>
+  <widget name="tfName" parent="Form" prefHeight="20px" prefWidth="260px" type="DbLabelDesignInfo">
+    <datamodelElement entityId="141883094763783" fieldName="item_name"/>
+    <constraints height="20px" left="84px" right="239px" top="48px" type="MarginConstraintsDesignInfo"/>
   </widget>
-  <widget horizontalAlignment="0" name="textField" parent="Form" prefHeight="52px" prefWidth="264px" type="TextFieldDesignInfo">
-    <constraints bottom="65px" height="52px" left="132px" type="MarginConstraintsDesignInfo" width="264px"/>
-    <easFont name="Lucida Grande" size="24"/>
+  <widget name="tfDescription" parent="Form" prefHeight="72px" prefWidth="260px" type="DbTextDesignInfo">
+    <datamodelElement entityId="141883094763783" fieldName="item_description"/>
+    <constraints height="72px" left="84px" right="239px" top="156px" type="MarginConstraintsDesignInfo"/>
   </widget>
-  <widget name="checkBox" parent="Form" prefHeight="23px" prefWidth="144px" text="Использовать ТК" type="CheckDesignInfo">
-    <constraints height="23px" left="12px" top="155px" type="MarginConstraintsDesignInfo" width="144px"/>
+  <widget name="label3" parent="Form" prefHeight="14px" prefWidth="72px" text="Штрих код" type="LabelDesignInfo">
+    <constraints height="14px" left="12px" top="16px" type="MarginConstraintsDesignInfo" width="72px"/>
   </widget>
-  <widget name="mFFBarCode" parent="Form" prefHeight="28px" prefWidth="264px" type="DbLabelDesignInfo">
-    <constraints height="28px" left="132px" right="4px" top="12px" type="MarginConstraintsDesignInfo"/>
+  <widget name="label4" parent="Form" prefHeight="14px" prefWidth="28px" text="Тип" type="LabelDesignInfo">
+    <constraints height="14px" left="12px" top="87px" type="MarginConstraintsDesignInfo" width="28px"/>
   </widget>
-  <widget name="mFFItemName" parent="Form" prefHeight="28px" prefWidth="264px" type="DbLabelDesignInfo">
-    <constraints height="28px" left="132px" top="48px" type="MarginConstraintsDesignInfo" width="264px"/>
+  <widget name="label5" parent="Form" prefHeight="14px" prefWidth="60px" text="ед. изм" type="LabelDesignInfo">
+    <constraints height="14px" left="12px" top="123px" type="MarginConstraintsDesignInfo" width="60px"/>
   </widget>
-  <widget name="mFFItemDescription" parent="Form" prefHeight="28px" prefWidth="264px" type="DbLabelDesignInfo">
-    <constraints height="28px" left="132px" top="84px" type="MarginConstraintsDesignInfo" width="264px"/>
+  <widget actionPerformed="btnCancelActionPerformed" name="btnCancel" parent="Form" prefHeight="23px" prefWidth="119px" text="Отмена" type="ButtonDesignInfo">
+    <constraints bottom="6px" height="23px" right="12px" type="MarginConstraintsDesignInfo" width="119px"/>
   </widget>
-  <widget name="button" parent="Form" prefHeight="48px" prefWidth="86px" text="Сохранить" type="ButtonDesignInfo">
-    <constraints bottom="11px" height="48px" right="110px" type="MarginConstraintsDesignInfo" width="86px"/>
+  <widget actionPerformed="button1ActionPerformed" name="button1" parent="Form" prefHeight="23px" prefWidth="71px" text="URL" type="ButtonDesignInfo">
+    <constraints height="23px" right="20px" top="218px" type="MarginConstraintsDesignInfo" width="71px"/>
   </widget>
-  <widget name="button1" parent="Form" prefHeight="48px" prefWidth="94px" text="Отмена" type="ButtonDesignInfo">
-    <constraints bottom="11px" height="48px" right="6px" type="MarginConstraintsDesignInfo" width="94px"/>
-  </widget>
-  <widget name="label4" parent="Form" prefHeight="16px" prefWidth="38px" text="Тип" type="LabelDesignInfo">
-    <constraints height="16px" left="12px" top="126px" type="MarginConstraintsDesignInfo" width="38px"/>
-  </widget>
-  <widget name="modelCombo" parent="Form" prefHeight="28px" prefWidth="252px" type="DbComboDesignInfo">
-    <constraints height="28px" left="132px" top="120px" type="MarginConstraintsDesignInfo" width="252px"/>
-  </widget>
-  <nonvisual name="buttonGroup" type="ButtonGroupDesignInfo"/>
   <layout type="MarginLayoutDesignInfo"/>
 </layout>

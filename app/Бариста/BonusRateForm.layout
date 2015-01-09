@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?><layout defaultCloseOperation="2" name="Form" prefHeight="300px" prefWidth="400px">
+  <widget name="lblInfo" parent="Form" prefHeight="24px" prefWidth="312px" type="LabelDesignInfo">
+    <constraints height="24px" left="36px" top="36px" type="MarginConstraintsDesignInfo" width="312px"/>
+  </widget>
+  <widget actionPerformed="buttonActionPerformed" name="button" parent="Form" prefHeight="23px" prefWidth="101px" text="Изменить" type="ButtonDesignInfo">
+    <constraints height="23px" right="35px" top="84px" type="MarginConstraintsDesignInfo" width="101px"/>
+  </widget>
+  <layout type="MarginLayoutDesignInfo"/>
+</layout>

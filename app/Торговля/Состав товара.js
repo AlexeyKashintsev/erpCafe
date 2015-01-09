@@ -27,6 +27,7 @@ function btnReqActionPerformed(evt) {//GEN-FIRST:event_btnReqActionPerformed
 }//GEN-LAST:event_btnReqActionPerformed
 
 function formWindowOpened(evt) {//GEN-FIRST:event_formWindowOpened
+    model.qContents.requery();
     form.title = "Состав товара " + self.productName;
     if(self.block) {
         form.modelGrid.editable = false;
@@ -72,7 +73,6 @@ function formWindowClosing(evt) {//GEN-FIRST:event_formWindowClosing
 
     function btnSelectActionPerformed(evt) {//GEN-FIRST:event_btnSelectActionPerformed
         model.save();
-        form.close(true);
     }//GEN-LAST:event_btnSelectActionPerformed
 
     function btnDelActionPerformed(evt) {//GEN-FIRST:event_btnDelActionPerformed

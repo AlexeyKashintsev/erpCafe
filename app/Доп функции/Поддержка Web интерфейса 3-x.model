@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?><datamodel>
+  <parametersEntity entityHeight="200" entityIconified="false" entityLocationX="12" entityLocationY="12" entityWidth="150"/>
+  <entity Name="dsDeviceOwner" Title="" entityHeight="200" entityIconified="false" entityId="140793580288264" entityLocationX="185" entityLocationY="15" entityWidth="150" queryId="deviceOwner" tableName="" tableSchemaName=""/>
+  <entity Name="dsEquipmentByParent" Title="" entityHeight="333" entityIconified="false" entityId="140793604871482" entityLocationX="390" entityLocationY="9" entityWidth="330" queryId="equipment_by_parent" tableName="" tableSchemaName=""/>
+  <referenceRelation leftEntityFieldName="prevdata" leftEntityId="140793604871482" rightEntityFieldName="tr_powner_id" rightEntityId="140793604871482"/>
+  <referenceRelation leftEntityFieldName="nextdata" leftEntityId="140793604871482" rightEntityFieldName="tr_powner_id" rightEntityId="140793604871482"/>
+</datamodel>
