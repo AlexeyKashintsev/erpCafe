@@ -3,7 +3,7 @@
  * @author Alexey
  * @module
  */ 
-function ItemsChooser(aTradePoint, aContainer) {
+function ItemsChooser(aTradePoint, aContainer, orderList) {
     var self = this, model = this.model;
     
     var widjetFactory = !!widgetCreator ? widgetCreator : new WidgetCreatorBaristaDesktop();
@@ -63,12 +63,17 @@ function ItemsChooser(aTradePoint, aContainer) {
         });
     }
     
+    function processItemClick(anItemData) {
+        orderList.addItem(anItemData);
+    }
+    
     function tradeItemsCostByTPOnRequeried(evt) {//GEN-FIRST:event_tradeItemsCostByTPOnRequeried
-        var data = {};
+        var data = null;
         model.tradeItemsCostByTP.beforeFirst();
         while (model.tradeItemsCostByTP.next()) {
-            if (data.item_id !== model.tradeItemsCostByTP.cursor.item_id) {
-                trade_items.push(new widgetCreator.tradeItem(items_body, data, addItemToOrder));
+            if (!data || data.item_id !== model.tradeItemsCostByTP.cursor.item_id) {
+                if (!!data)
+                    trade_items.push(new widgetCreator.tradeItem(items_body, data, processItemClick));
                 data = model.tradeItemsCostByTP.cursor;
                 data.cost = {};
             }

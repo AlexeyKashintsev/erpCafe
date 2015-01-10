@@ -4,7 +4,7 @@
  */
 function addItemToDashboard() {
     var self = this, model = this.model, form = this;
-    var Settings = new SettingsOfItem();
+    var Settings = new ItemSettingsAndCost();
     var itemCard = new ItemCard();
 
     function modelGridMouseClicked(evt) {//GEN-FIRST:event_modelGridMouseClicked

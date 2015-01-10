@@ -2,9 +2,9 @@
  * 
  * @author Work
  */
-function SettingsOfItem(aTradeItemId) {
+function ItemSettingsAndCost(aTradeItemId) {
     var self = this, model = this.model, form = this;
-    var itemCard = new addItem();
+    var itemCard = new ItemCard();
     itemCard.showOnPanel(form.pnlCard);
     
     var controlOfWH = new ControlOnWarehouse();

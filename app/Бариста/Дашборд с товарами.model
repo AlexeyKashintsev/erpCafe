@@ -6,8 +6,11 @@
   <parametersEntity entityHeight="200" entityIconified="false" entityLocationX="15" entityLocationY="35" entityWidth="150"/>
   <entity Name="tradeItemsCostByTP" Title="" entityHeight="214" entityIconified="false" entityId="141923850726224" entityLocationX="245" entityLocationY="18" entityWidth="150" onRequeried="tradeItemsCostByTPOnRequeried" queryId="tradeItemsCostByTP" tableName="" tableSchemaName=""/>
   <entity Name="tradeTypes4TP" Title="" entityHeight="200" entityIconified="false" entityId="141923928841264" entityLocationX="459" entityLocationY="197" entityWidth="150" onRequeried="tradeTypes4TPOnRequeried" queryId="tradeTypes4TP" tableName="" tableSchemaName=""/>
-  <relation leftEntityId="-1" leftEntityParameterName="actual_date" rightEntityId="141923850726224" rightEntityParameterName="actual_date"/>
-  <relation leftEntityId="-1" leftEntityParameterName="trade_point_id" rightEntityId="141923850726224" rightEntityParameterName="trade_point_id"/>
-  <relation leftEntityId="-1" leftEntityParameterName="trade_point_id" rightEntityId="141923928841264" rightEntityParameterName="trade_point_id"/>
   <relation leftEntityId="-1" leftEntityParameterName="actual_date" rightEntityId="141923928841264" rightEntityParameterName="actual_date"/>
+  <relation leftEntityId="-1" leftEntityParameterName="trade_point_id" rightEntityId="141923928841264" rightEntityParameterName="trade_point_id"/>
+  <relation leftEntityId="-1" leftEntityParameterName="trade_point_id" rightEntityId="141923850726224" rightEntityParameterName="trade_point_id"/>
+  <relation leftEntityId="-1" leftEntityParameterName="actual_date" rightEntityId="141923850726224" rightEntityParameterName="actual_date"/>
+  <referenceRelation leftEntityFieldName="parent_type" leftEntityId="141923928841264" rightEntityFieldName="trade_item_type_id" rightEntityId="141923928841264"/>
+  <referenceRelation leftEntityFieldName="trade_type" leftEntityId="141923850726224" rightEntityFieldName="trade_item_type_id" rightEntityId="141923928841264"/>
+  <referenceRelation leftEntityFieldName="item_type" leftEntityId="141923850726224" rightEntityFieldName="trade_item_type_id" rightEntityId="141923928841264"/>
 </datamodel>

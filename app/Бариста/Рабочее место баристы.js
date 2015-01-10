@@ -14,13 +14,14 @@ function BaristaDesktop() {
     var whAdd = null;
     var types_body;
     var items_body;
+    var itemsChooser;
     
     widgetCreator = new WidgetCreatorBaristaDesktop();
 //    var fmDev = new fmDevMode();
 //    fmDev.show();
     self.cashBackCalc = new CashBackCalculator(self);
     var chekLists = new CheckLists();
-    var settings = Session.get('Settings');
+    var settings = new ServerModule('Settings');
     settings.updateSettingsParams();
     
     /*
@@ -104,7 +105,8 @@ function BaristaDesktop() {
         if (!model.getSessions.empty) {
             session.tradePoint = model.getSessions.trade_point;
             model.params.trade_point_id = session.tradePoint;
-            model.tradeItemsByTradePointWithCost.params.franchazi_id = session.franchaziId;
+            itemsChooser = new ItemsChooser(session.tradePoint, "mainArea", self.orderList);
+          /*  model.tradeItemsByTradePointWithCost.params.franchazi_id = session.franchaziId;
             model.tradeItemsByTradePointWithCost.params.actual_date = new Date();
             model.tradeItemsByTradePointWithCost.params.trade_point_id = session.tradePoint;
             model.tradeItemsByTradePointWithCost.execute();
@@ -112,7 +114,7 @@ function BaristaDesktop() {
             model.tradeTypes4TP.params.franchazi_id = session.franchaziId;
             model.tradeTypes4TP.params.actual_date = new Date();
             model.tradeTypes4TP.params.trade_point_id = session.tradePoint;
-            model.tradeTypes4TP.execute();
+            model.tradeTypes4TP.execute();*/
         }
     }//GEN-LAST:event_getSessionsOnRequeried
     
@@ -148,4 +150,12 @@ function BaristaDesktop() {
     startBaristaDesktop();
     
 
-    }
+    
+    function tradeItemsByTradePointWithCostOnRequeried(evt) {//GEN-FIRST:event_tradeItemsByTradePointWithCostOnRequeried
+        // TODO Добавьте здесь свой код:
+    }//GEN-LAST:event_tradeItemsByTradePointWithCostOnRequeried
+
+    function tradeTypes4TPOnRequeried(evt) {//GEN-FIRST:event_tradeTypes4TPOnRequeried
+        // TODO Добавьте здесь свой код:
+    }//GEN-LAST:event_tradeTypes4TPOnRequeried
+}
