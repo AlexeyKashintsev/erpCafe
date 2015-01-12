@@ -2,7 +2,7 @@
  * 
  * @author Alexey
  */
-function ItemCard() {
+function ItemCard_USELESS() {
     var self = this, model = this.model, form = this;
     
     // TODO : place your code here
