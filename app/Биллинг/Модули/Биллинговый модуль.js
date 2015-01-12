@@ -237,6 +237,23 @@ function BillModule() {
                 }, ERRORS.INVALID_OP_ID);
         }
     };
+    
+    /*
+     * Вспомогательная функция для избежания дублирования кода
+     * @param {type} aEvent
+     * @param {type} aObj
+     * @param {type} aError
+     * @returns {Boolean}
+     */
+    function addErrorToLogger(aEvent, aObj, aError) {
+        Logger.info(aError);
+        eventProcessor.addEvent(aEvent, {
+            info: aObj,
+            error: aError
+        });
+        return false;
+    }
+    
     /*
      * Добавление товаров на счет
      * @param {type} anOpId

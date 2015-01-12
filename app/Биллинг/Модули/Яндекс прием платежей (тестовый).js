@@ -41,7 +41,7 @@ function YandexPaymentReceiverTest() {
      * В случае успешного ответа Контрагента Оператор предлагает плательщику оплатить 
      * заказ и при успехе отправляет Контрагенту «Уведомление о переводе».
      */
-     self.сheckOrder = function(){
+     self.checkOrder = function(){
         var r = self.http.request.params;
         var hash = af.MD5(r.action + ";" + r.orderSumAmount + ";" + r.orderSumCurrencyPaycash + ";" +
                           r.orderSumBankPaycash + ";" + r.shopId + ";" + r.invoiceId + ";" +
