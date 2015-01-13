@@ -1,12 +1,15 @@
 /**
  *
- * @author minya92
+ * @author StipJey
  * @name qPriceTypeForTradeItem
- */ 
+ * @public 
+ * @readonly
+*/ 
 Select * 
-From trade_items_on_tp t1
- Inner Join trade_items_cost t on t1.trade_items_on_tp_id = t.item_on_tp
- Inner Join trade_price_types t2 on t.price_type = t2.trade_price_types_id
- Where (:item_id = t1.item_id)
- and :actual_date >= t.start_date
- and (:actual_date < t.end_date or t.end_date is null)
+From trade_price_types t2
+ Left Join trade_items_cost t1 on t1.price_type = t2.trade_price_types_id 
+                                    and :actual_date >= t1.start_date
+                                    and (:actual_date <= t1.end_date or t1.end_date is null)
+ Left Join trade_items_on_tp t on t1.item_on_tp = t.trade_items_on_tp_id
+                                    and :item_id = t.item_id
+                                    and :trade_point = t.trade_point_id

@@ -6,6 +6,7 @@ function addItemToDashboard() {
     var self = this, model = this.model, form = this;
     var Settings = new ItemSettingsAndCost();
     var itemCard = new ItemCard();
+    var tradeAdminModule = new ServerModule("TradeAdminModule");
 
     function modelGridMouseClicked(evt) {//GEN-FIRST:event_modelGridMouseClicked
         model.qTradeItems.params.item_type = model.qTradeItemTypes.cursor.trade_item_type_id;
