@@ -4,7 +4,8 @@
  * @name tradeItemsByTP
  * @manual
  * @public
- * @rolesallowed admin franchazi
+ * @rolesallowed admin franchazi barista
+ * @writable trade_items_cost
  */ 
 Select * 
 From trade_items_on_tp tp

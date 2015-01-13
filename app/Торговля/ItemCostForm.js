@@ -19,7 +19,7 @@ function ItemCostForm() {
         var obj = {
             item_id     :   model.qPriceTypeForTradeItem.params.item_id,
             trade_point :   model.qPriceTypeForTradeItem.params.trade_point,
-            costs       :   []
+            costs       :   {}
         };
         
         model.qPriceTypeForTradeItem.beforeFirst();
