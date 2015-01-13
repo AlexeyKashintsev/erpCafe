@@ -49,29 +49,26 @@ function WidgetCreatorBaristaDesktop() {
         };
     };
 
-    self.OrderListPane = function(aParent) {
-        var dockElement = cmn.createElement("div", 'baristaOrder panel panel-primary', "actionPanel");
+    self.OrderListPane = function(aContainer, anAcceptOrder, aDeleteOrder) {
+        var dockElement = cmn.createElement("div", 'baristaOrder panel panel-primary', aContainer);
 
-        var newHTMLElement = document.createElement('div');
+        var newHTMLElement = cmn.createElement("div", "", dockElement);
         newHTMLElement.innerHTML =
                 "<div class='panel-heading'><h3 class='panel-title'>Заказ</h3></div>\
                 <div id='orderItems'></div><div id='orderDetails'>\
                 <div class='panel-body'>\
                 <div id='orderSum'>Итого: 0 рублей</div>\
                 </div>";
-        dockElement.appendChild(newHTMLElement);
 
-        var newHTMLElement = document.createElement('button');
-        newHTMLElement.innerHTML = 'Отменить';
-        newHTMLElement.className = 'btnCancel';
-        newHTMLElement.onclick = aParent.deleteOrder;
-        dockElement.appendChild(newHTMLElement);
+        var btnCancel = cmn.createElement("button", "btnCancel", dockElement);
+        btnCancel.innerHTML = 'Отменить';
+        btnCancel.onclick = aDeleteOrder;
 
         newHTMLElement = document.createElement('button');
         newHTMLElement.innerHTML = 'Оплатить';
         newHTMLElement.className = 'btnOk';
         dockElement.appendChild(newHTMLElement);
-        newHTMLElement.onclick = aParent.acceptOrder;
+        newHTMLElement.onclick = anAcceptOrder;
         
         this.orderItem = function(anItemData, aOrderList) {
             var obj = {};
