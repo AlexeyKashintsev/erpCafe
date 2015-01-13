@@ -13,9 +13,21 @@ function ItemCostForm() {
         model.requery();
     };
     
-
+                                    
     function buttonActionPerformed(evt) {//GEN-FIRST:event_buttonActionPerformed
-        tradeModule.setCost4TradeItemFromJSON(model.qPriceTypeForTradeItem);
+        
+        var obj = {
+            item_id     :   model.qPriceTypeForTradeItem.params.item_id,
+            trade_point :   model.qPriceTypeForTradeItem.params.trade_point,
+            costs       :   []
+        };
+        
+        model.qPriceTypeForTradeItem.beforeFirst();
+        while (model.qPriceTypeForTradeItem.next()){
+            obj.costs[model.qPriceTypeForTradeItem.cursor.trade_price_types_id] = model.qPriceTypeForTradeItem.cursor.item_cost;
+        };
+        
+        tradeModule.setCost4TradeItemFromJSON(obj);
         model.requery();
     }//GEN-LAST:event_buttonActionPerformed
 }
