@@ -6,7 +6,7 @@
   <fieldsEntity entityHeight="200" entityIconified="false" entityId="140446947726265" entityLocationX="397" entityLocationY="431" entityWidth="150" tableName="mtd_users"/>
   <fieldsEntity entityHeight="200" entityIconified="false" entityId="140446988010336" entityLocationX="208" entityLocationY="225" entityWidth="150" tableName="org_franc_users"/>
   <fieldsEntity entityHeight="200" entityIconified="false" entityId="140446694355671" entityLocationX="17" entityLocationY="15" entityWidth="150" tableName="org_franchize"/>
-  <fieldsEntity entityHeight="176" entityIconified="false" entityId="140446870062584" entityLocationX="397" entityLocationY="220" entityWidth="150" tableName="org_tp_users"/>
+  <fieldsEntity entityHeight="176" entityIconified="false" entityId="140446870062584" entityLocationX="398" entityLocationY="221" entityWidth="150" tableName="org_tp_users"/>
   <fieldsEntity entityHeight="200" entityIconified="false" entityId="140471660998142" entityLocationX="207" entityLocationY="11" entityWidth="150" tableName="org_franchazi"/>
   <fieldsEntity entityHeight="200" entityIconified="false" entityId="141164731675348" entityLocationX="593" entityLocationY="416" entityWidth="150" tableName="mtd_groups"/>
   <fieldsEntity entityHeight="200" entityIconified="false" entityId="140689038442516" entityLocationX="595" entityLocationY="154" entityWidth="150" tableName="org_session"/>

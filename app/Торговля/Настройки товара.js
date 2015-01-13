@@ -14,12 +14,15 @@ function ItemSettingsAndCost(aTradeItemId) {
     contentTradeItem.showOnPanel(form.pnlContent);
     //var bonusPanel = new BonusRateForm();
     //bonusPanel.showOnPanel(form.pnlBonus);
+    var itemCostForm = new ItemCostForm();
+    itemCostForm.showOnPanel(form.pnlCost);
     
     self.setTradeItem = function(anItemId){
         //Item = anItemId; TODO Это вот зачем так сделано?
         itemCard.setItem(anItemId);
         controlOfWH.setTradeItem(anItemId);
         contentTradeItem.setTradeItem(anItemId);
+        itemCostForm.setItem(anItemId);
         //bonusPanel.setTradeItem(anItem);
     };
     

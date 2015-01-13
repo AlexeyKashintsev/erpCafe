@@ -1,8 +1,9 @@
 /**
- * @rolesAllowed admin franchazi
+ * @rolesAllowed admin franchazi barista
  * @author ak
  * @module
  * @public
+ * TODO УБРАТЬ БАРИСТУ!!!
  */ 
 function TradeAdminModule() {
     var self = this, model = this.model;
@@ -23,13 +24,15 @@ function TradeAdminModule() {
     }
     
     function pushItemInTradePoint(anItem, aTradePointId, aCost, aFranchazi){
+        model.qAddTradeItemsOnTP.insert();
+        model.qAddTradeItemsOnTP.cursor.item_id = anItem;
+        model.qAddTradeItemsOnTP.cursor.trade_point_id = aTradePointId;
         model.qTIbyTP.push({
             start_date  :   new Date(),
-            item_id     :   anItem,
-            trade_point_id  :   aTradePointId,
-            franchazi_id    :   aFranchazi,
+            item_on_tp  :   model.qAddTradeItemsOnTP.cursor.trade_items_on_tp_id,
             item_cost   :   aCost
         });
+        model.save();
     }
     
     function addNewItemToTradePointOrFranchazi(anItem, aTradePoint, aFranchazi, aCost) {
@@ -85,13 +88,20 @@ function TradeAdminModule() {
         } else
             return false;
     };*/
-    /*
-     * TO DO Добавить обход остальных торговых точек точек франчази, если не указана торговая точка
-     */
+
     self.setCost4TradeItemOnTradePointOrFranchzi = function(anItem, aTradePoint, aFranchazi, aCost, aPriceType) {
-        closeItemOnTradePointOrFranchazi(anItem, aTradePoint, aFranchazi);
-        addNewItemToTradePointOrFranchazi(anItem, aTradePoint, aFranchazi, aCost);
-        model.save();
+        if(aTradePoint){
+            closeItemOnTradePointOrFranchazi(anItem, aTradePoint, aFranchazi, aPriceType);
+            addNewItemToTradePointOrFranchazi(anItem, aTradePoint, aFranchazi, aCost);
+            model.save();
+        } else {
+            model.listTradePoints.params.franchazi_id = aFranchazi;
+            model.listTradePoints.requery();
+            model.listTradePoints.beforeFirst();
+            while (model.listTradePoints.next()){
+                self.setCost4TradeItemOnTradePointOrFranchzi(anItem, model.listTradePoints.cursor.org_trade_point_id, aFranchazi, aCost, aPriceType);
+            }
+        }
     };
     
     self.setEndDateForTradeItem = function(anItem, aTradePoint, aFranchazi, aEndDate, aPriceType) {
@@ -121,5 +131,15 @@ function TradeAdminModule() {
             model.save();
             return model.qTradeOperationBySession.cursor.trade_cash_box_operation_id;
         } else return false;
+    };
+    
+    /*
+     * Добавление или изменение цен на товар из обекта вида:
+     * {item_id, trade_point, wh_apperance, costs : {price_type, cost}}
+     */
+    self.setCost4TradeItemFromJSON = function (JSON){
+       for(var price_type in JSON.costs){
+           self.setCost4TradeItemOnTradePointOrFranchzi(JSON.item_id, JSON.trade_point, null, JSON.costs[price_type], price_type);
+       }
     };
 }
