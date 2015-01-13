@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?><datamodel>
+  <parameters>
+    <parameter description="" name="item_id" nullable="true" parameterMode="1" precision="0" scale="0" selectionForm="null" signed="true" size="0" type="2" typeName="NUMERIC"/>
+    <parameter description="" name="actual_date" nullable="true" parameterMode="1" precision="0" scale="0" selectionForm="null" signed="true" size="100" type="93" typeName="TIMESTAMP"/>
+  </parameters>
+  <parametersEntity entityHeight="200" entityIconified="false" entityLocationX="8" entityLocationY="7" entityWidth="150"/>
+  <entity Title="" entityHeight="200" entityIconified="false" entityId="142114767546580" entityLocationX="212" entityLocationY="7" entityWidth="150" tableAlias="t1" tableName="trade_items_on_tp" tableSchemaName=""/>
+  <entity Title="" entityHeight="200" entityIconified="false" entityId="142114779699608" entityLocationX="640" entityLocationY="13" entityWidth="150" tableAlias="t2" tableName="trade_price_types" tableSchemaName=""/>
+  <entity Title="" entityHeight="200" entityIconified="false" entityId="142114767546579" entityLocationX="429" entityLocationY="10" entityWidth="150" tableAlias="t" tableName="trade_items_cost" tableSchemaName=""/>
+  <relation leftEntityId="-1" leftEntityParameterName="actual_date" rightEntityFieldName="start_date" rightEntityId="142114767546579"/>
+  <relation leftEntityFieldName="trade_items_on_tp_id" leftEntityId="142114767546580" rightEntityFieldName="item_on_tp" rightEntityId="142114767546579"/>
+  <relation leftEntityId="-1" leftEntityParameterName="item_id" rightEntityFieldName="item_id" rightEntityId="142114767546580"/>
+  <relation leftEntityFieldName="price_type" leftEntityId="142114767546579" rightEntityFieldName="trade_price_types_id" rightEntityId="142114779699608"/>
+  <relation leftEntityId="-1" leftEntityParameterName="actual_date" rightEntityFieldName="end_date" rightEntityId="142114767546579"/>
+</datamodel>
