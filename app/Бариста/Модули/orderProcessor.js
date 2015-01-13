@@ -6,6 +6,19 @@
 function OrderProcessor() {
     var self = this, model = this.model;
     
+    var logs = {
+        sending : "Отправка данных заказа на сервер попытка №"
+    };
+    
+    var alerts = {
+        tryAgain    :   "<h4>Нажмите, чтобы отправить снова</h4>Не обработано заказов: ",
+        sending     :   "<h4>Обработка заказа</h4>Попытка № ",
+        success     :   "<h4>Заказ успешно проведен</h4>Сумма заказа: <strong>",
+        successEnding   :   " рублей</strong>",
+        failure     :   "<h4>Заказ не проведен</h4>Проверьте связь с сервером"
+    };
+    
+    
     function UnprocessedOrders() {
         var orders = [];
         var divEl = null;
@@ -21,8 +34,7 @@ function OrderProcessor() {
 
         this.addOrder = function(anOrderDetails) {
             orders.push(anOrderDetails);
-            divEl = widgetCreator.Alerter(divEl, "alert-warning", "<h4>Нажмите, чтобы отправить снова</h4>Не обработано заказов: " + orders.length, false, false);
-            divEl.onclick = processOrders;
+            divEl = widgetCreator.Alerter(divEl, "alert-warning", alerts.tryAgain + orders.length, false, false, false, processOrders);
         };
     }
 
@@ -31,16 +43,16 @@ function OrderProcessor() {
     self.processOrder = function(anOrderDetails, anAlert, anAttempt) {
         var attempt = anAttempt ? anAttempt : 0;
         attempt++;
-        Logger.info("Отправка данных заказа на сервер попытка №" + attempt);
-        var alert = widgetCreator.Alerter(anAlert, "alert-info", "<h4>Обработка заказа</h4>Попытка № " + attempt, false);
+        Logger.info(logs.sending + attempt);
+        var alert = widgetCreator.Alerter(anAlert, "alert-info", alerts.sending + attempt, false);
         session.tradeSession.processOrder(anOrderDetails, function() {
-                widgetCreator.Alerter(alert, "alert-success", "<h4>Заказ успешно проведен</h4>Сумма заказа: <strong>"
-                        + anOrderDetails.orderSum + " рублей </strong>", true, 15000);
+                widgetCreator.Alerter(alert, "alert-success", alerts.success
+                        + anOrderDetails.orderSum + alerts.successEnding, true, 15000);
             }, function() {
                 if (attempt < 5)
                     processOrder(anOrderDetails, alert, attempt);
                 else {
-                    widgetCreator.Alerter(alert, "alert-danger", "<h4>Заказ не проведен</h4>Проверьте связь с сервером", true, 15000);
+                    widgetCreator.Alerter(alert, "alert-danger", alerts.failure, true, 15000);
                     unprocessedOrders.addOrder(anOrderDetails);
                 }
             });
