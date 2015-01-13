@@ -16,11 +16,11 @@
   <entity Name="qContents" Title="" entityHeight="200" entityIconified="false" entityId="140722325021382" entityLocationX="650" entityLocationY="9" entityWidth="150" queryId="qContents" tableName="" tableSchemaName=""/>
   <entity Name="listTradePoints" Title="" entityHeight="200" entityIconified="false" entityId="140722745993322" entityLocationX="463" entityLocationY="219" entityWidth="150" queryId="listTradePoints" tableName="" tableSchemaName=""/>
   <referenceRelation leftEntityFieldName="trade_point" leftEntityId="141285162304332" rightEntityFieldName="org_trade_point_id" rightEntityId="140722745993322"/>
-  <referenceRelation leftEntityFieldName="trade_point_id" leftEntityId="140672633656010" rightEntityFieldName="org_trade_point_id" rightEntityId="140722745993322"/>
-  <referenceRelation leftEntityFieldName="tp_city" leftEntityId="140722745993322" rightEntityFieldName="org_cities_id" rightEntityId="140722745993322"/>
   <referenceRelation leftEntityFieldName="trade_point" leftEntityId="141529641957798" rightEntityFieldName="org_trade_point_id" rightEntityId="140722745993322"/>
   <referenceRelation leftEntityFieldName="session_id" leftEntityId="141285077401886" rightEntityFieldName="org_session_id" rightEntityId="141338139419273"/>
-  <referenceRelation leftEntityFieldName="session_id" leftEntityId="141285077401886" rightEntityFieldName="org_session_id" rightEntityId="141529641957798"/>
+  <referenceRelation leftEntityFieldName="trade_point_id" leftEntityId="140672633656010" rightEntityFieldName="org_trade_point_id" rightEntityId="140722745993322"/>
   <referenceRelation leftEntityFieldName="session_id" leftEntityId="141285077401886" rightEntityFieldName="org_session_id" rightEntityId="141285162304332"/>
   <referenceRelation leftEntityFieldName="warehouse" leftEntityId="140722330417523" rightEntityFieldName="org_trade_point_id" rightEntityId="140722745993322"/>
+  <referenceRelation leftEntityFieldName="tp_city" leftEntityId="140722745993322" rightEntityFieldName="org_cities_id" rightEntityId="140722745993322"/>
+  <referenceRelation leftEntityFieldName="session_id" leftEntityId="141285077401886" rightEntityFieldName="org_session_id" rightEntityId="141529641957798"/>
 </datamodel>
