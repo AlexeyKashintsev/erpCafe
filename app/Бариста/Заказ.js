@@ -93,7 +93,7 @@ function OrderList(aParent) {
     };
 
     clientSelector.show("actionPanel"); //createClientSelectPane();
-    var odp = new widgetCreator.OrderListPane(self);
+    var odp = new widgetCreator.OrderListPane("actionPanel", self.acceptOrder, self.deleteOrder);
 
     function btnOkActionPerformed(evt) {
         self.acceptOrder();
