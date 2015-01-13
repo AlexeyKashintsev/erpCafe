@@ -131,9 +131,10 @@ function TradeAdminModule() {
     };
     
     /*
-     * 
+     * Добавление или изменение цен на товар из обекта вида:
+     * {item_id, trade_point, wh_apperance, costs : {price_type, cost}}
      */
     self.setCost4TradeItemFromJSON = function (aJSON){
-        
+       self.setCost4TradeItemOnTradePointOrFranchzi(aJSON.item_id, aJSON.trade_point, aJSON.franchazi_id, aJSON.costs, aPriceType);
     };
 }
