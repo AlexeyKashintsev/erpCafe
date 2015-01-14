@@ -17,7 +17,11 @@ self.setTradeItem = function (aTradeItem){
 
 self.setBlock = function(aBlock){
     self.block = aBlock;
-}
+};
+
+self.save = function(){
+        model.save();
+    };
 
 function btnReqActionPerformed(evt) {//GEN-FIRST:event_btnReqActionPerformed
     if (model.modified&&confirm('Сохранить изменения?')){

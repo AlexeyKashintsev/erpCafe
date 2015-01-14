@@ -13,6 +13,9 @@ function ItemCostForm() {
         model.requery();
     };
     
+    self.save = function(){
+        model.save();
+    };
                                     
     function buttonActionPerformed(evt) {//GEN-FIRST:event_buttonActionPerformed
         

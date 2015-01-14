@@ -6,6 +6,6 @@
   <entity Name="qTradeItems" Title="" entityHeight="260" entityIconified="false" entityId="141882843342797" entityLocationX="348" entityLocationY="7" entityWidth="150" queryId="qTradeItems" tableName="" tableSchemaName=""/>
   <entity Name="qTradeItemTypes" Title="" entityHeight="200" entityIconified="false" entityId="141882836911917" entityLocationX="178" entityLocationY="9" entityWidth="150" onAfterChange="qTradeItemTypesOnChanged" onAfterScroll="qTradeItemTypesOnScrolled" queryId="qTradeItemTypes" tableName="" tableSchemaName=""/>
   <relation leftEntityId="-1" leftEntityParameterName="item_search" rightEntityId="141882843342797" rightEntityParameterName="item_search"/>
-  <referenceRelation leftEntityFieldName="parent_type" leftEntityId="141882836911917" rightEntityFieldName="trade_item_type_id" rightEntityId="141882836911917"/>
   <referenceRelation leftEntityFieldName="trade_type" leftEntityId="141882843342797" rightEntityFieldName="trade_item_type_id" rightEntityId="141882836911917"/>
+  <referenceRelation leftEntityFieldName="parent_type" leftEntityId="141882836911917" rightEntityFieldName="trade_item_type_id" rightEntityId="141882836911917"/>
 </datamodel>

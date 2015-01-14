@@ -35,6 +35,7 @@ function addItemToDashboard() {
 
     function btnNewItemActionPerformed(evt) {//GEN-FIRST:event_btnNewItemActionPerformed
         itemCard.addNew();
+        itemCard.setOpenType("modal");
         itemCard.showModal(function(result){
             if (result){
                 model.qTradeItems.requery();
