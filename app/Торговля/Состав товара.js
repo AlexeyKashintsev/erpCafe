@@ -6,18 +6,22 @@
  */
 
 function ContentTradeItem() {
-var self = this, model = this.model, form = this; 
-var warehouseItemList = new WarehouseItemList();
-self.productName = '';
-self.block = false;
+    var self = this, model = this.model, form = this; 
+    var warehouseItemList = new WarehouseItemList();
+    self.productName = '';
+    self.block = false;
 
-self.setTradeItem = function (aTradeItem){
-    model.params.trade_item = aTradeItem;
-};
+    self.setTradeItem = function (aTradeItem){
+        model.params.trade_item = aTradeItem;
+    };
 
-self.setBlock = function(aBlock){
-    self.block = aBlock;
-}
+    self.setBlock = function(aBlock){
+        self.block = aBlock;
+    };
+
+    self.save = function(){
+            model.save();
+        };
 
 function btnReqActionPerformed(evt) {//GEN-FIRST:event_btnReqActionPerformed
     if (model.modified&&confirm('Сохранить изменения?')){

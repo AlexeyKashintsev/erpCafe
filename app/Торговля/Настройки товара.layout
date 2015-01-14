@@ -1,33 +1,42 @@
-<?xml version="1.0" encoding="UTF-8"?><layout backgroundColor="#ededed" defaultCloseOperation="2" name="Form" prefHeight="491px" prefWidth="661px" windowOpened="formWindowOpened">
-  <widget backgroundColor="#ededed" name="tabbedPane" parent="Form" prefHeight="444px" prefWidth="661px" type="TabsDesignInfo">
-    <constraints bottom="47px" left="0px" right="0px" top="0px" type="MarginConstraintsDesignInfo"/>
+<?xml version="1.0" encoding="UTF-8"?><layout backgroundColor="#ededed" defaultCloseOperation="2" name="Form" prefHeight="521px" prefWidth="661px" windowOpened="formWindowOpened">
+  <widget backgroundColor="#ededed" name="tabbedPane" parent="Form" prefHeight="468px" prefWidth="661px" type="TabsDesignInfo">
+    <constraints bottom="53px" left="0px" right="0px" top="0px" type="MarginConstraintsDesignInfo"/>
   </widget>
-  <widget backgroundColor="#ededed" name="pnlGeneral" parent="tabbedPane" prefHeight="398px" prefWidth="640px" type="PanelDesignInfo">
+  <widget backgroundColor="#ededed" name="pnlGeneral" parent="tabbedPane" prefHeight="440px" prefWidth="656px" type="PanelDesignInfo">
     <layout type="MarginLayoutDesignInfo"/>
     <constraints tabTitle="Общее" type="TabsConstraintsDesignInfo"/>
   </widget>
-  <widget backgroundColor="#ededed" name="pnlCard" parent="pnlGeneral" prefHeight="258px" prefWidth="640px" type="PanelDesignInfo">
+  <widget backgroundColor="#ffffff" name="pnlCard" parent="pnlGeneral" prefHeight="300px" prefWidth="656px" type="PanelDesignInfo">
     <layout type="MarginLayoutDesignInfo"/>
     <constraints bottom="140px" left="0px" right="0px" top="0px" type="MarginConstraintsDesignInfo"/>
   </widget>
-  <widget backgroundColor="#ededed" name="pnlControlWH" parent="pnlGeneral" prefHeight="92px" prefWidth="640px" type="PanelDesignInfo">
+  <widget backgroundColor="#ffffff" name="pnlControlWH" parent="pnlGeneral" prefHeight="120px" prefWidth="656px" type="PanelDesignInfo">
     <layout type="MarginLayoutDesignInfo"/>
-    <constraints bottom="0px" left="0px" right="0px" top="306px" type="MarginConstraintsDesignInfo"/>
+    <constraints bottom="-4px" height="120px" left="0px" type="MarginConstraintsDesignInfo" width="656px"/>
   </widget>
-  <widget backgroundColor="#ededed" name="pnlContent" parent="tabbedPane" prefHeight="398px" prefWidth="640px" type="PanelDesignInfo" visible="false">
+  <widget actionPerformed="btnSaveInWHActionPerformed" buttonGroup="buttonGroup" name="btnSaveInWH" parent="pnlControlWH" prefHeight="23px" prefWidth="528px" text="Учитывать на складе" type="RadioDesignInfo">
+    <constraints height="23px" left="24px" top="24px" type="MarginConstraintsDesignInfo" width="528px"/>
+  </widget>
+  <widget actionPerformed="btnComplexContentActionPerformed" buttonGroup="buttonGroup" name="btnComplexContent" parent="pnlControlWH" prefHeight="23px" prefWidth="528px" text="Сложный состав" type="RadioDesignInfo">
+    <constraints height="23px" left="24px" top="48px" type="MarginConstraintsDesignInfo" width="528px"/>
+  </widget>
+  <widget actionPerformed="btnNotSaveInWHActionPerformed" buttonGroup="buttonGroup" name="btnNotSaveInWH" parent="pnlControlWH" prefHeight="23px" prefWidth="528px" text="Не учитывать" type="RadioDesignInfo">
+    <constraints height="23px" left="24px" top="72px" type="MarginConstraintsDesignInfo" width="528px"/>
+  </widget>
+  <widget backgroundColor="#ededed" name="pnlContent" parent="tabbedPane" prefHeight="440px" prefWidth="656px" type="PanelDesignInfo" visible="false">
     <layout type="MarginLayoutDesignInfo"/>
     <constraints tabTitle="Состав товара" type="TabsConstraintsDesignInfo"/>
   </widget>
-  <widget backgroundColor="#ededed" name="pnlCost" parent="tabbedPane" prefHeight="398px" prefWidth="640px" type="PanelDesignInfo" visible="false">
+  <widget backgroundColor="#ededed" name="pnlCost" parent="tabbedPane" prefHeight="440px" prefWidth="656px" type="PanelDesignInfo" visible="false">
     <layout type="MarginLayoutDesignInfo"/>
     <constraints tabTitle="Цена" type="TabsConstraintsDesignInfo"/>
   </widget>
-  <widget backgroundColor="#ededed" name="pnlBonus" parent="tabbedPane" prefHeight="398px" prefWidth="640px" type="PanelDesignInfo" visible="false">
+  <widget backgroundColor="#ededed" name="pnlBonus" parent="tabbedPane" prefHeight="440px" prefWidth="656px" type="PanelDesignInfo" visible="false">
     <layout type="MarginLayoutDesignInfo"/>
     <constraints tabTitle="Бонусы" type="TabsConstraintsDesignInfo"/>
   </widget>
-  <widget name="button" parent="Form" prefHeight="29px" prefWidth="206px" text="Одна кнопка" type="ButtonDesignInfo">
-    <constraints bottom="6px" height="29px" right="11px" type="MarginConstraintsDesignInfo" width="206px"/>
+  <widget actionPerformed="btnSaveActionPerformed" name="btnSave" parent="Form" prefHeight="36px" prefWidth="209px" text="Сохранить" type="ButtonDesignInfo">
+    <constraints bottom="5px" height="36px" right="32px" type="MarginConstraintsDesignInfo" width="209px"/>
   </widget>
   <nonvisual name="buttonGroup" type="ButtonGroupDesignInfo"/>
   <layout type="MarginLayoutDesignInfo"/>
