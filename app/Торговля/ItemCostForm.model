@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?><datamodel>
   <parametersEntity entityHeight="200" entityIconified="false" entityLocationX="12" entityLocationY="12" entityWidth="150"/>
   <entity Name="qPriceTypeForTradeItem" Title="" entityHeight="200" entityIconified="false" entityId="142115228101436" entityLocationX="207" entityLocationY="15" entityWidth="150" queryId="qPriceTypeForTradeItem" tableName="" tableSchemaName=""/>
-  <referenceRelation leftEntityFieldName="price_type" leftEntityId="142115228101436" rightEntityFieldName="trade_price_types_id" rightEntityId="142115228101436"/>
   <referenceRelation leftEntityFieldName="item_on_tp" leftEntityId="142115228101436" rightEntityFieldName="trade_items_on_tp_id" rightEntityId="142115228101436"/>
+  <referenceRelation leftEntityFieldName="price_type" leftEntityId="142115228101436" rightEntityFieldName="trade_price_types_id" rightEntityId="142115228101436"/>
 </datamodel>
