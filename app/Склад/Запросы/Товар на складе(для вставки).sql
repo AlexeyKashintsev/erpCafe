@@ -1,5 +1,4 @@
 /**
- *
  * @author mike
  * @name queryItemsInWH
  * @public

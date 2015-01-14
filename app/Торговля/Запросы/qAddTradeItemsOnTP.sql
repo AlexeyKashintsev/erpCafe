@@ -5,4 +5,4 @@
  */ 
 Select * 
 From trade_items_on_tp t1
-where item_id is null
+ Where :trade_point = t1.trade_point_id
