@@ -4,13 +4,27 @@
  */
 function ItemSettingsAndCost(aTradeItemId) {
     var self = this, model = this.model, form = this;
+    
     var itemCard = new ItemCard();
-    var contentTradeItem = new ContentTradeItem();
-    var itemCostForm = new ItemCostForm();
+    require('ItemCard', function() {
+        itemCard = new ItemCard();
+        itemCard.showOnPanel(form.pnlCard);
+    });
+    var contentTradeItem;
+    require('ContentTradeItem', function() {
+        contentTradeItem = new ContentTradeItem();
+        contentTradeItem.showOnPanel(form.pnlContent);
+    });
+    
+    var itemCostForm;
+    require('ContentTradeItem', function() {
+        itemCostForm = new ItemCostForm();
+        itemCostForm.showOnPanel(form.pnlCost);
+    });
     //var bonusPanel = new BonusRateForm();
-    itemCard.showOnPanel(form.pnlCard);
-    contentTradeItem.showOnPanel(form.pnlContent);
-    itemCostForm.showOnPanel(form.pnlCost);
+    
+    
+    
     //bonusPanel.showOnPanel(form.pnlBonus);
 
     

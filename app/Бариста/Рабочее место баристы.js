@@ -9,7 +9,7 @@ function BaristaDesktop() {
     session.tradeSession = new ServerModule("TradeSessions");
     self.userName = session.getUserName();
     var AS = new AdditionalScreen();
-    var BC = new addItemToDashboard();
+    var BC;
     //var BC = new addItem();
     var whAdd = null;
     var types_body;
@@ -93,8 +93,14 @@ function BaristaDesktop() {
     }
     
     function openDigitalMenu(){
-       //AS.openWin();
-       BC.showModal();
+        if (!BC)
+            require('addItemToDashboard', function() {
+                BC = new addItemToDashboard();
+                BC.showModal();
+            });
+        else {
+            BC.showModal();
+        }
     }
     
     function addItemToOrder(anItemData) {

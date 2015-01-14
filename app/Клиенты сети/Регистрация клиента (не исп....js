@@ -2,7 +2,7 @@
  * 
  * @author stipjey
  */
-function clientRegForm() {
+function client____uselesss____RegForm() {
     var self = this, model = this.model, form = this;
     
     function last_nameActionPerformed(evt) {//GEN-FIRST:event_last_nameActionPerformed
