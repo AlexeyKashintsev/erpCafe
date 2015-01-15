@@ -52,17 +52,18 @@ function btnReqActionPerformed(evt) {//GEN-FIRST:event_btnReqActionPerformed
                         model.qTradeItemsAndType.cursor.r_cost !== model.qTradeItemsAndType.cursor.r_old_cost) {
                     if (model.qTradeItemsAndType.cursor.r_selected || (
                             !model.qTradeItemsAndType.cursor.r_selected&&!model.qTradeItemsAndType.cursor.r_selected2)) {
-                        TradeAdminModule.setCost4TradeItemOnTradePointOrFranchzi(
+                        TradeAdminModule.setCost4TradeItemOnTradePoint(
                                 model.qTradeItemsAndType.r_id,
                                 model.qTradeItemsAndType.add2TP ? model.params.trade_point_id : null,
-                                model.params.franchazi_id, 
+                                //model.params.franchazi_id, 
                                 model.qTradeItemsAndType.cursor.r_cost
                             );
                         } else {
                             TradeAdminModule.setEndDateForTradeItem(model.qTradeItemsAndType.r_id,
                                 model.qTradeItemsAndType.add2TP ? model.params.trade_point_id : null,
-                                model.params.franchazi_id, 
-                                new Date());
+                                //model.params.franchazi_id, 
+                                new Date() //?
+                                        );
                         }
                 }
             }

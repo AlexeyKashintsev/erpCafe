@@ -71,7 +71,7 @@ function testAddTradeItemsOnTradePoint() {
         delItem(testData);
         if (!checkItem(testData)){
             info("Добавляем товар на ТТ...");
-            TAM.setCost4TradeItemOnTradePointOrFranchzi(testData.id, testData.tp, 1, testData.cost);
+            TAM.setCost4TradeItemOnTradePoint(testData.id, testData.tp, testData.cost);
         } else {
             ok = false; return ok;
         }
