@@ -17,6 +17,7 @@ function ItemsChooser(aTradePoint, aContainer, orderList) {
     
     model.params.actual_date = new Date();
     model.params.trade_point_id = aTradePoint;
+    model.params.price_type = 10; //TODO Расхардкодить тип цены
     model.tradeItemsCostByTP.requery();
     model.tradeTypes4TP.requery();
     
@@ -80,5 +81,7 @@ function ItemsChooser(aTradePoint, aContainer, orderList) {
             data.cost[model.tradeItemsCostByTP.cursor.price_type] = 
                             model.tradeItemsCostByTP.cursor.item_cost;
         }
+        if (!!data)
+                    trade_items.push(new widgetCreator.tradeItem(items_body, data, processItemClick));
     }//GEN-LAST:event_tradeItemsCostByTPOnRequeried
 }
