@@ -14,11 +14,6 @@ function ItemCostForm() {
     };
     
     self.save = function(){
-        model.save();
-    };
-                                    
-    function buttonActionPerformed(evt) {//GEN-FIRST:event_buttonActionPerformed
-        
         var itemData = {
             item_id     :   model.qPriceTypeForTradeItem.params.item_id,
             trade_point :   model.qPriceTypeForTradeItem.params.trade_point,
@@ -27,10 +22,13 @@ function ItemCostForm() {
         
         model.qPriceTypeForTradeItem.beforeFirst();
         while (model.qPriceTypeForTradeItem.next()){
-            itemData.costs[model.qPriceTypeForTradeItem.cursor.trade_price_types_id] = model.qPriceTypeForTradeItem.cursor.item_cost;
+            itemData.costs = {
+                type_id     :   model.qPriceTypeForTradeItem.cursor.trade_price_types_id,
+                item_cost   :   model.qPriceTypeForTradeItem.cursor.item_cost
+            };
         };
         
         tradeModule.processChangesForTradeItem(itemData);
-        model.requery();
-    }//GEN-LAST:event_buttonActionPerformed
+        model.qPriceTypeForTradeItem.requery();
+    };
 }

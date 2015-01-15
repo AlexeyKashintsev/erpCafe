@@ -25,41 +25,6 @@ function TradeAdminModule() {
         return (model.qTIbyTP.length !== 0);
     }
 
-    function addItemToTradePoint(anItemId, aTradePointId, aCost) {
-        model.qAddTradeItemsOnTP.insert();
-        model.qAddTradeItemsOnTP.cursor.item_id = anItemId;
-        model.qAddTradeItemsOnTP.cursor.trade_point_id = aTradePointId;
-        model.qTIbyTP.push({
-            start_date: new Date(),
-            item_on_tp: model.qAddTradeItemsOnTP.cursor.trade_items_on_tp_id,
-            item_cost: aCost
-        });
-        model.save();
-    }
-
-    function addNewItemToTP(anItemId, aTradePoint, aFranchazi, aCost) {
-        if (aFranchazi && !aTradePoint) {
-            franchazi = aFranchazi;
-            model.listTradePoints.params.franchazi_id = franchazi;
-            model.listTradePoints.requery();
-            model.listTradePoints.beforeFirst();
-            while (model.listTradePoints.next()) {
-                addItemToTradePoint(anItemId, model.listTradePoints.cursor.org_trade_point_id, aCost);
-                whModule.addItemContentsToWH(anItemId, model.listTradePoints.cursor.org_trade_point_id);
-            }
-        } else {
-            addItemToTradePoint(anItemId, aTradePoint, aCost, aFranchazi);
-            whModule.addItemContentsToWH(anItemId, aTradePoint);
-        }
-    }
-
-    function closeItemOnTradePointOrFranchazi(anItem, aTradePoint, aPriceType) {
-        model.prCloseItemCost.params.item_on_tp = null;
-        model.prCloseItemCost.params.trade_point_id = aTradePoint;
-        model.prCloseItemCost.params.item_id = anItem;
-        model.prCloseItemCost.params.price_type = aPriceType;
-        model.prCloseItemCost.executeUpdate();
-    }
     /*
      * При указании торговой точки будет добавлена на торговую точку,
      * при указании только франчази, будет добавлена к франчази,
@@ -74,26 +39,7 @@ function TradeAdminModule() {
      } else
      return false;
      };*/
-
-    self.setCost4TradeItemOnTradePointOrFranchzi = function(anItem, aTradePoint, aFranchazi, aCost, aPriceType) {
-        if (aTradePoint) {
-            closeItemOnTradePointOrFranchazi(anItem, aTradePoint, aFranchazi, aPriceType);
-            addNewItemToTP(anItem, aTradePoint, aFranchazi, aCost);
-            model.save();
-        } else {
-            model.listTradePoints.params.franchazi_id = aFranchazi;
-            model.listTradePoints.requery();
-            model.listTradePoints.beforeFirst();
-            while (model.listTradePoints.next()) {
-                self.setCost4TradeItemOnTradePointOrFranchzi(anItem, model.listTradePoints.cursor.org_trade_point_id, aFranchazi, aCost, aPriceType);
-            }
-        }
-    };
-
-    self.setEndDateForTradeItem = function(anItem, aTradePoint, aFranchazi, aEndDate, aPriceType) {
-        closeItemOnTradePointOrFranchazi(anItem, aTradePoint, aFranchazi, aEndDate, aPriceType);
-        model.save();
-    };
+    
     /*
      * Списание денег с кассы
      * 
@@ -122,26 +68,30 @@ function TradeAdminModule() {
 
     /*
      * Добавление или изменение цен на товар из обекта вида:
-     * {item_id, trade_point, wh_apperance, costs : {price_type, cost, delete}}
+     * {item_id, trade_point, wh_apperance, costs : {price_type, cost}, delete}
      */
     self.processChangesForTradeItem = function(itemData) {
         if(itemData.costs){
             for (var price_type in itemData.costs) {
-                if(itemData.costs[price_type].delete) {
-                    deleteItemFromTP(itemData.item_id, itemData.trade_point);
-                } else {
-                    closeItemOnTradePointOrFranchazi(itemData.item_id, itemData.trade_point, price_type);
-                    addItemToTP(itemData.trade_point, itemData.item_id, itemData.costs[price_type], price_type);
-                }
+                if(itemData.costs[price_type])
+                    self.setCost4TradeItemOnTradePoint(itemData.item_id, itemData.trade_point, itemData.costs[price_type], price_type);
             }
-        }  
+        }
+        if(itemData.delete) {
+            deleteItemFromTP(itemData.item_id, itemData.trade_point);
+        }
+        return true;
+    };
+    
+    self.setCost4TradeItemOnTradePoint = function(anItem, aTradePoint, aCost, aPriceType) {
+        self.setEndDateForTradeItem(anItem, aTradePoint, aPriceType, null);
+        addItemToTP(anItem, aTradePoint, aCost, aPriceType);
     };
     
     function addItemToTP(aTradePoint, aItemId, aCost, aPriceType){
         model.qAddTradeItemsOnTP.params.trade_point = aTradePoint;
         model.qAddTradeItemsOnTP.params.item_id = aItemId;
         model.requery();
-        
         if(model.qAddTradeItemsOnTP.empty) {
             model.qAddTradeItemsOnTP.insert();
             model.qAddTradeItemsOnTP.cursor.item_id = aItemId;
@@ -158,19 +108,26 @@ function TradeAdminModule() {
         model.save();
     }
     
+    self.setEndDateForTradeItem = function(anItem, aTradePoint, aPriceType, anItemOnTp) {
+        if(!anItemOnTp) anItemOnTp = null;
+        model.prCloseItemCost.params.item_on_tp = anItem;
+        model.prCloseItemCost.params.trade_point_id = aTradePoint;
+        model.prCloseItemCost.params.item_id = anItem;
+        model.prCloseItemCost.params.price_type = aPriceType;
+        model.prCloseItemCost.executeUpdate();
+        model.save();
+    };
+    
     function deleteItemFromTP(anItem, aTradePoint){
         model.qAddTradeItemsOnTP.params.trade_point = aTradePoint;
         model.qAddTradeItemsOnTP.params.item_id = anItem;
         model.requery();
         
-        model.prCloseItemCost.params.item_on_tp = model.qAddTradeItemsOnTP.cursor.trade_items_on_tp_id;
-        model.prCloseItemCost.executeUpdate();
-        
-        model.qAddTradeItemsOnTP.params.trade_point = aTradePoint;
-        model.requery();
+        self.setEndDateForTradeItem(null, null, null, model.qAddTradeItemsOnTP.cursor.trade_items_on_tp_id);
         
         if(!model.qAddTradeItemsOnTP.empty) {
             model.qAddTradeItemsOnTP.cursor.closed = true;
         }
+        model.save();
     }
 }
