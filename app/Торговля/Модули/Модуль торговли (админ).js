@@ -8,7 +8,8 @@
 function TradeAdminModule() {
     var self = this, model = this.model;
     var franchazi = null;
-    var session = Modules.get("UserSession");
+    var session = Session.get("UserSession");
+    var whModule = Session.get("WhModuleAdmin");
 
     self.OP_TYPE_REMOVE_CASH = 101; // операция снятия кассы
 
@@ -44,33 +45,16 @@ function TradeAdminModule() {
             model.listTradePoints.beforeFirst();
             while (model.listTradePoints.next()) {
                 addItemToTradePoint(anItemId, model.listTradePoints.cursor.org_trade_point_id, aCost);
-                addItemContentsToWH(anItemId, model.listTradePoints.cursor.org_trade_point_id);
+                whModule.addItemContentsToWH(anItemId, model.listTradePoints.cursor.org_trade_point_id);
             }
         } else {
             addItemToTradePoint(anItemId, aTradePoint, aCost, aFranchazi);
-            addItemContentsToWH(anItemId, aTradePoint);
-        }
-    }
-    ;
-
-    function addItemContentsToWH(anItem, aTradePoint) {
-        model.qContents.params.trade_item_id = anItem;
-        model.qContents.requery();
-        model.queryItemsInWH.params.warehouse_id = aTradePoint;
-        model.queryItemsInWH.execute();
-        model.qContents.beforeFirst();
-        while (model.qContents.next()) {
-            if (model.queryItemsInWH.find(model.queryItemsInWH.schema.item_id, model.qContents.wh_item).length === 0) {
-                model.queryItemsInWH.push({
-                    warehouse: aTradePoint,
-                    item_id: model.qContents.cursor.wh_item
-                });
-            }
+            whModule.addItemContentsToWH(anItemId, aTradePoint);
         }
     }
 
-    function closeItemOnTradePointOrFranchazi(anItem, aTradePoint, aFranchazi, aPriceType) {
-        model.prCloseItemCost.params.franchazi_id = aFranchazi;
+    function closeItemOnTradePointOrFranchazi(anItem, aTradePoint, aPriceType) {
+        model.prCloseItemCost.params.item_on_tp = null;
         model.prCloseItemCost.params.trade_point_id = aTradePoint;
         model.prCloseItemCost.params.item_id = anItem;
         model.prCloseItemCost.params.price_type = aPriceType;
@@ -138,11 +122,55 @@ function TradeAdminModule() {
 
     /*
      * Добавление или изменение цен на товар из обекта вида:
-     * {item_id, trade_point, wh_apperance, costs : {price_type, cost}, stopSell}
+     * {item_id, trade_point, wh_apperance, costs : {price_type, cost, delete}}
      */
     self.processChangesForTradeItem = function(itemData) {
-        for (var price_type in itemData.costs) {
-            self.setCost4TradeItemOnTradePointOrFranchzi(itemData.item_id, itemData.trade_point, null, itemData.costs[price_type], price_type);
-        }
+        if(itemData.costs){
+            for (var price_type in itemData.costs) {
+                if(itemData.costs[price_type].delete) {
+                    deleteItemFromTP(itemData.item_id, itemData.trade_point);
+                } else {
+                    closeItemOnTradePointOrFranchazi(itemData.item_id, itemData.trade_point, price_type);
+                    addItemToTP(itemData.trade_point, itemData.item_id, itemData.costs[price_type], price_type);
+                }
+            }
+        }  
     };
+    
+    function addItemToTP(aTradePoint, aItemId, aCost, aPriceType){
+        model.qAddTradeItemsOnTP.params.trade_point = aTradePoint;
+        model.qAddTradeItemsOnTP.params.item_id = aItemId;
+        model.requery();
+        
+        if(model.qAddTradeItemsOnTP.empty) {
+            model.qAddTradeItemsOnTP.insert();
+            model.qAddTradeItemsOnTP.cursor.item_id = aItemId;
+            model.qAddTradeItemsOnTP.cursor.trade_point_id = aTradePoint;
+        } else if(model.qAddTradeItemsOnTP.cursor.closed) {
+            model.qAddTradeItemsOnTP.cursor.closed = false;
+        } 
+        model.qTIbyTP.push({
+            start_date  : new Date(),
+            item_on_tp  : model.qAddTradeItemsOnTP.cursor.trade_items_on_tp_id,
+            item_cost   : aCost,
+            price_type  : aPriceType
+        });
+        model.save();
+    }
+    
+    function deleteItemFromTP(anItem, aTradePoint){
+        model.qAddTradeItemsOnTP.params.trade_point = aTradePoint;
+        model.qAddTradeItemsOnTP.params.item_id = anItem;
+        model.requery();
+        
+        model.prCloseItemCost.params.item_on_tp = model.qAddTradeItemsOnTP.cursor.trade_items_on_tp_id;
+        model.prCloseItemCost.executeUpdate();
+        
+        model.qAddTradeItemsOnTP.params.trade_point = aTradePoint;
+        model.requery();
+        
+        if(!model.qAddTradeItemsOnTP.empty) {
+            model.qAddTradeItemsOnTP.cursor.closed = true;
+        }
+    }
 }

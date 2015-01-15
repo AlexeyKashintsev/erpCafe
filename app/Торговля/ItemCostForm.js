@@ -13,6 +13,9 @@ function ItemCostForm() {
         model.requery();
     };
     
+    self.save = function(){
+        model.save();
+    };
                                     
     function buttonActionPerformed(evt) {//GEN-FIRST:event_buttonActionPerformed
         
@@ -27,7 +30,7 @@ function ItemCostForm() {
             itemData.costs[model.qPriceTypeForTradeItem.cursor.trade_price_types_id] = model.qPriceTypeForTradeItem.cursor.item_cost;
         };
         
-        tradeModule.setCost4TradeItemFromJSON(itemData);
+        tradeModule.processChangesForTradeItem(itemData);
         model.requery();
     }//GEN-LAST:event_buttonActionPerformed
 }
