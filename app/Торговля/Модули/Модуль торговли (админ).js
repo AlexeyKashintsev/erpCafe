@@ -88,7 +88,7 @@ function TradeAdminModule() {
         addItemToTP(anItem, aTradePoint, aCost, aPriceType);
     };
     
-    function addItemToTP(aTradePoint, aItemId, aCost, aPriceType){
+    function addItemToTP(aItemId, aTradePoint, aCost, aPriceType){
         model.qAddTradeItemsOnTP.params.trade_point = aTradePoint;
         model.qAddTradeItemsOnTP.params.item_id = aItemId;
         model.requery();
