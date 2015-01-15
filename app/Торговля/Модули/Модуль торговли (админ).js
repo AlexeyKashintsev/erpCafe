@@ -138,7 +138,7 @@ function TradeAdminModule() {
 
     /*
      * Добавление или изменение цен на товар из обекта вида:
-     * {item_id, trade_point, wh_apperance, costs : {price_type, cost}}
+     * {item_id, trade_point, wh_apperance, costs : {price_type, cost}, stopSell}
      */
     self.processChangesForTradeItem = function(itemData) {
         for (var price_type in itemData.costs) {
