@@ -74,7 +74,7 @@ function TradeAdminModule() {
         if(itemData.costs){
             for (var price_type in itemData.costs) {
                 if(itemData.costs[price_type])
-                    self.setCost4TradeItemOnTradePoint(itemData.trade_point, itemData.item_id, itemData.costs[price_type], price_type);
+                    self.setCost4TradeItemOnTradePoint(itemData.item_id, itemData.trade_point, itemData.costs[price_type], price_type);
             }
         }
         if(itemData.delete) {
@@ -84,7 +84,7 @@ function TradeAdminModule() {
     };
     
     self.setCost4TradeItemOnTradePoint = function(anItem, aTradePoint, aCost, aPriceType) {
-        self.setEndDateForTradeItem(anItem, aTradePoint, aPriceType);
+        self.setEndDateForTradeItem(anItem, aTradePoint, aPriceType, null);
         addItemToTP(anItem, aTradePoint, aCost, aPriceType);
     };
     
@@ -110,7 +110,7 @@ function TradeAdminModule() {
     
     self.setEndDateForTradeItem = function(anItem, aTradePoint, aPriceType, anItemOnTp) {
         if(!anItemOnTp) anItemOnTp = null;
-        model.prCloseItemCost.params.item_on_tp = anItemOnTp;
+        model.prCloseItemCost.params.item_on_tp = anItem;
         model.prCloseItemCost.params.trade_point_id = aTradePoint;
         model.prCloseItemCost.params.item_id = anItem;
         model.prCloseItemCost.params.price_type = aPriceType;
