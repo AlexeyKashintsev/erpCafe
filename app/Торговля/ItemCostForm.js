@@ -22,7 +22,10 @@ function ItemCostForm() {
         
         model.qPriceTypeForTradeItem.beforeFirst();
         while (model.qPriceTypeForTradeItem.next()){
-            itemData.costs[model.qPriceTypeForTradeItem.cursor.trade_price_types_id] = model.qPriceTypeForTradeItem.cursor.item_cost;
+            itemData.costs = {
+                type_id     :   model.qPriceTypeForTradeItem.cursor.trade_price_types_id,
+                item_cost   :   model.qPriceTypeForTradeItem.cursor.item_cost
+            };
         };
         
         tradeModule.processChangesForTradeItem(itemData);
