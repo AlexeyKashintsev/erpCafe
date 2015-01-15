@@ -17,4 +17,4 @@ From trade_items_on_tp tp
  and :trade_point_id = tp.trade_point_id
  and :actual_date >= t1.start_date
  and (:actual_date < t1.end_date or t1.end_date is null)
- and (:price_type = t1.price_type or t1.price_type is null)
+ and (:price_type = t1.price_type)

@@ -14,11 +14,6 @@ function ItemCostForm() {
     };
     
     self.save = function(){
-        model.save();
-    };
-                                    
-    function buttonActionPerformed(evt) {//GEN-FIRST:event_buttonActionPerformed
-        
         var itemData = {
             item_id     :   model.qPriceTypeForTradeItem.params.item_id,
             trade_point :   model.qPriceTypeForTradeItem.params.trade_point,
@@ -31,6 +26,6 @@ function ItemCostForm() {
         };
         
         tradeModule.processChangesForTradeItem(itemData);
-        model.requery();
-    }//GEN-LAST:event_buttonActionPerformed
+        model.qPriceTypeForTradeItem.requery();
+    };
 }
