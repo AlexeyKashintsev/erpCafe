@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?><datamodel>
   <parametersEntity entityHeight="200" entityIconified="false" entityLocationX="12" entityLocationY="12" entityWidth="150"/>
-  <entity Name="qTradeItemsId" Title="" entityHeight="140" entityIconified="false" entityId="141390120808317" entityLocationX="369" entityLocationY="17" entityWidth="150" queryId="qTradeItemsId" tableName="" tableSchemaName=""/>
+  <entity Name="qGetItem" Title="" entityHeight="140" entityIconified="false" entityId="141390120808317" entityLocationX="369" entityLocationY="17" entityWidth="150" queryId="qGetItem" tableName="" tableSchemaName=""/>
   <entity Name="qBonusCountForTradeItem" Title="" entityHeight="157" entityIconified="false" entityId="141389511258279" entityLocationX="182" entityLocationY="12" entityWidth="150" queryId="qBonusCountForTradeItem" tableName="" tableSchemaName=""/>
   <entity Name="qBonusRateForItemsEdit" Title="" entityHeight="166" entityIconified="false" entityId="141623469336749" entityLocationX="562" entityLocationY="15" entityWidth="199" queryId="qBonusRateForItemsEdit" tableName="" tableSchemaName=""/>
   <entity Name="qConnectTradeAndBillOperations" Title="" entityHeight="82" entityIconified="false" entityId="141623181230815" entityLocationX="187" entityLocationY="293" entityWidth="248" queryId="qConnectTradeAndBillOperations" tableName="" tableSchemaName=""/>

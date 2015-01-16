@@ -12,11 +12,11 @@ function CopyMeasureFromItemType() {
     function buttonActionPerformed(evt) {//GEN-FIRST:event_buttonActionPerformed
         model.qTypes.beforeFirst();
         while(model.qTypes.next()){
-            model.qItems.params.item_type = model.qTypes.cursor.wh_item_types_id;
-            model.qItems.requery();
-            model.qItems.beforeFirst();
-            while (model.qItems.next()){
-                model.qItems.cursor.item_measure = model.qTypes.cursor.measure;
+            model.qGetItem.params.item_type = model.qTypes.cursor.wh_item_types_id;
+            model.qGetItem.requery();
+            model.qGetItem.beforeFirst();
+            while (model.qGetItem.next()){
+                model.qGetItem.cursor.item_measure = model.qTypes.cursor.measure;
             }
             model.save();
         }

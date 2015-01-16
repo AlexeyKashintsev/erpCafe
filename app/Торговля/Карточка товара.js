@@ -26,10 +26,10 @@ function ItemCard() {
     }
     
     function searchInDataBase(anItemCode){
-        model.qGetItemByBarCode.params.barcode = anItemCode;
-        model.qGetItemByBarCode.requery();
-        if (model.qGetItemByBarCode.length > 0) 
-            return model.qGetItemByBarCode.cursor.item_name;
+        model.qGetItem.params.barcode = anItemCode;
+        model.qGetItem.requery();
+        if (model.qGetItem.length > 0) 
+            return model.qGetItem.cursor.item_name;
         else
             return false;
     }
