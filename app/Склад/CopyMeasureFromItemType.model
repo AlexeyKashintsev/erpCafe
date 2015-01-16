@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?><datamodel>
-  <parametersEntity entityHeight="200" entityIconified="false" entityLocationX="12" entityLocationY="12" entityWidth="150"/>
-  <entity Name="qGetItem" Title="" entityHeight="200" entityIconified="false" entityId="140853299445083" entityLocationX="212" entityLocationY="13" entityWidth="150" queryId="qGetItem" tableName="" tableSchemaName=""/>
-  <entity Name="qTypes" Title="" entityHeight="200" entityIconified="false" entityId="140853299603538" entityLocationX="440" entityLocationY="13" entityWidth="150" queryId="qTypes" tableName="" tableSchemaName=""/>
-  <referenceRelation leftEntityFieldName="item_type" leftEntityId="140853299445083" rightEntityFieldName="wh_item_types_id" rightEntityId="140853299603538"/>
-  <referenceRelation leftEntityFieldName="parent_type" leftEntityId="140853299603538" rightEntityFieldName="wh_item_types_id" rightEntityId="140853299603538"/>
-</datamodel>
