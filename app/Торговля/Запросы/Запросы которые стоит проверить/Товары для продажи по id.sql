@@ -4,8 +4,8 @@
  * @name qTradeItemsId
  * @public
  * @rolesallowed admin franchazi
+ * TODO Найти альтернативу запросу
  */ 
 Select * 
 From wh_items t1
- Where  (:item_id = t1.wh_items_id or :item_id is null)
- and    (:item_type = t1.item_type or :item_type is null)
+ Where :item_id = t1.wh_items_id
