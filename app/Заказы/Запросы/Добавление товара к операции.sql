@@ -1,7 +1,7 @@
 /**
  * @author minya92
  * @name qAddItemsOnOperation
- TODO при большом количестве записей будет тормозить
  */ 
 Select * 
 From bill_operations_items t1
+where t1.bill_operations_items_id is null

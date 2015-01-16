@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?><datamodel>
   <parametersEntity entityHeight="200" entityIconified="false" entityLocationX="12" entityLocationY="12" entityWidth="150"/>
   <entity Name="qCloseItemCost" Title="" entityHeight="49" entityIconified="false" entityId="141113423868183" entityLocationX="14" entityLocationY="226" entityWidth="150" queryId="qCloseItemCost" tableName="" tableSchemaName=""/>
-  <entity Name="qBillOperationItems" Title="" entityHeight="200" entityIconified="false" entityId="141148062952169" entityLocationX="391" entityLocationY="219" entityWidth="150" queryId="qBillOperationItems" tableName="" tableSchemaName=""/>
   <entity Name="qBillItems" Title="" entityHeight="200" entityIconified="false" entityId="141113422812389" entityLocationX="214" entityLocationY="13" entityWidth="150" queryId="qBillItems" tableName="" tableSchemaName=""/>
+  <entity Name="qAddItemsOnOperation" Title="" entityHeight="200" entityIconified="false" entityId="142141401693039" entityLocationX="394" entityLocationY="226" entityWidth="150" queryId="qAddItemsOnOperation" tableName="" tableSchemaName=""/>
   <entity Name="qDelBillCost" Title="" entityHeight="50" entityIconified="false" entityId="141113425801698" entityLocationX="16" entityLocationY="279" entityWidth="150" queryId="qDelBillCost" tableName="" tableSchemaName=""/>
   <entity Name="qBillMeasures" Title="" entityHeight="200" entityIconified="false" entityId="141113516677345" entityLocationX="209" entityLocationY="230" entityWidth="150" queryId="qBillMeasures" tableName="" tableSchemaName=""/>
   <entity Name="qItemBillCost" Title="" entityHeight="200" entityIconified="false" entityId="141113430452349" entityLocationX="394" entityLocationY="11" entityWidth="150" queryId="qItemBillCostServer" tableName="" tableSchemaName=""/>
-  <referenceRelation leftEntityFieldName="item_id" leftEntityId="141113422812389" rightEntityFieldName="wh_items_id" rightEntityId="141113422812389"/>
-  <referenceRelation leftEntityFieldName="item_id" leftEntityId="141113430452349" rightEntityFieldName="wh_items_id" rightEntityId="141113422812389"/>
-  <referenceRelation leftEntityFieldName="bill_measure" leftEntityId="141113430452349" rightEntityFieldName="bill_measures_id" rightEntityId="141113516677345"/>
-  <referenceRelation leftEntityFieldName="item_id" leftEntityId="141113422812389" rightEntityFieldName="wh_items_id" rightEntityId="141113430452349"/>
-  <referenceRelation leftEntityFieldName="cost_id" leftEntityId="141148062952169" rightEntityFieldName="bill_item_cost_id" rightEntityId="141113422812389"/>
-  <referenceRelation leftEntityFieldName="item_id" leftEntityId="141113430452349" rightEntityFieldName="wh_items_id" rightEntityId="141113430452349"/>
   <referenceRelation leftEntityFieldName="bill_measure" leftEntityId="141113422812389" rightEntityFieldName="bill_measures_id" rightEntityId="141113516677345"/>
-  <referenceRelation leftEntityFieldName="cost_id" leftEntityId="141148062952169" rightEntityFieldName="bill_item_cost_id" rightEntityId="141113430452349"/>
+  <referenceRelation leftEntityFieldName="item_id" leftEntityId="141113422812389" rightEntityFieldName="wh_items_id" rightEntityId="141113422812389"/>
+  <referenceRelation leftEntityFieldName="item_id" leftEntityId="141113430452349" rightEntityFieldName="wh_items_id" rightEntityId="141113430452349"/>
+  <referenceRelation leftEntityFieldName="cost_id" leftEntityId="142141401693039" rightEntityFieldName="bill_item_cost_id" rightEntityId="141113422812389"/>
+  <referenceRelation leftEntityFieldName="item_id" leftEntityId="141113430452349" rightEntityFieldName="wh_items_id" rightEntityId="141113422812389"/>
+  <referenceRelation leftEntityFieldName="cost_id" leftEntityId="142141401693039" rightEntityFieldName="bill_item_cost_id" rightEntityId="141113430452349"/>
+  <referenceRelation leftEntityFieldName="item_id" leftEntityId="141113422812389" rightEntityFieldName="wh_items_id" rightEntityId="141113430452349"/>
+  <referenceRelation leftEntityFieldName="bill_measure" leftEntityId="141113430452349" rightEntityFieldName="bill_measures_id" rightEntityId="141113516677345"/>
 </datamodel>
