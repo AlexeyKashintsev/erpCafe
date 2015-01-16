@@ -16,7 +16,8 @@ function OrderList(aParent) {
         for (var i in self.orderDetails) {
             orderSum += self.orderDetails[i].orderSum;
         }
-        document.getElementById("orderSum").innerHTML = '<h3>Итого: <b>' + orderSum + '</b> рублей</h3>';
+        odp.updateOrderSum(orderSum);
+        //document.getElementById("orderSum").innerHTML = '<h3>Итого: <b>' + orderSum + '</b> рублей</h3>';
         
         AS.updateOrder(self, orderSum);
         
@@ -32,7 +33,7 @@ function OrderList(aParent) {
         ordItem.itemId = anItemData.item_id;
         ordItem.itemName = anItemData.item_name;
         ordItem.itemCost = anItemData.item_cost;
-        ordItem.orderSum = anItemData.item_cost;
+        ordItem.orderSum = 0;
         
         ordItem.increase = function() {
             ordItem.orderSum = ++ordItem.orderQuantity * ordItem.itemCost;
@@ -57,15 +58,13 @@ function OrderList(aParent) {
         };
         
         ordItem.view = new odp.orderItem(ordItem);
-        ordItem.increase();
     }
 
     self.addItem = function(anItemData) {
-        if (!!self.orderDetails[anItemData.item_id]) {
-            self.orderDetails[anItemData.item_id].increase();
-        } else {
+        if (!self.orderDetails[anItemData.item_id]) {
             self.orderDetails[anItemData.item_id] = new OrderItem(anItemData);
         }
+        self.orderDetails[anItemData.item_id].increase();
     };
 
     self.deleteOrder = function() {
@@ -127,7 +126,7 @@ function OrderList(aParent) {
     };
 
     clientSelector.show("actionPanel");
-    var odp = new widgetCreator.OrderListPane("actionPanel", self.acceptOrder, self.deleteOrder);
+    var odp = new OrderListPane("actionPanel", self.acceptOrder, self.deleteOrder);
 
     function btnOkActionPerformed(evt) {
         self.acceptOrder();

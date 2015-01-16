@@ -4,6 +4,7 @@
  * @name qTradeItemsId
  * @public
  * @rolesallowed admin franchazi
+ * TODO Найти альтернативу запросу
  */ 
 Select * 
 From wh_items t1
