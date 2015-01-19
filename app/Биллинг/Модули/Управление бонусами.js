@@ -13,7 +13,6 @@ function BonusModule() {
     self.setBonusRate = function(anItemId, aTypeId, aBonusRate, aBonusCategory) {
         if(!aBonusCategory) aBonusCategory = 1;
         model.qGetItem.params.item_id = anItemId;
-        //model.qGetItem.params.franchazi_id = (session.getUserRole() === "admin") ? null : session.getFranchazi();
         model.requery();
         if (!model.qGetItem.empty && !aTypeId) {
             if (model.qGetItem.cursor.franchazi_id == session.getFranchazi() || session.getUserRole() === "admin") {
