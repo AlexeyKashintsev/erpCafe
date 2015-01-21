@@ -66,6 +66,11 @@ function BillModule() {
         model.qBillAccountServer.params.account_id = anAccountId;
         model.qBillAccountServer.params.client_id = aClientId;
         model.qBillAccountServer.requery();
+        if (!model.qBillAccountServer.empty) 
+            return {accountId : model.qBillAccountServer.cursor.bill_accounts_id,
+                    accountType : model.qBillAccountServer.cursor.account_type};
+        else 
+            return null;
     }
     
     function getMultiplier(aOperationType){
@@ -154,14 +159,22 @@ function BillModule() {
      * TODO добавить MD5 проверку!!!
      */
     self.addBillOperation = function(anAccountId, anOperationType, aSum, aStatus, aClientId) {
+        //Его проще заново переписать, пиздец тут говна О_о -> X_x 
+        var accountType = null;
+        var multiplier = getMultiplier(anOperationType);
+        
         if (!aStatus)
             aStatus = self.OP_STATUS_SUCCESS;
+
         if(aClientId){
-            self.getBillAccountClient(aClientId);
-            if(model.qBillAccountServer.empty) return false;
-            else anAccountId = model.qBillAccountServer.cursor.bill_accounts_id;
+            var account = reqBillAccounts(null,null,null,aClientId);
+            if(!anAccountId) return false;
+            else {
+                anAccountId = account.accountId;
+                accountType = account.accountType;
+            }
         }
-        var ERROR_SHORTAGE_MONEY = false;
+        
         var obj = {
             account_id: anAccountId,
             operation_sum: aSum,
@@ -170,29 +183,39 @@ function BillModule() {
             operation_status: aStatus,
             user_name_perfomed: self.principal.name
         };
-        reqBillAccounts(anAccountId, null, null, null);
-        var accountType = model.qBillAccountServer.cursor.account_type;
-        var multiplier = getMultiplier(anOperationType);
+        
+        reqBillAccounts(anAccountId, null, null, null); 
+        
         //Проверка безопасного проведенеия операции пополнения счета
-        if(session.getUserRole() != "admin" && anOperationType == self.OPERATION_ADD_CASH && aSum > 0 && aStatus == self.OP_STATUS_SUCCESS && multiplier > 0)
+        if(session.getUserRole() !== "admin" 
+                && anOperationType === self.OPERATION_ADD_CASH 
+                && aSum > 0 && aStatus === self.OP_STATUS_SUCCESS 
+                && multiplier > 0)
             return false;
-        if ((multiplier === -1) && (aStatus === self.OP_STATUS_SUCCESS || aStatus === self.OP_STATUS_PAID) && (anOperationType != self.OPERATION_DEL_SERVICE) && (accountType != self.ACCOUNT_TYPE_CREDIT)) {
-            ERROR_SHORTAGE_MONEY = checkMoneyOnAccount(anAccountId, aSum);
-        }
-        if (ERROR_SHORTAGE_MONEY) {
-            eventProcessor.addEvent('errorLostMoney', obj);
-            return false;
-        } else {
-            model.qBillOperationsListServer.push(obj);
-            if (aStatus === self.OP_STATUS_SUCCESS) {
-                reqBillAccounts(anAccountId, null, null, null);
-                if (model.qBillAccountServer.length > 0)
-                    model.qBillAccountServer.cursor.currnt_sum = model.qBillAccountServer.cursor.currnt_sum + aSum * multiplier;
+        
+        if ((multiplier === -1) 
+                && (aStatus === self.OP_STATUS_SUCCESS || aStatus === self.OP_STATUS_PAID) 
+                && (anOperationType !== self.OPERATION_DEL_SERVICE) 
+                && (accountType !== self.ACCOUNT_TYPE_CREDIT)) 
+        {
+            if (checkMoneyOnAccount(anAccountId, aSum)) {
+                //TODO checkMoneyOnAccount возвращает ложь если денег хватает О_о
+                eventProcessor.addEvent('errorLostMoney', obj);
+                return false;
+            } else {
+                model.qBillOperationsListServer.push(obj);
+                if (aStatus === self.OP_STATUS_SUCCESS) {
+                    reqBillAccounts(anAccountId, null, null, null);
+                    if (model.qBillAccountServer.length > 0)
+                        model.qBillAccountServer.cursor.currnt_sum = model.qBillAccountServer.cursor.currnt_sum + aSum * multiplier;
+                }
+                model.save(); //TODO Может model.save на строчку выше поднять?
+                eventProcessor.addEvent('addBillOperation', obj);
+                return model.qBillOperationsListServer.cursor.bill_operations_id;
             }
-            model.save();
-            eventProcessor.addEvent('addBillOperation', obj);
-            return model.qBillOperationsListServer.cursor.bill_operations_id;
         }
+        
+        
     };
 
     /*
@@ -204,18 +227,18 @@ function BillModule() {
     self.setStatusBillOperation = function(anOperationId, aStatus, aMD5) {
         var ERROR_SHORTAGE_MONEY = false;
         model.params.operation_id = anOperationId;
-        model.qBillOperationsListServer.requery(function() {});
+        model.qBillOperationsListServer.requery();
         if (model.qBillOperationsListServer.length > 0) {
-            if (aStatus == self.OP_STATUS_SUCCESS) {
+            if (aStatus === self.OP_STATUS_SUCCESS) {
                 //Проверка безопасного проведенеия операции пополнения счета
-                if(session.getUserRole() != "admin" && aStatus == self.OP_STATUS_SUCCESS)
+                if(session.getUserRole() !== "admin" && aStatus === self.OP_STATUS_SUCCESS)
                     return false;
                 reqBillAccounts(model.qBillOperationsListServer.cursor.account_id, null, null, null);
                 ERROR_SHORTAGE_MONEY = checkMoneyOnAccount(model.qBillOperationsListServer.cursor.account_id, model.qBillOperationsListServer.cursor.operation_sum);
                 if(!ERROR_SHORTAGE_MONEY)
                     model.qBillAccountServer.cursor.currnt_sum = model.qBillAccountServer.cursor.currnt_sum + model.qBillOperationsListServer.cursor.operation_sum * model.qBillOperationsListServer.cursor.multiplier;
             }
-            if (!self.ERROR_SHORTAGE_MONEY) {
+            if (!self.ERROR_SHORTAGE_MONEY) {//TODO Тут у меня началась кровь из глаз. Надеюсь я завтра это не увижу.
                 model.qBillOperationsListServer.cursor.operation_status = aStatus;
                 model.save();
                 self.getSumFromAccountId(model.qBillOperationsListServer.cursor.account_id);
@@ -289,6 +312,8 @@ function BillModule() {
      * Получение счетов клинта
      */
     self.getBillAccountClient = function(aClientId, aType){
+        //Чет я не врубился че эта функция делает. SJ
+        //Думаю ее стоит удалить
         if(!aType) aType = null;
         reqBillAccounts(null, null, aType, aClientId);
         return model.qBillAccountServer.cursor.bill_accounts_id;
