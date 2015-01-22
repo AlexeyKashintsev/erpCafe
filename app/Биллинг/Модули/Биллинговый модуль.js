@@ -56,8 +56,8 @@ function BillModule() {
      */
     function checkMoneyOnAccount(anAccountId, aSum){
         var sum = self.getSumFromAccountId(anAccountId);
-        if(sum >= aSum) return false;
-        else return true;
+        if(sum >= aSum) return true;
+        else return false;
     }
 
     function reqBillAccounts(anAccountId, aFranchaziId, aType, aClientId){
@@ -76,7 +76,7 @@ function BillModule() {
     function getMultiplier(aOperationType){
         model.qBillOperationTypes.beforeFirst();
         while(model.qBillOperationTypes.next()){
-            if(model.qBillOperationTypes.cursor.bill_operations_type_id == aOperationType)
+            if(model.qBillOperationTypes.cursor.bill_operations_type_id === aOperationType)
                 return model.qBillOperationTypes.cursor.multiplier;
         }
         return false;
@@ -126,7 +126,7 @@ function BillModule() {
         reqBillAccounts(anAccountId, null, null, null);
         model.qGetAccountBalance.requery();
         var account_balance = model.qGetAccountBalance.empty ? 0 : model.qGetAccountBalance.cursor.account_balance;
-        if(model.qBillAccountServer.cursor.currnt_sum != account_balance){
+        if(model.qBillAccountServer.cursor.currnt_sum !== account_balance){
             eventProcessor.addEvent("accountCurrentSumChanged", {
                 account_id: anAccountId,
                 old_sum: model.qBillAccountServer.cursor.currnt_sum,
@@ -198,8 +198,7 @@ function BillModule() {
                 && (anOperationType !== self.OPERATION_DEL_SERVICE) 
                 && (accountType !== self.ACCOUNT_TYPE_CREDIT)) 
         {
-            if (checkMoneyOnAccount(anAccountId, aSum)) {
-                //TODO checkMoneyOnAccount возвращает ложь если денег хватает О_о
+            if (!checkMoneyOnAccount(anAccountId, aSum)) {
                 eventProcessor.addEvent('errorLostMoney', obj);
                 return false;
             } else {
@@ -225,20 +224,17 @@ function BillModule() {
      * @returns {undefined}
      */
     self.setStatusBillOperation = function(anOperationId, aStatus, aMD5) {
-        var ERROR_SHORTAGE_MONEY = false;
         model.params.operation_id = anOperationId;
         model.qBillOperationsListServer.requery();
         if (model.qBillOperationsListServer.length > 0) {
-            if (aStatus === self.OP_STATUS_SUCCESS) {
-                //Проверка безопасного проведенеия операции пополнения счета
-                if(session.getUserRole() !== "admin" && aStatus === self.OP_STATUS_SUCCESS)
-                    return false;
-                reqBillAccounts(model.qBillOperationsListServer.cursor.account_id, null, null, null);
-                ERROR_SHORTAGE_MONEY = checkMoneyOnAccount(model.qBillOperationsListServer.cursor.account_id, model.qBillOperationsListServer.cursor.operation_sum);
-                if(!ERROR_SHORTAGE_MONEY)
+            if (checkMoneyOnAccount(model.qBillOperationsListServer.cursor.account_id, model.qBillOperationsListServer.cursor.operation_sum)){
+            
+                if (aStatus === self.OP_STATUS_SUCCESS && session.getUserRole() === "admin") {
+                    reqBillAccounts(model.qBillOperationsListServer.cursor.account_id, null, null, null);
                     model.qBillAccountServer.cursor.currnt_sum = model.qBillAccountServer.cursor.currnt_sum + model.qBillOperationsListServer.cursor.operation_sum * model.qBillOperationsListServer.cursor.multiplier;
-            }
-            if (!self.ERROR_SHORTAGE_MONEY) {//TODO Тут у меня началась кровь из глаз. Надеюсь я завтра это не увижу.
+                } else 
+                    return false;
+                
                 model.qBillOperationsListServer.cursor.operation_status = aStatus;
                 model.save();
                 self.getSumFromAccountId(model.qBillOperationsListServer.cursor.account_id);
@@ -248,16 +244,18 @@ function BillModule() {
                 });
                 return true;
             } else {
-                return addErrorToLogger('errorSetStatusBillOperation', {
+                addErrorToLogger('errorSetStatusBillOperation', {
                     operation_id: model.qBillOperationsListServer.cursor.bill_operations_id,
                     status: aStatus
                 }, ERRORS.LOST_MONEY);
+                return false;
             }
         } else {
-            return addErrorToLogger('errorSetStatusBillOperation', {
+            addErrorToLogger('errorSetStatusBillOperation', {
                     operation_id: model.qBillOperationsListServer.cursor.bill_operations_id,
                     status: aStatus
                 }, ERRORS.INVALID_OP_ID);
+            return false;
         }
     };
     
