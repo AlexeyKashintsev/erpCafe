@@ -156,7 +156,6 @@ function BillModule() {
      * aType - тип операции (списание или пополнение)
      * aSum - сумма денежных средств
      * aStatus - статус операции (успешно, провалено, выставлен счет, в обработке)
-     * TODO добавить MD5 проверку!!!
      */
     self.addBillOperation = function(anAccountId, anOperationType, aSum, aStatus, aClientId) {
         //Его проще заново переписать, пиздец тут говна О_о -> X_x 
@@ -193,28 +192,27 @@ function BillModule() {
                 && multiplier > 0)
             return false;
         
-        if ((multiplier === -1) 
+        if (!checkMoneyOnAccount(anAccountId, aSum)) {
+            if ((multiplier === -1) 
                 && (aStatus === self.OP_STATUS_SUCCESS || aStatus === self.OP_STATUS_PAID) 
                 && (anOperationType !== self.OPERATION_DEL_SERVICE) 
-                && (accountType !== self.ACCOUNT_TYPE_CREDIT)) 
-        {
-            if (!checkMoneyOnAccount(anAccountId, aSum)) {
+                && (accountType !== self.ACCOUNT_TYPE_CREDIT))
+            {
                 eventProcessor.addEvent('errorLostMoney', obj);
                 return false;
-            } else {
-                model.qBillOperationsListServer.push(obj);
-                if (aStatus === self.OP_STATUS_SUCCESS) {
-                    reqBillAccounts(anAccountId, null, null, null);
-                    if (model.qBillAccountServer.length > 0)
-                        model.qBillAccountServer.cursor.currnt_sum = model.qBillAccountServer.cursor.currnt_sum + aSum * multiplier;
-                }
-                model.save(); //TODO Может model.save на строчку выше поднять?
-                eventProcessor.addEvent('addBillOperation', obj);
-                return model.qBillOperationsListServer.cursor.bill_operations_id;
+            }
+        } 
+        
+        model.qBillOperationsListServer.push(obj);
+        if (aStatus === self.OP_STATUS_SUCCESS) {
+            reqBillAccounts(anAccountId, null, null, null);
+            if (model.qBillAccountServer.length > 0){
+                model.qBillAccountServer.cursor.currnt_sum = model.qBillAccountServer.cursor.currnt_sum + aSum * multiplier;
+                model.save();
             }
         }
-        
-        
+        eventProcessor.addEvent('addBillOperation', obj);
+        return model.qBillOperationsListServer.cursor.bill_operations_id;
     };
 
     /*
@@ -297,21 +295,11 @@ function BillModule() {
             model.save();
         }
     };
-
-    /*
-     * Получение счета по франчайзе
-     */
-    self.getBillAccount = function(aFranId){
-        reqBillAccounts(null, aFranId, null, null);
-        return model.qBillAccountServer.cursor.bill_accounts_id;
-    };
     
     /*
      * Получение счетов клинта
      */
     self.getBillAccountClient = function(aClientId, aType){
-        //Чет я не врубился че эта функция делает. SJ
-        //Думаю ее стоит удалить
         if(!aType) aType = null;
         reqBillAccounts(null, null, aType, aClientId);
         return model.qBillAccountServer.cursor.bill_accounts_id;
