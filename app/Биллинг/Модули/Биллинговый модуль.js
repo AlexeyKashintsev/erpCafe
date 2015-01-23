@@ -174,7 +174,7 @@ function BillModule() {
             }
         }
         
-        var obj = {
+        var billOperation = {
             account_id: anAccountId,
             operation_sum: aSum,
             operation_date: new Date(),
@@ -198,12 +198,12 @@ function BillModule() {
                 && (anOperationType !== self.OPERATION_DEL_SERVICE) 
                 && (accountType !== self.ACCOUNT_TYPE_CREDIT))
             {
-                eventProcessor.addEvent('errorLostMoney', obj);
+                eventProcessor.addEvent('errorLostMoney', billOperation);
                 return false;
             }
         } 
         
-        model.qBillOperationsListServer.push(obj);
+        model.qBillOperationsListServer.push(billOperation);
         if (aStatus === self.OP_STATUS_SUCCESS) {
             reqBillAccounts(anAccountId, null, null, null);
             if (model.qBillAccountServer.length > 0){
@@ -211,7 +211,7 @@ function BillModule() {
                 model.save();
             }
         }
-        eventProcessor.addEvent('addBillOperation', obj);
+        eventProcessor.addEvent('addBillOperation', billOperation);
         return model.qBillOperationsListServer.cursor.bill_operations_id;
     };
 
@@ -221,15 +221,18 @@ function BillModule() {
      * @param {type} aStatus
      * @returns {undefined}
      */
-    self.setStatusBillOperation = function(anOperationId, aStatus, aMD5) {
+    self.setStatusBillOperation = function(anOperationId, aStatus) {
         model.params.operation_id = anOperationId;
         model.qBillOperationsListServer.requery();
         if (model.qBillOperationsListServer.length > 0) {
-            if (checkMoneyOnAccount(model.qBillOperationsListServer.cursor.account_id, model.qBillOperationsListServer.cursor.operation_sum)){
-            
+            if (checkMoneyOnAccount(model.qBillOperationsListServer.cursor.account_id, 
+                model.qBillOperationsListServer.cursor.operation_sum))
+            {
                 if (aStatus === self.OP_STATUS_SUCCESS && session.getUserRole() === "admin") {
                     reqBillAccounts(model.qBillOperationsListServer.cursor.account_id, null, null, null);
-                    model.qBillAccountServer.cursor.currnt_sum = model.qBillAccountServer.cursor.currnt_sum + model.qBillOperationsListServer.cursor.operation_sum * model.qBillOperationsListServer.cursor.multiplier;
+                    model.qBillAccountServer.cursor.currnt_sum = model.qBillAccountServer.cursor.currnt_sum + 
+                            model.qBillOperationsListServer.cursor.operation_sum * 
+                            model.qBillOperationsListServer.cursor.multiplier;
                 } else 
                     return false;
                 
@@ -242,37 +245,21 @@ function BillModule() {
                 });
                 return true;
             } else {
-                addErrorToLogger('errorSetStatusBillOperation', {
+                eventProcessor.addEvent('errorSetStatusBillOperation', {
                     operation_id: model.qBillOperationsListServer.cursor.bill_operations_id,
-                    status: aStatus
-                }, ERRORS.LOST_MONEY);
+                    status: aStatus,
+                    error : ERRORS.LOST_MONEY });
                 return false;
             }
         } else {
-            addErrorToLogger('errorSetStatusBillOperation', {
+            eventProcessor.addEvent('errorSetStatusBillOperation', {
                     operation_id: model.qBillOperationsListServer.cursor.bill_operations_id,
-                    status: aStatus
-                }, ERRORS.INVALID_OP_ID);
+                    status: aStatus,
+                    error: ERRORS.INVALID_OP_ID});
             return false;
         }
     };
-    
-    /*
-     * Вспомогательная функция для избежания дублирования кода
-     * @param {type} aEvent
-     * @param {type} aObj
-     * @param {type} aError
-     * @returns {Boolean}
-     */
-    function addErrorToLogger(aEvent, aObj, aError) {
-        Logger.info(aError);
-        eventProcessor.addEvent(aEvent, {
-            info: aObj,
-            error: aError
-        });
-        return false;
-    }
-    
+
     /*
      * Добавление товаров на счет
      * @param {type} anOpId
