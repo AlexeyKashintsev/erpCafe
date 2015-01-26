@@ -30,9 +30,9 @@ function AddBalance(anAccountId) {
                 var modalBody = modal.getModalBody();
                 var yandexForm = cmn.createElement("div", "yandexForm", modalBody, "yandexForm");
                 yandexForm.innerHTML =   
-                        '<form role="form" id ="form" action="https://money.yandex.ru/eshop.xml" method="post" target="_blank">\n\
+                        '<form role="form" id ="form" action="https://demomoney.yandex.ru/eshop.xml" method="post" target="_blank">\n\
                         <input name="shopId" value="20474" type="hidden"/>\n\
-                        <input name="scid" value="10823" type="hidden"/>\n\
+                        <input name="scid" value="58702" type="hidden"/>\n\
                         <input name="billOperation" id="billOperation" type="hidden">\n\
                         <div class="form-group">\n\
                             <label for="sum">Сумма для пополнения</label>\n\
@@ -47,7 +47,7 @@ function AddBalance(anAccountId) {
                             <input type="email" name="cps_email" class="form-control" id="cps_email" placeholder="Введите Email">\n\
                         </div>\n\
                         <input name="customerNumber" value="abc000456" type="hidden"/>\n\
-                        <button type="submit" class="btn btn-default">Оплатить</button>\n\
+                        <!--button type="submit" class="btn btn-default">Оплатить</button-->\n\
                         </form>\n\
                         <button id="submit" class="btn btn-default">Оплатить</button>';
                 document.getElementById('submit').onclick = yandexSubmitOnClick;

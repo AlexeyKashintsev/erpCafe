@@ -13,24 +13,15 @@ function YandexPaymentReceiverTest() {
     self.RESPONSE_FAIL_HASH     = 1;   //Несовпали хэши
     self.RESPONSE_FAIL          = 200; //Ошибка разбора
     
-    self.SHOP_PASSWORD = "";           //Секретное слово TODO Расхардкодить!
+    self.SHOP_PASSWORD = "Yw559fyo3yBDFNy708rK";           //Секретное слово TODO Расхардкодить!
     
-    /*
-     * Преобразование числа к двухзначному виду
-     */
-    function two(num) {
-        return (num > 9 ? num : "0" + num);
-    }
     /*
      * Формирует ответный XML файл для яндекса
      */
-    function xmlToYandex(code, shopId, invoiceId, orderSumAmount, message){
-        var d = new Date();
-        var date = d.getFullYear() + "-" + two(d.getMonth()) + "-" + two(d.getDay()) + "T" +
-                two(d.getHours()) + ":" + two(d.getMinutes()) + ":" + two(d.getSeconds())+"Z";
-        return '<?xml version="1.0" encoding="UTF-8"?> <checkOrderResponse performedDatetime="'+
-                date+'" code="'+code+'" invoiceId="'+invoiceId+'" orderSumAmount="'+
-                orderSumAmount+'" shopId="'+shopId+'" message="'+message+'" />';
+    function xmlToYandex(code, shopId, invoiceId, aDate){
+        return '<?xml version="1.0" encoding="UTF-8"?> \n\
+                <checkOrderResponse performedDatetime="'+
+                aDate+'" code="'+code+'" invoiceId="'+invoiceId+'" shopId="'+shopId+'"/>';
     }
     
     /*
@@ -46,19 +37,11 @@ function YandexPaymentReceiverTest() {
         var hash = af.MD5(r.action + ";" + r.orderSumAmount + ";" + r.orderSumCurrencyPaycash + ";" +
                           r.orderSumBankPaycash + ";" + r.shopId + ";" + r.invoiceId + ";" +
                           r.customerNumber + ";" +self.SHOP_PASSWORD);
-        if(hash === r.md5){
-            if(r.billAccountId && r.billOperationId){
-                model.qBillOperationsListServer.params.operation_id = r.billOperationId;
-                model.qBillOperationsListServer.params.account_id = r.billAccountId;
-                model.qBillOperationsListServer.requery();
-                if(!model.qBillOperationsListServer.empty){
-                    bm.setStatusBillOperation();
-                }
-                return xmlToYandex(self.RESPONSE_SUCCESS, r.shopId, r.invoiceId, r.orderSumAmount);
-            }
-        } else {
-            return xmlToYandex(self.RESPONSE_FAIL_HASH, r.shopId, r.invoiceId, r.orderSumAmount, false);
-        }
+        if(hash.toUpperCase() === r.md5.toUpperCase()){
+            return xmlToYandex(self.RESPONSE_SUCCESS, r.shopId, r.invoiceId, r.requestDatetime);
+        } 
+        return xmlToYandex(self.RESPONSE_FAIL_HASH, r.shopId, r.invoiceId, r.requestDatetime);
+        
     };
     
     /*
@@ -72,11 +55,18 @@ function YandexPaymentReceiverTest() {
         var hash = af.MD5(r.action + ";" + r.orderSumAmount + ";" + r.orderSumCurrencyPaycash + ";" +
                           r.orderSumBankPaycash + ";" + r.shopId + ";" + r.invoiceId + ";" +
                           r.customerNumber + ";" +self.SHOP_PASSWORD);
-        if(hash === r.md5){
-            //TODO Вот тут перечислить денюжки франчайзе
-            return xmlToYandex(self.RESPONSE_SUCCESS, r.shopId, r.invoiceId, r.orderSumAmount);
-        } else {
-            return xmlToYandex(self.RESPONSE_FAIL_HASH, r.shopId, r.invoiceId, r.orderSumAmount, false);
+        if(hash.toUpperCase() === r.md5.toUpperCase()){
+           if(r.billOperation){
+                model.qBillOperationsListServer.params.operation_id = r.billOperation;
+                model.qBillOperationsListServer.requery();
+                if(!model.qBillOperationsListServer.empty){
+                    bm.setStatusBillOperation(r.billOperation, bm.OP_STATUS_SUCCESS);
+                    Logger.info("BILL STATUS CHANGED!");
+                }
+                return xmlToYandex(self.RESPONSE_SUCCESS, r.shopId, r.invoiceId, r.requestDatetime);
+            }
         }
+        return xmlToYandex(self.RESPONSE_FAIL_HASH, r.shopId, r.invoiceId, r.requestDatetime);
+        
     };
 }
