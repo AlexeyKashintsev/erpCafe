@@ -26,19 +26,6 @@ function WhSessionModule() {
         return self[aPropertyName];
     };
     
-    function setParams(aTradePointId, aSessionID) {
-        try {
-            if (!aTradePointId && !aSessionID) {
-                aTradePointId = session.getTradePoint();
-                aSessionID = session.getActiveTPSession();
-            }
-            model.params.session_id = aSessionID;
-            model.params.trade_point_id = aTradePointId;
-        } catch(e) {
-            Logger.warning(e);
-        }
-    }
-
     self.setTradePoint = function(aTradePointId) {
         setParams(aTradePointId, null);
         self.getCurrentSession();
@@ -73,34 +60,7 @@ function WhSessionModule() {
             return false;
         }
     };
-    /*
-     * Инициализация товаров по торговой точке
-     * @param {type} aSessionId
-     * @returns {undefined}
-     */
-    function initializeSessionBalance(aStartValues) {
-        if (!aStartValues && aStartValues !== {}) { // подставляем остатки от предыдущей сессии
-            model.qLastClosedSessionOnTradePoint.requery();
-            if (!model.qLastClosedSessionOnTradePoint.empty) {
-                var lastSession = model.qLastClosedSessionOnTradePoint.cursor.org_session_id;
-                aStartValues = getValuesBySession(lastSession, true);
-            }
-        }
-        
-        if (!!aStartValues && aStartValues !== {}) {
-            model.itemsByTP.beforeFirst();
-            while (model.itemsByTP.next()) {
-                model.querySessionBalance.insert(
-                        model.querySessionBalance.schema.session_id, model.params.session_id,
-                        model.querySessionBalance.schema.item_id, model.itemsByTP.cursor.item_id
-                    );
-                model.querySessionBalance.cursor.start_value = aStartValues[model.querySessionBalance.cursor.item_id];
-            }
-            return true;
-        } else
-            return false;
-    }
-
+    
     /*
      * Создает сессию с указанным идентификатором, или, если он не указан
      * возвращает Id новой сессии
@@ -121,19 +81,22 @@ function WhSessionModule() {
             
             var initSessionResult = initializeSessionBalance(aStartValues);
             
-//            if (initializeSessionBalance(aStartValues)) {
+            if (initSessionResult) {
                 ep.addEvent('newSession', {
                     session: model.params.session_id,
                     module: 'whSessions'
                 });
                 model.save();
                 return model.params.session_id;
-//                TODO Завести соответсвующее событие !ВАЖНО!
-//            } else {
-//                model.revert();
-//                return false; 
-//                Logger.warning("Сессия не инициализирована. " + aSessionId);
-//            }
+            } else {
+                model.revert();
+                return false; 
+                Logger.warning("Сессия не инициализирована. " + aSessionId);
+                ep.addEvent('initSessionError', {
+                    session: model.params.session_id,
+                    trade_point: model.params.trade_point_id
+                });
+            }
         }
     };
     
@@ -193,26 +156,7 @@ function WhSessionModule() {
         else
             return false;
     };
-
-    /*
-     * Возвращает начальные или конечные значения баланса Item в сессии
-     * @param {type} aSession
-     * @param {type} aEndValue - если true, то возвращает конечные значения
-     * @returns {Array}
-     */
-    function getValuesBySession(aSession, aEndValue) {
-        var values = {};
-        model.querySessionBalance.params.session_id = aSession;
-        model.querySessionBalance.requery();
-        model.querySessionBalance.beforeFirst();
-        while (model.querySessionBalance.next()) {
-            values[model.querySessionBalance.cursor.item_id] = aEndValue ?
-                    model.querySessionBalance.cursor.end_value
-                    : model.querySessionBalance.cursor.start_value;
-        }
-        return values;
-    }
-
+    
     /*
      * Добавление товаров на склад
      */
@@ -236,4 +180,65 @@ function WhSessionModule() {
             return false;
         }
     };
+    
+    function setParams(aTradePointId, aSessionID) {
+        try {
+            if (!aTradePointId && !aSessionID) {
+                aTradePointId = session.getTradePoint();
+                aSessionID = session.getActiveTPSession();
+            }
+            model.params.session_id = aSessionID;
+            model.params.trade_point_id = aTradePointId;
+        } catch(e) {
+            Logger.warning(e);
+        }
+    }
+    
+    /*
+     * Инициализация товаров по торговой точке
+     * @param {type} aSessionId
+     * @returns {undefined}
+     */
+    function initializeSessionBalance(aStartValues) {
+        if (!aStartValues && aStartValues !== {}) { // подставляем остатки от предыдущей сессии
+            model.qLastClosedSessionOnTradePoint.requery();
+            if (!model.qLastClosedSessionOnTradePoint.empty) {
+                var lastSession = model.qLastClosedSessionOnTradePoint.cursor.org_session_id;
+                aStartValues = getValuesBySession(lastSession, true);
+            }
+        }
+        
+        if (!!aStartValues && aStartValues !== {}) {
+            model.itemsByTP.beforeFirst();
+            while (model.itemsByTP.next()) {
+                model.querySessionBalance.insert(
+                        model.querySessionBalance.schema.session_id, model.params.session_id,
+                        model.querySessionBalance.schema.item_id, model.itemsByTP.cursor.item_id
+                    );
+                model.querySessionBalance.cursor.start_value = aStartValues[model.querySessionBalance.cursor.item_id];
+            }
+            return true;
+        } else
+            return false;
+    }
+
+
+    /*
+     * Возвращает начальные или конечные значения баланса Item в сессии
+     * @param {type} aSession
+     * @param {type} aEndValue - если true, то возвращает конечные значения
+     * @returns {Array}
+     */
+    function getValuesBySession(aSession, aEndValue) {
+        var values = {};
+        model.querySessionBalance.params.session_id = aSession;
+        model.querySessionBalance.requery();
+        model.querySessionBalance.beforeFirst();
+        while (model.querySessionBalance.next()) {
+            values[model.querySessionBalance.cursor.item_id] = aEndValue ?
+                    model.querySessionBalance.cursor.end_value
+                    : model.querySessionBalance.cursor.start_value;
+        }
+        return values;
+    }
 }

@@ -9,14 +9,13 @@ function BaristaDesktop() {
     session.tradeSession = new ServerModule("TradeSessions");
     self.userName = session.getUserName();
     var AS = new AdditionalScreen();
-    var BC = new addItemToDashboard();
+    var BC;
     //var BC = new addItem();
     var whAdd = null;
     var types_body;
     var items_body;
     var itemsChooser;
     
-    widgetCreator = new WidgetCreatorBaristaDesktop();
 //    var fmDev = new fmDevMode();
 //    fmDev.show();
     self.cashBackCalc = new CashBackCalculator(self);
@@ -93,8 +92,14 @@ function BaristaDesktop() {
     }
     
     function openDigitalMenu(){
-       //AS.openWin();
-       BC.showModal();
+        if (!BC)
+            require('addItemToDashboard', function() {
+                BC = new addItemToDashboard();
+                BC.showModal();
+            });
+        else {
+            BC.showModal();
+        }
     }
     
     function addItemToOrder(anItemData) {
@@ -106,15 +111,6 @@ function BaristaDesktop() {
             session.tradePoint = model.getSessions.trade_point;
             model.params.trade_point_id = session.tradePoint;
             itemsChooser = new ItemsChooser(session.tradePoint, "mainArea", self.orderList);
-          /*  model.tradeItemsByTradePointWithCost.params.franchazi_id = session.franchaziId;
-            model.tradeItemsByTradePointWithCost.params.actual_date = new Date();
-            model.tradeItemsByTradePointWithCost.params.trade_point_id = session.tradePoint;
-            model.tradeItemsByTradePointWithCost.execute();
-            
-            model.tradeTypes4TP.params.franchazi_id = session.franchaziId;
-            model.tradeTypes4TP.params.actual_date = new Date();
-            model.tradeTypes4TP.params.trade_point_id = session.tradePoint;
-            model.tradeTypes4TP.execute();*/
         }
     }//GEN-LAST:event_getSessionsOnRequeried
     
@@ -148,9 +144,7 @@ function BaristaDesktop() {
     }//GEN-LAST:event_qTradePointOnRequeried
     
     startBaristaDesktop();
-    
 
-    
     function tradeItemsByTradePointWithCostOnRequeried(evt) {//GEN-FIRST:event_tradeItemsByTradePointWithCostOnRequeried
         // TODO Добавьте здесь свой код:
     }//GEN-LAST:event_tradeItemsByTradePointWithCostOnRequeried

@@ -12,22 +12,21 @@ function BonusModule() {
     
     self.setBonusRate = function(anItemId, aTypeId, aBonusRate, aBonusCategory) {
         if(!aBonusCategory) aBonusCategory = 1;
-        model.qTradeItemsId.params.item_id = anItemId;
-        //model.qTradeItemsId.params.franchazi_id = (session.getUserRole() === "admin") ? null : session.getFranchazi();
+        model.qGetItem.params.item_id = anItemId;
         model.requery();
-        if (!model.qTradeItemsId.empty && !aTypeId) {
-            if (model.qTradeItemsId.cursor.franchazi_id == session.getFranchazi() || session.getUserRole() === "admin") {
+        if (!model.qGetItem.empty && !aTypeId) {
+            if (model.qGetItem.cursor.franchazi_id == session.getFranchazi() || session.getUserRole() === "admin") {
                 model.qBonusCountForTradeItem.params.trade_item = anItemId;
                 model.qBonusCountForTradeItem.requery();
                 if(model.qBonusCountForTradeItem.empty){
                     model.qBonusCountForTradeItem.push({
                         bonus_rate: aBonusRate,
-                        trade_item: model.qTradeItemsId.cursor.wh_items_id,
+                        trade_item: model.qGetItem.cursor.wh_items_id,
                         client_bonus_category: aBonusCategory
                     });
                 } else {
                     model.qBonusRateForItemsEdit.cursor.bonus_rate = aBonusRate;
-                    model.qBonusRateForItemsEdit.cursor.trade_item = model.qTradeItemsId.cursor.wh_items_id;
+                    model.qBonusRateForItemsEdit.cursor.trade_item = model.qGetItem.cursor.wh_items_id;
                     model.qBonusRateForItemsEdit.cursor.client_bonus_category = aBonusCategory;
                 }
             }
@@ -46,10 +45,10 @@ function BonusModule() {
     self.clearBonusRate = function(anItemId, aTypeId) {
         model.qBonusCountForTradeItem.params.trade_item = anItemId;
         model.qBonusCountForTradeItem.params.trade_type = aTypeId;
-        model.qTradeItemsId.params.item_id = anItemId;
+        model.qGetItem.params.item_id = anItemId;
         model.requery();
-        if (!model.qTradeItemsId.empty && !aTypeId && !model.qBonusCountForTradeItem.empty) {
-            if (model.qTradeItemsId.cursor.franchazi_id == session.getFranchazi() || session.getUserRole() === "admin") {
+        if (!model.qGetItem.empty && !aTypeId && !model.qBonusCountForTradeItem.empty) {
+            if (model.qGetItem.cursor.franchazi_id == session.getFranchazi() || session.getUserRole() === "admin") {
                 while (!model.qBonusCountForTradeItem.empty)
                     model.qBonusCountForTradeItem.deleteRow();
             }

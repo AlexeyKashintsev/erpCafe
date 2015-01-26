@@ -159,8 +159,14 @@ function ClientServerModule() {
         num = "8" + num.slice(-10);
         return num;
     }
-        //TODO Написать зачем нужно
-
+        
+    
+    /*
+     * В случае повреждения целостности БД необходимо использовать следующие функции.
+     * 
+     * clientInitialize2 привязывает к счету его владельца. 
+     * Использовалась после разделения общего ID на ClientID и BillID
+     */
     self.clientInitialize2 = function(){
         model.qGetAllBills.requery();
         model.qGetAllBills.beforeFirst();
@@ -173,7 +179,15 @@ function ClientServerModule() {
         }
         model.save();
     };
-    //TODO Написать зачем нужно
+    
+    /*
+     * Проверяет целостность информации о клиенте.
+     * Использовалась после загрузки базы клиентов из xls файла.
+     * При этом количество бонусов на счету берется из поля с адресом.
+     * Дата регистрации ставится текущая.
+     * Номера телефонов приводятся к общему виду.
+     * 
+     */
     self.clientInitialize = function(){
         Logger.info('Начало ахтунга!!!');
         model.qGetPersonalDataOfAllClients.requery();

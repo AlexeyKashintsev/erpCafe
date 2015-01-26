@@ -6,7 +6,47 @@
 function ItemsChooser(aTradePoint, aContainer, orderList) {
     var self = this, model = this.model;
     
-    var widjetFactory = !!widgetCreator ? widgetCreator : new WidgetCreatorBaristaDesktop();
+    self.tradeItem = function(aContainer, aData, onClick) {
+        var itemContainer = cmn.createElement("div", "Sortable itemDescription tt_"
+            + aData.trade_item_type_id + (aData.classtag ? " " + aData.classtag : ""),
+            aContainer, "tt_" + aData.item_id);
+        var itemPanel = cmn.createElement("div", "panel panel-primary", itemContainer);
+        //var itemHeading = cmn.createElement("div", "panel-heading", itemPanel);
+        var itemContent = cmn.createElement("div", "panel-body", itemPanel);
+        //var itemType = cmn.createElement("p", "itemType", itemContent);
+        var itemDesc = cmn.createElement("h3", "itemDesc", itemContent);//itemHeading);
+        var itemCost = cmn.createElement("h1", "itemCost", itemContent);
+        
+
+        itemDesc.innerHTML = aData.item_name;
+        //itemType.innerHTML = aData.type_name;
+        itemCost.innerHTML = aData.item_cost + 'р.';
+        
+        itemPanel.onclick = function() {
+                onClick(aData);
+        };
+    };
+    
+    self.typeItem = function(aContainer, aData, onClick) {
+        var obj = this;
+        obj.itemContainer = cmn.createElement("div", "typeSelector tt_"
+                + aData.trade_item_type_id + (aData.classtag ? " " + aData.classtag : ""), aContainer);
+        obj.itemName = cmn.createElement("div", "type_name", obj.itemContainer);
+        obj.itemName.innerHTML = aData.type_name;
+        
+        obj.selected = false;
+        obj.active = true;
+        
+        obj.itemContainer.onclick = function () {
+            onClick(obj);
+        };
+        
+        obj.setState = function (aState) {
+            obj.active = aState.active;
+            obj.selected = aState.selected;
+        };
+    };
+    
     var settings = Session.get('Settings');
     settings.updateSettingsParams(null, aTradePoint);
     
@@ -17,6 +57,7 @@ function ItemsChooser(aTradePoint, aContainer, orderList) {
     
     model.params.actual_date = new Date();
     model.params.trade_point_id = aTradePoint;
+    model.params.price_type = 10; //TODO Расхардкодить тип цены
     model.tradeItemsCostByTP.requery();
     model.tradeTypes4TP.requery();
     
@@ -32,19 +73,17 @@ function ItemsChooser(aTradePoint, aContainer, orderList) {
     function tradeTypes4TPOnRequeried(evt) {//GEN-FIRST:event_tradeTypes4TPOnRequeried
         if (!model.tradeTypes4TP.empty) {
             var buttons = [{d_name : 'Все', active : true}];
-            model.tradeTypes4TP.beforeFirst();
-            while (model.tradeTypes4TP.next()) {
-                var data = model.tradeTypes4TP.cursor;
+            model.tradeTypes4TP.forEach(function(data) {
                 buttons[data.trade_item_type_id] = {
                     d_name  :   data.type_name,
                     d_title :   null
                 };
-            }
+            });
             new cmn.ButtonGroup(buttons, types_body, "typeSelector", onTypeClick);
         }
     }//GEN-LAST:event_tradeTypes4TPOnRequeried
 
-    function setSortable(aSortable, aSelector) {
+    function setSortable(aSortable) {
         if (aSortable) {
             $( ".items_select" ).sortable({dropOnEmpty : false, containment : "parent",
             opacity:0.55, revert: true, delay: 150, helper: 'clone', update:
@@ -73,12 +112,14 @@ function ItemsChooser(aTradePoint, aContainer, orderList) {
         while (model.tradeItemsCostByTP.next()) {
             if (!data || data.item_id !== model.tradeItemsCostByTP.cursor.item_id) {
                 if (!!data)
-                    trade_items.push(new widgetCreator.tradeItem(items_body, data, processItemClick));
+                    trade_items.push(new self.tradeItem(items_body, data, processItemClick));
                 data = model.tradeItemsCostByTP.cursor;
                 data.cost = {};
             }
             data.cost[model.tradeItemsCostByTP.cursor.price_type] = 
                             model.tradeItemsCostByTP.cursor.item_cost;
         }
+        if (!!data)
+            trade_items.push(new self.tradeItem(items_body, data, processItemClick));
     }//GEN-LAST:event_tradeItemsCostByTPOnRequeried
 }

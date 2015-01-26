@@ -7,8 +7,8 @@ function ItemCard() {
     
     var imgH = 190;
     var imgW = 190;
+    var OpenType = null;
     
-  
     self.setItem = function(aItem){
         fillFields(aItem);
     };
@@ -17,11 +17,19 @@ function ItemCard() {
         model.qTradeItems.insert();
     };
     
+    self.save = function(){
+        model.save();
+    };
+    
+    self.setOpenType = function(aType){
+        OpenType = aType;
+    }
+    
     function searchInDataBase(anItemCode){
-        model.qGetItemByBarCode.params.barcode = anItemCode;
-        model.qGetItemByBarCode.requery();
-        if (model.qGetItemByBarCode.length > 0) 
-            return model.qGetItemByBarCode.cursor.item_name;
+        model.qGetItem.params.barcode = anItemCode;
+        model.qGetItem.requery();
+        if (model.qGetItem.length > 0) 
+            return model.qGetItem.cursor.item_name;
         else
             return false;
     }
@@ -43,8 +51,6 @@ function ItemCard() {
         });
     }
     
-        
-       
     function validateTF(anBarCode){
         anBarCode += "";
         anBarCode = anBarCode.replace(/\D+/g,"");
@@ -94,9 +100,6 @@ function ItemCard() {
         
     }
     
-    
-
-
     function button1ActionPerformed(evt) {//GEN-FIRST:event_button1ActionPerformed
         model.qTradeItems.cursor.item_picture = confirm("Введите URL картинки");
         
@@ -111,6 +114,15 @@ function ItemCard() {
     }//GEN-LAST:event_btnCancelActionPerformed
 
     function paramsOnChanged(evt) {//GEN-FIRST:event_paramsOnChanged
-        // TODO Добавьте здесь свой код:
     }//GEN-LAST:event_paramsOnChanged
+
+    function formWindowOpened(evt) {//GEN-FIRST:event_formWindowOpened
+        if (OpenType === "modal"){
+            form.btnSave.visible = true;
+            form.btnCancel.visible = true;
+        } else {
+            form.btnSave.visible = false;
+            form.btnCancel.visible = false;
+        }
+    }//GEN-LAST:event_formWindowOpened
 }

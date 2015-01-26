@@ -5,10 +5,10 @@
     <parameter description="" name="trade_point" nullable="true" parameterMode="1" precision="0" scale="0" selectionForm="null" signed="true" size="0" type="2" typeName="NUMERIC"/>
   </parameters>
   <parametersEntity entityHeight="200" entityIconified="false" entityLocationX="8" entityLocationY="7" entityWidth="150"/>
-  <entity Title="" entityHeight="200" entityIconified="false" entityId="142116048757084" entityLocationX="294" entityLocationY="8" entityWidth="150" queryId="qTradeItemCostsOnTradePoint" tableAlias="t1" tableName="" tableSchemaName=""/>
+  <entity Title="" entityHeight="200" entityIconified="false" entityId="142133134512796" entityLocationX="294" entityLocationY="8" entityWidth="150" queryId="qTradeItemCostsOnTradePoint" tableAlias="q" tableName="" tableSchemaName=""/>
   <entity Title="" entityHeight="200" entityIconified="false" entityId="142115189345757" entityLocationX="623" entityLocationY="12" entityWidth="150" tableAlias="t2" tableName="trade_price_types" tableSchemaName=""/>
-  <relation leftEntityFieldName="price_type" leftEntityId="142116048757084" rightEntityFieldName="trade_price_types_id" rightEntityId="142115189345757"/>
-  <relation leftEntityId="-1" leftEntityParameterName="item_id" rightEntityId="142116048757084" rightEntityParameterName="item_id"/>
-  <relation leftEntityId="-1" leftEntityParameterName="trade_point" rightEntityId="142116048757084" rightEntityParameterName="trade_point"/>
-  <relation leftEntityId="-1" leftEntityParameterName="actual_date" rightEntityId="142116048757084" rightEntityParameterName="actual_date"/>
+  <relation leftEntityId="-1" leftEntityParameterName="actual_date" rightEntityId="142133134512796" rightEntityParameterName="actual_date"/>
+  <relation leftEntityId="-1" leftEntityParameterName="item_id" rightEntityId="142133134512796" rightEntityParameterName="item_id"/>
+  <relation leftEntityFieldName="price_type" leftEntityId="142133134512796" rightEntityFieldName="trade_price_types_id" rightEntityId="142115189345757"/>
+  <relation leftEntityId="-1" leftEntityParameterName="trade_point" rightEntityId="142133134512796" rightEntityParameterName="trade_point"/>
 </datamodel>

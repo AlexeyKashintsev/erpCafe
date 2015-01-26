@@ -10,13 +10,14 @@ function OrderList(aParent) {
     var orderChanged = false;
     var AS = new AdditionalScreen();
 
-    self.calculateOrder = function() {
+    function calculateOrder() {
         var orderSum = 0;
         orderChanged = true;
         for (var i in self.orderDetails) {
             orderSum += self.orderDetails[i].orderSum;
         }
-        document.getElementById("orderSum").innerHTML = '<h3>Итого: <b>' + orderSum + '</b> рублей</h3>';
+        odp.updateOrderSum(orderSum);
+        //document.getElementById("orderSum").innerHTML = '<h3>Итого: <b>' + orderSum + '</b> рублей</h3>';
         
         AS.updateOrder(self, orderSum);
         
@@ -24,14 +25,46 @@ function OrderList(aParent) {
             aParent.cashBackCalc.setPurchaseSum(orderSum);
         return orderSum;
     };
+    
+    function OrderItem(anItemData) {
+        var ordItem = this;
+        
+        ordItem.orderQuantity = 0;
+        ordItem.itemId = anItemData.item_id;
+        ordItem.itemName = anItemData.item_name;
+        ordItem.itemCost = anItemData.item_cost;
+        ordItem.orderSum = 0;
+        
+        ordItem.increase = function() {
+            ordItem.orderSum = ++ordItem.orderQuantity * ordItem.itemCost;
+            ordItem.view.updateText();
+            calculateOrder();
+        };
+        
+        ordItem.decrease = function() {
+            if (ordItem.orderQuantity > 1)
+                ordItem.orderSum = --ordItem.orderQuantity * ordItem.itemCost;
+            else
+                ordItem.delete();
+            ordItem.view.updateText();
+            calculateOrder();
+        };
+        
+        ordItem.delete = function() {
+            ordItem.orderSum = ordItem.orderQuantity = 0;
+            delete(self.orderDetails[ordItem.itemId]);
+            ordItem.view.delete();
+            calculateOrder();
+        };
+        
+        ordItem.view = new odp.orderItem(ordItem);
+    }
 
     self.addItem = function(anItemData) {
-        if (!!self.orderDetails[anItemData.item_id]) {
-            self.orderDetails[anItemData.item_id].increase();
-        } else {
-            self.orderDetails[anItemData.item_id] = odp.orderItem(anItemData, self);
-            self.calculateOrder();
+        if (!self.orderDetails[anItemData.item_id]) {
+            self.orderDetails[anItemData.item_id] = new OrderItem(anItemData);
         }
+        self.orderDetails[anItemData.item_id].increase();
     };
 
     self.deleteOrder = function() {
@@ -43,7 +76,7 @@ function OrderList(aParent) {
     
     self.acceptOrder = function() {
         if (orderChanged) {
-            var orderSum = self.calculateOrder();
+            var orderSum = calculateOrder();
             aParent.cashBackCalc.setPurchaseSum(orderSum);
         }
         
@@ -92,8 +125,8 @@ function OrderList(aParent) {
         }
     };
 
-    clientSelector.show("actionPanel"); //createClientSelectPane();
-    var odp = new widgetCreator.OrderListPane("actionPanel", self.acceptOrder, self.deleteOrder);
+    clientSelector.show("actionPanel");
+    var odp = new OrderListPane("actionPanel", self.acceptOrder, self.deleteOrder);
 
     function btnOkActionPerformed(evt) {
         self.acceptOrder();

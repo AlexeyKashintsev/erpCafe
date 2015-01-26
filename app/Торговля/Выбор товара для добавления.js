@@ -29,12 +29,15 @@ function addItemToDashboard() {
     }//GEN-LAST:event_modelGrid1MouseClicked
 
     function btnAddToDashboardActionPerformed(evt) {//GEN-FIRST:event_btnAddToDashboardActionPerformed
-        //Settings.setTradeItem(model.qTradeItems.cursor.wh_items_id);
-        //Settings.showModal();
+        Settings.setTradeItem(model.qTradeItems.cursor.wh_items_id);
+        Settings.pnlCost.focus();
+        Settings.showModal();
+        
     }//GEN-LAST:event_btnAddToDashboardActionPerformed
 
     function btnNewItemActionPerformed(evt) {//GEN-FIRST:event_btnNewItemActionPerformed
         itemCard.addNew();
+        itemCard.setOpenType("modal");
         itemCard.showModal(function(result){
             if (result){
                 model.qTradeItems.requery();

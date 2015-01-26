@@ -4,142 +4,114 @@
  * @module
  * @public
  * TODO УБРАТЬ БАРИСТУ!!!
- */ 
+ */
 function TradeAdminModule() {
     var self = this, model = this.model;
     var franchazi = null;
-    var session = Modules.get("UserSession");
+    var session = Session.get("UserSession");
+    var whModule = Session.get("WhModuleAdmin");
 
     self.OP_TYPE_REMOVE_CASH = 101; // операция снятия кассы
 
-    //Возвращает true, если на точке или франшизе есть записи
-    function setTradeItemOnTradePoint(anItem, aTradePoint, aFranchazi, aDate) {
-        if (aFranchazi) franchazi = aFranchazi;
-        model.qTIbyTP.params.actual_date = aDate ? aDate : new Date();
-        model.qTIbyTP.params.franchazi_id = franchazi;
-        model.qTIbyTP.params.item_id = anItem;
-        model.qTIbyTP.params.trade_point_id = aTradePoint;
-        model.qTIbyTP.execute();
-        return (model.qTIbyTP.length !== 0);
-    }
-    
-    function pushItemInTradePoint(anItem, aTradePointId, aCost, aFranchazi){
-        model.qAddTradeItemsOnTP.insert();
-        model.qAddTradeItemsOnTP.cursor.item_id = anItem;
-        model.qAddTradeItemsOnTP.cursor.trade_point_id = aTradePointId;
-        model.qTIbyTP.push({
-            start_date  :   new Date(),
-            item_on_tp  :   model.qAddTradeItemsOnTP.cursor.trade_items_on_tp_id,
-            item_cost   :   aCost
-        });
-        model.save();
-    }
-    
-    function addNewItemToTradePointOrFranchazi(anItem, aTradePoint, aFranchazi, aCost) {
-        if (aFranchazi && !aTradePoint) {
-            franchazi = aFranchazi;
-            model.listTradePoints.params.franchazi_id = franchazi;
-            model.listTradePoints.requery();
-            model.listTradePoints.beforeFirst();
-            while (model.listTradePoints.next()){
-                pushItemInTradePoint(anItem, model.listTradePoints.cursor.org_trade_point_id, aCost, franchazi);
-                addItemContentsToWH(anItem, model.listTradePoints.cursor.org_trade_point_id);
-            }
-        } else {
-            pushItemInTradePoint(anItem, aTradePoint, aCost, aFranchazi);
-            addItemContentsToWH(anItem, aTradePoint);
-        }
-    };
-    
-    function addItemContentsToWH(anItem, aTradePoint){
-        model.qContents.params.trade_item_id = anItem;
-        model.qContents.requery();
-        model.queryItemsInWH.params.warehouse_id = aTradePoint;
-        model.queryItemsInWH.execute();
-        model.qContents.beforeFirst();
-        while (model.qContents.next()){
-            if (model.queryItemsInWH.find(model.queryItemsInWH.schema.item_id, model.qContents.wh_item).length === 0){
-                model.queryItemsInWH.push({
-                    warehouse : aTradePoint,
-                    item_id : model.qContents.cursor.wh_item
-                });
-            }
-        }
-    }
-    
-    function closeItemOnTradePointOrFranchazi(anItem, aTradePoint, aFranchazi, aPriceType) {
-        model.prCloseItemCost.params.franchazi_id = aFranchazi;
-        model.prCloseItemCost.params.trade_point_id = aTradePoint;
-        model.prCloseItemCost.params.item_id = anItem;
-        model.prCloseItemCost.params.price_type = aPriceType;
-        model.prCloseItemCost.executeUpdate();
-    }
-    /*
-     * При указании торговой точки будет добавлена на торговую точку,
-     * при указании только франчази, будет добавлена к франчази,
-     * Если для торговой точки не указана цена, но в списке присутствует,
-     * будет использоваться цена франчази, или, если ее нет, общая цена
-     */
-    /*self.addTradeItemToTradePointOrFranchazi = function(anItem, aTradePoint, aFranchazi) {
-        if (!setTradeItemOnTradePoint(anItem, aTradePoint, aFranchazi)) {
-            addNewItemToTradePointOrFranchazi(anItem, aTradePoint, aFranchazi, null);
-            model.save();
-            return true;
-        } else
-            return false;
-    };*/
-
-    self.setCost4TradeItemOnTradePointOrFranchzi = function(anItem, aTradePoint, aFranchazi, aCost, aPriceType) {
-        if(aTradePoint){
-            closeItemOnTradePointOrFranchazi(anItem, aTradePoint, aFranchazi, aPriceType);
-            addNewItemToTradePointOrFranchazi(anItem, aTradePoint, aFranchazi, aCost);
-            model.save();
-        } else {
-            model.listTradePoints.params.franchazi_id = aFranchazi;
-            model.listTradePoints.requery();
-            model.listTradePoints.beforeFirst();
-            while (model.listTradePoints.next()){
-                self.setCost4TradeItemOnTradePointOrFranchzi(anItem, model.listTradePoints.cursor.org_trade_point_id, aFranchazi, aCost, aPriceType);
-            }
-        }
-    };
-    
-    self.setEndDateForTradeItem = function(anItem, aTradePoint, aFranchazi, aEndDate, aPriceType) {
-        closeItemOnTradePointOrFranchazi(anItem, aTradePoint, aFranchazi, aEndDate, aPriceType);
-        model.save();
-    };
     /*
      * Списание денег с кассы
      * 
      */
-    self.takeMoneyFromCashbox = function(aSessionId, aSum, aTradePoint){
-        if(!aSessionId){
+    self.takeMoneyFromCashbox = function(aSessionId, aSum, aTradePoint) {
+        if (!aSessionId) {
             model.qOpenedOrLastSession.params.trade_point = aTradePoint;
             model.qOpenedOrLastSession.requery();
             aSessionId = model.qOpenedOrLastSession.cursor.org_session_id;
         }
         model.getSessions.params.session_id = aSessionId;
         model.getSessions.requery();
-        if(model.getSessions.length > 0){
+        if (model.getSessions.length > 0) {
             model.qTradeOperationBySession.push({
-                operation_sum : aSum,
-                operation_date : new Date(),
-                operation_type : self.OP_TYPE_REMOVE_CASH,
-                session_id : aSessionId,
-                user_name : session.getUserName()
+                operation_sum: aSum,
+                operation_date: new Date(),
+                operation_type: self.OP_TYPE_REMOVE_CASH,
+                session_id: aSessionId,
+                user_name: session.getUserName()
             });
             model.save();
             return model.qTradeOperationBySession.cursor.trade_cash_box_operation_id;
-        } else return false;
+        } else
+            return false;
     };
+    
+    /**** Управление ценой на товар *****/
+
+    function findItemOnTP(anItemId, aTradePoint) {
+        model.qTradeItemsOnTP.params.trade_point = aTradePoint;
+        model.qTradeItemsOnTP.params.item_id = null;
+        model.qTradeItemsOnTP.execute();
+        var item = model.qTradeItemsOnTP.find(model.qTradeItemsOnTP.schema.item_id, anItemId);
+        return item[0] ? item[0].trade_items_on_tp_id : null;
+    }
     
     /*
      * Добавление или изменение цен на товар из обекта вида:
-     * {item_id, trade_point, wh_apperance, costs : {price_type, cost}}
+     * {item_id, trade_point, wh_apperance, costs : {price_type, cost}, delete}
      */
-    self.setCost4TradeItemFromJSON = function (obj){
-       for(var price_type in obj.costs){
-           self.setCost4TradeItemOnTradePointOrFranchzi(obj.item_id, obj.trade_point, session.getFranchazi(), obj.costs[price_type], price_type);
-       }
+    self.processChangesForTradeItem = function(itemData) {
+        var itemOnTP = findItemOnTP(itemData.item_id, itemData.trade_point);
+        var added = false;
+        
+        if (!itemOnTP) {
+            itemOnTP = addItemToTP(itemData.item_id, itemData.trade_point)
+            added = true;
+        } else {
+            var curs = model.qTradeItemsOnTP.findById(itemOnTP);
+            if (curs.closed) 
+                curs.closed = false;
+        }
+        
+        if (!itemData.delete) {
+            for (var price_type in itemData.costs) {
+                if(itemData.costs[price_type])
+                    setCost4TradeItemOnTradePoint(itemOnTP, itemData.costs[price_type], price_type);
+            }
+        } else {
+            deleteItemFromTP(itemData.item_id, itemData.trade_point);
+        }
+        
+        model.save();
+        
+        if (added) model.requery();
+        
+        return true;
     };
+    
+    function setCost4TradeItemOnTradePoint(anItemOnTP, aCost, aPriceType) {
+        closeTradeItemCost(anItemOnTP, aPriceType);
+        if (aCost)
+            model.qItemOnTPCosts.push({
+                start_date  : new Date(),
+                item_on_tp  : anItemOnTP,
+                item_cost   : aCost,
+                price_type  : aPriceType
+            });
+    };
+    
+    function closeTradeItemCost(anItemOnTp, aPriceType) {
+        model.prCloseItemCost.params.item_on_tp = anItemOnTp;
+        model.prCloseItemCost.params.price_type = aPriceType;
+        model.prCloseItemCost.params.stop_date = new Date();
+        model.prCloseItemCost.executeUpdate();
+    };
+    
+    function addItemToTP(anItemId, aTradePoint){
+        model.qTradeItemsOnTP.insert();
+        model.qTradeItemsOnTP.cursor.item_id = anItemId;
+        model.qTradeItemsOnTP.cursor.trade_point_id = aTradePoint;
+        return model.qTradeItemsOnTP.cursor.trade_items_on_tp_id;
+    }
+    
+    function deleteItemFromTP(anItemOnTp){
+        closeTradeItemCost(anItemOnTp, null);
+        var curs = model.qTradeItemsOnTP.findById(anItemOnTp);
+        if (curs) {
+            curs.closed = true;
+        }
+    }
 }

@@ -87,10 +87,10 @@ function BillItemsModule() {
         var operationId = billModule.addBillOperation(anAccountId, billModule.getSelfPropertyValue("OPERATION_DEL_BUY"), sum, aStatus);
         if(operationId){
             for(var j in anItems){
-                model.qBillOperationItems.insert();
-                model.qBillOperationItems.cursor.operation_id = operationId;
-                model.qBillOperationItems.cursor.cost_id = anItems[j].costId;
-                model.qBillOperationItems.cursor.items_count = anItems[j].count;
+                model.qAddItemsOnOperation.insert();
+                model.qAddItemsOnOperation.cursor.operation_id = operationId;
+                model.qAddItemsOnOperation.cursor.cost_id = anItems[j].costId;
+                model.qAddItemsOnOperation.cursor.items_count = anItems[j].count;
             }
             model.save();
             return operationId;

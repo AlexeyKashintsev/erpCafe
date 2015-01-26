@@ -19,10 +19,6 @@ function ServiceModule() {
     };
     /*
      * Вспомогательная функция для избежания дублирования кода
-     * @param {type} aEvent
-     * @param {type} aObj
-     * @param {type} aError
-     * @returns {Boolean}
      */
     function addErrorToLogger(aEvent, aObj, aError) {
         Logger.info(aError);
@@ -32,12 +28,25 @@ function ServiceModule() {
         });
         return false;
     }
+    
+    /*
+     * Получение счета по франчайзе
+     */
+    function getBillAccount(aFranId){
+        model.qBillAccountServer.params.type = null;
+        model.qBillAccountServer.params.franchazi_id = aFranId;
+        model.qBillAccountServer.params.account_id = null;
+        model.qBillAccountServer.params.client_id = null;
+        model.qBillAccountServer.requery();
+        return model.qBillAccountServer.cursor.bill_accounts_id;
+    };
+    
     /*
      * Добавление услуги на лицевой счет 
      */
     self.AddService = function(anAccountId, aServiceId, aFranchaziId) {
         if(aFranchaziId){
-           anAccountId = bm.getBillAccount(aFranchaziId);
+           anAccountId = getBillAccount(aFranchaziId);
         }
         model.params.service_id = aServiceId;
         model.qBillAccountServer.params.type = null;
