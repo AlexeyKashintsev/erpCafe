@@ -208,9 +208,10 @@ function BillModule() {
             reqBillAccounts(anAccountId, null, null, null);
             if (model.qBillAccountServer.length > 0){
                 model.qBillAccountServer.cursor.currnt_sum = model.qBillAccountServer.cursor.currnt_sum + aSum * multiplier;
-                model.save();
+                
             }
         }
+        model.save();
         eventProcessor.addEvent('addBillOperation', billOperation);
         return model.qBillOperationsListServer.cursor.bill_operations_id;
     };
