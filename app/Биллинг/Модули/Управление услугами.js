@@ -17,6 +17,7 @@ function ServiceModule() {
         SERVICE_ADDED: "Услуга уже добавлена на лицевой счет",
         SERVICE_LOCKED: "Ошибка удаления услуги с аккаунта. Услуга заблокирована для удаления!"
     };
+    
     /*
      * Вспомогательная функция для избежания дублирования кода
      */
@@ -32,10 +33,10 @@ function ServiceModule() {
     /*
      * Получение счета по франчайзе
      */
-    function getBillAccount(aFranId){
+    function requeryBillAccount(aFranId, anAccountId){
         model.qBillAccountServer.params.type = null;
         model.qBillAccountServer.params.franchazi_id = aFranId;
-        model.qBillAccountServer.params.account_id = null;
+        model.qBillAccountServer.params.account_id = anAccountId;
         model.qBillAccountServer.params.client_id = null;
         model.qBillAccountServer.requery();
         return model.qBillAccountServer.cursor.bill_accounts_id;
@@ -45,20 +46,17 @@ function ServiceModule() {
      * Добавление услуги на лицевой счет 
      */
     self.AddService = function(anAccountId, aServiceId, aFranchaziId) {
-        if(aFranchaziId){
-           anAccountId = getBillAccount(aFranchaziId);
-        }
+        if(aFranchaziId)
+           anAccountId = requeryBillAccount(aFranchaziId, null);
         model.params.service_id = aServiceId;
-        model.qBillAccountServer.params.type = null;
-        model.qBillAccountServer.params.franchazi_id = null;
-        model.qBillAccountServer.params.account_id = anAccountId;
-        model.qServiceList.params.account_id = anAccountId;
-        model.qServiceList. params.service_id = aServiceId;
-        model.requery(function() {});
         if (model.qServiceList.length > 0) {
+            requeryBillAccount(null, anAccountId);
             if (model.qBillAccountServer.length > 0) {
                 if (model.qAddService.length == 0) {
-                    if ((bm.getSumFromAccountId(model.qBillAccountServer.cursor.bill_accounts_id) >= model.qServiceList.cursor.item_cost) || model.qServiceList.cursor.after_days) {
+                    if ((bm.getSumFromAccountId(model.qBillAccountServer.cursor.bill_accounts_id)
+                            >= model.qServiceList.cursor.item_cost) 
+                            || model.qServiceList.cursor.after_days) 
+                    {
                         var payDate = new Date();
                         //bm.addBillOperation(anAccountId, bm.OPERATION_DEL_SERVICE, model.qServiceList.cursor.item_cost);
                         if (model.qServiceList.cursor.after_days) {
@@ -70,28 +68,28 @@ function ServiceModule() {
 //                        } else {
 //                            payDate.setDate(payDate.getDate() + model.qServiceList.cursor.service_days);
 //                        }
-                        var obj = {
+                        var service = {
                             account_id: anAccountId,
                             service_cost_id: model.qServiceList.cursor.bill_item_cost_id,
                             payment_date: payDate,
                             account_service_id: aServiceId,
                             service_start_date: new Date()
                         };
-                        model.qAddService.push(obj);
+                        model.qAddService.push(service);
                         model.save();
-                        eventProcessor.addEvent('addServiceOnAccount', obj);
+                        eventProcessor.addEvent('addServiceOnAccount', service);
                         return true;
                     } else {
-                        return addErrorToLogger('errorAddServiceOnAccount', obj, ERRORS.LOST_MONEY);
+                        return addErrorToLogger('errorAddServiceOnAccount', service, ERRORS.LOST_MONEY);
                     }
                 } else {
-                    return addErrorToLogger('errorAddServiceOnAccount', obj, ERRORS.SERVICE_ADDED);
+                    return addErrorToLogger('errorAddServiceOnAccount', service, ERRORS.SERVICE_ADDED);
                 }
             } else {
-                return addErrorToLogger('errorAddServiceOnAccount', obj, ERRORS.FIND_ACCOUNT_ID);
+                return addErrorToLogger('errorAddServiceOnAccount', service, ERRORS.FIND_ACCOUNT_ID);
             }
         } else {
-            return addErrorToLogger('errorAddServiceOnAccount', obj, ERRORS.FIND_SERVICE_ID);
+            return addErrorToLogger('errorAddServiceOnAccount', service, ERRORS.FIND_SERVICE_ID);
         }
     };
     
@@ -146,7 +144,7 @@ function ServiceModule() {
             aMonth = true;
             aDays = 0;
         }
-        var obj = {
+        var service = {
             service_name: aName,
             service_days: aDays,
             item_cost: aSum,
@@ -163,7 +161,7 @@ function ServiceModule() {
         model.qServiceList.cursor.start_date = new Date();
         model.qServiceList.cursor.after_days = anAfterMonth;
         model.save();
-        eventProcessor.addEvent('serviceCreated', obj);
+        eventProcessor.addEvent('serviceCreated', service);
         return true;
     };
     /*
