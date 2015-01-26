@@ -33,6 +33,10 @@ function YandexPaymentReceiver() {
                 orderSumAmount+'" shopId="'+shopId+'" message="'+message+'" />';
     }
     
+    self.test = function (){
+        return "olololo";
+    };
+    
     /*
      * Проверка заказа 
      * Запрос проверки корректности параметров заказа. 
