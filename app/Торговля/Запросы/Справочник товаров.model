@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?><datamodel>
+  <parametersEntity entityHeight="200" entityIconified="false" entityLocationX="8" entityLocationY="7" entityWidth="150"/>
+  <entity Title="" entityHeight="200" entityIconified="false" entityId="142226401025060" entityLocationX="330" entityLocationY="28" entityWidth="150" tableAlias="t1" tableName="wh_item_types" tableSchemaName=""/>
+  <entity Title="" entityHeight="200" entityIconified="false" entityId="142226401025003" entityLocationX="169" entityLocationY="30" entityWidth="150" tableAlias="t" tableName="wh_item_types" tableSchemaName=""/>
+</datamodel>
