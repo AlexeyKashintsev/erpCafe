@@ -8,7 +8,7 @@
 TODO trade_item_type_id
  */ 
 Select tp.item_id, t1.item_cost, t.item_name
-, t2.type_name, t2.trade_item_type_id 
+, t2.type_name, t2.trade_item_type_id, tp.color 
 From trade_items_on_tp tp
  Inner Join trade_items_cost t1 on t1.item_on_tp = tp.trade_items_on_tp_id
  Inner Join wh_items t on tp.item_id = t.wh_items_id

@@ -10,7 +10,7 @@ function ItemsChooser(aTradePoint, aContainer, orderList) {
         var itemContainer = cmn.createElement("div", "Sortable itemDescription tt_"
             + aData.trade_item_type_id + (aData.classtag ? " " + aData.classtag : ""),
             aContainer, "tt_" + aData.item_id);
-        var itemPanel = cmn.createElement("div", "panel panel-primary", itemContainer);
+        var itemPanel = cmn.createElement("div", "panel panel-primary" , itemContainer, null, null, "#" + aData.color);
         //var itemHeading = cmn.createElement("div", "panel-heading", itemPanel);
         var itemContent = cmn.createElement("div", "panel-body", itemPanel);
         //var itemType = cmn.createElement("p", "itemType", itemContent);
@@ -115,6 +115,7 @@ function ItemsChooser(aTradePoint, aContainer, orderList) {
                     trade_items.push(new self.tradeItem(items_body, data, processItemClick));
                 data = model.tradeItemsCostByTP.cursor;
                 data.cost = {};
+                console.log(data.color);
             }
             data.cost[model.tradeItemsCostByTP.cursor.price_type] = 
                             model.tradeItemsCostByTP.cursor.item_cost;

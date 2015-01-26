@@ -8,7 +8,7 @@
  */ 
 Select t1.trade_items_cost_id, tp.item_id, t.item_name
 , t.item_measure, t.item_description, t.item_picture
-, t.item_type, t.bar_code, t1.item_cost, t1.price_type
+, t.item_type, t.bar_code, t1.item_cost, t1.price_type, tp.color
 , Case  When tp.trade_type is null Then t.trade_type else tp.trade_type End AS trade_type 
 From trade_items_on_tp tp
  Inner Join trade_items_cost t1 on t1.item_on_tp = tp.trade_items_on_tp_id

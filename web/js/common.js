@@ -127,10 +127,15 @@ cmn.pFrameRunner = new function() {
     }
 }
 
-cmn.createElement = function(aType, aClass, aContainer, aID, aBeforeContainer) {
+cmn.createElement = function(aType, aClass, aContainer, aID, aBeforeContainer, aBC) {
         var el = document.createElement(aType);
         if (!!aClass) el.className = aClass;
         if (!!aID) el.id = aID;
+        if (!!aBC){
+            console.log(aBC);
+            el.style.backgroundColor = aBC;
+            console.log(el.style);
+        } 
         
         function appendChild() {
             if (typeof aContainer !== 'string') {

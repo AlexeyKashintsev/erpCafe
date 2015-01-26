@@ -2,6 +2,7 @@
  *
  * @author minya92
  * @name qTradeItemsOnTP
+ * @public
  */ 
 Select *
 From trade_items_on_tp t1

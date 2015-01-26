@@ -38,6 +38,10 @@
   <widget actionPerformed="btnSaveActionPerformed" name="btnSave" parent="Form" prefHeight="36px" prefWidth="209px" text="Сохранить" type="ButtonDesignInfo">
     <constraints bottom="5px" height="36px" right="32px" type="MarginConstraintsDesignInfo" width="209px"/>
   </widget>
+  <widget name="modelFormattedField" parent="Form" prefHeight="20px" prefWidth="100px" type="DbLabelDesignInfo">
+    <datamodelElement entityId="142227671507887" fieldName="color"/>
+    <constraints bottom="21px" height="20px" left="216px" type="MarginConstraintsDesignInfo" width="100px"/>
+  </widget>
   <nonvisual name="buttonGroup" type="ButtonGroupDesignInfo"/>
   <layout type="MarginLayoutDesignInfo"/>
 </layout>

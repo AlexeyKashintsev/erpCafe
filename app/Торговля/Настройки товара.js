@@ -32,7 +32,9 @@ function ItemSettingsAndCost(aTradeItemId) {
         itemCard.setItem(anItemId);
         contentTradeItem.setTradeItem(anItemId);
         itemCostForm.setItem(anItemId);
+        model.qTradeItemsOnTP.params.trade_point = session.tradePoint;
         model.params.item_id = anItemId;
+        
         //bonusPanel.setTradeItem(anItem);
     };
     
