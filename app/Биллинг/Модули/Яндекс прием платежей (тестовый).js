@@ -14,6 +14,7 @@ function YandexPaymentReceiverTest() {
     self.RESPONSE_FAIL_HASH     = 1;   //Несовпали хэши
     self.RESPONSE_FAIL          = 200; //Ошибка разбора
     
+    model.qGetShopPassword.requery();
     var SHOP_PASSWORD = model.qGetShopPassword.cursor.pass;
     
     /*

@@ -35,8 +35,6 @@ function BillModule() {
     self.OP_YANDEX_PROCESSING   = 11;
     self.OP_YANDEX_ERROR        = 13;
     
-    var SHOP_PASSWORD = model.qGetShopPassword.cursor.pass;
-    
     self.getSelfPropertyValue = function(aPropertyName) {
         return self[aPropertyName];
     };
@@ -231,6 +229,8 @@ function BillModule() {
             if (checkMoneyOnAccount(model.qBillOperationsListServer.cursor.account_id, 
                 model.qBillOperationsListServer.cursor.operation_sum))
             {
+                model.qGetShopPassword.requery();
+                var SHOP_PASSWORD = model.qGetShopPassword.cursor.pass;
                 if (aStatus === self.OP_STATUS_SUCCESS && ((session.getUserRole() === "admin") || 
                         aShopPassword === SHOP_PASSWORD)) {
                     reqBillAccounts(model.qBillOperationsListServer.cursor.account_id, null, null, null);
