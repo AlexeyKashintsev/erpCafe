@@ -11,7 +11,7 @@ function ItemsWidgetFactory() {
         var itemContainer = cmn.createElement("div", "Sortable itemDescription tt_"
             + aData.trade_item_type_id + (aData.classtag ? " " + aData.classtag : ""),
             aContainer, "tt_" + aData.item_id);
-        var itemPanel = cmn.createElement("div", "panel panel-primary " + aData.color , itemContainer);
+        var itemPanel = cmn.createElement("div", "panel panel-primary color " + (!!aData.color ? aData.color : "") , itemContainer);
         //var itemHeading = cmn.createElement("div", "panel-heading", itemPanel);
         var itemContent = cmn.createElement("div", "panel-body", itemPanel);
         //var itemType = cmn.createElement("p", "itemType", itemContent);

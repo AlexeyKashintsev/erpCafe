@@ -35,23 +35,14 @@
     <layout type="MarginLayoutDesignInfo"/>
     <constraints height="444px" left="492px" top="0px" type="MarginConstraintsDesignInfo" width="216px"/>
   </widget>
-  <widget actionPerformed="rbtVioletActionPerformed" buttonGroup="bgColor" name="rbtViolet" parent="pnlColor" prefHeight="19px" prefWidth="156px" text="Фиолетовый" type="RadioDesignInfo">
-    <constraints bottom="281px" left="36px" right="24px" top="144px" type="MarginConstraintsDesignInfo"/>
+  <widget name="modelCombo" parent="pnlColor" prefHeight="20px" prefWidth="156px" type="DbComboDesignInfo">
+    <valueField entityId="142234950682488" fieldName="misc_colors_id"/>
+    <displayField entityId="142234950682488" fieldName="color_name"/>
+    <datamodelElement entityId="142227671507887" fieldName="color"/>
+    <constraints height="20px" left="24px" right="36px" top="48px" type="MarginConstraintsDesignInfo"/>
   </widget>
-  <widget actionPerformed="rbtBlackActionPerformed" buttonGroup="bgColor" name="rbtBlack" parent="pnlColor" prefHeight="19px" prefWidth="156px" text="Черный" type="RadioDesignInfo">
-    <constraints bottom="305px" left="36px" right="24px" top="120px" type="MarginConstraintsDesignInfo"/>
-  </widget>
-  <widget actionPerformed="rbtRedActionPerformed" buttonGroup="bgColor" name="rbtRed" parent="pnlColor" prefHeight="19px" prefWidth="156px" text="Красный" type="RadioDesignInfo">
-    <constraints bottom="329px" left="36px" right="24px" top="96px" type="MarginConstraintsDesignInfo"/>
-  </widget>
-  <widget actionPerformed="rbtGreenActionPerformed" buttonGroup="bgColor" name="rbtGreen" parent="pnlColor" prefHeight="19px" prefWidth="156px" text="Зеленый" type="RadioDesignInfo">
-    <constraints bottom="353px" left="36px" right="24px" top="72px" type="MarginConstraintsDesignInfo"/>
-  </widget>
-  <widget actionPerformed="rbtBlueActionPerformed" buttonGroup="bgColor" name="rbtBlue" parent="pnlColor" prefHeight="19px" prefWidth="156px" text="Голубой" type="RadioDesignInfo">
-    <constraints bottom="377px" left="36px" right="24px" top="48px" type="MarginConstraintsDesignInfo"/>
-  </widget>
-  <widget actionPerformed="rbtStandartActionPerformed" buttonGroup="bgColor" name="rbtStandart" parent="pnlColor" prefHeight="19px" prefWidth="156px" text="Стандартный" type="RadioDesignInfo">
-    <constraints bottom="401px" left="36px" right="24px" top="24px" type="MarginConstraintsDesignInfo"/>
+  <widget name="label" parent="pnlColor" prefHeight="14px" prefWidth="120px" text="Цвет:" type="LabelDesignInfo">
+    <constraints bottom="406px" left="24px" right="72px" top="24px" type="MarginConstraintsDesignInfo"/>
   </widget>
   <widget backgroundColor="#ededed" name="pnlCost" parent="panel" prefHeight="441px" prefWidth="480px" type="PanelDesignInfo">
     <layout type="MarginLayoutDesignInfo"/>
