@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?><datamodel datamodelDbId="null">
   <fieldsEntity entityHeight="200" entityIconified="false" entityId="142113625449487" entityLocationX="403" entityLocationY="15" entityWidth="150" tableName="trade_items_on_tp"/>
   <fieldsEntity entityHeight="227" entityIconified="false" entityId="140566606737864" entityLocationX="215" entityLocationY="17" entityWidth="150" tableName="trade_items_cost"/>
+  <fieldsEntity entityHeight="200" entityIconified="false" entityId="142234721376091" entityLocationX="403" entityLocationY="242" entityWidth="150" tableName="misc_colors"/>
   <fieldsEntity entityHeight="200" entityIconified="false" entityId="141819869666726" entityLocationX="770" entityLocationY="20" entityWidth="150" tableName="wh_items"/>
   <fieldsEntity entityHeight="200" entityIconified="false" entityId="141899561816665" entityLocationX="30" entityLocationY="15" entityWidth="150" tableName="trade_price_types"/>
   <fieldsEntity entityHeight="200" entityIconified="false" entityId="140566618112512" entityLocationX="593" entityLocationY="82" entityWidth="150" tableName="trade_item_type"/>

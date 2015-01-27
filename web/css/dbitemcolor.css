@@ -23,88 +23,87 @@
     color : white;
 }
 
-.color.zeroclipboard-is-hover.turquoise,
 .color:hover.turquoise {
   background: #1dd2af;
 }
-.color.zeroclipboard-is-hover.green-sea,
+
 .color:hover.green-sea {
   background: #19b698;
 }
-.color.zeroclipboard-is-hover.emerland,
+
 .color:hover.emerland {
   background: #40d47e;
 }
-.color.zeroclipboard-is-hover.nephritis,
+
 .color:hover.nephritis {
   background: #2cc36b;
 }
-.color.zeroclipboard-is-hover.peter-river,
+
 .color:hover.peter-river {
   background: #4aa3df;
 }
-.color.zeroclipboard-is-hover.belize-hole,
+
 .color:hover.belize-hole {
   background: #2e8ece;
 }
-.color.zeroclipboard-is-hover.amethyst,
+
 .color:hover.amethyst {
   background: #a66bbe;
 }
-.color.zeroclipboard-is-hover.wisteria,
+
 .color:hover.wisteria {
   background: #9b50ba;
 }
-.color.zeroclipboard-is-hover.wet-asphalt,
+
 .color:hover.wet-asphalt {
   background: #3d566e;
 }
-.color.zeroclipboard-is-hover.midnight-blue,
+
 .color:hover.midnight-blue {
   background: #354b60;
 }
-.color.zeroclipboard-is-hover.sun-flower,
+
 .color:hover.sun-flower {
   background: #f2ca27;
 }
-.color.zeroclipboard-is-hover.orange,
+
 .color:hover.orange {
   background: #f4a62a;
 }
-.color.zeroclipboard-is-hover.carrot,
+
 .color:hover.carrot {
   background: #e98b39;
 }
-.color.zeroclipboard-is-hover.pumpkin,
+
 .color:hover.pumpkin {
   background: #ec5e00;
 }
-.color.zeroclipboard-is-hover.alizarin,
+
 .color:hover.alizarin {
   background: #ea6153;
 }
-.color.zeroclipboard-is-hover.pomegranate,
+
 .color:hover.pomegranate {
   background: #d14233;
 }
-.color.zeroclipboard-is-hover.clouds,
+
 .color:hover.clouds {
   background: #fbfcfc;
   color: #bdc3c7;
 }
-.color.zeroclipboard-is-hover.silver,
+
 .color:hover.silver {
   background: #cbd0d3;
 }
-.color.zeroclipboard-is-hover.concrete,
+
 .color:hover.concrete {
   background: #a3b1b2;
 }
-.color.zeroclipboard-is-hover.asbestos,
+
 .color:hover.asbestos {
   background: #8c9899;
 }
-.color.zeroclipboard-is-hover header,
+
 .color:hover header {
   display: block;
 }
