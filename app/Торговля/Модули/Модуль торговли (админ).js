@@ -72,7 +72,7 @@ function TradeAdminModule() {
                     setCost4TradeItemOnTradePoint(itemOnTP, itemData.costs[price_type], price_type);
             }
         } else {
-            deleteItemFromTP(itemData.item_id, itemData.trade_point);
+            deleteItemFromTP(itemOnTP, itemData.trade_point);
         }
         
         model.save();
@@ -109,9 +109,10 @@ function TradeAdminModule() {
     
     function deleteItemFromTP(anItemOnTp){
         closeTradeItemCost(anItemOnTp, null);
-        var curs = model.qTradeItemsOnTP.findById(anItemOnTp);
-        if (curs) {
-            curs.closed = true;
+        var row = model.qTradeItemsOnTP.findById(anItemOnTp);
+        if (row) {
+            model.qTradeItemsOnTP.scrollTo(row);
+            model.qTradeItemsOnTP.cursor.closed = true;
         }
     }
 }

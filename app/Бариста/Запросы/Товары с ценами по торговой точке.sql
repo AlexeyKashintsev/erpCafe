@@ -18,4 +18,5 @@ From trade_items_on_tp tp
  and :actual_date >= t1.start_date
  and (:actual_date < t1.end_date or t1.end_date is null)
  and (:price_type = t1.price_type or :price_type is null)
+ and (tp.closed != true or tp.closed is null)
 order by tp.item_id
