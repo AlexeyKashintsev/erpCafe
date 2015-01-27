@@ -1,0 +1,24 @@
+.panel.panel-primary.blue {
+    background-color: blue;
+    color : white;
+}
+
+.panel.panel-primary.green {
+    background-color: green;
+    color : white;
+}
+
+.panel.panel-primary.red {
+    background-color: red;
+    color : white;
+}
+
+.panel.panel-primary.black {
+    background-color: black;
+    color : white;
+}
+
+.panel.panel-primary.violet {
+    background-color: violet;
+    color : white;
+}
