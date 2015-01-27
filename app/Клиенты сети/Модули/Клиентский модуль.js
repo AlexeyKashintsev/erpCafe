@@ -108,15 +108,11 @@ function ClientServerModule() {
         model.qGetPhoneByFourDigit.params.digits = aDigits;
         model.qGetPhoneByFourDigit.requery();
         if (model.qGetPhoneByFourDigit.length > 0) {
-            var obj = {};
-            var i = 0;
-            model.qGetPhoneByFourDigit.beforeFirst();
-            while (model.qGetPhoneByFourDigit.next()) {
-                obj[i] = self.getClientDataByPhone(model.qGetPhoneByFourDigit.cursor.phone);
-                i++;
-            }
-            obj.count = i;
-            return obj;
+            var clients = [];
+            model.qGetPhoneByFourDigit.forEach(function(aClientData) {
+                clients.push(self.getClientDataByPhone(aClientData.phone));
+            });
+            return clients;
         } else
             return false;
     };

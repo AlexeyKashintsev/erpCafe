@@ -28,9 +28,20 @@ function ClientPhoneSelector(aParent) {
                 $(inpPhone).addClass("green");
                 $(clientRegPane).hide();
                 $(clientPane).show();
-                if (response.count > 1){
+                if (response.length > 1){
                     clientPhoneDiv = cmn.getElement("div", '', clientPane, "clientPhoneDiv");
-                    clientPhoneDiv.innerHTML = "Найдено больше одной записи! Пожалуйста, уточните запрос.";
+                    for (var r in response){
+                        new (function() {
+                            var el = cmn.createElement("p", "list", clientPhoneDiv);
+                            el.innerHTML = response[r].phone + ' ' + response[r].firstName;
+                            el.phone = response[r].phone;
+                            el.onclick = function(){
+                                alert(el.phone);
+                                inpPhone.value = el.phone;
+                                checkIfClientPhoneExists();
+                            };
+                        })();
+                    }
                 } else {
                     inpPhone.value = response[0].phone;
                     client = response[0];
