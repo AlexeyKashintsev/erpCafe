@@ -6,14 +6,10 @@
     <parameter description="" name="session_id" nullable="true" parameterMode="1" precision="0" scale="0" selectionForm="null" signed="true" size="0" type="2" typeName="NUMERIC"/>
   </parameters>
   <parametersEntity entityHeight="200" entityIconified="false" entityLocationX="12" entityLocationY="12" entityWidth="150"/>
-  <entity Name="getSessions" Title="" entityHeight="200" entityIconified="false" entityId="140688477684616" entityLocationX="361" entityLocationY="25" entityWidth="150" onRequeried="getSessionsOnRequeried" queryId="getSessions" tableName="" tableSchemaName=""/>
-  <entity Name="qTradePoint" Title="" entityHeight="200" entityIconified="false" entityId="141153927151931" entityLocationX="535" entityLocationY="3" entityWidth="150" onRequeried="qTradePointOnRequeried" queryId="qTradePoint" tableName="" tableSchemaName=""/>
-  <entity Name="tradeTypes4TP" Title="" entityHeight="200" entityIconified="false" entityId="141649180667338" entityLocationX="193" entityLocationY="226" entityWidth="150" onRequeried="tradeTypes4TPOnRequeried" queryId="tradeTypes4TP" tableName="" tableSchemaName=""/>
-  <entity Name="tradeItemsByTradePointWithCost" Title="" entityHeight="200" entityIconified="false" entityId="140684385538744" entityLocationX="192" entityLocationY="22" entityWidth="150" onRequeried="tradeItemsByTradePointWithCostOnRequeried" queryId="TradeItemsByTradePointWithCost" tableName="" tableSchemaName=""/>
+  <entity Name="getSessions" Title="" entityHeight="200" entityIconified="false" entityId="140688477684616" entityLocationX="209" entityLocationY="66" entityWidth="150" queryId="getSessions" tableName="" tableSchemaName=""/>
+  <entity Name="qTradePoint" Title="" entityHeight="200" entityIconified="false" entityId="141153927151931" entityLocationX="378" entityLocationY="6" entityWidth="150" onRequeried="qTradePointOnRequeried" queryId="qTradePoint" tableName="" tableSchemaName=""/>
+  <relation leftEntityId="-1" leftEntityParameterName="session_id" rightEntityId="140688477684616" rightEntityParameterName="session_id"/>
   <relation leftEntityId="-1" leftEntityParameterName="session_id" rightEntityId="140688477684616" rightEntityParameterName="session_id"/>
   <relation leftEntityId="-1" leftEntityParameterName="trade_point_id" rightEntityId="141153927151931" rightEntityParameterName="trade_point_id"/>
-  <relation leftEntityId="-1" leftEntityParameterName="session_id" rightEntityId="140688477684616" rightEntityParameterName="session_id"/>
-  <referenceRelation leftEntityFieldName="parent_type" leftEntityId="141649180667338" rightEntityFieldName="trade_item_type_id" rightEntityId="141649180667338"/>
-  <referenceRelation leftEntityFieldName="parent_type" leftEntityId="141649180667338" rightEntityFieldName="trade_item_type_id" rightEntityId="140684385538744"/>
   <referenceRelation leftEntityFieldName="trade_point" leftEntityId="140688477684616" rightEntityFieldName="org_trade_point_id" rightEntityId="141153927151931"/>
 </datamodel>

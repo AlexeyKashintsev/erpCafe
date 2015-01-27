@@ -195,7 +195,7 @@ div.modifiers {
   padding-top: 15px;
   margin-top: -15px;
   position: absolute;
-  background-color: #FDE3A7;
+  background-color: rgba(253, 227, 167, 0.5);
 }
 
 .price_modifier {

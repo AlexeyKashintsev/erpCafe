@@ -8,20 +8,19 @@ function BaristaDesktop() {
     session.whSession = new ServerModule("WhSessionModule");
     session.tradeSession = new ServerModule("TradeSessions");
     self.userName = session.getUserName();
-    var AS = new AdditionalScreen();
-    var BC;
-    //var BC = new addItem();
+//    var AS = new AdditionalScreen();
+//    var BC;
+//    var BC = new addItem();
     var whAdd = null;
-    var types_body;
-    var items_body;
-    var itemsChooser;
+    var dashboard, typesView, itemsView, modifiers;
     
 //    var fmDev = new fmDevMode();
 //    fmDev.show();
     self.cashBackCalc = new CashBackCalculator(self);
     var chekLists = new CheckLists();
-    var settings = new ServerModule('Settings');
+    settings = new ServerModule('Settings');
     settings.updateSettingsParams();
+    
     
     /*
      * aName - Название чеклиста (cheklist_open, cheklist_close)
@@ -40,13 +39,27 @@ function BaristaDesktop() {
         } else return false; 
     }
     
+    function initTradePanels() {
+            dashboard = cmn.createElement('div', 'item_selector col-sm-8 row', "mainArea");
+            modifiers = cmn.createElement('div', 'modifiers col-sm-5 row', "mainArea");
+            self.itemsSelector = new ItemsSelector(dashboard, self, session.tradePoint);
+            self.typesSelector = new TypesSelector(modifiers, self, session.tradePoint);
+            self.priceModifier = new PriceModifier(modifiers, self, session.tradePoint);
+    }
+    
     function setSession(aSession) {
         if (aSession) {
             Logger.info('Сессия открыта ' + aSession);
             model.params.session_id = aSession;
             session.activeSession = aSession;
             showChecklist('cheklist_open');
-            model.getSessions.requery();
+            model.getSessions.requery(function() {
+                if (!model.getSessions.empty) {
+                    session.tradePoint = model.getSessions.trade_point;
+                    model.params.trade_point_id = session.tradePoint;
+                    initTradePanels();
+                }
+            });
         } else {//открываем новую сессию
             //Выбираем торговую точку
             //Вводим остатки по складу
@@ -72,12 +85,8 @@ function BaristaDesktop() {
         }
     }
     
-    function closeSessionAndLogout() {
-        //TODO subj и добавить в асинхронный вызов после отображения чеклиста
-    }
-    
     function startBaristaDesktop() {
-        cmn.addTopRightControl("Меню в окне", "plus-sign", openDigitalMenu);
+        //cmn.addTopRightControl("Меню в окне", "plus-sign", openDigitalMenu);
         cmn.addTopRightControl("Прием товара", "plus-sign", btnWarehouseAddActionPerformed);
         cmn.addTopRightControl("Закрыть смену", "log-out", btnSessionCloseActionPerformed);
         cmn.addTopRightControl("Выход", "log-out", Logout);
@@ -91,7 +100,7 @@ function BaristaDesktop() {
         session.sessionKeeper.showIndicator(document.body);
     }
     
-    function openDigitalMenu(){
+   /* function openDigitalMenu(){
         if (!BC)
             require('addItemToDashboard', function() {
                 BC = new addItemToDashboard();
@@ -100,19 +109,7 @@ function BaristaDesktop() {
         else {
             BC.showModal();
         }
-    }
-    
-    function addItemToOrder(anItemData) {
-        self.orderList.addItem(anItemData);
-    }
-
-    function getSessionsOnRequeried(evt) {//GEN-FIRST:event_getSessionsOnRequeried
-        if (!model.getSessions.empty) {
-            session.tradePoint = model.getSessions.trade_point;
-            model.params.trade_point_id = session.tradePoint;
-            itemsChooser = new ItemsChooser(session.tradePoint, "mainArea", self.orderList);
-        }
-    }//GEN-LAST:event_getSessionsOnRequeried
+    }*/
     
     function closeSessionAndLogout() {
                 session.tradeSession.calculateFinalValues();
@@ -144,12 +141,4 @@ function BaristaDesktop() {
     }//GEN-LAST:event_qTradePointOnRequeried
     
     startBaristaDesktop();
-
-    function tradeItemsByTradePointWithCostOnRequeried(evt) {//GEN-FIRST:event_tradeItemsByTradePointWithCostOnRequeried
-        // TODO Добавьте здесь свой код:
-    }//GEN-LAST:event_tradeItemsByTradePointWithCostOnRequeried
-
-    function tradeTypes4TPOnRequeried(evt) {//GEN-FIRST:event_tradeTypes4TPOnRequeried
-        // TODO Добавьте здесь свой код:
-    }//GEN-LAST:event_tradeTypes4TPOnRequeried
 }

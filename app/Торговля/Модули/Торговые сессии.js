@@ -144,18 +144,18 @@ function TradeSessions() {
     }
 
     function getTradeItemsByTradePointWithCostAndBonuses(){
-        model.tradeItemsByTradePointWithCost.params.actual_date = new Date();
-        model.tradeItemsByTradePointWithCost.params.franchazi_id = session.getFranchazi();
-        model.tradeItemsByTradePointWithCost.params.trade_point_id = session.getTradePoint();  
-        model.tradeItemsByTradePointWithCost.requery();
-        model.tradeItemsByTradePointWithCost.beforeFirst();
-        while (model.tradeItemsByTradePointWithCost.next()){
-            sessionItems[model.tradeItemsByTradePointWithCost.cursor.item_id] = {};
-            sessionItems[model.tradeItemsByTradePointWithCost.cursor.item_id].cost = model.tradeItemsByTradePointWithCost.cursor.item_cost;
-            sessionItems[model.tradeItemsByTradePointWithCost.cursor.item_id].name = model.tradeItemsByTradePointWithCost.cursor.item_name;
-            sessionItems[model.tradeItemsByTradePointWithCost.cursor.item_id].bonus_category = [];
+        model.tradeItemsByTPwCost.params.actual_date = new Date();
+        //model.tradeItemsByTradePointWithCost.params.franchazi_id = session.getFranchazi();
+        model.tradeItemsByTPwCost.params.trade_point_id = session.getTradePoint();  
+        model.tradeItemsByTPwCost.requery();
+        model.tradeItemsByTPwCost.beforeFirst();
+        while (model.tradeItemsByTPwCost.next()){
+            sessionItems[model.tradeItemsByTPwCost.cursor.item_id] = {};
+            sessionItems[model.tradeItemsByTPwCost.cursor.item_id].cost = model.tradeItemsByTPwCost.cursor.item_cost;
+            sessionItems[model.tradeItemsByTPwCost.cursor.item_id].name = model.tradeItemsByTPwCost.cursor.item_name;
+            sessionItems[model.tradeItemsByTPwCost.cursor.item_id].bonus_category = [];
             for (var i = 1; i<=3; i++){
-                sessionItems[model.tradeItemsByTradePointWithCost.cursor.item_id].bonus_category[i] = bonuses.getCountBonusesByItem(model.tradeItemsByTradePointWithCost.cursor.item_id, i);
+                sessionItems[model.tradeItemsByTPwCost.cursor.item_id].bonus_category[i] = bonuses.getCountBonusesByItem(model.tradeItemsByTPwCost.cursor.item_id, i);
             }
         }
         return sessionItems;

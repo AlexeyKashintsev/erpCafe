@@ -3,6 +3,7 @@
  * @author Alexey
  * @name qCostModifiersOnTP
  * @public
+ * @manual
  */ 
 Select Distinct t1.price_type, t.type_name
 From trade_items_cost t1

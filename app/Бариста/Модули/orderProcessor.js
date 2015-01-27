@@ -28,13 +28,13 @@ function OrderProcessor() {
                 processOrder(orders[j]);
             }
             orders = [];
-            widgetCreator.Alerter(divEl, false, "", false, 1);
+            new Alerter(divEl, false, "", false, 1);
             divEl = null;
         }
 
         this.addOrder = function(anOrderDetails) {
             orders.push(anOrderDetails);
-            divEl = widgetCreator.Alerter(divEl, "alert-warning", alerts.tryAgain + orders.length, false, false, false, processOrders);
+            divEl = new Alerter(divEl, "alert-warning", alerts.tryAgain + orders.length, false, false, false, processOrders);
         };
     }
 
@@ -44,15 +44,15 @@ function OrderProcessor() {
         var attempt = anAttempt ? anAttempt : 0;
         attempt++;
         Logger.info(logs.sending + attempt);
-        var alert = widgetCreator.Alerter(anAlert, "alert-info", alerts.sending + attempt, false);
+        var alert = new Alerter(anAlert, "alert-info", alerts.sending + attempt, false);
         session.tradeSession.processOrder(anOrderDetails, function() {
-                widgetCreator.Alerter(alert, "alert-success", alerts.success
+                new Alerter(alert, "alert-success", alerts.success
                         + anOrderDetails.orderSum + alerts.successEnding, true, 15000);
             }, function() {
                 if (attempt < 5)
                     processOrder(anOrderDetails, alert, attempt);
                 else {
-                    widgetCreator.Alerter(alert, "alert-danger", alerts.failure, true, 15000);
+                    new Alerter(alert, "alert-danger", alerts.failure, true, 15000);
                     unprocessedOrders.addOrder(anOrderDetails);
                 }
             });
