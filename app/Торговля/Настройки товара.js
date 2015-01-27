@@ -88,4 +88,12 @@ function ItemSettingsAndCost(aTradeItemId) {
         contentTradeItem.save();
         itemCostForm.save();
     }//GEN-LAST:event_btnSaveActionPerformed
+
+    function btnDelActionPerformed(evt) {//GEN-FIRST:event_btnDelActionPerformed
+        model.save();
+        itemCard.save();
+        contentTradeItem.save();
+        itemCostForm.save(true);
+        form.close();
+    }//GEN-LAST:event_btnDelActionPerformed
 }

@@ -9,7 +9,7 @@ function BillModule() {
     var self = this, model = this.model;
     var eventProcessor = new EventProcessor();
     var session = Session.get("UserSession");
-    
+
     // Типы операций
     self.OPERATION_ADD_CASH     = 1; //Добавление средств на счет
     self.OPERATION_ADD_BONUS    = 2; //
@@ -222,14 +222,17 @@ function BillModule() {
      * @param {type} aStatus
      * @returns {undefined}
      */
-    self.setStatusBillOperation = function(anOperationId, aStatus) {
+    self.setStatusBillOperation = function(anOperationId, aStatus, aShopPassword) {
         model.params.operation_id = anOperationId;
         model.qBillOperationsListServer.requery();
         if (model.qBillOperationsListServer.length > 0) {
             if (checkMoneyOnAccount(model.qBillOperationsListServer.cursor.account_id, 
                 model.qBillOperationsListServer.cursor.operation_sum))
             {
-                if (aStatus === self.OP_STATUS_SUCCESS && session.getUserRole() === "admin") {
+                model.qGetShopPassword.requery();
+                var SHOP_PASSWORD = model.qGetShopPassword.cursor.pass;
+                if (aStatus === self.OP_STATUS_SUCCESS && ((session.getUserRole() === "admin") || 
+                        aShopPassword === SHOP_PASSWORD)) {
                     reqBillAccounts(model.qBillOperationsListServer.cursor.account_id, null, null, null);
                     model.qBillAccountServer.cursor.currnt_sum = model.qBillAccountServer.cursor.currnt_sum + 
                             model.qBillOperationsListServer.cursor.operation_sum * 

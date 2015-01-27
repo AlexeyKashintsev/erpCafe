@@ -6,6 +6,7 @@
 function YandexPaymentReceiverTest() {
     var self = this, model = this.model;
     var bm = Session.get("BillModule");
+    var ep = Session.get("EventProcessor");
     var af = new AdminFunctions();
     
     //Варианты ответа для яндекс денег
@@ -13,7 +14,8 @@ function YandexPaymentReceiverTest() {
     self.RESPONSE_FAIL_HASH     = 1;   //Несовпали хэши
     self.RESPONSE_FAIL          = 200; //Ошибка разбора
     
-    self.SHOP_PASSWORD = "Yw559fyo3yBDFNy708rK";           //Секретное слово TODO Расхардкодить!
+    model.qGetShopPassword.requery();
+    var SHOP_PASSWORD = model.qGetShopPassword.cursor.pass;
     
     /*
      * Формирует ответный XML файл для яндекса
@@ -36,12 +38,21 @@ function YandexPaymentReceiverTest() {
         var r = self.http.request.params;
         var hash = af.MD5(r.action + ";" + r.orderSumAmount + ";" + r.orderSumCurrencyPaycash + ";" +
                           r.orderSumBankPaycash + ";" + r.shopId + ";" + r.invoiceId + ";" +
-                          r.customerNumber + ";" +self.SHOP_PASSWORD);
+                          r.customerNumber + ";" +SHOP_PASSWORD);
         if(hash.toUpperCase() === r.md5.toUpperCase()){
+            ep.addEvent("checkOrderSuccess",{
+                billOperation   :   r.billOperation,
+                orderSumAmount  :   r.orderSumAmount,
+                customerNumber  :   r.customerNumber
+            });
             return xmlToYandex(self.RESPONSE_SUCCESS, r.shopId, r.invoiceId, r.requestDatetime);
         } 
+        ep.addEvent("checkOrderError",{
+            billOperation   :   r.billOperation,
+            orderSumAmount  :   r.orderSumAmount,
+            customerNumber  :   r.customerNumber
+        });
         return xmlToYandex(self.RESPONSE_FAIL_HASH, r.shopId, r.invoiceId, r.requestDatetime);
-        
     };
     
     /*
@@ -54,18 +65,29 @@ function YandexPaymentReceiverTest() {
         var r = self.http.request.params;
         var hash = af.MD5(r.action + ";" + r.orderSumAmount + ";" + r.orderSumCurrencyPaycash + ";" +
                           r.orderSumBankPaycash + ";" + r.shopId + ";" + r.invoiceId + ";" +
-                          r.customerNumber + ";" +self.SHOP_PASSWORD);
+                          r.customerNumber + ";" +SHOP_PASSWORD);
         if(hash.toUpperCase() === r.md5.toUpperCase()){
            if(r.billOperation){
                 model.qBillOperationsListServer.params.operation_id = r.billOperation;
                 model.qBillOperationsListServer.requery();
                 if(!model.qBillOperationsListServer.empty){
-                    bm.setStatusBillOperation(r.billOperation, bm.OP_STATUS_SUCCESS);
-                    Logger.info("BILL STATUS CHANGED!");
+                    if(bm.setStatusBillOperation(r.billOperation, bm.OP_STATUS_SUCCESS, SHOP_PASSWORD)){
+                        Logger.info("BILL STATUS CHANGED!");
+                        ep.addEvent("paymentAvisoSuccess",{
+                            billOperation   :   r.billOperation,
+                            orderSumAmount  :   r.orderSumAmount,
+                            customerNumber  :   r.customerNumber
+                        });
+                        return xmlToYandex(self.RESPONSE_SUCCESS, r.shopId, r.invoiceId, r.requestDatetime);
+                    }
                 }
-                return xmlToYandex(self.RESPONSE_SUCCESS, r.shopId, r.invoiceId, r.requestDatetime);
             }
         }
+        ep.addEvent("paymentAvisoError",{
+            billOperation   :   r.billOperation,
+            orderSumAmount  :   r.orderSumAmount,
+            customerNumber  :   r.customerNumber
+        });
         return xmlToYandex(self.RESPONSE_FAIL_HASH, r.shopId, r.invoiceId, r.requestDatetime);
         
     };
