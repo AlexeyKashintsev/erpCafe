@@ -13,8 +13,9 @@ function ItemsChooser(aTradePoint, aContainer, orderList) {
     var selector_body = cmn.createElement('div', 'item_selector col-sm-7 row', aContainer);
     var types_body = cmn.createElement('div', 'item_type_selector row', selector_body);
     var items_body = cmn.createElement('div', 'items_select row', selector_body);
-    var modifiers_body = cmn.createElement('div', 'modifier_selector col-sm-6 row', aContainer);
+    var modifiers_body = cmn.createElement('div', 'modifier_selector col-sm-5', aContainer);
     var trade_items = [];
+    var cost_modifiers = [];
     
     model.params.actual_date = new Date();
     model.params.trade_point_id = aTradePoint;
@@ -83,4 +84,10 @@ function ItemsChooser(aTradePoint, aContainer, orderList) {
         if (!!data)
             trade_items.push(new IWF.tradeItem(items_body, data, processItemClick));
     }//GEN-LAST:event_tradeItemsCostByTPOnRequeried
+
+    function qCostModifiersOnTPOnRequeried(evt) {//GEN-FIRST:event_qCostModifiersOnTPOnRequeried
+        model.qCostModifiersOnTP.forEach(function(aCostModifier) {
+            cost_modifiers.push(new IWF.priceModifier(modifiers_body, aCostModifier, null));
+        });
+    }//GEN-LAST:event_qCostModifiersOnTPOnRequeried
 }

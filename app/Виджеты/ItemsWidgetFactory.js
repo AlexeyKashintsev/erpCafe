@@ -30,23 +30,14 @@ function ItemsWidgetFactory() {
         };
     };
     
-    self.typeItem = function(aContainer, aData, onClick) {
-        var obj = this;
-        obj.itemContainer = cmn.createElement("div", "typeSelector tt_"
-                + aData.trade_item_type_id + (aData.classtag ? " " + aData.classtag : ""), aContainer);
-        obj.itemName = cmn.createElement("div", "type_name", obj.itemContainer);
-        obj.itemName.innerHTML = aData.type_name;
+    self.priceModifier = function(aContainer, aData, onClick) {
+        var mContainer = cmn.createElement("div", "price_modifier pt_"
+                + aData.price_type, aContainer, "pt_" + aData.price_type);
+        var mDesc = cmn.createElement("h3", "itemDesc", mContainer);
+        mDesc.innerHTML = aData.type_name;
         
-        obj.selected = false;
-        obj.active = true;
-        
-        obj.itemContainer.onclick = function () {
-            onClick(obj);
-        };
-        
-        obj.setState = function (aState) {
-            obj.active = aState.active;
-            obj.selected = aState.selected;
+        mContainer.onClick =  function() {
+            onClick(aData);
         };
     };
 }
