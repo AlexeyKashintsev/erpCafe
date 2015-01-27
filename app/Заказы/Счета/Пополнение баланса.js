@@ -22,6 +22,18 @@ function AddBalance(anAccountId) {
         } else
             alert("Не удалось провести операцию. Повторите запрос позже!");
     }
+    
+    function setPaymentYamoney(){
+        $("#paymentType").val("PC");
+    }
+    
+    function setPaymentTerminal(){
+        $("#paymentType").val("GP");
+    }
+    
+    function setPaymentCard(){
+        $("#paymentType").val("AC");
+    }
 
     function buttonActionPerformed(evt) {//GEN-FIRST:event_buttonActionPerformed
         if(anAccountId){
@@ -34,6 +46,9 @@ function AddBalance(anAccountId) {
                         <input name="shopId" value="20474" type="hidden"/>\n\
                         <input name="scid" value="58702" type="hidden"/>\n\
                         <input name="billOperation" id="billOperation" type="hidden">\n\
+                        <input name="paymentType" id="paymentType" value="PC" type="hidden">\n\
+                        <input name="shopSuccessURL" value="https://internal.rccoffee.ru/erpCafe/successURL.html" type="hidden">\n\
+                        <input name="shopFailURL" value="https://internal.rccoffee.ru/erpCafe/failURL.html" type="hidden">\n\
                         <div class="form-group">\n\
                             <label for="sum">Сумма для пополнения</label>\n\
                             <input type="numeric" name="sum" class="form-control" id="sum" placeholder="Введите сумму" value="'+form.textField.text+'">\n\
@@ -46,11 +61,35 @@ function AddBalance(anAccountId) {
                             <label for="cps_email">Email</label>\n\
                             <input type="email" name="cps_email" class="form-control" id="cps_email" placeholder="Введите Email">\n\
                         </div>\n\
+                        <div class="form-group">\n\
+                            <label for="cps_email">Способ оплаты</label>\n\
+                            <div class="radio" id="yaMoney">\n\
+                                <label>\n\
+                                    <input type="radio" name="radio" value="PC" checked>\n\
+                                       Оплата с кошелька Яндекс.Денег\n\
+                                </label>\n\
+                            </div>\n\
+                            <div class="radio" id="terminal">\n\
+                                <label>\n\
+                                    <input type="radio" name="radio" value="GP">\n\
+                                       Оплата через терминал\n\
+                                </label>\n\
+                            </div>\n\
+                            <div class="radio" id="card">\n\
+                                <label>\n\
+                                    <input type="radio" name="radio" value="AC">\n\
+                                       Оплата банковской картой\n\
+                                </label>\n\
+                            </div>\n\
+                        </div>\n\
                         <input name="customerNumber" value="abc000456" type="hidden"/>\n\
                         <!--button type="submit" class="btn btn-default">Оплатить</button-->\n\
                         </form>\n\
                         <button id="submit" class="btn btn-default">Оплатить</button>';
                 document.getElementById('submit').onclick = yandexSubmitOnClick;
+                document.getElementById('yaMoney').onclick = setPaymentYamoney;
+                document.getElementById('terminal').onclick = setPaymentTerminal;
+                document.getElementById('card').onclick = setPaymentCard;
                 modal.show();
                 form.close();
             }else{
