@@ -2,7 +2,7 @@
  * 
  * @author Alexey
  */
-function ClientPhoneSelector(aParent) {
+function ClientPhoneSelector(aParent, aContainer) {
     var self = this, model = this.model, form = this;
     session.clientModule = new ServerModule("ClientServerModule");
     
@@ -96,4 +96,6 @@ function ClientPhoneSelector(aParent) {
     self.clearClient = function() {
         clearClient();
     };
+    
+    self.show(aContainer);
 }

@@ -5,7 +5,7 @@
 function OrderList(aParent) {
     var self = this, model = this.model, form = this;
     self.orderDetails = {};
-    var clientSelector = new ClientPhoneSelector(aParent);
+    
     var orderProcessor = new OrderProcessor();
     var orderChanged = false;
     var AS = new AdditionalScreen();
@@ -26,13 +26,14 @@ function OrderList(aParent) {
         return orderSum;
     };
     
-    function OrderItem(anItemData) {
+    function OrderItem(anItemData, aPriceType, aPrice) {
         var ordItem = this;
         
         ordItem.orderQuantity = 0;
         ordItem.itemId = anItemData.item_id;
         ordItem.itemName = anItemData.item_name;
-        ordItem.itemCost = anItemData.item_cost;
+        ordItem.itemCost = aPrice ? aPrice : anItemData.item_cost;
+        ordItem.PriceType = aPriceType;
         ordItem.orderSum = 0;
         
         ordItem.increase = function() {
@@ -60,9 +61,9 @@ function OrderList(aParent) {
         ordItem.view = new odp.orderItem(ordItem);
     }
 
-    self.addItem = function(anItemData) {
+    self.addItem = function(anItemData, aPriceType, aPrice) {
         if (!self.orderDetails[anItemData.item_id]) {
-            self.orderDetails[anItemData.item_id] = new OrderItem(anItemData);
+            self.orderDetails[anItemData.item_id] = new OrderItem(anItemData, aPriceType, aPrice);
         }
         self.orderDetails[anItemData.item_id].increase();
     };
@@ -99,7 +100,7 @@ function OrderList(aParent) {
             var anOrderDetails = {
                 orderSum: 0,
                 orderItems: [],
-                clientData: clientSelector.getClient(),
+                clientData: aParent.clientSelector.getClient(),
                 session_id: session.activeSession
             };
             var ic = 0;//items count
@@ -114,7 +115,7 @@ function OrderList(aParent) {
                     ic++;
                 }
             }
-            clientSelector.clearClient();
+            aParent.clientSelector.clearClient();
             self.deleteOrder();
             if (ic > 0) {
                 anOrderDetails.methodOfPayment = aPayDetails.paymentMethod;//"money";
@@ -125,7 +126,7 @@ function OrderList(aParent) {
         }
     };
 
-    clientSelector.show("actionPanel");
+    
     var odp = new OrderListPane("actionPanel", self.acceptOrder, self.deleteOrder);
 
     function btnOkActionPerformed(evt) {

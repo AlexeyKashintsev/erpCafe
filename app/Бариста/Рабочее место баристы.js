@@ -8,15 +8,9 @@ function BaristaDesktop() {
     session.whSession = new ServerModule("WhSessionModule");
     session.tradeSession = new ServerModule("TradeSessions");
     self.userName = session.getUserName();
-//    var AS = new AdditionalScreen();
-//    var BC;
-//    var BC = new addItem();
     var whAdd = null;
-    var dashboard, typesView, itemsView, modifiers;
+    var dashboard, modifiers;
     
-//    var fmDev = new fmDevMode();
-//    fmDev.show();
-    self.cashBackCalc = new CashBackCalculator(self);
     var chekLists = new CheckLists();
     settings = new ServerModule('Settings');
     settings.updateSettingsParams();
@@ -42,6 +36,9 @@ function BaristaDesktop() {
     function initTradePanels() {
             dashboard = cmn.createElement('div', 'item_selector col-sm-8 row', "mainArea");
             modifiers = cmn.createElement('div', 'modifiers col-sm-4 row', "mainArea");
+            self.clientSelector = new ClientPhoneSelector(self);
+            self.orderList = new OrderList(self);
+            self.cashBackCalc = new CashBackCalculator(self, dashboard);
             self.itemsSelector = new ItemsSelector(dashboard, self, session.tradePoint);
             self.typesSelector = new TypesSelector(modifiers, self, session.tradePoint);
             self.priceModifier = new PriceModifier(modifiers, self, session.tradePoint);
@@ -50,13 +47,19 @@ function BaristaDesktop() {
     function setSession(aSession) {
         if (aSession) {
             Logger.info('Сессия открыта ' + aSession);
-            model.params.session_id = aSession;
             session.activeSession = aSession;
+            model.getSessions.params.session_id = aSession;
             showChecklist('cheklist_open');
             model.getSessions.requery(function() {
                 if (!model.getSessions.empty) {
                     session.tradePoint = model.getSessions.trade_point;
-                    model.params.trade_point_id = session.tradePoint;
+                    model.qTradePoint.params.trade_point_id = session.tradePoint;
+                    model.qTradePoint.requery(function() {
+                        if (!model.qTradePoint.empty) {
+                            cmn.addHeaderLeft(model.qTradePoint.cursor.tp_name + '<b> @ </b>' +
+                                    model.qTradePoint.cursor.tp_address, "asterisk");
+                        }
+                    });
                     initTradePanels();
                 }
             });
@@ -84,32 +87,12 @@ function BaristaDesktop() {
             });
         }
     }
-    
-    function startBaristaDesktop() {
-        //cmn.addTopRightControl("Меню в окне", "plus-sign", openDigitalMenu);
-        cmn.addTopRightControl("Прием товара", "plus-sign", btnWarehouseAddActionPerformed);
-        cmn.addTopRightControl("Закрыть смену", "log-out", btnSessionCloseActionPerformed);
-        cmn.addTopRightControl("Выход", "log-out", Logout);
         
-        session.getActiveTPSession(function(aSession) {
-            setSession(aSession);
-        });
-        
-        self.orderList = new OrderList(self);
-        
-        session.sessionKeeper.showIndicator(document.body);
-    }
-    
-   /* function openDigitalMenu(){
-        if (!BC)
-            require('addItemToDashboard', function() {
-                BC = new addItemToDashboard();
-                BC.showModal();
-            });
-        else {
-            BC.showModal();
-        }
-    }*/
+    session.getActiveTPSession(function(aSession) {
+        setSession(aSession);
+    });
+
+    session.sessionKeeper.showIndicator(document.body);
     
     function closeSessionAndLogout() {
                 session.tradeSession.calculateFinalValues();
@@ -133,12 +116,23 @@ function BaristaDesktop() {
         whAdd.show();
     }//GEN-LAST:event_btnWarehouseAddActionPerformed
 
-    function qTradePointOnRequeried(evt) {//GEN-FIRST:event_qTradePointOnRequeried
-        if (!model.qTradePoint.empty) {
-            cmn.addHeaderLeft(model.qTradePoint.cursor.tp_name + '<b> @ </b>' +
-                    model.qTradePoint.cursor.tp_address, "asterisk");
+////    var AS = new AdditionalScreen();
+//    var BC;
+//    var BC = new addItem();
+//    var fmDev = new fmDevMode();
+//    fmDev.show();
+/* function openDigitalMenu(){
+        if (!BC)
+            require('addItemToDashboard', function() {
+                BC = new addItemToDashboard();
+                BC.showModal();
+            });
+        else {
+            BC.showModal();
         }
-    }//GEN-LAST:event_qTradePointOnRequeried
-    
-    startBaristaDesktop();
+    }*/
+        //cmn.addTopRightControl("Меню в окне", "plus-sign", openDigitalMenu);
+//        cmn.addTopRightControl("Прием товара", "plus-sign", btnWarehouseAddActionPerformed);
+//        cmn.addTopRightControl("Закрыть смену", "log-out", btnSessionCloseActionPerformed);
+//        cmn.addTopRightControl("Выход", "log-out", Logout);
 }
