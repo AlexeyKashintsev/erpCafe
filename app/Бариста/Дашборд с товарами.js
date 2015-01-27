@@ -10,10 +10,11 @@ function ItemsChooser(aTradePoint, aContainer, orderList) {
     settings.updateSettingsParams(null, aTradePoint);
     
     $( aContainer ).disableSelection();
-    var selector_body = cmn.createElement('div', 'item_selector col-sm-7 row', aContainer);
-    var types_body = cmn.createElement('div', 'item_type_selector row', selector_body);
+    var selector_body = cmn.createElement('div', 'item_selector col-sm-8 row', aContainer);
+    var modifiers_body = cmn.createElement('div', 'modifiers col-sm-4', aContainer);
+    var types_body = cmn.createElement('div', 'item_type_selector row', modifiers_body);
     var items_body = cmn.createElement('div', 'items_select row', selector_body);
-    var modifiers_body = cmn.createElement('div', 'modifier_selector col-sm-5', aContainer);
+    
     var trade_items = {};
     var cost_modifiers = [];
     
@@ -32,7 +33,7 @@ function ItemsChooser(aTradePoint, aContainer, orderList) {
     };
 
     function tradeTypes4TPOnRequeried(evt) {//GEN-FIRST:event_tradeTypes4TPOnRequeried
-        if (!model.tradeTypes4TP.empty) {
+       // if (!model.tradeTypes4TP.empty) {
             var buttons = [{d_name : 'Все', active : true}];
             model.tradeTypes4TP.forEach(function(data) {
                 buttons[data.trade_item_type_id] = {
@@ -41,7 +42,7 @@ function ItemsChooser(aTradePoint, aContainer, orderList) {
                 };
             });
             new cmn.ButtonGroup(buttons, types_body, "typeSelector", onTypeClick);
-        }
+      //  }
     }//GEN-LAST:event_tradeTypes4TPOnRequeried
 
     function setSortable(aSortable) {
@@ -68,10 +69,6 @@ function ItemsChooser(aTradePoint, aContainer, orderList) {
     }
     
     function processPriceTypeClick(aPriceData) {
-        //alert(trade_items.length);
-//        trade_items.forEach(function(ti) {
-//            ti.setActivePriceType(aPriceData.price_type);
-//        });
         for (var j in trade_items) {
             trade_items[j].setActivePriceType(aPriceData.price_type);
         }
@@ -112,6 +109,9 @@ function ItemsChooser(aTradePoint, aContainer, orderList) {
             else
                 trade_items[aTIData.item_id].setAdditionalData(aTIData);
         });
+        processPriceTypeClick({price_type : 10});
+        getSort();
+        setSortable(true);
     }//GEN-LAST:event_tradeItemsCostByTPOnRequeried
 
     function qCostModifiersOnTPOnRequeried(evt) {//GEN-FIRST:event_qCostModifiersOnTPOnRequeried

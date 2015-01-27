@@ -189,19 +189,30 @@ h1.itemCost {
 
 /* COST MODIFIERS */
 
-.modifier_selector {
-  
+div.modifiers {
+  height: 100%;
+  right: 0px;
+  padding-top: 15px;
+  margin-top: -15px;
+  position: absolute;
+  background-color: #FDE3A7;
 }
 
 .price_modifier {
   height: 80px;
   width: 120px;
-  margin: 0px 0px 10px 10px;
+  margin: 10px 10px 0px 0px;
   position: relative;
-  background-color: yellow;
+  background-color: #E67E22;
+  color: white;
   text-align: center;
   display: inline-block;
   cursor: pointer;
+}
+
+.price_modifier.selected {
+  background-color: #F9690E;
+  color: white;
 }
 
 h3.price_desc {
