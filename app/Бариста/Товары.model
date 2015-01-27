@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?><datamodel>
+  <parametersEntity entityHeight="200" entityIconified="false" entityLocationX="12" entityLocationY="12" entityWidth="150"/>
+  <entity Name="tradeItemsCostByTP" Title="" entityHeight="302" entityIconified="false" entityId="142236154279090" entityLocationX="249" entityLocationY="12" entityWidth="150" queryId="tradeItemsCostByTP" tableName="" tableSchemaName=""/>
+</datamodel>

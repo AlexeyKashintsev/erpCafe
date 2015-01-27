@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?><datamodel>
+  <parametersEntity entityHeight="200" entityIconified="false" entityLocationX="12" entityLocationY="12" entityWidth="150"/>
+  <entity Name="сostModifiersOnTP" Title="" entityHeight="200" entityIconified="false" entityId="142236251333701" entityLocationX="316" entityLocationY="116" entityWidth="150" queryId="qCostModifiersOnTP" tableName="" tableSchemaName=""/>
+</datamodel>

@@ -3,6 +3,7 @@
  * @author Alexey
  * @name tradeTypes4TP
  * @public
+ * @manual
  TODO Переделать под item_type из item_cost
  */ 
 Select t.type_name, t.trade_item_type_id, t.parent_type

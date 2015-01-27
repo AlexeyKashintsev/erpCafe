@@ -8,20 +8,13 @@ function BaristaDesktop() {
     session.whSession = new ServerModule("WhSessionModule");
     session.tradeSession = new ServerModule("TradeSessions");
     self.userName = session.getUserName();
-    var AS = new AdditionalScreen();
-    var BC;
-    //var BC = new addItem();
     var whAdd = null;
-    var types_body;
-    var items_body;
-    var itemsChooser;
+    var dashboard, modifiers;
     
-//    var fmDev = new fmDevMode();
-//    fmDev.show();
-    self.cashBackCalc = new CashBackCalculator(self);
     var chekLists = new CheckLists();
-    var settings = new ServerModule('Settings');
+    settings = new ServerModule('Settings');
     settings.updateSettingsParams();
+    
     
     /*
      * aName - Название чеклиста (cheklist_open, cheklist_close)
@@ -40,13 +33,36 @@ function BaristaDesktop() {
         } else return false; 
     }
     
+    function initTradePanels() {
+            dashboard = cmn.createElement('div', 'item_selector col-sm-8 row', "mainArea");
+            modifiers = cmn.createElement('div', 'modifiers col-sm-4 row', "mainArea");
+            self.clientSelector = new ClientPhoneSelector(self);
+            self.orderList = new OrderList(self);
+            self.cashBackCalc = new CashBackCalculator(self, dashboard);
+            self.itemsSelector = new ItemsSelector(dashboard, self, session.tradePoint);
+            self.typesSelector = new TypesSelector(modifiers, self, session.tradePoint);
+            self.priceModifier = new PriceModifier(modifiers, self, session.tradePoint);
+    }
+    
     function setSession(aSession) {
         if (aSession) {
             Logger.info('Сессия открыта ' + aSession);
-            model.params.session_id = aSession;
             session.activeSession = aSession;
+            model.getSessions.params.session_id = aSession;
             showChecklist('cheklist_open');
-            model.getSessions.requery();
+            model.getSessions.requery(function() {
+                if (!model.getSessions.empty) {
+                    session.tradePoint = model.getSessions.trade_point;
+                    model.qTradePoint.params.trade_point_id = session.tradePoint;
+                    model.qTradePoint.requery(function() {
+                        if (!model.qTradePoint.empty) {
+                            cmn.addHeaderLeft(model.qTradePoint.cursor.tp_name + '<b> @ </b>' +
+                                    model.qTradePoint.cursor.tp_address, "asterisk");
+                        }
+                    });
+                    initTradePanels();
+                }
+            });
         } else {//открываем новую сессию
             //Выбираем торговую точку
             //Вводим остатки по складу
@@ -71,48 +87,12 @@ function BaristaDesktop() {
             });
         }
     }
-    
-    function closeSessionAndLogout() {
-        //TODO subj и добавить в асинхронный вызов после отображения чеклиста
-    }
-    
-    function startBaristaDesktop() {
-        cmn.addTopRightControl("Меню в окне", "plus-sign", openDigitalMenu);
-        cmn.addTopRightControl("Прием товара", "plus-sign", btnWarehouseAddActionPerformed);
-        cmn.addTopRightControl("Закрыть смену", "log-out", btnSessionCloseActionPerformed);
-        cmn.addTopRightControl("Выход", "log-out", Logout);
         
-        session.getActiveTPSession(function(aSession) {
-            setSession(aSession);
-        });
-        
-        self.orderList = new OrderList(self);
-        
-        session.sessionKeeper.showIndicator(document.body);
-    }
-    
-    function openDigitalMenu(){
-        if (!BC)
-            require('addItemToDashboard', function() {
-                BC = new addItemToDashboard();
-                BC.showModal();
-            });
-        else {
-            BC.showModal();
-        }
-    }
-    
-    function addItemToOrder(anItemData) {
-        self.orderList.addItem(anItemData);
-    }
+    session.getActiveTPSession(function(aSession) {
+        setSession(aSession);
+    });
 
-    function getSessionsOnRequeried(evt) {//GEN-FIRST:event_getSessionsOnRequeried
-        if (!model.getSessions.empty) {
-            session.tradePoint = model.getSessions.trade_point;
-            model.params.trade_point_id = session.tradePoint;
-            itemsChooser = new ItemsChooser(session.tradePoint, "mainArea", self.orderList);
-        }
-    }//GEN-LAST:event_getSessionsOnRequeried
+    session.sessionKeeper.showIndicator(document.body);
     
     function closeSessionAndLogout() {
                 session.tradeSession.calculateFinalValues();
@@ -136,20 +116,23 @@ function BaristaDesktop() {
         whAdd.show();
     }//GEN-LAST:event_btnWarehouseAddActionPerformed
 
-    function qTradePointOnRequeried(evt) {//GEN-FIRST:event_qTradePointOnRequeried
-        if (!model.qTradePoint.empty) {
-            cmn.addHeaderLeft(model.qTradePoint.cursor.tp_name + '<b> @ </b>' +
-                    model.qTradePoint.cursor.tp_address, "asterisk");
+////    var AS = new AdditionalScreen();
+//    var BC;
+//    var BC = new addItem();
+//    var fmDev = new fmDevMode();
+//    fmDev.show();
+/* function openDigitalMenu(){
+        if (!BC)
+            require('addItemToDashboard', function() {
+                BC = new addItemToDashboard();
+                BC.showModal();
+            });
+        else {
+            BC.showModal();
         }
-    }//GEN-LAST:event_qTradePointOnRequeried
-    
-    startBaristaDesktop();
-
-    function tradeItemsByTradePointWithCostOnRequeried(evt) {//GEN-FIRST:event_tradeItemsByTradePointWithCostOnRequeried
-        // TODO Добавьте здесь свой код:
-    }//GEN-LAST:event_tradeItemsByTradePointWithCostOnRequeried
-
-    function tradeTypes4TPOnRequeried(evt) {//GEN-FIRST:event_tradeTypes4TPOnRequeried
-        // TODO Добавьте здесь свой код:
-    }//GEN-LAST:event_tradeTypes4TPOnRequeried
+    }*/
+        //cmn.addTopRightControl("Меню в окне", "plus-sign", openDigitalMenu);
+//        cmn.addTopRightControl("Прием товара", "plus-sign", btnWarehouseAddActionPerformed);
+//        cmn.addTopRightControl("Закрыть смену", "log-out", btnSessionCloseActionPerformed);
+//        cmn.addTopRightControl("Выход", "log-out", Logout);
 }

@@ -2,7 +2,7 @@
  * 
  * @author Alexey
  */
-function CashBackCalculator(aParent) {
+function CashBackCalculator(aParent, aContainer) {
     var self = this, model = this.model, form = this;
     var cashBackSum = 0;
     var purchaseSum = 0;
@@ -12,7 +12,7 @@ function CashBackCalculator(aParent) {
     var btnsSumEnabled = true;
     self.shown = false;
     
-    var container = cmn.createElement('div', 'cash_calculator', 'mainArea');
+    var container = cmn.createElement('div', 'cash_calculator', aContainer ? aContainer : 'mainArea');
     $( ".cash_calculator" ).disableSelection();
         
     function createButton(aClass, aContainer, aText, aValue, aTitle) {

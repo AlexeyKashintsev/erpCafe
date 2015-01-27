@@ -6,7 +6,11 @@
  */ 
 function Alerter(anAlert, aType, aText, aCloseable, aCloseTimeOut, aContainer, onClick) {
     var self = this, model = this.model;
-    if (!lastAlert) lastAlert;
+    try {
+        if (!lastAlert) lastAlert;
+    } catch (e) {
+        lastAlert = null;
+    }
     if (!anAlert) {
         var divEl = cmn.createElement("div", "alert " + aType, 
                                       aContainer ? aContainer : "actionPanel",
