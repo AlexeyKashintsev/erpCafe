@@ -41,7 +41,7 @@ function BaristaDesktop() {
     
     function initTradePanels() {
             dashboard = cmn.createElement('div', 'item_selector col-sm-8 row', "mainArea");
-            modifiers = cmn.createElement('div', 'modifiers col-sm-5 row', "mainArea");
+            modifiers = cmn.createElement('div', 'modifiers col-sm-4 row', "mainArea");
             self.itemsSelector = new ItemsSelector(dashboard, self, session.tradePoint);
             self.typesSelector = new TypesSelector(modifiers, self, session.tradePoint);
             self.priceModifier = new PriceModifier(modifiers, self, session.tradePoint);
