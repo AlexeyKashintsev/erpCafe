@@ -34,26 +34,13 @@ function ItemSettingsAndCost(aTradeItemId) {
         itemCostForm.setItem(anItemId);
         model.qTradeItemsOnTP.params.trade_point = session.tradePoint;
         model.params.item_id = anItemId;
-        checkColor(model.qTradeItemsOnTP.cursor.color);
         //bonusPanel.setTradeItem(anItem);
     };
     
     if (aTradeItemId)
         self.setTradeItem(aTradeItemId);
-
-    function checkColor(aColor){
-        switch (aColor){
-            case "blue" : form.rbtBlue.selected = true; break;
-            case "black" : form.rbtBlack.selected = true; break;
-            case "green" : form.rbtGreen.selected = true; break;
-            case "violet" : form.rbtViolet.selected = true; break;
-            case "red" : form.rbtRed.selected = true; break;
-            default : form.rbtStandart.selected = true; break;    
-        }
-    }
     
     function formWindowOpened(evt) {//GEN-FIRST:event_formWindowOpened
-        
     }//GEN-LAST:event_formWindowOpened
 
 
@@ -101,28 +88,4 @@ function ItemSettingsAndCost(aTradeItemId) {
         contentTradeItem.save();
         itemCostForm.save();
     }//GEN-LAST:event_btnSaveActionPerformed
-
-    function rbtStandartActionPerformed(evt) {//GEN-FIRST:event_rbtStandartActionPerformed
-        model.qTradeItemsOnTP.cursor.color = "";
-    }//GEN-LAST:event_rbtStandartActionPerformed
-
-    function rbtBlueActionPerformed(evt) {//GEN-FIRST:event_rbtBlueActionPerformed
-        model.qTradeItemsOnTP.cursor.color = "blue";
-    }//GEN-LAST:event_rbtBlueActionPerformed
-
-    function rbtGreenActionPerformed(evt) {//GEN-FIRST:event_rbtGreenActionPerformed
-        model.qTradeItemsOnTP.cursor.color = "green";
-    }//GEN-LAST:event_rbtGreenActionPerformed
-
-    function rbtRedActionPerformed(evt) {//GEN-FIRST:event_rbtRedActionPerformed
-        model.qTradeItemsOnTP.cursor.color = "red";
-    }//GEN-LAST:event_rbtRedActionPerformed
-
-    function rbtBlackActionPerformed(evt) {//GEN-FIRST:event_rbtBlackActionPerformed
-        model.qTradeItemsOnTP.cursor.color = "black";
-    }//GEN-LAST:event_rbtBlackActionPerformed
-
-    function rbtVioletActionPerformed(evt) {//GEN-FIRST:event_rbtVioletActionPerformed
-        model.qTradeItemsOnTP.cursor.color = "violet";
-    }//GEN-LAST:event_rbtVioletActionPerformed
 }

@@ -10,16 +10,16 @@ function ItemsChooser(aTradePoint, aContainer, orderList) {
     settings.updateSettingsParams(null, aTradePoint);
     
     $( aContainer ).disableSelection();
-    var selector_body = cmn.createElement('div', 'item_selector col-sm-7 row', aContainer);
-    var types_body = cmn.createElement('div', 'item_type_selector row', selector_body);
+    var selector_body = cmn.createElement('div', 'item_selector col-sm-8 row', aContainer);
+    var modifiers_body = cmn.createElement('div', 'modifiers col-sm-4', aContainer);
+    var types_body = cmn.createElement('div', 'item_type_selector row', modifiers_body);
     var items_body = cmn.createElement('div', 'items_select row', selector_body);
-    var modifiers_body = cmn.createElement('div', 'modifier_selector col-sm-5', aContainer);
-    var trade_items = [];
+    
+    var trade_items = {};
     var cost_modifiers = [];
     
     model.params.actual_date = new Date();
     model.params.trade_point_id = aTradePoint;
-    model.params.price_type = 10; //TODO Расхардкодить тип цены
     model.tradeItemsCostByTP.requery();
     model.tradeTypes4TP.requery();
     
@@ -33,7 +33,7 @@ function ItemsChooser(aTradePoint, aContainer, orderList) {
     };
 
     function tradeTypes4TPOnRequeried(evt) {//GEN-FIRST:event_tradeTypes4TPOnRequeried
-        if (!model.tradeTypes4TP.empty) {
+       // if (!model.tradeTypes4TP.empty) {
             var buttons = [{d_name : 'Все', active : true}];
             model.tradeTypes4TP.forEach(function(data) {
                 buttons[data.trade_item_type_id] = {
@@ -42,7 +42,7 @@ function ItemsChooser(aTradePoint, aContainer, orderList) {
                 };
             });
             new cmn.ButtonGroup(buttons, types_body, "typeSelector", onTypeClick);
-        }
+      //  }
     }//GEN-LAST:event_tradeTypes4TPOnRequeried
 
     function setSortable(aSortable) {
@@ -68,26 +68,55 @@ function ItemsChooser(aTradePoint, aContainer, orderList) {
         orderList.addItem(anItemData);
     }
     
-    function tradeItemsCostByTPOnRequeried(evt) {//GEN-FIRST:event_tradeItemsCostByTPOnRequeried
-        var data = null;
-        model.tradeItemsCostByTP.beforeFirst();
-        while (model.tradeItemsCostByTP.next()) {
-            if (!data || data.item_id !== model.tradeItemsCostByTP.cursor.item_id) {
-                if (!!data)
-                    trade_items.push(new IWF.tradeItem(items_body, data, processItemClick));
-                data = model.tradeItemsCostByTP.cursor;
-                data.cost = {};
-            }
-            data.cost[model.tradeItemsCostByTP.cursor.price_type] = 
-                            model.tradeItemsCostByTP.cursor.item_cost;
+    function processPriceTypeClick(aPriceData) {
+        for (var j in trade_items) {
+            trade_items[j].setActivePriceType(aPriceData.price_type);
         }
-        if (!!data)
-            trade_items.push(new IWF.tradeItem(items_body, data, processItemClick));
+    }
+    
+    function TradeItem(anItemData) {
+        var ti = this;
+        var costs = [];
+        var priceTypeSel = null;
+
+        ti.setCost = function(aPriceType, aCost) {
+            if (!!aCost)
+                costs[aPriceType] = aCost;
+            else
+                delete costs[aPriceType];
+        };
+
+        ti.setActivePriceType = function(aPriceType) {
+            if (costs[aPriceType]) {
+                this.view.setDisplayedPrice(costs[aPriceType] + 'р.');
+                priceTypeSel = aPriceType;
+            } else
+                this.view.setDisplayedPrice('---');
+         };
+
+        ti.setAdditionalData = function(aData) {
+            ti.setCost(aData.price_type, aData.item_cost);
+        };
+        
+        ti.view = new IWF.tradeItem(items_body, anItemData, processItemClick);
+        ti.setAdditionalData(anItemData);
+    }
+    
+    function tradeItemsCostByTPOnRequeried(evt) {//GEN-FIRST:event_tradeItemsCostByTPOnRequeried
+        model.tradeItemsCostByTP.forEach(function(aTIData) {
+            if (!trade_items[aTIData.item_id])
+                trade_items[aTIData.item_id] = new TradeItem(aTIData);
+            else
+                trade_items[aTIData.item_id].setAdditionalData(aTIData);
+        });
+        processPriceTypeClick({price_type : 10});
+        getSort();
+        setSortable(true);
     }//GEN-LAST:event_tradeItemsCostByTPOnRequeried
 
     function qCostModifiersOnTPOnRequeried(evt) {//GEN-FIRST:event_qCostModifiersOnTPOnRequeried
         model.qCostModifiersOnTP.forEach(function(aCostModifier) {
-            cost_modifiers.push(new IWF.priceModifier(modifiers_body, aCostModifier, null));
+            cost_modifiers.push(new IWF.priceModifier(modifiers_body, aCostModifier, processPriceTypeClick));
         });
     }//GEN-LAST:event_qCostModifiersOnTPOnRequeried
 }

@@ -12,16 +12,16 @@ function ItemsWidgetFactory() {
             + aData.trade_item_type_id + (aData.classtag ? " " + aData.classtag : ""),
             aContainer, "tt_" + aData.item_id);
         var itemPanel = cmn.createElement("div", "panel panel-primary " + aData.color , itemContainer);
-        //var itemHeading = cmn.createElement("div", "panel-heading", itemPanel);
+        
         var itemContent = cmn.createElement("div", "panel-body", itemPanel);
-        //var itemType = cmn.createElement("p", "itemType", itemContent);
-        var itemDesc = cmn.createElement("h3", "itemDesc", itemContent);//itemHeading);
+        var itemDesc = cmn.createElement("h3", "itemDesc", itemContent);
         var itemCost = cmn.createElement("h1", "itemCost", itemContent);
         
-
         itemDesc.innerHTML = aData.item_name;
-        //itemType.innerHTML = aData.type_name;
-        itemCost.innerHTML = aData.item_cost + 'р.';
+        
+        this.setDisplayedPrice = function(aPrice) {
+            itemCost.innerHTML = aPrice;
+        };
         
         itemPanel.onclick = function() {
                 onClick(aData);
@@ -31,10 +31,10 @@ function ItemsWidgetFactory() {
     self.priceModifier = function(aContainer, aData, onClick) {
         var mContainer = cmn.createElement("div", "price_modifier pt_"
                 + aData.price_type, aContainer, "pt_" + aData.price_type);
-        var mDesc = cmn.createElement("h3", "itemDesc", mContainer);
+        var mDesc = cmn.createElement("h3", "price_desc", mContainer);
         mDesc.innerHTML = aData.type_name;
         
-        mContainer.onClick =  function() {
+        mContainer.onclick =  function() {
             onClick(aData);
         };
     };
