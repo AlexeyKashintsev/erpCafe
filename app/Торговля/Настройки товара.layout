@@ -1,12 +1,12 @@
-<?xml version="1.0" encoding="UTF-8"?><layout backgroundColor="#ededed" defaultCloseOperation="2" name="Form" prefHeight="521px" prefWidth="661px" windowOpened="formWindowOpened">
-  <widget backgroundColor="#ededed" name="tabbedPane" parent="Form" prefHeight="468px" prefWidth="661px" type="TabsDesignInfo">
+<?xml version="1.0" encoding="UTF-8"?><layout backgroundColor="#ededed" defaultCloseOperation="2" name="Form" prefHeight="522px" prefWidth="707px" windowOpened="formWindowOpened">
+  <widget backgroundColor="#ededed" name="tabbedPane" parent="Form" prefHeight="469px" prefWidth="707px" type="TabsDesignInfo">
     <constraints bottom="53px" left="0px" right="0px" top="0px" type="MarginConstraintsDesignInfo"/>
   </widget>
-  <widget backgroundColor="#ededed" name="pnlGeneral" parent="tabbedPane" prefHeight="440px" prefWidth="656px" type="PanelDesignInfo">
+  <widget backgroundColor="#ededed" name="pnlGeneral" parent="tabbedPane" prefHeight="441px" prefWidth="702px" type="PanelDesignInfo">
     <layout type="MarginLayoutDesignInfo"/>
     <constraints tabTitle="Общее" type="TabsConstraintsDesignInfo"/>
   </widget>
-  <widget backgroundColor="#ffffff" name="pnlCard" parent="pnlGeneral" prefHeight="300px" prefWidth="656px" type="PanelDesignInfo">
+  <widget backgroundColor="#ffffff" name="pnlCard" parent="pnlGeneral" prefHeight="301px" prefWidth="702px" type="PanelDesignInfo">
     <layout type="MarginLayoutDesignInfo"/>
     <constraints bottom="140px" left="0px" right="0px" top="0px" type="MarginConstraintsDesignInfo"/>
   </widget>
@@ -23,25 +23,44 @@
   <widget actionPerformed="btnNotSaveInWHActionPerformed" buttonGroup="buttonGroup" name="btnNotSaveInWH" parent="pnlControlWH" prefHeight="23px" prefWidth="528px" text="Не учитывать" type="RadioDesignInfo">
     <constraints height="23px" left="24px" top="72px" type="MarginConstraintsDesignInfo" width="528px"/>
   </widget>
-  <widget backgroundColor="#ededed" name="pnlContent" parent="tabbedPane" prefHeight="440px" prefWidth="656px" type="PanelDesignInfo" visible="false">
+  <widget backgroundColor="#ededed" name="pnlContent" parent="tabbedPane" prefHeight="441px" prefWidth="702px" type="PanelDesignInfo" visible="false">
     <layout type="MarginLayoutDesignInfo"/>
     <constraints tabTitle="Состав товара" type="TabsConstraintsDesignInfo"/>
   </widget>
-  <widget backgroundColor="#ededed" name="pnlCost" parent="tabbedPane" prefHeight="440px" prefWidth="656px" type="PanelDesignInfo" visible="false">
+  <widget backgroundColor="#ededed" name="pnlCost" parent="tabbedPane" prefHeight="441px" prefWidth="702px" type="PanelDesignInfo" visible="false">
     <layout type="MarginLayoutDesignInfo"/>
     <constraints tabTitle="Цена" type="TabsConstraintsDesignInfo"/>
   </widget>
-  <widget backgroundColor="#ededed" name="pnlBonus" parent="tabbedPane" prefHeight="440px" prefWidth="656px" type="PanelDesignInfo" visible="false">
+  <widget name="pnlColor" parent="pnlCost" prefHeight="448px" prefWidth="216px" type="PanelDesignInfo">
+    <layout type="MarginLayoutDesignInfo"/>
+    <constraints height="448px" left="492px" top="0px" type="MarginConstraintsDesignInfo" width="216px"/>
+  </widget>
+  <widget name="radioButton5" parent="pnlColor" prefHeight="23px" prefWidth="156px" text="Фиолетовый" type="RadioDesignInfo">
+    <constraints bottom="281px" left="36px" right="24px" top="144px" type="MarginConstraintsDesignInfo"/>
+  </widget>
+  <widget name="radioButton4" parent="pnlColor" prefHeight="23px" prefWidth="156px" text="Черный" type="RadioDesignInfo">
+    <constraints bottom="305px" left="36px" right="24px" top="120px" type="MarginConstraintsDesignInfo"/>
+  </widget>
+  <widget name="radioButton3" parent="pnlColor" prefHeight="23px" prefWidth="156px" text="Красный" type="RadioDesignInfo">
+    <constraints bottom="329px" left="36px" right="24px" top="96px" type="MarginConstraintsDesignInfo"/>
+  </widget>
+  <widget name="radioButton2" parent="pnlColor" prefHeight="23px" prefWidth="156px" text="Зеленый" type="RadioDesignInfo">
+    <constraints bottom="353px" left="36px" right="24px" top="72px" type="MarginConstraintsDesignInfo"/>
+  </widget>
+  <widget name="radioButton1" parent="pnlColor" prefHeight="23px" prefWidth="156px" text="Голубой" type="RadioDesignInfo">
+    <constraints bottom="377px" left="36px" right="24px" top="48px" type="MarginConstraintsDesignInfo"/>
+  </widget>
+  <widget name="radioButton" parent="pnlColor" prefHeight="23px" prefWidth="156px" text="Стандартный" type="RadioDesignInfo">
+    <constraints bottom="401px" left="36px" right="24px" top="24px" type="MarginConstraintsDesignInfo"/>
+  </widget>
+  <widget backgroundColor="#ededed" name="pnlBonus" parent="tabbedPane" prefHeight="441px" prefWidth="702px" type="PanelDesignInfo" visible="false">
     <layout type="MarginLayoutDesignInfo"/>
     <constraints tabTitle="Бонусы" type="TabsConstraintsDesignInfo"/>
   </widget>
   <widget actionPerformed="btnSaveActionPerformed" name="btnSave" parent="Form" prefHeight="36px" prefWidth="209px" text="Сохранить" type="ButtonDesignInfo">
     <constraints bottom="5px" height="36px" right="32px" type="MarginConstraintsDesignInfo" width="209px"/>
   </widget>
-  <widget name="modelFormattedField" parent="Form" prefHeight="20px" prefWidth="100px" type="DbLabelDesignInfo">
-    <datamodelElement entityId="142227671507887" fieldName="color"/>
-    <constraints bottom="21px" height="20px" left="216px" type="MarginConstraintsDesignInfo" width="100px"/>
-  </widget>
   <nonvisual name="buttonGroup" type="ButtonGroupDesignInfo"/>
+  <nonvisual name="bgColor" type="ButtonGroupDesignInfo"/>
   <layout type="MarginLayoutDesignInfo"/>
 </layout>
