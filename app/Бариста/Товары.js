@@ -66,7 +66,7 @@ function ItemsSelector(aContainer, aParent, aTradePoint, anActualDate) {
         
         function addToOrder() {
             if (costs[priceTypeSel]) {
-                if (ti.data.measure == 'шт' || ti.data.measure == '-') {
+                if (!ti.data.item_measure || ti.data.item_measure == 'шт' || ti.data.item_measure == '-') {
                     self.parent.orderList.addItem(ti.data, priceTypeSel, costs[priceTypeSel]);
                 } else {
                     //TODO Ввод веса товара

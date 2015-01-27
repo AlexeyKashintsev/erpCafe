@@ -9,15 +9,15 @@ function ItemsWidgetFactory() {
     
     self.tradeItem = function(aContainer, ti) {
         var itemContainer = cmn.createElement("div", "Sortable itemDescription tt_"
-            + ti.aData.trade_item_type_id + (ti.aData.classtag ? " " + ti.aData.classtag : ""),
-            aContainer, "tt_" + ti.aData.item_id);
-        var itemPanel = cmn.createElement("div", "panel panel-primary " + ti.aData.color , itemContainer);
+            + ti.data.trade_item_type_id + (ti.data.classtag ? " " + ti.data.classtag : ""),
+            aContainer, "tt_" + ti.data.item_id);
+        var itemPanel = cmn.createElement("div", "panel panel-primary " + ti.data.color , itemContainer);
         
         var itemContent = cmn.createElement("div", "panel-body", itemPanel);
         var itemDesc = cmn.createElement("h3", "itemDesc", itemContent);
         var itemCost = cmn.createElement("h1", "itemCost", itemContent);
         
-        itemDesc.innerHTML = ti.aData.item_name;
+        itemDesc.innerHTML = ti.data.item_name;
         
         this.setDisplayedPrice = function(aPrice) {
             itemCost.innerHTML = aPrice;
