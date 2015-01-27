@@ -127,7 +127,7 @@ cmn.pFrameRunner = new function() {
     }
 }
 
-cmn.createElement = function(aType, aClass, aContainer, aID, aBeforeContainer, aBC) {
+cmn.createElement = function(aType, aClass, aContainer, aID, aBeforeContainer) {
         var el = document.createElement(aType);
         if (!!aClass) el.className = aClass;
         if (!!aID) el.id = aID;
