@@ -165,7 +165,7 @@ button.typeSelector {
 }
 
 .itemDescription > div.panel {
-  height: 80px;
+  height: 100px;
   width: 120px;
   margin: 0px;
   position: relative;
@@ -187,7 +187,44 @@ h1.itemCost {
   bottom: 0px;
 }
 
-/* TRADE ITEMS */
+/* COST MODIFIERS */
+
+div.modifiers {
+  height: 100%;
+  right: 0px;
+  padding-top: 15px;
+  margin-top: -15px;
+  position: absolute;
+  background-color: #FDE3A7;
+}
+
+.price_modifier {
+  height: 80px;
+  width: 120px;
+  margin: 10px 10px 0px 0px;
+  position: relative;
+  background-color: #E67E22;
+  color: white;
+  text-align: center;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.price_modifier.selected {
+  background-color: #F9690E;
+  color: white;
+}
+
+h3.price_desc {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 10px;
+  right: 10px;
+  font-size: 16px;
+}
+
+/* ORDER ITEMS */
 
 .orderItems {
   background-color: #D2D7D3;
