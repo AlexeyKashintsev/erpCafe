@@ -8,18 +8,18 @@ function OrderList(aParent) {
     
     var orderProcessor = new OrderProcessor();
     var orderChanged = false;
-    var AS = new AdditionalScreen();
+    //var AS = new AdditionalScreen();
 
     function calculateOrder() {
         var orderSum = 0;
         orderChanged = true;
         for (var i in self.orderDetails) {
-            orderSum += self.orderDetails[i].orderSum;
+            for (var j in self.orderDetails[i])
+                orderSum += self.orderDetails[i][j].orderSum;
         }
         odp.updateOrderSum(orderSum);
-        //document.getElementById("orderSum").innerHTML = '<h3>Итого: <b>' + orderSum + '</b> рублей</h3>';
         
-        AS.updateOrder(self, orderSum);
+        //AS.updateOrder(self, orderSum);
         
         if (aParent.cashBackCalc.shown)
             aParent.cashBackCalc.setPurchaseSum(orderSum);
@@ -51,11 +51,11 @@ function OrderList(aParent) {
             calculateOrder();
         };
         
-        ordItem.delete = function() {
+        ordItem.delete = function(aWORecalc) {
             ordItem.orderSum = ordItem.orderQuantity = 0;
             delete(self.orderDetails[ordItem.itemId]);
             ordItem.view.delete();
-            calculateOrder();
+            if (!!aWORecalc) calculateOrder();
         };
         
         ordItem.view = new odp.orderItem(ordItem);
@@ -63,16 +63,23 @@ function OrderList(aParent) {
 
     self.addItem = function(anItemData, aPriceType, aPrice) {
         if (!self.orderDetails[anItemData.item_id]) {
-            self.orderDetails[anItemData.item_id] = new OrderItem(anItemData, aPriceType, aPrice);
+            self.orderDetails[anItemData.item_id] = {};
         }
-        self.orderDetails[anItemData.item_id].increase();
+        if (!self.orderDetails[anItemData.item_id][aPriceType]) {
+            self.orderDetails[anItemData.item_id][aPriceType] = new OrderItem(anItemData, aPriceType, aPrice);
+        }
+        self.orderDetails[anItemData.item_id][aPriceType].increase();
     };
 
     self.deleteOrder = function() {
-        for (var i in self.orderDetails)
-            self.orderDetails[i].delete();
+        for (var i in self.orderDetails) {
+            for (var j in self.orderDetails[i])
+                self.orderDetails[i][j].delete(true);
+        }
+        self.orderDetails = {};
         aParent.cashBackCalc.hide();
-        AS.cancelOrder();
+        calculateOrder();
+        //AS.cancelOrder();
     };
     
     self.acceptOrder = function() {
@@ -104,13 +111,14 @@ function OrderList(aParent) {
                 session_id: session.activeSession
             };
             var ic = 0;//items count
-
-            if (self.orderDetails) {              
-                for (var i in self.orderDetails) {
-                    anOrderDetails.orderSum += self.orderDetails[i].orderSum;
+           
+            for (var i in self.orderDetails) {
+                for (var j in self.orderDetails[i]) {
+                    anOrderDetails.orderSum += self.orderDetails[i][j].orderSum;
                     anOrderDetails.orderItems.push({
-                        itemId: self.orderDetails[i].itemId,
-                        quantity: self.orderDetails[i].orderQuantity
+                        itemId      :   self.orderDetails[i][j].itemId,
+                        quantity    :   self.orderDetails[i][j].orderQuantity,
+                        priceType   :   j
                     });
                     ic++;
                 }

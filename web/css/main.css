@@ -194,6 +194,7 @@ div.modifiers {
   right: 0px;
   padding-top: 15px;
   margin-top: -15px;
+  margin-right: 0px;
   position: absolute;
   background-color: rgba(253, 227, 167, 0.5);
 }

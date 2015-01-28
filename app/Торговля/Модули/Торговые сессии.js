@@ -96,11 +96,12 @@ function TradeSessions() {
      * @param {type} aQuantity
      * @returns {undefined}
      */
-    function TradeItemsPushInTradeOperation(aCashBoxOperationId, anItemId, aQuantity) {
+    function TradeItemsPushInTradeOperation(aCashBoxOperationId, anItemId, aQuantity, aPriceType) {
         model.qTradeOperationsWithItems.push({
-            cash_box_operation: aCashBoxOperationId,
-            trade_item: anItemId,
-            items_quantity: aQuantity
+            cash_box_operation  :   aCashBoxOperationId,
+            trade_item          :   anItemId,
+            items_quantity      :   aQuantity,
+            price_type          :   aPriceType
         });
     }
 
@@ -171,7 +172,8 @@ function TradeSessions() {
         if (anOrderItem.itemId && anOrderItem.quantity) {
             TradeItemsPushInTradeOperation( aTradeOperationId,
                                             anOrderItem.itemId,
-                                            anOrderItem.quantity);
+                                            anOrderItem.quantity,
+                                            anOrderItem.priceType);
 
             WhItemsConsumption(anOrderItem.itemId, anOrderItem.quantity);
         } else {
@@ -182,7 +184,7 @@ function TradeSessions() {
         }
     }
 
-    function calculateOrderSum(anItems) {
+    function calculateOrderSum(anItems) { //TODO Исправить для использования с типом цены
         var sum = 0;
         model.qOpenedSession.params.user_name = session.getUserName();
         var tpid = model.qOpenedSession.cursor.trade_point;

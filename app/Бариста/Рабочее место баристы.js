@@ -134,5 +134,5 @@ function BaristaDesktop() {
         //cmn.addTopRightControl("Меню в окне", "plus-sign", openDigitalMenu);
 //        cmn.addTopRightControl("Прием товара", "plus-sign", btnWarehouseAddActionPerformed);
 //        cmn.addTopRightControl("Закрыть смену", "log-out", btnSessionCloseActionPerformed);
-//        cmn.addTopRightControl("Выход", "log-out", Logout);
+        cmn.addTopRightControl("Выход", "log-out", Logout);
 }

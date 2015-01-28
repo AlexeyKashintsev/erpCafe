@@ -53,11 +53,11 @@ function ItemsSelector(aContainer, aParent, aTradePoint, anActualDate) {
         };
 
         ti.setActivePriceType = function(aPriceType) {
-            if (costs[aPriceType]) {
+            if (costs[aPriceType]) 
                 this.view.setDisplayedPrice(costs[aPriceType] + 'р.');
-                priceTypeSel = aPriceType;
-            } else
+            else 
                 this.view.setDisplayedPrice('---');
+            priceTypeSel = aPriceType;
          };
 
         ti.setAdditionalData = function(aData) {
@@ -71,6 +71,8 @@ function ItemsSelector(aContainer, aParent, aTradePoint, anActualDate) {
                 } else {
                     //TODO Ввод веса товара
                 }
+            } else {
+                //TODO Ошибка - данный товар проверять нельзя по выбранной цене
             }
         }
         
@@ -78,6 +80,9 @@ function ItemsSelector(aContainer, aParent, aTradePoint, anActualDate) {
             switch (mode) {
                 case 0  :   {
                         addToOrder();
+                        break;
+                }
+                case 1  :   {
                         break;
                 }
             }
