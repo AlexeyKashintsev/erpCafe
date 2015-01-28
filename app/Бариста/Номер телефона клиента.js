@@ -18,7 +18,19 @@ function ClientPhoneSelector(aParent, aContainer) {
         checkIfClientPhoneExists();
     }
     
+    function addClientToList(aClient){
+        var clientPhoneDiv = cmn.getElement("div", '', clientPane, "clientPhoneDiv");
+        var el = cmn.createElement("p", "list", clientPhoneDiv);
+        el.innerHTML = aClient.phone + ' ' + aClient.firstName;
+        el.phone = aClient.phone;
+        el.onclick = function(){
+            inpPhone.value = el.phone;
+            checkIfClientPhoneExists();
+        };
+    }
+    
     function checkIfClientPhoneExists() {
+        clientPane.innerHTML = "";
         if (inpPhone.value !== "") {
             aParent.cashBackCalc.setBonusCount(0);
             $(".client-phone-reset").addClass("active");
@@ -29,18 +41,8 @@ function ClientPhoneSelector(aParent, aContainer) {
                 $(clientRegPane).hide();
                 $(clientPane).show();
                 if (response.length > 1){
-                    clientPhoneDiv = cmn.getElement("div", '', clientPane, "clientPhoneDiv");
                     for (var r in response){
-                        new (function() {
-                            var el = cmn.createElement("p", "list", clientPhoneDiv);
-                            el.innerHTML = response[r].phone + ' ' + response[r].firstName;
-                            el.phone = response[r].phone;
-                            el.onclick = function(){
-                                alert(el.phone);
-                                inpPhone.value = el.phone;
-                                checkIfClientPhoneExists();
-                            };
-                        })();
+                        new addClientToList(response[r]);
                     }
                 } else {
                     inpPhone.value = response[0].phone;
@@ -77,7 +79,6 @@ function ClientPhoneSelector(aParent, aContainer) {
              $(inpPhone).removeClass("red");
              $(clientPane).hide();
              $(clientRegPane).hide();
-             clientPane.innerHTML = "";
          }
     }
 
