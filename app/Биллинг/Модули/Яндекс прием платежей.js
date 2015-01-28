@@ -7,6 +7,7 @@ function YandexPaymentReceiver() {
     var self = this, model = this.model;
     var bm = Session.get("BillModule");
     var ep = Session.get("EventProcessor");
+    var settings = Session.get("Settings");
     var af = new AdminFunctions();
     
     //Варианты ответа для яндекс денег
@@ -14,8 +15,7 @@ function YandexPaymentReceiver() {
     self.RESPONSE_FAIL_HASH     = 1;   //Несовпали хэши
     self.RESPONSE_FAIL          = 200; //Ошибка разбора
     
-    model.qGetShopPassword.requery();
-    var SHOP_PASSWORD = model.qGetShopPassword.cursor.pass;
+    var SHOP_PASSWORD = settings.getSettingByName("shopPassword").pass;
     
     /*
      * Формирует ответный XML файл для яндекса

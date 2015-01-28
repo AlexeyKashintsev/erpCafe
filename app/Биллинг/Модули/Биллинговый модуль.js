@@ -229,8 +229,8 @@ function BillModule() {
             if (checkMoneyOnAccount(model.qBillOperationsListServer.cursor.account_id, 
                 model.qBillOperationsListServer.cursor.operation_sum))
             {
-                model.qGetShopPassword.requery();
-                var SHOP_PASSWORD = model.qGetShopPassword.cursor.pass;
+                var settings = Session.get("Settings");
+                var SHOP_PASSWORD = settings.getSettingByName("shopPassword").pass;
                 if (aStatus === self.OP_STATUS_SUCCESS && ((session.getUserRole() === "admin") || 
                         aShopPassword === SHOP_PASSWORD)) {
                     reqBillAccounts(model.qBillOperationsListServer.cursor.account_id, null, null, null);
