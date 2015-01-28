@@ -40,7 +40,7 @@ function btnSaveActionPerformed(evt) {//GEN-FIRST:event_btnSaveActionPerformed
         });
     } else {
         var addBalance = new AddBalance(model.qBillAccount.cursor.bill_accounts_id);
-        addBalance.showModal(function(){
+        addBalance.manualShow(function(){
             model.qBillAccount.requery();
             model.requery();
         });
