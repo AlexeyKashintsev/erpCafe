@@ -35,6 +35,7 @@ function YandexPaymentReceiverTest() {
      * заказ и при успехе отправляет Контрагенту «Уведомление о переводе».
      */
      self.checkOrder = function(){
+        Logger.info("checkOrderTest");
         var r = self.http.request.params;
         var hash = af.MD5(r.action + ";" + r.orderSumAmount + ";" + r.orderSumCurrencyPaycash + ";" +
                           r.orderSumBankPaycash + ";" + r.shopId + ";" + r.invoiceId + ";" +
@@ -62,6 +63,7 @@ function YandexPaymentReceiverTest() {
      * Обратите внимание: на этом шаге Контрагент не может отказаться от приема перевода.
      */
     self.paymentAviso = function(){
+        Logger.info("paymentAvisoTest");
         var r = self.http.request.params;
         var hash = af.MD5(r.action + ";" + r.orderSumAmount + ";" + r.orderSumCurrencyPaycash + ";" +
                           r.orderSumBankPaycash + ";" + r.shopId + ";" + r.invoiceId + ";" +
@@ -89,6 +91,5 @@ function YandexPaymentReceiverTest() {
             customerNumber  :   r.customerNumber
         });
         return xmlToYandex(self.RESPONSE_FAIL_HASH, r.shopId, r.invoiceId, r.requestDatetime);
-        
     };
 }

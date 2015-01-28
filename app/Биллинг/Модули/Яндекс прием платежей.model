@@ -4,7 +4,8 @@
   </parameters>
   <parametersEntity entityHeight="200" entityIconified="false" entityLocationX="12" entityLocationY="12" entityWidth="150"/>
   <entity Name="qBillOperationsListServer" Title="" entityHeight="200" entityIconified="false" entityId="141744793458472" entityLocationX="197" entityLocationY="12" entityWidth="150" queryId="qBillOperationsListServer" tableName="" tableSchemaName=""/>
+  <entity Name="qGetShopPassword" Title="" entityHeight="46" entityIconified="false" entityId="142243235515749" entityLocationX="364" entityLocationY="12" entityWidth="150" queryId="qGetShopPassword" tableName="" tableSchemaName=""/>
   <relation leftEntityId="-1" leftEntityParameterName="operation_id" rightEntityId="141744793458472" rightEntityParameterName="operation_id"/>
-  <referenceRelation leftEntityFieldName="operation_type" leftEntityId="141744793458472" rightEntityFieldName="bill_operations_type_id" rightEntityId="141744793458472"/>
   <referenceRelation leftEntityFieldName="operation_status" leftEntityId="141744793458472" rightEntityFieldName="bill_operations_status_id" rightEntityId="141744793458472"/>
+  <referenceRelation leftEntityFieldName="operation_type" leftEntityId="141744793458472" rightEntityFieldName="bill_operations_type_id" rightEntityId="141744793458472"/>
 </datamodel>
