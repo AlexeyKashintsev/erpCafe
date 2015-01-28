@@ -27,13 +27,21 @@ function ClientServerModule() {
         this.registrationDate = model.qPersonalData.cursor.reg_date;
         this.bonusCategory = model.qPersonalData.cursor.bonus_category;
         this.bonusCount = billModule.getQuickSumFromAccountId(this.bonusBill);
+        this.city_id = model.qPersonalData.cursor.city;
+        this.city = self.getCity(this.city_id);
         Logger.info(billModule.getQuickSumFromAccountId(this.bonusBill));
     };
 
     self.getClientDataByPhone = function(aPhone) {
         return new ClientConstructor(aPhone);
     };
-
+    
+    self.getCity = function(aCityId){
+        model.qGetCities.params.city_id = aCityId;
+        model.qGetCities.requery();
+        return model.qGetCities.cursor.city;
+    }
+    
     self.getClientData = function() {
         return new ClientConstructor(self.principal.name);
     };

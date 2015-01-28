@@ -326,7 +326,7 @@ div.clientInfo {
 div#clientRegPane.clientInfo {
   text-align: center;
   margin: 0px;
-  #color: #E74C3C;
+  color: #E74C3C;
 }
 
 button#btnRegister {
@@ -337,6 +337,23 @@ button#btnRegister {
 
 div.clientBonusDiv {
   font-size: large;
+}
+
+ul.clientListDiv {
+  font-size: large;
+}
+
+ul.clientListDiv li{
+  cursor : pointer;
+  padding: 10px 5px;
+}
+
+ul.clientListDiv:hover li{
+  background-color: #ddeeee;
+}
+
+span.right-span{
+  float: right;
 }
 
 /* ### CASHBACK ### */

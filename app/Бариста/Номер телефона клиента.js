@@ -19,9 +19,9 @@ function ClientPhoneSelector(aParent, aContainer) {
     }
     
     function addClientToList(aClient){
-        var clientPhoneDiv = cmn.getElement("div", '', clientPane, "clientPhoneDiv");
-        var el = cmn.createElement("p", "list", clientPhoneDiv);
-        el.innerHTML = aClient.phone + ' ' + aClient.firstName;
+        var clientListDiv = cmn.getElement("ul", "clientListDiv", clientPane, '');
+        var el = cmn.createElement("li", "list", clientListDiv);
+        el.innerHTML = '<span>' + aClient.phone + ' ' + aClient.firstName + '</span><span class="right-span">' + aClient.city + '</span>';
         el.phone = aClient.phone;
         el.onclick = function(){
             inpPhone.value = el.phone;
