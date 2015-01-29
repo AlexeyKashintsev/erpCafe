@@ -15,8 +15,7 @@ function MyChat(aContainer) {
     var msgArea = cmn.createElement('div', 'chat-msgarea', chat);
     var inputText = cmn.createElement('textarea', 'chat-input', chat, "chat-input");
     var btnSubmit = cmn.createElement('button', 'chat-btn', chat);
-    btnSubmit.innerHTML = "Отправить";
-    btnSubmit.onclick = btnSubmitOnClick;
+    
     
     var webSocket = null;
     
@@ -35,9 +34,6 @@ function MyChat(aContainer) {
         
         webSocket.onopen = function() {
             webSocket.send("default");
-            sendChatMsg.pusher(JSON.stringify({
-                online   :   1
-            }));
         };
 
         webSocket.onerror = function(aError) {};
@@ -47,13 +43,13 @@ function MyChat(aContainer) {
             
             if(msg.user_name && msg.text) // пришло сообщение
                 addMessage(msg.user_name, msg.text);
-            else                        //Пришло кол-во людей
-                 onlineCount.innerHTML = msg.online;
+            else if(msg.users && msg.count)                        //Пришло кол-во людей
+                 onlineCount.innerHTML = msg.count;
         };
         
         webSocket.onclose = function() {
             sendChatMsg.pusher(JSON.stringify({
-                online   :   -1
+                lostUser   :   userSession.getUserName()
             }));
         };
     }
@@ -74,6 +70,9 @@ function MyChat(aContainer) {
         $("#chat-input").val("");
     }
     
+    btnSubmit.innerHTML = "Отправить";
+    btnSubmit.onclick = btnSubmitOnClick;
+    
     self.loadMessages = function(){
         msgArea.innerHTML = " ";
         model.qLastMessages.requery(function(){
@@ -82,7 +81,7 @@ function MyChat(aContainer) {
                addMessage(model.qLastMessages.cursor.user_name, model.qLastMessages.cursor.msg_text);
             }
        });
-    }
+    };
     
     function addMessage(aUserName, aMsg){
         var msg = cmn.createElement('div', 'msg', msgArea);

@@ -11,7 +11,8 @@ function ServerSession() {
     var eventProcessor = new EventProcessor();
     Session = {};
     Session.chat = {};
-    Session.chat.usersCount = 0;
+    Session.chat.users = [];
+    Session.chat.count = 0;
     var sessions = {};
     
     Session.get = function(aModuleName) {
