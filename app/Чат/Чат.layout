@@ -1,16 +1,3 @@
 <?xml version="1.0" encoding="UTF-8"?><layout defaultCloseOperation="2" name="Form" prefHeight="306px" prefWidth="533px" windowOpened="formWindowOpened">
-  <widget actionPerformed="btnUpActionPerformed" name="btnUp" parent="Form" prefHeight="29px" prefWidth="72px" text="Submit" type="ButtonDesignInfo">
-    <constraints bottom="25px" height="29px" right="17px" type="MarginConstraintsDesignInfo" width="72px"/>
-  </widget>
-  <widget name="label" parent="Form" prefHeight="17px" prefWidth="36px" text="MSG:" type="LabelDesignInfo">
-    <constraints bottom="25px" height="17px" left="24px" type="MarginConstraintsDesignInfo" width="36px"/>
-  </widget>
-  <widget name="textField" parent="Form" prefHeight="48px" prefWidth="372px" text="textField" type="TextFieldDesignInfo">
-    <constraints bottom="6px" height="48px" left="60px" type="MarginConstraintsDesignInfo" width="372px"/>
-  </widget>
-  <widget name="scrollPane" parent="Form" prefHeight="228px" prefWidth="504px" type="ScrollDesignInfo">
-    <constraints height="228px" left="12px" top="12px" type="MarginConstraintsDesignInfo" width="504px"/>
-  </widget>
-  <widget editable="false" name="textArea" parent="scrollPane" prefHeight="226px" prefWidth="502px" type="TextPaneDesignInfo"/>
   <layout type="MarginLayoutDesignInfo"/>
 </layout>

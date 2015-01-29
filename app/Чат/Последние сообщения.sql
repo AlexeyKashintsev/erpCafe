@@ -5,3 +5,5 @@
  */ 
 Select * 
 From chat_messages t1
+ Order by msg_time desc
+ Limit 10
