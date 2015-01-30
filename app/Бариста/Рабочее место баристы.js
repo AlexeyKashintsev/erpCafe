@@ -169,7 +169,7 @@ function BaristaDesktop() {
         //cmn.addTopRightControl("Меню в окне", "plus-sign", openDigitalMenu);
 //        cmn.addTopRightControl("Прием товара", "plus-sign", btnWarehouseAddActionPerformed);
 //        cmn.addTopRightControl("Закрыть смену", "log-out", btnSessionCloseActionPerformed);
-        cmn.addTopRightControl("Настройка", "briefcase", setActionsViewEnabled);
+        cmn.addTopRightControl("Настройка", "asterisk", setActionsViewEnabled);
 //        cmn.addTopRightControl("Выход", "log-out", Logout);
 
     function btnWarehouseAddActionPerformed(evt) {//GEN-FIRST:event_btnWarehouseAddActionPerformed

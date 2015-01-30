@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?><layout backgroundColor="#ededed" defaultCloseOperation="2" name="Form" prefHeight="522px" prefWidth="707px" windowOpened="formWindowOpened">
-  <widget actionPerformed="btnDelActionPerformed" name="btnDel" parent="Form" prefHeight="36px" prefWidth="209px" text="Убрать" type="ButtonDesignInfo">
-    <constraints bottom="6px" height="36px" left="252px" type="MarginConstraintsDesignInfo" width="209px"/>
+  <widget actionPerformed="btnDelActionPerformed" name="btnDel" parent="Form" prefHeight="29px" prefWidth="132px" text="Убрать" type="ButtonDesignInfo">
+    <constraints bottom="14px" height="29px" left="12px" type="MarginConstraintsDesignInfo" width="132px"/>
   </widget>
-  <widget backgroundColor="#ededed" name="tabbedPane" parent="Form" prefHeight="469px" prefWidth="696px" type="TabsDesignInfo">
-    <constraints height="469px" left="12px" top="0px" type="MarginConstraintsDesignInfo" width="696px"/>
+  <widget backgroundColor="#ededed" name="tabbedPane" parent="Form" prefHeight="469px" prefWidth="708px" type="TabsDesignInfo">
+    <constraints bottom="53px" left="0px" right="-1px" top="0px" type="MarginConstraintsDesignInfo"/>
   </widget>
-  <widget backgroundColor="#ededed" name="pnlGeneral" parent="tabbedPane" prefHeight="423px" prefWidth="675px" type="PanelDesignInfo">
+  <widget backgroundColor="#ededed" name="pnlGeneral" parent="tabbedPane" prefHeight="423px" prefWidth="687px" type="PanelDesignInfo">
     <layout type="MarginLayoutDesignInfo"/>
     <constraints tabTitle="Общее" type="TabsConstraintsDesignInfo"/>
   </widget>
-  <widget backgroundColor="#ffffff" name="pnlCard" parent="pnlGeneral" prefHeight="283px" prefWidth="675px" type="PanelDesignInfo">
+  <widget backgroundColor="#ffffff" name="pnlCard" parent="pnlGeneral" prefHeight="283px" prefWidth="687px" type="PanelDesignInfo">
     <layout type="MarginLayoutDesignInfo"/>
     <constraints bottom="140px" left="0px" right="0px" top="0px" type="MarginConstraintsDesignInfo"/>
   </widget>
@@ -26,11 +26,11 @@
   <widget actionPerformed="btnNotSaveInWHActionPerformed" buttonGroup="buttonGroup" name="btnNotSaveInWH" parent="pnlControlWH" prefHeight="23px" prefWidth="528px" text="Не учитывать" type="RadioDesignInfo">
     <constraints height="23px" left="24px" top="72px" type="MarginConstraintsDesignInfo" width="528px"/>
   </widget>
-  <widget backgroundColor="#ededed" name="pnlContent" parent="tabbedPane" prefHeight="423px" prefWidth="675px" type="PanelDesignInfo" visible="false">
+  <widget backgroundColor="#ededed" name="pnlContent" parent="tabbedPane" prefHeight="423px" prefWidth="687px" type="PanelDesignInfo" visible="false">
     <layout type="MarginLayoutDesignInfo"/>
     <constraints tabTitle="Состав товара" type="TabsConstraintsDesignInfo"/>
   </widget>
-  <widget name="panel" parent="tabbedPane" prefHeight="423px" prefWidth="675px" type="PanelDesignInfo" visible="false">
+  <widget name="panel" parent="tabbedPane" prefHeight="423px" prefWidth="687px" type="PanelDesignInfo" visible="false">
     <layout type="MarginLayoutDesignInfo"/>
     <constraints tabTitle="Цена" type="TabsConstraintsDesignInfo"/>
   </widget>
@@ -51,12 +51,15 @@
     <layout type="MarginLayoutDesignInfo"/>
     <constraints height="441px" left="0px" top="0px" type="MarginConstraintsDesignInfo" width="480px"/>
   </widget>
-  <widget backgroundColor="#ededed" name="pnlBonus" parent="tabbedPane" prefHeight="423px" prefWidth="675px" type="PanelDesignInfo" visible="false">
+  <widget backgroundColor="#ededed" name="pnlBonus" parent="tabbedPane" prefHeight="423px" prefWidth="687px" type="PanelDesignInfo" visible="false">
     <layout type="MarginLayoutDesignInfo"/>
     <constraints tabTitle="Бонусы" type="TabsConstraintsDesignInfo"/>
   </widget>
-  <widget actionPerformed="btnSaveActionPerformed" name="btnSave" parent="Form" prefHeight="36px" prefWidth="209px" text="Сохранить" type="ButtonDesignInfo">
-    <constraints bottom="5px" height="36px" right="32px" type="MarginConstraintsDesignInfo" width="209px"/>
+  <widget actionPerformed="btnSaveActionPerformed" name="btnSave" parent="Form" prefHeight="29px" prefWidth="132px" text="Сохранить" type="ButtonDesignInfo">
+    <constraints bottom="14px" height="29px" right="143px" type="MarginConstraintsDesignInfo" width="132px"/>
+  </widget>
+  <widget actionPerformed="btnCancelActionPerformed" name="btnCancel" parent="Form" prefHeight="29px" prefWidth="132px" text="Отмена" type="ButtonDesignInfo">
+    <constraints bottom="14px" height="29px" right="9px" type="MarginConstraintsDesignInfo" width="132px"/>
   </widget>
   <nonvisual name="buttonGroup" type="ButtonGroupDesignInfo"/>
   <nonvisual name="bgColor" type="ButtonGroupDesignInfo"/>

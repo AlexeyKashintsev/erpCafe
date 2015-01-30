@@ -87,14 +87,14 @@ wf.OrderListPane = function(aContainer) {
 
 wf.TradeItem = function(aContainer) {
     this.elType = "div";
-    this.elClass = "Sortable itemDescription tt_" + this.data.trade_item_type_id + (this.data.classtag ? " " + this.data.classtag : "");
+    this.elClass = "Sortable itemDescription tt_" + this.data.trade_item_type_id;
     this.container = aContainer;
     this.ID = "tt_" + this.data.item_id;
     
     wf.proto.bind(this)();
     var itemContainer = this.dockElement;
     
-    var itemPanel = cmn.createElement("div", "panel panel-primary " + this.data.color , itemContainer);
+    var itemPanel = cmn.createElement("div", "panel panel-primary " + (this.data.color ? " color " + this.data.color : ""), itemContainer);
     
     var itemContent = cmn.createElement("div", "panel-body", itemPanel);
     var itemDesc = cmn.createElement("h3", "itemDesc", itemContent);

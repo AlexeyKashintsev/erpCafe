@@ -87,6 +87,7 @@ function ItemSettingsAndCost(aTradeItemId, aTradePointId) {
         itemCard.save();
         contentTradeItem.save();
         itemCostForm.save();
+        form.close(true);
     }//GEN-LAST:event_btnSaveActionPerformed
 
     function btnDelActionPerformed(evt) {//GEN-FIRST:event_btnDelActionPerformed
@@ -94,6 +95,10 @@ function ItemSettingsAndCost(aTradeItemId, aTradePointId) {
         itemCard.save();
         contentTradeItem.save();
         itemCostForm.save(true);
-        form.close();
+        form.close(true);
     }//GEN-LAST:event_btnDelActionPerformed
+
+    function btnCancelActionPerformed(evt) {//GEN-FIRST:event_btnCancelActionPerformed
+        form.close(false);
+    }//GEN-LAST:event_btnCancelActionPerformed
 }
