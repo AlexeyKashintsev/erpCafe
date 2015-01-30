@@ -179,7 +179,7 @@ function CashBackCalculator(aParent, aContainer) {
                     model.tradeOperationTypes.cursor.type_name;
         }
         buttons[0].active = true;
-        spmBtnGrp = new cmn.ButtonGroup(buttons, paymentMethodDiv, 'btn btn-info payType',
+        spmBtnGrp = new wf.ButtonGroup(buttons, paymentMethodDiv, 'btn btn-info payType',
                                         selectPaymentMethod, 'btn-group-vertical btn-group-md');
         self.hide();
     }//GEN-LAST:event_tradeOperationTypesOnRequeried

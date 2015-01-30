@@ -29,6 +29,6 @@ function TypesSelector(aContainer, aParent, aTradePoint, anActualDate) {
                     d_title :   null
                 };
             });
-            new cmn.ButtonGroup(buttons, types_body, "typeSelector", onTypeClick);
+            new wf.ButtonGroup(buttons, types_body, "typeSelector", onTypeClick);
     });
 }

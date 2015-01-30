@@ -82,7 +82,7 @@ function ChartsByTP(aTradePointDetails, aContainer) {
     self.container = cmn.createElement("div", "col-md-12", aContainer);
     var tbBtns = cmn.createElement("div", "btn-toolbar", self.container);            
     tbBtns.role = "toolbar";
-    buttonsCS = new cmn.ButtonGroup(charts, tbBtns, "btn btn-info btn-xs", self.setChart);
+    buttonsCS = new wf.ButtonGroup(charts, tbBtns, "btn btn-info btn-xs", self.setChart);
     periods = chartMaker.getPeriods();
-    buttonsPS = new cmn.ButtonGroup(periods, tbBtns, "btn btn-info btn-xs", self.setPeriod);
+    buttonsPS = new wf.ButtonGroup(periods, tbBtns, "btn btn-info btn-xs", self.setPeriod);
 }

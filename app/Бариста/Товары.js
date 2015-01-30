@@ -5,14 +5,22 @@
  */ 
 function ItemsSelector(aContainer, aParent, aTradePoint, anActualDate) {
     var self = this, model = this.model;
-    var IWF = new ItemsWidgetFactory();
     var mode = 0; //0 - продажа товаров, 1 - настройка
     self.parent = aParent;
+    
+    self.modes = {
+        TRADE   :   0,
+        SETUP   :   1
+    };
     
     $( aContainer ).disableSelection();
     var items_body = cmn.createElement('div', 'items_select row', aContainer);
     
     var trade_items = {};
+    
+    self.setOperationMode = function(aMode) {
+        mode = aMode;
+    };
     
     self.setSortable = function(aSortable) {
         if (aSortable) {
@@ -40,34 +48,34 @@ function ItemsSelector(aContainer, aParent, aTradePoint, anActualDate) {
     }
 
     function TradeItem(anItemData) {
-        var ti = this;
+        //var this = this;
         var costs = [];
         var priceTypeSel = null;
-        ti.data = anItemData;
+        this.data = anItemData;
         
-        ti.setCost = function(aPriceType, aCost) {
+        this.setCost = function(aPriceType, aCost) {
             if (!!aCost)
                 costs[aPriceType] = aCost;
             else
                 delete costs[aPriceType];
         };
 
-        ti.setActivePriceType = function(aPriceType) {
+        this.setActivePriceType = function(aPriceType) {
             if (costs[aPriceType]) 
-                this.view.setDisplayedPrice(costs[aPriceType] + 'р.');
+                this.setDisplayedPrice(costs[aPriceType] + 'р.');
             else 
-                this.view.setDisplayedPrice('---');
+                this.setDisplayedPrice('---');
             priceTypeSel = aPriceType;
          };
 
-        ti.setAdditionalData = function(aData) {
-            ti.setCost(aData.price_type, aData.item_cost);
+        this.setAdditionalData = function(aData) {
+            this.setCost(aData.price_type, aData.item_cost);
         };
         
         function addToOrder() {
             if (costs[priceTypeSel]) {
-                if (!ti.data.item_measure || ti.data.item_measure == 'шт' || ti.data.item_measure == '-') {
-                    self.parent.orderList.addItem(ti.data, priceTypeSel, costs[priceTypeSel]);
+                if (!this.data.item_measure || this.data.item_measure == 'шт' || this.data.item_measure == '-') {
+                    self.parent.orderList.addItem(this.data, priceTypeSel, costs[priceTypeSel]);
                 } else {
                     //TODO Ввод веса товара
                 }
@@ -76,10 +84,10 @@ function ItemsSelector(aContainer, aParent, aTradePoint, anActualDate) {
             }
         }
         
-        ti.click = function() {
+        this.click = (function() {
             switch (mode) {
                 case 0  :   {
-                        addToOrder();
+                        addToOrder.bind(this)();
                         break;
                 }
                 case 1  :   {
@@ -87,10 +95,10 @@ function ItemsSelector(aContainer, aParent, aTradePoint, anActualDate) {
                 }
             }
             
-        };
+        }).bind(this);
         
-        ti.view = new IWF.tradeItem(items_body, ti);
-        ti.setAdditionalData(anItemData);
+        wf.TradeItem.bind(this)(items_body);
+        this.setAdditionalData(anItemData);
     }
 
     model.tradeItemsCostByTP.params.trade_point_id = aTradePoint;

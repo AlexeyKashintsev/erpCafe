@@ -45,46 +45,6 @@ cmn.showModal = function(aForm, aCallback) {
    d_title : "День",
    active  : true/false}
 */
-cmn.ButtonGroup = function(aButtons, aContainer, aBtnClass, aFunction, aClass) {
-    var buttons = [];
-    var divBtnGroup = cmn.createElement("div", aClass ? aClass : "btn-group btn-group-xs", aContainer);
-    divBtnGroup.role = "toolbar";
-    
-    function setActiveButton(aBtn) {
-        if (typeof(aBtn) !== 'object') {
-            for (var j in buttons) 
-                if (buttons[j].fParam == aBtn) aBtn = buttons[j];
-        }
-        for (var j in buttons) {
-            $(buttons[j]).removeClass('active');
-        }
-        $(aBtn).addClass('active');
-    }
-    
-    function btnClick() {
-        setActiveButton(this);
-        aFunction(this.fParam);
-    }
-    
-    for (var j in aButtons) {
-        buttons[j] = cmn.createElement("button", aBtnClass + (aButtons[j].special_class ? ' ' + aButtons[j].special_class : '')
-                                       , divBtnGroup);
-        buttons[j].innerHTML = aButtons[j].d_name;
-        buttons[j].title = aButtons[j].d_title;
-        buttons[j].fParam = j;
-        buttons[j].onclick = btnClick;
-        
-        if (aButtons[j].active) {
-            var active = j; 
-        }
-    }
-    if (active) {
-        setActiveButton(buttons[active]);
-        aFunction(buttons[active].fParam);
-    }
-    this.setActiveButton = setActiveButton;
-}
-
 cmn.pFrameRunner = new function() {
     var frames = {};
     var activeFrame = null;
@@ -164,39 +124,6 @@ cmn.getElement = function(aType, aClass, aContainer, aID, aBeforeContainer) {
         return d
     } else
         return cmn.createElement(aType, aClass, aContainer, aID, aBeforeContainer)
-}
-
-cmn.ActionList = function(anActions, aParentContainer) {
-   /* var acExample = {
-        actionName : {
-                display     :   'someName',
-                dispForm    :   'someFormName',
-                selfGeneration  :   false,
-                inner   :   {}
-            }
-        }*/
-        
-    function ActionListElement(anAction, dock) {
-        this.element = document.createElement('a');
-        this.element.className = 'list-group-item';
-        this.element.innerHTML = '<h4 class="list-group-item-heading">'
-            + (anAction.glyph ? '<span class="' + anAction.glyph + '"></span> ' : '')
-            + anAction.display + '</h4>';
-        var ale = this.element;
-        this.element.onclick = function() {
-            cmn.pFrameRunner.show(anAction.dispForm, anAction.display);
-            $('.list-group-item').removeClass('active');
-            ale.className += ' active';
-        }
-        dock.appendChild(this.element);
-    }
-    
-    this.actionList = {};
-    this.dockDiv = cmn.createElement('div', 'list-group', aParentContainer);
-    
-    for (var j in anActions) {
-        this.actionList[j] = new ActionListElement(anActions[j], this.dockDiv)
-    }
 }
 
 cmn.addTopRightControl = function(aText, anIcon, aFunction, aHref) {

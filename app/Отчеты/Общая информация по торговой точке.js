@@ -130,7 +130,7 @@ function TradePointCommonInfo(aTradePointDetails, aContainer) {
             /** !SHOW BUtTONS! **/
             var tbBtns = cmn.createElement("div", "col-xs-1", panelContent);            
             //tbBtns.role = "toolbar";
-            buttonsSelector = new cmn.ButtonGroup(panels, tbBtns, "btn btn-info", showPanel, "btn-group-vertical btn-group-md");
+            buttonsSelector = new wf.ButtonGroup(panels, tbBtns, "btn btn-info", showPanel, "btn-group-vertical btn-group-md");
         } catch (e) {
             panelContent.innerHTML =
                     '<span class="label label-warning">\n\

@@ -74,7 +74,8 @@ self.showFormAsInternal = function(aForm) {
         common          :   {
             display     :   "Дашборд",
             dispForm    :   "TradePointsDashboard",
-            selfGeneration  :   true
+            selfGeneration  :   true,
+            defEnabled  :   true
         },
         users           :   {
             display     :   "Пользователи",
@@ -112,7 +113,7 @@ self.showFormAsInternal = function(aForm) {
     };
     
     if (self.browser) {
-        self.actionListDisplay = new cmn.ActionList(self.actionList, document.getElementById("actionPanel"));
+        self.actionListDisplay = new wf.ActionList(self.actionList, document.getElementById("actionPanel"));
         cmn.addTopRightControl("Выход", "log-out", Logout);
     }
 }

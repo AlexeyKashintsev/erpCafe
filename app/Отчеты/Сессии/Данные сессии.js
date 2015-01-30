@@ -55,7 +55,7 @@ function mSessionData() {
         panels.tradeOp.display = new commonSessionInfo(sessionData);
         self.setTradePoint(aSessionData.trade_point);
         self.setSession(aSessionData.org_session_id);
-        buttonsSelector = new cmn.ButtonGroup(panels, btnGroup, "btn btn-info btn-xs", showPanel);
+        buttonsSelector = new wf.ButtonGroup(panels, btnGroup, "btn btn-info btn-xs", showPanel);
         
         modal.show();
     };

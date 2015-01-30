@@ -13,7 +13,7 @@ function ClientStartForm() {
     };
     
    
-    self.actionListDisplay = new cmn.ActionList(self.actionList, document.getElementById("actionPanel"));
+    self.actionListDisplay = new wf.ActionList(self.actionList, document.getElementById("actionPanel"));
     cmn.addTopRightControl("Выход", "log-out", logout);
 
 }

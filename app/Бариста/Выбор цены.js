@@ -21,6 +21,6 @@ function PriceModifier(aContainer, aParent, aTradePoint, anActualDate) {
                     active  :   data.price_type == 10
                 };
             });
-            new cmn.ButtonGroup(buttons, modifiers_body, "typeSelector", self.parent.itemsSelector.setActivePrice);
+            new wf.ButtonGroup(buttons, modifiers_body, "typeSelector", self.parent.itemsSelector.setActivePrice);
     });
 }

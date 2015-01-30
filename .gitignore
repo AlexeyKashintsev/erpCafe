@@ -3,3 +3,4 @@ project.properties
 *.xml
 private.properties
 start.js
+**\.DS_Store

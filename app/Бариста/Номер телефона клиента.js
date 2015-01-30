@@ -83,23 +83,28 @@ function ClientPhoneSelector(aParent, aContainer) {
     }
 
     function createClientSelectPane(aContainer) {
-        var dockElement = cmn.createElement("div", 'baristaOrder panel panel-primary', aContainer);
-        var clientLabel = cmn.createElement("h4", 'clientLabel', dockElement, 'clientLabel');
+        wf.ClientSelector.bind(self)(aContainer);
+        var clientLabel = cmn.createElement("h4", 'clientLabel', self.dockElement, 'clientLabel');
         clientLabel.innerHTML = "Введите номер телефона клиента";
-        inpPhone = cmn.createElement("input", "client-phone-input", dockElement);
+        inpPhone = cmn.createElement("input", "client-phone-input", self.dockElement);
         inpPhone.onchange = checkIfClientPhoneExists;
-        var btnDeletePhone = cmn.createElement("button", "client-phone-reset", dockElement);
+        var btnDeletePhone = cmn.createElement("button", "client-phone-reset", self.dockElement);
         btnDeletePhone.innerHTML = '<span class="glyphicon glyphicon-remove"></span>';
         btnDeletePhone.onclick = clearClient;
-        clientPane = cmn.createElement("div", 'clientInfo', dockElement, "clientPane");
-        clientRegPane = cmn.createElement("div", 'clientInfo', dockElement, "clientRegPane");
+        clientPane = cmn.createElement("div", 'clientInfo', self.dockElement, "clientPane");
+        clientRegPane = cmn.createElement("div", 'clientInfo', self.dockElement, "clientRegPane");
         $(clientPane).hide();
         $(clientRegPane).hide();
     }
     
     self.show = function(aContainer) {
-        createClientSelectPane(aContainer ? aContainer : "actionPanel");
+        if (!self.dockElement)
+            createClientSelectPane(aContainer ? aContainer : "actionPanel");
+        else
+            $(self.dockElement).show();
     };
+    
+    self.hide = $(self.dockElement).hide;
     
     self.getClient = function() {
         return client;

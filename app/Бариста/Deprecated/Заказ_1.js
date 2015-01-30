@@ -1,10 +1,8 @@
 /**
  * 
  * @author Alexey
- * @module
- * @public
  */
-function OrderList(aParent, aContainer) {
+function OrderList_deprecated(aParent, aContainer) {
     var self = this, model = this.model, form = this;
     self.orderDetails = {};
     
@@ -136,5 +134,17 @@ function OrderList(aParent, aContainer) {
         }
     };
 
-    wf.OrderListPane.bind(self)(aContainer ? aContainer : "actionPanel");                                      
+    wf.OrderListPane.bind(self)(aContainer ? aContainer : "actionPanel");
+    
+    function btnOkActionPerformed(evt) {
+        self.acceptOrder();
+    }
+    
+    function btnOkActionPerformed(evt) {//GEN-FIRST:event_btnOkActionPerformed
+        goAcceptOrder();
+    }//GEN-LAST:event_btnOkActionPerformed
+
+    function btnCancelActionPerformed(evt) {//GEN-FIRST:event_btnCancelActionPerformed
+        self.deleteOrder();
+    }//GEN-LAST:event_btnCancelActionPerformed
 }
