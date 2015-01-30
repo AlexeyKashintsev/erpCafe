@@ -7,6 +7,7 @@ function ItemsSelector(aContainer, aParent, aTradePoint, anActualDate) {
     var self = this, model = this.model;
     var mode = 0; //0 - продажа товаров, 1 - настройка
     self.parent = aParent;
+    var itemSettingsAndCost = new ItemSettingsAndCost();
     
     self.modes = {
         TRADE   :   0,
@@ -84,6 +85,11 @@ function ItemsSelector(aContainer, aParent, aTradePoint, anActualDate) {
             }
         }
         
+        function settingsShow() {
+            itemSettingsAndCost.setTradeItem(this.data.item_id);
+            itemSettingsAndCost.showModal();
+        }
+        
         this.click = (function() {
             switch (mode) {
                 case 0  :   {
@@ -91,6 +97,7 @@ function ItemsSelector(aContainer, aParent, aTradePoint, anActualDate) {
                         break;
                 }
                 case 1  :   {
+                        settingsShow.bind(this)();
                         break;
                 }
             }

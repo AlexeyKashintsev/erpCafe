@@ -2,10 +2,10 @@
  * 
  * @author Work
  */
-function ItemSettingsAndCost(aTradeItemId) {
+function ItemSettingsAndCost(aTradeItemId, aTradePointId) {
     var self = this, model = this.model, form = this;
     
-    var itemCard = new ItemCard();
+    var itemCard;
     require('ItemCard', function() {
         itemCard = new ItemCard();
         itemCard.showOnPanel(form.pnlCard);

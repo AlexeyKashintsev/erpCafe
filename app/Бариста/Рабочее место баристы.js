@@ -111,14 +111,19 @@ function BaristaDesktop() {
     }//GEN-LAST:event_btnSessionCloseActionPerformed
 
     self.actionList = {
+        back    :   {
+            display     :   "Назад",
+            onClick     :   setActionsViewEnabled,
+            doNotActivate   :   true
+        },
         manageItems :   {
             display     :   "Управление позициями",
-            onClick     :   setActionsViewEnabled,
+            onClick     :   manageItems,
             defEnabled  :   true
         },
-        back    :   {
-            display     :   "В торговлю",
-            onClick     :   function() {alert('В торговлю');}
+        exit    :   {
+            display     :   "Выход",
+            onClick     :   Logout
         }
     };
     
@@ -134,7 +139,16 @@ function BaristaDesktop() {
             } else {
                 actionList = new wf.ActionList(self.actionList, "actionPanel");
             }
+        } else {
+            actionListEnabled = false;
+            self.clientSelector.show();
+            self.orderList.show();
+            actionList.hide();
         }
+    }
+    
+    function manageItems() {
+        self.itemsSelector.setOperationMode(self.itemsSelector.modes.SETUP);
     }
 
 ////    var AS = new AdditionalScreen();
@@ -156,7 +170,7 @@ function BaristaDesktop() {
 //        cmn.addTopRightControl("Прием товара", "plus-sign", btnWarehouseAddActionPerformed);
 //        cmn.addTopRightControl("Закрыть смену", "log-out", btnSessionCloseActionPerformed);
         cmn.addTopRightControl("Настройка", "briefcase", setActionsViewEnabled);
-        cmn.addTopRightControl("Выход", "log-out", Logout);
+//        cmn.addTopRightControl("Выход", "log-out", Logout);
 
     function btnWarehouseAddActionPerformed(evt) {//GEN-FIRST:event_btnWarehouseAddActionPerformed
         if (!whAdd) {

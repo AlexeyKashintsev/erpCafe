@@ -4,7 +4,6 @@ wf.proto = function() {
     this.dockElement = cmn.createElement(this.elType, this.elClass, this.container);
     this.hide = (function(){$(this.dockElement).hide()}).bind(this);
     this.show = (function(){$(this.dockElement).show()}).bind(this);
-
 }
 
 wf.OrderListPane = function(aContainer) {
@@ -254,16 +253,19 @@ wf.ActionList = function(anActions, aContainer) {
                 onClick     :   someFunction,
                 selfGeneration  :   false,
                 inner   :   {}
-                defEnabled  :   true/false
+                defEnabled  :   true/false,
+                doNotActivate   :   true/false
             }
         }*/
-    var activeElement = null;
+    this.activeElement = null;
     
-    function ActionListElement(anAction, dock) {
+    function ActionListElement(anAction, aParent) {
         function elClick() {
-            activeElement = this;
-            $('.list-group-item').removeClass('active');
-            ale.className += ' active';
+            if (!anAction.doNotActivate) {
+                aParent.activeElement = this;
+                $('.list-group-item').removeClass('active');
+                this.element.className += ' active';
+            }
             if (anAction.dispForm) {            
                 cmn.pFrameRunner.show(anAction.dispForm, anAction.display);
             }
@@ -272,32 +274,29 @@ wf.ActionList = function(anActions, aContainer) {
             }
         }
         this.activate = elClick.bind(this);
-        this.element = document.createElement('a');
-        this.element.className = 'list-group-item';
+        this.element = cmn.createElement('a', 'list-group-item', aParent.dockElement);
         this.element.innerHTML = '<h4 class="list-group-item-heading">'
             + (anAction.glyph ? '<span class="' + anAction.glyph + '"></span> ' : '')
             + anAction.display + '</h4>';
-        var ale = this.element;
+        //var ale = this.element;
         this.element.onclick = elClick.bind(this);
-        dock.appendChild(this.element);
-        if (anAction.defEnabled) elClick();
+        if (anAction.defEnabled) elClick.bind(this)();
     }
     
     this.actionList = {};
     
     for (var j in anActions) {
-        this.actionList[j] = new ActionListElement(anActions[j], this.dockElement);
+        this.actionList[j] = new ActionListElement(anActions[j], this);
     }
     
     this.activate = function() {
-        if (activeElement) {
-            activeElement.activate();
+        if (this.activeElement) {
+            this.activeElement.activate();
         }
     }
     
-    this.hide = $(this.dockDiv).hide;
     this.show = (function() {
-        $(this.dockDiv).show();
+        $(this.dockElement).show();
         this.activate();
     }).bind(this);
 }
