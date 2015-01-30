@@ -43,6 +43,7 @@ function BaristaDesktop() {
             self.itemsSelector = new ItemsSelector(itemSelector, self, session.tradePoint);
             self.typesSelector = new TypesSelector(modifiers, self, session.tradePoint);
             self.priceModifier = new PriceModifier(modifiers, self, session.tradePoint);
+            self.chat = new MyChat(modifiers); self.chat.loadMessages();
     }
     
     function setSession(aSession) {

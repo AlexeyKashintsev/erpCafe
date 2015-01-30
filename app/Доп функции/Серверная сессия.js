@@ -10,6 +10,9 @@ function ServerSession() {
     var loadModules = [];
     var eventProcessor = new EventProcessor();
     Session = {};
+    Session.chat = {};
+    Session.chat.users = [];
+    Session.chat.count = 0;
     var sessions = {};
     
     Session.get = function(aModuleName) {
