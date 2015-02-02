@@ -118,7 +118,7 @@ function BaristaDesktop() {
         },
         manageItems :   {
             display     :   "Управление позициями",
-            onClick     :   manageItems,
+            onClick     :   setModeManageItems,
             defEnabled  :   true
         },
         exit    :   {
@@ -144,11 +144,16 @@ function BaristaDesktop() {
             self.clientSelector.show();
             self.orderList.show();
             actionList.hide();
+            setModeSellItems();
         }
     }
     
-    function manageItems() {
+    function setModeManageItems() {
         self.itemsSelector.setOperationMode(self.itemsSelector.modes.SETUP);
+    }
+    
+    function setModeSellItems() {
+        self.itemsSelector.setOperationMode(self.itemsSelector.modes.TRADE);
     }
 
 ////    var AS = new AdditionalScreen();

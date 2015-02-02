@@ -160,7 +160,7 @@ button.typeSelector {
 .itemDescription {
     cursor: pointer;
     margin-bottom: 0px;
-    padding: 0px 0px 5px 5px;
+    padding: 0px 0px 15px 15px;
     display: inline-block;
 }
 
@@ -169,7 +169,9 @@ button.typeSelector {
   width: 120px;
   margin: 0px;
   position: relative;
-  #border: none;
+  border: none;
+  box-shadow: 5px 5px 5px rgba(0,0,0,0.5);
+  #background-image: url('http://www.transparenttextures.com/patterns/bedge-grunge.png');
 }
 
 p.itemType {
@@ -226,9 +228,12 @@ h3.price_desc {
 }
 
 /* ORDER ITEMS */
+.baristaOrder {
+  background-image: url('http://www.transparenttextures.com/patterns/bright-squares.png');
+}
 
 .orderItems {
-  background-color: #D2D7D3;
+  #background-color: #D2D7D3;
   text-align: center;
   position: relative;
   right: 0px;
@@ -237,7 +242,7 @@ h3.price_desc {
 
 .orderItem  {
   text-align: right;
-  background-color: white;
+  #background-color: white;
   margin: 2px;
   padding-bottom: 4px;
   padding-right: 2px;
@@ -245,7 +250,7 @@ h3.price_desc {
 }
 
 .orderItem:hover  {
-  background-color: #E4F1FE;
+  #background-color: #E4F1FE;
   color: #26A65B;
 }
 

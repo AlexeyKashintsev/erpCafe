@@ -8,6 +8,7 @@ function ItemsSelector(aContainer, aParent, aTradePoint, anActualDate) {
     var mode = 0; //0 - продажа товаров, 1 - настройка
     self.parent = aParent;
     var itemSettingsAndCost = new ItemSettingsAndCost();
+    var addItemWidget;
     
     self.modes = {
         TRADE   :   0,
@@ -21,6 +22,10 @@ function ItemsSelector(aContainer, aParent, aTradePoint, anActualDate) {
     
     self.setOperationMode = function(aMode) {
         mode = aMode;
+        if (aMode === self.modes.SETUP) {
+            if (!addItemWidget)
+                addItemWidget = null;
+        }
     };
     
     self.setSortable = function(aSortable) {

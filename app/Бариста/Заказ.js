@@ -35,7 +35,7 @@ function OrderList(aParent, aContainer) {
         ordItem.itemId = anItemData.item_id;
         ordItem.itemName = anItemData.item_name;
         ordItem.itemCost = aPrice ? aPrice : anItemData.item_cost;
-        ordItem.PriceType = aPriceType;
+        ordItem.priceType = aPriceType;
         ordItem.orderSum = 0;
         
         ordItem.increase = function() {
@@ -55,7 +55,7 @@ function OrderList(aParent, aContainer) {
         
         ordItem.delete = function(aWORecalc) {
             ordItem.orderSum = ordItem.orderQuantity = 0;
-            delete(self.orderDetails[ordItem.itemId]);
+            delete(self.orderDetails[ordItem.itemId][ordItem.priceType]);
             ordItem.view.delete();
             if (!!aWORecalc) calculateOrder();
         };

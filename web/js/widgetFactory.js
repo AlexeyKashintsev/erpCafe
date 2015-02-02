@@ -4,6 +4,9 @@ wf.proto = function() {
     this.dockElement = cmn.createElement(this.elType, this.elClass, this.container);
     this.hide = (function(){$(this.dockElement).hide()}).bind(this);
     this.show = (function(){$(this.dockElement).show()}).bind(this);
+    this.destroy = (function() {
+        
+    })
 }
 
 wf.OrderListPane = function(aContainer) {
@@ -98,13 +101,18 @@ wf.TradeItem = function(aContainer) {
     
     var itemContent = cmn.createElement("div", "panel-body", itemPanel);
     var itemDesc = cmn.createElement("h3", "itemDesc", itemContent);
-    var itemCost = cmn.createElement("h1", "itemCost", itemContent);
+    var itemCost;
+    if (this.data.trade_item_type_id != "add") {
+        itemCost = cmn.createElement("h1", "itemCost", itemContent);
+        this.setDisplayedPrice = function(aPrice) {
+            itemCost.innerHTML = aPrice;
+        };
+    } else {
+        var plus = cmn.createElement("h1", "itemCost", itemContent);
+    }
+    
     
     itemDesc.innerHTML = this.data.item_name;
-    
-    this.setDisplayedPrice = function(aPrice) {
-        itemCost.innerHTML = aPrice;
-    };
     
     itemPanel.onclick = this.click;
 };
