@@ -620,20 +620,28 @@ div.widget_body.not_work:hover {
 /* ### CHAT ###*/
 .chat {
     width: 100%;
-    margin-top: 100%;
+    margin-top: 10%;
 }
 
 .chat-msgarea {
     overflow-y: scroll;
-    height:250px;
+    height:300px;
 }
 
 .chat-input {
-    width: inherit;
+    width: 100%;
 }
 
 .chat-btn {
-    width: inherit;
+    width: 100%;
     background-color: #26A65B;
     color: white;
+}
+
+.chat-username {
+    font-weight: bold;
+}
+
+.chat-btnonline{
+    font-weight: bold;
 }

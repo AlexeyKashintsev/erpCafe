@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?><datamodel>
   <parametersEntity entityHeight="200" entityIconified="false" entityLocationX="12" entityLocationY="12" entityWidth="150"/>
-  <entity Name="qLastMessages" Title="" entityHeight="200" entityIconified="false" entityId="141890740766885" entityLocationX="213" entityLocationY="10" entityWidth="150" queryId="qLastMessages" tableName="" tableSchemaName=""/>
+  <entity Name="qLastMessages" Title="" entityHeight="154" entityIconified="false" entityId="142286398804427" entityLocationX="178" entityLocationY="12" entityWidth="150" queryId="qLastMessages" tableName="" tableSchemaName=""/>
 </datamodel>
