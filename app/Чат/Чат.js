@@ -1,21 +1,42 @@
 /**
- * @author minya92
  * @public
- */
+ * @author minya92
+ * @module
+ */ 
 function MyChat(aContainer) {
     var self = this, model = this.model, form = this;
     var sendChatMsg = new ServerModule("SendChatMsg");
     var userSession = Session.get("UserSession");
    
     var chat = cmn.createElement('div', 'chat', aContainer);
-    var onlineDiv = cmn.createElement('div', 'chat-online', chat);
-    var isOnline = cmn.createElement('span', 'chat-isonline', onlineDiv);
-    isOnline.innerHTML = "Кто онлайн:";
-    var onlineCount = cmn.createElement('span', 'chat-onlinecount', onlineDiv);
-    var usersOnline = cmn.createElement('span', 'chat-usersonline', onlineDiv, 'chat-usersonline');
     var msgArea = cmn.createElement('div', 'chat-msgarea', chat, 'chat-msgarea');
     var inputText = cmn.createElement('textarea', 'chat-input', chat, "chat-input");
     var btnSubmit = cmn.createElement('button', 'chat-btn', chat);
+    
+    $("#chat-input").attr('placeholder', 'Сообщение');
+    
+    var onlineDiv = cmn.createElement('div', 'chat-online', chat);
+    var btnOnline = cmn.createElement('a', 'chat-btnonline', onlineDiv, 'chat-btnonline');
+    var onlineCount = cmn.createElement('span', 'chat-onlinecount', onlineDiv);
+    var usersOnline = cmn.createElement('span', 'chat-usersonline', onlineDiv, 'chat-usersonline');
+    
+    $("#chat-btnonline").attr('href', '#');
+    btnOnline.innerHTML = "Баристы онлайн:";
+    btnOnline.onclick = btnOnlineShow;
+    btnOnlineHide();
+    
+    function btnOnlineShow(){
+        $("#chat-usersonline").show();
+        btnOnline.onclick = btnOnlineHide;
+        sendChatMsg.pusher(JSON.stringify({
+            joinUser   :   userSession.getUserName()
+        }));
+    }
+    
+    function btnOnlineHide(){
+        $("#chat-usersonline").hide();
+        btnOnline.onclick = btnOnlineShow;
+    }
     
     function btnSubmitOnClick(){
         var text = $("#chat-input").val();
@@ -37,7 +58,7 @@ function MyChat(aContainer) {
         var msg = cmn.createElement('div', 'msg', msgArea);
         msg.innerHTML = '<span class="chat-username">' + aUserName + ':</span> ' +
                         '<span class="chat-msg">' + aMsg + '</span>';
-        document.getElementById('chat-msgarea').scrollTop += 30;
+        document.getElementById('chat-msgarea').scrollTop += 300;
     }
     
     $("#chat-input").keyup(function(event){
@@ -48,18 +69,14 @@ function MyChat(aContainer) {
     
     function setUsersOnline(aUsers, aCount){
         //alert(aCount);
-        onlineCount.innerHTML=aCount;
-        usersOnline.innerHTML=" ";
+        onlineCount.innerHTML = " " + aCount + "<br>";
+        usersOnline.innerHTML = " ";
         for(var i in aUsers){
             if(aUsers[i])
-                $("#chat-usersonline").append(" " + aUsers[i]);
+                $("#chat-usersonline").append(aUsers[i] + ((i == aUsers.length-1) ? "" : ", "));
         }
     }
-    
-    function formWindowOpened(evt) {//GEN-FIRST:event_formWindowOpened
-       
-    }//GEN-LAST:event_formWindowOpened
-    
+        
     var webSocket = null;
     
     function messageSender() {
@@ -76,9 +93,6 @@ function MyChat(aContainer) {
         
         webSocket.onopen = function() {
             webSocket.send("default");
-            sendChatMsg.pusher(JSON.stringify({
-                joinUser   :   userSession.getUserName()
-            }));
         };
 
         webSocket.onerror = function(aError) {};
