@@ -6,20 +6,24 @@
 function mSessionData() {
     var self = this, model = this.model;
     var buttonsSelector = null;
+    var sessionData = cmn.createElement('div', null);
     
     var panels = {
         tradeOp :   {
             d_name  :   '<span class="glyphicon glyphicon-inbox"></span> Касса',
             d_title :   'Касса',
-            active  :   true
+            active  :   true,
+            display :   new commonSessionInfo(sessionData)
         },
         trOperations    :   {
             d_name  :   '<span class="glyphicon glyphicon-inbox"></span> Операции',
-            d_title :   'Операции'
+            d_title :   'Операции',
+            display :   new TradeOperationsInSession(sessionData)
         },
         wharH   :   {
             d_name  :   '<span class="glyphicon glyphicon-book"></span> Склад',
-            d_title :   'Склад'
+            d_title :   'Склад',
+            display :   new WHSessionBalance(sessionData)
         }
     };
     
@@ -27,6 +31,7 @@ function mSessionData() {
         model.params.session_id = aSessionId;
         panels.wharH.display.setSession(aSessionId);
         panels.tradeOp.display.setSession(aSessionId);
+        panels.trOperations.display.setSession(aSessionId);
     };
     
     self.setTradePoint = function(aTradePointID) {
@@ -49,10 +54,11 @@ function mSessionData() {
         var modalBody = modal.getModalBody();
         
         var btnGroup = cmn.createElement('div', null, modalBody);
-        var sessionData = cmn.createElement('div', null, modalBody);
-        panels.wharH.display = new WHSessionBalance(sessionData);
-        panels.trOperations.display = new TradeOperationsInSession(sessionData, aSessionData.org_session_id);
-        panels.tradeOp.display = new commonSessionInfo(sessionData);
+        modalBody.appendChild(sessionData);
+        
+        //panels.wharH.display = new WHSessionBalance(sessionData);
+        //panels.trOperations.display = new TradeOperationsInSession(sessionData, aSessionData.org_session_id);
+        //panels.tradeOp.display = new commonSessionInfo(sessionData);
         self.setTradePoint(aSessionData.trade_point);
         self.setSession(aSessionData.org_session_id);
         buttonsSelector = new wf.ButtonGroup(panels, btnGroup, "btn btn-info btn-xs", showPanel);

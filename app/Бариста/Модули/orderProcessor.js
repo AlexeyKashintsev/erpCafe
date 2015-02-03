@@ -18,7 +18,9 @@ function OrderProcessor() {
         failure     :   "<h4>Заказ не проведен</h4>Проверьте связь с сервером"
     };
     
+    //mt(alerts.success, 35, 'кг', 15);
     
+    //"<h4>Заказ успешно проведен</h4>Сумма заказа: <strong> $1 рублей</strong>"
     function UnprocessedOrders() {
         var orders = [];
         var divEl = null;
