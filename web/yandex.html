@@ -1,32 +1,49 @@
-<!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<html>
-    <head>
-        <title>Пополнение счета через яндекс деньги</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width">
-    </head>
-    <body>
-        <form action="http://localhost:8080/erpCafe/application/api?__type=14&__moduleName=YandexPaymentReceiver&__methodName=сheckOrder" method="post"> 
-        <input name="test" value="1234" type="hidden"/> 
-        <!-- Обязательные поля --> 
-        <input name="shopId" value="1234" type="hidden"/> 
-        <input name="scid" value="4321" type="hidden"/> 
-        <input name="sum" value="100.50" type="text"> 
-        <input name="customerNumber" value="abc000" type="hidden"/> 
-
-        <!-- Необязательные поля --> 
-        <!--input name="shopArticleId" value="567890" type="hidden"/--> 
-        <input name="paymentType" value="AC" type="hidden"/> 
-        <input name="orderNumber" value="abc1111111" type="hidden"/> 
-        <input name="cps_phone" value="79110000000" type="text"/> 
-        <input name="cps_email" value="user@domain.com" type="text"/> 
-
-        <input type="submit" value="Заплатить"/> 
-        </form>
-    </body>
-</html>
+<form role="form" id ="form" action="https://demomoney.yandex.ru/eshop.xml" method="post" target="_blank">
+    <input name="shopId" value="20474" type="hidden"/>
+    <input name="scid" value="58702" type="hidden"/>
+    <input name="billOperation" id="billOperation" type="hidden">
+    <input name="shopSuccessURL" value="https://internal.rccoffee.ru/erpCafe/successURL.html" type="hidden">
+    <input name="shopFailURL" value="https://internal.rccoffee.ru/erpCafe/failURL.html" type="hidden">
+    <div class="form-group">
+        <label for="sum">Сумма для пополнения</label>
+        <input type="numeric" name="sum" class="form-control" id="sum" placeholder="Введите сумму" value="">
+    </div>
+    <div class="form-group">
+        <label for="cps_phone">Номер телефона</label>
+        <input type="number" name="cps_phone" class="form-control" id="cps_phone" placeholder="Введите телефон">
+    </div>
+    <div class="form-group">
+        <label for="cps_email">Email</label>
+        <input type="email" name="cps_email" class="form-control" id="cps_email" placeholder="Введите Email">
+    </div>
+    <div class="form-group">
+        <label for="cps_email">Способ оплаты</label>
+        <div class="radio" id="yaMoney">
+            <label>
+                <input type="radio" name="paymentType" value="PC" checked>
+                Оплата с кошелька Яндекс.Денег
+            </label>
+        </div>
+        <div class="radio" id="terminal">
+            <label>
+                <input type="radio" name="paymentType" value="GP">
+                Оплата через терминал
+            </label>
+        </div>
+        <div class="radio" id="card">
+            <label>
+                <input type="radio" name="paymentType" value="AC">
+                Оплата банковской картой
+            </label>
+        </div>
+        <div class="radio" id="bill">
+            <label>
+                <input type="radio" id="paymentType" name="paymentType" value="BL">
+                Выставить счет (оплата через банк)
+            </label>
+        </div>
+    </div>
+    <input name="customerNumber" value="abc000456" type="hidden"/>
+    <!--button type="submit" class="btn btn-default">Оплатить</button-->
+</form>
+<button id="submit" class="btn btn-default">Оплатить</button>

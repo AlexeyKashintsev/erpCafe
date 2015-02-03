@@ -61,6 +61,5 @@ function SendChatMsg() {
             });
             Pusher.broadcast(aTag, aMsg);
         }
-        
     };
 }
