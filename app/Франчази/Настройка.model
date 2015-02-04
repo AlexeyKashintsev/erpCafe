@@ -5,4 +5,5 @@
   <parametersEntity entityHeight="200" entityIconified="false" entityLocationX="10" entityLocationY="12" entityWidth="150"/>
   <entity Name="listTradePoints" Title="" entityHeight="200" entityIconified="false" entityId="140620003979379" entityLocationX="178" entityLocationY="12" entityWidth="150" onAfterScroll="listTradePointsOnScrolled" onRequeried="listTradePointsOnRequeried" queryId="listTradePoints" tableName="" tableSchemaName=""/>
   <relation leftEntityId="-1" leftEntityParameterName="franchazi" rightEntityId="140620003979379" rightEntityParameterName="franchazi_id"/>
+  <referenceRelation leftEntityFieldName="tp_city" leftEntityId="140620003979379" rightEntityFieldName="org_cities_id" rightEntityId="140620003979379"/>
 </datamodel>

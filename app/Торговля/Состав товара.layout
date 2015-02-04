@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?><layout defaultCloseOperation="2" name="Form" prefHeight="348px" prefWidth="372px" windowClosing="formWindowClosing" windowOpened="formWindowOpened">
-  <widget floatable="false" name="toolBar" parent="Form" prefHeight="31px" prefWidth="372px" rollover="true" type="ToolbarDesignInfo">
+  <widget backgroundColor="#ededed" floatable="false" name="toolBar" parent="Form" prefHeight="30px" prefWidth="372px" rollover="true" type="ToolbarDesignInfo">
     <constraints place="North" type="BorderLayoutConstraintsDesignInfo"/>
   </widget>
-  <widget actionPerformed="btnAddActionPerformed" focusable="false" horizontalTextPosition="0" icon="icons/22x22/actions/list-add.png" name="btnAdd" parent="toolBar" prefHeight="29px" prefWidth="29px" toolTipText="Добавить" type="ButtonDesignInfo" verticalTextPosition="3"/>
-  <widget actionPerformed="btnDelActionPerformed" focusable="false" horizontalTextPosition="0" icon="icons/22x22/actions/list-remove.png" name="btnDel" parent="toolBar" prefHeight="29px" prefWidth="29px" toolTipText="Удалить" type="ButtonDesignInfo" verticalTextPosition="3"/>
-  <widget actionPerformed="btnReqActionPerformed" focusable="false" horizontalTextPosition="0" icon="icons/22x22/actions/new-view-refresh.png" name="btnReq" parent="toolBar" prefHeight="29px" prefWidth="29px" toolTipText="Обновить" type="ButtonDesignInfo" verticalTextPosition="3"/>
-  <widget name="pnlSelLock" parent="Form" prefHeight="50px" prefWidth="372px" type="PanelDesignInfo">
+  <widget actionPerformed="btnAddActionPerformed" focusable="false" horizontalTextPosition="0" icon="icons/22x22/actions/list-add.png" name="btnAdd" parent="toolBar" prefHeight="26px" prefWidth="34px" toolTipText="Добавить" type="ButtonDesignInfo" verticalTextPosition="3"/>
+  <widget actionPerformed="btnDelActionPerformed" focusable="false" horizontalTextPosition="0" icon="icons/22x22/actions/list-remove.png" name="btnDel" parent="toolBar" prefHeight="26px" prefWidth="34px" toolTipText="Удалить" type="ButtonDesignInfo" verticalTextPosition="3"/>
+  <widget actionPerformed="btnReqActionPerformed" focusable="false" horizontalTextPosition="0" icon="icons/22x22/actions/new-view-refresh.png" name="btnReq" parent="toolBar" prefHeight="26px" prefWidth="34px" toolTipText="Обновить" type="ButtonDesignInfo" verticalTextPosition="3"/>
+  <widget backgroundColor="#ededed" name="pnlSelLock" parent="Form" prefHeight="50px" prefWidth="372px" type="PanelDesignInfo">
     <layout type="MarginLayoutDesignInfo"/>
     <constraints place="South" type="BorderLayoutConstraintsDesignInfo"/>
   </widget>
@@ -15,19 +15,16 @@
   <widget name="label" parent="pnlSelLock" prefHeight="14px" prefWidth="360px" text="Для редактирования состава сначала продублируйте товар!" type="LabelDesignInfo">
     <constraints height="14px" left="12px" top="12px" type="MarginConstraintsDesignInfo" width="360px"/>
   </widget>
-  <widget name="pnlWorkSpace" parent="Form" prefHeight="267px" prefWidth="372px" type="PanelDesignInfo">
+  <widget backgroundColor="#ededed" name="pnlWorkSpace" parent="Form" prefHeight="268px" prefWidth="372px" type="PanelDesignInfo">
     <layout type="MarginLayoutDesignInfo"/>
     <constraints place="Center" type="BorderLayoutConstraintsDesignInfo"/>
   </widget>
-  <widget name="modelGrid" parent="pnlWorkSpace" prefHeight="267px" prefWidth="372px" type="DbGridDesignInfo">
+  <widget name="modelGrid" parent="pnlWorkSpace" prefHeight="268px" prefWidth="372px" type="DbGridDesignInfo">
     <column name="colWh_item" selectFunction="colWh_itemOnSelect" title="Компонент">
       <controlInfo classHint="DbComboDesignInfo" name="view" prefHeight="0px" prefWidth="0px">
         <valueField entityId="140567547607184" fieldName="wh_items_id"/>
         <displayField entityId="140567547607184" fieldName="item_name"/>
       </controlInfo>
-      <headerStyle>
-        <nativeFont name="Dialog" size="15"/>
-      </headerStyle>
       <datamodelElement entityId="140569000979898" fieldName="wh_item"/>
       <columnsDatasource/>
       <columnsDisplayField/>
@@ -37,12 +34,12 @@
         <columnsKeyField/>
         <cellValueField/>
       </cellDesignInfo>
-    </column>
-    <column name="colUsage_quantity" title="Количество">
-      <controlInfo classHint="DbSpinDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
       <headerStyle>
         <nativeFont name="Dialog" size="15"/>
       </headerStyle>
+    </column>
+    <column name="colUsage_quantity" title="Количество">
+      <controlInfo classHint="DbSpinDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
       <datamodelElement entityId="140569000979898" fieldName="usage_quantity"/>
       <columnsDatasource/>
       <columnsDisplayField/>
@@ -52,6 +49,9 @@
         <columnsKeyField/>
         <cellValueField/>
       </cellDesignInfo>
+      <headerStyle>
+        <nativeFont name="Dialog" size="15"/>
+      </headerStyle>
     </column>
     <rowsColumnsDesignInfo>
       <rowsDatasource entityId="140569000979898" field="false"/>

@@ -7,7 +7,7 @@ function FranchaziWorkShop() {
     
     var fmTP = new TradePoint();
     fmTP.showOnPanel(form.pnlWorkArea);
-    fmTP.setFranchazi(model.params.franchazi);
+    //fmTP.setFranchazi(model.params.franchazi);*/
     
     self.setFranchazi = function(aFranchazi) {
         self.model.params.franchazi = aFranchazi;

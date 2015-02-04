@@ -11,7 +11,7 @@ function TradeOperationsInSession(aContainer, aSessionId) {
     var du = new DatesUtils();
     
     self.setSession = function(aSession) {
-        //grid.prepare();
+        grid.prepare();
         model.params.session_id = aSession;
     };
     
@@ -23,7 +23,6 @@ function TradeOperationsInSession(aContainer, aSessionId) {
     }
     
     function dsTradeOperationsInSessionOnRequeried(evt) {//GEN-FIRST:event_dsTradeOperationsInSessionOnRequeried
-        alert(model.params.session_id);
         model.dsTradeOperationsInSession.beforeFirst();
         var data = [];
         var prevOperation = null;

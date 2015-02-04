@@ -12,6 +12,7 @@ function TradePointCommonInfo(aTradePointDetails, aContainer) {
     var additionalInfo = null;
     var income = null;
     var cashBox = null;
+    var tradePoint;
     var panels = {
         charts  :   {
             d_name  :   '<span class="glyphicon glyphicon-stats"></span>',
@@ -73,6 +74,12 @@ function TradePointCommonInfo(aTradePointDetails, aContainer) {
         } else  alert("В кассе нет " + sum + " рублей");
     }
     
+    function btnTPSettingsOnClick() {
+        tradePoint = new TradePoint();
+        tradePoint.setTradePoint(tradePointDetails.org_trade_point_id);
+        tradePoint.showModal();
+    }
+    
     function setAdditionalInfo(aDohod, aKassa){
         additionalInfo.innerHTML = "";
         additionalInfo.innerHTML = 
@@ -116,6 +123,9 @@ function TradePointCommonInfo(aTradePointDetails, aContainer) {
             var btnWHSetAddMovement = cmn.createElement("button", "btn btn-success btn-xs btn-block", currentSession);
             btnWHSetAddMovement.innerHTML = 'Прием товаров';
             btnWHSetAddMovement.onclick = btnWHSetAddMovementOnClick;
+            var btnTPSettings = cmn.createElement("button", "btn btn-success btn-xs btn-block", currentSession);
+            btnTPSettings.innerHTML = 'Настройка';
+            btnTPSettings.onclick = btnTPSettingsOnClick;
             
             var panelData = cmn.createElement("div", "col-lg-9 col-md-8 col-xs-11", panelContent);
             /** !SHOW CHARTS! **/

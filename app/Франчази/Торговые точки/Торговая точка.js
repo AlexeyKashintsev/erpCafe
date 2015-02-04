@@ -11,7 +11,7 @@ function TradePoint() {
     var fmWarehouse = new SelectItemsInWH();
     fmWarehouse.showOnPanel(form.pnlWarehouse);
     
-    var fmTradeItems = new TradeItemsOnTradePoint();
+    var fmTradeItems = new TradeItemsOnTPView();
     fmTradeItems.showOnPanel(form.pnlTradePositions);
     
     var fmFranchaziUsers = new FranchaziUsers();
@@ -20,7 +20,7 @@ function TradePoint() {
     self.setFranchazi = function(aFranchazi) {
         //model.params.franchaziId = aFranchazi;
         fmWarehouse.setFranchazi(aFranchazi);
-        fmTradeItems.setFranchazi(aFranchazi);
+        //fmTradeItems.setFranchazi(aFranchazi);
         fmFranchaziUsers.setFranchazi(aFranchazi);
         fmCity.setFranchazi(aFranchazi);
     };

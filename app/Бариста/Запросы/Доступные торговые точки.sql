@@ -1,7 +1,7 @@
 /**
  *
  * @author Alexey
- * @name qTradeItemsByUser
+ * @name qTradePointsByUser
  * @public
  * @readonly
  */ 

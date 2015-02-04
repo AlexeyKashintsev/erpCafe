@@ -1,11 +1,10 @@
 /**
  * 
  * @author Алексей
- * @name SelectItemsInWH
  * @public
  */
 
-function TradeItemsOnTradePoint() {
+function TradeItemsOnTradePoint_Deprecated() {
 
     var self = this, model = this.model, form = this;
 

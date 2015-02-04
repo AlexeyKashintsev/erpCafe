@@ -96,16 +96,16 @@ self.showFormAsInternal = function(aForm) {
                 display     :   "Типы товаров",
                 dispForm    :   "ItemTypesForm"
             }
-        },
-        tradePositions  :   {
-            display     :   "Торговые позиции",
-            dispForm    :   "ItemsForTrade"
         },*/
+        tradePositions  :   {
+            display     :   "Номенклатура товаров",
+            dispForm    :   "ItemsForTrade"
+        },/*
         tradePoints :   {
             display     :   "Торговые точки",
           //  glyph       :   "glyphicon glyphicon-cog",
             dispForm    :   "FranchaziWorkShop"
-        },
+        },*/
         billAndServices :   {
             display     :   "Счета и услуги",
             dispForm    :   "BillsFranchazi"

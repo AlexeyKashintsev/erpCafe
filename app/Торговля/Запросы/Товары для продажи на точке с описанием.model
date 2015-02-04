@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?><datamodel>
+  <parameters>
+    <parameter description="" name="trade_point" nullable="true" parameterMode="1" precision="0" scale="0" selectionForm="null" signed="true" size="0" type="2" typeName="NUMERIC"/>
+    <parameter description="" name="item_id" nullable="true" parameterMode="1" precision="0" scale="0" selectionForm="null" signed="true" size="0" type="2" typeName="NUMERIC"/>
+  </parameters>
+  <parametersEntity entityHeight="200" entityIconified="false" entityLocationX="8" entityLocationY="7" entityWidth="150"/>
+  <entity Title="" entityHeight="200" entityIconified="false" entityId="142115805663625" entityLocationX="206" entityLocationY="7" entityWidth="150" tableAlias="t1" tableName="trade_items_on_tp" tableSchemaName=""/>
+  <entity Title="" entityHeight="200" entityIconified="false" entityId="142303439358701" entityLocationX="423" entityLocationY="8" entityWidth="150" tableAlias="t" tableName="wh_items" tableSchemaName=""/>
+  <relation leftEntityId="-1" leftEntityParameterName="item_id" rightEntityFieldName="item_id" rightEntityId="142115805663625"/>
+  <relation leftEntityId="-1" leftEntityParameterName="trade_point" rightEntityFieldName="trade_point_id" rightEntityId="142115805663625"/>
+  <relation leftEntityFieldName="item_id" leftEntityId="142115805663625" rightEntityFieldName="wh_items_id" rightEntityId="142303439358701"/>
+</datamodel>

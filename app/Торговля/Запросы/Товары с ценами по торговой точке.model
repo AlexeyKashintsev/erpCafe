@@ -6,11 +6,11 @@
     <parameter description="" name="actual_date" nullable="true" parameterMode="1" precision="0" scale="0" selectionForm="null" signed="true" size="100" type="93" typeName="TIMESTAMP"/>
   </parameters>
   <parametersEntity entityHeight="200" entityIconified="false" entityLocationX="12" entityLocationY="24" entityWidth="150"/>
-  <entity Title="" entityHeight="122" entityIconified="false" entityId="142113980985454" entityLocationX="232" entityLocationY="2" entityWidth="150" tableAlias="tp" tableName="trade_items_on_tp" tableSchemaName=""/>
-  <entity Title="" entityHeight="150" entityIconified="false" entityId="140672492436582" entityLocationX="408" entityLocationY="60" entityWidth="150" tableAlias="t1" tableName="trade_items_cost" tableSchemaName=""/>
-  <relation leftEntityId="-1" leftEntityParameterName="item_id" rightEntityFieldName="item_id" rightEntityId="142113980985454"/>
-  <relation leftEntityFieldName="item_on_tp" leftEntityId="140672492436582" rightEntityFieldName="trade_items_on_tp_id" rightEntityId="142113980985454"/>
+  <entity Title="" entityHeight="145" entityIconified="false" entityId="142113980985454" entityLocationX="232" entityLocationY="2" entityWidth="150" tableAlias="tp" tableName="trade_items_on_tp" tableSchemaName=""/>
+  <entity Title="" entityHeight="150" entityIconified="false" entityId="140672492436582" entityLocationX="404" entityLocationY="74" entityWidth="150" tableAlias="t1" tableName="trade_items_cost" tableSchemaName=""/>
   <relation leftEntityId="-1" leftEntityParameterName="actual_date" rightEntityFieldName="start_date" rightEntityId="140672492436582"/>
   <relation leftEntityId="-1" leftEntityParameterName="trade_point_id" rightEntityFieldName="trade_point_id" rightEntityId="142113980985454"/>
+  <relation leftEntityId="-1" leftEntityParameterName="item_id" rightEntityFieldName="item_id" rightEntityId="142113980985454"/>
+  <relation leftEntityFieldName="item_on_tp" leftEntityId="140672492436582" rightEntityFieldName="trade_items_on_tp_id" rightEntityId="142113980985454"/>
   <relation leftEntityId="-1" leftEntityParameterName="actual_date" rightEntityFieldName="end_date" rightEntityId="140672492436582"/>
 </datamodel>

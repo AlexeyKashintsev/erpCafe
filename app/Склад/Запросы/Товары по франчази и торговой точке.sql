@@ -4,6 +4,7 @@
  * @name itemsByTP
  * @public
  * @readonly
+//TODO Заменить имя на itemsOnWarehouse
  */ 
 Select t.wh_items_in_warehouse_id, t.warehouse, t.item_id, t2.item_name, t2.item_type, t2.franchazi_id, 
 case when t2.item_measure is not null then t2.item_measure else t1.measure end as item_measure,
