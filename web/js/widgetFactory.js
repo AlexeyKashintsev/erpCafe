@@ -247,12 +247,43 @@ wf.DateTimePeriodPicker = function(aContainer, aSetPeriodFunction) {
     };
 }
 
+wf.WidgetList = function(aContainer, aListData, aWidgetConstructor) {
+    this.elType = this.elType ? this.elType : "div";
+    this.container = aContainer ? aContainer : this.container;
+    wf.proto.bind(this)();
+        
+    this.setActive = (function(anActive) {
+        $(this.dockElement).children().removeClass('active');
+        this.activeElement = anActive;
+        $(anActive.dockElement).addClass('active');
+    }).bind(this);
+    
+    this.activate = (function() {
+        if (this.activeElement) {
+            this.setActive(this.activeElement);
+            this.activeElement.activate();
+        }
+    }).bind(this);
+    
+    this.show = (function() {
+        $(this.dockElement).show();
+        this.activate();
+    }).bind(this);
+    
+    this.activeElement = null;
+    this.widgList = [];
+    for (var j in aListData) {
+        this.widgList[j] = new aWidgetConstructor(aListData[j], this);
+    }
+}
+
 wf.ActionList = function(anActions, aContainer) {
+    var al = this;
     this.elType = "div";
     this.elClass = "list-group";
     this.container = aContainer;
- 
-    wf.proto.bind(this)();
+    
+    wf.WidgetList.bind(this)(null, anActions, ActionListElement);
    
    /* var acExample = {
         actionName : {
@@ -265,15 +296,15 @@ wf.ActionList = function(anActions, aContainer) {
                 doNotActivate   :   true/false
             }
         }*/
-    this.activeElement = null;
     
     function ActionListElement(anAction, aParent) {
-        function elClick() {
-            if (!anAction.doNotActivate) {
-                aParent.activeElement = this;
-                $('.list-group-item').removeClass('active');
-                this.element.className += ' active';
-            }
+        this.elType = "a";
+        this.elClass = "list-group-item";
+        this.container = aParent.dockElement;
+        wf.proto.bind(this)();
+        var ale = this;
+        
+        function doWork() {
             if (anAction.dispForm) {            
                 cmn.pFrameRunner.show(anAction.dispForm, anAction.display);
             }
@@ -281,74 +312,54 @@ wf.ActionList = function(anActions, aContainer) {
                 anAction.onClick();
             }
         }
-        this.activate = elClick.bind(this);
-        this.element = cmn.createElement('a', 'list-group-item', aParent.dockElement);
-        this.element.innerHTML = '<h4 class="list-group-item-heading">'
+        
+        function elClick() {
+            if (!anAction.doNotActivate) {
+                aParent.setActive(ale);
+            }
+            doWork();
+        }
+        //this.element = cmn.createElement('a', 'list-group-item', al.dockElement);
+        this.dockElement.innerHTML = '<h4 class="list-group-item-heading">'
             + (anAction.glyph ? '<span class="' + anAction.glyph + '"></span> ' : '')
             + anAction.display + '</h4>';
-        //var ale = this.element;
-        this.element.onclick = elClick.bind(this);
-        if (anAction.defEnabled) elClick.bind(this)();
+        this.activate = doWork;
+        this.dockElement.onclick = elClick;
+        if (anAction.defEnabled) elClick();
     }
-    
-    this.actionList = {};
-    
-    for (var j in anActions) {
-        this.actionList[j] = new ActionListElement(anActions[j], this);
-    }
-    
-    this.activate = function() {
-        if (this.activeElement) {
-            this.activeElement.activate();
-        }
-    }
-    
-    this.show = (function() {
-        $(this.dockElement).show();
-        this.activate();
-    }).bind(this);
 }
 
 wf.ButtonGroup = function(aButtons, aContainer, aBtnClass, aFunction, aClass) {
-    this.elType = "div";
+    for (var j in aButtons)
+        aButtons[j].j = j;
+    var bg = this;
     this.elClass = aClass ? aClass : "btn-group btn-group-xs";
-    this.container = aContainer;
     
-    wf.proto.bind(this)();
-    this.dockElement.role = "toolbar";
-    var buttons = [];
-    
-    function setActiveButton(aBtn) {
-        if (typeof(aBtn) !== 'object') {
-            for (var j in buttons) 
-                if (buttons[j].fParam == aBtn) aBtn = buttons[j];
-        }
-        for (var j in buttons) {
-            $(buttons[j]).removeClass('active');
-        }
-        $(aBtn).addClass('active');
-    }
-    
-    function btnClick() {
-        setActiveButton(this);
-        aFunction(this.fParam);
-    }
-    
-    for (var j in aButtons) {
-        buttons[j] = cmn.createElement("button", aBtnClass + (aButtons[j].special_class ? ' ' + aButtons[j].special_class : '')
-                                       , this.dockElement);
-        buttons[j].innerHTML = aButtons[j].d_name;
-        buttons[j].title = aButtons[j].d_title;
-        buttons[j].fParam = j;
-        buttons[j].onclick = btnClick;
+    function Button(aButton, aParent) {
+        this.elType = "button";
+        this.elClass = aBtnClass + (aButton.special_class ? ' ' + aButton.special_class : '');
+        this.container = aParent.dockElement;
+        wf.proto.bind(this)();
+
+        this.dockElement.innerHTML = aButton.d_name;
+        this.title = aButton.d_title;
+        this.fParam = aButton.j;
         
-        if (aButtons[j].active) {
-            var active = j; 
+        function doWork() {
+            aFunction(aButton.j);
         }
+        
+        function elClick() {
+            aParent.setActive(this);
+            doWork();
+        }
+        
+        this.activate = doWork.bind(this);
+        this.dockElement.onclick = elClick.bind(this);
+        if (aButton.active) elClick.bind(this)();
     }
-    if (active) {
-        setActiveButton(buttons[active]);
-        aFunction(buttons[active].fParam);
-    }
-    this.setActiveButton = setActiveButton;
+    
+    wf.WidgetList.bind(this)(aContainer, aButtons, Button);
+    this.dockElement.role = "toolbar";
+    this.setActiveButton = this.setActive;
 }
