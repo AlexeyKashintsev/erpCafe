@@ -6,7 +6,10 @@
   <entity Name="qGetColors" Title="" entityHeight="200" entityIconified="false" entityId="142234950682488" entityLocationX="652" entityLocationY="20" entityWidth="150" queryId="qGetColors" tableName="" tableSchemaName=""/>
   <entity Name="qTradeItemsOnTP" Title="" entityHeight="200" entityIconified="false" entityId="142227671507887" entityLocationX="441" entityLocationY="21" entityWidth="150" queryId="qTradeItemsOnTP" tableName="" tableSchemaName=""/>
   <entity Name="qContents" Title="" entityHeight="200" entityIconified="false" entityId="142124353205970" entityLocationX="245" entityLocationY="24" entityWidth="150" queryId="qContents" tableName="" tableSchemaName=""/>
-  <relation leftEntityId="-1" leftEntityParameterName="item_id" rightEntityId="142227671507887" rightEntityParameterName="item_id"/>
+  <entity Name="itemType" Title="" entityHeight="200" entityIconified="false" entityId="142314867474985" entityLocationX="25" entityLocationY="236" entityWidth="150" queryId="itemType" tableName="" tableSchemaName=""/>
   <relation leftEntityId="-1" leftEntityParameterName="item_id" rightEntityId="142124353205970" rightEntityParameterName="trade_item_id"/>
+  <relation leftEntityId="-1" leftEntityParameterName="item_id" rightEntityId="142227671507887" rightEntityParameterName="item_id"/>
+  <referenceRelation leftEntityFieldName="item_type" leftEntityId="142227671507887" rightEntityFieldName="wh_item_types_id" rightEntityId="142314867474985"/>
   <referenceRelation leftEntityFieldName="color" leftEntityId="142227671507887" rightEntityFieldName="misc_colors_id" rightEntityId="142234950682488"/>
+  <referenceRelation leftEntityFieldName="parent_type" leftEntityId="142314867474985" rightEntityFieldName="wh_item_types_id" rightEntityId="142314867474985"/>
 </datamodel>
