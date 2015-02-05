@@ -5,11 +5,11 @@
   <widget backgroundColor="#ededed" name="tabbedPane" parent="Form" prefHeight="432px" prefWidth="672px" type="TabsDesignInfo">
     <constraints bottom="53px" left="0px" right="-1px" top="0px" type="MarginConstraintsDesignInfo"/>
   </widget>
-  <widget backgroundColor="#ededed" name="pnlGeneral" parent="tabbedPane" prefHeight="386px" prefWidth="651px" type="PanelDesignInfo">
+  <widget backgroundColor="#ededed" name="pnlGeneral" parent="tabbedPane" prefHeight="404px" prefWidth="667px" type="PanelDesignInfo">
     <layout type="MarginLayoutDesignInfo"/>
     <constraints tabTitle="Общее" type="TabsConstraintsDesignInfo"/>
   </widget>
-  <widget name="pnlCard" parent="pnlGeneral" prefHeight="264px" prefWidth="651px" type="PanelDesignInfo">
+  <widget name="pnlCard" parent="pnlGeneral" prefHeight="282px" prefWidth="667px" type="PanelDesignInfo">
     <layout type="MarginLayoutDesignInfo"/>
     <constraints bottom="122px" left="0px" right="0px" top="0px" type="MarginConstraintsDesignInfo"/>
   </widget>
@@ -37,24 +37,33 @@
     <valueField entityId="142234950682488" fieldName="misc_colors_id"/>
     <displayField entityId="142234950682488" fieldName="color_name"/>
     <datamodelElement entityId="142227671507887" fieldName="color"/>
-    <constraints height="20px" left="12px" top="36px" type="MarginConstraintsDesignInfo" width="156px"/>
+    <constraints height="20px" left="12px" top="24px" type="MarginConstraintsDesignInfo" width="156px"/>
   </widget>
-  <widget name="label" parent="pnlColor" prefHeight="16px" prefWidth="96px" text="Цвет:" type="LabelDesignInfo">
-    <constraints height="16px" left="12px" top="12px" type="MarginConstraintsDesignInfo" width="96px"/>
+  <widget name="label" parent="pnlColor" prefHeight="24px" prefWidth="96px" text="Цвет:" type="LabelDesignInfo">
+    <constraints height="24px" left="12px" top="0px" type="MarginConstraintsDesignInfo" width="96px"/>
   </widget>
-  <widget backgroundColor="#ededed" name="pnlContent" parent="tabbedPane" prefHeight="386px" prefWidth="651px" type="PanelDesignInfo" visible="false">
+  <widget name="label2" parent="pnlColor" prefHeight="14px" prefWidth="120px" text="Тип товара:" type="LabelDesignInfo">
+    <constraints height="14px" left="12px" top="48px" type="MarginConstraintsDesignInfo" width="120px"/>
+  </widget>
+  <widget name="modelCombo1" parent="pnlColor" prefHeight="20px" prefWidth="132px" type="DbComboDesignInfo">
+    <valueField entityId="142314867474985" fieldName="wh_item_types_id"/>
+    <displayField entityId="142314867474985" fieldName="type_description"/>
+    <datamodelElement entityId="142227671507887" fieldName="item_type"/>
+    <constraints height="20px" left="12px" top="72px" type="MarginConstraintsDesignInfo" width="132px"/>
+  </widget>
+  <widget backgroundColor="#ededed" name="pnlContent" parent="tabbedPane" prefHeight="404px" prefWidth="667px" type="PanelDesignInfo" visible="false">
     <layout type="MarginLayoutDesignInfo"/>
     <constraints tabTitle="Состав товара" type="TabsConstraintsDesignInfo"/>
   </widget>
-  <widget name="pnlCosts" parent="tabbedPane" prefHeight="386px" prefWidth="651px" type="PanelDesignInfo" visible="false">
+  <widget name="pnlCosts" parent="tabbedPane" prefHeight="404px" prefWidth="667px" type="PanelDesignInfo" visible="false">
     <layout type="MarginLayoutDesignInfo"/>
     <constraints tabTitle="Цена" type="TabsConstraintsDesignInfo"/>
   </widget>
-  <widget backgroundColor="#ededed" name="pnlCost" parent="pnlCosts" prefHeight="386px" prefWidth="651px" type="PanelDesignInfo">
+  <widget backgroundColor="#ededed" name="pnlCost" parent="pnlCosts" prefHeight="404px" prefWidth="667px" type="PanelDesignInfo">
     <layout type="MarginLayoutDesignInfo"/>
     <constraints bottom="0px" left="0px" right="0px" top="0px" type="MarginConstraintsDesignInfo"/>
   </widget>
-  <widget backgroundColor="#ededed" name="pnlBonus" parent="tabbedPane" prefHeight="386px" prefWidth="651px" type="PanelDesignInfo" visible="false">
+  <widget backgroundColor="#ededed" name="pnlBonus" parent="tabbedPane" prefHeight="404px" prefWidth="667px" type="PanelDesignInfo" visible="false">
     <layout type="MarginLayoutDesignInfo"/>
     <constraints tabTitle="Бонусы" type="TabsConstraintsDesignInfo"/>
   </widget>
