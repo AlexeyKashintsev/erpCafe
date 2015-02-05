@@ -3,6 +3,7 @@
  * @author minya92
  * @name qTradeItemsOnTP
  * @public
+TODO ReadOnly
  */ 
 Select *
 From trade_items_on_tp t1

@@ -491,6 +491,11 @@ div.btn_block.predefined.disabled > div.calc_button {
   width: 100%;
 }
 
+.trade_point > .panel-body > .btn-group {
+  float: right;
+  margin-top : -5px
+}
+
 .map-marker {
     cursor: pointer;
 }

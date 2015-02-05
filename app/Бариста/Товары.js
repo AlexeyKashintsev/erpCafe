@@ -15,16 +15,24 @@ function ItemsSelector(aContainer, aParent, aTradePoint, anActualDate) {
         SETUP   :   1
     };
     
-    $( aContainer ).disableSelection();
+    $( 'body' ).disableSelection();
     var items_body = cmn.createElement('div', 'items_select row', aContainer);
     
     var trade_items = {};
     
     self.setOperationMode = function(aMode) {
         mode = aMode;
-        if (aMode === self.modes.SETUP) {
-            if (!addItemWidget)
-                addItemWidget = null;
+        switch (aMode) {
+            case (self.modes.SETUP) : {
+                if (!addItemWidget)
+                    addItemWidget = null;
+                self.setSortable(true);
+                break;
+            }
+            case (self.modes.TRADE) : {
+                self.setSortable(false);
+                break;
+            }
         }
     };
     
@@ -35,7 +43,10 @@ function ItemsSelector(aContainer, aParent, aTradePoint, anActualDate) {
                 function() {
                     var order = $(this).sortable('serialize');
                     settings.setSettings('TradeItemsOrder', order, null, model.params.trade_point_id);
-                }});       
+                }});
+            $( ".items_select" ).sortable( "enable" );
+        } else {
+            $( ".items_select" ).sortable( "disable" );
         }
     };
     
@@ -124,6 +135,5 @@ function ItemsSelector(aContainer, aParent, aTradePoint, anActualDate) {
         });
         self.setActivePrice(10);
         getSort();
-        self.setSortable(true);
     });
 }

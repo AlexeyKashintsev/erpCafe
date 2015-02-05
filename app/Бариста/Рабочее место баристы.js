@@ -9,7 +9,7 @@ function BaristaDesktop() {
     session.tradeSession = new ServerModule("TradeSessions");
     self.userName = session.getUserName();
     var whAdd = null;
-    var dashboard, itemSelector, modifiers;
+    var dashboard, itemSelector, modifiers, tsReport;
     
     var chekLists = new CheckLists();
     settings = new ServerModule('Settings');
@@ -110,6 +110,11 @@ function BaristaDesktop() {
         }
     }//GEN-LAST:event_btnSessionCloseActionPerformed
 
+    function showReport() {
+        
+        tsReport = new commonSessionInfo()
+    }
+    
     self.actionList = {
         back    :   {
             display     :   "Назад",
@@ -120,6 +125,14 @@ function BaristaDesktop() {
             display     :   "Управление позициями",
             onClick     :   setModeManageItems,
             defEnabled  :   true
+        },
+        report  :   {
+            display     :   "Отчет",
+            onClick     :   showReport
+        },
+        closeAndExit    :   {
+            display     :   "Закрыть смену и выйти",
+            onClick     :   closeSessionAndLogout
         },
         exit    :   {
             display     :   "Выход",
@@ -174,8 +187,10 @@ function BaristaDesktop() {
         //cmn.addTopRightControl("Меню в окне", "plus-sign", openDigitalMenu);
 //        cmn.addTopRightControl("Прием товара", "plus-sign", btnWarehouseAddActionPerformed);
 //        cmn.addTopRightControl("Закрыть смену", "log-out", btnSessionCloseActionPerformed);
-        cmn.addTopRightControl("Настройка", "asterisk", setActionsViewEnabled);
+//        cmn.addTopRightControl("Меню", "asterisk", setActionsViewEnabled);
 //        cmn.addTopRightControl("Выход", "log-out", Logout);
+
+    $(".navbar.navbar-fixed-top").click(  setActionsViewEnabled );
 
     function btnWarehouseAddActionPerformed(evt) {//GEN-FIRST:event_btnWarehouseAddActionPerformed
         if (!whAdd) {

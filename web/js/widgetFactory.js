@@ -363,3 +363,18 @@ wf.ButtonGroup = function(aButtons, aContainer, aBtnClass, aFunction, aClass) {
     this.dockElement.role = "toolbar";
     this.setActiveButton = this.setActive;
 }
+
+/**
+ * Обертка любой формы в виджет
+ * @pForm - собственно платипусная форма
+ * @aTempDiv - временный контейнер, использованный для создания формы
+ * @aContainer - контейнер
+ Пока не работает
+ */
+wf.selfGeneratedForm = function(pForm, aTempDiv, aContainer) {
+    pForm.elType = "div";
+    pForm.elClass = "list-group-item";
+    pForm.container = aContainer;
+    wf.proto.bind(pForm)();
+    pForm.dockElement.appendChild(aTempDiv);
+}
