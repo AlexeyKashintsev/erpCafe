@@ -189,6 +189,19 @@ h1.itemCost {
   bottom: 0px;
 }
 
+h3.item-add-text {
+  font-size: 12px;
+  margin: 0px;
+  text-align: center;
+}
+
+h1.item-add {
+  margin: 0px;
+  font-size: 48px;
+  font-weight: 400;
+  text-align: center;
+}
+
 /* COST MODIFIERS */
 
 div.modifiers {

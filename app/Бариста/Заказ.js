@@ -7,12 +7,13 @@
 function OrderList(aParent, aContainer) {
     var self = this, model = this.model, form = this;
     self.orderDetails = {};
+    orderList = this;
     
     var orderProcessor = new OrderProcessor();
     var orderChanged = false;
     //var AS = new AdditionalScreen();
 
-    function calculateOrder() {
+    self.calculateOrder = function() {
         var orderSum = 0;
         orderChanged = true;
         for (var i in self.orderDetails) {
@@ -27,41 +28,6 @@ function OrderList(aParent, aContainer) {
             aParent.cashBackCalc.setPurchaseSum(orderSum);
         return orderSum;
     };
-    
-    function OrderItem(anItemData, aPriceType, aPrice) {
-        var ordItem = this;
-        
-        ordItem.orderQuantity = 0;
-        ordItem.itemId = anItemData.item_id;
-        ordItem.itemName = anItemData.item_name;
-        ordItem.itemCost = aPrice ? aPrice : anItemData.item_cost;
-        ordItem.priceType = aPriceType;
-        ordItem.orderSum = 0;
-        
-        ordItem.increase = function() {
-            ordItem.orderSum = ++ordItem.orderQuantity * ordItem.itemCost;
-            ordItem.view.updateText();
-            calculateOrder();
-        };
-        
-        ordItem.decrease = function() {
-            if (ordItem.orderQuantity > 1)
-                ordItem.orderSum = --ordItem.orderQuantity * ordItem.itemCost;
-            else
-                ordItem.delete();
-            ordItem.view.updateText();
-            calculateOrder();
-        };
-        
-        ordItem.delete = function(aWORecalc) {
-            ordItem.orderSum = ordItem.orderQuantity = 0;
-            delete(self.orderDetails[ordItem.itemId][ordItem.priceType]);
-            ordItem.view.delete();
-            if (!!aWORecalc) calculateOrder();
-        };
-        
-        ordItem.view = new self.orderItem(ordItem);
-    }
 
     self.addItem = function(anItemData, aPriceType, aPrice) {
         if (!self.orderDetails[anItemData.item_id]) {
@@ -80,13 +46,13 @@ function OrderList(aParent, aContainer) {
         }
         self.orderDetails = {};
         aParent.cashBackCalc.hide();
-        calculateOrder();
+        self.calculateOrder();
         //AS.cancelOrder();
     };
     
     self.acceptOrder = function() {
         if (orderChanged) {
-            var orderSum = calculateOrder();
+            var orderSum = self.calculateOrder();
             aParent.cashBackCalc.setPurchaseSum(orderSum);
         }
         
