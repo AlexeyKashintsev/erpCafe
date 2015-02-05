@@ -77,7 +77,7 @@ function btnSaveActionPerformed(evt) {//GEN-FIRST:event_btnSaveActionPerformed
 
     function btnAddActionPerformed(evt) {//GEN-FIRST:event_btnAddActionPerformed
         if (!addTradeItem)
-            addTradeItem = new AddItemToDashboard();
+            addTradeItem = new addItemToDashboard();
         addTradeItem.showModal();
     }//GEN-LAST:event_btnAddActionPerformed
 

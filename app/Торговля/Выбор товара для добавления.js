@@ -2,7 +2,7 @@
  * 
  * @author Work
  */
-function AddItemToDashboard() {
+function addItemToDashboard() {
     var self = this, model = this.model, form = this;
     var Settings = new ItemSettingsAndCost();
     var itemCard = new ItemCard();
