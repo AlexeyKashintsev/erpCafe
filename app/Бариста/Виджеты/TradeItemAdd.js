@@ -5,10 +5,13 @@
  */ 
 function TradeItemAdd(aParent, aContainer) {
     var self = this, model = this.model;
+    var addItemToDashboard;
+    require('AddItemToDashboard', function() {
+        addItemToDashboard = new AddItemToDashboard();
+    });
     
     function addItemShowDialog() {
-//        aParent.itemSettingsAndCost.setTradeItem(this.data.item_id);
-//        aParent.itemSettingsAndCost.showModal();
+        addItemToDashboard.showModal();
     }
     
     this.click = addItemShowDialog;

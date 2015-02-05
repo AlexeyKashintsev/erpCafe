@@ -1,7 +1,7 @@
 var wf = {};
 
 wf.proto = function() {
-    this.dockElement = cmn.createElement(this.elType, this.elClass, this.container);
+    this.dockElement = cmn.createElement(this.elType, this.elClass, this.container, this.ID);
     this.hide = (function(){$(this.dockElement).hide()}).bind(this);
     this.show = (function(){$(this.dockElement).show()}).bind(this);
     this.destroy = (function() {
@@ -92,7 +92,7 @@ wf.TradeItem = function(aContainer) {
     this.elType = "div";
     this.elClass = "Sortable itemDescription tt_" + this.data.trade_item_type_id;
     this.container = aContainer;
-    this.ID = "tt_" + this.data.item_id;
+    this.ID = "ti_" + this.data.item_id;
     
     wf.proto.bind(this)();
     var itemContainer = this.dockElement;

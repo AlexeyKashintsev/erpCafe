@@ -176,8 +176,8 @@ function BaristaDesktop() {
 //    fmDev.show();
 /* function openDigitalMenu(){
         if (!BC)
-            require('addItemToDashboard', function() {
-                BC = new addItemToDashboard();
+            require('AddItemToDashboard', function() {
+                BC = new AddItemToDashboard();
                 BC.showModal();
             });
         else {
