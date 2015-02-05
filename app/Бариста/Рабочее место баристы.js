@@ -9,7 +9,8 @@ function BaristaDesktop() {
     session.tradeSession = new ServerModule("TradeSessions");
     self.userName = session.getUserName();
     var whAdd = null;
-    var dashboard, itemSelector, modifiers, tsReport;
+    var dashboard, itemSelector, modifiers, settingsView;
+    var tsReport;
     
     var chekLists = new CheckLists();
     settings = new ServerModule('Settings');
@@ -97,9 +98,9 @@ function BaristaDesktop() {
     session.sessionKeeper.showIndicator(document.body);
     
     function closeSessionAndLogout() {
-                session.tradeSession.calculateFinalValues();
-                session.whSession.closeSession();
-                Logout();
+        session.tradeSession.calculateFinalValues();
+        session.whSession.closeSession();
+        Logout();
     };
     
     function btnSessionCloseActionPerformed(evt) {//GEN-FIRST:event_btnSessionCloseActionPerformed
@@ -111,8 +112,12 @@ function BaristaDesktop() {
     }//GEN-LAST:event_btnSessionCloseActionPerformed
 
     function showReport() {
-        
-        tsReport = new commonSessionInfo()
+        if (!settingsView)
+            settingsView = cmn.createElement('div', 'dashboard', "mainArea");
+        $(settingsView).show();
+        $(dashboard).hide();
+        if (!tsReport)
+            tsReport = new commonSessionInfo(settingsView);
     }
     
     self.actionList = {
@@ -162,33 +167,19 @@ function BaristaDesktop() {
     }
     
     function setModeManageItems() {
+        $(settingsView).hide();
+        $(dashboard).show();
         self.itemsSelector.setOperationMode(self.itemsSelector.modes.SETUP);
     }
     
     function setModeSellItems() {
+        $(settingsView).hide();
+        $(dashboard).show();
         self.itemsSelector.setOperationMode(self.itemsSelector.modes.TRADE);
     }
 
-////    var AS = new AdditionalScreen();
-//    var BC;
-//    var BC = new addItem();
 //    var fmDev = new fmDevMode();
 //    fmDev.show();
-/* function openDigitalMenu(){
-        if (!BC)
-            require('AddItemToDashboard', function() {
-                BC = new AddItemToDashboard();
-                BC.showModal();
-            });
-        else {
-            BC.showModal();
-        }
-    }*/
-        //cmn.addTopRightControl("Меню в окне", "plus-sign", openDigitalMenu);
-//        cmn.addTopRightControl("Прием товара", "plus-sign", btnWarehouseAddActionPerformed);
-//        cmn.addTopRightControl("Закрыть смену", "log-out", btnSessionCloseActionPerformed);
-//        cmn.addTopRightControl("Меню", "asterisk", setActionsViewEnabled);
-//        cmn.addTopRightControl("Выход", "log-out", Logout);
 
     $(".navbar.navbar-fixed-top").click(  setActionsViewEnabled );
 
