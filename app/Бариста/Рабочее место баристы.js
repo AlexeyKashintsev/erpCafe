@@ -38,7 +38,7 @@ function BaristaDesktop() {
             itemSelector = cmn.createElement('div', 'item_selector col-sm-8 row', dashboard);
             modifiers = cmn.createElement('div', 'modifiers col-sm-4 row', dashboard);
             self.clientSelector = new ClientPhoneSelector(self);
-            self.orderList = new OrderList(self);
+            new OrderList(self);
             self.cashBackCalc = new CashBackCalculator(self, itemSelector);
             self.itemsSelector = new ItemsSelector(itemSelector, self, session.tradePoint);
             self.typesSelector = new TypesSelector(modifiers, self, session.tradePoint);
@@ -146,7 +146,7 @@ function BaristaDesktop() {
         if (!actionListEnabled) {
             actionListEnabled = true;
             self.clientSelector.hide();
-            self.orderList.hide();
+            orderList.hide();
             if (actionList) {
                 actionList.show();
             } else {
@@ -155,7 +155,7 @@ function BaristaDesktop() {
         } else {
             actionListEnabled = false;
             self.clientSelector.show();
-            self.orderList.show();
+            orderList.show();
             actionList.hide();
             setModeSellItems();
         }
@@ -176,8 +176,8 @@ function BaristaDesktop() {
 //    fmDev.show();
 /* function openDigitalMenu(){
         if (!BC)
-            require('addItemToDashboard', function() {
-                BC = new addItemToDashboard();
+            require('AddItemToDashboard', function() {
+                BC = new AddItemToDashboard();
                 BC.showModal();
             });
         else {
