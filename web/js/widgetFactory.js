@@ -23,7 +23,7 @@ wf.OrderListPane = function(aContainer) {
                 <h3 class='panel-title'>Заказ</h3>\n\
             </div>";
 
-    var oliContainer = cmn.createElement("div", "", oPanel, 'orderItems');//document.getElementById('orderItems');
+    this.oliContainer = cmn.createElement("div", "", oPanel, 'orderItems');//document.getElementById('orderItems');
     var oDetails = cmn.createElement("div", "panel-body", oPanel, 'orderDetails');
     var ordSum = cmn.createElement("div", "", oDetails, 'orderSum');
 
@@ -40,53 +40,53 @@ wf.OrderListPane = function(aContainer) {
     };
 
     this.updateOrderSum(0);
+}
     /**
      * 
      * @param {type} aObject
      * @param {type} aContainer
      * @returns {undefined}
      */
-    this.orderItem = function(aObject, aContainer) {
-        var container = aContainer ? aContainer : oliContainer;
-        var divEl = cmn.createElement("div", "orderItem", container);
-        var itemName = cmn.createElement("h4", "itemName", divEl);
-        var itemCount = cmn.createElement("h4", "itemCount", divEl);
+wf.OrderItem = function(aObject, aContainer) {
+    var container = aContainer ? aContainer : orderList.oliContainer;
+    var divEl = cmn.createElement("div", "orderItem", container);
+    var itemName = cmn.createElement("h4", "itemName", divEl);
+    var itemCount = cmn.createElement("h4", "itemCount", divEl);
 
-        var btnRemove = cmn.createElement("button", "removeBtn", divEl);
-        btnRemove.innerHTML = '<span class="glyphicon glyphicon-minus"></span>';
-        btnRemove.className = "removeBtn";
+    var btnRemove = cmn.createElement("button", "removeBtn", divEl);
+    btnRemove.innerHTML = '<span class="glyphicon glyphicon-minus"></span>';
+    btnRemove.className = "removeBtn";
 
-        var btnDelete = cmn.createElement("button", "deleteBtn", divEl);
-        btnDelete.innerHTML = '<span class="glyphicon glyphicon-remove"></span>';
+    var btnDelete = cmn.createElement("button", "deleteBtn", divEl);
+    btnDelete.innerHTML = '<span class="glyphicon glyphicon-remove"></span>';
 
-        this.updateText = this.show = function() {
-            itemName.innerHTML = aObject.itemName;
-            itemCount.innerHTML = aObject.orderQuantity + ' шт. ' + aObject.orderSum + " р.";
-        };
-
-        this.stop = false;
-
-        this.delete = function() {
-            container.removeChild(divEl);
-        };
-
-        divEl.onclick = function() {
-            if (!this.stop)
-                aObject.increase();
-            else
-                this.stop = false;
-        };
-
-        btnRemove.onclick = function() {
-            aObject.decrease();
-            this.stop = true;
-        };
-
-        btnDelete.onclick = aObject.delete;
-
-        this.show();
+    this.updateText = this.show = function() {
+        itemName.innerHTML = aObject.itemName;
+        itemCount.innerHTML = aObject.orderQuantity + ' шт. ' + aObject.orderSum + " р.";
     };
-}
+
+    this.stop = false;
+
+    this.delete = function() {
+        container.removeChild(divEl);
+    };
+
+    divEl.onclick = function() {
+        if (!this.stop)
+            aObject.increase();
+        else
+            this.stop = false;
+    };
+
+    btnRemove.onclick = function() {
+        aObject.decrease();
+        this.stop = true;
+    };
+
+    btnDelete.onclick = aObject.delete;
+
+    this.show();
+};
 
 wf.TradeItem = function(aContainer) {
     this.elType = "div";
@@ -101,18 +101,32 @@ wf.TradeItem = function(aContainer) {
     
     var itemContent = cmn.createElement("div", "panel-body", itemPanel);
     var itemDesc = cmn.createElement("h3", "itemDesc", itemContent);
-    var itemCost;
-    if (this.data.trade_item_type_id != "add") {
-        itemCost = cmn.createElement("h1", "itemCost", itemContent);
-        this.setDisplayedPrice = function(aPrice) {
-            itemCost.innerHTML = aPrice;
-        };
-    } else {
-        var plus = cmn.createElement("h1", "itemCost", itemContent);
-    }
+    var itemCost = cmn.createElement("h1", "itemCost", itemContent);
+    this.setDisplayedPrice = function(aPrice) {
+        itemCost.innerHTML = aPrice;
+    };
     
     
     itemDesc.innerHTML = this.data.item_name;
+    
+    itemPanel.onclick = this.click;
+};
+
+wf.TradeItemAdd = function(aContainer) {
+    this.elType = "div";
+    this.elClass = "itemDescription add-trade-item";
+    this.container = aContainer;
+    
+    wf.proto.bind(this)();
+
+    var itemPanel = cmn.createElement("div", "panel panel-primary", this.dockElement);
+    var itemContent = cmn.createElement("div", "panel-body", itemPanel);
+    var itemDesc = cmn.createElement("h3", "item-add-text", itemContent);
+    var plus = cmn.createElement("h1", "item-add", itemContent);
+    
+    
+    itemDesc.innerHTML = 'Добавить товар';
+    plus.innerHTML = '+';
     
     itemPanel.onclick = this.click;
 };
