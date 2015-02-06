@@ -13,8 +13,8 @@
   <entity Name="getSessions" Title="" entityHeight="200" entityIconified="false" entityId="141285162304332" entityLocationX="7" entityLocationY="312" entityWidth="150" queryId="getSessions" tableName="" tableSchemaName=""/>
   <entity Name="qTradeItemsOnTP" Title="" entityHeight="186" entityIconified="false" entityId="142115809291982" entityLocationX="354" entityLocationY="11" entityWidth="147" queryId="qTradeItemsOnTP" tableName="" tableSchemaName=""/>
   <entity Name="qItemOnTPCosts" Title="" entityHeight="200" entityIconified="false" entityId="142133588279344" entityLocationX="511" entityLocationY="10" entityWidth="150" queryId="qItemOnTPCosts" tableName="" tableSchemaName=""/>
-  <referenceRelation leftEntityFieldName="session_id" leftEntityId="141285077401886" rightEntityFieldName="org_session_id" rightEntityId="141529641957798"/>
   <referenceRelation leftEntityFieldName="item_on_tp" leftEntityId="142133588279344" rightEntityFieldName="trade_items_on_tp_id" rightEntityId="142115809291982"/>
+  <referenceRelation leftEntityFieldName="session_id" leftEntityId="141285077401886" rightEntityFieldName="org_session_id" rightEntityId="141529641957798"/>
   <referenceRelation leftEntityFieldName="session_id" leftEntityId="141285077401886" rightEntityFieldName="org_session_id" rightEntityId="141338139419273"/>
   <referenceRelation leftEntityFieldName="session_id" leftEntityId="141285077401886" rightEntityFieldName="org_session_id" rightEntityId="141285162304332"/>
 </datamodel>
