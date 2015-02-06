@@ -4,6 +4,7 @@
  * @name qContents
  * @public
  * @rolesallowed admin franchazi
+ * @writable trade_items_contents
  */ 
 Select *
 From trade_items_contents t1
