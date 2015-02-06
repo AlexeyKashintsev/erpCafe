@@ -9,5 +9,4 @@
   <referenceRelation leftEntityFieldName="item_type" leftEntityId="141883094763783" rightEntityFieldName="wh_item_types_id" rightEntityId="141882721078197"/>
   <referenceRelation leftEntityFieldName="item_measure" leftEntityId="141883094763783" rightEntityFieldName="wh_measures_id" rightEntityId="141882722753056"/>
   <referenceRelation leftEntityFieldName="parent_type" leftEntityId="141882721078197" rightEntityFieldName="wh_item_types_id" rightEntityId="141882721078197"/>
-  <referenceRelation leftEntityFieldName="measure" leftEntityId="141882721078197" rightEntityFieldName="wh_measures_id" rightEntityId="141882722753056"/>
 </datamodel>
