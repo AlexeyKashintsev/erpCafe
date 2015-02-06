@@ -51,7 +51,7 @@ function TradeAdminModule() {
     
     /*
      * Добавление или изменение цен на товар из обекта вида:
-     * {item_id, trade_point, wh_apperance, costs : {price_type, cost}, delete}
+     * {item_id, trade_point, costs : {price_type, cost}, delete, trade_item, wh_content, wh_item, color}
      */
     self.processChangesForTradeItem = function(itemData) {
         var itemOnTP = findItemOnTP(itemData.item_id, itemData.trade_point);
@@ -66,6 +66,13 @@ function TradeAdminModule() {
                 curs.closed = false;
         }
         
+        if(itemData.wh_content || itemData.trade_item || itemData.wh_item || itemData.color){
+            var curs = model.qTradeItemsOnTP.findById(itemOnTP);
+            curs.wh_content = itemData.wh_content;
+            curs.trade_item = itemData.trade_item;
+            curs.wh_item = itemData.wh_item;
+            curs.color = itemData.color;
+        }
         if (!itemData.delete) {
             for (var price_type in itemData.costs) {
                 if(itemData.costs[price_type])
@@ -115,4 +122,8 @@ function TradeAdminModule() {
             model.qTradeItemsOnTP.cursor.closed = true;
         }
     }
+    
+    self.setApperence = function(){
+        
+    };
 }
