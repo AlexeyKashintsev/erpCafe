@@ -156,14 +156,25 @@ wf.Table = function(aContainer, aHeader, aData, aTableClass, aHeaderClass, aBody
     var tbody = null;
     
     function setData(aData, aFields) {
-        function applyDataToCell(aData, aContainer) {
+        function applyDataToCell(aData, aContainer, aCellNumber) {
             th = cmn.createElement('th', 'table-body', aContainer);
             
-            if ($.isArray(aData) || typeof aData == 'Object') {
-                $(th).addClass('table-container');
-                createTable(th, aData)
+            if (aData.editable) {
+                new (function(){
+                    var input = cmn.createElement('input', null, th);
+                    input.value = aData.value;
+                    input.onchange = function() {
+                            aData.value = input.value;
+                            aData.onchange(aData)
+                        };
+                })()
             } else {
-                th.innerHTML = aData;
+                if ($.isArray(aData) || typeof aData == 'Object') {
+                    $(th).addClass('table-container');
+                    createTable(th, aData)
+                } else {
+                    th.innerHTML = aData;
+                }
             }
         }
         
@@ -184,11 +195,11 @@ wf.Table = function(aContainer, aHeader, aData, aTableClass, aHeaderClass, aBody
             }
             
             if (!aFields)
-                for (var j = 0; j < aCursor.length; j++)
-                    applyDataToCell(aCursor[j], tr);
+                for (var j in aCursor)
+                    applyDataToCell(aCursor[j], tr, j);
             else
                 for (var j in aFields)
-                    applyDataToCell(aCursor[j], tr);
+                    applyDataToCell(aCursor[j], tr, j);
         }
         
         tbody = createTable(this.dockElement, aData);
