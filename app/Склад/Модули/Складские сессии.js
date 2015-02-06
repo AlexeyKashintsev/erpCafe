@@ -161,6 +161,7 @@ function WhSessionModule() {
      * Добавление товаров на склад
      */
     self.whMovement = function(anItems, aMovementType, aSession) {
+        Logger.info('Складское движение!');
         if (aSession)
             setParams(null, aSession);
         

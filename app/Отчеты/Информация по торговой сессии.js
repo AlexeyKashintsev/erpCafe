@@ -5,7 +5,10 @@
  */ 
 function commonSessionInfo(aContainer) {
     var self = this, model = this.model;
-    self.container = cmn.createElement("table", "table table-hover whSessionBalance", aContainer);
+    //self.container = cmn.createElement("table", "table table-hover whSessionBalance", aContainer);
+    var header = ['Параметр', 'Значение'];
+    var grid = new wf.Table(aContainer, header);
+    self.container = grid.dockElement;
     var items = {
         trade_point  :   {
             title           :   "Торговая точка",
@@ -28,40 +31,18 @@ function commonSessionInfo(aContainer) {
     var doUpdate = false;
     
     function updateValues() {
+        var data = [];
         for (var j in items) {
             items[j].value = model.tradeSessionDetails.cursor[j];
-            if (items[j].value_container)
-                items[j].value_container.innerHTML = items[j].value ? 
-                    items[j].value + (items[j].def ? items[j].def : '') : '---';
+            data.push([items[j].title,
+                items[j].value ? (items[j].value + (items[j].def ? items[j].def : "")) : '---']);
         }
+        
+        grid.setData(data);
     }
     
     self.setSession = function(aSession) {
         model.tradeSessionDetails.params.session_id = aSession;
         model.tradeSessionDetails.requery(updateValues);
     };
-    
-    self.show = function() {
-        if (!shown) {
-            var thead = cmn.createElement('thead', null, self.container, 'wh_item_title');
-            var tr = cmn.createElement('tr', null, thead);
-            var nameLabel = cmn.createElement('th', 'whItemDesc', tr);
-            nameLabel.innerHTML = "Параметр";
-            var startValue = cmn.createElement('th', 'whItemDesc', tr);
-            startValue.innerHTML = "Значение";
-            
-            var tbody = cmn.createElement('tbody', null, self.container, 'wh_item_title');
-            for (var j in items) {
-                tr = cmn.createElement('tr', 'whItemContainer ', tbody, 'wh_item_' + j);
-                items[j].title_container = cmn.createElement('td', 'whItemDesc col-xs-4', tr);
-                items[j].title_container.innerHTML = items[j].title;
-                items[j].value_container = cmn.createElement('td', 'whItemDesc col-xs-4', tr);
-                items[j].value_container.innerHTML = items[j].value ? 
-                    (items[j].value + (items[j].def ? items[j].def : ""))
-                    : '-';
-            }
-        }
-    };
-    
-    self.show();
 }

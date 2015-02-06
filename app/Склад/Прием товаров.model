@@ -3,6 +3,6 @@
     <parameter description="" name="trade_point_id" nullable="true" parameterMode="1" precision="0" scale="0" selectionForm="null" signed="true" size="0" type="2" typeName="NUMERIC"/>
   </parameters>
   <parametersEntity entityHeight="200" entityIconified="false" entityLocationX="12" entityLocationY="12" entityWidth="150"/>
-  <entity Name="itemsByTP" Title="" entityHeight="200" entityIconified="false" entityId="140549864254788" entityLocationX="256" entityLocationY="12" entityWidth="150" queryId="itemsByTP" tableName="" tableSchemaName=""/>
+  <entity Name="itemsByTP" Title="" entityHeight="200" entityIconified="false" entityId="140549864254788" entityLocationX="256" entityLocationY="12" entityWidth="150" onRequeried="itemsByTPOnRequeried" queryId="itemsByTP" tableName="" tableSchemaName=""/>
   <relation leftEntityId="-1" leftEntityParameterName="trade_point_id" rightEntityId="140549864254788" rightEntityParameterName="trade_point_id"/>
 </datamodel>

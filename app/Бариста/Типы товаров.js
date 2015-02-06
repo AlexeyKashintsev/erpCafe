@@ -11,7 +11,7 @@ function TypesSelector(aContainer, aParent, aTradePoint, anActualDate) {
 
     function onTypeClick(aTypeID) {
         if (aTypeID == 0) {
-            $('.itemDescription').show();
+            $('.Sortable.itemDescription').show();
         } else if(aTypeID == "setting"){
             changeItemType.showModal();
         } else {

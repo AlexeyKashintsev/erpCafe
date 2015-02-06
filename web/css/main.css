@@ -103,6 +103,10 @@ tr.clickable {
   cursor: pointer;
 }
 
+th.table-title {
+  font-weight: bold;
+}
+
 th.table-body.table-container  {
   padding: 0px;
 }

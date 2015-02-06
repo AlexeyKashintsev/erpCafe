@@ -9,8 +9,8 @@ function BaristaDesktop() {
     session.tradeSession = new ServerModule("TradeSessions");
     self.userName = session.getUserName();
     var whAdd = null;
-    var dashboard, itemSelector, modifiers, settingsView;
-    var tsReport;
+    var dashboard, itemSelector, modifiers, reportView, whView;
+    var tsReport, whReplenish;
     
     var chekLists = new CheckLists();
     settings = new ServerModule('Settings');
@@ -111,16 +111,28 @@ function BaristaDesktop() {
     }//GEN-LAST:event_btnSessionCloseActionPerformed
 
     function showReport() {
-        if (!settingsView)
-            settingsView = cmn.createElement('div', 'dashboard report row', "mainArea");
-        $(settingsView).show();
+        if (!reportView)
+            reportView = cmn.createElement('div', 'dashboard report row', "mainArea");
+        $(reportView).show();
         $(dashboard).hide();
+        $(whView).hide();
         if (!tsReport)
-            tsReport = new commonSessionInfo(settingsView);
+            tsReport = new commonSessionInfo(reportView);
         tsReport.setSession(session.activeSession);
     }
     
-
+    function replenishWH() {
+        if (!whView)
+            whView = cmn.createElement('div', 'dashboard report row', "mainArea");
+        $(whView).show();
+        $(reportView).hide();
+        $(dashboard).hide();
+        if (!whReplenish)
+            whReplenish = new WHSetAddMovement();
+        whReplenish.setTradePoint(session.tradePoint);
+        whReplenish.manualShow(whView);
+        //whReplenish.showOnPanel(whView);// setSession(session.activeSession);
+    }
     
     var actionList;
     var actionListEnabled = false;
@@ -144,13 +156,15 @@ function BaristaDesktop() {
     }
     
     function setModeManageItems() {
-        $(settingsView).hide();
+        $(reportView).hide();
+        $(whView).hide();
         $(dashboard).show();
         self.itemsSelector.setOperationMode(self.itemsSelector.modes.SETUP);
     }
     
     function setModeSellItems() {
-        $(settingsView).hide();
+        $(reportView).hide();
+        $(whView).hide();
         $(dashboard).show();
         self.itemsSelector.setOperationMode(self.itemsSelector.modes.TRADE);
     }
@@ -165,6 +179,10 @@ function BaristaDesktop() {
             display     :   "Управление позициями",
             onClick     :   setModeManageItems,
             defEnabled  :   true
+        },
+        replenishWHItems  :   {
+            display     :   "Пополнение склада",
+            onClick     :   replenishWH
         },
         report  :   {
             display     :   "Общий отчет",
