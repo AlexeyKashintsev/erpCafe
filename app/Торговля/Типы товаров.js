@@ -7,10 +7,6 @@ function ChangeItemType() {
     var franchazi_id = userSession.getFranchazi();
     model.itemType.params.franchazi_id = franchazi_id;
     
-    function button1ActionPerformed(evt) {//GEN-FIRST:event_button1ActionPerformed
-        form.close(model.itemType.cursor.wh_item_types_id);
-    }//GEN-LAST:event_button1ActionPerformed
-
     function btnReqActionPerformed(evt) {//GEN-FIRST:event_btnReqActionPerformed
         if (model.modified&&confirm('Сохранить изменения?')){
             model.save();
@@ -36,7 +32,7 @@ function ChangeItemType() {
     function btnDelActionPerformed(evt) {//GEN-FIRST:event_btnDelActionPerformed
         if(model.itemType.cursor.franchazi_id == franchazi_id)
             model.itemType.deleteRow();
-        else alert("Нельзя удалять общий товар!");
+        else alert("Нельзя удалять общий тип товара!");
     }//GEN-LAST:event_btnDelActionPerformed
 
     function formWindowClosing(evt) {//GEN-FIRST:event_formWindowClosing
@@ -62,7 +58,7 @@ function ChangeItemType() {
                 var typeDesc = prompt("Введите новое наименование");
                 model.itemType.cursor.type_description = typeDesc;
             }
-            else if(confirm("Нельзя изменять общий товар!\nСоздать новый?")){
+            else if(confirm("Нельзя изменять общий тип товара!\nСоздать новый?")){
                 btnAddActionPerformed();
             }
         }
