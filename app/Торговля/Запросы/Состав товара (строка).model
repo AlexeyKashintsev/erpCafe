@@ -3,6 +3,8 @@
     <parameter description="" name="item_id" nullable="true" parameterMode="1" precision="0" scale="0" selectionForm="null" signed="true" size="0" type="2" typeName="NUMERIC"/>
   </parameters>
   <parametersEntity entityHeight="200" entityIconified="false" entityLocationX="4" entityLocationY="6" entityWidth="150"/>
-  <entity Title="" entityHeight="200" entityIconified="false" entityId="141819966222454" entityLocationX="239" entityLocationY="6" entityWidth="150" tableAlias="t1" tableName="wh_items" tableSchemaName=""/>
+  <entity Title="" entityHeight="200" entityIconified="false" entityId="142322319895722" entityLocationX="626" entityLocationY="2" entityWidth="150" tableAlias="t2" tableName="wh_item_types" tableSchemaName=""/>
+  <entity Title="" entityHeight="200" entityIconified="false" entityId="142322286820341" entityLocationX="458" entityLocationY="5" entityWidth="150" tableAlias="t" tableName="trade_items_contents" tableSchemaName=""/>
+  <entity Title="" entityHeight="235" entityIconified="false" entityId="141819966222454" entityLocationX="239" entityLocationY="6" entityWidth="150" tableAlias="t1" tableName="wh_items" tableSchemaName=""/>
   <relation leftEntityId="-1" leftEntityParameterName="item_id" rightEntityFieldName="wh_items_id" rightEntityId="141819966222454"/>
 </datamodel>

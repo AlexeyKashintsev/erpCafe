@@ -1,5 +1,5 @@
-Select t1.item_name, t1.wh_items_id, t1.item_type, t1.franchazi_id,
-    array_to_string(array(
+Select t1.wh_items_id, t1.item_name, t1.item_type, t1.franchazi_id, t1.item_description, 
+array_to_string(array(
         select t2.item_name || ' ' || t.usage_quantity || ' ' as contents 
         from trade_items_contents t
         inner join wh_items t2 on t.wh_item = t2.wh_items_id
@@ -7,4 +7,6 @@ Select t1.item_name, t1.wh_items_id, t1.item_type, t1.franchazi_id,
         where t.trade_item = t1.wh_items_id),
         ', ') as contents
 From wh_items t1
-where :item_id = t1.wh_items_id or :item_id is null
+ Where (:franchazi_id = t1.franchazi_id) and 
+ (:item_type = t1.item_type or :item_type is null or :item_type = 0 or :item_type = t1.trade_type) and
+ (:item_id = t1.wh_items_id or :item_id is null)

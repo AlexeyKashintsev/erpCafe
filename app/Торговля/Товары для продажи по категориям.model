@@ -1,25 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?><datamodel>
-  <parameters>
-    <parameter description="" name="franchazi_id" nullable="true" parameterMode="1" precision="0" scale="0" selectionForm="null" signed="true" size="0" type="2" typeName="NUMERIC"/>
-    <parameter description="" name="show_type" nullable="true" parameterMode="1" precision="0" scale="0" selectionForm="null" signed="true" size="0" type="2" typeName="NUMERIC"/>
-  </parameters>
   <parametersEntity entityHeight="200" entityIconified="false" entityLocationX="12" entityLocationY="12" entityWidth="150"/>
-  <entity Name="qTradeItemTypes" Title="" entityHeight="200" entityIconified="false" entityId="140566820113240" entityLocationX="451" entityLocationY="12" entityWidth="149" onAfterScroll="qTradeItemTypesOnScrolled" onRequeried="qTradeItemTypesOnRequeried" queryId="qTradeItemTypes" tableName="" tableSchemaName=""/>
-  <entity Name="qBonusCountForTradeItemReadonly" Title="" entityHeight="161" entityIconified="false" entityId="141390342851701" entityLocationX="14" entityLocationY="224" entityWidth="150" queryId="qBonusCountForTradeItemReadonly" tableName="" tableSchemaName=""/>
-  <entity Name="qContents" Title="" entityHeight="156" entityIconified="false" entityId="141219072313009" entityLocationX="450" entityLocationY="221" entityWidth="150" queryId="qContents" tableName="" tableSchemaName=""/>
-  <entity Name="qTradeItemContents" Title="" entityHeight="157" entityIconified="false" entityId="140568805648895" entityLocationX="186" entityLocationY="226" entityWidth="150" queryId="qTradeItemContents" tableName="" tableSchemaName=""/>
-  <entity Name="qTradeItems" Title="" entityHeight="200" entityIconified="false" entityId="140566813019746" entityLocationX="186" entityLocationY="12" entityWidth="150" onAfterChange="qTradeItemsOnChanged" onAfterScroll="qTradeItemsOnScrolled" onBeforeChange="qTradeItemsWillChange" queryId="qTradeItems" tableName="" tableSchemaName=""/>
-  <relation leftEntityFieldName="trade_item_type_id" leftEntityId="140566820113240" rightEntityId="140566813019746" rightEntityParameterName="item_type"/>
-  <relation leftEntityId="-1" leftEntityParameterName="show_type" rightEntityId="140566813019746" rightEntityParameterName="show_type"/>
-  <relation leftEntityId="-1" leftEntityParameterName="franchazi_id" rightEntityId="140566813019746" rightEntityParameterName="franchazi_id"/>
-  <referenceRelation leftEntityFieldName="trade_item" leftEntityId="141390342851701" rightEntityFieldName="wh_items_id" rightEntityId="140568805648895"/>
-  <referenceRelation leftEntityFieldName="trade_item" leftEntityId="141219072313009" rightEntityFieldName="wh_items_id" rightEntityId="140568805648895"/>
-  <referenceRelation leftEntityFieldName="trade_item" leftEntityId="141219072313009" rightEntityFieldName="wh_items_id" rightEntityId="140566813019746"/>
-  <referenceRelation leftEntityFieldName="type_id" leftEntityId="141390342851701" rightEntityFieldName="trade_item_type_id" rightEntityId="140566820113240"/>
-  <referenceRelation leftEntityFieldName="item_type" leftEntityId="140566813019746" rightEntityFieldName="trade_item_type_id" rightEntityId="140566820113240"/>
-  <referenceRelation leftEntityFieldName="wh_item" leftEntityId="141219072313009" rightEntityFieldName="wh_items_id" rightEntityId="140568805648895"/>
-  <referenceRelation leftEntityFieldName="parent_type" leftEntityId="140566820113240" rightEntityFieldName="trade_item_type_id" rightEntityId="140566820113240"/>
-  <referenceRelation leftEntityFieldName="item_type" leftEntityId="140568805648895" rightEntityFieldName="trade_item_type_id" rightEntityId="140566820113240"/>
-  <referenceRelation leftEntityFieldName="wh_item" leftEntityId="141219072313009" rightEntityFieldName="wh_items_id" rightEntityId="140566813019746"/>
-  <referenceRelation leftEntityFieldName="trade_item" leftEntityId="141390342851701" rightEntityFieldName="wh_items_id" rightEntityId="140566813019746"/>
+  <entity Name="itemType" Title="" entityHeight="200" entityIconified="false" entityId="142323168771995" entityLocationX="366" entityLocationY="7" entityWidth="150" onAfterScroll="itemTypeOnScrolled" queryId="itemType" tableName="" tableSchemaName=""/>
+  <entity Name="qTradeItemsWithContents" Title="" entityHeight="257" entityIconified="false" entityId="142323580370955" entityLocationX="194" entityLocationY="11" entityWidth="150" queryId="qTradeItemsWithContents" tableName="" tableSchemaName=""/>
+  <referenceRelation leftEntityFieldName="parent_type" leftEntityId="142323168771995" rightEntityFieldName="wh_item_types_id" rightEntityId="142323168771995"/>
+  <referenceRelation leftEntityFieldName="item_type" leftEntityId="142323580370955" rightEntityFieldName="wh_item_types_id" rightEntityId="142323168771995"/>
 </datamodel>
