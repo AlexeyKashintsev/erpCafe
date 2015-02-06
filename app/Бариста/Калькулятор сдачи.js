@@ -164,7 +164,7 @@ function CashBackCalculator(aParent, aContainer) {
             }
         if (aSum === 'Оплата') {
                 if (!$('.calc').hasClass('disabled'))
-                    aParent.orderList.acceptOrder();
+                    orderList.acceptOrder();
             }
         calculateCashBack();
     }
