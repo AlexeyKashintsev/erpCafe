@@ -47,6 +47,16 @@ div.mainArea {
   border-top: solid 3px;
 }
 
+div.dashboard.report {
+  background-color: white;
+  position: absolute;
+  top: 0px;
+  bottom: 0px;
+  height: 100%;
+  width: 100%;
+  padding: 15px;
+}
+
 @media (min-width: 768px) {
   div.actionPanel {
     margin-top: 50px;

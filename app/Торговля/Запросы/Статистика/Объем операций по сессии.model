@@ -3,4 +3,8 @@
     <parameter description="" name="session_id" nullable="true" parameterMode="1" precision="0" scale="0" selectionForm="null" signed="true" size="0" type="2" typeName="NUMERIC"/>
   </parameters>
   <parametersEntity entityHeight="199" entityIconified="false" entityLocationX="8" entityLocationY="8" entityWidth="150"/>
+  <entity Title="" entityHeight="200" entityIconified="false" entityId="142320955548271" entityLocationX="192" entityLocationY="7" entityWidth="150" tableAlias="t1" tableName="trade_cash_box_operation" tableSchemaName=""/>
+  <entity Title="" entityHeight="200" entityIconified="false" entityId="142320957521121" entityLocationX="368" entityLocationY="11" entityWidth="150" tableAlias="t" tableName="trade_cash_box_operation_types" tableSchemaName=""/>
+  <relation leftEntityId="-1" leftEntityParameterName="session_id" rightEntityFieldName="session_id" rightEntityId="142320955548271"/>
+  <relation leftEntityFieldName="operation_type" leftEntityId="142320955548271" rightEntityFieldName="trade_cash_box_operation_types_id" rightEntityId="142320957521121"/>
 </datamodel>

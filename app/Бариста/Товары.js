@@ -15,7 +15,7 @@ function ItemsSelector(aContainer, aParent, aTradePoint, anActualDate) {
         SETUP   :   1
     };
     
-    $( 'body' ).disableSelection();
+    $( aContainer ).disableSelection();
     var items_body = cmn.createElement('div', 'items_select row', aContainer);
     
     var trade_items = {};

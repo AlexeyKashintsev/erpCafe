@@ -1,3 +1,7 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<outputFields>
+<?xml version="1.0" encoding="UTF-8"?><outputFields>
+  <field bindedColumn="cash_sum" sqlType="2"/>
+  <field bindedColumn="bonus_sum" sqlType="2"/>
+  <field bindedColumn="bank_sum" sqlType="2"/>
+  <field bindedColumn="takeback_sum" sqlType="2"/>
+  <field bindedColumn="cash_balance" sqlType="2"/>
 </outputFields>

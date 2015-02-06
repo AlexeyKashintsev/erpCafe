@@ -392,3 +392,10 @@ wf.selfGeneratedForm = function(pForm, aTempDiv, aContainer) {
     wf.proto.bind(pForm)();
     pForm.dockElement.appendChild(aTempDiv);
 }
+
+wf.getSelfGeneratedFormAsWidget = function(aFormConstructor, aContainer) {
+    pForm.elType = "div";
+    pForm.elClass = "list-group-item";
+    pForm.container = aContainer;
+    wf.proto.bind(pForm)();    
+}

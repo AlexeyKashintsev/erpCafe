@@ -13,14 +13,16 @@ function commonSessionInfo(aContainer) {
             value           :   null,
             value_container :   null
         },
-        user_name   : {title    :   "Пользователь"},
-        start_date  : {title    :   "Открытие"},
-        end_date    : {title    :   "Закрытие"},
-        start_value : {title    :   "Касса открытие", def : ' р.'},
-        end_value   : {title    :   "Касса закрытие", def : ' р.'},
-        operationsSum   : {title    :   "Доход", def : ' р.'},
-        operationsCount : {title    :   "Количество покупок"},
-        soldItemsQuantity   : {title    :   "Объем продажи"}
+        user_name   :   {title    :   "Пользователь"},
+        start_date  :   {title    :   "Открытие смены"},
+        end_date    :   {title    :   "Закрытие смены"},
+        start_value :   {title    :   "Касса открытие", def : ' р.'},
+        cash_sum    :   {title    :   "Приход наличные", def : ' р.'},
+        bank_sum    :   {title    :   "Приход безнал", def : ' р.'},
+        bonus_sum   :   {title    :   "Бонусы", def : ' р.'},
+        takeback_sum    :   {title    :   "Снято с кассы", def : ' р.'},
+        current_cash    :   {title    :   "Текущий баланс", def : ' р.'},
+        end_value   :   {title    :   "Касса закрытие", def : ' р.'}
     };
     var shown = false;
     var doUpdate = false;
@@ -29,12 +31,14 @@ function commonSessionInfo(aContainer) {
         for (var j in items) {
             items[j].value = model.tradeSessionDetails.cursor[j];
             if (items[j].value_container)
-                items[j].value_container.innerHTML = items[j].value;
+                items[j].value_container.innerHTML = items[j].value ? 
+                    items[j].value + (items[j].def ? items[j].def : '') : '---';
         }
     }
     
     self.setSession = function(aSession) {
-        model.params.session_id = aSession;
+        model.tradeSessionDetails.params.session_id = aSession;
+        model.tradeSessionDetails.requery(updateValues);
     };
     
     self.show = function() {
@@ -60,8 +64,4 @@ function commonSessionInfo(aContainer) {
     };
     
     self.show();
-
-    function tradeSessionDetailsOnRequeried(evt) {//GEN-FIRST:event_tradeSessionDetailsOnRequeried
-        updateValues();
-    }//GEN-LAST:event_tradeSessionDetailsOnRequeried
 }

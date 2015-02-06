@@ -16,7 +16,6 @@ function BaristaDesktop() {
     settings = new ServerModule('Settings');
     settings.updateSettingsParams();
     
-    
     /*
      * aName - Название чеклиста (cheklist_open, cheklist_close)
      * return object{
@@ -44,7 +43,7 @@ function BaristaDesktop() {
             self.itemsSelector = new ItemsSelector(itemSelector, self, session.tradePoint);
             self.typesSelector = new TypesSelector(modifiers, self, session.tradePoint);
             self.priceModifier = new PriceModifier(modifiers, self, session.tradePoint);
-            self.chat = new MyChat(modifiers); self.chat.initChat();
+            //self.chat = new MyChat(modifiers); self.chat.initChat();
     }
     
     function setSession(aSession) {
@@ -113,37 +112,15 @@ function BaristaDesktop() {
 
     function showReport() {
         if (!settingsView)
-            settingsView = cmn.createElement('div', 'dashboard', "mainArea");
+            settingsView = cmn.createElement('div', 'dashboard report row', "mainArea");
         $(settingsView).show();
         $(dashboard).hide();
         if (!tsReport)
             tsReport = new commonSessionInfo(settingsView);
+        tsReport.setSession(session.activeSession);
     }
     
-    self.actionList = {
-        back    :   {
-            display     :   "Назад",
-            onClick     :   setActionsViewEnabled,
-            doNotActivate   :   true
-        },
-        manageItems :   {
-            display     :   "Управление позициями",
-            onClick     :   setModeManageItems,
-            defEnabled  :   true
-        },
-        report  :   {
-            display     :   "Отчет",
-            onClick     :   showReport
-        },
-        closeAndExit    :   {
-            display     :   "Закрыть смену и выйти",
-            onClick     :   closeSessionAndLogout
-        },
-        exit    :   {
-            display     :   "Выход",
-            onClick     :   Logout
-        }
-    };
+
     
     var actionList;
     var actionListEnabled = false;
@@ -177,11 +154,35 @@ function BaristaDesktop() {
         $(dashboard).show();
         self.itemsSelector.setOperationMode(self.itemsSelector.modes.TRADE);
     }
-
+    
+    self.actionList = {
+        back    :   {
+            display     :   "Назад",
+            onClick     :   setActionsViewEnabled,
+            doNotActivate   :   true
+        },
+        manageItems :   {
+            display     :   "Управление позициями",
+            onClick     :   setModeManageItems,
+            defEnabled  :   true
+        },
+        report  :   {
+            display     :   "Общий отчет",
+            onClick     :   showReport
+        },
+        closeAndExit    :   {
+            display     :   "Закрыть смену и выйти",
+            onClick     :   closeSessionAndLogout
+        },
+        exit    :   {
+            display     :   "Выход",
+            onClick     :   Logout
+        }
+    };
 //    var fmDev = new fmDevMode();
 //    fmDev.show();
 
-    $(".navbar.navbar-fixed-top").click(  setActionsViewEnabled );
+    document.getElementById('top-navbar').onclick = setActionsViewEnabled;
 
     function btnWarehouseAddActionPerformed(evt) {//GEN-FIRST:event_btnWarehouseAddActionPerformed
         if (!whAdd) {
