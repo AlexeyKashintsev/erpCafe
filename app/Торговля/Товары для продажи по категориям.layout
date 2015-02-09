@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><layout defaultCloseOperation="2" name="Form" prefHeight="514px" prefWidth="874px">
+<?xml version="1.0" encoding="UTF-8"?><layout defaultCloseOperation="2" name="Form" prefHeight="514px" prefWidth="874px" windowOpened="formWindowOpened">
   <widget floatable="false" name="toolBar" parent="Form" prefHeight="36px" prefWidth="564px" rollover="true" type="ToolbarDesignInfo">
     <constraints height="36px" left="312px" top="0px" type="MarginConstraintsDesignInfo" width="564px"/>
   </widget>
@@ -12,7 +12,12 @@
   </widget>
   <widget actionPerformed="btnAdd1ActionPerformed" focusable="false" horizontalTextPosition="0" icon="icons/22x22/actions/mail-forward.png" name="btnAdd1" parent="toolBar1" prefHeight="29px" prefWidth="29px" toolTipText="Добавить" type="ButtonDesignInfo" verticalTextPosition="3"/>
   <widget name="modelGrid1" parent="Form" prefHeight="440px" prefWidth="564px" type="DbGridDesignInfo">
+    <rowsColumnsDesignInfo>
+      <rowsDatasource entityId="142323580370955" field="false"/>
+    </rowsColumnsDesignInfo>
+    <treeDesignInfo/>
     <column name="column1" title="Название">
+      <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
       <datamodelElement entityId="142323580370955" fieldName="item_name"/>
       <columnsDatasource/>
       <columnsDisplayField/>
@@ -25,9 +30,9 @@
       <headerStyle>
         <nativeFont name="Tahoma" size="11"/>
       </headerStyle>
-      <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
     </column>
     <column name="column2" title="Состав">
+      <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
       <datamodelElement entityId="142323580370955" fieldName="contents"/>
       <columnsDatasource/>
       <columnsDisplayField/>
@@ -40,16 +45,16 @@
       <headerStyle>
         <nativeFont name="Tahoma" size="11"/>
       </headerStyle>
-      <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
     </column>
-    <rowsColumnsDesignInfo>
-      <rowsDatasource entityId="142323580370955" field="false"/>
-    </rowsColumnsDesignInfo>
-    <treeDesignInfo/>
     <constraints bottom="38px" left="312px" right="-2px" top="36px" type="MarginConstraintsDesignInfo"/>
   </widget>
   <widget deletable="false" editable="false" insertable="false" name="modelGrid" parent="Form" prefHeight="440px" prefWidth="312px" type="DbGridDesignInfo">
+    <rowsColumnsDesignInfo>
+      <rowsDatasource entityId="142323168771995" field="false"/>
+    </rowsColumnsDesignInfo>
+    <treeDesignInfo/>
     <column name="column" title="Тип товара">
+      <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
       <datamodelElement entityId="142323168771995" fieldName="type_description"/>
       <columnsDatasource/>
       <columnsDisplayField/>
@@ -62,12 +67,7 @@
       <headerStyle>
         <nativeFont name="Tahoma" size="11"/>
       </headerStyle>
-      <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
     </column>
-    <rowsColumnsDesignInfo>
-      <rowsDatasource entityId="142323168771995" field="false"/>
-    </rowsColumnsDesignInfo>
-    <treeDesignInfo/>
     <constraints bottom="38px" left="0px" top="36px" type="MarginConstraintsDesignInfo" width="312px"/>
   </widget>
   <layout type="MarginLayoutDesignInfo"/>
