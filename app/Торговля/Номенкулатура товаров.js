@@ -4,7 +4,7 @@
  */
 function ItemsForTrade() {
     var self = this, model = this.model, form = this;
-
+    var us = Session.get("UserSession");
     var itemTypes = new ChangeItemType();
     var contentTradeItem = new ContentTradeItem();
     model.qTradeItemsWithContents.params.franchazi_id = session.franchaziId;

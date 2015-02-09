@@ -122,8 +122,4 @@ function TradeAdminModule() {
             model.qTradeItemsOnTP.cursor.closed = true;
         }
     }
-    
-    self.setApperence = function(){
-        
-    };
 }

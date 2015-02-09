@@ -72,8 +72,8 @@ function StartMasterAdminForm() {
             dispForm    :   "initClientsForm"
         },
         chat            :   {
-            display     :   "Супер чатик",
-            dispForm    :   "MyChat"
+            display     :   "Номенкулатура товаров",
+            dispForm    :   "ItemsForTrade"
         }
     };
     
