@@ -7,6 +7,8 @@
 
 function SelectFranchaziAdminForm() {
 var self = this, model = this.model, form = this;
+//var bm = Session.get("BillModule");
+//var whModuleAdmin = Session.get("WhModuleAdmin");
 
 function btnReqActionPerformed(evt) {//GEN-FIRST:event_btnReqActionPerformed
     if (self.model.modified&&confirm('Сохранить изменения?')){
@@ -45,11 +47,14 @@ function formWindowClosing(evt) {//GEN-FIRST:event_formWindowClosing
         var franName = prompt("Введите имя нового франчази:");
         //TODO Что-то тут не так, не работет Session.get
         var bm = new ServerModule("BillModule");
+        var whModuleAdmin = new ServerModule("WhModuleAdmin");
         if(franName){
             model.listFranchazi.insert();
             model.listFranchazi.cursor.f_name = franName;
             bm.createBillAccount(false, model.listFranchazi.cursor.org_franchazi_id);
+            whModuleAdmin.initItemsForFranchazi(model.listFranchazi.cursor.org_franchazi_id);
             model.save();
+            model.requery();
         }
     }//GEN-LAST:event_btnAddActionPerformed
 

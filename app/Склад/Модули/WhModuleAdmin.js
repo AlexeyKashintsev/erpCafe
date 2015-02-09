@@ -21,4 +21,12 @@ function WhModuleAdmin() {
             }
         }
     };
+    /*
+     * Инициализация новых айтемов по умолчанию для нового франчайзе
+     */
+    self.initItemsForFranchazi = function(aFranchaziId){
+        model.qInsertDefaultItems.params.franchazi_id = model.listFranchazi.cursor.org_franchazi_id;
+        model.qInsertDefaultItems.executeUpdate();
+        model.save();
+    };
 }

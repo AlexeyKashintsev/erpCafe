@@ -2,4 +2,5 @@
   <parametersEntity entityHeight="200" entityIconified="false" entityLocationX="12" entityLocationY="12" entityWidth="150"/>
   <entity Name="queryItemsInWH" Title="" entityHeight="200" entityIconified="false" entityId="142124546985260" entityLocationX="366" entityLocationY="11" entityWidth="150" queryId="queryItemsInWH" tableName="" tableSchemaName=""/>
   <entity Name="qContents" Title="" entityHeight="200" entityIconified="false" entityId="142124519645612" entityLocationX="183" entityLocationY="12" entityWidth="150" queryId="qContents" tableName="" tableSchemaName=""/>
+  <entity Name="qInsertDefaultItems" Title="" entityHeight="57" entityIconified="false" entityId="142349932274941" entityLocationX="12" entityLocationY="228" entityWidth="150" queryId="qInsertDefaultItems" tableName="" tableSchemaName=""/>
 </datamodel>
