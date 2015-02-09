@@ -3,6 +3,8 @@
     <parameter description="" name="trade_item" nullable="true" parameterMode="1" precision="0" scale="0" selectionForm="null" signed="true" size="0" type="2" typeName="NUMERIC"/>
   </parameters>
   <parametersEntity entityHeight="200" entityIconified="false" entityLocationX="12" entityLocationY="12" entityWidth="150"/>
-  <entity Name="qContents" Title="" entityHeight="200" entityIconified="false" entityId="140569000979898" entityLocationX="189" entityLocationY="15" entityWidth="287" queryId="qContents" tableName="" tableSchemaName=""/>
+  <entity Name="qContents" Title="" entityHeight="200" entityIconified="false" entityId="140569000979898" entityLocationX="199" entityLocationY="12" entityWidth="245" queryId="qContents" tableName="" tableSchemaName=""/>
   <relation leftEntityId="-1" leftEntityParameterName="trade_item" rightEntityId="140569000979898" rightEntityParameterName="trade_item_id"/>
+  <referenceRelation leftEntityFieldName="trade_item" leftEntityId="140569000979898" rightEntityFieldName="wh_items_id" rightEntityId="140569000979898"/>
+  <referenceRelation leftEntityFieldName="wh_item" leftEntityId="140569000979898" rightEntityFieldName="wh_items_id" rightEntityId="140569000979898"/>
 </datamodel>

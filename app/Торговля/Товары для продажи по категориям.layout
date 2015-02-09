@@ -52,7 +52,9 @@
     <rowsColumnsDesignInfo>
       <rowsDatasource entityId="142323168771995" field="false"/>
     </rowsColumnsDesignInfo>
-    <treeDesignInfo/>
+    <treeDesignInfo>
+      <unaryLinkField entityId="142323168771995" fieldName="parent_type"/>
+    </treeDesignInfo>
     <column name="column" title="Тип товара">
       <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
       <datamodelElement entityId="142323168771995" fieldName="type_description"/>
