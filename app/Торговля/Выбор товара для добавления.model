@@ -4,7 +4,6 @@
   </parameters>
   <parametersEntity entityHeight="200" entityIconified="false" entityLocationX="12" entityLocationY="12" entityWidth="150" onAfterChange="paramsOnChanged"/>
   <entity Name="qTradeItemsWithSearch" Title="" entityHeight="200" entityIconified="false" entityId="142348542547543" entityLocationX="509" entityLocationY="8" entityWidth="150" queryId="qTradeItemsWithSearch" tableName="" tableSchemaName=""/>
-  <entity Name="qTradeItems" Title="" entityHeight="260" entityIconified="false" entityId="141882843342797" entityLocationX="348" entityLocationY="7" entityWidth="150" queryId="qTradeItems" tableName="" tableSchemaName=""/>
   <entity Name="qTradeItemTypes" Title="" entityHeight="200" entityIconified="false" entityId="141882836911917" entityLocationX="178" entityLocationY="9" entityWidth="150" onAfterChange="qTradeItemTypesOnChanged" onAfterScroll="qTradeItemTypesOnScrolled" queryId="qTradeItemTypes" tableName="" tableSchemaName=""/>
   <relation leftEntityId="-1" leftEntityParameterName="item_search" rightEntityId="142348542547543" rightEntityParameterName="item_search"/>
 </datamodel>

@@ -4,19 +4,19 @@
   </widget>
   <widget mouseClicked="modelGridMouseClicked" name="modelGrid" parent="Form" prefHeight="300px" prefWidth="276px" type="DbGridDesignInfo">
     <column name="Тип товара">
-      <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
-      <headerStyle>
-        <nativeFont name="Tahoma" size="11"/>
-      </headerStyle>
       <datamodelElement entityId="141882836911917" fieldName="type_name"/>
       <columnsDatasource/>
       <columnsDisplayField/>
       <cellsDatasource/>
       <cellDesignInfo>
-        <rowsKeyField/>
         <columnsKeyField/>
         <cellValueField/>
+        <rowsKeyField/>
       </cellDesignInfo>
+      <headerStyle>
+        <nativeFont name="Tahoma" size="11"/>
+      </headerStyle>
+      <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
     </column>
     <rowsColumnsDesignInfo>
       <rowsDatasource entityId="141882836911917" field="false"/>
@@ -28,22 +28,22 @@
   </widget>
   <widget deletable="false" editable="false" insertable="false" mouseClicked="modelGrid1MouseClicked" name="modelGrid1" parent="Form" prefHeight="300px" prefWidth="480px" type="DbGridDesignInfo">
     <column name="Товар">
-      <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
-      <headerStyle>
-        <nativeFont name="Tahoma" size="11"/>
-      </headerStyle>
-      <datamodelElement entityId="141882843342797" fieldName="item_name"/>
+      <datamodelElement entityId="142348542547543" fieldName="item_name"/>
       <columnsDatasource/>
       <columnsDisplayField/>
       <cellsDatasource/>
       <cellDesignInfo>
-        <rowsKeyField/>
         <columnsKeyField/>
         <cellValueField/>
+        <rowsKeyField/>
       </cellDesignInfo>
+      <headerStyle>
+        <nativeFont name="Tahoma" size="11"/>
+      </headerStyle>
+      <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
     </column>
     <rowsColumnsDesignInfo>
-      <rowsDatasource entityId="141882843342797" field="false"/>
+      <rowsDatasource entityId="142348542547543" field="false"/>
     </rowsColumnsDesignInfo>
     <treeDesignInfo/>
     <constraints bottom="53px" left="288px" right="7px" top="72px" type="MarginConstraintsDesignInfo"/>

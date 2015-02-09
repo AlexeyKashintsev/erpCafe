@@ -51,12 +51,12 @@ function ItemsForTrade() {
     }//GEN-LAST:event_btnDelActionPerformed
 
     function btnAddActionPerformed(evt) {//GEN-FIRST:event_btnAddActionPerformed
-        if (model.qTradeItemTypes.cursor.trade_item_type_id <= 0) {
+        if (model.itemType.cursor.wh_items_type_id <= 0) {
             alert("Выберите тип товара отличный от \"Все товары\" и \"Мои товары\"");
         } else {
             model.qTradeItemsWithContents.insert(
-                    model.qTradeItemsWithContents.schema.franchazi_id, model.params.franchazi_id,
-                    model.qTradeItemsWithContents.schema.item_type, model.qTradeItemTypes.cursor.trade_item_type_id
+                    model.qTradeItemsWithContents.schema.franchazi_id, session.franchaziId,
+                    model.qTradeItemsWithContents.schema.item_type, model.itemType.cursor.wh_items_type_id
                     );
         }
     }//GEN-LAST:event_btnAddActionPerformed

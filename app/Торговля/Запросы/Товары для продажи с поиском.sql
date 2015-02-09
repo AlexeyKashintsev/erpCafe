@@ -1,6 +1,7 @@
 /**
  *
  * @author Work
+ * @public
  * @name qTradeItemsWithSearch
  */ 
 Select * 

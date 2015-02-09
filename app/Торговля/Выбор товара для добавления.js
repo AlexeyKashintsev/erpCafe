@@ -7,6 +7,7 @@ function AddItemToDashboard() {
     var Settings = new ItemSettingsAndCost();
     var itemCard = new ItemCard();
     var tradeAdminModule = new ServerModule("TradeAdminModule");
+    model.qTradeItemsWithSearch.params.franchazi_id = session.franchaziId;
 
     function modelGridMouseClicked(evt) {//GEN-FIRST:event_modelGridMouseClicked
         model.qTradeItemsWithSearch.params.item_type = model.qTradeItemTypes.cursor.trade_item_type_id;
