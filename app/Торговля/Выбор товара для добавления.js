@@ -9,12 +9,12 @@ function AddItemToDashboard() {
     var tradeAdminModule = new ServerModule("TradeAdminModule");
 
     function modelGridMouseClicked(evt) {//GEN-FIRST:event_modelGridMouseClicked
-        model.qTradeItems.params.item_type = model.qTradeItemTypes.cursor.trade_item_type_id;
-        model.qTradeItems.requery();
+        model.qTradeItemsWithSearch.params.item_type = model.qTradeItemTypes.cursor.trade_item_type_id;
+        model.qTradeItemsWithSearch.requery();
     }//GEN-LAST:event_modelGridMouseClicked
 
     function qTradeItemTypesOnChanged(evt) {//GEN-FIRST:event_qTradeItemTypesOnChanged
-        model.qTradeItems.requery();
+        model.qTradeItemsWithSearch.requery();
     }//GEN-LAST:event_qTradeItemTypesOnChanged
 
     function qTradeItemTypesOnScrolled(evt) {//GEN-FIRST:event_qTradeItemTypesOnScrolled
@@ -23,13 +23,13 @@ function AddItemToDashboard() {
 
     function modelGrid1MouseClicked(evt) {//GEN-FIRST:event_modelGrid1MouseClicked
         if (evt.clickCount > 1){
-            Settings.setTradeItem(model.qTradeItems.cursor.wh_items_id);
+            Settings.setTradeItem(model.qTradeItemsWithSearch.cursor.wh_items_id);
             Settings.showModal();
         }
     }//GEN-LAST:event_modelGrid1MouseClicked
 
     function btnAddToDashboardActionPerformed(evt) {//GEN-FIRST:event_btnAddToDashboardActionPerformed
-        Settings.setTradeItem(model.qTradeItems.cursor.wh_items_id);
+        Settings.setTradeItem(model.qTradeItemsWithSearch.cursor.wh_items_id);
         Settings.pnlCost.focus();
         Settings.showModal();
         
@@ -40,7 +40,7 @@ function AddItemToDashboard() {
         itemCard.setOpenType("modal");
         itemCard.showModal(function(result){
             if (result){
-                model.qTradeItems.requery();
+                model.qTradeItemsWithSearch.requery();
             }
         });
     }//GEN-LAST:event_btnNewItemActionPerformed
@@ -50,8 +50,8 @@ function AddItemToDashboard() {
     }//GEN-LAST:event_btnCancelActionPerformed
 
     function paramsOnChanged(evt) {//GEN-FIRST:event_paramsOnChanged
-        model.qTradeItems.requery(function(){
-            if (model.qTradeItems.length === 0)
+        model.qTradeItemsWithSearch.requery(function(){
+            if (model.qTradeItemsWithSearch.length === 0)
                 btnNewItemActionPerformed();
             form.tfSearch.focus();
             $("#x-widget-10-input").select();
