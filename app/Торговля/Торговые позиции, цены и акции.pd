@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?><datamodel datamodelDbId="null">
   <fieldsEntity entityHeight="200" entityIconified="false" entityId="142314900568771" entityLocationX="788" entityLocationY="301" entityWidth="150" tableName="wh_measures"/>
-  <fieldsEntity entityHeight="200" entityIconified="false" entityId="142113625449487" entityLocationX="403" entityLocationY="15" entityWidth="150" tableName="trade_items_on_tp"/>
+  <fieldsEntity entityHeight="205" entityIconified="false" entityId="142113625449487" entityLocationX="403" entityLocationY="15" entityWidth="150" tableName="trade_items_on_tp"/>
   <fieldsEntity entityHeight="227" entityIconified="false" entityId="140566606737864" entityLocationX="215" entityLocationY="17" entityWidth="150" tableName="trade_items_cost"/>
   <fieldsEntity entityHeight="200" entityIconified="false" entityId="142314895097184" entityLocationX="594" entityLocationY="299" entityWidth="150" tableName="wh_item_types"/>
   <fieldsEntity entityHeight="200" entityIconified="false" entityId="142234721376091" entityLocationX="399" entityLocationY="239" entityWidth="150" tableName="misc_colors"/>
