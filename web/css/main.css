@@ -55,6 +55,7 @@ div.dashboard.report {
   height: 100%;
   width: 100%;
   padding: 15px;
+  overflow:scroll;
 }
 
 @media (min-width: 768px) {
