@@ -49,11 +49,7 @@ function ItemSettingsAndCost(aTradeItemId, aTradePointId) {
 //            form.pnlContent.visible = false;
 //            form.pnlContent.enabled = false;
 //        }
-        tradeAdminModule.processChangesForTradeItem({
-            item_id     :   model.params.item_id,
-            trade_point :   session.tradePoint,
-            trade_item  :   true
-        });
+        
     }//GEN-LAST:event_rbTradeItemActionPerformed
 
     function rbWhContentActionPerformed(evt) {//GEN-FIRST:event_rbWhContentActionPerformed
@@ -68,11 +64,6 @@ function ItemSettingsAndCost(aTradeItemId, aTradePointId) {
 //            form.pnlContent.visible = true;
 //            form.pnlContent.enabled = true;
 //        }
-        tradeAdminModule.processChangesForTradeItem({
-            item_id     :   model.params.item_id,
-            trade_point :   session.tradePoint,
-            wh_content  :   true
-        });
     }//GEN-LAST:event_rbWhContentActionPerformed
 
     function rbWhItemActionPerformed(evt) {//GEN-FIRST:event_rbWhItemActionPerformed
@@ -88,11 +79,6 @@ function ItemSettingsAndCost(aTradeItemId, aTradePointId) {
 //            form.pnlContent.visible = false;
 //            form.pnlContent.enabled = false;
 //        }
-        tradeAdminModule.processChangesForTradeItem({
-            item_id     :   model.params.item_id,
-            trade_point :   session.tradePoint,
-            wh_item     :   true
-        });
     }//GEN-LAST:event_rbWhItemActionPerformed
 
     function btnSaveActionPerformed(evt) {//GEN-FIRST:event_btnSaveActionPerformed
@@ -103,7 +89,10 @@ function ItemSettingsAndCost(aTradeItemId, aTradePointId) {
         tradeAdminModule.processChangesForTradeItem({
             item_id     :   model.params.item_id,
             trade_point :   session.tradePoint,
-            color       :   model.params.color
+            color       :   model.params.color,
+            wh_item     :   form.rbWhItem.selected,
+            wh_content  :   form.rbWhContent.selected,
+            trade_item  :   form.rbTradeItem.selected
         });
         form.close(true);
     }//GEN-LAST:event_btnSaveActionPerformed
@@ -132,4 +121,28 @@ function ItemSettingsAndCost(aTradeItemId, aTradePointId) {
                 model.params.color = model.qTradeItemsOnTP.cursor.color;
         });
     }//GEN-LAST:event_formWindowOpened
+
+    function rbWhItemMouseClicked(evt) {//GEN-FIRST:event_rbWhItemMouseClicked
+        tradeAdminModule.processChangesForTradeItem({
+            item_id     :   model.params.item_id,
+            trade_point :   session.tradePoint,
+            wh_item     :   true
+        });
+    }//GEN-LAST:event_rbWhItemMouseClicked
+
+    function rbWhContentMouseClicked(evt) {//GEN-FIRST:event_rbWhContentMouseClicked
+        tradeAdminModule.processChangesForTradeItem({
+            item_id     :   model.params.item_id,
+            trade_point :   session.tradePoint,
+            wh_content  :   true
+        });
+    }//GEN-LAST:event_rbWhContentMouseClicked
+
+    function rbTradeItemMouseClicked(evt) {//GEN-FIRST:event_rbTradeItemMouseClicked
+        tradeAdminModule.processChangesForTradeItem({
+            item_id     :   model.params.item_id,
+            trade_point :   session.tradePoint,
+            trade_item  :   true
+        });
+    }//GEN-LAST:event_rbTradeItemMouseClicked
 }
