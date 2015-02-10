@@ -13,7 +13,7 @@ function ItemSettingsAndCost(aTradeItemId, aTradePointId) {
     });
     var contentTradeItem;
     require('ContentTradeItem', function() {
-        contentTradeItem = new ContentTradeItem();
+        contentTradeItem = new ContentTradeItem(true);
         contentTradeItem.showOnPanel(form.pnlContent);
     });
     

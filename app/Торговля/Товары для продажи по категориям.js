@@ -6,7 +6,7 @@ function ItemsForTrade() {
     var self = this, model = this.model, form = this;
     var itemTypes = new ChangeItemType();
     var contentTradeItem = new ContentTradeItem();
-    var itemSettings = new ItemSettingsAndCost();
+    var itemSettings; 
     var us = Session.get("UserSession");
 
     function btnItemEditContentActionPerformed(evt) {//GEN-FIRST:event_btnItemEditContentActionPerformed
@@ -72,7 +72,9 @@ function ItemsForTrade() {
     function formWindowOpened(evt) {//GEN-FIRST:event_formWindowOpened
         if(us.getUserRole() == "admin"){
             model.params.franchazi_id = null;
+            itemSettings= new ItemSettings();
         } else {
+            itemSettings = new ItemSettingsAndCost();
             model.params.franchazi_id = session.franchaziId;
             model.itemType.params.franchazi_id = session.franchaziId;
         }
