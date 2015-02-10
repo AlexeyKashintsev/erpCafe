@@ -160,6 +160,8 @@ function BaristaDesktop() {
         $(whView).hide();
         $(dashboard).show();
         self.itemsSelector.setOperationMode(self.itemsSelector.modes.SETUP);
+        self.typesSelector.setOperationMode(self.typesSelector.modes.SETUP);
+        
     }
     
     function setModeSellItems() {
@@ -167,6 +169,7 @@ function BaristaDesktop() {
         $(whView).hide();
         $(dashboard).show();
         self.itemsSelector.setOperationMode(self.itemsSelector.modes.TRADE);
+        self.typesSelector.setOperationMode(self.typesSelector.modes.TRADE);
     }
     
     self.actionList = {

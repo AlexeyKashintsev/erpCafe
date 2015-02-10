@@ -6,7 +6,6 @@
   <widget actionPerformed="btnDelActionPerformed" focusable="false" horizontalTextPosition="0" icon="icons/22x22/actions/list-remove.png" name="btnDel" parent="toolBar" prefHeight="29px" prefWidth="29px" toolTipText="Удалить" type="ButtonDesignInfo" verticalTextPosition="3"/>
   <widget actionPerformed="btnReqActionPerformed" focusable="false" horizontalTextPosition="0" icon="icons/22x22/actions/new-view-refresh.png" name="btnReq" parent="toolBar" prefHeight="29px" prefWidth="29px" toolTipText="Обновить" type="ButtonDesignInfo" verticalTextPosition="3"/>
   <widget actionPerformed="btnItemEditContentActionPerformed" focusable="false" horizontalTextPosition="4" icon="icons/22x22/actions/manilla-document-open.png" name="btnItemEditContent" parent="toolBar" prefHeight="29px" prefWidth="29px" toolTipText="Состав товара" type="ButtonDesignInfo" verticalTextPosition="3"/>
-  <widget actionPerformed="btnItemCreateDoubleActionPerformed" focusable="false" horizontalTextPosition="4" icon="icons/22x22/actions/document-revert.png" name="btnItemCreateDouble" parent="toolBar" prefHeight="29px" prefWidth="29px" toolTipText="Дублировать товар" type="ButtonDesignInfo" verticalTextPosition="3"/>
   <widget floatable="false" name="toolBar1" parent="Form" prefHeight="36px" prefWidth="324px" rollover="true" type="ToolbarDesignInfo">
     <constraints height="36px" left="0px" top="0px" type="MarginConstraintsDesignInfo" width="324px"/>
   </widget>
@@ -18,33 +17,33 @@
     <treeDesignInfo/>
     <column name="column1" title="Название">
       <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
+      <headerStyle>
+        <nativeFont name="Tahoma" size="11"/>
+      </headerStyle>
       <datamodelElement entityId="142323580370955" fieldName="item_name"/>
       <columnsDatasource/>
       <columnsDisplayField/>
       <cellsDatasource/>
       <cellDesignInfo>
+        <rowsKeyField/>
         <columnsKeyField/>
         <cellValueField/>
-        <rowsKeyField/>
       </cellDesignInfo>
-      <headerStyle>
-        <nativeFont name="Tahoma" size="11"/>
-      </headerStyle>
     </column>
     <column name="column2" title="Состав">
       <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
+      <headerStyle>
+        <nativeFont name="Tahoma" size="11"/>
+      </headerStyle>
       <datamodelElement entityId="142323580370955" fieldName="contents"/>
       <columnsDatasource/>
       <columnsDisplayField/>
       <cellsDatasource/>
       <cellDesignInfo>
+        <rowsKeyField/>
         <columnsKeyField/>
         <cellValueField/>
-        <rowsKeyField/>
       </cellDesignInfo>
-      <headerStyle>
-        <nativeFont name="Tahoma" size="11"/>
-      </headerStyle>
     </column>
     <constraints bottom="38px" left="312px" right="-2px" top="36px" type="MarginConstraintsDesignInfo"/>
   </widget>
@@ -52,23 +51,21 @@
     <rowsColumnsDesignInfo>
       <rowsDatasource entityId="142323168771995" field="false"/>
     </rowsColumnsDesignInfo>
-    <treeDesignInfo>
-      <unaryLinkField entityId="142323168771995" fieldName="parent_type"/>
-    </treeDesignInfo>
+    <treeDesignInfo/>
     <column name="column" title="Тип товара">
       <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
+      <headerStyle>
+        <nativeFont name="Tahoma" size="11"/>
+      </headerStyle>
       <datamodelElement entityId="142323168771995" fieldName="type_description"/>
       <columnsDatasource/>
       <columnsDisplayField/>
       <cellsDatasource/>
       <cellDesignInfo>
+        <rowsKeyField/>
         <columnsKeyField/>
         <cellValueField/>
-        <rowsKeyField/>
       </cellDesignInfo>
-      <headerStyle>
-        <nativeFont name="Tahoma" size="11"/>
-      </headerStyle>
     </column>
     <constraints bottom="38px" left="0px" top="36px" type="MarginConstraintsDesignInfo" width="312px"/>
   </widget>
