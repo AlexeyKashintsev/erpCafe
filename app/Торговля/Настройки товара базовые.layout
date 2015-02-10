@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?><layout backgroundColor="#ededed" defaultCloseOperation="2" name="Form" prefHeight="485px" prefWidth="671px" windowOpened="formWindowOpened">
+  <widget actionPerformed="btnDelActionPerformed" name="btnDel" parent="Form" prefHeight="29px" prefWidth="132px" text="Убрать" type="ButtonDesignInfo">
+    <constraints bottom="14px" height="29px" left="12px" type="MarginConstraintsDesignInfo" width="132px"/>
+  </widget>
+  <widget backgroundColor="#ededed" name="tabbedPane" parent="Form" prefHeight="432px" prefWidth="672px" type="TabsDesignInfo">
+    <constraints bottom="53px" left="0px" right="-1px" top="0px" type="MarginConstraintsDesignInfo"/>
+  </widget>
+  <widget name="pnlCard" parent="tabbedPane" prefHeight="404px" prefWidth="667px" type="PanelDesignInfo" visible="false">
+    <layout type="MarginLayoutDesignInfo"/>
+    <constraints tabTitle="Общие" type="TabsConstraintsDesignInfo"/>
+  </widget>
+  <widget backgroundColor="#ededed" name="pnlContent" parent="tabbedPane" prefHeight="404px" prefWidth="667px" type="PanelDesignInfo">
+    <layout type="MarginLayoutDesignInfo"/>
+    <constraints tabTitle="Состав товара" type="TabsConstraintsDesignInfo"/>
+  </widget>
+  <widget actionPerformed="btnSaveActionPerformed" name="btnSave" parent="Form" prefHeight="29px" prefWidth="132px" text="Сохранить" type="ButtonDesignInfo">
+    <constraints bottom="14px" height="29px" right="143px" type="MarginConstraintsDesignInfo" width="132px"/>
+  </widget>
+  <widget actionPerformed="btnCancelActionPerformed" name="btnCancel" parent="Form" prefHeight="29px" prefWidth="132px" text="Отмена" type="ButtonDesignInfo">
+    <constraints bottom="14px" height="29px" right="9px" type="MarginConstraintsDesignInfo" width="132px"/>
+  </widget>
+  <nonvisual name="buttonGroup" type="ButtonGroupDesignInfo"/>
+  <nonvisual name="bgColor" type="ButtonGroupDesignInfo"/>
+  <layout type="MarginLayoutDesignInfo"/>
+</layout>

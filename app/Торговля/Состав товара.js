@@ -5,7 +5,7 @@
  * @public
  */
 
-function ContentTradeItem() {
+function ContentTradeItem(aHideSaveBtn) {
     var self = this, model = this.model, form = this; 
     var warehouseItemList = new WarehouseItemList();
     self.productName = '';
@@ -15,13 +15,15 @@ function ContentTradeItem() {
         model.params.trade_item = aTradeItem;
     };
 
-    self.setBlock = function(aBlock){
-        self.block = aBlock;
+    self.setSaveBtn = function(aHide){
+        self.hideSaveBtn = aHide;
     };
 
     self.save = function(){
             model.save();
         };
+        
+    if (aHideSaveBtn) self.setSaveBtn(aHideSaveBtn);
 
 function btnReqActionPerformed(evt) {//GEN-FIRST:event_btnReqActionPerformed
     if (model.modified&&confirm('Сохранить изменения?')){
@@ -33,19 +35,12 @@ function btnReqActionPerformed(evt) {//GEN-FIRST:event_btnReqActionPerformed
 function formWindowOpened(evt) {//GEN-FIRST:event_formWindowOpened
     model.qContents.requery();
     form.title = "Состав товара " + self.productName;
-    if(self.block) {
-        form.modelGrid.editable = false;
-        form.btnAdd.visible = false;
-        form.btnDel.visible = false;
+    if(self.hideSaveBtn) {
         form.btnSelect.visible = false;
-        form.label.visible = true;
+        form.btnSelect.hide();
     }
     else{
-        form.modelGrid.editable = true;
-        form.btnAdd.visible = true;
-        form.btnDel.visible = true;
         form.btnSelect.visible = true;
-        form.label.visible = false;
     }
 }//GEN-LAST:event_formWindowOpened
 
