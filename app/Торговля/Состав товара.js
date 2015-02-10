@@ -37,7 +37,6 @@ function formWindowOpened(evt) {//GEN-FIRST:event_formWindowOpened
     form.title = "Состав товара " + self.productName;
     if(self.hideSaveBtn) {
         form.btnSelect.visible = false;
-        form.btnSelect.hide();
     }
     else{
         form.btnSelect.visible = true;

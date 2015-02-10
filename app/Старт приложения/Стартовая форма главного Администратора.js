@@ -48,7 +48,7 @@ function StartMasterAdminForm() {
             dispForm    :   "ItemTypesForm"
         },
         tradePositions  :   {
-            display     :   "Торговые позиции",
+            display     :   "Номенклатура товаров",
             dispForm    :   "ItemsForTrade"
         },
         incomePlan      :   {
@@ -66,15 +66,11 @@ function StartMasterAdminForm() {
         massSendSMS     :   {
             display     :   "Массовая рассылка СМС",
             dispForm    :   "msgMassSendForm"
-        },
+        }/*,
         initClients     :   {
             display     :   "Восстановление пользователей",
             dispForm    :   "initClientsForm"
-        },
-        chat            :   {
-            display     :   "Номенкулатура товаров",
-            dispForm    :   "ItemsForTrade"
-        }
+        }*/
     };
     
     
