@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?><datamodel>
-  <parametersEntity entityHeight="200" entityIconified="false" entityLocationX="8" entityLocationY="7" entityWidth="150"/>
-  <entity Title="" entityHeight="200" entityIconified="false" entityId="140567212457449" entityLocationX="391" entityLocationY="8" entityWidth="150" tableAlias="t" tableName="trade_item_type" tableSchemaName=""/>
-  <entity Title="" entityHeight="200" entityIconified="false" entityId="140566699120404" entityLocationX="192" entityLocationY="6" entityWidth="170" tableAlias="t1" tableName="trade_item_type" tableSchemaName=""/>
-</datamodel>

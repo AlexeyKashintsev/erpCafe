@@ -15,6 +15,7 @@ function ItemCard() {
     
     self.addNew = function(){
         model.qTradeItems.insert();
+        model.qTradeItems.cursor.franchazi_id = session.franchaziId;
     };
     
     self.save = function(){
@@ -78,6 +79,7 @@ function ItemCard() {
 
     function btnSaveActionPerformed(evt) {//GEN-FIRST:event_btnSaveActionPerformed
         model.save();
+        form.close(true);
     }//GEN-LAST:event_btnSaveActionPerformed
 
     function buttonActionPerformed(evt) {//GEN-FIRST:event_buttonActionPerformed

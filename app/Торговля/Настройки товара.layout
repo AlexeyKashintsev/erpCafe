@@ -17,17 +17,17 @@
     <layout type="MarginLayoutDesignInfo"/>
     <constraints bottom="0px" height="123px" left="0px" type="MarginConstraintsDesignInfo" width="204px"/>
   </widget>
-  <widget actionPerformed="rbWhItemActionPerformed" buttonGroup="buttonGroup" mouseClicked="rbWhItemMouseClicked" name="rbWhItem" parent="pnlControlWH" prefHeight="23px" prefWidth="180px" text="1 к 1" type="RadioDesignInfo">
-    <constraints height="23px" left="12px" top="36px" type="MarginConstraintsDesignInfo" width="180px"/>
-  </widget>
-  <widget actionPerformed="rbWhContentActionPerformed" buttonGroup="buttonGroup" mouseClicked="rbWhContentMouseClicked" name="rbWhContent" parent="pnlControlWH" prefHeight="23px" prefWidth="180px" text="По компонентам" type="RadioDesignInfo">
-    <constraints height="23px" left="12px" top="60px" type="MarginConstraintsDesignInfo" width="180px"/>
-  </widget>
-  <widget actionPerformed="rbTradeItemActionPerformed" buttonGroup="buttonGroup" mouseClicked="rbTradeItemMouseClicked" name="rbTradeItem" parent="pnlControlWH" prefHeight="23px" prefWidth="180px" text="Не учитывать" type="RadioDesignInfo">
-    <constraints bottom="13px" height="23px" left="12px" type="MarginConstraintsDesignInfo" width="180px"/>
-  </widget>
   <widget name="label1" parent="pnlControlWH" prefHeight="16px" prefWidth="180px" text="Способ складского учета" type="LabelDesignInfo">
     <constraints height="16px" left="12px" top="12px" type="MarginConstraintsDesignInfo" width="180px"/>
+  </widget>
+  <widget name="cbWhItem" parent="pnlControlWH" prefHeight="23px" prefWidth="180px" text="На складе" type="CheckDesignInfo">
+    <constraints height="23px" left="12px" top="60px" type="MarginConstraintsDesignInfo" width="180px"/>
+  </widget>
+  <widget name="cbWhContent" parent="pnlControlWH" prefHeight="23px" prefWidth="173px" text="Сложный состав" type="CheckDesignInfo">
+    <constraints bottom="16px" height="23px" left="12px" type="MarginConstraintsDesignInfo" width="173px"/>
+  </widget>
+  <widget name="cbTradeItem" parent="pnlControlWH" prefHeight="23px" prefWidth="161px" text="Товар для продажи" type="CheckDesignInfo">
+    <constraints height="23px" left="12px" top="36px" type="MarginConstraintsDesignInfo" width="161px"/>
   </widget>
   <widget name="pnlColor" parent="pnlGeneral" prefHeight="123px" prefWidth="192px" type="PanelDesignInfo">
     <layout type="MarginLayoutDesignInfo"/>

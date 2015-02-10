@@ -8,19 +8,12 @@ function AddItemToDashboard() {
     var itemCard = new ItemCard();
     var tradeAdminModule = new ServerModule("TradeAdminModule");
     model.qTradeItemsWithSearch.params.franchazi_id = session.franchaziId;
+    model.qTradeItemsWithSearch.params.trade_point = session.tradePoint;
 
     function modelGridMouseClicked(evt) {//GEN-FIRST:event_modelGridMouseClicked
-        model.qTradeItemsWithSearch.params.item_type = model.qTradeItemTypes.cursor.trade_item_type_id;
+        model.qTradeItemsWithSearch.params.item_type = model.itemType.cursor.wh_item_types_id;
         model.qTradeItemsWithSearch.requery();
     }//GEN-LAST:event_modelGridMouseClicked
-
-    function qTradeItemTypesOnChanged(evt) {//GEN-FIRST:event_qTradeItemTypesOnChanged
-        model.qTradeItemsWithSearch.requery();
-    }//GEN-LAST:event_qTradeItemTypesOnChanged
-
-    function qTradeItemTypesOnScrolled(evt) {//GEN-FIRST:event_qTradeItemTypesOnScrolled
-      
-    }//GEN-LAST:event_qTradeItemTypesOnScrolled
 
     function modelGrid1MouseClicked(evt) {//GEN-FIRST:event_modelGrid1MouseClicked
         if (evt.clickCount > 1){
@@ -68,4 +61,12 @@ function AddItemToDashboard() {
         model.params.item_search = null;
         form.tfSearch.focus();
     }//GEN-LAST:event_buttonActionPerformed
+
+    function qTradeItemTypesOnChanged(evt) {//GEN-FIRST:event_qTradeItemTypesOnChanged
+        // TODO Добавьте здесь свой код:
+    }//GEN-LAST:event_qTradeItemTypesOnChanged
+
+    function qTradeItemTypesOnScrolled(evt) {//GEN-FIRST:event_qTradeItemTypesOnScrolled
+        // TODO Добавьте здесь свой код:
+    }//GEN-LAST:event_qTradeItemTypesOnScrolled
 }

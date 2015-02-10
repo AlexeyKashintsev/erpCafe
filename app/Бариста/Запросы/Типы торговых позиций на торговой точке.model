@@ -8,11 +8,9 @@
   <entity Title="" entityHeight="131" entityIconified="false" entityId="142113931407431" entityLocationX="229" entityLocationY="153" entityWidth="150" tableAlias="t1" tableName="trade_items_cost" tableSchemaName=""/>
   <entity Title="" entityHeight="146" entityIconified="false" entityId="142113918715297" entityLocationX="229" entityLocationY="5" entityWidth="133" tableAlias="tp" tableName="trade_items_on_tp" tableSchemaName=""/>
   <entity Title="" entityHeight="200" entityIconified="false" entityId="142113918213002" entityLocationX="401" entityLocationY="11" entityWidth="150" tableAlias="t2" tableName="wh_items" tableSchemaName=""/>
-  <entity Title="" entityHeight="200" entityIconified="false" entityId="142314911008318" entityLocationX="580" entityLocationY="5" entityWidth="150" tableAlias="t" tableName="wh_item_types" tableSchemaName=""/>
-  <relation leftEntityFieldName="wh_item_types_id" leftEntityId="142314911008318" rightEntityFieldName="item_type" rightEntityId="142113918715297"/>
-  <relation leftEntityId="-1" leftEntityParameterName="trade_point_id" rightEntityFieldName="trade_point_id" rightEntityId="142113918715297"/>
+  <relation leftEntityFieldName="wh_items_id" leftEntityId="142113918213002" rightEntityFieldName="item_id" rightEntityId="142113918715297"/>
   <relation leftEntityId="-1" leftEntityParameterName="actual_date" rightEntityFieldName="start_date" rightEntityId="142113931407431"/>
   <relation leftEntityFieldName="item_on_tp" leftEntityId="142113931407431" rightEntityFieldName="trade_items_on_tp_id" rightEntityId="142113918715297"/>
   <relation leftEntityId="-1" leftEntityParameterName="actual_date" rightEntityFieldName="end_date" rightEntityId="142113931407431"/>
-  <relation leftEntityFieldName="wh_items_id" leftEntityId="142113918213002" rightEntityFieldName="item_id" rightEntityId="142113918715297"/>
+  <relation leftEntityId="-1" leftEntityParameterName="trade_point_id" rightEntityFieldName="trade_point_id" rightEntityId="142113918715297"/>
 </datamodel>

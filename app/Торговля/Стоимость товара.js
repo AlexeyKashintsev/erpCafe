@@ -13,16 +13,18 @@ function ItemCostForm() {
         model.requery();
     };
 
-    self.save = function(aDelItem) {
+    self.save = function() {
         var itemData = {
             item_id: model.qPriceTypeForTradeItem.params.item_id,
             trade_point: model.qPriceTypeForTradeItem.params.trade_point,
-            costs: {},
-            delete: aDelItem
+            costs: {}
         };
 
         model.qPriceTypeForTradeItem.forEach(function(aCursor) {
-            itemData.costs[aCursor.trade_price_types_id] = aCursor.item_cost;
+            if (!aCursor.item_cost)
+                itemData.costs[aCursor.trade_price_types_id] = 0;
+            else
+                itemData.costs[aCursor.trade_price_types_id] = aCursor.item_cost;
         });
 
         tradeModule.processChangesForTradeItem(itemData, function() {

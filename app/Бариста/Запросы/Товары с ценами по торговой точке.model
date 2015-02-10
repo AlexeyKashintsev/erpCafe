@@ -10,10 +10,10 @@
   <entity Title="" entityHeight="200" entityIconified="false" entityId="140672492436582" entityLocationX="241" entityLocationY="26" entityWidth="150" tableAlias="t1" tableName="trade_items_cost" tableSchemaName=""/>
   <entity Title="" entityHeight="200" entityIconified="false" entityId="142113939674386" entityLocationX="450" entityLocationY="9" entityWidth="150" tableAlias="tp" tableName="trade_items_on_tp" tableSchemaName=""/>
   <relation leftEntityId="-1" leftEntityParameterName="price_type" rightEntityFieldName="price_type" rightEntityId="140672492436582"/>
+  <relation leftEntityId="-1" leftEntityParameterName="actual_date" rightEntityFieldName="end_date" rightEntityId="140672492436582"/>
+  <relation leftEntityId="-1" leftEntityParameterName="item_id" rightEntityFieldName="item_id" rightEntityId="142113939674386"/>
   <relation leftEntityId="-1" leftEntityParameterName="trade_point_id" rightEntityFieldName="trade_point_id" rightEntityId="142113939674386"/>
   <relation leftEntityId="-1" leftEntityParameterName="actual_date" rightEntityFieldName="start_date" rightEntityId="140672492436582"/>
-  <relation leftEntityId="-1" leftEntityParameterName="item_id" rightEntityFieldName="item_id" rightEntityId="142113939674386"/>
-  <relation leftEntityId="-1" leftEntityParameterName="actual_date" rightEntityFieldName="end_date" rightEntityId="140672492436582"/>
-  <relation leftEntityFieldName="item_on_tp" leftEntityId="140672492436582" rightEntityFieldName="trade_items_on_tp_id" rightEntityId="142113939674386"/>
   <relation leftEntityFieldName="item_id" leftEntityId="142113939674386" rightEntityFieldName="wh_items_id" rightEntityId="142089044425741"/>
+  <relation leftEntityFieldName="item_on_tp" leftEntityId="140672492436582" rightEntityFieldName="trade_items_on_tp_id" rightEntityId="142113939674386"/>
 </datamodel>
