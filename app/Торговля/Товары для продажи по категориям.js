@@ -6,12 +6,8 @@ function ItemsForTrade() {
     var self = this, model = this.model, form = this;
     var itemTypes = new ChangeItemType();
     var contentTradeItem = new ContentTradeItem();
+    var itemSettings = new ItemSettingsAndCost();
     var us = Session.get("UserSession");
-
-    function btnItemCreateDoubleActionPerformed(evt) {//GEN-FIRST:event_btnItemCreateDoubleActionPerformed
-        //TODO Дублирование теперь не нужно
-        //Переделать в подгрузку стандартных айтемов
-    }//GEN-LAST:event_btnItemCreateDoubleActionPerformed
 
     function btnItemEditContentActionPerformed(evt) {//GEN-FIRST:event_btnItemEditContentActionPerformed
         //Редактор состава товара.  Убрал проверку на админа.
@@ -20,9 +16,13 @@ function ItemsForTrade() {
                 model.save();
             }
             Logger.info(model.qTradeItemsWithContents.cursor.wh_items_id);
-            contentTradeItem.setTradeItem(model.qTradeItemsWithContents.cursor.wh_items_id);
-            contentTradeItem.setBlock(false);
-            contentTradeItem.showModal(function() {
+//            contentTradeItem.setTradeItem(model.qTradeItemsWithContents.cursor.wh_items_id);
+//            contentTradeItem.setBlock(false);
+//            contentTradeItem.showModal(function() {
+//                model.requery();
+//            });
+            itemSettings.setTradeItem(model.qTradeItemsWithContents.cursor.wh_items_id);
+            itemSettings.showModal(function() {
                 model.requery();
             });
         } else {
@@ -71,7 +71,7 @@ function ItemsForTrade() {
 
     function formWindowOpened(evt) {//GEN-FIRST:event_formWindowOpened
         if(us.getUserRole() == "admin"){
-            model.params.franchazi_id = 0;
+            model.params.franchazi_id = null;
         } else {
             model.params.franchazi_id = session.franchaziId;
             model.itemType.params.franchazi_id = session.franchaziId;

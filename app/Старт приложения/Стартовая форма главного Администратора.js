@@ -39,10 +39,10 @@ function StartMasterAdminForm() {
             display     :   "Пользователи",
             dispForm    :   "FranchaziAndUsers"
         },
-        warehouse       :   {
-            display     :   "Склад",
-            dispForm    :   "WarehouseItemList"
-        },
+//        warehouse       :   {
+//            display     :   "Склад",
+//            dispForm    :   "WarehouseItemList"
+//        },
         warehouseTypes  :   {
             display     :   "Типы продуктов",
             dispForm    :   "ItemTypesForm"
