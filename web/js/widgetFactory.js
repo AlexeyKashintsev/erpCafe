@@ -154,6 +154,7 @@ wf.Table = function(aContainer, aHeader, aData, aTableClass, aHeaderClass, aBody
         th.innerHTML = aHeader[j];
     }
     var tbody = null;
+    var loadDiv = null;
     
     function setData(aData, aFields) {
         function applyDataToCell(aData, aContainer, aCellNumber) {
@@ -178,14 +179,11 @@ wf.Table = function(aContainer, aHeader, aData, aTableClass, aHeaderClass, aBody
             }
         }
         
-        $(tbody).remove();
-        
         function createTable(aContainer, aDataArray) {
-            var tBody = cmn.createElement('tbody', null, aContainer, aBodyClass);
+            tbody = cmn.createElement('tbody', null, aContainer, aBodyClass);
             aDataArray.forEach(function(aCursor) {
-                addTableRow(aCursor, tBody);
+                addTableRow(aCursor, tbody);
             });
-            return tBody;
         }
         
         function addTableRow(aCursor, aContainer) {
@@ -203,13 +201,15 @@ wf.Table = function(aContainer, aHeader, aData, aTableClass, aHeaderClass, aBody
                     if (j !== 'onclick')
                         applyDataToCell(aCursor[j], tr, j);
         }
-        
-        tbody = createTable(this.dockElement, aData);
+        if (tbody)
+            tbody.innerHTML = '';
+        $(loadDiv).remove();
+        createTable(this.dockElement, aData);
     }
     
     function loadShow() {
         $(tbody).remove();
-        tbody = cmn.createElement('div', 'loadDiv', this.dockElement);
+        loadDiv = cmn.createElement('div', 'loadDiv', this.dockElement);
     }
     
     if (aData)
@@ -219,7 +219,7 @@ wf.Table = function(aContainer, aHeader, aData, aTableClass, aHeaderClass, aBody
     
     this.setData = setData;
     this.prepare = loadShow;
-}
+};
 
 wf.DateTimePeriodPicker = function(aContainer, aSetPeriodFunction) {
     var dtPContainer = cmn.createElement('div', 'input-prepend input-group', aContainer);
