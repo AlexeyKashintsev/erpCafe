@@ -1,7 +1,7 @@
 /**
  *
  * @author Alexey
- * @name TradeItemCost
+ * @name TradeItemCost_deprecated
  * @public
  * @rolesallowed admin franchazi
  */ 

@@ -11,7 +11,6 @@ function SelectItemsInWH() {
 
     self.changes = [];
     self.autoChange = true;
-    self.selectForm = false;
     model.params.item_type = null;
     
     self.setFranchazi = function(aFranchazi) {
@@ -33,16 +32,15 @@ function btnReqActionPerformed(evt) {//GEN-FIRST:event_btnReqActionPerformed
 }//GEN-LAST:event_btnReqActionPerformed
 
     function ModelSave() {
-        model.queryItems.beforeFirst();
-        while (model.queryItems.next()) {
-            if (model.queryItems.cursor.selectItemHidden != model.queryItems.cursor.selectItem) {
-                if (model.queryItems.cursor.selectItem) {
+        /*model.queryItems.forEach(function(cursor) {
+            if (cursor.selectItemHidden != cursor.selectItem) {
+                if (cursor.selectItem) {
                     var obj = {};
                     obj.warehouse = model.params.trade_point_id;
-                    obj.item_id = model.queryItems.cursor.wh_items_id;
+                    obj.item_id = cursor.wh_items_id;
                     model.queryItemsInWH.push(obj);
                 } else {
-                    model.delItemsInWH.params.item_id = model.queryItems.cursor.wh_items_id;
+                    model.delItemsInWH.params.item_id = cursor.wh_items_id;
                     try {
                         model.delItemsInWH.execute();
                     } catch(e) {
@@ -51,8 +49,9 @@ function btnReqActionPerformed(evt) {//GEN-FIRST:event_btnReqActionPerformed
                     //model.delItemsInWH.executeUpdate();
                 }
             }
-        }
-        model.save();
+        });
+        model.save();*/
+        alert('Данный функционал временно не доступен');
     }
 
 function btnSaveActionPerformed(evt) {//GEN-FIRST:event_btnSaveActionPerformed
@@ -60,7 +59,7 @@ function btnSaveActionPerformed(evt) {//GEN-FIRST:event_btnSaveActionPerformed
 }//GEN-LAST:event_btnSaveActionPerformed
 
 function formWindowOpened(evt) {//GEN-FIRST:event_formWindowOpened
-        form.pnlSelLock.visible = self.selectForm;
+        
 }//GEN-LAST:event_formWindowOpened
 
 function formWindowClosing(evt) {//GEN-FIRST:event_formWindowClosing

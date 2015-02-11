@@ -167,7 +167,7 @@ wf.Table = function(aContainer, aHeader, aData, aTableClass, aHeaderClass, aBody
                             aData.value = input.value;
                             aData.onchange(aData)
                         };
-                })()
+                })();
             } else {
                 if ($.isArray(aData) || typeof aData == 'Object') {
                     $(th).addClass('table-container');
@@ -196,10 +196,12 @@ wf.Table = function(aContainer, aHeader, aData, aTableClass, aHeaderClass, aBody
             
             if (!aFields)
                 for (var j in aCursor)
-                    applyDataToCell(aCursor[j], tr, j);
+                    if (j !== 'onclick')
+                        applyDataToCell(aCursor[j], tr, j);
             else
                 for (var j in aFields)
-                    applyDataToCell(aCursor[j], tr, j);
+                    if (j !== 'onclick')
+                        applyDataToCell(aCursor[j], tr, j);
         }
         
         tbody = createTable(this.dockElement, aData);
