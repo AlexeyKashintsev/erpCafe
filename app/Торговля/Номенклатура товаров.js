@@ -39,12 +39,12 @@ function ItemsForTrade() {
 
     function btnDelActionPerformed(evt) {//GEN-FIRST:event_btnDelActionPerformed
         //Убрал проверку
-        if (model.qTradeItemsWithContents.cursor.franchazi_id) {
+        //if (model.qTradeItemsWithContents.cursor.franchazi_id) {
             if (confirm('Вы уверены что хотите удалить товар?'))
                 model.qTradeItemsWithContents.deleteRow();
-        } else {
-            alert('Данная операция доступна только администратору!');
-        }
+//        } else {
+//            alert('Данная операция доступна только администратору!');
+//        }
     }//GEN-LAST:event_btnDelActionPerformed
 
     function btnAddActionPerformed(evt) {//GEN-FIRST:event_btnAddActionPerformed

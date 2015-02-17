@@ -1,0 +1,6 @@
+insert into trade_items_contents (trade_item_contents_id, trade_item, wh_item, usage_quantity)
+Select nextval('def_sequence') as trade_item_contents_id, t1.trade_item, t1.wh_item
+, t1.usage_quantity
+From trade_items_contents t1
+ Inner Join wh_items t on t1.wh_item = t.wh_items_id
+where t.franchazi_id = :franchazi_id
