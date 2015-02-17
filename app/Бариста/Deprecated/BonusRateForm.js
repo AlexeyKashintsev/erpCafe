@@ -9,7 +9,9 @@ function BonusRateForm() {
     
     self.setTradeItem = function(anItem){
         model.params.item_id = anItem;
-        update();
+        model.requery(function(){
+            update();
+        });
     };
     
     function update(){
@@ -25,7 +27,9 @@ function BonusRateForm() {
         var rate = prompt("Введите бонусную ставку для товара: " + model.qTradeItems.cursor.item_name, 0);
         if (rate) {
             bonus.setBonusRate(model.qTradeItems.cursor.wh_items_id, null, rate);
-            update();
+            model.requery(function(){
+                update();
+            });
         }
     }//GEN-LAST:event_buttonActionPerformed
 }
