@@ -2,6 +2,7 @@
  * @public
  * @author minya92
  * @module
+ * TODO Добавить роли
  */ 
 function WhModuleAdmin() {
     var self = this, model = this.model;
@@ -24,9 +25,17 @@ function WhModuleAdmin() {
     /*
      * Инициализация новых айтемов по умолчанию для нового франчайзе
      */
-    self.initItemsForFranchazi = function(aFranchaziId){
-        model.qInsertDefaultItems.params.franchazi_id = model.listFranchazi.cursor.org_franchazi_id;
+    self.initItemsForFranchazi = function(aFranchaziId) {
+        Logger.info('Начало заполнения стандартными айтемами для франчази ' + aFranchaziId);
+        var franchazi = aFranchaziId ? aFranchaziId : 
+                (model.listFranchazi.cursor.org_franchazi_id ? 
+                    model.listFranchazi.cursor.org_franchazi_id :
+                            null);//TODO get it from session
+        model.qInsertDefaultItems.params.franchazi_id =
+            model.qInsertDefaultItemsContents.params.franchazi_id = 
+            model.qInsertDefaultBonusRates.params.franchazi_id = franchazi;
         model.qInsertDefaultItems.executeUpdate();
-        model.save();
+        model.qInsertDefaultItemsContents.executeUpdate();
+        model.qInsertDefaultBonusRates.executeUpdate();
     };
 }

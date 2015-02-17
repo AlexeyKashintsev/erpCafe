@@ -12,7 +12,7 @@ function TradeAdminModule() {
     var whModule = Session.get("WhModuleAdmin");
 
     self.OP_TYPE_REMOVE_CASH = 101; // операция снятия кассы
-
+    
     /*
      * Списание денег с кассы
      * 
