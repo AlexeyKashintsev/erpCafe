@@ -22,11 +22,9 @@ function ItemSettingsAndCost(aTradeItemId, aTradePointId) {
         itemCostForm = new ItemCostForm();
         itemCostForm.showOnPanel(form.pnlCost);
     });
-    //var bonusPanel = new BonusRateForm();
     
-    
-    
-    //bonusPanel.showOnPanel(form.pnlBonus);
+    var bonusPanel = new BonusRateForm();
+    bonusPanel.showOnPanel(form.pnlBonus);
 
     
     self.setTradeItem = function(anItemId){
@@ -35,7 +33,7 @@ function ItemSettingsAndCost(aTradeItemId, aTradePointId) {
         itemCostForm.setItem(anItemId);
         model.qTradeItemsOnTP.params.trade_point = session.tradePoint;
         model.params.item_id = anItemId;
-        //bonusPanel.setTradeItem(anItem);
+        bonusPanel.setTradeItem(anItemId);
     };
     
     if (aTradeItemId)

@@ -4,10 +4,12 @@
  */
 function ItemsForTrade() {
     var self = this, model = this.model, form = this;
-    var itemTypes = new ChangeItemType();
-    var contentTradeItem = new ContentTradeItem();
-    var itemSettings; 
-    var us = Session.get("UserSession");
+    var itemTypes, contentTradeItem, itemSettings; 
+    require(['ChangeItemType', 'ContentTradeItem', 'ItemSettings'], function() {
+        itemTypes = new ChangeItemType();
+        contentTradeItem = new ContentTradeItem();
+        itemSettings = new ItemSettings(); 
+    });
 
     function btnItemEditContentActionPerformed(evt) {//GEN-FIRST:event_btnItemEditContentActionPerformed
         //Редактор состава товара.  Убрал проверку на админа.
@@ -70,13 +72,6 @@ function ItemsForTrade() {
     }//GEN-LAST:event_itemTypeOnScrolled
 
     function formWindowOpened(evt) {//GEN-FIRST:event_formWindowOpened
-        if(us.getUserRole() == "admin"){
-            model.params.franchazi_id = null;
-            itemSettings= new ItemSettings();
-        } else {
-            itemSettings = new ItemSettingsAndCost();
-            model.params.franchazi_id = session.franchaziId;
-            model.itemType.params.franchazi_id = session.franchaziId;
-        }
+
     }//GEN-LAST:event_formWindowOpened
 }

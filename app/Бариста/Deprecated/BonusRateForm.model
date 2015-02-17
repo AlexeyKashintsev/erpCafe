@@ -5,7 +5,7 @@
   <parametersEntity entityHeight="200" entityIconified="false" entityLocationX="12" entityLocationY="12" entityWidth="150"/>
   <entity Name="qTradeItems" Title="" entityHeight="200" entityIconified="false" entityId="141952095127301" entityLocationX="378" entityLocationY="11" entityWidth="150" queryId="qTradeItems" tableName="" tableSchemaName=""/>
   <entity Name="qBonusCountForTradeItemReadonly" Title="" entityHeight="200" entityIconified="false" entityId="141951939462633" entityLocationX="177" entityLocationY="12" entityWidth="150" queryId="qBonusCountForTradeItemReadonly" tableName="" tableSchemaName=""/>
-  <relation leftEntityId="-1" leftEntityParameterName="item_id" rightEntityId="141952095127301" rightEntityParameterName="item_id"/>
   <relation leftEntityId="-1" leftEntityParameterName="item_id" rightEntityId="141951939462633" rightEntityParameterName="trade_item"/>
+  <relation leftEntityId="-1" leftEntityParameterName="item_id" rightEntityId="141952095127301" rightEntityParameterName="item_id"/>
   <referenceRelation leftEntityFieldName="trade_item" leftEntityId="141951939462633" rightEntityFieldName="wh_items_id" rightEntityId="141952095127301"/>
 </datamodel>
