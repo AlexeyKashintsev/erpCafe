@@ -3,15 +3,15 @@
     <parameter description="" name="franchazi_id" nullable="true" parameterMode="1" precision="0" scale="0" selectionForm="null" signed="true" size="100" type="2" typeName="NUMERIC"/>
   </parameters>
   <parametersEntity entityHeight="200" entityIconified="false" entityLocationX="8" entityLocationY="7" entityWidth="150"/>
-  <entity Title="" entityHeight="200" entityIconified="false" entityId="142417177252177" entityLocationX="666" entityLocationY="31" entityWidth="150" tableAlias="t1" tableName="trade_items_contents" tableSchemaName=""/>
+  <entity Title="" entityHeight="200" entityIconified="false" entityId="142418761458854" entityLocationX="853" entityLocationY="83" entityWidth="150" tableAlias="t3" tableName="wh_items" tableSchemaName=""/>
+  <entity Title="" entityHeight="200" entityIconified="false" entityId="142418761458994" entityLocationX="621" entityLocationY="37" entityWidth="150" tableAlias="t1" tableName="trade_items_contents" tableSchemaName=""/>
   <entity Title="" entityHeight="200" entityIconified="false" entityId="142417241693584" entityLocationX="248" entityLocationY="230" entityWidth="150" tableAlias="t4" tableName="wh_items" tableSchemaName=""/>
-  <entity Title="" entityHeight="200" entityIconified="false" entityId="142417239783765" entityLocationX="451" entityLocationY="230" entityWidth="150" tableAlias="t3" tableName="wh_items" tableSchemaName=""/>
-  <entity Title="" entityHeight="200" entityIconified="false" entityId="142417191092698" entityLocationX="451" entityLocationY="25" entityWidth="150" tableAlias="t2" tableName="wh_items" tableSchemaName=""/>
   <entity Title="" entityHeight="200" entityIconified="false" entityId="142417177252189" entityLocationX="241" entityLocationY="25" entityWidth="150" tableAlias="t" tableName="wh_items" tableSchemaName=""/>
-  <relation leftEntityFieldName="franchazi_id" leftEntityId="142417177252189" rightEntityId="-1" rightEntityParameterName="franchazi_id"/>
-  <relation leftEntityFieldName="wh_items_id" leftEntityId="142417191092698" rightEntityFieldName="trade_item" rightEntityId="142417177252177"/>
+  <entity Title="" entityHeight="200" entityIconified="false" entityId="142417191092698" entityLocationX="451" entityLocationY="25" entityWidth="150" tableAlias="t2" tableName="wh_items" tableSchemaName=""/>
+  <relation leftEntityFieldName="wh_items_id" leftEntityId="142417191092698" rightEntityFieldName="trade_item" rightEntityId="142418761458994"/>
   <relation leftEntityFieldName="item_name" leftEntityId="142417177252189" rightEntityFieldName="item_name" rightEntityId="142417191092698"/>
+  <relation leftEntityFieldName="wh_item" leftEntityId="142418761458994" rightEntityFieldName="wh_items_id" rightEntityId="142418761458854"/>
+  <relation leftEntityFieldName="franchazi_id" leftEntityId="142417177252189" rightEntityId="-1" rightEntityParameterName="franchazi_id"/>
+  <relation leftEntityFieldName="item_name" leftEntityId="142418761458854" rightEntityFieldName="item_name" rightEntityId="142417241693584"/>
   <relation leftEntityId="-1" leftEntityParameterName="franchazi_id" rightEntityFieldName="franchazi_id" rightEntityId="142417241693584"/>
-  <relation leftEntityFieldName="item_name" leftEntityId="142417239783765" rightEntityFieldName="item_name" rightEntityId="142417241693584"/>
-  <relation leftEntityFieldName="wh_item" leftEntityId="142417177252177" rightEntityFieldName="wh_items_id" rightEntityId="142417239783765"/>
 </datamodel>
