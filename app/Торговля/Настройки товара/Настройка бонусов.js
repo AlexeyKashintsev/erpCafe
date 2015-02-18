@@ -17,14 +17,14 @@ function BonusRateForm() {
     function update(){
         if (model.qBonusCountForTradeItemReadonly.length > 0)
         form.lblInfo.text = "Бонусная ставка по товару " + model.qTradeItems.cursor.item_name 
-                + " составляет: " + model.qBonusCountForTradeItemReadonly.cursor.bonus_rate;
+                + " составляет: " + model.qBonusCountForTradeItemReadonly.cursor.bonus_rate + "%";
         else 
             form.lblInfo.text = "Бонусная ставка по товару " + model.qTradeItems.cursor.item_name 
                 + " не указана.";
     }
  
     function buttonActionPerformed(evt) {//GEN-FIRST:event_buttonActionPerformed
-        var rate = prompt("Введите бонусную ставку для товара: " + model.qTradeItems.cursor.item_name, 0);
+        var rate = prompt("Введите бонусную ставку (% от стоимости) для товара: " + model.qTradeItems.cursor.item_name, 0);
         if (rate) {
             bonus.setBonusRate(model.qTradeItems.cursor.wh_items_id, null, rate);
             model.requery(function(){

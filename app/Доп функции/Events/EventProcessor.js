@@ -3,6 +3,7 @@
  * @name EventProcessor
  * @author Alexey
  * @module
+ * TODO Почистить события
  */ 
 function EventProcessor() {
     var self = this, model = this.model;
@@ -21,18 +22,21 @@ function EventProcessor() {
     
     self.addEvent = function(aEventType, aEventData){
         try {
-            var evt = JSON.stringify(aEventData); //BUG Ошибка при добавлении ошибки failure ;)
-            model.eventById.push({
-                event_type  :   aEventType,
-                event_user  :   self.principal.name,
-                event_data  :   evt,
-                event_date  :   new Date()
-            });
-            model.save();
-            Logger.info(evt);
+            if (model.eventTypes.findById(aEventType)) {
+                var evt = JSON.stringify(aEventData); //BUG Ошибка при добавлении ошибки failure ;)
+                model.eventById.push({
+                    event_type  :   aEventType,
+                    event_user  :   self.principal.name,
+                    event_data  :   evt,
+                    event_date  :   new Date()
+                });
+                model.save();
+                Logger.info(evt);
+            } else {
+                Logger.warning('Неизвестный event-type ' + aEventType + '\nevtData: ' + aEventData);
+            }
         } catch (e) {
             model.revert();
-          //  failure(e, aEventType, aEventData);
             Logger.warning(e);
         }
     };
