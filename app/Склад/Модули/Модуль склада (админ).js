@@ -1,6 +1,6 @@
 /**
  * @public
- * @author minya92
+ * @author minya92, Alexey
  * @module
  * TODO Добавить роли
  */ 
@@ -11,16 +11,23 @@ function WhModuleAdmin() {
         model.qContents.params.trade_item_id = anItem;
         model.qContents.requery();
         model.queryItemsInWH.params.warehouse_id = aTradePoint;
-        model.queryItemsInWH.execute();
-        model.qContents.beforeFirst();
-        while (model.qContents.next()) {
-            if (model.queryItemsInWH.find(model.queryItemsInWH.schema.item_id, model.qContents.wh_item).length === 0) {
+        model.queryItemsInWH.requery();
+        model.qContents.forEach(function(cursor) {
+            var foundItems = model.queryItemsInWH.find(model.queryItemsInWH.schema.item_id, cursor.wh_item);
+            if (foundItems.length === 0) {
                 model.queryItemsInWH.push({
-                    warehouse: aTradePoint,
-                    item_id: model.qContents.cursor.wh_item
+                    trade_point_id: aTradePoint,
+                    item_id: cursor.wh_item,
+                    wh_item: true
                 });
+            } else {
+                if (!foundItems[0].wh_item && !foundItems[0].wh_content) {
+                    model.queryItemsInWH.scrollTo(model.queryItemsInWH.findById(foundItems[0].trade_items_on_tp_id));
+                    model.queryItemsInWH.cursor.wh_item = true;
+                }
             }
-        }
+        });
+        model.save();
     };
     /*
      * Инициализация новых айтемов по умолчанию для нового франчайзе

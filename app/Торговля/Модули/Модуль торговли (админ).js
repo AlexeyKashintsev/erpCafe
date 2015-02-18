@@ -12,7 +12,7 @@ function TradeAdminModule() {
     var whModule = Session.get("WhModuleAdmin");
 
     self.OP_TYPE_REMOVE_CASH = 101; // операция снятия кассы
-    
+
     /*
      * Списание денег с кассы
      * 
@@ -38,17 +38,17 @@ function TradeAdminModule() {
         } else
             return false;
     };
-    
+
     /**** Управление ценой на товар *****/
 
     function findItemOnTP(anItemId, aTradePoint) {
         model.qTradeItemsOnTP.params.trade_point = aTradePoint;
         model.qTradeItemsOnTP.params.item_id = null;
-        model.qTradeItemsOnTP.execute();
+        model.qTradeItemsOnTP.requery();
         var item = model.qTradeItemsOnTP.find(model.qTradeItemsOnTP.schema.item_id, anItemId);
         return item[0] ? item[0].trade_items_on_tp_id : null;
     }
-    
+
     /*
      * Добавление или изменение цен на товар из обекта вида:
      * {item_id, trade_point, costs : {price_type, cost}, delete, trade_item, wh_content, wh_item, color}
@@ -58,58 +58,68 @@ function TradeAdminModule() {
         var added = false;
         
         if (!itemOnTP) {
-            itemOnTP = addItemToTP(itemData.item_id, itemData.trade_point)
+            itemOnTP = addItemToTP(itemData.item_id, itemData.trade_point);
             added = true;
-        } 
-        
-        if(itemData.wh_content || itemData.trade_item || itemData.wh_item || itemData.color){
+        }
+
+        if (itemData.wh_content || itemData.trade_item || itemData.wh_item || itemData.color) {
             var curs = model.qTradeItemsOnTP.findById(itemOnTP);
             curs.wh_content = itemData.wh_content;
             curs.trade_item = itemData.trade_item;
             curs.wh_item = itemData.wh_item;
             curs.color = itemData.color;
+            curs.trade_point_id = itemData.trade_point;
         }
         if (!itemData.delete) {
             for (var price_type in itemData.costs) {
+                if (itemData.costs[price_type])
                     setCost4TradeItemOnTradePoint(itemOnTP, itemData.costs[price_type], price_type);
+            }
+            if (curs.wh_content) {
+                whModule.addItemContentsToWH(curs.item_id, curs.trade_point_id);
             }
         } else {
             deleteItemFromTP(itemOnTP, itemData.trade_point);
         }
-        
+
         model.save();
-        
-        if (added) model.requery();
-        
+
+        if (added)
+            model.requery();
+
         return true;
     };
-    
+
     function setCost4TradeItemOnTradePoint(anItemOnTP, aCost, aPriceType) {
         closeTradeItemCost(anItemOnTP, aPriceType);
         if (aCost)
             model.qItemOnTPCosts.push({
-                start_date  : new Date(),
-                item_on_tp  : anItemOnTP,
-                item_cost   : aCost,
-                price_type  : aPriceType
+                start_date: new Date(),
+                item_on_tp: anItemOnTP,
+                item_cost: aCost,
+                price_type: aPriceType
             });
-    };
-    
+    }
+    ;
+
     function closeTradeItemCost(anItemOnTp, aPriceType) {
         model.prCloseItemCost.params.item_on_tp = anItemOnTp;
         model.prCloseItemCost.params.price_type = aPriceType;
         model.prCloseItemCost.params.stop_date = new Date();
         model.prCloseItemCost.executeUpdate();
-    };
-    
-    function addItemToTP(anItemId, aTradePoint){
-        model.qTradeItemsOnTP.insert();
-        model.qTradeItemsOnTP.cursor.item_id = anItemId;
-        model.qTradeItemsOnTP.cursor.trade_point_id = aTradePoint;
+    }
+    ;
+
+    function addItemToTP(anItemId, aTradePoint) {
+        
+        model.qTradeItemsOnTP.push({
+            item_id : anItemId,
+            trade_point_id : aTradePoint
+        });
         return model.qTradeItemsOnTP.cursor.trade_items_on_tp_id;
     }
-    
-    function deleteItemFromTP(anItemOnTp){
+
+    function deleteItemFromTP(anItemOnTp) {
         closeTradeItemCost(anItemOnTp, null);
         var row = model.qTradeItemsOnTP.findById(anItemOnTp);
         if (row) {

@@ -5,16 +5,16 @@
   <entity Name="qInsertDefaultBonusRates" Title="" entityHeight="46" entityIconified="false" entityId="142418991879631" entityLocationX="356" entityLocationY="229" entityWidth="150" queryId="qInsertDefaultBonusRates" tableName="" tableSchemaName=""/>
   <entity Name="qInsertDefaultItemsContents" Title="" entityHeight="48" entityIconified="false" entityId="142418992212802" entityLocationX="180" entityLocationY="230" entityWidth="150" queryId="qInsertDefaultItemsContents" tableName="" tableSchemaName=""/>
   <entity Name="qInsertDefaultItems" Title="" entityHeight="44" entityIconified="false" entityId="142349932274941" entityLocationX="13" entityLocationY="228" entityWidth="150" queryId="qInsertDefaultItems" tableName="" tableSchemaName=""/>
-  <referenceRelation leftEntityFieldName="item_id" leftEntityId="142124546985260" rightEntityFieldName="trade_item" rightEntityId="142418991879631"/>
   <referenceRelation leftEntityFieldName="wh_item" leftEntityId="142124519645612" rightEntityFieldName="trade_item" rightEntityId="142418992212802"/>
   <referenceRelation leftEntityFieldName="wh_item" leftEntityId="142124519645612" rightEntityFieldName="wh_item" rightEntityId="142418992212802"/>
   <referenceRelation leftEntityFieldName="trade_item" leftEntityId="142124519645612" rightEntityFieldName="trade_item" rightEntityId="142418991879631"/>
-  <referenceRelation leftEntityFieldName="item_id" leftEntityId="142124546985260" rightEntityFieldName="wh_items_id" rightEntityId="142124519645612"/>
-  <referenceRelation leftEntityFieldName="trade_item" leftEntityId="142124519645612" rightEntityFieldName="trade_item" rightEntityId="142418992212802"/>
-  <referenceRelation leftEntityFieldName="wh_item" leftEntityId="142124519645612" rightEntityFieldName="wh_items_id" rightEntityId="142124519645612"/>
-  <referenceRelation leftEntityFieldName="item_id" leftEntityId="142124546985260" rightEntityFieldName="wh_item" rightEntityId="142418992212802"/>
   <referenceRelation leftEntityFieldName="trade_item" leftEntityId="142124519645612" rightEntityFieldName="wh_items_id" rightEntityId="142124519645612"/>
+  <referenceRelation leftEntityFieldName="wh_item" leftEntityId="142124519645612" rightEntityFieldName="wh_items_id" rightEntityId="142124519645612"/>
+  <referenceRelation leftEntityFieldName="item_id" leftEntityId="142124546985260" rightEntityFieldName="trade_item" rightEntityId="142418991879631"/>
+  <referenceRelation leftEntityFieldName="trade_item" leftEntityId="142124519645612" rightEntityFieldName="trade_item" rightEntityId="142418992212802"/>
+  <referenceRelation leftEntityFieldName="item_id" leftEntityId="142124546985260" rightEntityFieldName="wh_items_id" rightEntityId="142124519645612"/>
   <referenceRelation leftEntityFieldName="wh_item" leftEntityId="142124519645612" rightEntityFieldName="trade_item" rightEntityId="142418991879631"/>
   <referenceRelation leftEntityFieldName="item_id" leftEntityId="142124546985260" rightEntityFieldName="trade_item" rightEntityId="142418992212802"/>
+  <referenceRelation leftEntityFieldName="item_id" leftEntityId="142124546985260" rightEntityFieldName="wh_item" rightEntityId="142418992212802"/>
   <referenceRelation leftEntityFieldName="trade_item" leftEntityId="142124519645612" rightEntityFieldName="wh_item" rightEntityId="142418992212802"/>
 </datamodel>

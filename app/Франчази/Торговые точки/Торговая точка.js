@@ -26,7 +26,7 @@ function TradePoint() {
     };
     
     self.setTradePoint = function(aTradePoint) {
-        //model.params.tradePoint = aTradePoint;
+        session.tradePoint = aTradePoint;
         fmWarehouse.setTradePoint(aTradePoint);
         fmTradeItems.setTradePoint(aTradePoint);
         fmFranchaziUsers.setTradePoint(aTradePoint);

@@ -9,7 +9,12 @@ function AddItemToDashboard() {
     var tradeAdminModule = new ServerModule("TradeAdminModule");
     model.qTradeItemsWithSearch.params.franchazi_id = session.franchaziId;
     model.qTradeItemsWithSearch.params.trade_point = session.tradePoint;
-
+    
+    self.setParams = function(aTradePoint, aFranchazi) {
+        model.qTradeItemsWithSearch.params.franchazi_id = aFranchazi;
+        model.qTradeItemsWithSearch.params.trade_point = aTradePoint;
+    };
+    
     function modelGridMouseClicked(evt) {//GEN-FIRST:event_modelGridMouseClicked
         model.qTradeItemsWithSearch.params.item_type = model.itemType.cursor.wh_item_types_id;
         model.qTradeItemsWithSearch.requery();
