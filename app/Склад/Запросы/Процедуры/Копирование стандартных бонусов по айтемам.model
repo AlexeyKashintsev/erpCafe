@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?><datamodel>
   <parameters>
     <parameter description="" name="franchazi_id" nullable="true" parameterMode="1" precision="0" scale="0" selectionForm="null" signed="true" size="0" type="2" typeName="NUMERIC"/>
+    <parameter description="" name="franchize_id" nullable="true" parameterMode="1" precision="0" scale="0" selectionForm="null" signed="true" size="0" type="2" typeName="NUMERIC"/>
   </parameters>
   <parametersEntity entityHeight="200" entityIconified="false" entityLocationX="8" entityLocationY="7" entityWidth="150"/>
   <entity Title="" entityHeight="200" entityIconified="false" entityId="142418751387198" entityLocationX="189" entityLocationY="16" entityWidth="150" tableAlias="t" tableName="wh_items" tableSchemaName=""/>
   <entity Title="" entityHeight="200" entityIconified="false" entityId="142418751387197" entityLocationX="578" entityLocationY="58" entityWidth="150" tableAlias="t1" tableName="bonus_rate_for_trade_items" tableSchemaName=""/>
-  <entity Title="" entityHeight="200" entityIconified="false" entityId="142418751387101" entityLocationX="366" entityLocationY="39" entityWidth="150" tableAlias="t2" tableName="wh_items" tableSchemaName=""/>
+  <entity Title="" entityHeight="200" entityIconified="false" entityId="142418751387101" entityLocationX="372" entityLocationY="37" entityWidth="150" tableAlias="t2" tableName="wh_items" tableSchemaName=""/>
   <relation leftEntityFieldName="item_name" leftEntityId="142418751387198" rightEntityFieldName="item_name" rightEntityId="142418751387101"/>
   <relation leftEntityFieldName="franchazi_id" leftEntityId="142418751387198" rightEntityId="-1" rightEntityParameterName="franchazi_id"/>
+  <relation leftEntityFieldName="franchize_id" leftEntityId="142418751387101" rightEntityId="-1" rightEntityParameterName="franchize_id"/>
   <relation leftEntityFieldName="wh_items_id" leftEntityId="142418751387101" rightEntityFieldName="trade_item" rightEntityId="142418751387197"/>
 </datamodel>
