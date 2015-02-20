@@ -49,7 +49,7 @@ function btnSaveActionPerformed(evt) {//GEN-FIRST:event_btnSaveActionPerformed
 }//GEN-LAST:event_btnSaveActionPerformed
 
 function formWindowOpened(evt) {//GEN-FIRST:event_formWindowOpened
-    if(!model.params.franchazi_id){
+    if(!model.params.franchazi_id && session.getUserRole() !== "admin"){
         model.params.franchazi_id = session.getFranchazi();
         model.qBillAccount.params.franchazi_id = session.getFranchazi();
         model.qBillAccount.requery();
@@ -63,13 +63,17 @@ function formWindowClosing(evt) {//GEN-FIRST:event_formWindowClosing
 }//GEN-LAST:event_formWindowClosing
 
     function qBillAccountOnScrolled(evt) {//GEN-FIRST:event_qBillAccountOnScrolled
-        model.params.account_id = model.qBillAccount.cursor.bill_accounts_id;
-        model.qServiceListByAccount.requery();
+        if(!model.qBillAccount.empty){
+            model.params.account_id = model.qBillAccount.cursor.bill_accounts_id;
+            model.qServiceListByAccount.requery();
+        }
     }//GEN-LAST:event_qBillAccountOnScrolled
 
     function qBillAccountOnRequeried(evt) {//GEN-FIRST:event_qBillAccountOnRequeried
-        model.params.account_id = model.qBillAccount.cursor.bill_accounts_id;
-        model.qServiceListByAccount.requery();
+        if(!model.qBillAccount.empty){
+            model.params.account_id = model.qBillAccount.cursor.bill_accounts_id;
+            model.qServiceListByAccount.requery();
+        }
     }//GEN-LAST:event_qBillAccountOnRequeried
 
     function btnAddActionPerformed(evt) {//GEN-FIRST:event_btnAddActionPerformed

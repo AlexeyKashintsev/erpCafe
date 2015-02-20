@@ -51,9 +51,9 @@ function formWindowClosing(evt) {//GEN-FIRST:event_formWindowClosing
         if(franName){
             model.listFranchazi.insert();
             model.listFranchazi.cursor.f_name = franName;
+            model.save();
             bm.createBillAccount(false, model.listFranchazi.cursor.org_franchazi_id);
             whModuleAdmin.initItemsForFranchazi(model.listFranchazi.cursor.org_franchazi_id);
-            model.save();
             model.requery();
         }
     }//GEN-LAST:event_btnAddActionPerformed
