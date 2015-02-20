@@ -25,14 +25,14 @@ function BonusModule() {
                         client_bonus_category: aBonusCategory
                     });
                 } else {
-                    model.qBonusRateForItemsEdit.cursor.bonus_rate = aBonusRate;
-                    model.qBonusRateForItemsEdit.cursor.trade_item = model.qGetItem.cursor.wh_items_id;
-                    model.qBonusRateForItemsEdit.cursor.client_bonus_category = aBonusCategory;
+                    model.qBonusCountForTradeItem.cursor.bonus_rate = aBonusRate;
+                    model.qBonusCountForTradeItem.cursor.trade_item = model.qGetItem.cursor.wh_items_id;
+                    model.qBonusCountForTradeItem.cursor.client_bonus_category = aBonusCategory;
                 }
             }
         } else {
             if (session.getUserRole() === "admin") {
-                model.qBonusCountForTradeItem.push({
+                model.qBonusRateForItemsEdit.push({
                     bonus_rate: aBonusRate,
                     type_id: aTypeId,
                     client_bonus_category: aBonusCategory
@@ -43,19 +43,19 @@ function BonusModule() {
     };
 
     self.clearBonusRate = function(anItemId, aTypeId) {
-        model.qBonusCountForTradeItem.params.trade_item = anItemId;
-        model.qBonusCountForTradeItem.params.trade_type = aTypeId;
+        model.qBonusRateForItemsEdit.params.trade_item = anItemId;
+        model.qBonusRateForItemsEdit.params.trade_type = aTypeId;
         model.qGetItem.params.item_id = anItemId;
         model.requery();
-        if (!model.qGetItem.empty && !aTypeId && !model.qBonusCountForTradeItem.empty) {
+        if (!model.qGetItem.empty && !aTypeId && !model.qBonusRateForItemsEdit.empty) {
             if (model.qGetItem.cursor.franchazi_id == session.getFranchazi() || session.getUserRole() === "admin") {
-                while (!model.qBonusCountForTradeItem.empty)
-                    model.qBonusCountForTradeItem.deleteRow();
+                while (!model.qBonusRateForItemsEdit.empty)
+                    model.qBonusRateForItemsEdit.deleteRow();
             }
         } else {
-            if (session.getUserRole() === "admin" && !model.qBonusCountForTradeItem.empty) {
-                while (!model.qBonusCountForTradeItem.empty)
-                    model.qBonusCountForTradeItem.deleteRow();
+            if (session.getUserRole() === "admin" && !model.qBonusRateForItemsEdit.empty) {
+                while (!model.qBonusRateForItemsEdit.empty)
+                    model.qBonusRateForItemsEdit.deleteRow();
             }
         }
         model.save();
