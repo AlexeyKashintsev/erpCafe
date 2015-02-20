@@ -2,18 +2,17 @@
   <parameters>
     <parameter description="" name="item_id" nullable="true" parameterMode="1" precision="0" scale="0" selectionForm="null" signed="true" size="0" type="2" typeName="NUMERIC"/>
     <parameter description="" name="color" nullable="true" parameterMode="1" precision="0" scale="0" selectionForm="null" signed="true" size="100" type="12" typeName="VARCHAR"/>
+    <parameter description="" name="trade_pont" nullable="true" parameterMode="1" precision="0" scale="0" selectionForm="null" signed="true" size="0" type="2" typeName="NUMERIC"/>
   </parameters>
   <parametersEntity entityHeight="200" entityIconified="false" entityLocationX="12" entityLocationY="12" entityWidth="150"/>
   <entity Name="qGetColors" Title="" entityHeight="200" entityIconified="false" entityId="142234950682488" entityLocationX="652" entityLocationY="20" entityWidth="150" queryId="qGetColors" tableName="" tableSchemaName=""/>
   <entity Name="qTradeItemsOnTP" Title="" entityHeight="200" entityIconified="false" entityId="142227671507887" entityLocationX="441" entityLocationY="21" entityWidth="150" queryId="qTradeItemsOnTP" tableName="" tableSchemaName=""/>
   <entity Name="qContents" Title="" entityHeight="200" entityIconified="false" entityId="142124353205970" entityLocationX="245" entityLocationY="24" entityWidth="150" queryId="qContents" tableName="" tableSchemaName=""/>
   <entity Name="itemType" Title="" entityHeight="200" entityIconified="false" entityId="142314867474985" entityLocationX="25" entityLocationY="236" entityWidth="150" queryId="itemType" tableName="" tableSchemaName=""/>
-  <relation leftEntityId="-1" leftEntityParameterName="item_id" rightEntityId="142124353205970" rightEntityParameterName="trade_item_id"/>
-  <relation leftEntityId="-1" leftEntityParameterName="item_id" rightEntityId="142227671507887" rightEntityParameterName="item_id"/>
+  <referenceRelation leftEntityFieldName="wh_item" leftEntityId="142124353205970" rightEntityFieldName="wh_items_id" rightEntityId="142124353205970"/>
   <referenceRelation leftEntityFieldName="color" leftEntityId="142227671507887" rightEntityFieldName="misc_colors_id" rightEntityId="142234950682488"/>
   <referenceRelation leftEntityFieldName="parent_type" leftEntityId="142314867474985" rightEntityFieldName="wh_item_types_id" rightEntityId="142314867474985"/>
   <referenceRelation leftEntityFieldName="item_id" leftEntityId="142227671507887" rightEntityFieldName="wh_items_id" rightEntityId="142124353205970"/>
-  <referenceRelation leftEntityFieldName="wh_item" leftEntityId="142124353205970" rightEntityFieldName="wh_items_id" rightEntityId="142124353205970"/>
   <referenceRelation leftEntityFieldName="trade_item" leftEntityId="142124353205970" rightEntityFieldName="wh_items_id" rightEntityId="142124353205970"/>
   <referenceRelation leftEntityFieldName="item_type" leftEntityId="142124353205970" rightEntityFieldName="wh_item_types_id" rightEntityId="142314867474985"/>
 </datamodel>

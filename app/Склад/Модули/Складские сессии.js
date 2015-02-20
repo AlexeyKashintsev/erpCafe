@@ -161,7 +161,6 @@ function WhSessionModule() {
      * Добавление товаров на склад
      */
     self.whMovement = function(anItems, aMovementType, aSession) {
-        Logger.info('Складское движение!');
         if (aSession)
             setParams(null, aSession);
         
@@ -197,6 +196,8 @@ function WhSessionModule() {
     
     /*
      * Инициализация товаров по торговой точке
+     * Если в прошлой сессии нет данных по товару, то устанавливается 0 
+     * в качестве начального значения
      * @param {type} aSessionId
      * @returns {undefined}
      */
@@ -209,18 +210,20 @@ function WhSessionModule() {
             }
         }
         
-        if (!!aStartValues && aStartValues !== {}) {
-            model.itemsByTP.beforeFirst();
-            while (model.itemsByTP.next()) {
-                model.querySessionBalance.insert(
-                        model.querySessionBalance.schema.session_id, model.params.session_id,
-                        model.querySessionBalance.schema.item_id, model.itemsByTP.cursor.item_id
-                    );
-                model.querySessionBalance.cursor.start_value = aStartValues[model.querySessionBalance.cursor.item_id];
-            }
-            return true;
-        } else
-            return false;
+        if (!aStartValues) 
+            aStartValues = [];
+        model.itemsByTP.beforeFirst();
+        model.itemsByTP.forEach(function(cursor) {
+            var startValue = aStartValues[cursor.item_id] ? aStartValues[cursor.item_id] : 0;
+            model.querySessionBalance.push({
+                    session_id: model.params.session_id,
+                    item_id: cursor.item_id,
+                    start_value: startValue
+            });
+        });
+        return true;
+//        } else
+//            return false;
     }
 
 
@@ -234,12 +237,9 @@ function WhSessionModule() {
         var values = {};
         model.querySessionBalance.params.session_id = aSession;
         model.querySessionBalance.requery();
-        model.querySessionBalance.beforeFirst();
-        while (model.querySessionBalance.next()) {
-            values[model.querySessionBalance.cursor.item_id] = aEndValue ?
-                    model.querySessionBalance.cursor.end_value
-                    : model.querySessionBalance.cursor.start_value;
-        }
+        model.querySessionBalance.forEach(function(cursor) {
+            values[cursor.item_id] = aEndValue ? cursor.end_value : cursor.start_value;
+        });
         return values;
     }
 }

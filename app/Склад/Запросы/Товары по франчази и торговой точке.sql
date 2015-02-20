@@ -13,4 +13,5 @@ From trade_items_on_tp t
  Inner Join wh_item_types t1 on t2.item_type = t1.wh_item_types_id
  Where :trade_point_id = t.trade_point_id
  and (:franchazi_id is null or :franchazi_id = t2.franchazi_id)
+ and t.wh_item = true
 order by t2.item_name

@@ -33,13 +33,6 @@ function ItemSettings(aTradeItemId) {
         form.close(true);
     }//GEN-LAST:event_btnSaveActionPerformed
 
-    function btnDelActionPerformed(evt) {//GEN-FIRST:event_btnDelActionPerformed
-        model.save();
-        itemCard.save();
-        contentTradeItem.save();
-        form.close(true);
-    }//GEN-LAST:event_btnDelActionPerformed
-
     function btnCancelActionPerformed(evt) {//GEN-FIRST:event_btnCancelActionPerformed
         form.close(false);
     }//GEN-LAST:event_btnCancelActionPerformed

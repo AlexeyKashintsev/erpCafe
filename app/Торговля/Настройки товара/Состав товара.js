@@ -59,6 +59,8 @@ function formWindowClosing(evt) {//GEN-FIRST:event_formWindowClosing
                     wh_item: aResult
                 });
             }
+            model.save();
+            model.requery();
         });
     }//GEN-LAST:event_btnAddActionPerformed
 

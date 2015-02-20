@@ -32,4 +32,15 @@ function ItemCostForm() {
             model.qPriceTypeForTradeItem.requery();
         });
     };
+    
+    self.getCosts = function() {
+        var costs = [];
+        model.qPriceTypeForTradeItem.forEach(function(aCursor) {
+            if (!aCursor.item_cost)
+                costs[aCursor.trade_price_types_id] = 0;
+            else
+                costs[aCursor.trade_price_types_id] = aCursor.item_cost;
+        });
+        return costs;
+    };
 }

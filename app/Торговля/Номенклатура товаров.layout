@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?><layout defaultCloseOperation="2" name="Form" prefHeight="514px" prefWidth="874px">
+  <widget floatable="false" name="toolBar" parent="Form" prefHeight="36px" prefWidth="564px" rollover="true" type="ToolbarDesignInfo">
+    <constraints height="36px" left="312px" top="0px" type="MarginConstraintsDesignInfo" width="564px"/>
+  </widget>
+  <widget actionPerformed="btnAddActionPerformed" focusable="false" horizontalTextPosition="0" icon="icons/22x22/actions/list-add.png" name="btnAdd" parent="toolBar" prefHeight="26px" prefWidth="34px" toolTipText="Добавить" type="ButtonDesignInfo" verticalTextPosition="3"/>
+  <widget actionPerformed="btnDelActionPerformed" focusable="false" horizontalTextPosition="0" icon="icons/22x22/actions/list-remove.png" name="btnDel" parent="toolBar" prefHeight="26px" prefWidth="34px" toolTipText="Удалить" type="ButtonDesignInfo" verticalTextPosition="3"/>
+  <widget actionPerformed="btnSaveActionPerformed" focusable="false" horizontalTextPosition="0" icon="icons/22x22/actions/document-save.png" name="btnSave" parent="toolBar" prefHeight="26px" prefWidth="34px" type="ButtonDesignInfo" verticalTextPosition="3"/>
+  <widget actionPerformed="btnReqActionPerformed" focusable="false" horizontalTextPosition="0" icon="icons/22x22/actions/new-view-refresh.png" name="btnReq" parent="toolBar" prefHeight="26px" prefWidth="34px" toolTipText="Обновить" type="ButtonDesignInfo" verticalTextPosition="3"/>
+  <widget actionPerformed="btnItemEditContentActionPerformed" focusable="false" horizontalTextPosition="4" icon="icons/22x22/actions/manilla-document-open.png" name="btnItemEditContent" parent="toolBar" prefHeight="26px" prefWidth="34px" toolTipText="Состав товара" type="ButtonDesignInfo" verticalTextPosition="3"/>
+  <widget floatable="false" name="toolBar1" parent="Form" prefHeight="36px" prefWidth="324px" rollover="true" type="ToolbarDesignInfo">
+    <constraints height="36px" left="0px" top="0px" type="MarginConstraintsDesignInfo" width="324px"/>
+  </widget>
+  <widget actionPerformed="btnConfigureTypesActionPerformed" focusable="false" horizontalTextPosition="0" icon="icons/22x22/actions/mail-forward.png" name="btnConfigureTypes" parent="toolBar1" prefHeight="26px" prefWidth="34px" toolTipText="Добавить" type="ButtonDesignInfo" verticalTextPosition="3"/>
+  <widget name="modelGrid1" parent="Form" prefHeight="440px" prefWidth="564px" type="DbGridDesignInfo">
+    <column name="column1" title="Название">
+      <headerStyle>
+        <nativeFont name="Tahoma" size="11"/>
+      </headerStyle>
+      <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
+      <datamodelElement entityId="142323580370955" fieldName="item_name"/>
+      <columnsDatasource/>
+      <columnsDisplayField/>
+      <cellsDatasource/>
+      <cellDesignInfo>
+        <rowsKeyField/>
+        <columnsKeyField/>
+        <cellValueField/>
+      </cellDesignInfo>
+    </column>
+    <column name="column2" title="Состав">
+      <headerStyle>
+        <nativeFont name="Tahoma" size="11"/>
+      </headerStyle>
+      <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
+      <datamodelElement entityId="142323580370955" fieldName="contents"/>
+      <columnsDatasource/>
+      <columnsDisplayField/>
+      <cellsDatasource/>
+      <cellDesignInfo>
+        <rowsKeyField/>
+        <columnsKeyField/>
+        <cellValueField/>
+      </cellDesignInfo>
+    </column>
+    <rowsColumnsDesignInfo>
+      <rowsDatasource entityId="142323580370955" field="false"/>
+    </rowsColumnsDesignInfo>
+    <treeDesignInfo/>
+    <constraints bottom="38px" left="312px" right="-2px" top="36px" type="MarginConstraintsDesignInfo"/>
+  </widget>
+  <widget deletable="false" editable="false" insertable="false" name="modelGrid" parent="Form" prefHeight="440px" prefWidth="312px" type="DbGridDesignInfo">
+    <column name="column" title="Тип товара">
+      <headerStyle>
+        <nativeFont name="Tahoma" size="11"/>
+      </headerStyle>
+      <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
+      <datamodelElement entityId="142323168771995" fieldName="type_description"/>
+      <columnsDatasource/>
+      <columnsDisplayField/>
+      <cellsDatasource/>
+      <cellDesignInfo>
+        <rowsKeyField/>
+        <columnsKeyField/>
+        <cellValueField/>
+      </cellDesignInfo>
+    </column>
+    <rowsColumnsDesignInfo>
+      <rowsDatasource entityId="142323168771995" field="false"/>
+    </rowsColumnsDesignInfo>
+    <treeDesignInfo>
+      <unaryLinkField entityId="142323168771995" fieldName="parent_type"/>
+    </treeDesignInfo>
+    <constraints bottom="38px" left="0px" top="36px" type="MarginConstraintsDesignInfo" width="312px"/>
+  </widget>
+  <layout type="MarginLayoutDesignInfo"/>
+</layout>

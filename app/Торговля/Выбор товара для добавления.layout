@@ -4,19 +4,19 @@
   </widget>
   <widget deletable="false" editable="false" insertable="false" mouseClicked="modelGridMouseClicked" name="modelGrid" parent="Form" prefHeight="300px" prefWidth="276px" type="DbGridDesignInfo">
     <column name="Тип товара">
+      <headerStyle>
+        <nativeFont name="Tahoma" size="11"/>
+      </headerStyle>
       <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
+      <datamodelElement entityId="141882836911917" fieldName="type_description"/>
       <columnsDatasource/>
       <columnsDisplayField/>
       <cellsDatasource/>
       <cellDesignInfo>
+        <rowsKeyField/>
         <columnsKeyField/>
         <cellValueField/>
-        <rowsKeyField/>
       </cellDesignInfo>
-      <headerStyle>
-        <nativeFont name="Tahoma" size="11"/>
-      </headerStyle>
-      <datamodelElement entityId="141882836911917" fieldName="type_description"/>
     </column>
     <rowsColumnsDesignInfo>
       <rowsDatasource entityId="141882836911917" field="false"/>
@@ -28,19 +28,19 @@
   </widget>
   <widget deletable="false" editable="false" insertable="false" mouseClicked="modelGrid1MouseClicked" name="modelGrid1" parent="Form" prefHeight="300px" prefWidth="480px" type="DbGridDesignInfo">
     <column name="Товар">
+      <headerStyle>
+        <nativeFont name="Tahoma" size="11"/>
+      </headerStyle>
       <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
+      <datamodelElement entityId="142348542547543" fieldName="item_name"/>
       <columnsDatasource/>
       <columnsDisplayField/>
       <cellsDatasource/>
       <cellDesignInfo>
+        <rowsKeyField/>
         <columnsKeyField/>
         <cellValueField/>
-        <rowsKeyField/>
       </cellDesignInfo>
-      <headerStyle>
-        <nativeFont name="Tahoma" size="11"/>
-      </headerStyle>
-      <datamodelElement entityId="142348542547543" fieldName="item_name"/>
     </column>
     <rowsColumnsDesignInfo>
       <rowsDatasource entityId="142348542547543" field="false"/>
@@ -54,18 +54,18 @@
   <widget actionPerformed="btnSearchActionPerformed" name="btnSearch" parent="Form" prefHeight="22px" prefWidth="65px" text="Найти" type="ButtonDesignInfo">
     <constraints height="22px" left="288px" top="36px" type="MarginConstraintsDesignInfo" width="65px"/>
   </widget>
-  <widget actionPerformed="btnCancelActionPerformed" horizontalTextPosition="0" name="btnCancel" parent="Form" prefHeight="36px" prefWidth="96px" text="Отмена" type="ButtonDesignInfo">
+  <widget actionPerformed="btnCancelActionPerformed" horizontalTextPosition="0" name="btnCancel" parent="Form" prefHeight="36px" prefWidth="96px" text="Закрыть" type="ButtonDesignInfo">
     <constraints bottom="5px" height="36px" right="7px" type="MarginConstraintsDesignInfo" width="96px"/>
   </widget>
-  <widget actionPerformed="btnNewItemActionPerformed" name="btnNewItem" parent="Form" prefHeight="23px" prefWidth="155px" text="Создать новый товар" type="ButtonDesignInfo">
-    <constraints height="23px" right="8px" top="36px" type="MarginConstraintsDesignInfo" width="155px"/>
+  <widget actionPerformed="btnNewItemActionPerformed" name="btnNewItem" parent="Form" prefHeight="22px" prefWidth="191px" text="Создать новый товар" type="ButtonDesignInfo">
+    <constraints height="22px" right="8px" top="36px" type="MarginConstraintsDesignInfo" width="191px"/>
   </widget>
   <widget name="tfSearch" parent="Form" prefHeight="23px" prefWidth="276px" type="DbLabelDesignInfo">
     <datamodelElement entityId="-1" fieldName="item_search"/>
     <constraints height="23px" left="12px" right="487px" top="36px" type="MarginConstraintsDesignInfo"/>
   </widget>
-  <widget actionPerformed="buttonActionPerformed" name="button" parent="Form" prefHeight="23px" prefWidth="84px" text="Очистить" type="ButtonDesignInfo">
-    <constraints height="23px" left="360px" top="36px" type="MarginConstraintsDesignInfo" width="84px"/>
+  <widget actionPerformed="buttonActionPerformed" name="button" parent="Form" prefHeight="22px" prefWidth="84px" text="Очистить" type="ButtonDesignInfo">
+    <constraints height="22px" left="360px" top="36px" type="MarginConstraintsDesignInfo" width="84px"/>
   </widget>
   <layout type="MarginLayoutDesignInfo"/>
 </layout>
