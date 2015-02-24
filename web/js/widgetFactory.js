@@ -6,8 +6,8 @@ wf.proto = function() {
     this.show = (function(){$(this.dockElement).show()}).bind(this);
     this.destroy = (function() {
         
-    })
-}
+    });
+};
 
 wf.OrderListPane = function(aContainer) {
     this.elType = "div";
@@ -40,7 +40,7 @@ wf.OrderListPane = function(aContainer) {
     };
 
     this.updateOrderSum(0);
-}
+};
     /**
      * 
      * @param {type} aObject
@@ -71,11 +71,10 @@ wf.OrderItem = function(aObject, aContainer) {
         container.removeChild(divEl);
     };
 
-    divEl.onclick = function() {
-        if (!this.stop)
+    divEl.onclick = function(evt) {
+        var target = evt.target ? evt.target : evt.srcElement;
+        if (!$(target).is('.glyphicon'))
             aObject.increase();
-        else
-            this.stop = false;
     };
 
     btnRemove.onclick = function() {
