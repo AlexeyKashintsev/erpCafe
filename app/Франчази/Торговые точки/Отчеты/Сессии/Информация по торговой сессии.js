@@ -35,7 +35,7 @@ function commonSessionInfo(aContainer) {
         for (var j in items) {
             items[j].value = model.tradeSessionDetails.cursor[j];
             data.push([items[j].title,
-                items[j].value ? (items[j].value + (items[j].def ? items[j].def : "")) : '---']);
+                items[j].value !== null ? (items[j].value + (items[j].def ? items[j].def : "")) : '---']);
         }
         
         grid.setData(data);
