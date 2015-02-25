@@ -12,11 +12,7 @@
   </widget>
   <widget deletable="false" editable="false" insertable="false" mouseClicked="grdTradeItemsMouseClicked" name="grdTradeItems" parent="pnlWorkSpace" prefHeight="318px" prefWidth="372px" type="DbGridDesignInfo">
     <column name="colName" title="Наименование">
-      <headerStyle>
-        <nativeFont name="Lucida Grande" size="13"/>
-      </headerStyle>
       <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
-      <datamodelElement entityId="142303506349188" fieldName="item_name"/>
       <columnsDatasource/>
       <columnsDisplayField/>
       <cellsDatasource/>
@@ -25,6 +21,55 @@
         <columnsKeyField/>
         <cellValueField/>
       </cellDesignInfo>
+      <headerStyle>
+        <nativeFont name="Lucida Grande" size="13"/>
+      </headerStyle>
+      <datamodelElement entityId="142303506349188" fieldName="item_name"/>
+    </column>
+    <column name="colTrade" title="Продажа" width="20">
+      <controlInfo classHint="DbCheckDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
+      <columnsDatasource/>
+      <columnsDisplayField/>
+      <cellsDatasource/>
+      <cellDesignInfo>
+        <rowsKeyField/>
+        <columnsKeyField/>
+        <cellValueField/>
+      </cellDesignInfo>
+      <headerStyle>
+        <nativeFont name="Lucida Grande" size="13"/>
+      </headerStyle>
+      <datamodelElement entityId="142303506349188" fieldName="trade_item"/>
+    </column>
+    <column name="colWarehouse" title="Склад" width="20">
+      <controlInfo classHint="DbCheckDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
+      <columnsDatasource/>
+      <columnsDisplayField/>
+      <cellsDatasource/>
+      <cellDesignInfo>
+        <rowsKeyField/>
+        <columnsKeyField/>
+        <cellValueField/>
+      </cellDesignInfo>
+      <headerStyle>
+        <nativeFont name="Lucida Grande" size="13"/>
+      </headerStyle>
+      <datamodelElement entityId="142303506349188" fieldName="wh_item"/>
+    </column>
+    <column name="column" title="Состав" width="20">
+      <controlInfo classHint="DbCheckDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
+      <columnsDatasource/>
+      <columnsDisplayField/>
+      <cellsDatasource/>
+      <cellDesignInfo>
+        <rowsKeyField/>
+        <columnsKeyField/>
+        <cellValueField/>
+      </cellDesignInfo>
+      <headerStyle>
+        <nativeFont name="Lucida Grande" size="13"/>
+      </headerStyle>
+      <datamodelElement entityId="142303506349188" fieldName="wh_content"/>
     </column>
     <rowsColumnsDesignInfo>
       <rowsDatasource entityId="142303506349188" field="false"/>
