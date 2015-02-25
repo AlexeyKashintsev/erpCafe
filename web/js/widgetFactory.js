@@ -136,7 +136,7 @@ wf.ClientSelector = function(aContainer) {
     this.container = aContainer;
     
     wf.proto.bind(this)();
-}
+};
 
 wf.Table = function(aContainer, aHeader, aData, aTableClass, aHeaderClass, aBodyClass) {
     this.elType = "table";
@@ -165,13 +165,13 @@ wf.Table = function(aContainer, aHeader, aData, aTableClass, aHeaderClass, aBody
                     input.value = aData.value;
                     input.onchange = function() {
                             aData.value = input.value;
-                            aData.onchange(aData)
+                            aData.onchange(aData);
                         };
                 })();
             } else {
                 if ($.isArray(aData) || typeof aData == 'Object') {
                     $(th).addClass('table-container');
-                    createTable(th, aData)
+                    createTable(th, aData);
                 } else {
                     th.innerHTML = aData;
                 }
@@ -179,10 +179,13 @@ wf.Table = function(aContainer, aHeader, aData, aTableClass, aHeaderClass, aBody
         }
         
         function createTable(aContainer, aDataArray) {
+            var prevBody = tbody;
             tbody = cmn.createElement('tbody', null, aContainer, aBodyClass);
             aDataArray.forEach(function(aCursor) {
                 addTableRow(aCursor, tbody);
             });
+            if (prevBody !== null)
+                tbody = prevBody;
         }
         
         function addTableRow(aCursor, aContainer) {
@@ -200,19 +203,21 @@ wf.Table = function(aContainer, aHeader, aData, aTableClass, aHeaderClass, aBody
                     if (j !== 'onclick')
                         applyDataToCell(aCursor[j], tr, j);
         }
-        if (tbody)
-            tbody.innerHTML = '';
+        
+        $(tbody).remove();
+        tbody = null;
         $(loadDiv).remove();
         createTable(this.dockElement, aData);
     }
     
     function loadShow() {
         $(tbody).remove();
+        tbody = null;
         loadDiv = cmn.createElement('div', 'loadDiv', this.dockElement);
     }
     
     if (aData)
-        setData(aData)
+        setData(aData);
     else
         loadShow();
     
