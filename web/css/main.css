@@ -186,7 +186,7 @@ button.typeSelector {
   position: relative;
   border: none;
   box-shadow: 5px 5px 5px rgba(0,0,0,0.5);
-  #background-image: url('http://www.transparenttextures.com/patterns/bedge-grunge.png');
+  background-image: url('../img/dotnoise-light-grey.png');
 }
 
 p.itemType {
@@ -257,7 +257,7 @@ h3.price_desc {
 
 /* ORDER ITEMS */
 .baristaOrder {
-  background-image: url('http://www.transparenttextures.com/patterns/bright-squares.png');
+  background-image: url('../img/bright-squares.png');
 }
 
 .orderItems {
