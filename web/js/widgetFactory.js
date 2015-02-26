@@ -276,7 +276,7 @@ wf.DateTimePeriodPicker = function(aContainer, aSetPeriodFunction) {
         }
         setPeriod(iStart, iEnd);
     };
-}
+};
 
 wf.WidgetList = function(aContainer, aListData, aWidgetConstructor) {
     this.elType = this.elType ? this.elType : "div";
@@ -392,7 +392,7 @@ wf.ButtonGroup = function(aButtons, aContainer, aBtnClass, aFunction, aClass) {
     
     wf.WidgetList.bind(this)(aContainer, aButtons, Button);
     this.dockElement.role = "toolbar";
-    this.setActiveButton = this.setActive;
+    this.setActiveButton = function(anActive) {this.setActive(this.widgList[anActive]);}.bind(this);
 }
 
 /**
