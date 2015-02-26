@@ -86,7 +86,9 @@ function OrderList(aParent, aContainer) {
                     anOrderDetails.orderItems.push({
                         itemId      :   self.orderDetails[i][j].itemId,
                         quantity    :   self.orderDetails[i][j].orderQuantity,
-                        priceType   :   j
+                        priceType   :   j,
+                        price       :   self.orderDetails[i][j].itemCost,
+                        cost        :   self.orderDetails[i][j].orderSum
                     });
                     ic++;
                 }

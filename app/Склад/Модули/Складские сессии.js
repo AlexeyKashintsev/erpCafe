@@ -156,6 +156,40 @@ function WhSessionModule() {
         else
             return false;
     };
+    self.processTradeItems = function(anItems) {
+        var consumption = calculateConsumption(anItems);
+        self.whMovement(consumption, self.WH_PRODUCE_ITEMS);
+    };
+    
+    function calculateConsumption(anItems) {
+        var usedItems = {};
+        for (var id in anItems) {
+            var itemData = model.qTradeItemsOnTP.find(model.qTradeItemsOnTP.schema.item_id, id);
+            if (itemData) {
+                itemData = itemData[0];
+                if (itemData.wh_item) {
+                    if (usedItems[id])
+                        usedItems[id] += anItems[id];
+                    else
+                        usedItems[id] = anItems[id];
+                }
+                if (itemData.wh_content) {
+                    var contentsData = model.qContentsOnTp.find(model.qContentsOnTp.schema.trade_item, id);
+                    var contents = {};
+                    for (var j in contentsData)
+                        contents[contentsData[j].wh_item] = contentsData[j].usage_quantity * anItems[id];
+                    contentsData = calculateConsumption(contents);
+                    for (var j in contentsData) {
+                        if (usedItems[j])
+                            usedItems[j] += contentsData[j];
+                        else
+                            usedItems[j] = contentsData[j];
+                    }
+                }
+            }
+        }
+        return usedItems;
+    };
     
     /*
      * Добавление товаров на склад

@@ -105,45 +105,6 @@ function TradeSessions() {
         });
     }
 
-    /*
-     * Расчет потребления складских позиций
-     * @param {type} anItemId
-     * @param {type} aQuantity
-     * @returns {Array}
-     */
-    function WhItemsConsumption(anItemId, aQuantity, aTradeOperationId) {
-        var WhItemsConsump = [];
-        var empty = true;
-        model.qContents.params.trade_item_id = anItemId;
-        model.qContents.execute();
-        model.qContents.beforeFirst();
-        while (model.qContents.next()) {
-            empty = false;
-            if (WhItemsConsump[model.qContents.cursor.wh_item]) {
-                WhItemsConsump[model.qContents.cursor.wh_item] += model.qContents.cursor.usage_quantity * aQuantity;
-            } else {
-                WhItemsConsump[model.qContents.cursor.wh_item] = model.qContents.cursor.usage_quantity * aQuantity;
-            }
-        }
-        if (!empty)
-            try {
-                whSession.whMovement(WhItemsConsump, whSession.WH_PRODUCE_ITEMS);
-            } catch (e) {
-                ep.addEvent('errorAddTradeOperation', {
-                    desk: 'Ошибка при добавлении расхода товара на склад(er#tr108)',
-                    opID: aTradeOperationId,
-                    iID: anItemId
-                });
-            }
-        else {
-            ep.addEvent('errorAddTradeOperation', {
-                desk: 'Не указан состав товара(er#tr115)',
-                opID: aTradeOperationId,
-                iID: anItemId
-            });
-        }
-    }
-
     function getTradeItemsByTradePointWithCostAndBonuses(){
         model.tradeItemsByTPwCost.params.actual_date = new Date();
         //model.tradeItemsByTradePointWithCost.params.franchazi_id = session.getFranchazi();
@@ -175,7 +136,10 @@ function TradeSessions() {
                                             anOrderItem.quantity,
                                             anOrderItem.priceType);
 
-            WhItemsConsumption(anOrderItem.itemId, anOrderItem.quantity);
+            //WhItemsConsumption(anOrderItem.itemId, anOrderItem.quantity);
+            var cons = {};
+            cons[anOrderItem.itemId] = anOrderItem.quantity;
+            whSession.processTradeItems(cons);
         } else {
             ep.addEvent('errorAddTradeOperation', {
                 desk: 'Не указано количество или ID товара(er#170)',
@@ -207,14 +171,6 @@ function TradeSessions() {
     self.processOrder = function(anOrderDetails) {
         var client = false;
         getCurrentSession();
-//        if (!model.params.session_id) {
-//            getCurrentSession();
-//        }
-
-       /* if (!checkOrderSum(anOrderDetails.orderItems, anOrderDetails.orderSum)) {
-            ep.addEvent('sumDifference', {client: anOrderDetails, server: ServerSum});
-            return 1;
-        }*/
 
         if (anOrderDetails.clientData)
             client = clientModule.getClientDataByPhone(anOrderDetails.clientData.phone);

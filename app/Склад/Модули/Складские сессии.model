@@ -4,19 +4,28 @@
     <parameter description="" name="session_id" nullable="true" parameterMode="1" precision="0" scale="0" selectionForm="null" signed="true" size="0" type="2" typeName="NUMERIC"/>
   </parameters>
   <parametersEntity entityHeight="200" entityIconified="false" entityLocationX="12" entityLocationY="12" entityWidth="150"/>
-  <entity Name="updateItems" Title="" entityHeight="232" entityIconified="false" entityId="140559598452805" entityLocationX="745" entityLocationY="14" entityWidth="150" queryId="updateItems" tableName="" tableSchemaName=""/>
   <entity Name="queryMovements" Title="" entityHeight="200" entityIconified="false" entityId="140558094552687" entityLocationX="206" entityLocationY="226" entityWidth="171" queryId="queryMovements" tableName="" tableSchemaName=""/>
+  <entity Name="updateItems" Title="" entityHeight="232" entityIconified="false" entityId="140559598452805" entityLocationX="745" entityLocationY="14" entityWidth="150" queryId="updateItems" tableName="" tableSchemaName=""/>
   <entity Name="itemsByTP" Title="" entityHeight="200" entityIconified="false" entityId="140549955021843" entityLocationX="14" entityLocationY="220" entityWidth="150" queryId="itemsByTP" tableName="" tableSchemaName=""/>
+  <entity Name="qContentsOnTp" Title="" entityHeight="106" entityIconified="false" entityId="142494731518510" entityLocationX="466" entityLocationY="316" entityWidth="150" queryId="qContentsOnTp" tableName="" tableSchemaName=""/>
   <entity Name="querySessionBalance" Title="" entityHeight="200" entityIconified="false" entityId="140549953114953" entityLocationX="459" entityLocationY="12" entityWidth="224" queryId="querySessionBalance" tableName="" tableSchemaName=""/>
-  <entity Name="qLastClosedSessionOnTradePoint" Title="" entityHeight="200" entityIconified="false" entityId="141104450811143" entityLocationX="473" entityLocationY="232" entityWidth="150" queryId="qLastClosedSessionOnTradePoint" tableName="" tableSchemaName=""/>
+  <entity Name="qTradeItemsOnTP" Title="" entityHeight="200" entityIconified="false" entityId="142495291970116" entityLocationX="31" entityLocationY="429" entityWidth="150" queryId="qTradeItemsOnTP" tableName="" tableSchemaName=""/>
+  <entity Name="qLastClosedSessionOnTradePoint" Title="" entityHeight="65" entityIconified="false" entityId="141104450811143" entityLocationX="473" entityLocationY="232" entityWidth="150" queryId="qLastClosedSessionOnTradePoint" tableName="" tableSchemaName=""/>
   <entity Name="qDeleteRevision" Title="" entityHeight="57" entityIconified="false" entityId="141278085885112" entityLocationX="660" entityLocationY="297" entityWidth="150" queryId="qDeleteRevision" tableName="" tableSchemaName=""/>
   <entity Name="qOpenedSession" Title="" entityHeight="200" entityIconified="false" entityId="140560208256658" entityLocationX="206" entityLocationY="10" entityWidth="198" queryId="queryOpenedSession" tableName="" tableSchemaName=""/>
+  <relation leftEntityId="-1" leftEntityParameterName="trade_point_id" rightEntityId="140549955021843" rightEntityParameterName="trade_point_id"/>
+  <relation leftEntityId="-1" leftEntityParameterName="trade_point_id" rightEntityId="142495291970116" rightEntityParameterName="trade_point"/>
   <relation leftEntityId="-1" leftEntityParameterName="trade_point_id" rightEntityId="140560208256658" rightEntityParameterName="trade_point_id"/>
   <relation leftEntityId="-1" leftEntityParameterName="trade_point_id" rightEntityId="141104450811143" rightEntityParameterName="trade_point_id"/>
+  <relation leftEntityId="-1" leftEntityParameterName="trade_point_id" rightEntityId="142494731518510" rightEntityParameterName="trade_point_id"/>
   <relation leftEntityId="-1" leftEntityParameterName="session_id" rightEntityId="140560208256658" rightEntityParameterName="session_id"/>
-  <relation leftEntityId="-1" leftEntityParameterName="trade_point_id" rightEntityId="140549955021843" rightEntityParameterName="trade_point_id"/>
   <referenceRelation leftEntityFieldName="session_id" leftEntityId="140558094552687" rightEntityFieldName="org_session_id" rightEntityId="141104450811143"/>
-  <referenceRelation leftEntityFieldName="session_id" leftEntityId="140558094552687" rightEntityFieldName="org_session_id" rightEntityId="140560208256658"/>
+  <referenceRelation leftEntityFieldName="session_id" leftEntityId="140559598452805" rightEntityFieldName="org_session_id" rightEntityId="140560208256658"/>
+  <referenceRelation leftEntityFieldName="session_id" leftEntityId="140559598452805" rightEntityFieldName="session_id" rightEntityId="140559598452805"/>
+  <referenceRelation leftEntityFieldName="session_id" leftEntityId="140549953114953" rightEntityFieldName="session_id" rightEntityId="140559598452805"/>
   <referenceRelation leftEntityFieldName="session_id" leftEntityId="140549953114953" rightEntityFieldName="org_session_id" rightEntityId="141104450811143"/>
+  <referenceRelation leftEntityFieldName="session_id" leftEntityId="140558094552687" rightEntityFieldName="session_id" rightEntityId="140559598452805"/>
   <referenceRelation leftEntityFieldName="session_id" leftEntityId="140549953114953" rightEntityFieldName="org_session_id" rightEntityId="140560208256658"/>
+  <referenceRelation leftEntityFieldName="session_id" leftEntityId="140558094552687" rightEntityFieldName="org_session_id" rightEntityId="140560208256658"/>
+  <referenceRelation leftEntityFieldName="session_id" leftEntityId="140559598452805" rightEntityFieldName="org_session_id" rightEntityId="141104450811143"/>
 </datamodel>
