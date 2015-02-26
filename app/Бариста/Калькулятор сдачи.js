@@ -11,6 +11,7 @@ function CashBackCalculator(aParent, aContainer) {
     var canSell = false;
     var btnsSumEnabled = true;
     self.shown = false;
+    var kln;
     
     var container = cmn.createElement('div', 'cash_calculator', aContainer ? aContainer : 'mainArea');
     $( ".cash_calculator" ).disableSelection();
@@ -53,11 +54,17 @@ function CashBackCalculator(aParent, aContainer) {
     }
     render();
     
+    function processKeyPress(aKeyEvt) {
+        var key = !aKeyEvt.char ? (aKeyEvt.keyCode === 13 ? 'Оплата' : 'C') : aKeyEvt.char;
+        buttonClick(key); 
+    };
+    
     self.show = function() {
         $('.calc').removeClass('disabled');
         $( ".cash_calculator" ).show();
         canSell = true;
         self.shown = true;
+        kln = kl.addAction(processKeyPress, true);
     };
     
     self.hide = function() {
@@ -71,6 +78,7 @@ function CashBackCalculator(aParent, aContainer) {
         spmBtnGrp.setActiveButton(selectedMethod);
         self.shown = false;
         $( ".cash_calculator" ).hide();
+        kl.delAction(kln);
     };
     
     var selectedMethod = 0;

@@ -19,11 +19,20 @@ function ItemsSelector(aContainer, aParent, aTradePoint, anActualDate) {
     var items_body = cmn.createElement('div', 'items_select row', aContainer);
     
     var trade_items = {};
+    var bar_codes = {};
+    
+    self.barCodeEnter = function(aBarcode) {
+        if (bar_codes[aBarcode])
+            trade_items[bar_codes[aBarcode]].addToOrder();
+        else
+            new Alerter(null, "alert-danger", "Товар по коду не найден!", true, 3000);
+    };
     
     self.setOperationMode = function(aMode) {
         self.mode = aMode;
         switch (aMode) {
             case (self.modes.SETUP) : {
+                bcp.listen = false;
                 if (!addItemWidget)
                     addItemWidget = new TradeItemAdd(self, items_body);
                 addItemWidget.show();
@@ -31,6 +40,7 @@ function ItemsSelector(aContainer, aParent, aTradePoint, anActualDate) {
                 break;
             }
             case (self.modes.TRADE) : {
+                bcp.listen = true;
                 if (addItemWidget)
                     addItemWidget.hide();
                 self.setSortable(false);
@@ -71,6 +81,8 @@ function ItemsSelector(aContainer, aParent, aTradePoint, anActualDate) {
     model.tradeItemsCostByTP.params.actual_date = anActualDate ? anActualDate : new Date();
     model.tradeItemsCostByTP.requery(function() {
         model.tradeItemsCostByTP.forEach(function(aTIData) {
+            if (aTIData.bar_code)
+                bar_codes[aTIData.bar_code] = aTIData.item_id;
             if (!trade_items[aTIData.item_id])
                 trade_items[aTIData.item_id] = new TradeItem(aTIData, self, items_body);
             else
@@ -79,4 +91,5 @@ function ItemsSelector(aContainer, aParent, aTradePoint, anActualDate) {
         self.setActivePrice(10);
         getSort();
     });
+    bcp.ti = self;
 }

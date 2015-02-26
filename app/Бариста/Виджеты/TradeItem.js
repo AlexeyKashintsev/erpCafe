@@ -28,7 +28,7 @@ function TradeItem(anItemData, aParent, aContainer) {
     this.setAdditionalData = function(aData) {
         this.setCost(aData.price_type, aData.item_cost);
     };
-
+    
     function addToOrder() {
         if (costs[priceTypeSel]) {
             if (!this.data.item_measure || this.data.item_measure == 'шт' || this.data.item_measure == '-') {
@@ -40,7 +40,8 @@ function TradeItem(anItemData, aParent, aContainer) {
             //TODO Ошибка - данный товар проверять нельзя по выбранной цене
         }
     }
-
+    this.addToOrder = addToOrder;
+    
     function settingsShow() {
         aParent.itemSettingsAndCost.setTradeItem(this.data.item_id);
         aParent.itemSettingsAndCost.showModal();
