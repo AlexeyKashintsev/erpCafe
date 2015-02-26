@@ -18,18 +18,18 @@
     <constraints height="192px" right="23px" top="12px" type="MarginConstraintsDesignInfo" width="204px"/>
   </widget>
   <widget name="mcType" parent="Form" prefHeight="20px" prefWidth="260px" type="DbComboDesignInfo">
-    <valueField entityId="141882721078197" fieldName="wh_item_types_id"/>
     <displayField entityId="141882721078197" fieldName="type_description"/>
+    <valueField entityId="141882721078197" fieldName="wh_item_types_id"/>
     <datamodelElement entityId="141883094763783" fieldName="item_type"/>
     <constraints height="20px" left="84px" right="239px" top="84px" type="MarginConstraintsDesignInfo"/>
   </widget>
   <widget name="mcMeasure" parent="Form" prefHeight="20px" prefWidth="260px" type="DbComboDesignInfo">
-    <valueField entityId="141882722753056" fieldName="wh_measures_id"/>
     <displayField entityId="141882722753056" fieldName="measure_desc"/>
+    <valueField entityId="141882722753056" fieldName="wh_measures_id"/>
     <datamodelElement entityId="141883094763783" fieldName="item_measure"/>
     <constraints height="20px" left="84px" right="239px" top="120px" type="MarginConstraintsDesignInfo"/>
   </widget>
-  <widget name="tfBarCode" parent="Form" prefHeight="20px" prefWidth="116px" type="DbLabelDesignInfo">
+  <widget focusLost="tfBarCodeFocusLost" keyPressed="tfBarCodeKeyPressed" name="tfBarCode" parent="Form" prefHeight="20px" prefWidth="116px" type="DbLabelDesignInfo">
     <datamodelElement entityId="141883094763783" fieldName="bar_code"/>
     <constraints height="20px" left="84px" right="383px" top="13px" type="MarginConstraintsDesignInfo"/>
   </widget>
