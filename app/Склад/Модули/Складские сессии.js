@@ -246,8 +246,8 @@ function WhSessionModule() {
         
         if (!aStartValues) 
             aStartValues = [];
-        model.itemsByTP.beforeFirst();
-        model.itemsByTP.forEach(function(cursor) {
+        model.qWhItemsOnTP.beforeFirst();
+        model.qWhItemsOnTP.forEach(function(cursor) {
             var startValue = aStartValues[cursor.item_id] ? aStartValues[cursor.item_id] : 0;
             model.querySessionBalance.push({
                     session_id: model.params.session_id,

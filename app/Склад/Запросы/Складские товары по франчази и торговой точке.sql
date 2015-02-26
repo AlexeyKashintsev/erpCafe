@@ -1,7 +1,7 @@
 /**
  * 
  * @author mike
- * @name itemsByTP
+ * @name qWhItemsOnTP
  * @public
  * @readonly
  */ 

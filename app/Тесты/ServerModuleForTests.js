@@ -39,11 +39,11 @@ function ServerModuleForTests() {
     
     self.getItemsFromTradePoint = function(aTP){
         var out = [];
-        model.itemsByTP.params.trade_point_id = aTP;
-        model.itemsByTP.requery();
-        model.itemsByTP.beforeFirst();
-        while (model.itemsByTP.next()){
-            out[model.itemsByTP.cursor.item_id] = 100;
+        model.qWhItemsOnTP.params.trade_point_id = aTP;
+        model.qWhItemsOnTP.requery();
+        model.qWhItemsOnTP.beforeFirst();
+        while (model.qWhItemsOnTP.next()){
+            out[model.qWhItemsOnTP.cursor.item_id] = 100;
         }
         return out;
     };

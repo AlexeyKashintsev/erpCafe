@@ -17,10 +17,10 @@ function RevisionForm() {
         self.session_id = whSessionModule.createSession(false, true);
         self.items = whSessionModule.getCurrentStartValues();
         console.log(self.items);
-        if (!model.itemsByTP.empty) {
-            model.itemsByTP.beforeFirst();
-            while (model.itemsByTP.next()) {
-                model.itemsByTP.cursor.start_value = self.items[model.itemsByTP.cursor.item_id];
+        if (!model.qWhItemsOnTP.empty) {
+            model.qWhItemsOnTP.beforeFirst();
+            while (model.qWhItemsOnTP.next()) {
+                model.qWhItemsOnTP.cursor.start_value = self.items[model.qWhItemsOnTP.cursor.item_id];
             }
         }
     };
@@ -36,12 +36,12 @@ function RevisionForm() {
     }//GEN-LAST:event_formWindowOpened
 
     function btnMakeRevisionActionPerformed(evt) {//GEN-FIRST:event_btnMakeRevisionActionPerformed
-        model.itemsByTP.beforeFirst();
-        while (model.itemsByTP.next()) {
-            if(model.itemsByTP.cursor.end_value){
-                self.end_items[model.itemsByTP.cursor.item_id] = model.itemsByTP.cursor.end_value;
+        model.qWhItemsOnTP.beforeFirst();
+        while (model.qWhItemsOnTP.next()) {
+            if(model.qWhItemsOnTP.cursor.end_value){
+                self.end_items[model.qWhItemsOnTP.cursor.item_id] = model.qWhItemsOnTP.cursor.end_value;
             } else {
-                self.end_items[model.itemsByTP.cursor.item_id] = model.itemsByTP.cursor.start_value;
+                self.end_items[model.qWhItemsOnTP.cursor.item_id] = model.qWhItemsOnTP.cursor.start_value;
             }
         }
         console.log(self.end_items);
@@ -58,15 +58,15 @@ function RevisionForm() {
         }
     }//GEN-LAST:event_formWindowClosing
 
-    function itemsByTPOnRequeried(evt) {//GEN-FIRST:event_itemsByTPOnRequeried
+    function qWhItemsOnTPOnRequeried(evt) {//GEN-FIRST:event_qWhItemsOnTPOnRequeried
         //Logger.info('!!!');
         if (!self.items.empty) {
-            model.itemsByTP.beforeFirst();
-            while (model.itemsByTP.next()) {
-                model.itemsByTP.cursor.start_value = self.items[model.itemsByTP.cursor.item_id];
+            model.qWhItemsOnTP.beforeFirst();
+            while (model.qWhItemsOnTP.next()) {
+                model.qWhItemsOnTP.cursor.start_value = self.items[model.qWhItemsOnTP.cursor.item_id];
             }
         }
-    }//GEN-LAST:event_itemsByTPOnRequeried
+    }//GEN-LAST:event_qWhItemsOnTPOnRequeried
 
     function btnCancelActionPerformed(evt) {//GEN-FIRST:event_btnCancelActionPerformed
         if(self.session_id){

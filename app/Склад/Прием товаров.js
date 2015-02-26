@@ -39,7 +39,7 @@ function itemCostChange(anItemData) {
 
 function fillGrid() {
     var items = [];
-    model.itemsByTP.forEach(function(anItem) {
+    model.qWhItemsOnTP.forEach(function(anItem) {
         items.push([anItem.item_name, 
             {id: anItem.item_id, editable: true, value: null, onchange: itemValueChange}, ''
             //{id: anItem.item_id, editable: true, value: null, onchange: itemCostChange}
@@ -62,7 +62,7 @@ function proceed() {
 }
 
 function cancel() {
-    model.itemsByTP.requery();
+    model.qWhItemsOnTP.requery();
 }
 
 self.setTradePoint = function(aTradePointId) {
@@ -74,7 +74,7 @@ self.manualShow = function(aContainer) {
         var header = ['Наименование', 'Количество', 'Закупочная цена'];
         grid = new wf.Table(aContainer, header);
         self.container = grid.dockElement;
-        if (!model.itemsByTP.empty)
+        if (!model.qWhItemsOnTP.empty)
             fillGrid();
         var btnProceed = cmn.createElement('button', 'color green-sea', aContainer);
         btnProceed.innerHTML = 'Провести';
@@ -100,10 +100,10 @@ function formWindowClosing(evt) {//GEN-FIRST:event_formWindowClosing
 
     function btnProceedActionPerformed(evt) {//GEN-FIRST:event_btnProceedActionPerformed
          var items = {};
-         model.itemsByTP.beforeFirst();
-         while(model.itemsByTP.next()){
-             if(model.itemsByTP.cursor.start_value != null) {
-                 items[model.itemsByTP.cursor.item_id] = model.itemsByTP.cursor.start_value;
+         model.qWhItemsOnTP.beforeFirst();
+         while(model.qWhItemsOnTP.next()){
+             if(model.qWhItemsOnTP.cursor.start_value != null) {
+                 items[model.qWhItemsOnTP.cursor.item_id] = model.qWhItemsOnTP.cursor.start_value;
              }
          }
          whSession.setTradePoint(model.params.trade_point_id);
@@ -113,8 +113,8 @@ function formWindowClosing(evt) {//GEN-FIRST:event_formWindowClosing
              alert(MSG_SET_MOVEMENTS_ERROR);
     }//GEN-LAST:event_btnProceedActionPerformed
 
-    function itemsByTPOnRequeried(evt) {//GEN-FIRST:event_itemsByTPOnRequeried
+    function qWhItemsOnTPOnRequeried(evt) {//GEN-FIRST:event_qWhItemsOnTPOnRequeried
         if (grid)
             fillGrid();
-    }//GEN-LAST:event_itemsByTPOnRequeried
+    }//GEN-LAST:event_qWhItemsOnTPOnRequeried
 }

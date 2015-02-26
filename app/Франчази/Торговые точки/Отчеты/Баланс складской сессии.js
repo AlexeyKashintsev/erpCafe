@@ -127,16 +127,16 @@ function WHSessionBalance(aContainer) {
         });
     };
 
-    function itemsByTPOnRequeried(evt) {//GEN-FIRST:event_itemsByTPOnRequeried
+    function qWhItemsOnTPOnRequeried(evt) {//GEN-FIRST:event_qWhItemsOnTPOnRequeried
         Logger.info("Получены складские позиции по точке: " + model.params.trade_point_id 
-                + ' В количестве ' + model.itemsByTP.length);
-        model.itemsByTP.beforeFirst();
+                + ' В количестве ' + model.qWhItemsOnTP.length);
+        model.qWhItemsOnTP.beforeFirst();
         for (var j in items)
             items[j].destroy();
-        while (model.itemsByTP.next()) {
-            items[model.itemsByTP.cursor.item_id] = new Item(model.itemsByTP.cursor);
+        while (model.qWhItemsOnTP.next()) {
+            items[model.qWhItemsOnTP.cursor.item_id] = new Item(model.qWhItemsOnTP.cursor);
         }
         if (doUpdate) updateSessionData();
         doUpdate = true;
-    }//GEN-LAST:event_itemsByTPOnRequeried
+    }//GEN-LAST:event_qWhItemsOnTPOnRequeried
 }

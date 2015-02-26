@@ -21,9 +21,9 @@ function WhRevisionByBarista() {
 
     function getStartValues() {
         self.items = session.whSession.getStartValues(model.params.trade_point_id);
-        model.itemsByTP.beforeFirst();
-        while (model.itemsByTP.next()) {
-            model.itemsByTP.cursor.start_value = self.items[model.itemsByTP.cursor.item_id];
+        model.qWhItemsOnTP.beforeFirst();
+        while (model.qWhItemsOnTP.next()) {
+            model.qWhItemsOnTP.cursor.start_value = self.items[model.qWhItemsOnTP.cursor.item_id];
         }
     }
 
@@ -36,19 +36,19 @@ function btnReqActionPerformed(evt) {//GEN-FIRST:event_btnReqActionPerformed
 function formWindowOpened(evt) {//GEN-FIRST:event_formWindowOpened
         form.btnStartSession.enabled = true;
         self.items = session.whSession.getCurrentStartValues();
-        model.itemsByTP.beforeFirst();
-        while (model.itemsByTP.next()) {
-            model.itemsByTP.cursor.start_value = self.items[model.itemsByTP.cursor.item_id];
+        model.qWhItemsOnTP.beforeFirst();
+        while (model.qWhItemsOnTP.next()) {
+            model.qWhItemsOnTP.cursor.start_value = self.items[model.qWhItemsOnTP.cursor.item_id];
         }
 }//GEN-LAST:event_formWindowOpened
 
 function formWindowClosing(evt) {//GEN-FIRST:event_formWindowClosing
     if (!startWORevision) {
         var items = {}, check = true;
-        model.itemsByTP.beforeFirst();
-        while (model.itemsByTP.next()) {
-            items[model.itemsByTP.cursor.item_id] = model.itemsByTP.cursor.start_value;
-            if (model.itemsByTP.cursor.start_value === null) {
+        model.qWhItemsOnTP.beforeFirst();
+        while (model.qWhItemsOnTP.next()) {
+            items[model.qWhItemsOnTP.cursor.item_id] = model.qWhItemsOnTP.cursor.start_value;
+            if (model.qWhItemsOnTP.cursor.start_value === null) {
                 check = false;
             }
         }
