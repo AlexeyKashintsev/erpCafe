@@ -20,11 +20,6 @@ function MyChat(aContainer) {
     var onlineCount = cmn.createElement('span', 'chat-onlinecount', onlineDiv);
     var usersOnline = cmn.createElement('span', 'chat-usersonline', onlineDiv, 'chat-usersonline');
     
-    $("#chat-btnonline").attr('href', '#');
-    btnOnline.innerHTML = "Баристы онлайн:";
-    btnOnline.onclick = btnOnlineShow;
-    btnOnlineHide();
-    
     function btnOnlineShow(){
         $("#chat-usersonline").show();
         btnOnline.onclick = btnOnlineHide;
@@ -37,6 +32,15 @@ function MyChat(aContainer) {
         $("#chat-usersonline").hide();
         btnOnline.onclick = btnOnlineShow;
     }
+    
+    $("#chat-btnonline").attr('href', '#');
+    btnOnline.innerHTML = "Баристы онлайн:";
+    btnOnline.onclick = btnOnlineShow;
+    btnOnlineHide();
+    
+    
+    
+    
     
     function btnSubmitOnClick(){
         var text = $("#chat-input").val();

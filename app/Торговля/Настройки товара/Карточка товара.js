@@ -24,15 +24,20 @@ function ItemCard() {
     
     self.setOpenType = function(aType){
         OpenType = aType;
-    }
+    };
     
-    function searchInDataBase(anItemCode){
+    function searchInDataBase(anItemCode, successcallback, failcallback){
         model.qGetItem.params.barcode = anItemCode;
-        model.qGetItem.requery();
-        if (model.qGetItem.length > 0) 
-            return model.qGetItem.cursor.item_name;
-        else
-            return false;
+        model.qGetItem.requery(function(){
+             if (model.qGetItem.length > 0){
+                successcallback(model.qGetItem.cursor.item_name, model.qGetItem.cursor.wh_items_id);
+                //successcallback();
+                return model.qGetItem.cursor.item_name;
+            } else {
+                failcallback();
+                return false;
+            }
+        });
     }
     
     function searchInInternetResource(anItemCode, callback){
@@ -51,6 +56,7 @@ function ItemCard() {
             }
         });
     }
+    
     
     function validateTF(anBarCode){
         anBarCode += "";
@@ -99,7 +105,6 @@ function ItemCard() {
             else 
                 form.lblImageArea.text = "Изображение отсутствует!";
         });
-        
     }
     
     function button1ActionPerformed(evt) {//GEN-FIRST:event_button1ActionPerformed
@@ -108,7 +113,7 @@ function ItemCard() {
     }//GEN-LAST:event_button1ActionPerformed
 
     function qTradeItemsOnChanged(evt) {//GEN-FIRST:event_qTradeItemsOnChanged
-        btnCheckActionPerformed();
+
     }//GEN-LAST:event_qTradeItemsOnChanged
 
     function btnCancelActionPerformed(evt) {//GEN-FIRST:event_btnCancelActionPerformed
@@ -127,4 +132,29 @@ function ItemCard() {
             form.btnCancel.visible = false;
         }
     }//GEN-LAST:event_formWindowOpened
+
+    function tfBarCodeKeyPressed(evt) {//GEN-FIRST:event_tfBarCodeKeyPressed
+        if(evt.key == 13){
+            tfBarCodeFocusLost();
+        }
+    }//GEN-LAST:event_tfBarCodeKeyPressed
+
+    function tfBarCodeFocusLost(evt) {//GEN-FIRST:event_tfBarCodeFocusLost
+        searchInDataBase(model.qTradeItems.cursor.bar_code, 
+            function(aName, aId){
+                model.qTradeItems.cursor.bar_code = null;
+                var conf = confirm("Такой товар уже есть ("+aName+"), окрыть его карточку?");
+                if(conf){
+                    var itemset  = new ItemSettingsAndCost(aId);
+                    //itemcard.setOpenType("modal");
+                    //itemcard.setItem(aId);
+                    itemset.showModal();
+                }
+            }, 
+            function(){
+                if(!model.qTradeItems.cursor.item_name)
+                    btnCheckActionPerformed();
+            }
+        );
+    }//GEN-LAST:event_tfBarCodeFocusLost
 }
