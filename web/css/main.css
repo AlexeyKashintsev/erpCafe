@@ -390,6 +390,21 @@ span.right-span{
   float: right;
 }
 
+/* ### BalanceMeter ### */
+div.weight_calculator {
+    z-index: 500;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -250px;
+    margin-top: -125px;
+    width: 500px;
+    height: 250px;
+    display: block;
+    background-color: white;
+    background-image: url('../img/bright-squares.png');
+}
+
 /* ### CASHBACK ### */
 div.cash_calculator {
   display: inline-block;

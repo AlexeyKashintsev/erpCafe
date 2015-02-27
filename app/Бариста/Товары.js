@@ -9,6 +9,7 @@ function ItemsSelector(aContainer, aParent, aTradePoint, anActualDate) {
     self.parent = aParent;
     self.itemSettingsAndCost = new ItemSettingsAndCost();
     var addItemWidget;
+    var balanceMeter = new BalanceMeter();
     
     self.modes = {
         TRADE   :   0,

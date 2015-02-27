@@ -138,6 +138,26 @@ wf.ClientSelector = function(aContainer) {
     wf.proto.bind(this)();
 };
 
+wf.BalanceMeter = function() {
+    this.elType = "div";
+    this.elClass = "weight_calculator";
+    this.container = document.getElementById('body');
+    
+    wf.proto.bind(this)();
+    
+    var itemName = cmn.createElement("h1", "balance-meter item-name", this.dockElement);
+    var measure = cmn.createElement("h1", "balance-meter measure-desc", this.dockElement);
+    var weight = cmn.createElement("h1", "balance-meter weight", this.dockElement);
+    var btnOk = cmn.createElement("button", "balance-meter ok", this.dockElement);
+    var btnCancel = cmn.createElement("button", "balance-meter cancel", this.dockElement);
+    
+    this.updateView = function() {
+        weight.innerHTML = this.weight;
+    }.bind(this);
+    
+    this.updateView();
+};
+
 wf.Table = function(aContainer, aHeader, aData, aTableClass, aHeaderClass, aBodyClass) {
     this.elType = "table";
     this.elClass = "table table-hover " + aTableClass;
