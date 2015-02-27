@@ -62,15 +62,15 @@ var kl = new Keylistener();
 
 function BarCodeProcessor() {
     this.listen = true;
-    this.ti = null;
+    this.action = null;
     var keyBuffer = '';
     var lastpress = null;
     
     function processKey(evt) {
         if (this.listen) {
             if (evt.keyCode === 13) {
-                if (this.ti)
-                    this.ti.barCodeEnter(keyBuffer);
+                if (this.action)
+                    this.action(keyBuffer);
                 keyBuffer = '';
             } else {
                 var now = new Date();

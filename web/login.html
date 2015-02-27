@@ -7,7 +7,7 @@
         <title>4R login page</title>
         <link rel="stylesheet" href="css/login.css" />
     </head>
-    <body>
+    <body id="body">
         <div class="spacer"></div>
         <div id="stylized" class="myform">
             <form id="form" name="form" action="j_security_check" method="POST" enctype="application/x-www-form-urlencoded">
@@ -30,6 +30,22 @@
             <p>Система запущена в режиме опытной эксплуатации</p>
             <a href="http://bugtracker.platypus-platform.org/news/1">Служба регистрации ошибок</a>
         </div>
+        <script type="text/javascript" src="js/keylistener.js"></script>
+        <script>
+            function qrCodeParse(anQrCode) {
+                try {
+                    var parced = JSON.parse(anQrCode);
+                    if (parced.username && parced.password) {
+                        document.getElementById("name").value = parced.username;
+                        document.getElementById("password").value = parced.password;
+                        document.form.submit();
+                    }
+                } catch (e) {
+                    console.log('Invalid QR code');
+                }
+            }
+            bcp.action = qrCodeParse;
+        </script>
     </body>
 </html>
 

@@ -91,5 +91,5 @@ function ItemsSelector(aContainer, aParent, aTradePoint, anActualDate) {
         self.setActivePrice(10);
         getSort();
     });
-    bcp.ti = self;
+    bcp.action = self.barCodeEnter;
 }
