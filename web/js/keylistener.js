@@ -82,6 +82,27 @@ function BarCodeProcessor() {
             }
         }
     }
+    this.getAnotherLocale = function(aStr) {
+        var strEN = "~!@#$%^&*()_+QWERTYUIOP{}|ASDFGHJKL:\"ZXCVBNM<>?`1234567890-=qwertyuiop[]\\asdfghjkl;'zxcvbnm,./";
+        var strRU = "Ё!Ё№;%:?*()_+ЙЦУКЕНГШЩЗХЪ/ФЫВАПРОЛДЖЭЯЧСМИТЬБЮ,ё1234567890-=йцукенгшщзхъ\\фывапролджэячсмитьбю.";
+
+        var tstr = "";
+        for (var i = 0; i < aStr.length; ++i) {
+            var code = aStr.charCodeAt(i);
+            /*if (code == 34) //filter double quotes
+            {
+                tstr += "@";
+                continue;
+            }*/
+            var onechar = aStr.charAt(i);
+            var pos = strRU.indexOf(onechar);
+            if (-1 == pos)
+                tstr += onechar;
+            else
+                tstr += strEN.charAt(pos);
+        }
+        return tstr;
+    };
     kl.addAction(processKey.bind(this));
 }
 

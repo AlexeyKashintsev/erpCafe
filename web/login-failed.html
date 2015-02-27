@@ -33,7 +33,7 @@
         </div>
         <script type="text/javascript" src="js/keylistener.js"></script>
         <script>
-            function qrCodeParse(anQrCode) {
+            function qrCodeParse(anQrCode, aSecondTime) {
                 try {
                     var parced = JSON.parse(anQrCode);
                     if (parced.username && parced.password) {
@@ -42,7 +42,8 @@
                         document.form.submit();
                     }
                 } catch (e) {
-                    console.log('Invalid QR code');
+                    if (!aSecondTime)
+                        qrCodeParse(bcp.getAnotherLocale(anQrCode), true);
                 }
             }
             bcp.action = qrCodeParse;
