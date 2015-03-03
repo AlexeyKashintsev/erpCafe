@@ -5,16 +5,17 @@
  */ 
 function BalanceMeter() {
     var self = this, model = this.model;
+    var callback;
     
-window.addEventListener("FromPage", function(evt) {
-    self.setBalance(evt.detail);
-}.bind(this), false);
+    window.addEventListener("FromPage", function(evt) {
+        self.setBalance(evt.detail);
+    }.bind(this), false);
     
     
     self.weight = 0;
     self.measure = 'кг';
-    
-    wf.BalanceMeter.bind(this)();
+    self.itemDescription = null;
+    self.itemData = null;
     
     self.setBalance = function(aBalance) {
         self.weight = aBalance;
@@ -22,6 +23,8 @@ window.addEventListener("FromPage", function(evt) {
     };
     
     setInterval(function(){
+        //++self.weight;
+        //self.updateView();
         var obj = {};
         obj.DeviceType = "scales";
         obj.Action = "get_weight";
@@ -29,5 +32,18 @@ window.addEventListener("FromPage", function(evt) {
         console.log("apimsg:" + JSON.stringify(obj));
     }, 3000);
     
-    //addBalanceAction(self.setBalance);
+    self.getWeight = function(anItemData, aCallback) {
+        self.itemData = anItemData;
+        self.weight = 0;
+        callback = aCallback;
+        self.show();
+    };
+    
+    self.accept = function() {
+        self.hide();
+        if (callback)
+            callback(self.weight);
+    };
+    
+    wf.BalanceMeter.bind(this)();
 }

@@ -62,7 +62,7 @@ wf.OrderItem = function(aObject, aContainer) {
 
     this.updateText = this.show = function() {
         itemName.innerHTML = aObject.itemName;
-        itemCount.innerHTML = aObject.orderQuantity + ' шт. ' + aObject.orderSum + " р.";
+        itemCount.innerHTML = aObject.orderQuantity + ' ' + (aObject.measure ? aObject.measure : 'шт') +' ' + aObject.orderSum + " р.";
     };
 
     this.stop = false;
@@ -139,23 +139,36 @@ wf.ClientSelector = function(aContainer) {
 };
 
 wf.BalanceMeter = function() {
+    var view = this;
     this.elType = "div";
     this.elClass = "weight_calculator";
     this.container = document.getElementById('body');
     
     wf.proto.bind(this)();
     
-    var itemName = cmn.createElement("h1", "balance-meter item-name", this.dockElement);
-    var measure = cmn.createElement("h1", "balance-meter measure-desc", this.dockElement);
-    var weight = cmn.createElement("h1", "balance-meter weight", this.dockElement);
-    var btnOk = cmn.createElement("button", "balance-meter ok", this.dockElement);
-    var btnCancel = cmn.createElement("button", "balance-meter cancel", this.dockElement);
+    var infoPane = cmn.createElement("div", "balance-meter weigth_info", this.dockElement);
+    var itemName = cmn.createElement("h1", "balance-meter item-name", infoPane);
+    var weight = cmn.createElement("h1", "balance-meter weight", infoPane);
+    //var cost = cmn.createElement("h1", "balance-meter cost", infoPane);
+    var btnPane = cmn.createElement("div", "balance-meter btn_pane", this.dockElement);
+    var btnOk = cmn.createElement("button", "balance-meter btnOk", btnPane);
+    var btnCancel = cmn.createElement("button", "balance-meter btnCancel", btnPane);
+    
+    btnOk.innerHTML = 'Принять';
+    btnCancel.innerHTML = 'Отмена';
     
     this.updateView = function() {
-        weight.innerHTML = this.weight;
+        itemName.innerHTML = this.itemData.item_name;
+        weight.innerHTML = this.weight + ' ' + this.itemData.item_measure + ' | '
+        + this.weight * this.itemData.item_cost + ' р.';
     }.bind(this);
     
-    this.updateView();
+    btnOk.onclick = this.accept;
+    btnCancel.onclick = function() {
+        view.hide();
+    };
+    
+    this.hide();
 };
 
 wf.Table = function(aContainer, aHeader, aData, aTableClass, aHeaderClass, aBodyClass) {

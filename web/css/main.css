@@ -399,10 +399,18 @@ div.weight_calculator {
     margin-left: -250px;
     margin-top: -125px;
     width: 500px;
-    height: 250px;
     display: block;
     background-color: white;
     background-image: url('../img/bright-squares.png');
+}
+
+div.weigth_info {
+    padding-left: 22px;
+    margin-bottom: 22px;
+}
+
+div.balance-meter.btn_pane > button {
+    height: 60px;
 }
 
 /* ### CASHBACK ### */

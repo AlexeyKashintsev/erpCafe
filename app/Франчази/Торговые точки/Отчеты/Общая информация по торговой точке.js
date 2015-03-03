@@ -29,6 +29,11 @@ function TradePointCommonInfo(aTradePointDetails, aContainer) {
             d_name  :   '<span class="glyphicon glyphicon-inbox"></span>',
             d_title :   'Касса',
             module  :   'tradeOperaionsByTP'
+        },
+        video   :   {
+            d_name  :   '<span class="glyphicon glyphicon-eye-open"></span>',
+            d_title :   'Видео',
+            module  :   'VideoFromTP'
         }
     };
     
@@ -136,6 +141,8 @@ function TradePointCommonInfo(aTradePointDetails, aContainer) {
             
             /** !SHOW TRADE OPERATIONS! **/
             panels.tradeOp.display = new tradeOperaionsByTP(tradePointDetails.org_trade_point_id, panelData);
+            
+            panels.video.display = new VideoFromTP(tradePointDetails.org_trade_point_id, panelData);
             
             /** !SHOW BUtTONS! **/
             var tbBtns = cmn.createElement("div", "col-xs-1", panelContent);            

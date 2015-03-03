@@ -10,9 +10,17 @@ function OrderItem(anItemData, aPriceType, aPrice) {
     ordItem.itemId = anItemData.item_id;
     ordItem.itemName = anItemData.item_name;
     ordItem.itemCost = aPrice ? aPrice : anItemData.item_cost;
+    ordItem.measure = anItemData.item_measure;
     ordItem.priceType = aPriceType;
     ordItem.orderSum = 0;
-
+    
+    ordItem.setQuantity = function(anQuantity) {
+        ordItem.orderQuantity = anQuantity;
+        ordItem.orderSum = ordItem.orderQuantity * ordItem.itemCost;
+        ordItem.view.updateText();
+        orderList.calculateOrder();        
+    };
+    
     ordItem.increase = function() {
         ordItem.orderSum = ++ordItem.orderQuantity * ordItem.itemCost;
         ordItem.view.updateText();

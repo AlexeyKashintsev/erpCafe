@@ -34,7 +34,10 @@ function TradeItem(anItemData, aParent, aContainer) {
             if (!this.data.item_measure || this.data.item_measure == 'шт' || this.data.item_measure == '-') {
                 orderList.addItem(this.data, priceTypeSel, costs[priceTypeSel]);
             } else {
-                //TODO Ввод веса товара
+                var data = this.data;
+                balanceMeter.getWeight(this.data, function(anQuantity) {
+                    orderList.addItem(data, priceTypeSel, costs[priceTypeSel], anQuantity);
+                });
             }
         } else {
             //TODO Ошибка - данный товар проверять нельзя по выбранной цене
