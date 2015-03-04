@@ -47,7 +47,7 @@ function TradeItem(anItemData, aParent, aContainer) {
     
     function settingsShow() {
         aParent.itemSettingsAndCost.setTradeItem(this.data.item_id);
-        aParent.itemSettingsAndCost.showModal();
+        aParent.itemSettingsAndCost.showModal(aParent.reloadItems);
     }
 
     this.click = (function() {

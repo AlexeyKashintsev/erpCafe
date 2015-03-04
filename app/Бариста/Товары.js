@@ -22,6 +22,15 @@ function ItemsSelector(aContainer, aParent, aTradePoint, anActualDate) {
     var trade_items = {};
     var bar_codes = {};
     
+    self.reloadItems = function() {
+        for (var j in trade_items) {
+            cmn.deleteElement(trade_items[j].dockElement);
+            delete trade_items[j];
+        };
+            
+        getItems();
+    };
+    
     self.barCodeEnter = function(aBarcode) {
         if (bar_codes[aBarcode])
             trade_items[bar_codes[aBarcode]].addToOrder();
@@ -77,20 +86,27 @@ function ItemsSelector(aContainer, aParent, aTradePoint, anActualDate) {
             $('#' + this.replace('[]=', '_')).appendTo(".items_select");
         });
     }
-
-    model.tradeItemsCostByTP.params.trade_point_id = aTradePoint;
-    model.tradeItemsCostByTP.params.actual_date = anActualDate ? anActualDate : new Date();
-    model.tradeItemsCostByTP.requery(function() {
-        model.tradeItemsCostByTP.forEach(function(aTIData) {
-            if (aTIData.bar_code)
-                bar_codes[aTIData.bar_code] = aTIData.item_id;
-            if (!trade_items[aTIData.item_id])
-                trade_items[aTIData.item_id] = new TradeItem(aTIData, self, items_body);
-            else
-                trade_items[aTIData.item_id].setAdditionalData(aTIData);
-        });
+    
+    function getItems(aCallback) {
+        model.tradeItemsCostByTP.params.trade_point_id = aTradePoint;
+        model.tradeItemsCostByTP.params.actual_date = anActualDate ? anActualDate : new Date();
+        model.tradeItemsCostByTP.requery(function() {
+            model.tradeItemsCostByTP.forEach(function(aTIData) {
+                if (aTIData.bar_code)
+                    bar_codes[aTIData.bar_code] = aTIData.item_id;
+                if (!trade_items[aTIData.item_id])
+                    trade_items[aTIData.item_id] = new TradeItem(aTIData, self, items_body);
+                else
+                    trade_items[aTIData.item_id].setAdditionalData(aTIData);
+            });
+            getSort();
+            if (aCallback)
+                aCallback();
+        });    
+    }
+    
+    getItems(function() {
         self.setActivePrice(10);
-        getSort();
     });
     bcp.action = self.barCodeEnter;
 }
