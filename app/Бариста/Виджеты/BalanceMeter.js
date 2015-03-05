@@ -6,9 +6,18 @@
 function BalanceMeter() {
     var self = this, model = this.model;
     var callback;
+    var msgAPI = function() {
+        var obj = {};
+        obj.DeviceType = "scales";
+        obj.Action = "get_weight";
+        obj.Data = null;
+        return "apimsg:" + JSON.stringify(obj);
+    }();
     
     window.addEventListener("FromPage", function(evt) {
-        self.setBalance(evt.detail);
+        console.log(evt)
+        //if (evt.DeviceType == "scales")
+            self.setBalance(evt.detail);
     }.bind(this), false);
     
     
@@ -18,24 +27,24 @@ function BalanceMeter() {
     self.itemData = null;
     
     self.setBalance = function(aBalance) {
-        self.weight = aBalance;
-        self.updateView();
+        if (aBalance > 0.01) {
+            self.weight = aBalance / 1000;
+            self.updateView();
+        } else {
+            console.log(aBalance);
+            //askScales();
+        }
     };
     
-    setInterval(function(){
-        //++self.weight;
-        //self.updateView();
-        var obj = {};
-        obj.DeviceType = "scales";
-        obj.Action = "get_weight";
-        obj.Data = null;
-        console.log("apimsg:" + JSON.stringify(obj));
-    }, 3000);
+    function askScales() {
+        console.log(msgAPI);
+    }
     
     self.getWeight = function(anItemData, aCallback) {
         self.itemData = anItemData;
         self.weight = 0;
         callback = aCallback;
+        askScales();
         self.show();
     };
     
