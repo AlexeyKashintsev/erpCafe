@@ -41,6 +41,7 @@ function BaristaDesktop() {
             new OrderList(self);
             self.cashBackCalc = new CashBackCalculator(self, itemSelector);
             self.itemsSelector = new ItemsSelector(itemSelector, self, session.tradePoint);
+            itemsBoard = self.itemsSelector;
             self.typesSelector = new TypesSelector(modifiers, self, session.tradePoint);
             self.priceModifier = new PriceModifier(modifiers, self, session.tradePoint);
             self.chat = new MyChat(modifiers); self.chat.initChat();

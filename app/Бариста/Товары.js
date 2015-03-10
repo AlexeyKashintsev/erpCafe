@@ -10,6 +10,7 @@ function ItemsSelector(aContainer, aParent, aTradePoint, anActualDate) {
     self.itemSettingsAndCost = new ItemSettingsAndCost();
     var addItemWidget;
     balanceMeter = new BalanceMeter();
+    var whSession = session.whSession;
     
     self.modes = {
         TRADE   :   0,
@@ -29,6 +30,15 @@ function ItemsSelector(aContainer, aParent, aTradePoint, anActualDate) {
         };
             
         getItems();
+    };
+    
+    self.reloadItemsLimit = function() {
+        var limits = [];
+        for (var j in trade_items)
+            limits.push(j);
+        limits = whSession.getItemsLimit(limits);
+        for (var j in limits)
+            trade_items[limits[j].itemID].setLimit(limits[j].limit);
     };
     
     self.barCodeEnter = function(aBarcode) {
@@ -100,6 +110,7 @@ function ItemsSelector(aContainer, aParent, aTradePoint, anActualDate) {
                     trade_items[aTIData.item_id].setAdditionalData(aTIData);
             });
             getSort();
+            self.reloadItemsLimit();
             if (aCallback)
                 aCallback();
         });    

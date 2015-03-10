@@ -156,6 +156,38 @@ function WhSessionModule() {
         else
             return false;
     };
+    
+    self.getItemsLimit = function(anItems) {
+        model.qWHSessionBalance.params.session_id = self.getCurrentSession();
+        model.qWHSessionBalance.requery();
+        
+        var res = [];
+        for (var j in anItems)
+            res.push({itemID : anItems[j], limit : self.getItemLimit(anItems[j])});
+        return res;
+    };
+    
+    self.getItemLimit = function(anItem) {
+        var item = {};
+        item[anItem] = 1;
+        var items4Use = calculateConsumption(item);
+        var minimum = null;
+        
+        for (var id in items4Use) {
+            try {
+                var whBalance = model.qWHSessionBalance.find(model.qWHSessionBalance.schema.item_id, id);
+                var cons = whBalance !== [] ? whBalance[0].final_value / items4Use[id] : null;
+                if (minimum === null)
+                    minimum = cons;
+                if (minimum > cons)
+                    minimum = cons;
+            } catch(e) {
+                
+            }
+        }
+        return minimum;
+    };
+    
     self.processTradeItems = function(anItems) {
         var consumption = calculateConsumption(anItems);
         self.whMovement(consumption, self.WH_PRODUCE_ITEMS);

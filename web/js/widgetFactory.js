@@ -99,12 +99,27 @@ wf.TradeItem = function(aContainer) {
     var itemPanel = cmn.createElement("div", "panel panel-primary " + (this.data.color ? " color " + this.data.color : ""), itemContainer);
     
     var itemContent = cmn.createElement("div", "panel-body", itemPanel);
-    var itemDesc = cmn.createElement("h3", "itemDesc", itemContent);
-    var itemCost = cmn.createElement("h1", "itemCost", itemContent);
+    var itemDesc = cmn.createElement("h3", "item-desc", itemContent);
+    var itemCost = cmn.createElement("h1", "item-cost", itemContent);
+    var limit = cmn.createElement("div", "item-limit", itemContent);
     this.setDisplayedPrice = function(aPrice) {
         itemCost.innerHTML = aPrice;
     };
-    
+    this.updateLimit = function() {
+        var whIcon = "<span class='glyphicon glyphicon-align-justify'></>";
+        if (this.limit > 10) {
+            limit.innerHTML = whIcon;
+            if (this.limit < 40)
+                $(limit).addClass("bad");
+            else if (this.limit >= 40)
+                $(limit).addClass("good");
+        } else if (this.limit > 0)
+            limit.innerHTML = this.limit;
+        else {
+            limit.innerHTML = whIcon;
+            $(limit).addClass("none");
+        }
+    }.bind(this);
     
     itemDesc.innerHTML = this.data.item_name;
     

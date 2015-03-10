@@ -50,6 +50,7 @@ function OrderProcessor() {
         session.tradeSession.processOrder(anOrderDetails, function() {
                 new Alerter(alert, "alert-success", alerts.success
                         + anOrderDetails.orderSum + alerts.successEnding, true, 15000);
+                itemsBoard.reloadItemsLimit();
             }, function() {
                 if (attempt < 5)
                     processOrder(anOrderDetails, alert, attempt);
