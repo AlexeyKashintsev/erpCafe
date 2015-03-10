@@ -110,14 +110,16 @@ wf.TradeItem = function(aContainer) {
         if (this.limit > 10) {
             limit.innerHTML = whIcon;
             if (this.limit < 40)
-                $(limit).addClass("bad");
+                $(limit).addClass("small");
             else if (this.limit >= 40)
                 $(limit).addClass("good");
-        } else if (this.limit > 0)
-            limit.innerHTML = this.limit;
-        else {
-            limit.innerHTML = whIcon;
-            $(limit).addClass("none");
+        } else {
+            if (this.limit > 0)
+                limit.innerHTML = this.limit;
+            else {
+                limit.innerHTML = whIcon;
+            }
+            $(limit).addClass("bad");
         }
     }.bind(this);
     
@@ -207,21 +209,23 @@ wf.Table = function(aContainer, aHeader, aData, aTableClass, aHeaderClass, aBody
         function applyDataToCell(aData, aContainer, aCellNumber) {
             th = cmn.createElement('th', 'table-body', aContainer);
             
-            if (aData.editable) {
-                new (function(){
-                    var input = cmn.createElement('input', null, th);
-                    input.value = aData.value;
-                    input.onchange = function() {
-                            aData.value = input.value;
-                            aData.onchange(aData);
-                        };
-                })();
-            } else {
-                if ($.isArray(aData) || typeof aData == 'Object') {
-                    $(th).addClass('table-container');
-                    createTable(th, aData);
+            if (aData) {
+                if (aData.editable) {
+                    new (function(){
+                        var input = cmn.createElement('input', null, th);
+                        input.value = aData.value;
+                        input.onchange = function() {
+                                aData.value = input.value;
+                                aData.onchange(aData);
+                            };
+                    })();
                 } else {
-                    th.innerHTML = aData;
+                    if ($.isArray(aData) || typeof aData == 'Object') {
+                        $(th).addClass('table-container');
+                        createTable(th, aData);
+                    } else {
+                        th.innerHTML = aData;
+                    }
                 }
             }
         }
