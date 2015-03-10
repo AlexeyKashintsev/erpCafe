@@ -2,7 +2,7 @@
  * 
  * @author Work
  */
-function ItemSettingsAndCost(aTradeItemId) {
+function ItemSettingsAndCost(aTradeItemId, aOpenType) {
     var self = this, model = this.model, form = this;
     var tradeAdminModule = Session.get("TradeAdminModule");
 
@@ -10,6 +10,7 @@ function ItemSettingsAndCost(aTradeItemId) {
     /*require(['ItemCard', 'ContentTradeItem', 'ItemCostForm', 'BonusRateForm'],
         function() {*/
             fmItemCard = new ItemCard();
+            fmItemCard.setOpenType(aOpenType);
             fmItemCard.showOnPanel(form.pnlCard);
             fmTIcontents = new ContentTradeItem(true);
             fmTIcontents.showOnPanel(form.pnlContent);
