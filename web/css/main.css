@@ -207,9 +207,10 @@ div.item-limit {
     position: absolute;
     bottom: 8px;
     right: 10px;
+    font-size:  12px;
 }
 
-div.item-limit.bad {
+div.item-limit.small {
     color: gold;
 }
 
@@ -217,7 +218,7 @@ div.item-limit.good {
     color: LimeGreen;
 }
 
-div.item-limit.none {
+div.item-limit.bad {
     color: maroon;
 }
 

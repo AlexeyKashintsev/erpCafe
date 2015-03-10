@@ -36,13 +36,13 @@ function TradeSessions() {
         //};
             model.qTradeSessionBalance.push({
                 session_id: aSession,
-                start_value: aStartBalance
+                start_value: aStartBalance ? aStartBalance : 0
             });
             model.params.session_id = aSession;
             ep.addEvent('newSession', {
                 session: aSession,
                 module: 'TradeSessions',
-                startB: aStartBalance
+                startB: aStartBalance ? aStartBalance : 0
             });
             model.save();
         } else {

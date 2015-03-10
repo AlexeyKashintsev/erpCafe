@@ -50,7 +50,7 @@ function OrderList(aParent, aContainer) {
         self.orderDetails = {};
         aParent.cashBackCalc.hide();
         self.calculateOrder();
-        //AS.cancelOrder();
+        itemsBoard.reloadItemsLimit();
     };
     
     self.acceptOrder = function() {
