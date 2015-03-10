@@ -122,6 +122,11 @@ function BaristaDesktop() {
         tsReport.setSession(session.activeSession);
     }
     
+    function showPriceTypes(){
+        var priceTypesForm = new PriceTypesForm();
+        priceTypesForm.showModal();
+    }
+    
     function replenishWH() {
         if (!whView)
             whView = cmn.createElement('div', 'dashboard report row', "mainArea");
@@ -191,6 +196,10 @@ function BaristaDesktop() {
         report  :   {
             display     :   "Общий отчет",
             onClick     :   showReport
+        },
+        priceTypes  :   {
+            display     :   "Типы цен",
+            onClick     :   showPriceTypes
         },
         closeAndExit    :   {
             display     :   "Закрыть смену и выйти",
