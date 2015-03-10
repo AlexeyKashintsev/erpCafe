@@ -127,6 +127,12 @@ function ItemCard() {
         if (OpenType === "modal"){
             form.btnSave.visible = true;
             form.btnCancel.visible = true;
+        } else if(OpenType === "no_barcode") {
+            form.btnSave.visible = false;
+            form.btnCancel.visible = false;
+            form.tfBarCode.editable = false;
+            form.tfBarCode.enabled = false;
+            form.btnCheck.visible = false;
         } else {
             form.btnSave.visible = false;
             form.btnCancel.visible = false;
@@ -145,9 +151,7 @@ function ItemCard() {
                 model.qTradeItems.cursor.bar_code = null;
                 var conf = confirm("Такой товар уже есть ("+aName+"), окрыть его карточку?");
                 if(conf){
-                    var itemset  = new ItemSettingsAndCost(aId);
-                    //itemcard.setOpenType("modal");
-                    //itemcard.setItem(aId);
+                    var itemset  = new ItemSettingsAndCost(aId, "no_barcode");
                     itemset.showModal();
                 }
             }, 
