@@ -56,8 +56,12 @@ function proceed() {
     if (whSession.whMovement(items, whSession.getSelfPropertyValue("WH_ADD_ITEMS"))) {
         new Alerter(null, "alert-success", 'Операция проведена успешно', true, 15000);
         cancel();
+        if (itemsBoard)
+            itemsBoard.reloadItemsLimit();
     } else {
-        new Alerter(null, "alert-danger", 'Операция проведена успешно', true, 15000);
+        new Alerter(null, "alert-danger", 'Ошибка! Операция не проведена', true, 15000);
+        if (itemsBoard)
+            itemsBoard.reloadItemsLimit();
     }
 }
 

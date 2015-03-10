@@ -193,15 +193,32 @@ p.itemType {
   font-size: 10px;
 }
 
-h3.itemDesc {
+h3.item-desc {
   font-size: 12px;
   margin: 0px;
 }
 
-h1.itemCost {
+h1.item-cost {
   font-size: 22px;
   position: absolute;
   bottom: 0px;
+}
+div.item-limit {
+    position: absolute;
+    bottom: 8px;
+    right: 10px;
+}
+
+div.item-limit.bad {
+    color: gold;
+}
+
+div.item-limit.good {
+    color: LimeGreen;
+}
+
+div.item-limit.none {
+    color: maroon;
 }
 
 h3.item-add-text {
@@ -388,6 +405,29 @@ ul.clientListDiv:hover li{
 
 span.right-span{
   float: right;
+}
+
+/* ### BalanceMeter ### */
+div.weight_calculator {
+    z-index: 500;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -250px;
+    margin-top: -125px;
+    width: 500px;
+    display: block;
+    background-color: white;
+    background-image: url('../img/bright-squares.png');
+}
+
+div.weigth_info {
+    padding-left: 22px;
+    margin-bottom: 22px;
+}
+
+div.balance-meter.btn_pane > button {
+    height: 60px;
 }
 
 /* ### CASHBACK ### */

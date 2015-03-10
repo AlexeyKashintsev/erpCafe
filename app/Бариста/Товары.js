@@ -9,6 +9,8 @@ function ItemsSelector(aContainer, aParent, aTradePoint, anActualDate) {
     self.parent = aParent;
     self.itemSettingsAndCost = new ItemSettingsAndCost();
     var addItemWidget;
+    balanceMeter = new BalanceMeter();
+    var whSession = session.whSession;
     
     self.modes = {
         TRADE   :   0,
@@ -20,6 +22,24 @@ function ItemsSelector(aContainer, aParent, aTradePoint, anActualDate) {
     
     var trade_items = {};
     var bar_codes = {};
+    
+    self.reloadItems = function() {
+        for (var j in trade_items) {
+            cmn.deleteElement(trade_items[j].dockElement);
+            delete trade_items[j];
+        };
+            
+        getItems();
+    };
+    
+    self.reloadItemsLimit = function() {
+        var limits = [];
+        for (var j in trade_items)
+            limits.push(j);
+        limits = whSession.getItemsLimit(limits);
+        for (var j in limits)
+            trade_items[limits[j].itemID].setLimit(limits[j].limit);
+    };
     
     self.barCodeEnter = function(aBarcode) {
         if (bar_codes[aBarcode])
@@ -76,20 +96,28 @@ function ItemsSelector(aContainer, aParent, aTradePoint, anActualDate) {
             $('#' + this.replace('[]=', '_')).appendTo(".items_select");
         });
     }
-
-    model.tradeItemsCostByTP.params.trade_point_id = aTradePoint;
-    model.tradeItemsCostByTP.params.actual_date = anActualDate ? anActualDate : new Date();
-    model.tradeItemsCostByTP.requery(function() {
-        model.tradeItemsCostByTP.forEach(function(aTIData) {
-            if (aTIData.bar_code)
-                bar_codes[aTIData.bar_code] = aTIData.item_id;
-            if (!trade_items[aTIData.item_id])
-                trade_items[aTIData.item_id] = new TradeItem(aTIData, self, items_body);
-            else
-                trade_items[aTIData.item_id].setAdditionalData(aTIData);
-        });
+    
+    function getItems(aCallback) {
+        model.tradeItemsCostByTP.params.trade_point_id = aTradePoint;
+        model.tradeItemsCostByTP.params.actual_date = anActualDate ? anActualDate : new Date();
+        model.tradeItemsCostByTP.requery(function() {
+            model.tradeItemsCostByTP.forEach(function(aTIData) {
+                if (aTIData.bar_code)
+                    bar_codes[aTIData.bar_code] = aTIData.item_id;
+                if (!trade_items[aTIData.item_id])
+                    trade_items[aTIData.item_id] = new TradeItem(aTIData, self, items_body);
+                else
+                    trade_items[aTIData.item_id].setAdditionalData(aTIData);
+            });
+            getSort();
+            self.reloadItemsLimit();
+            if (aCallback)
+                aCallback();
+        });    
+    }
+    
+    getItems(function() {
         self.setActivePrice(10);
-        getSort();
     });
     bcp.action = self.barCodeEnter;
 }

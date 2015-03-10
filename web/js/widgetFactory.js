@@ -62,7 +62,7 @@ wf.OrderItem = function(aObject, aContainer) {
 
     this.updateText = this.show = function() {
         itemName.innerHTML = aObject.itemName;
-        itemCount.innerHTML = aObject.orderQuantity + ' шт. ' + aObject.orderSum + " р.";
+        itemCount.innerHTML = aObject.orderQuantity + ' ' + (aObject.measure ? aObject.measure : 'шт') +' ' + aObject.orderSum + " р.";
     };
 
     this.stop = false;
@@ -99,12 +99,27 @@ wf.TradeItem = function(aContainer) {
     var itemPanel = cmn.createElement("div", "panel panel-primary " + (this.data.color ? " color " + this.data.color : ""), itemContainer);
     
     var itemContent = cmn.createElement("div", "panel-body", itemPanel);
-    var itemDesc = cmn.createElement("h3", "itemDesc", itemContent);
-    var itemCost = cmn.createElement("h1", "itemCost", itemContent);
+    var itemDesc = cmn.createElement("h3", "item-desc", itemContent);
+    var itemCost = cmn.createElement("h1", "item-cost", itemContent);
+    var limit = cmn.createElement("div", "item-limit", itemContent);
     this.setDisplayedPrice = function(aPrice) {
         itemCost.innerHTML = aPrice;
     };
-    
+    this.updateLimit = function() {
+        var whIcon = "<span class='glyphicon glyphicon-align-justify'></>";
+        if (this.limit > 10) {
+            limit.innerHTML = whIcon;
+            if (this.limit < 40)
+                $(limit).addClass("bad");
+            else if (this.limit >= 40)
+                $(limit).addClass("good");
+        } else if (this.limit > 0)
+            limit.innerHTML = this.limit;
+        else {
+            limit.innerHTML = whIcon;
+            $(limit).addClass("none");
+        }
+    }.bind(this);
     
     itemDesc.innerHTML = this.data.item_name;
     
@@ -136,6 +151,39 @@ wf.ClientSelector = function(aContainer) {
     this.container = aContainer;
     
     wf.proto.bind(this)();
+};
+
+wf.BalanceMeter = function() {
+    var view = this;
+    this.elType = "div";
+    this.elClass = "weight_calculator";
+    this.container = document.getElementById('body');
+    
+    wf.proto.bind(this)();
+    
+    var infoPane = cmn.createElement("div", "balance-meter weigth_info", this.dockElement);
+    var itemName = cmn.createElement("h1", "balance-meter item-name", infoPane);
+    var weight = cmn.createElement("h1", "balance-meter weight", infoPane);
+    //var cost = cmn.createElement("h1", "balance-meter cost", infoPane);
+    var btnPane = cmn.createElement("div", "balance-meter btn_pane", this.dockElement);
+    var btnOk = cmn.createElement("button", "balance-meter btnOk", btnPane);
+    var btnCancel = cmn.createElement("button", "balance-meter btnCancel", btnPane);
+    
+    btnOk.innerHTML = 'Принять';
+    btnCancel.innerHTML = 'Отмена';
+    
+    this.updateView = function() {
+        itemName.innerHTML = this.itemData.item_name;
+        weight.innerHTML = this.weight + ' ' + this.itemData.item_measure + ' | '
+        + this.weight * this.itemData.item_cost + ' р.';
+    }.bind(this);
+    
+    btnOk.onclick = this.accept;
+    btnCancel.onclick = function() {
+        view.hide();
+    };
+    
+    this.hide();
 };
 
 wf.Table = function(aContainer, aHeader, aData, aTableClass, aHeaderClass, aBodyClass) {

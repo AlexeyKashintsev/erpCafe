@@ -29,14 +29,17 @@ function OrderList(aParent, aContainer) {
         return orderSum;
     };
 
-    self.addItem = function(anItemData, aPriceType, aPrice) {
+    self.addItem = function(anItemData, aPriceType, aPrice, anQuantity) {
         if (!self.orderDetails[anItemData.item_id]) {
             self.orderDetails[anItemData.item_id] = {};
         }
         if (!self.orderDetails[anItemData.item_id][aPriceType]) {
             self.orderDetails[anItemData.item_id][aPriceType] = new OrderItem(anItemData, aPriceType, aPrice);
         }
-        self.orderDetails[anItemData.item_id][aPriceType].increase();
+        if (!!anQuantity)
+            self.orderDetails[anItemData.item_id][aPriceType].setQuantity(anQuantity);
+        else
+            self.orderDetails[anItemData.item_id][aPriceType].increase();
     };
 
     self.deleteOrder = function() {

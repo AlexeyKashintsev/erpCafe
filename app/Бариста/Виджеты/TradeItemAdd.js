@@ -11,7 +11,7 @@ function TradeItemAdd(aParent, aContainer) {
     });
     
     function addItemShowDialog() {
-        addItemToDashboard.showModal();
+        addItemToDashboard.showModal(aParent.reloadItems);
     }
     
     this.click = addItemShowDialog;

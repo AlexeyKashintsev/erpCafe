@@ -126,6 +126,10 @@ cmn.getElement = function(aType, aClass, aContainer, aID, aBeforeContainer) {
         return cmn.createElement(aType, aClass, aContainer, aID, aBeforeContainer)
 }
 
+cmn.deleteElement = function(anElement) {
+    anElement.parentNode.removeChild(anElement);
+};
+
 cmn.addTopRightControl = function(aText, anIcon, aFunction, aHref) {
     //<li><a id="whAdd" href="#"><span class="glyphicon glyphicon-plus-sign"></span>  Прием товара</a></li>
     var li = document.createElement('li');
