@@ -176,7 +176,7 @@ function WhSessionModule() {
         for (var id in items4Use) {
             try {
                 var whBalance = model.qWHSessionBalance.find(model.qWHSessionBalance.schema.item_id, id);
-                var cons = whBalance !== [] ? whBalance[0].final_value / items4Use[id] : null;
+                var cons = whBalance !== [] ? Math.floor(whBalance[0].final_value / items4Use[id]) : null;
                 if (minimum === null)
                     minimum = cons;
                 if (minimum > cons)
