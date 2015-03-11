@@ -29,6 +29,7 @@ function formWindowClosing(evt) {//GEN-FIRST:event_formWindowClosing
     function btnAddActionPerformed(evt) {//GEN-FIRST:event_btnAddActionPerformed
         model.qTradePriceTypes.insert();
         model.qTradePriceTypes.cursor.franchazi_id =  model.params.franchazi_id;
+        //TODO Лучше использовать push
     }//GEN-LAST:event_btnAddActionPerformed
 
     function formWindowOpened(evt) {//GEN-FIRST:event_formWindowOpened
