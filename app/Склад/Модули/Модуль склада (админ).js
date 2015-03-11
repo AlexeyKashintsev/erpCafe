@@ -6,8 +6,9 @@
  */ 
 function WhModuleAdmin() {
     var self = this, model = this.model;
+    var whModule = Session.get("WhSessionModule");
     
-    self.addItemContentsToWH =  function(anItem, aTradePoint) {
+    self.addItemContentsToWH = function(anItem, aTradePoint) {
         model.qContents.params.trade_item_id = anItem;
         model.qContents.requery();
         model.queryItemsInWH.params.warehouse_id = aTradePoint;
@@ -20,15 +21,26 @@ function WhModuleAdmin() {
                     item_id: cursor.wh_item,
                     wh_item: true
                 });
+                initStartBalanceForAnItem(cursor.wh_item, aTradePoint);
             } else {
                 if (!foundItems[0].wh_item && !foundItems[0].wh_content) {
                     model.queryItemsInWH.scrollTo(model.queryItemsInWH.findById(foundItems[0].trade_items_on_tp_id));
                     model.queryItemsInWH.cursor.wh_item = true;
+                    initStartBalanceForAnItem(cursor.wh_item, aTradePoint);
                 }
             }
         });
         model.save();
     };
+    
+    function initStartBalanceForAnItem(anItem, aTradePoint) {
+        var session = whModule.getCurrentSession();
+        model.querySessionBalance.push({
+            session_id  : session,
+            item_id     : anItem,
+            start_value : 0
+        });
+    }
     /*
      * Инициализация новых айтемов по умолчанию для нового франчайзе
      */
@@ -43,6 +55,6 @@ function WhModuleAdmin() {
             model.qInsertDefaultBonusRates.params.franchazi_id = franchazi;
         model.qInsertDefaultItems.executeUpdate();
         model.qInsertDefaultItemsContents.executeUpdate();
-        model.qInsertDefaultBonusRates.executeUpdate();
+        model.qInsertDefaultBonusRates.executeUpdate();//Это здесь зачем?
     };
 }
