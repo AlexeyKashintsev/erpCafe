@@ -148,6 +148,10 @@ cmn.addHeaderLeft = function(aText, anIcon, aFunction, aHref) {
     document.getElementById('leftActionNav').appendChild(li);
 }
 
+cmn.isObjEmpty = function(aObj) {
+    return Object.getOwnPropertyNames(aObj).length === 0;
+}
+
 cmn.locale = {
                 loading: 'Загрузка...',
                 months: ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'],

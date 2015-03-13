@@ -5,8 +5,71 @@ wf.proto = function() {
     this.hide = (function(){$(this.dockElement).hide()}).bind(this);
     this.show = (function(){$(this.dockElement).show()}).bind(this);
     this.destroy = (function() {
-        
-    });
+        cmn.deleteElement(this.dockElement);
+        delete this;
+    }).bind(this);
+};
+
+wf.DeviceSettings = function(aContainer) {
+    var obj = this;
+    this.elType = "div";
+    this.elClass = "panel panel-primary settings";
+    this.container = aContainer;
+    wf.proto.bind(this)();
+    
+    this.selectedDriver = null;
+    
+    this.caption = cmn.createElement("h3", "", this.dockElement);
+    this.caption.innerHTML = this.data.display;
+    this.selector = cmn.createElement("div", "", this.dockElement);
+    this.selectorCaption = cmn.createElement("p", "", this.selector);
+    this.selectorCaption.innerHTML = "Выбор драйвера";
+    this.selectorList = new wf.Selector(this.selector, this.data.values, this.selectDevice.bind(this));
+    this.settingsPane = cmn.createElement("div", "settings-pane", this.dockElement);
+};
+
+wf.DevSetting = function(aContainer) {
+    this.elType = "div";
+    this.elClass = "panel setting-pane";
+    this.container = aContainer;
+    wf.proto.bind(this)();
+    
+    this.caption = cmn.createElement("h3", "", this.dockElement);
+    this.caption.innerHTML = this.data.display;
+    this.selectorList = new wf.Selector(this.dockElement, this.data.values, this.selectOption.bind(this));
+};
+
+wf.DevActions = function(aContainer) {
+    this.elType = "div";
+    this.elClass = "panel setting-pane";
+    this.container = aContainer;
+    wf.proto.bind(this)();
+    
+}
+
+wf.Selector = function(aContainer, aValues, anAction) {
+    this.elType = "select";
+    this.elClass = "";
+    this.container = aContainer;
+    wf.proto.bind(this)();
+    
+    for (var j in aValues) {
+        var aData = aValues[j];
+        var opt = cmn.createElement("option", "", this.dockElement);
+        opt.innerHTML = aData.display ? aData.display : (aData.name ? aData.name : aData);
+        opt.value = aData.name ? aData.name : aData;
+    }
+    
+    var processChange = function() {
+        anAction(this.options[this.selectedIndex].value);
+    }.bind(this.dockElement);
+    
+    this.setSelection = function(aSelection) {
+        this.dockElement.value = aSelection;
+        processChange();
+    };
+    
+    this.dockElement.onchange = processChange;
 };
 
 wf.OrderListPane = function(aContainer) {

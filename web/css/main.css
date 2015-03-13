@@ -550,6 +550,16 @@ div.btn_block.predefined.disabled > div.calc_button {
   background-color: darkgray;
 }
 
+/* ### DEVICE SETTINGS ### */
+div.settings {
+    padding-left: 22px;
+    padding-bottom: 22px;
+}
+
+div.setting-pane {
+    display: inline-block;
+    padding-right:  22px;
+}
 /* ### FRANCHAZI ### */
 .trade_point > .panel-heading > * {
   display: inline-block;

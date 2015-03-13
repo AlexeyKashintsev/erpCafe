@@ -9,8 +9,8 @@ function BaristaDesktop() {
     session.tradeSession = new ServerModule("TradeSessions");
     self.userName = session.getUserName();
     var whAdd = null;
-    var dashboard, itemSelector, modifiers, reportView, whView;
-    var tsReport, whReplenish;
+    var dashboard, itemSelector, modifiers, reportView, whView, devSetView;
+    var tsReport, whReplenish, devSettings;
     
     var chekLists = new CheckLists();
     settings = new ServerModule('Settings');
@@ -115,6 +115,7 @@ function BaristaDesktop() {
         if (!reportView)
             reportView = cmn.createElement('div', 'dashboard report row', "mainArea");
         $(reportView).show();
+        $(devSetView).hide();
         $(dashboard).hide();
         $(whView).hide();
         if (!tsReport)
@@ -122,10 +123,22 @@ function BaristaDesktop() {
         tsReport.setSession(session.activeSession);
     }
     
+    function showDevSettings() {
+        if (!devSetView)
+            devSetView = cmn.createElement('div', 'dashboard report row', "mainArea");
+        $(devSetView).show();
+        $(reportView).hide();
+        $(dashboard).hide();
+        $(whView).hide();
+        if (!devSettings)
+            devSettings = new DeviceSettings(devSetView);
+    }
+    
     function replenishWH() {
         if (!whView)
             whView = cmn.createElement('div', 'dashboard report row', "mainArea");
         $(whView).show();
+        $(devSetView).hide();
         $(reportView).hide();
         $(dashboard).hide();
         if (!whReplenish)
@@ -159,6 +172,7 @@ function BaristaDesktop() {
     function setModeManageItems() {
         $(reportView).hide();
         $(whView).hide();
+        $(devSetView).hide();
         $(dashboard).show();
         self.itemsSelector.setOperationMode(self.itemsSelector.modes.SETUP);
         //self.typesSelector.setOperationMode(self.typesSelector.modes.SETUP);
@@ -168,6 +182,7 @@ function BaristaDesktop() {
     function setModeSellItems() {
         $(reportView).hide();
         $(whView).hide();
+        $(devSetView).hide();
         $(dashboard).show();
         self.itemsSelector.setOperationMode(self.itemsSelector.modes.TRADE);
         //self.typesSelector.setOperationMode(self.typesSelector.modes.TRADE);
@@ -191,6 +206,10 @@ function BaristaDesktop() {
         report  :   {
             display     :   "Общий отчет",
             onClick     :   showReport
+        },
+        deviceSettings  :   {
+            display     :   "Настройка оборудования",
+            onClick     :   showDevSettings
         },
         closeAndExit    :   {
             display     :   "Закрыть смену и выйти",
