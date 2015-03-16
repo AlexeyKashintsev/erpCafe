@@ -26,10 +26,10 @@ function ClientServerModule() {
         this.email = model.qPersonalData.cursor.email;
         this.registrationDate = model.qPersonalData.cursor.reg_date;
         this.bonusCategory = model.qPersonalData.cursor.bonus_category;
-        this.bonusCount = billModule.getQuickSumFromAccountId(this.bonusBill);
+        this.bonusCount = billModule.getSumFromAccountId(this.bonusBill);
         this.city_id = model.qPersonalData.cursor.city;
         this.city = self.getCity(this.city_id);
-        Logger.info(billModule.getQuickSumFromAccountId(this.bonusBill));
+        Logger.info(billModule.getSumFromAccountId(this.bonusBill));
     };
 
     self.getClientDataByPhone = function(aPhone) {

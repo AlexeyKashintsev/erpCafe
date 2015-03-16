@@ -42,7 +42,7 @@ function OrderList(aParent, aContainer) {
             self.orderDetails[anItemData.item_id][aPriceType].increase();
     };
 
-    self.deleteOrder = function() {
+    self.deleteOrder = function(dontReloadLimits) {
         for (var i in self.orderDetails) {
             for (var j in self.orderDetails[i])
                 self.orderDetails[i][j].delete(true);
@@ -50,7 +50,8 @@ function OrderList(aParent, aContainer) {
         self.orderDetails = {};
         aParent.cashBackCalc.hide();
         self.calculateOrder();
-        itemsBoard.reloadItemsLimit();
+        if (!dontReloadLimits) 
+            itemsBoard.reloadItemsLimit();
     };
     
     self.acceptOrder = function() {
@@ -97,7 +98,7 @@ function OrderList(aParent, aContainer) {
                 }
             }
             aParent.clientSelector.clearClient();
-            self.deleteOrder();
+            self.deleteOrder(true);
             if (ic > 0) {
                 anOrderDetails.methodOfPayment = aPayDetails.paymentMethod;//"money";
                 orderProcessor.processOrder(anOrderDetails);
