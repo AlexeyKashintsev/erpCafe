@@ -97,6 +97,16 @@ function ItemsSelector(aContainer, aParent, aTradePoint, anActualDate) {
         });
     }
     
+    function getItemsTypes() {
+        model.tradeTypes4TP.params.trade_point_id = aTradePoint;
+        model.tradeTypes4TP.params.actual_date = anActualDate ? anActualDate : new Date();
+        model.tradeTypes4TP.requery(function() {
+            model.tradeTypes4TP.forEach(function(aTTData) {
+                trade_items[aTTData.item_id].addType(aTTData.type_id);
+            });
+        });
+    }
+    
     function getItems(aCallback) {
         model.tradeItemsCostByTP.params.trade_point_id = aTradePoint;
         model.tradeItemsCostByTP.params.actual_date = anActualDate ? anActualDate : new Date();
@@ -118,6 +128,7 @@ function ItemsSelector(aContainer, aParent, aTradePoint, anActualDate) {
     
     getItems(function() {
         self.setActivePrice(10);
+        getItemsTypes();
     });
     bcp.action = self.barCodeEnter;
 }

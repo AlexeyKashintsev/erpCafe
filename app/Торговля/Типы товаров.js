@@ -7,6 +7,8 @@ function ChangeItemType() {
     var franchazi_id = userSession.getFranchazi();
     model.itemType.params.franchazi_id = franchazi_id;
     
+    self.isSelectTradeType = false;
+    
     function btnReqActionPerformed(evt) {//GEN-FIRST:event_btnReqActionPerformed
         if (model.modified&&confirm('Сохранить изменения?')){
             model.save();
@@ -63,4 +65,14 @@ function ChangeItemType() {
             }
         }
     }//GEN-LAST:event_modelGridMouseClicked
+
+    function buttonActionPerformed(evt) {//GEN-FIRST:event_buttonActionPerformed
+        if (self.isSelectTradeType) {
+            if (!model.itemType.cursor.trade_type)
+                model.itemType.cursor.trade_type = true;
+            if (model.modified)// && confirm("Сохранить изменения?"))
+                model.save();
+            form.close(model.itemType.cursor.wh_item_types_id);
+        }
+    }//GEN-LAST:event_buttonActionPerformed
 }

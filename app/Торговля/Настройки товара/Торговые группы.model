@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?><datamodel>
+  <parametersEntity entityHeight="200" entityIconified="false" entityLocationX="12" entityLocationY="12" entityWidth="150"/>
+  <entity Name="itemType" Title="" entityHeight="200" entityIconified="false" entityId="142651298206353" entityLocationX="375" entityLocationY="10" entityWidth="150" queryId="itemType" tableName="" tableSchemaName=""/>
+  <entity Name="qTradeTypesByItemId" Title="" entityHeight="200" entityIconified="false" entityId="142651297345181" entityLocationX="192" entityLocationY="15" entityWidth="150" queryId="qTradeTypesByItemId" tableName="" tableSchemaName=""/>
+  <referenceRelation leftEntityFieldName="type_id" leftEntityId="142651297345181" rightEntityFieldName="wh_item_types_id" rightEntityId="142651298206353"/>
+  <referenceRelation leftEntityFieldName="parent_type" leftEntityId="142651298206353" rightEntityFieldName="wh_item_types_id" rightEntityId="142651298206353"/>
+</datamodel>

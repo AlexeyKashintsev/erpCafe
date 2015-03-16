@@ -27,7 +27,7 @@ function OrderProcessor() {
 
         function processOrders() {
             for (var j in orders) {
-                processOrder(orders[j]);
+                self.processOrder(orders[j]);
             }
             orders = [];
             new Alerter(divEl, false, "", false, 1);
@@ -53,7 +53,7 @@ function OrderProcessor() {
                 itemsBoard.reloadItemsLimit();
             }, function() {
                 if (attempt < 5)
-                    processOrder(anOrderDetails, alert, attempt);
+                    self.processOrder(anOrderDetails, alert, attempt);
                 else {
                     new Alerter(alert, "alert-danger", alerts.failure, true, 15000);
                     unprocessedOrders.addOrder(anOrderDetails);

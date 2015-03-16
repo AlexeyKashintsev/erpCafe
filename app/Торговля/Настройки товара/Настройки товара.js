@@ -6,7 +6,7 @@ function ItemSettingsAndCost(aTradeItemId, aOpenType) {
     var self = this, model = this.model, form = this;
     var tradeAdminModule = Session.get("TradeAdminModule");
 
-    var fmItemCard, fmTIcontents, fmItemCost, fmBonuses;
+    var fmItemCard, fmTIcontents, fmItemCost, fmBonuses, fmGroup;
     /*require(['ItemCard', 'ContentTradeItem', 'ItemCostForm', 'BonusRateForm'],
         function() {*/
             fmItemCard = new ItemCard();
@@ -14,6 +14,8 @@ function ItemSettingsAndCost(aTradeItemId, aOpenType) {
             fmItemCard.showOnPanel(form.pnlCard);
             fmTIcontents = new ContentTradeItem(true);
             fmTIcontents.showOnPanel(form.pnlContent);
+            fmGroup = new TradeTypesByItemForm();
+            fmGroup.showOnPanel(form.pnlTradeGroup);
             fmItemCost = new ItemCostForm();
             fmItemCost.showOnPanel(form.pnlCost);
             fmBonuses = new BonusRateForm();
@@ -26,15 +28,17 @@ function ItemSettingsAndCost(aTradeItemId, aOpenType) {
                 (session.tradePoint ? session.tradePoint : model.params.trade_pont));
         
         model.params.item_id = anItemId ? anItemId : model.params.item_id;
+        anItemId = model.params.item_id;
 
         model.qTradeItemsOnTP.params.trade_point = model.params.trade_pont;
-        model.qTradeItemsOnTP.params.item_id = model.params.item_id;
+        model.qTradeItemsOnTP.params.item_id = anItemId;
         model.qTradeItemsOnTP.requery();
 
-        fmItemCard.setItem(model.qTradeItemsOnTP.params.item_id);
-        fmTIcontents.setTradeItem(model.qTradeItemsOnTP.params.item_id);
-        fmItemCost.setItem(model.qTradeItemsOnTP.params.item_id);
-        fmBonuses.setTradeItem(model.qTradeItemsOnTP.params.item_id);
+        fmItemCard.setItem(anItemId);
+        fmTIcontents.setTradeItem(anItemId);
+        fmGroup.setTradeItem(anItemId);
+        fmItemCost.setItem(anItemId);
+        fmBonuses.setTradeItem(anItemId);
     };
 
     if (aTradeItemId)
@@ -45,6 +49,7 @@ function ItemSettingsAndCost(aTradeItemId, aOpenType) {
         model.save();
         fmItemCard.save();
         fmTIcontents.save();
+        fmGroup.save();
 
         tradeAdminModule.processChangesForTradeItem({
             item_id: model.params.item_id,

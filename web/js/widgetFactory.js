@@ -152,7 +152,7 @@ wf.OrderItem = function(aObject, aContainer) {
 
 wf.TradeItem = function(aContainer) {
     this.elType = "div";
-    this.elClass = "Sortable itemDescription tt_" + this.data.trade_item_type_id;
+    this.elClass = "Sortable itemDescription";
     this.container = aContainer;
     this.ID = "ti_" + this.data.item_id;
     
@@ -168,6 +168,11 @@ wf.TradeItem = function(aContainer) {
     this.setDisplayedPrice = function(aPrice) {
         itemCost.innerHTML = aPrice;
     };
+    
+    this.addType = function(aType) {
+        $(this.dockElement).addClass("tt_" + aType);
+    }.bind(this);
+    
     this.updateLimit = function() {
         var whIcon = "<span class='glyphicon glyphicon-align-justify'></>";
         if (this.limit > 10) {

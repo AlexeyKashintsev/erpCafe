@@ -50,7 +50,7 @@ function OrderList(aParent, aContainer) {
         self.orderDetails = {};
         aParent.cashBackCalc.hide();
         self.calculateOrder();
-        if (!dontReloadLimits) 
+        if (!dontReloadLimits || typeof(dontReloadLimits) == "object") 
             itemsBoard.reloadItemsLimit();
     };
     

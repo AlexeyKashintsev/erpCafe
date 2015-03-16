@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?><datamodel>
   <parametersEntity entityHeight="200" entityIconified="false" entityLocationX="12" entityLocationY="12" entityWidth="150"/>
-  <entity Name="itemType" Title="" entityHeight="200" entityIconified="false" entityId="142313814574419" entityLocationX="180" entityLocationY="15" entityWidth="150" queryId="itemType" tableName="" tableSchemaName=""/>
+  <entity Name="itemType" Title="" entityHeight="200" entityIconified="false" entityId="142313814574419" entityLocationX="180" entityLocationY="15" entityWidth="150" onRequeried="itemTypeOnRequeried" queryId="itemType" tableName="" tableSchemaName=""/>
   <referenceRelation leftEntityFieldName="parent_type" leftEntityId="142313814574419" rightEntityFieldName="wh_item_types_id" rightEntityId="142313814574419"/>
 </datamodel>
