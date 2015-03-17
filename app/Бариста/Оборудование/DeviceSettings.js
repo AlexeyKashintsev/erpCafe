@@ -7,11 +7,15 @@
 function DeviceSettings(aContainer) {
     var self = this, model = this.model;
 
-    var APP_API = new DeviceSampleSettings();
-    var settings = APP_API.getAvaibleDevices();
+    var APP_API = new DeviceSampleSettings(self);
+    APP_API.getAvailableDevices();
     var devSettings = {};
-    for (var devType in settings) {
-        devSettings[devType] = new DevSettings(settings[devType]);
+    
+    
+    self.setSettings = function(aSettings){
+        for (var devType in aSettings) {
+            devSettings[devType] = new DevSettings(aSettings[devType]);
+        }
     }
     
     var btnSave = cmn.createElement("button", "btnOk", aContainer);
