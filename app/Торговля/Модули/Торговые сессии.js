@@ -96,9 +96,10 @@ function TradeSessions() {
      * @param {type} aQuantity
      * @returns {undefined}
      */
-    function TradeItemsPushInTradeOperation(aCashBoxOperationId, anItemId, aQuantity, aPriceType) {
+    function TradeItemsPushInTradeOperation(aCashBoxOperationId, aTradeId, anItemId, aQuantity, aPriceType) {
         model.qTradeOperationsWithItems.push({
             cash_box_operation  :   aCashBoxOperationId,
+            item_on_tp          :   aTradeId,
             trade_item          :   anItemId,
             items_quantity      :   aQuantity,
             price_type          :   aPriceType
@@ -110,16 +111,16 @@ function TradeSessions() {
         //model.tradeItemsByTradePointWithCost.params.franchazi_id = session.getFranchazi();
         model.tradeItemsByTPwCost.params.trade_point_id = session.getTradePoint();  
         model.tradeItemsByTPwCost.requery();
-        model.tradeItemsByTPwCost.beforeFirst();
-        while (model.tradeItemsByTPwCost.next()){
-            sessionItems[model.tradeItemsByTPwCost.cursor.item_id] = {};
-            sessionItems[model.tradeItemsByTPwCost.cursor.item_id].cost = model.tradeItemsByTPwCost.cursor.item_cost;
-            sessionItems[model.tradeItemsByTPwCost.cursor.item_id].name = model.tradeItemsByTPwCost.cursor.item_name;
-            sessionItems[model.tradeItemsByTPwCost.cursor.item_id].bonus_category = [];
+        model.tradeItemsByTPwCost.forEach(function(cursor) {
+            sessionItems[cursor.trade_items_on_tp_id] = {};
+            sessionItems[cursor.trade_items_on_tp_id].itemID = cursor.item_id;
+            sessionItems[cursor.trade_items_on_tp_id].cost = model.tradeItemsByTPwCost.cursor.item_cost;
+            sessionItems[cursor.trade_items_on_tp_id].name = model.tradeItemsByTPwCost.cursor.item_name;
+            sessionItems[cursor.trade_items_on_tp_id].bonus_category = [];
             for (var i = 1; i<=3; i++){
-                sessionItems[model.tradeItemsByTPwCost.cursor.item_id].bonus_category[i] = bonuses.getCountBonusesByItem(model.tradeItemsByTPwCost.cursor.item_id, i);
+                sessionItems[cursor.trade_items_on_tp_id].bonus_category[i] = bonuses.getCountBonusesByItem(cursor.item_id, i);
             }
-        }
+        });
         return sessionItems;
     }
 
@@ -130,13 +131,16 @@ function TradeSessions() {
      * @returns {Boolean}
      */
     function processOrderItem(anOrderItem, aTradeOperationId) {
-        if (anOrderItem.itemId && anOrderItem.quantity) {
+        if (anOrderItem.tradeId && anOrderItem.quantity) {
+            var itemId = sessionItems[anOrderItem.tradeId].itemID;
             TradeItemsPushInTradeOperation( aTradeOperationId,
-                                            anOrderItem.itemId,
+                                            anOrderItem.tradeId,
+                                            itemId,
                                             anOrderItem.quantity,
                                             anOrderItem.priceType);
 
             //WhItemsConsumption(anOrderItem.itemId, anOrderItem.quantity);
+            //TODO Тут тоже переписать ЖАРА!!!!
             var cons = {};
             cons[anOrderItem.itemId] = anOrderItem.quantity;
             whSession.processTradeItems(cons);
@@ -153,7 +157,7 @@ function TradeSessions() {
         model.qOpenedSession.params.user_name = session.getUserName();
         var tpid = model.qOpenedSession.cursor.trade_point;
         for (var i in anItems) {
-            sum += sessionItems[anItems[i].itemId] * anItems[i].quantity;
+            sum += sessionItems[anItems[i].tradeId] * anItems[i].quantity;
         };
         return sum;
     }
@@ -213,8 +217,8 @@ function TradeSessions() {
                 processOrderItem(anOrderDetails.orderItems[i], TradeOperationId);
 
                 if (client && anOrderDetails.methodOfPayment === 0) {
-                    BonusCount += sessionItems[anOrderDetails.orderItems[i].itemId].bonus_category[client.bonusCategory]
-                            * sessionItems[anOrderDetails.orderItems[i].itemId].cost//getCountBonusesByItem(anOrderDetails.orderItems[i].itemId, client.bonusCategory)
+                    BonusCount += sessionItems[anOrderDetails.orderItems[i].tradeId].bonus_category[client.bonusCategory]
+                            * sessionItems[anOrderDetails.orderItems[i].tradeId].cost//getCountBonusesByItem(anOrderDetails.orderItems[i].itemId, client.bonusCategory)
                             * anOrderDetails.orderItems[i].quantity;
                 }
             }

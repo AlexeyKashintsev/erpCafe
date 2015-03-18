@@ -3,25 +3,26 @@
     <parameter description="" name="session_id" nullable="true" parameterMode="1" precision="0" scale="0" selectionForm="null" signed="true" size="0" type="2" typeName="NUMERIC"/>
   </parameters>
   <parametersEntity entityHeight="200" entityIconified="false" entityLocationX="11" entityLocationY="18" entityWidth="150"/>
+  <entity Name="qContents" Title="" entityHeight="200" entityIconified="false" entityId="140730689615726" entityLocationX="777" entityLocationY="9" entityWidth="150" queryId="qContents" tableName="" tableSchemaName=""/>
+  <entity Name="qOpenedSession" Title="" entityHeight="200" entityIconified="false" entityId="140715165500248" entityLocationX="189" entityLocationY="14" entityWidth="150" queryId="qOpenedSession" tableName="" tableSchemaName=""/>
+  <entity Name="prSetFinalBalance4CashBox" Title="" entityHeight="200" entityIconified="false" entityId="141319413534943" entityLocationX="210" entityLocationY="355" entityWidth="150" queryId="prSetFinalBalance4CashBox" tableName="" tableSchemaName=""/>
+  <entity Name="qTradeOperationBySession" Title="" entityHeight="200" entityIconified="false" entityId="140714025677776" entityLocationX="416" entityLocationY="11" entityWidth="157" queryId="qTradeOperationBySession" tableName="" tableSchemaName=""/>
+  <entity Name="qBillAccount" Title="" entityHeight="200" entityIconified="false" entityId="140896680034239" entityLocationX="590" entityLocationY="11" entityWidth="150" queryId="qBillAccount" tableName="" tableSchemaName=""/>
   <entity Name="qTradeOperationsWithItems" Title="" entityHeight="115" entityIconified="false" entityId="140715489889102" entityLocationX="14" entityLocationY="233" entityWidth="205" queryId="qTradeOperationsWithItems" tableName="" tableSchemaName=""/>
   <entity Name="qTradeSessionBalance" Title="" entityHeight="98" entityIconified="false" entityId="140707491747447" entityLocationX="396" entityLocationY="452" entityWidth="170" queryId="qTradeSessionBalance" tableName="" tableSchemaName=""/>
-  <entity Name="prSetFinalBalance4CashBox" Title="" entityHeight="200" entityIconified="false" entityId="141319413534943" entityLocationX="210" entityLocationY="355" entityWidth="150" queryId="prSetFinalBalance4CashBox" tableName="" tableSchemaName=""/>
-  <entity Name="qContents" Title="" entityHeight="200" entityIconified="false" entityId="140730689615726" entityLocationX="777" entityLocationY="9" entityWidth="150" queryId="qContents" tableName="" tableSchemaName=""/>
-  <entity Name="qTradeOperationBySession" Title="" entityHeight="200" entityIconified="false" entityId="140714025677776" entityLocationX="416" entityLocationY="11" entityWidth="157" queryId="qTradeOperationBySession" tableName="" tableSchemaName=""/>
-  <entity Name="qOpenedSession" Title="" entityHeight="200" entityIconified="false" entityId="140715165500248" entityLocationX="189" entityLocationY="14" entityWidth="150" queryId="qOpenedSession" tableName="" tableSchemaName=""/>
   <entity Name="tradeItemsByTPwCost" Title="" entityHeight="200" entityIconified="false" entityId="141322749866219" entityLocationX="415" entityLocationY="224" entityWidth="247" queryId="tradeItemsCostByTP" tableName="" tableSchemaName=""/>
-  <entity Name="qBillAccount" Title="" entityHeight="200" entityIconified="false" entityId="140896680034239" entityLocationX="590" entityLocationY="11" entityWidth="150" queryId="qBillAccount" tableName="" tableSchemaName=""/>
+  <referenceRelation leftEntityFieldName="trade_item" leftEntityId="140730689615726" rightEntityFieldName="wh_items_id" rightEntityId="140730689615726"/>
+  <referenceRelation leftEntityFieldName="cash_box_operation" leftEntityId="140715489889102" rightEntityFieldName="trade_cash_box_operation_id" rightEntityId="140714025677776"/>
+  <referenceRelation leftEntityFieldName="item_on_tp" leftEntityId="140715489889102" rightEntityFieldName="trade_items_on_tp_id" rightEntityId="141322749866219"/>
+  <referenceRelation leftEntityFieldName="session_id" leftEntityId="140714025677776" rightEntityFieldName="org_session_id" rightEntityId="140715165500248"/>
+  <referenceRelation leftEntityFieldName="cash_box_operation" leftEntityId="140715489889102" rightEntityFieldName="trade_cash_box_operation_id" rightEntityId="140714025677776"/>
+  <referenceRelation leftEntityFieldName="cash_box_operation" leftEntityId="140715489889102" rightEntityFieldName="trade_cash_box_operation_id" rightEntityId="140714025677776"/>
+  <referenceRelation leftEntityFieldName="wh_item" leftEntityId="140730689615726" rightEntityFieldName="wh_items_id" rightEntityId="140730689615726"/>
+  <referenceRelation leftEntityFieldName="trade_item" leftEntityId="140715489889102" rightEntityFieldName="wh_items_id" rightEntityId="140730689615726"/>
+  <referenceRelation leftEntityFieldName="session_id" leftEntityId="140707491747447" rightEntityFieldName="org_session_id" rightEntityId="140715165500248"/>
   <referenceRelation leftEntityFieldName="item_id" leftEntityId="141322749866219" rightEntityFieldName="wh_items_id" rightEntityId="140730689615726"/>
   <referenceRelation leftEntityFieldName="session_id" leftEntityId="140707491747447" rightEntityFieldName="org_session_id" rightEntityId="140715165500248"/>
-  <referenceRelation leftEntityFieldName="cash_box_operation" leftEntityId="140715489889102" rightEntityFieldName="trade_cash_box_operation_id" rightEntityId="140714025677776"/>
-  <referenceRelation leftEntityFieldName="cash_box_operation" leftEntityId="140715489889102" rightEntityFieldName="trade_cash_box_operation_id" rightEntityId="140714025677776"/>
-  <referenceRelation leftEntityFieldName="trade_item" leftEntityId="140715489889102" rightEntityFieldName="wh_items_id" rightEntityId="140730689615726"/>
-  <referenceRelation leftEntityFieldName="trade_item" leftEntityId="140730689615726" rightEntityFieldName="wh_items_id" rightEntityId="140730689615726"/>
-  <referenceRelation leftEntityFieldName="wh_item" leftEntityId="140730689615726" rightEntityFieldName="wh_items_id" rightEntityId="140730689615726"/>
-  <referenceRelation leftEntityFieldName="cash_box_operation" leftEntityId="140715489889102" rightEntityFieldName="trade_cash_box_operation_id" rightEntityId="140714025677776"/>
   <referenceRelation leftEntityFieldName="session_id" leftEntityId="140707491747447" rightEntityFieldName="org_session_id" rightEntityId="140715165500248"/>
-  <referenceRelation leftEntityFieldName="cash_box_operation" leftEntityId="140715489889102" rightEntityFieldName="trade_cash_box_operation_id" rightEntityId="140714025677776"/>
-  <referenceRelation leftEntityFieldName="session_id" leftEntityId="140707491747447" rightEntityFieldName="org_session_id" rightEntityId="140715165500248"/>
-  <referenceRelation leftEntityFieldName="session_id" leftEntityId="140714025677776" rightEntityFieldName="org_session_id" rightEntityId="140715165500248"/>
   <referenceRelation leftEntityFieldName="session_id" leftEntityId="141319413534943" rightEntityFieldName="org_session_id" rightEntityId="140715165500248"/>
+  <referenceRelation leftEntityFieldName="cash_box_operation" leftEntityId="140715489889102" rightEntityFieldName="trade_cash_box_operation_id" rightEntityId="140714025677776"/>
 </datamodel>

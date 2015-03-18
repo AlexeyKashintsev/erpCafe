@@ -8,6 +8,7 @@ function OrderItem(anItemData, aPriceType, aPrice) {
 
     ordItem.orderQuantity = 0;
     ordItem.itemId = anItemData.item_id;
+    ordItem.tradeId = anItemData.trade_items_on_tp_id;
     ordItem.itemName = anItemData.item_name;
     ordItem.itemCost = aPrice ? aPrice : anItemData.item_cost;
     ordItem.measure = anItemData.item_measure;
