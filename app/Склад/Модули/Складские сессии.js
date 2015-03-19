@@ -114,10 +114,9 @@ function WhSessionModule() {
             if (model.qOpenedSession.cursor.revision && aEndValues) {
                 model.querySessionBalance.params.session_id = model.params.session_id;
                 model.querySessionBalance.requery();
-                model.querySessionBalance.beforeFirst();
-                while (model.querySessionBalance.next()) {
-                    model.querySessionBalance.cursor.end_value = aEndValues[model.querySessionBalance.cursor.item_id];
-                }
+                model.querySessionBalance.forEach(function(cursor) {
+                    cursor.end_value = aEndValues[cursor.item_on_tp_id];
+                });
                 model.save();
             } else {
                 model.save();
@@ -285,11 +284,11 @@ function WhSessionModule() {
         
         if (!aStartValues) 
             aStartValues = [];
-        model.qWhItemsOnTP.beforeFirst();
         model.qWhItemsOnTP.forEach(function(cursor) {
-            var startValue = aStartValues[cursor.item_id] ? aStartValues[cursor.item_id] : 0;
+            var startValue = aStartValues[cursor.items_on_tp_id] ? aStartValues[cursor.items_on_tp_id] : 0;
             model.querySessionBalance.push({
                     session_id: model.params.session_id,
+                    item_on_tp_id: cursor.items_on_tp_id,
                     item_id: cursor.item_id,
                     start_value: startValue
             });
@@ -311,7 +310,7 @@ function WhSessionModule() {
         model.querySessionBalance.params.session_id = aSession;
         model.querySessionBalance.requery();
         model.querySessionBalance.forEach(function(cursor) {
-            values[cursor.item_id] = aEndValue ? cursor.end_value : cursor.start_value;
+            values[cursor.item_on_tp_id] = aEndValue ? cursor.end_value : cursor.start_value;
         });
         return values;
     }

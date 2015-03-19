@@ -3,6 +3,6 @@
     <parameter description="" name="franchazi_id" nullable="true" parameterMode="1" precision="0" scale="0" selectionForm="null" signed="true" size="0" type="2" typeName="NUMERIC"/>
   </parameters>
   <parametersEntity entityHeight="200" entityIconified="false" entityLocationX="8" entityLocationY="7" entityWidth="150"/>
-  <entity Title="" entityHeight="200" entityIconified="false" entityId="142226401025003" entityLocationX="169" entityLocationY="30" entityWidth="150" tableAlias="t" tableName="items_types" tableSchemaName=""/>
   <entity Title="" entityHeight="200" entityIconified="false" entityId="142226401025060" entityLocationX="333" entityLocationY="28" entityWidth="150" tableAlias="t1" tableName="items_types" tableSchemaName=""/>
+  <relation leftEntityId="-1" leftEntityParameterName="franchazi_id" rightEntityFieldName="franchazi_id" rightEntityId="142226401025060"/>
 </datamodel>

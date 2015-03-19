@@ -23,22 +23,29 @@ function ItemSettingsAndCost(aTradeItemId, aOpenType) {
       //  });
 
 
-    self.setTradeItem = function(anItemId, aTradePoint) {
+    self.setTradeItem = function(anItemId, aTradePoint, anItemOnTpId) {
         model.params.trade_pont = (aTradePoint ? aTradePoint : 
                 (session.tradePoint ? session.tradePoint : model.params.trade_pont));
         
         model.params.item_id = anItemId ? anItemId : model.params.item_id;
+        model.params.item_on_tp = anItemOnTpId ? anItemOnTpId : null;
+        
         anItemId = model.params.item_id;
 
         model.qTradeItemsOnTP.params.trade_point = model.params.trade_pont;
         model.qTradeItemsOnTP.params.item_id = anItemId;
-        model.qTradeItemsOnTP.requery();
-
-        fmItemCard.setItem(anItemId);
-        fmTIcontents.setTradeItem(anItemId);
-        fmGroup.setTradeItem(anItemId);
-        fmItemCost.setItem(anItemId);
-        fmBonuses.setTradeItem(anItemId);
+        model.qTradeItemsOnTP.params.item_on_tp = model.params.item_on_tp;
+        model.qTradeItemsOnTP.requery(function() {
+            if (model.qTradeItemsOnTP.empty) {
+                
+            } else {
+                fmItemCard.setItem(anItemId);
+                fmTIcontents.setTradeItem(anItemId);
+                fmGroup.setTradeItem(anItemId);
+                fmItemCost.setItem(anItemId);
+                fmBonuses.setTradeItem(anItemId);
+            }
+        });
     };
 
     if (aTradeItemId)
@@ -52,6 +59,7 @@ function ItemSettingsAndCost(aTradeItemId, aOpenType) {
         fmGroup.save();
 
         tradeAdminModule.processChangesForTradeItem({
+            item_on_tp: model.params.item_on_tp,
             item_id: model.params.item_id,
             trade_point: model.params.trade_pont,
             color: model.params.color,

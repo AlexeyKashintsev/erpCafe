@@ -11,21 +11,21 @@
   <widget actionPerformed="btnSaveActionPerformed" name="btnSave" parent="Form" prefHeight="23px" prefWidth="125px" text="Сохранить" type="ButtonDesignInfo">
     <constraints bottom="6px" height="23px" right="136px" type="MarginConstraintsDesignInfo" width="125px"/>
   </widget>
-  <widget actionPerformed="buttonActionPerformed" name="button" parent="Form" prefHeight="23px" prefWidth="132px" text="Загрузить фото" type="ButtonDesignInfo">
+  <widget actionPerformed="btnLoadPictureActionPerformed" name="btnLoadPicture" parent="Form" prefHeight="23px" prefWidth="132px" text="Загрузить фото" type="ButtonDesignInfo">
     <constraints height="23px" right="91px" top="218px" type="MarginConstraintsDesignInfo" width="132px"/>
   </widget>
   <widget backgroundColor="#ffffff" horizontalAlignment="0" horizontalTextPosition="0" name="lblImageArea" parent="Form" prefHeight="192px" prefWidth="204px" type="LabelDesignInfo" verticalAlignment="1">
     <constraints height="192px" right="23px" top="12px" type="MarginConstraintsDesignInfo" width="204px"/>
   </widget>
   <widget name="mcType" parent="Form" prefHeight="20px" prefWidth="260px" type="DbComboDesignInfo">
-    <displayField entityId="141882721078197" fieldName="type_description"/>
     <valueField entityId="141882721078197" fieldName="items_types_id"/>
+    <displayField entityId="141882721078197" fieldName="type_description"/>
     <datamodelElement entityId="141883094763783" fieldName="item_type"/>
     <constraints height="20px" left="84px" right="239px" top="84px" type="MarginConstraintsDesignInfo"/>
   </widget>
   <widget name="mcMeasure" parent="Form" prefHeight="20px" prefWidth="260px" type="DbComboDesignInfo">
-    <displayField entityId="141882722753056" fieldName="measure_desc"/>
     <valueField entityId="141882722753056" fieldName="wh_measures_id"/>
+    <displayField entityId="141882722753056" fieldName="measure_desc"/>
     <datamodelElement entityId="141883094763783" fieldName="item_measure"/>
     <constraints height="20px" left="84px" right="239px" top="120px" type="MarginConstraintsDesignInfo"/>
   </widget>
@@ -53,7 +53,7 @@
   <widget actionPerformed="btnCancelActionPerformed" name="btnCancel" parent="Form" prefHeight="23px" prefWidth="119px" text="Отмена" type="ButtonDesignInfo">
     <constraints bottom="6px" height="23px" right="12px" type="MarginConstraintsDesignInfo" width="119px"/>
   </widget>
-  <widget actionPerformed="button1ActionPerformed" name="button1" parent="Form" prefHeight="23px" prefWidth="71px" text="URL" type="ButtonDesignInfo">
+  <widget actionPerformed="btnPictureFromURLActionPerformed" name="btnPictureFromURL" parent="Form" prefHeight="23px" prefWidth="71px" text="URL" type="ButtonDesignInfo">
     <constraints height="23px" right="20px" top="218px" type="MarginConstraintsDesignInfo" width="71px"/>
   </widget>
   <layout type="MarginLayoutDesignInfo"/>

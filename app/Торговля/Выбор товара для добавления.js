@@ -4,35 +4,37 @@
  */
 function AddItemToDashboard() {
     var self = this, model = this.model, form = this;
-    var Settings = new ItemSettingsAndCost();
+    var ItemSettings = new ItemSettingsAndCost();
     var itemCard = new ItemCard();
     var tradeAdminModule = new ServerModule("TradeAdminModule");
-    model.qTradeItemsWithSearch.params.franchazi_id = session.franchaziId;
-    model.qTradeItemsWithSearch.params.trade_point = session.tradePoint;
     
     self.setParams = function(aTradePoint, aFranchazi) {
-        model.qTradeItemsWithSearch.params.franchazi_id = aFranchazi;
-        model.qTradeItemsWithSearch.params.trade_point = aTradePoint;
+        /*model.qTradeItemsWithSearch.params.franchazi_id = 
+                model.itemType.params.franchazi_id = aFranchazi;
+        model.qTradeItemsWithSearch.params.trade_point = aTradePoint;*/
+        model.params.beginUpdate();
+        model.params.franchazi_id = aFranchazi;
+        model.params.trade_point_id = aTradePoint;
+        model.params.endUpdate();
     };
     
-    function modelGridMouseClicked(evt) {//GEN-FIRST:event_modelGridMouseClicked
-        model.qTradeItemsWithSearch.params.item_type = model.itemType.cursor.items_types_id;
-        model.qTradeItemsWithSearch.requery();
-    }//GEN-LAST:event_modelGridMouseClicked
-
-    function modelGrid1MouseClicked(evt) {//GEN-FIRST:event_modelGrid1MouseClicked
+    self.setParams(session.tradePoint, session.franchaziId);
+    
+    function mgCatalogMouseClicked(evt) {//GEN-FIRST:event_mgCatalogMouseClicked
         if (evt.clickCount > 1){
-            Settings.setTradeItem(model.qTradeItemsWithSearch.cursor.items_catalog_id);
-            Settings.showModal();
+            showItemSettings();
         }
-    }//GEN-LAST:event_modelGrid1MouseClicked
+    }//GEN-LAST:event_mgCatalogMouseClicked
 
     function btnAddToDashboardActionPerformed(evt) {//GEN-FIRST:event_btnAddToDashboardActionPerformed
-        Settings.setTradeItem(model.qTradeItemsWithSearch.cursor.items_catalog_id);
-        Settings.pnlCost.focus();
-        Settings.showModal();
+        showItemSettings();
         
     }//GEN-LAST:event_btnAddToDashboardActionPerformed
+
+    function showItemSettings() {
+        ItemSettings.setTradeItem(model.qTradeItemsWithSearch.cursor.items_catalog_id);
+        ItemSettings.showModal();
+    }
 
     function btnNewItemActionPerformed(evt) {//GEN-FIRST:event_btnNewItemActionPerformed
         itemCard.addNew();
@@ -49,12 +51,13 @@ function AddItemToDashboard() {
     }//GEN-LAST:event_btnCancelActionPerformed
 
     function paramsOnChanged(evt) {//GEN-FIRST:event_paramsOnChanged
-        model.qTradeItemsWithSearch.requery(function(){
-            if (model.qTradeItemsWithSearch.length === 0)
-                btnNewItemActionPerformed();
-            form.tfSearch.focus();
-            $("#x-widget-10-input").select();
-        });
+        if (evt.propertyName == "item_search")
+            model.qTradeItemsWithSearch.requery(function(){
+                if (model.qTradeItemsWithSearch.length === 0)
+                    btnNewItemActionPerformed();
+                form.tfSearch.focus();
+                //$("#x-widget-10-input").select();
+            });
         
     }//GEN-LAST:event_paramsOnChanged
 
@@ -66,12 +69,4 @@ function AddItemToDashboard() {
         model.params.item_search = null;
         form.tfSearch.focus();
     }//GEN-LAST:event_buttonActionPerformed
-
-    function qTradeItemTypesOnChanged(evt) {//GEN-FIRST:event_qTradeItemTypesOnChanged
-        // TODO Добавьте здесь свой код:
-    }//GEN-LAST:event_qTradeItemTypesOnChanged
-
-    function qTradeItemTypesOnScrolled(evt) {//GEN-FIRST:event_qTradeItemTypesOnScrolled
-        // TODO Добавьте здесь свой код:
-    }//GEN-LAST:event_qTradeItemTypesOnScrolled
 }

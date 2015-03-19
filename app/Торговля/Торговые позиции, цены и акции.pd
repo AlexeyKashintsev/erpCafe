@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?><datamodel datamodelDbId="null">
+  <fieldsEntity entityHeight="200" entityIconified="false" entityId="142678667217163" entityLocationX="853" entityLocationY="11" entityWidth="150" tableName="items_types"/>
   <fieldsEntity entityHeight="200" entityIconified="false" entityId="142644845515109" entityLocationX="616" entityLocationY="6" entityWidth="150" tableName="trade_items_display_types"/>
-  <fieldsEntity entityHeight="200" entityIconified="false" entityId="142314895097184" entityLocationX="859" entityLocationY="21" entityWidth="150" tableName="items_types"/>
   <fieldsEntity entityHeight="205" entityIconified="false" entityId="142113625449487" entityLocationX="403" entityLocationY="15" entityWidth="150" tableName="items_on_tp"/>
   <fieldsEntity entityHeight="200" entityIconified="false" entityId="141899561816665" entityLocationX="30" entityLocationY="15" entityWidth="150" tableName="trade_price_types"/>
-  <fieldsEntity entityHeight="200" entityIconified="false" entityId="141819869666726" entityLocationX="616" entityLocationY="228" entityWidth="150" tableName="items_catalog"/>
   <fieldsEntity entityHeight="227" entityIconified="false" entityId="140566606737864" entityLocationX="215" entityLocationY="17" entityWidth="150" tableName="trade_items_cost"/>
+  <fieldsEntity entityHeight="200" entityIconified="false" entityId="141819869666726" entityLocationX="616" entityLocationY="228" entityWidth="150" tableName="items_catalog"/>
   <fieldsEntity entityHeight="200" entityIconified="false" entityId="142234721376091" entityLocationX="399" entityLocationY="239" entityWidth="150" tableName="misc_colors"/>
   <fieldsEntity entityHeight="200" entityIconified="false" entityId="142314900568771" entityLocationX="865" entityLocationY="298" entityWidth="150" tableName="wh_measures"/>
 </datamodel>
