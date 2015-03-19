@@ -142,7 +142,7 @@ function TradeSessions() {
             //WhItemsConsumption(anOrderItem.itemId, anOrderItem.quantity);
             //TODO Тут тоже переписать ЖАРА!!!!
             var cons = {};
-            cons[anOrderItem.itemId] = anOrderItem.quantity;
+            cons[anOrderItem.tradeId] = anOrderItem.quantity;
             whSession.processTradeItems(cons);
         } else {
             ep.addEvent('errorAddTradeOperation', {

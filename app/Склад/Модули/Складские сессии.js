@@ -193,12 +193,18 @@ function WhSessionModule() {
         self.whMovement(consumption, self.WH_PRODUCE_ITEMS);
     };
     
+    function getItemData(aTradeItemID) {
+        //var itemData = model.qTradeItemsOnTP.find(model.qTradeItemsOnTP.schema.item_id, anItemID);
+       // if (!itemData)
+        var itemData = model.qTradeItemsOnTP.find(model.qTradeItemsOnTP.schema.trade_items_on_tp_id, aTradeItemID);
+        return itemData ? itemData[0] : false;
+    }
+    
     function calculateConsumption(anItems) {
         var usedItems = {};
         for (var id in anItems) {
-            var itemData = model.qTradeItemsOnTP.find(model.qTradeItemsOnTP.schema.item_id, id);
+            var itemData = getItemData(id);
             if (itemData) {
-                itemData = itemData[0];
                 if (itemData.wh_item) {
                     if (usedItems[id])
                         usedItems[id] += anItems[id];
@@ -206,10 +212,10 @@ function WhSessionModule() {
                         usedItems[id] = anItems[id];
                 }
                 if (itemData.wh_content) {
-                    var contentsData = model.qContentsOnTp.find(model.qContentsOnTp.schema.trade_item, id);
+                    var contentsData = model.qContentsOnTp.find(model.qContentsOnTp.schema.item_on_tp_id, id);
                     var contents = {};
                     for (var j in contentsData)
-                        contents[contentsData[j].wh_item] = contentsData[j].usage_quantity * anItems[id];
+                        contents[contentsData[j].content_item_id] = contentsData[j].usage_quantity * anItems[id];
                     contentsData = calculateConsumption(contents);
                     for (var j in contentsData) {
                         if (usedItems[j])
@@ -234,7 +240,8 @@ function WhSessionModule() {
             for (var id in anItems) {
                 model.queryMovements.push({
                     session_id: model.params.session_id,
-                    item_id: id,
+                    item_id: getItemData(id).item_id,
+                    item_on_tp_id: id,
                     movement_date: new Date(),
                     movement_type: aMovementType,
                     value: anItems[id]
