@@ -38,7 +38,7 @@
         <nativeFont name="Dialog" size="15"/>
       </headerStyle>
       <controlInfo classHint="DbComboDesignInfo" name="view" prefHeight="0px" prefWidth="0px">
-        <valueField entityId="140532276305367" fieldName="wh_item_types_id"/>
+        <valueField entityId="140532276305367" fieldName="items_types_id"/>
         <displayField entityId="140532276305367" fieldName="type_description"/>
       </controlInfo>
       <datamodelElement entityId="140784855997466" fieldName="item_type"/>

@@ -4,8 +4,8 @@
   </parameters>
   <parametersEntity entityHeight="200" entityIconified="false" entityLocationX="14" entityLocationY="13" entityWidth="150"/>
   <entity Title="" entityHeight="200" entityIconified="false" entityId="140568997878695" entityLocationX="402" entityLocationY="14" entityWidth="145" tableAlias="t1" tableName="trade_items_contents" tableSchemaName=""/>
-  <entity Title="" entityHeight="200" entityIconified="false" entityId="142675865133476" entityLocationX="631" entityLocationY="17" entityWidth="150" tableAlias="t3" tableName="trade_items_on_tp" tableSchemaName=""/>
-  <entity Title="" entityHeight="200" entityIconified="false" entityId="142494671400051" entityLocationX="210" entityLocationY="14" entityWidth="150" tableAlias="t2" tableName="trade_items_on_tp" tableSchemaName=""/>
+  <entity Title="" entityHeight="200" entityIconified="false" entityId="142675865133476" entityLocationX="631" entityLocationY="17" entityWidth="150" tableAlias="t3" tableName="items_on_tp" tableSchemaName=""/>
+  <entity Title="" entityHeight="200" entityIconified="false" entityId="142494671400051" entityLocationX="210" entityLocationY="14" entityWidth="150" tableAlias="t2" tableName="items_on_tp" tableSchemaName=""/>
   <relation leftEntityId="-1" leftEntityParameterName="trade_point_id" rightEntityFieldName="trade_point_id" rightEntityId="142494671400051"/>
   <relation leftEntityFieldName="item_id" leftEntityId="142494671400051" rightEntityFieldName="trade_item" rightEntityId="140568997878695"/>
   <relation leftEntityFieldName="item_id" leftEntityId="142675865133476" rightEntityFieldName="wh_item" rightEntityId="140568997878695"/>

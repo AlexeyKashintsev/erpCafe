@@ -19,7 +19,7 @@
   </widget>
   <widget name="mcType" parent="Form" prefHeight="20px" prefWidth="260px" type="DbComboDesignInfo">
     <displayField entityId="141882721078197" fieldName="type_description"/>
-    <valueField entityId="141882721078197" fieldName="wh_item_types_id"/>
+    <valueField entityId="141882721078197" fieldName="items_types_id"/>
     <datamodelElement entityId="141883094763783" fieldName="item_type"/>
     <constraints height="20px" left="84px" right="239px" top="84px" type="MarginConstraintsDesignInfo"/>
   </widget>

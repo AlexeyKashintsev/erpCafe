@@ -6,7 +6,7 @@
   <entity Name="itemType" Title="" entityHeight="200" entityIconified="false" entityId="141882836911917" entityLocationX="178" entityLocationY="9" entityWidth="150" onAfterChange="qTradeItemTypesOnChanged" onAfterScroll="qTradeItemTypesOnScrolled" queryId="itemType" tableName="" tableSchemaName=""/>
   <entity Name="qTradeItemsWithSearch" Title="" entityHeight="200" entityIconified="false" entityId="142348542547543" entityLocationX="509" entityLocationY="8" entityWidth="150" queryId="qTradeItemsWithSearch" tableName="" tableSchemaName=""/>
   <relation leftEntityId="-1" leftEntityParameterName="item_search" rightEntityId="142348542547543" rightEntityParameterName="item_search"/>
-  <referenceRelation leftEntityFieldName="item_type" leftEntityId="142348542547543" rightEntityFieldName="wh_item_types_id" rightEntityId="141882836911917"/>
-  <referenceRelation leftEntityFieldName="parent_type" leftEntityId="141882836911917" rightEntityFieldName="wh_item_types_id" rightEntityId="141882836911917"/>
-  <referenceRelation leftEntityFieldName="item_id" leftEntityId="142348542547543" rightEntityFieldName="wh_items_id" rightEntityId="142348542547543"/>
+  <referenceRelation leftEntityFieldName="item_type" leftEntityId="142348542547543" rightEntityFieldName="items_types_id" rightEntityId="141882836911917"/>
+  <referenceRelation leftEntityFieldName="parent_type" leftEntityId="141882836911917" rightEntityFieldName="items_types_id" rightEntityId="141882836911917"/>
+  <referenceRelation leftEntityFieldName="item_id" leftEntityId="142348542547543" rightEntityFieldName="items_catalog_id" rightEntityId="142348542547543"/>
 </datamodel>

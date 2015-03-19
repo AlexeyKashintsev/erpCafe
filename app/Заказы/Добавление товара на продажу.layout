@@ -29,7 +29,7 @@
     </rowsColumnsDesignInfo>
     <treeDesignInfo>
       <unaryLinkField entityId="140861160037845" fieldName="parent_type"/>
-      <paramSourceField entityId="140861160037845" fieldName="wh_item_types_id"/>
+      <paramSourceField entityId="140861160037845" fieldName="items_types_id"/>
     </treeDesignInfo>
     <constraints bottom="2px" left="0px" right="-5px" top="0px" type="MarginConstraintsDesignInfo"/>
   </widget>

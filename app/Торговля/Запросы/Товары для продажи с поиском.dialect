@@ -1,10 +1,10 @@
 Select *
-From wh_items t1
-left Join trade_items_on_tp t on t1.wh_items_id = t.item_id
+From items_catalog t1
+left Join items_on_tp t on t1.items_catalog_id = t.item_id
                             and :trade_point = t.trade_point_id
  Where (:franchazi_id = t1.franchazi_id) and 
  (:item_type = t1.item_type or :item_type is null or :item_type = 0) and
- (:item_id = t1.wh_items_id or :item_id is null)
+ (:item_id = t1.items_catalog_id or :item_id is null)
 and (t1.item_name ilike '%'||:item_search||'%' or CAST (t1.bar_code as varchar) ilike '%'||:item_search||'%' or :item_search is null)
 and (t.trade_item = false or t.trade_item is null)
  

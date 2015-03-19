@@ -33,13 +33,13 @@ function ItemsSelector(aContainer, aParent, aTradePoint, anActualDate) {
     };
     
     self.reloadItemsLimit = function() {
-      /*  var limits = [];
+        var limits = [];
         for (var j in trade_items) {
-            limits.push(trade_items[j].getItemID())
+            limits.push(j);
         };
         limits = whSession.getItemsLimit(limits);
         for (var j in limits)
-            trade_items[limits[j].itemID].setLimit(limits[j].limit);*/
+            trade_items[limits[j].itemOnTPID].setLimit(limits[j].limit);
     };
     
     self.barCodeEnter = function(aBarcode) {
@@ -103,7 +103,7 @@ function ItemsSelector(aContainer, aParent, aTradePoint, anActualDate) {
         model.tradeTypes4TP.params.actual_date = anActualDate ? anActualDate : new Date();
         model.tradeTypes4TP.requery(function() {
             model.tradeTypes4TP.forEach(function(aTTData) {
-                trade_items[aTTData.item_id].addType(aTTData.type_id);
+                trade_items[aTTData.items_on_tp_id].addType(aTTData.type_id);
             });
         });
     }
@@ -114,11 +114,11 @@ function ItemsSelector(aContainer, aParent, aTradePoint, anActualDate) {
         model.tradeItemsCostByTP.requery(function() {
             model.tradeItemsCostByTP.forEach(function(aTIData) {
                 if (aTIData.bar_code)
-                    bar_codes[aTIData.bar_code] = aTIData.trade_items_on_tp_id;
-                if (!trade_items[aTIData.trade_items_on_tp_id])
-                    trade_items[aTIData.trade_items_on_tp_id] = new TradeItem(aTIData, self, items_body);
+                    bar_codes[aTIData.bar_code] = aTIData.items_on_tp_id;
+                if (!trade_items[aTIData.items_on_tp_id])
+                    trade_items[aTIData.items_on_tp_id] = new TradeItem(aTIData, self, items_body);
                 else
-                    trade_items[aTIData.trade_items_on_tp_id].setAdditionalData(aTIData);
+                    trade_items[aTIData.items_on_tp_id].setAdditionalData(aTIData);
             });
             getSort();
             self.reloadItemsLimit();

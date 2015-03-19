@@ -5,10 +5,10 @@
     <parameter description="" name="franchazi_id" nullable="true" parameterMode="1" precision="0" scale="0" selectionForm="null" signed="true" size="0" type="2" typeName="NUMERIC"/>
   </parameters>
   <parametersEntity entityHeight="200" entityIconified="false" entityLocationX="8" entityLocationY="7" entityWidth="150"/>
-  <entity Title="" entityHeight="200" entityIconified="false" entityId="140542512388313" entityLocationX="438" entityLocationY="3" entityWidth="150" tableAlias="t1" tableName="wh_items" tableSchemaName=""/>
-  <entity Title="" entityHeight="200" entityIconified="false" entityId="142323645980439" entityLocationX="233" entityLocationY="11" entityWidth="150" tableAlias="t" tableName="trade_items_on_TP" tableSchemaName=""/>
+  <entity Title="" entityHeight="200" entityIconified="false" entityId="140542512388313" entityLocationX="438" entityLocationY="3" entityWidth="150" tableAlias="t1" tableName="items_catalog" tableSchemaName=""/>
+  <entity Title="" entityHeight="200" entityIconified="false" entityId="142323645980439" entityLocationX="233" entityLocationY="11" entityWidth="150" tableAlias="t" tableName="items_on_tp" tableSchemaName=""/>
   <relation leftEntityId="-1" leftEntityParameterName="franchazi_id" rightEntityFieldName="franchazi_id" rightEntityId="140542512388313"/>
   <relation leftEntityId="-1" leftEntityParameterName="trade_point_id" rightEntityFieldName="trade_point_id" rightEntityId="142323645980439"/>
-  <relation leftEntityFieldName="item_id" leftEntityId="142323645980439" rightEntityFieldName="wh_items_id" rightEntityId="140542512388313"/>
+  <relation leftEntityFieldName="item_id" leftEntityId="142323645980439" rightEntityFieldName="items_catalog_id" rightEntityId="140542512388313"/>
   <relation leftEntityId="-1" leftEntityParameterName="item_type" rightEntityFieldName="item_type" rightEntityId="140542512388313"/>
 </datamodel>

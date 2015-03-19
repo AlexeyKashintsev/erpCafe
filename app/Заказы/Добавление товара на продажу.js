@@ -23,7 +23,7 @@ function AddBillItems() {
            if(model.qBillItems.cursor.item_cost != model.qBillItems.cursor.new_cost){
                var new_cost = model.qBillItems.cursor.new_cost;
                if(new_cost){
-                    billItemsModule.addItem(model.qBillItems.cursor.wh_items_id, new_cost, model.qBillItems.cursor.billMeasure);
+                    billItemsModule.addItem(model.qBillItems.cursor.items_catalog_id, new_cost, model.qBillItems.cursor.billMeasure);
                }
            }
        }
@@ -33,12 +33,12 @@ function AddBillItems() {
         if (model.modified&&confirm('Сохранить изменения?')){
             saveItemsCost();
         }
-        model.params.item_type = model.itemType.cursor.wh_item_types_id;
+        model.params.item_type = model.itemType.cursor.items_types_id;
         model.qBillItems.requery();
     }//GEN-LAST:event_itemTypeOnScrolled
 
     function itemTypeOnRequeried(evt) {//GEN-FIRST:event_itemTypeOnRequeried
-        model.params.item_type = model.itemType.cursor.wh_item_types_id;
+        model.params.item_type = model.itemType.cursor.items_types_id;
         model.qBillItems.requery();
     }//GEN-LAST:event_itemTypeOnRequeried
 

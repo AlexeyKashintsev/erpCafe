@@ -24,7 +24,7 @@ function WhModuleAdmin() {
                 initStartBalanceForAnItem(cursor.wh_item, aTradePoint);
             } else {
                 if (!foundItems[0].wh_item && !foundItems[0].wh_content) {
-                    model.queryItemsInWH.scrollTo(model.queryItemsInWH.findById(foundItems[0].trade_items_on_tp_id));
+                    model.queryItemsInWH.scrollTo(model.queryItemsInWH.findById(foundItems[0].items_on_tp_id));
                     model.queryItemsInWH.cursor.wh_item = true;
                     initStartBalanceForAnItem(cursor.wh_item, aTradePoint);
                 }

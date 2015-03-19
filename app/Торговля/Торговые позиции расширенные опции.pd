@@ -1,3 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?><datamodel datamodelDbId="null">
-  <fieldsEntity entityHeight="200" entityIconified="false" entityId="142675987291692" entityLocationX="10" entityLocationY="20" entityWidth="150" tableName="trade_items_on_tp"/>
+  <fieldsEntity entityHeight="200" entityIconified="false" entityId="142675987291692" entityLocationX="107" entityLocationY="233" entityWidth="150" tableName="items_on_tp"/>
+  <fieldsEntity entityHeight="200" entityIconified="false" entityId="142678023279053" entityLocationX="284" entityLocationY="32" entityWidth="150" tableName="items_catalog"/>
+  <fieldsEntity entityHeight="200" entityIconified="false" entityId="142678023686917" entityLocationX="531" entityLocationY="29" entityWidth="150" tableName="items_types"/>
 </datamodel>

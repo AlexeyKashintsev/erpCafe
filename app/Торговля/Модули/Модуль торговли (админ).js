@@ -46,7 +46,7 @@ function TradeAdminModule() {
         model.qTradeItemsOnTP.params.item_id = null;
         model.qTradeItemsOnTP.requery();
         var item = model.qTradeItemsOnTP.find(model.qTradeItemsOnTP.schema.item_id, anItemId);
-        return item[0] ? item[0].trade_items_on_tp_id : null;
+        return item[0] ? item[0].items_on_tp_id : null;
     }
 
     /*
@@ -116,7 +116,7 @@ function TradeAdminModule() {
             item_id : anItemId,
             trade_point_id : aTradePoint
         });
-        return model.qTradeItemsOnTP.cursor.trade_items_on_tp_id;
+        return model.qTradeItemsOnTP.cursor.items_on_tp_id;
     }
 
     function deleteItemFromTP(anItemOnTp) {

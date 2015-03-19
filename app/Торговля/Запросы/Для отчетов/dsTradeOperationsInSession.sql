@@ -11,5 +11,5 @@ Select t1.trade_cash_box_operation_id, t1.user_name, t1.operation_date
 From trade_cash_box_operation t1
  Inner Join trade_cash_box_operation_types t2 on t1.operation_type = t2.trade_cash_box_operation_types_id
  Inner Join trade_operations t on t.cash_box_operation = t1.trade_cash_box_operation_id
- Inner Join wh_items t3 on t.trade_item = t3.wh_items_id
+ Inner Join items_catalog t3 on t.trade_item = t3.items_catalog_id
  Where :session_id = t1.session_id

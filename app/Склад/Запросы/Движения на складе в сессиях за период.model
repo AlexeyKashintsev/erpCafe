@@ -6,10 +6,10 @@
   </parameters>
   <parametersEntity entityHeight="200" entityIconified="false" entityLocationX="8" entityLocationY="7" entityWidth="150"/>
   <entity Title="" entityHeight="200" entityIconified="false" entityId="141776839188533" entityLocationX="217" entityLocationY="10" entityWidth="150" tableAlias="t2" tableName="org_session" tableSchemaName=""/>
-  <entity Title="" entityHeight="200" entityIconified="false" entityId="141777039612700" entityLocationX="762" entityLocationY="13" entityWidth="150" tableAlias="t3" tableName="wh_items" tableSchemaName=""/>
+  <entity Title="" entityHeight="200" entityIconified="false" entityId="141777039612700" entityLocationX="762" entityLocationY="13" entityWidth="150" tableAlias="t3" tableName="items_catalog" tableSchemaName=""/>
   <entity Title="" entityHeight="147" entityIconified="false" entityId="141776835750995" entityLocationX="399" entityLocationY="8" entityWidth="150" tableAlias="t1" tableName="wh_movements" tableSchemaName=""/>
   <entity Title="" entityHeight="77" entityIconified="false" entityId="141776838363529" entityLocationX="581" entityLocationY="15" entityWidth="150" tableAlias="t" tableName="wh_movement_types" tableSchemaName=""/>
-  <relation leftEntityFieldName="item_id" leftEntityId="141776835750995" rightEntityFieldName="wh_items_id" rightEntityId="141777039612700"/>
+  <relation leftEntityFieldName="item_id" leftEntityId="141776835750995" rightEntityFieldName="items_catalog_id" rightEntityId="141777039612700"/>
   <relation leftEntityId="-1" leftEntityParameterName="start_date" rightEntityFieldName="end_date" rightEntityId="141776839188533"/>
   <relation leftEntityFieldName="org_session_id" leftEntityId="141776839188533" rightEntityFieldName="session_id" rightEntityId="141776835750995"/>
   <relation leftEntityFieldName="movement_type" leftEntityId="141776835750995" rightEntityFieldName="wh_movement_types_id" rightEntityId="141776838363529"/>

@@ -163,7 +163,7 @@ function WhSessionModule() {
         
         var res = [];
         for (var j in anItems)
-            res.push({itemID : anItems[j], limit : self.getItemLimit(anItems[j])});
+            res.push({itemOnTPID: anItems[j], limit : self.getItemLimit(anItems[j])});
         return res;
     };
     
@@ -175,7 +175,7 @@ function WhSessionModule() {
         
         for (var id in items4Use) {
             try {
-                var whBalance = model.qWHSessionBalance.find(model.qWHSessionBalance.schema.item_id, id);
+                var whBalance = model.qWHSessionBalance.find(model.qWHSessionBalance.schema.item_on_tp_id, id);
                 var cons = whBalance !== [] ? Math.floor(whBalance[0].final_value / items4Use[id]) : null;
                 if (minimum === null)
                     minimum = cons;
@@ -196,7 +196,7 @@ function WhSessionModule() {
     function getItemData(aTradeItemID) {
         //var itemData = model.qTradeItemsOnTP.find(model.qTradeItemsOnTP.schema.item_id, anItemID);
        // if (!itemData)
-        var itemData = model.qTradeItemsOnTP.find(model.qTradeItemsOnTP.schema.trade_items_on_tp_id, aTradeItemID);
+        var itemData = model.qTradeItemsOnTP.find(model.qTradeItemsOnTP.schema.items_on_tp_id, aTradeItemID);
         return itemData ? itemData[0] : false;
     }
     

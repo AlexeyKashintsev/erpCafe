@@ -9,7 +9,7 @@
   </parameters>
   <parametersEntity entityHeight="200" entityIconified="false" entityLocationX="9" entityLocationY="8" entityWidth="150"/>
   <entity Title="" entityHeight="200" entityIconified="false" entityId="140680883751243" entityLocationX="673" entityLocationY="32" entityWidth="150" tableAlias="t1" tableName="trade_item_type" tableSchemaName=""/>
-  <entity Title="" entityHeight="200" entityIconified="false" entityId="141819990335613" entityLocationX="439" entityLocationY="47" entityWidth="150" tableAlias="t" tableName="wh_items" tableSchemaName=""/>
+  <entity Title="" entityHeight="200" entityIconified="false" entityId="141819990335613" entityLocationX="439" entityLocationY="47" entityWidth="150" tableAlias="t" tableName="items_catalog" tableSchemaName=""/>
   <entity Title="" entityHeight="200" entityIconified="false" entityId="141284172476202" entityLocationX="202" entityLocationY="23" entityWidth="150" tableAlias="t2" tableName="trade_items_cost" tableSchemaName=""/>
   <relation leftEntityId="-1" leftEntityParameterName="sort_by_type" rightEntityId="-1" rightEntityParameterName="show_only_present"/>
   <relation leftEntityId="-1" leftEntityParameterName="sort_by_type" rightEntityId="-1" rightEntityParameterName="show_only_present"/>
@@ -23,7 +23,7 @@
   <relation leftEntityId="-1" leftEntityParameterName="sort_by_type" rightEntityId="-1" rightEntityParameterName="show_only_present"/>
   <relation leftEntityId="-1" leftEntityParameterName="sort_by_type" rightEntityId="-1" rightEntityParameterName="show_only_present"/>
   <relation leftEntityId="-1" leftEntityParameterName="sort_by_type" rightEntityId="-1" rightEntityParameterName="show_only_present"/>
-  <relation leftEntityFieldName="wh_items_id" leftEntityId="141819990335613" rightEntityFieldName="item_id" rightEntityId="141284172476202"/>
+  <relation leftEntityFieldName="items_catalog_id" leftEntityId="141819990335613" rightEntityFieldName="item_id" rightEntityId="141284172476202"/>
   <relation leftEntityId="-1" leftEntityParameterName="sort_by_type" rightEntityId="-1" rightEntityParameterName="show_only_present"/>
   <relation leftEntityId="-1" leftEntityParameterName="show_type" rightEntityFieldName="settings" rightEntityId="141284172476202"/>
   <relation leftEntityId="-1" leftEntityParameterName="sort_by_type" rightEntityId="-1" rightEntityParameterName="show_only_present"/>

@@ -5,11 +5,11 @@
     <parameter description="" name="date_id" nullable="true" parameterMode="1" precision="0" scale="0" selectionForm="null" signed="true" size="100" type="93" typeName="TIMESTAMP"/>
   </parameters>
   <parametersEntity entityHeight="200" entityIconified="false" entityLocationX="43" entityLocationY="28" entityWidth="150"/>
-  <entity Title="" entityHeight="114" entityIconified="false" entityId="142113975030526" entityLocationX="255" entityLocationY="11" entityWidth="150" tableAlias="tp" tableName="trade_items_on_tp" tableSchemaName=""/>
+  <entity Title="" entityHeight="114" entityIconified="false" entityId="142113975030526" entityLocationX="255" entityLocationY="11" entityWidth="150" tableAlias="tp" tableName="items_on_tp" tableSchemaName=""/>
   <entity Title="" entityHeight="149" entityIconified="false" entityId="140678874185799" entityLocationX="461" entityLocationY="78" entityWidth="150" tableAlias="t1" tableName="trade_items_cost" tableSchemaName=""/>
   <relation leftEntityId="-1" leftEntityParameterName="item_id" rightEntityFieldName="item_id" rightEntityId="142113975030526"/>
   <relation leftEntityId="-1" leftEntityParameterName="date_id" rightEntityFieldName="start_date" rightEntityId="140678874185799"/>
-  <relation leftEntityFieldName="item_on_tp" leftEntityId="140678874185799" rightEntityFieldName="trade_items_on_tp_id" rightEntityId="142113975030526"/>
+  <relation leftEntityFieldName="item_on_tp" leftEntityId="140678874185799" rightEntityFieldName="items_on_tp_id" rightEntityId="142113975030526"/>
   <relation leftEntityId="-1" leftEntityParameterName="trade_point_id" rightEntityFieldName="trade_point_id" rightEntityId="142113975030526"/>
   <relation leftEntityId="-1" leftEntityParameterName="date_id" rightEntityFieldName="end_date" rightEntityId="140678874185799"/>
 </datamodel>

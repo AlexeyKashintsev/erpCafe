@@ -16,19 +16,19 @@ function AddItemToDashboard() {
     };
     
     function modelGridMouseClicked(evt) {//GEN-FIRST:event_modelGridMouseClicked
-        model.qTradeItemsWithSearch.params.item_type = model.itemType.cursor.wh_item_types_id;
+        model.qTradeItemsWithSearch.params.item_type = model.itemType.cursor.items_types_id;
         model.qTradeItemsWithSearch.requery();
     }//GEN-LAST:event_modelGridMouseClicked
 
     function modelGrid1MouseClicked(evt) {//GEN-FIRST:event_modelGrid1MouseClicked
         if (evt.clickCount > 1){
-            Settings.setTradeItem(model.qTradeItemsWithSearch.cursor.wh_items_id);
+            Settings.setTradeItem(model.qTradeItemsWithSearch.cursor.items_catalog_id);
             Settings.showModal();
         }
     }//GEN-LAST:event_modelGrid1MouseClicked
 
     function btnAddToDashboardActionPerformed(evt) {//GEN-FIRST:event_btnAddToDashboardActionPerformed
-        Settings.setTradeItem(model.qTradeItemsWithSearch.cursor.wh_items_id);
+        Settings.setTradeItem(model.qTradeItemsWithSearch.cursor.items_catalog_id);
         Settings.pnlCost.focus();
         Settings.showModal();
         

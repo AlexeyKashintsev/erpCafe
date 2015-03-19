@@ -30,7 +30,7 @@ function ItemCard() {
         model.qGetItem.params.barcode = anItemCode;
         model.qGetItem.requery(function(){
              if (model.qGetItem.length > 0){
-                successcallback(model.qGetItem.cursor.item_name, model.qGetItem.cursor.wh_items_id);
+                successcallback(model.qGetItem.cursor.item_name, model.qGetItem.cursor.items_catalog_id);
                 //successcallback();
                 return model.qGetItem.cursor.item_name;
             } else {

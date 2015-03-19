@@ -29,7 +29,7 @@ function BillItems() {
 
     function btnDel1ActionPerformed(evt) {//GEN-FIRST:event_btnDel1ActionPerformed
         if(confirm("Удалить товар?")){
-            billItemsModule.delItem(model.qItemBillCost.cursor.wh_items_id);
+            billItemsModule.delItem(model.qItemBillCost.cursor.items_catalog_id);
             model.qItemBillCost.requery();
         }
     }//GEN-LAST:event_btnDel1ActionPerformed

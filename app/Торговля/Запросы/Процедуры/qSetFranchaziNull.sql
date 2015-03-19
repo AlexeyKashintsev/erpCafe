@@ -4,6 +4,6 @@
  * @name qSetFranchaziNull
  */
 
-Update wh_items 
+Update items_catalog 
 Set franchazi_id = null
 Where franchazi_id = 0

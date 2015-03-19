@@ -4,6 +4,6 @@
     <parameter description="" name="franchize_id" nullable="true" parameterMode="1" precision="0" scale="0" selectionForm="null" signed="true" size="0" type="2" typeName="NUMERIC"/>
   </parameters>
   <parametersEntity entityHeight="200" entityIconified="false" entityLocationX="8" entityLocationY="7" entityWidth="150"/>
-  <entity Title="" entityHeight="200" entityIconified="false" entityId="142424018847425" entityLocationX="178" entityLocationY="7" entityWidth="150" tableAlias="wi" tableName="wh_items" tableSchemaName=""/>
+  <entity Title="" entityHeight="200" entityIconified="false" entityId="142424018847425" entityLocationX="178" entityLocationY="7" entityWidth="150" tableAlias="wi" tableName="items_catalog" tableSchemaName=""/>
   <relation leftEntityFieldName="franchize_id" leftEntityId="142424018847425" rightEntityId="-1" rightEntityParameterName="franchize_id"/>
 </datamodel>

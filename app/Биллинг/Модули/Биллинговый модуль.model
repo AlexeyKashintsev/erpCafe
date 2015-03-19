@@ -15,7 +15,7 @@
   <referenceRelation leftEntityFieldName="operation_status" leftEntityId="140802119915363" rightEntityFieldName="bill_operations_status_id" rightEntityId="140802119915363"/>
   <referenceRelation leftEntityFieldName="account_id" leftEntityId="141087132755004" rightEntityFieldName="bill_accounts_id" rightEntityId="141397645194816"/>
   <referenceRelation leftEntityFieldName="operation_type" leftEntityId="140802119915363" rightEntityFieldName="bill_operations_type_id" rightEntityId="141545267162855"/>
-  <referenceRelation leftEntityFieldName="item_id" leftEntityId="140896463679793" rightEntityFieldName="wh_items_id" rightEntityId="140896463679793"/>
+  <referenceRelation leftEntityFieldName="item_id" leftEntityId="140896463679793" rightEntityFieldName="items_catalog_id" rightEntityId="140896463679793"/>
   <referenceRelation leftEntityFieldName="operation_id" leftEntityId="140896477010156" rightEntityFieldName="bill_operations_id" rightEntityId="140802119915363"/>
   <referenceRelation leftEntityFieldName="account_id" leftEntityId="140802119915363" rightEntityFieldName="bill_accounts_id" rightEntityId="141397645194816"/>
   <referenceRelation leftEntityFieldName="operation_type" leftEntityId="140802119915363" rightEntityFieldName="bill_operations_type_id" rightEntityId="140802119915363"/>

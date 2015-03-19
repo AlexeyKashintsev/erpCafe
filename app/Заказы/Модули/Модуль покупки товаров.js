@@ -14,10 +14,10 @@ function BillItemsModule() {
         model.qBillItems.requery();
         if(model.qBillItems.length > 0 ){
             // Удаление записей с пустыми ценами
-            model.qDelBillCost.params.item_id = model.qBillItems.cursor.wh_items_id;
+            model.qDelBillCost.params.item_id = model.qBillItems.cursor.items_catalog_id;
             model.qDelBillCost.executeUpdate();
             // Закрытие всех цен по товару (end_date)
-            model.qCloseItemCost.params.item_id = model.qBillItems.cursor.wh_items_id;
+            model.qCloseItemCost.params.item_id = model.qBillItems.cursor.items_catalog_id;
             model.qCloseItemCost.executeUpdate();
             //Добавление
             model.qItemBillCost.insert();
@@ -36,10 +36,10 @@ function BillItemsModule() {
         model.qBillItems.requery();
         if(model.qBillItems.length > 0 ){
             // Удаление записей с пустыми ценами
-            model.qDelBillCost.params.item_id = model.qBillItems.cursor.wh_items_id;
+            model.qDelBillCost.params.item_id = model.qBillItems.cursor.items_catalog_id;
             model.qDelBillCost.executeUpdate();
             // Закрытие всех цен по товару (end_date)
-            model.qCloseItemCost.params.item_id = model.qBillItems.cursor.wh_items_id;
+            model.qCloseItemCost.params.item_id = model.qBillItems.cursor.items_catalog_id;
             model.qCloseItemCost.executeUpdate();
             model.qItemBillCost.insert();
             //Удаление

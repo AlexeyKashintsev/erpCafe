@@ -26,7 +26,7 @@ function BonusRateForm() {
     function buttonActionPerformed(evt) {//GEN-FIRST:event_buttonActionPerformed
         var rate = prompt("Введите бонусную ставку (% от стоимости) для товара: " + model.qTradeItems.cursor.item_name, 0);
         if (rate) {
-            bonus.setBonusRate(model.qTradeItems.cursor.wh_items_id, null, rate);
+            bonus.setBonusRate(model.qTradeItems.cursor.items_catalog_id, null, rate);
             model.requery(function(){
                 update();
             });

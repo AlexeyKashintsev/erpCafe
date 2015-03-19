@@ -7,9 +7,9 @@
   <entity Name="itemType" Title="" entityHeight="200" entityIconified="false" entityId="141882721078197" entityLocationX="370" entityLocationY="14" entityWidth="150" queryId="itemType" tableName="" tableSchemaName=""/>
   <entity Name="qGetItem" Title="" entityHeight="200" entityIconified="false" entityId="142494749562505" entityLocationX="11" entityLocationY="228" entityWidth="150" queryId="qGetItem" tableName="" tableSchemaName=""/>
   <entity Name="qTradeItems" Title="" entityHeight="200" entityIconified="false" entityId="141883094763783" entityLocationX="187" entityLocationY="12" entityWidth="150" onAfterChange="qTradeItemsOnChanged" queryId="qTradeItems" tableName="" tableSchemaName=""/>
-  <referenceRelation leftEntityFieldName="item_type" leftEntityId="142494749562505" rightEntityFieldName="wh_item_types_id" rightEntityId="141882721078197"/>
+  <referenceRelation leftEntityFieldName="item_type" leftEntityId="142494749562505" rightEntityFieldName="items_types_id" rightEntityId="141882721078197"/>
   <referenceRelation leftEntityFieldName="item_measure" leftEntityId="142494749562505" rightEntityFieldName="wh_measures_id" rightEntityId="141882722753056"/>
-  <referenceRelation leftEntityFieldName="parent_type" leftEntityId="141882721078197" rightEntityFieldName="wh_item_types_id" rightEntityId="141882721078197"/>
-  <referenceRelation leftEntityFieldName="item_type" leftEntityId="141883094763783" rightEntityFieldName="wh_item_types_id" rightEntityId="141882721078197"/>
+  <referenceRelation leftEntityFieldName="parent_type" leftEntityId="141882721078197" rightEntityFieldName="items_types_id" rightEntityId="141882721078197"/>
+  <referenceRelation leftEntityFieldName="item_type" leftEntityId="141883094763783" rightEntityFieldName="items_types_id" rightEntityId="141882721078197"/>
   <referenceRelation leftEntityFieldName="item_measure" leftEntityId="141883094763783" rightEntityFieldName="wh_measures_id" rightEntityId="141882722753056"/>
 </datamodel>

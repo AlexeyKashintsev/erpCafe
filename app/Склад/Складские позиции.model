@@ -15,6 +15,6 @@
   <relation leftEntityId="-1" leftEntityParameterName="franchazi_id" rightEntityId="140784855997466" rightEntityParameterName="franchazi_id"/>
   <referenceRelation leftEntityFieldName="item_measure" leftEntityId="140784855997466" rightEntityFieldName="wh_measures_id" rightEntityId="140532276543923"/>
   <referenceRelation leftEntityFieldName="measure" leftEntityId="140532276305367" rightEntityFieldName="wh_measures_id" rightEntityId="140532276543923"/>
-  <referenceRelation leftEntityFieldName="item_type" leftEntityId="140784855997466" rightEntityFieldName="wh_item_types_id" rightEntityId="140532276305367"/>
-  <referenceRelation leftEntityFieldName="parent_type" leftEntityId="140532276305367" rightEntityFieldName="wh_item_types_id" rightEntityId="140532276305367"/>
+  <referenceRelation leftEntityFieldName="item_type" leftEntityId="140784855997466" rightEntityFieldName="items_types_id" rightEntityId="140532276305367"/>
+  <referenceRelation leftEntityFieldName="parent_type" leftEntityId="140532276305367" rightEntityFieldName="items_types_id" rightEntityId="140532276305367"/>
 </datamodel>
