@@ -1,49 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?><layout defaultCloseOperation="2" name="Form" prefHeight="410px" prefWidth="641px" windowClosing="formWindowClosing" windowOpened="formWindowOpened">
-  <widget name="panel" parent="Form" prefHeight="50px" prefWidth="641px" type="PanelDesignInfo">
+  <widget backgroundColor="#ededed" name="panel" parent="Form" prefHeight="50px" prefWidth="641px" type="PanelDesignInfo">
     <layout type="MarginLayoutDesignInfo"/>
-    <constraints place="Last" type="BorderLayoutConstraintsDesignInfo"/>
+    <constraints bottom="0px" height="50px" left="0px" right="0px" type="MarginConstraintsDesignInfo"/>
   </widget>
   <widget actionPerformed="btnSelectActionPerformed" name="btnSelect" parent="panel" prefHeight="29px" prefWidth="86px" text="Выбрать" type="ButtonDesignInfo">
     <constraints height="29px" right="15px" top="12px" type="MarginConstraintsDesignInfo" width="86px"/>
   </widget>
-  <widget floatable="false" name="toolBar" parent="Form" prefHeight="30px" prefWidth="641px" rollover="true" type="ToolbarDesignInfo">
-    <constraints place="North" type="BorderLayoutConstraintsDesignInfo"/>
+  <widget dividerLocation="215" leftComponent="pnlWorkSpace" name="splitPane" parent="Form" prefHeight="360px" prefWidth="641px" rightComponent="panel1" type="SplitDesignInfo">
+    <constraints bottom="50px" left="0px" right="0px" top="0px" type="MarginConstraintsDesignInfo"/>
   </widget>
-  <widget actionPerformed="btnAddActionPerformed" focusable="false" horizontalTextPosition="0" icon="icons/22x22/actions/list-add.png" name="btnAdd" parent="toolBar" prefHeight="26px" prefWidth="34px" toolTipText="Добавить" type="ButtonDesignInfo" verticalTextPosition="3"/>
-  <widget focusable="false" horizontalTextPosition="0" icon="icons/22x22/actions/list-remove.png" name="btnDel" parent="toolBar" prefHeight="26px" prefWidth="34px" toolTipText="Удалить" type="ButtonDesignInfo" verticalTextPosition="3"/>
-  <widget actionPerformed="btnReqActionPerformed" focusable="false" horizontalTextPosition="0" icon="icons/22x22/actions/new-view-refresh.png" name="btnReq" parent="toolBar" prefHeight="26px" prefWidth="34px" toolTipText="Обновить" type="ButtonDesignInfo" verticalTextPosition="3"/>
-  <widget actionPerformed="btnSaveActionPerformed" focusable="false" horizontalTextPosition="0" icon="icons/22x22/actions/document-save.png" name="btnSave" parent="toolBar" prefHeight="26px" prefWidth="34px" toolTipText="Сохранить" type="ButtonDesignInfo" verticalTextPosition="3"/>
-  <widget name="pnlWorkSpace" parent="Form" prefHeight="330px" prefWidth="641px" type="PanelDesignInfo">
+  <widget name="panel1" parent="splitPane" prefHeight="356px" prefWidth="419px" type="PanelDesignInfo">
     <layout type="MarginLayoutDesignInfo"/>
-    <constraints place="Center" type="BorderLayoutConstraintsDesignInfo"/>
   </widget>
-  <widget dividerLocation="210" leftComponent="modelGrid" name="splitPane" parent="pnlWorkSpace" prefHeight="330px" prefWidth="641px" rightComponent="modelGrid1" type="SplitDesignInfo">
-    <constraints bottom="0px" left="0px" right="0px" top="0px" type="MarginConstraintsDesignInfo"/>
-  </widget>
-  <widget name="modelGrid" parent="splitPane" prefHeight="326px" prefWidth="208px" type="DbGridDesignInfo">
-    <column name="column" title="Модификатор">
-      <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
-      <datamodelElement entityId="142687610061169" fieldName="modifier_name"/>
-      <columnsDatasource/>
-      <columnsDisplayField/>
-      <cellsDatasource/>
-      <cellDesignInfo>
-        <rowsKeyField/>
-        <columnsKeyField/>
-        <cellValueField/>
-      </cellDesignInfo>
-      <headerStyle>
-        <nativeFont name="Lucida Grande" size="13"/>
-      </headerStyle>
-    </column>
-    <rowsColumnsDesignInfo>
-      <rowsDatasource entityId="142687610061169" field="false"/>
-    </rowsColumnsDesignInfo>
-    <treeDesignInfo>
-      <unaryLinkField entityId="142687610061169" fieldName="modifier_parent"/>
-    </treeDesignInfo>
-  </widget>
-  <widget name="modelGrid1" parent="splitPane" prefHeight="326px" prefWidth="424px" type="DbGridDesignInfo">
+  <widget name="modelGrid1" parent="panel1" prefHeight="325px" prefWidth="419px" type="DbGridDesignInfo">
+    <treeDesignInfo/>
     <column name="column1" title="Полное наименование">
       <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
       <datamodelElement entityId="142693198859686" fieldName="mod_value"/>
@@ -77,7 +47,45 @@
     <rowsColumnsDesignInfo>
       <rowsDatasource entityId="142693198859686" field="false"/>
     </rowsColumnsDesignInfo>
-    <treeDesignInfo/>
+    <constraints bottom="0px" left="0px" right="0px" top="31px" type="MarginConstraintsDesignInfo"/>
   </widget>
-  <layout type="BorderLayoutDesignInfo"/>
+  <widget backgroundColor="#ededed" floatable="false" name="toolBar" parent="panel1" prefHeight="30px" prefWidth="419px" rollover="true" type="ToolbarDesignInfo">
+    <constraints height="30px" left="0px" right="0px" top="0px" type="MarginConstraintsDesignInfo"/>
+  </widget>
+  <widget actionPerformed="btnAddActionPerformed" focusable="false" horizontalTextPosition="0" icon="icons/22x22/actions/list-add.png" name="btnAdd" parent="toolBar" prefHeight="26px" prefWidth="34px" toolTipText="Добавить" type="ButtonDesignInfo" verticalTextPosition="3"/>
+  <widget focusable="false" horizontalTextPosition="0" icon="icons/22x22/actions/list-remove.png" name="btnDel" parent="toolBar" prefHeight="26px" prefWidth="34px" toolTipText="Удалить" type="ButtonDesignInfo" verticalTextPosition="3"/>
+  <widget actionPerformed="btnReqActionPerformed" focusable="false" horizontalTextPosition="0" icon="icons/22x22/actions/new-view-refresh.png" name="btnReq" parent="toolBar" prefHeight="26px" prefWidth="34px" toolTipText="Обновить" type="ButtonDesignInfo" verticalTextPosition="3"/>
+  <widget actionPerformed="btnSaveActionPerformed" focusable="false" horizontalTextPosition="0" icon="icons/22x22/actions/document-save.png" name="btnSave" parent="toolBar" prefHeight="26px" prefWidth="34px" toolTipText="Сохранить" type="ButtonDesignInfo" verticalTextPosition="3"/>
+  <widget name="pnlWorkSpace" parent="splitPane" prefHeight="356px" prefWidth="213px" type="PanelDesignInfo">
+    <layout type="MarginLayoutDesignInfo"/>
+  </widget>
+  <widget name="modelGrid" parent="pnlWorkSpace" prefHeight="325px" prefWidth="213px" type="DbGridDesignInfo">
+    <treeDesignInfo>
+      <unaryLinkField entityId="142687610061169" fieldName="modifier_parent"/>
+    </treeDesignInfo>
+    <column name="column" title="Модификатор">
+      <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
+      <datamodelElement entityId="142687610061169" fieldName="modifier_name"/>
+      <columnsDatasource/>
+      <columnsDisplayField/>
+      <cellsDatasource/>
+      <cellDesignInfo>
+        <rowsKeyField/>
+        <columnsKeyField/>
+        <cellValueField/>
+      </cellDesignInfo>
+      <headerStyle>
+        <nativeFont name="Lucida Grande" size="13"/>
+      </headerStyle>
+    </column>
+    <rowsColumnsDesignInfo>
+      <rowsDatasource entityId="142687610061169" field="false"/>
+    </rowsColumnsDesignInfo>
+    <constraints bottom="0px" left="0px" right="0px" top="31px" type="MarginConstraintsDesignInfo"/>
+  </widget>
+  <widget backgroundColor="#ededed" floatable="false" name="toolBar1" parent="pnlWorkSpace" prefHeight="30px" prefWidth="213px" rollover="true" type="ToolbarDesignInfo">
+    <constraints height="30px" left="0px" right="0px" top="0px" type="MarginConstraintsDesignInfo"/>
+  </widget>
+  <widget actionPerformed="btnAdd1ActionPerformed" focusable="false" horizontalTextPosition="0" icon="icons/22x22/actions/mail-forward.png" name="btnAdd1" parent="toolBar1" prefHeight="26px" prefWidth="34px" toolTipText="Изменить" type="ButtonDesignInfo" verticalTextPosition="3"/>
+  <layout type="MarginLayoutDesignInfo"/>
 </layout>

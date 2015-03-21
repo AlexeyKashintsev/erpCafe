@@ -42,12 +42,12 @@ function ItemsForTrade() {
     }//GEN-LAST:event_btnDelActionPerformed
 
     function btnAddActionPerformed(evt) {//GEN-FIRST:event_btnAddActionPerformed
-        if (model.itemType.cursor.items_catalog_type_id <= 0) {
+        if (model.itemType.cursor.items_types_id <= 0) {
             alert("Выберите тип товара отличный от \"Все товары\" и \"Мои товары\"");
         } else {
             model.qTradeItemsWithContents.push({
                     franchazi_id    : model.params.franchazi_id,
-                    item_type       : model.itemType.cursor.items_catalog_type_id
+                    item_type       : model.itemType.cursor.items_types_id
                 });
         }
     }//GEN-LAST:event_btnAddActionPerformed

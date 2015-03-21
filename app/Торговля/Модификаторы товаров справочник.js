@@ -1,8 +1,8 @@
 /**
  * 
  * @author Алексей
- * @name template
  * @public
+ * TODO Доделать
  */
 
 function TradeItemsModifiersTypes(aFranchazi, aFranshize) {
@@ -34,9 +34,17 @@ function formWindowClosing(evt) {//GEN-FIRST:event_formWindowClosing
 
     function btnAddActionPerformed(evt) {//GEN-FIRST:event_btnAddActionPerformed
         model.qItemsModifiersTypes.push({
-            modifier_parern:    model.qItemsModifiersTypes.cursor.modifier_parent ? model.qItemsModifiersTypes.cursor.modifier_parent : null,
+            modifier_parent:    model.qItemsModifiersTypes.cursor.modifier_parent ? model.qItemsModifiersTypes.cursor.modifier_parent : null,
             franchazi_id:   model.qItemsModifiersTypes.params.franchazi_id,
             modifier_name: prompt('Наименование модификатора')
         });
     }//GEN-LAST:event_btnAddActionPerformed
+
+    function btnAddParentActionPerformed(evt) {//GEN-FIRST:event_btnAddParentActionPerformed
+         model.qItemsModifiersTypes.push({
+            modifier_parent:    model.qItemsModifiersTypes.cursor.items_modifiers_id ? model.qItemsModifiersTypes.cursor.items_modifiers_id : null,
+            franchazi_id:   model.qItemsModifiersTypes.params.franchazi_id,
+            modifier_name: prompt('Наименование модификатора')
+        });
+    }//GEN-LAST:event_btnAddParentActionPerformed
 }

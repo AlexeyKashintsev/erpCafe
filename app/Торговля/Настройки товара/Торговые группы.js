@@ -11,7 +11,18 @@ function TradeTypesByItemForm() {
     
     self.setTradeItem = function(anItemID) {
         curItem = model.qTradeTypesByItemId.params.item_id = anItemID;
-        model.qTradeTypesByItemId.requery();
+        model.qTradeTypesByItemId.requery(function() {
+            if (model.qTradeTypesByItemId.empty) {
+                model.qGetItem.params.item_id = anItemID;
+                model.qGetItem.requery(function() {
+                    if (!model.qGetItem.empty)
+                        model.qTradeTypesByItemId.push({
+                            trade_item: anItemID,
+                            type_id:    model.qGetItem.cursor.item_type
+                        });
+                });
+            }
+        });
     };
     
     self.save = function() {

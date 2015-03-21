@@ -22,6 +22,18 @@ function TradeItemsModifiers(aFranchazi, anItemOnTp) {
     self.save = function() {
         model.save();
     };
+    
+    self.getModString = function() {
+        var short_string = '';
+        model.qItemsOnTpModifiers.forEach(function(cursor) {
+            if (cursor.show) {
+                var shStr = model.qModValues.findById(cursor.mod_value);
+                shStr = shStr.display_value ? shStr.display_value : shStr.mod_value;
+                short_string += (short_string ? ' ' : '') + shStr;
+            }
+        });
+        return short_string;
+    };
 
 function btnReqActionPerformed(evt) {//GEN-FIRST:event_btnReqActionPerformed
     if (model.modified&&confirm('Сохранить изменения?')){

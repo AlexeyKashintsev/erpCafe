@@ -33,17 +33,35 @@ function ItemSettingsAndCost(aTradeItemId, aOpenType) {
         model.params.item_on_tp = anItemOnTpId ? anItemOnTpId : null;
         
         anItemId = model.params.item_id;
-
+        
+        model.qSuppliers.params.franchazi_id = session.franchaziId;
+        model.qSuppliers.execute();
+        
         model.qTradeItemsOnTP.params.trade_point = model.params.trade_pont;
         model.qTradeItemsOnTP.params.item_id = anItemId;
         model.qTradeItemsOnTP.params.item_on_tp = model.params.item_on_tp;
-        model.qTradeItemsOnTP.requery();
-        fmItemCard.setItem(anItemId);
-        fmTIcontents.setTradeItem(anItemId);
-        fmGroup.setTradeItem(anItemId);
-        fmItemCost.setItem(anItemId);
-        fmBonuses.setTradeItem(anItemId);
-        fmModifiers.setItem(anItemOnTpId);
+        model.qTradeItemsOnTP.requery(function() {
+            if (!model.qTradeItemsOnTP.empty) {
+                form.cbTradeItem.selected = model.qTradeItemsOnTP.cursor.trade_item;
+                form.cbWhContent.selected = model.qTradeItemsOnTP.cursor.wh_content;
+                form.cbWhItem.selected = model.qTradeItemsOnTP.cursor.wh_item;
+                model.params.color = model.qTradeItemsOnTP.cursor.color;
+                model.params.supplier = model.qTradeItemsOnTP.cursor.supplier;
+                model.params.short_str = 
+                        form.taShortStr.text = model.qTradeItemsOnTP.cursor.short_string;
+            } else {
+                form.cbTradeItem.selected = true;
+                form.cbWhContent.selected = false;
+                form.cbWhItem.selected = true;
+                model.params.color = null;
+            }
+            fmItemCard.setItem(anItemId);
+            fmTIcontents.setTradeItem(anItemId);
+            fmGroup.setTradeItem(anItemId);
+            fmItemCost.setItem(anItemId);
+            fmBonuses.setTradeItem(anItemId);
+            fmModifiers.setItem(anItemOnTpId, anItemId);
+        });
     };
 
     if (aTradeItemId)
@@ -65,7 +83,9 @@ function ItemSettingsAndCost(aTradeItemId, aOpenType) {
             wh_item: form.cbWhItem.selected,
             wh_content: form.cbWhContent.selected,
             trade_item: form.cbTradeItem.selected,
-            costs: fmItemCost.getCosts()
+            costs: fmItemCost.getCosts(),
+            supplier: model.params.supplier,
+            short_str:  model.params.short_str
         });
         form.close(true);
     }//GEN-LAST:event_btnSaveActionPerformed
@@ -83,18 +103,18 @@ function ItemSettingsAndCost(aTradeItemId, aOpenType) {
     }//GEN-LAST:event_btnCancelActionPerformed
 
     function formWindowOpened(evt) {//GEN-FIRST:event_formWindowOpened
-        model.qTradeItemsOnTP.requery(function() {
-            if (!model.qTradeItemsOnTP.empty) {
-                form.cbTradeItem.selected = model.qTradeItemsOnTP.cursor.trade_item;
-                form.cbWhContent.selected = model.qTradeItemsOnTP.cursor.wh_content;
-                form.cbWhItem.selected = model.qTradeItemsOnTP.cursor.wh_item;
-                model.params.color = model.qTradeItemsOnTP.cursor.color;
-            } else {
-                form.cbTradeItem.selected = true;
-                form.cbWhContent.selected = false;
-                form.cbWhItem.selected = true;
-                model.params.color = null;
-            }
-        });
+
     }//GEN-LAST:event_formWindowOpened
+
+    function btnGetShortStrActionPerformed(evt) {//GEN-FIRST:event_btnGetShortStrActionPerformed
+        var supplier = model.params.supplier ? model.qSuppliers.findById(model.params.supplier) : '';
+        if (supplier !== '')
+            supplier = (supplier.short_name ? supplier.short_name : supplier.supplier_name) + ' ';
+        model.params.short_str = 
+                form.taShortStr.text = supplier + fmModifiers.getModString();
+    }//GEN-LAST:event_btnGetShortStrActionPerformed
+
+    function taShortStrKeyTyped(evt) {//GEN-FIRST:event_taShortStrKeyTyped
+        model.params.short_str = form.taShortStr.text;
+    }//GEN-LAST:event_taShortStrKeyTyped
 }

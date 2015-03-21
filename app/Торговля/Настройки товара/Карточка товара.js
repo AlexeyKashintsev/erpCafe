@@ -9,6 +9,12 @@ function ItemCard() {
     var imgW = 190;
     var OpenType = null;
     
+    try {
+        model.itemType.params.franchazi_id = session.franchaziId;
+    } catch (e) {
+        console.log('No franchazi :(');
+    }
+    
     self.setItem = function(anItem){
         model.qTradeItems.params.item_id = anItem;
         model.qTradeItems.requery(getItemPicture);
@@ -42,7 +48,7 @@ function ItemCard() {
     }
     
     function searchInInternetResource(anItemCode, callback){
-        var item = {};
+        var item = {};//TODO Распарсить на месте нельзя и буз пыха?
         $.get("http://files.lapshina.net/parser.php?"+
                 "url="+
                 encodeURIComponent("http://goodsmatrix.ru/mobile/" + anItemCode + ".html"),
@@ -92,7 +98,7 @@ function ItemCard() {
     function btnLoadPictureActionPerformed(evt) {//GEN-FIRST:event_btnLoadPictureActionPerformed
         selectFile(function(aFile){
             Resource.upload(aFile, function(url) {
-                model.qTradeItems.cursor.item_picture = url;
+                model.qTradeItems.cursor.item_picture = url;//TODO form.lblImageArea.text три раза повторяется, вынести в отдельную функцию
                 form.lblImageArea.text = "<html><img src='" + url + "' style='max-width: " + imgW +"px; max-height: " + imgH +"px;'></html>";
             });
         });
@@ -123,17 +129,19 @@ function ItemCard() {
 
     function formWindowOpened(evt) {//GEN-FIRST:event_formWindowOpened
         if (OpenType === "modal"){
-            form.btnSave.visible = true;
+            form.btnSave.visible = 
             form.btnCancel.visible = true;
-        } else if(OpenType === "no_barcode") {
-            form.btnSave.visible = false;
-            form.btnCancel.visible = false;
-            form.tfBarCode.editable = false;
-            form.tfBarCode.enabled = false;
-            form.btnCheck.visible = false;
         } else {
-            form.btnSave.visible = false;
-            form.btnCancel.visible = false;
+            if(OpenType === "no_barcode") {
+                form.btnSave.visible = 
+                form.btnCancel.visible = 
+                form.tfBarCode.editable = 
+                form.tfBarCode.enabled = 
+                form.btnCheck.visible = false;
+            } else {
+                form.btnSave.visible = 
+                form.btnCancel.visible = false;
+            }
         }
     }//GEN-LAST:event_formWindowOpened
 

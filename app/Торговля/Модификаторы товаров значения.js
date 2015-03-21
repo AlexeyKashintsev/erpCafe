@@ -37,12 +37,17 @@ function formWindowClosing(evt) {//GEN-FIRST:event_formWindowClosing
         model.qModValues.push({
             modifier:    model.qItemsModifiersTypes.cursor.items_modifiers_id,
             franchazi_id:   model.qItemsModifiersTypes.params.franchazi_id,
-            mod_value: prompt('Значение модификатора'),
-            display_name: prompt('Отображаемое значение модификатора')
+            mod_value: prompt('Значение модификатора')
+            //display_name: prompt('Отображаемое значение модификатора')
         });
     }//GEN-LAST:event_btnAddActionPerformed
 
     function btnSelectActionPerformed(evt) {//GEN-FIRST:event_btnSelectActionPerformed
         form.close([model.qModValues.cursor.items_mods_values_id, model.qItemsModifiersTypes.cursor.items_modifiers_id]);
     }//GEN-LAST:event_btnSelectActionPerformed
+
+    function btnAdd1ActionPerformed(evt) {//GEN-FIRST:event_btnAdd1ActionPerformed
+        var fmModifierTypes = new TradeItemsModifiersTypes();
+        fmModifierTypes.showModal(model.qItemsModifiersTypes.requery);
+    }//GEN-LAST:event_btnAdd1ActionPerformed
 }

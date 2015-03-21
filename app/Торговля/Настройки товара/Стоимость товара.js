@@ -34,7 +34,7 @@ function ItemCostForm() {
     };
     
     self.getCosts = function() {
-        var costs = [];
+        var costs = {};
         model.qPriceTypeForTradeItem.forEach(function(aCursor) {
             if (!aCursor.item_cost)
                 costs[aCursor.trade_price_types_id] = 0;

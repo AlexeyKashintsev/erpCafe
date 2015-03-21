@@ -37,7 +37,7 @@ function formWindowClosing(evt) {//GEN-FIRST:event_formWindowClosing
 
     function btnAddActionPerformed(evt) {//GEN-FIRST:event_btnAddActionPerformed
         if (fmAddItemList) {
-            fmAddItemList.setParams(tp, session.franchazi);
+            fmAddItemList.setParams(tp, session.franchaziId);
             fmAddItemList.showModal();
         } else {
             require('AddItemToDashboard', function() {
@@ -55,7 +55,8 @@ function formWindowClosing(evt) {//GEN-FIRST:event_formWindowClosing
         function showItemSettings() {
             fmItemSettings.setTradeItem(
                     model.qTradeItemsOnTPwData.cursor.item_id,
-                    model.qTradeItemsOnTPwData.cursor.trade_point_id
+                    model.qTradeItemsOnTPwData.cursor.trade_point_id,
+                    model.qTradeItemsOnTPwData.cursor.items_on_tp_id
                 );
             fmItemSettings.showModal(function() {
                 model.requery();

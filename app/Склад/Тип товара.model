@@ -3,5 +3,4 @@
   <entity Name="itemType" Title="" entityHeight="200" entityIconified="false" entityId="140532276305367" entityLocationX="251" entityLocationY="18" entityWidth="150" queryId="itemType" tableName="" tableSchemaName=""/>
   <entity Name="queryMeasures" Title="" entityHeight="200" entityIconified="false" entityId="140532276543923" entityLocationX="480" entityLocationY="14" entityWidth="150" queryId="queryMeasures" tableName="" tableSchemaName=""/>
   <referenceRelation leftEntityFieldName="parent_type" leftEntityId="140532276305367" rightEntityFieldName="items_types_id" rightEntityId="140532276305367"/>
-  <referenceRelation leftEntityFieldName="measure" leftEntityId="140532276305367" rightEntityFieldName="wh_measures_id" rightEntityId="140532276543923"/>
 </datamodel>
