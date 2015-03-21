@@ -18,11 +18,7 @@ function TradeItemsModifiers(aFranchazi, anItemOnTp) {
         model.qItemsOnTpModifiers.params.item_on_tp = anItemOnTp;
         model.qItemsOnTpModifiers.requery();
     };
-    
-    self.save = function() {
-        model.save();
-    };
-    
+        
     self.getModString = function() {
         var short_string = '';
         model.qItemsOnTpModifiers.forEach(function(cursor) {
@@ -34,17 +30,21 @@ function TradeItemsModifiers(aFranchazi, anItemOnTp) {
         });
         return short_string;
     };
+    
+    self.getModifiers = function() {
+        var res = {};
+        model.qItemsOnTpModifiers.forEach(function(cursor) {
+            res[cursor.mod_value] = {
+                show:   cursor.show,
+                modifier:   cursor.modifier
+            };
+        });
+        return res;
+    };
 
 function btnReqActionPerformed(evt) {//GEN-FIRST:event_btnReqActionPerformed
-    if (model.modified&&confirm('Сохранить изменения?')){
-        model.save();
-    }
     model.requery();
 }//GEN-LAST:event_btnReqActionPerformed
-
-function btnSaveActionPerformed(evt) {//GEN-FIRST:event_btnSaveActionPerformed
-    model.save();
-}//GEN-LAST:event_btnSaveActionPerformed
 
 function formWindowOpened(evt) {//GEN-FIRST:event_formWindowOpened
 }//GEN-LAST:event_formWindowOpened

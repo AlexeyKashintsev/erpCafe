@@ -12,13 +12,14 @@
   <entity Name="qInsertDefaultItems" Title="" entityHeight="44" entityIconified="false" entityId="142418983913456" entityLocationX="522" entityLocationY="269" entityWidth="150" queryId="qInsertDefaultItems" tableName="" tableSchemaName=""/>
   <entity Name="qItemOnTPCosts" Title="" entityHeight="200" entityIconified="false" entityId="142133588279344" entityLocationX="511" entityLocationY="10" entityWidth="150" queryId="qItemOnTPCosts" tableName="" tableSchemaName=""/>
   <entity Name="qOpenedOrLastSession" Title="" entityHeight="59" entityIconified="false" entityId="141529641957798" entityLocationX="165" entityLocationY="382" entityWidth="150" queryId="qOpenedOrLastSession" tableName="" tableSchemaName=""/>
-  <entity Name="qItemsOnTpModifiers" Title="" entityHeight="200" entityIconified="false" entityId="142694879150206" entityLocationX="707" entityLocationY="13" entityWidth="150" queryId="qItemsOnTpModifiersWithValues" tableName="" tableSchemaName=""/>
   <entity Name="prCloseItemCost" Title="" entityHeight="200" entityIconified="false" entityId="141457198820454" entityLocationX="193" entityLocationY="12" entityWidth="150" queryId="prCloseItemCost" tableName="" tableSchemaName=""/>
   <entity Name="qTradeItemsOnTP" Title="" entityHeight="186" entityIconified="false" entityId="142115809291982" entityLocationX="354" entityLocationY="11" entityWidth="147" queryId="qTradeItemsOnTP" tableName="" tableSchemaName=""/>
+  <entity Name="qItemsOnTpModifiers" Title="" entityHeight="200" entityIconified="false" entityId="142698008758048" entityLocationX="724" entityLocationY="9" entityWidth="150" queryId="qItemsOnTpModifiers" tableName="" tableSchemaName=""/>
   <entity Name="qLastClosedSessionOnTradePoint" Title="" entityHeight="66" entityIconified="false" entityId="141338139419273" entityLocationX="164" entityLocationY="312" entityWidth="153" queryId="qLastClosedSessionOnTradePoint" tableName="" tableSchemaName=""/>
   <entity Name="qTradeOperationBySession" Title="" entityHeight="170" entityIconified="false" entityId="141285077401886" entityLocationX="326" entityLocationY="311" entityWidth="150" queryId="qTradeOperationBySession" tableName="" tableSchemaName=""/>
   <referenceRelation leftEntityFieldName="item_id" leftEntityId="142115809291982" rightEntityFieldName="wh_item" rightEntityId="142418983098851"/>
   <referenceRelation leftEntityFieldName="session_id" leftEntityId="141285077401886" rightEntityFieldName="org_session_id" rightEntityId="141338139419273"/>
+  <referenceRelation leftEntityFieldName="item_on_tp" leftEntityId="142698008758048" rightEntityFieldName="items_on_tp_id" rightEntityId="142115809291982"/>
   <referenceRelation leftEntityFieldName="item_id" leftEntityId="142115809291982" rightEntityFieldName="trade_item" rightEntityId="142418983098851"/>
   <referenceRelation leftEntityFieldName="session_id" leftEntityId="141285077401886" rightEntityFieldName="org_session_id" rightEntityId="141285162304332"/>
   <referenceRelation leftEntityFieldName="item_id" leftEntityId="142115809291982" rightEntityFieldName="trade_item" rightEntityId="142418985300733"/>

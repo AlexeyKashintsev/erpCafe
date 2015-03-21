@@ -52,25 +52,16 @@ function formWindowClosing(evt) {//GEN-FIRST:event_formWindowClosing
     }//GEN-LAST:event_btnDelActionPerformed
 
     function grdTradeItemsMouseClicked(evt) {//GEN-FIRST:event_grdTradeItemsMouseClicked
-        function showItemSettings() {
+        if (evt.clickCount === 2) {
+            fmItemSettings = new ItemSettingsAndCost();
             fmItemSettings.setTradeItem(
-                    model.qTradeItemsOnTPwData.cursor.item_id,
-                    model.qTradeItemsOnTPwData.cursor.trade_point_id,
-                    model.qTradeItemsOnTPwData.cursor.items_on_tp_id
-                );
+                model.qTradeItemsOnTPwData.cursor.item_id,
+                model.qTradeItemsOnTPwData.cursor.trade_point_id,
+                model.qTradeItemsOnTPwData.cursor.items_on_tp_id
+            );
             fmItemSettings.showModal(function() {
                 model.requery();
             });
-        }
-        
-        if (evt.clickCount === 2) {
-            if (!fmItemSettings) {
-                require('ItemSettingsAndCost', function() {
-                    fmItemSettings = new ItemSettingsAndCost();
-                    showItemSettings();
-                });
-            } else
-                showItemSettings();
         }
     }//GEN-LAST:event_grdTradeItemsMouseClicked
 }

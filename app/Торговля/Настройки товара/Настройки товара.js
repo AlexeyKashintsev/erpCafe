@@ -73,7 +73,6 @@ function ItemSettingsAndCost(aTradeItemId, aOpenType) {
         fmItemCard.save();
         fmTIcontents.save();
         fmGroup.save();
-        fmModifiers.save();
 
         tradeAdminModule.processChangesForTradeItem({
             item_on_tp: model.params.item_on_tp,
@@ -85,7 +84,8 @@ function ItemSettingsAndCost(aTradeItemId, aOpenType) {
             trade_item: form.cbTradeItem.selected,
             costs: fmItemCost.getCosts(),
             supplier: model.params.supplier,
-            short_str:  model.params.short_str
+            short_str:  model.params.short_str,
+            modifiers:  fmModifiers.getModifiers()
         });
         form.close(true);
     }//GEN-LAST:event_btnSaveActionPerformed

@@ -14,7 +14,7 @@
     <treeDesignInfo/>
     <column name="colName" title="Наименование">
       <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
-      <datamodelElement entityId="142303506349188" fieldName="item_name"/>
+      <datamodelElement entityId="142303506349188" fieldName="full_string"/>
       <columnsDatasource/>
       <columnsDisplayField/>
       <cellsDatasource/>

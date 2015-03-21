@@ -70,10 +70,29 @@ function TradeAdminModule() {
             curs.color = itemData.color;
             curs.trade_point_id = itemData.trade_point;
             curs.supplier = itemData.supplier;
+            curs.short_string = itemData.short_str ? itemData.short_str :'';
             
             model.qItemsOnTpModifiers.params.item_on_tp = curs.items_on_tp_id;
             model.qItemsOnTpModifiers.requery();
-            curs.short_string = itemData.short_str ? itemData.short_str :'';
+            model.qItemsOnTpModifiers.forEach(function(modv) {
+                var modifier = itemData.modifiers[modv.mod_value];
+                if (modifier) {
+                    modv.show = modifier.show;
+                    modv.modifier = modifier.modifier;
+                    delete itemData.modifiers[modv.mod_value];
+                } else {
+                    model.qItemsOnTpModifiers.deleteRow(model.qItemsOnTpModifiers.findById(modv.items_mods_id));
+                }
+            });
+            for (var mod_v in itemData.modifiers) {
+                var modifier = itemData.modifiers[mod_v];
+                model.qItemsOnTpModifiers.push({
+                    show:   modifier.show,
+                    modifier:   modifier.modifier,
+                    mod_value:  mod_v,
+                    item_on_tp: itemOnTP
+                });
+            }
         }
         
         if (!itemData.delete) {
