@@ -6,8 +6,8 @@ function ItemCostForm() {
     var self = this, model = this.model, form = this;
     var tradeModule = new ServerModule("TradeAdminModule");
 
-    self.setItem = function(anItemId) {
-        model.qPriceTypeForTradeItem.params.item_id = anItemId;
+    self.setItem = function(anItemOnTpId) {
+        model.qPriceTypeForTradeItem.params.items_on_tp = anItemOnTpId;
         model.qPriceTypeForTradeItem.params.actual_date = new Date();
         model.qPriceTypeForTradeItem.params.trade_point = session.tradePoint;
         model.requery();

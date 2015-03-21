@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?><datamodel>
+  <parametersEntity entityHeight="200" entityIconified="false" entityLocationX="12" entityLocationY="12" entityWidth="150"/>
+  <entity Name="qItemsModifiersTypes" Title="" entityHeight="200" entityIconified="false" entityId="142693625394917" entityLocationX="689" entityLocationY="26" entityWidth="150" queryId="qItemsModifiersTypes" tableName="" tableSchemaName=""/>
+  <entity Name="qItemsOnTpModifiers" Title="" entityHeight="200" entityIconified="false" entityId="142693625746127" entityLocationX="247" entityLocationY="21" entityWidth="150" queryId="qItemsOnTpModifiers" tableName="" tableSchemaName=""/>
+  <entity Name="qModValues" Title="" entityHeight="200" entityIconified="false" entityId="142693625545877" entityLocationX="491" entityLocationY="8" entityWidth="150" queryId="qModValues" tableName="" tableSchemaName=""/>
+  <referenceRelation leftEntityFieldName="mod_value" leftEntityId="142693625746127" rightEntityFieldName="items_mods_values_id" rightEntityId="142693625545877"/>
+  <referenceRelation leftEntityFieldName="modifier" leftEntityId="142693625545877" rightEntityFieldName="items_modifiers_id" rightEntityId="142693625394917"/>
+  <referenceRelation leftEntityFieldName="modifier" leftEntityId="142693625746127" rightEntityFieldName="items_modifiers_id" rightEntityId="142693625394917"/>
+  <referenceRelation leftEntityFieldName="modifier_parent" leftEntityId="142693625394917" rightEntityFieldName="items_modifiers_id" rightEntityId="142693625394917"/>
+</datamodel>

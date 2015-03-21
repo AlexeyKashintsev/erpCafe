@@ -198,6 +198,11 @@ h3.item-desc {
   margin: 0px;
 }
 
+h3.item-modifiers {
+    margin: 5px 0px;
+    font-size: smaller;
+}
+
 h1.item-cost {
   font-size: 22px;
   position: absolute;

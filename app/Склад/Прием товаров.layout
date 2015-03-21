@@ -13,33 +13,33 @@
   <widget name="modelGrid" parent="pnlWorkSpace" prefHeight="298px" prefWidth="448px" type="DbGridDesignInfo">
     <column name="colItem_name" title="Товар">
       <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
+      <datamodelElement entityId="140549864254788" fieldName="item_name"/>
+      <columnsDatasource/>
+      <columnsDisplayField/>
+      <cellsDatasource/>
       <cellDesignInfo>
         <rowsKeyField/>
         <columnsKeyField/>
         <cellValueField/>
       </cellDesignInfo>
-      <columnsDatasource/>
-      <columnsDisplayField/>
-      <cellsDatasource/>
       <headerStyle>
         <nativeFont name="Dialog" size="15"/>
       </headerStyle>
-      <datamodelElement entityId="140549864254788" fieldName="item_name"/>
     </column>
     <column name="colItem_id" title="Количество">
       <controlInfo classHint="DbLabelDesignInfo" emptyText="0" name="view" prefHeight="0px" prefWidth="0px"/>
+      <datamodelElement entityId="140549864254788" fieldName="start_value"/>
+      <columnsDatasource/>
+      <columnsDisplayField/>
+      <cellsDatasource/>
       <cellDesignInfo>
         <rowsKeyField/>
         <columnsKeyField/>
         <cellValueField/>
       </cellDesignInfo>
-      <columnsDatasource/>
-      <columnsDisplayField/>
-      <cellsDatasource/>
       <headerStyle>
         <nativeFont name="Dialog" size="15"/>
       </headerStyle>
-      <datamodelElement entityId="140549864254788" fieldName="start_value"/>
     </column>
     <rowsColumnsDesignInfo>
       <rowsDatasource entityId="140549864254788" field="false"/>

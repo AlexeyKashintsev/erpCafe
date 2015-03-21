@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?><datamodel>
+  <parameters>
+    <parameter description="" name="item_on_tp" nullable="true" parameterMode="1" precision="0" scale="0" selectionForm="null" signed="true" size="0" type="2" typeName="NUMERIC"/>
+  </parameters>
+  <parametersEntity entityHeight="200" entityIconified="false" entityLocationX="8" entityLocationY="7" entityWidth="150"/>
+  <entity Title="" entityHeight="200" entityIconified="false" entityId="142694953342235" entityLocationX="494" entityLocationY="34" entityWidth="150" tableAlias="t1" tableName="items_mods_values" tableSchemaName=""/>
+  <entity Title="" entityHeight="200" entityIconified="false" entityId="142694952166154" entityLocationX="265" entityLocationY="9" entityWidth="150" tableAlias="t" tableName="items_mods" tableSchemaName=""/>
+  <relation leftEntityId="-1" leftEntityParameterName="item_on_tp" rightEntityFieldName="item_on_tp" rightEntityId="142694952166154"/>
+  <relation leftEntityFieldName="mod_value" leftEntityId="142694952166154" rightEntityFieldName="items_mods_values_id" rightEntityId="142694953342235"/>
+</datamodel>

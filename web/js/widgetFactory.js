@@ -163,6 +163,7 @@ wf.TradeItem = function(aContainer) {
     
     var itemContent = cmn.createElement("div", "panel-body", itemPanel);
     var itemDesc = cmn.createElement("h3", "item-desc", itemContent);
+    var itemMods = cmn.createElement("h3", "item-modifiers", itemContent);
     var itemCost = cmn.createElement("h1", "item-cost", itemContent);
     var limit = cmn.createElement("div", "item-limit", itemContent);
     this.setDisplayedPrice = function(aPrice) {
@@ -192,6 +193,7 @@ wf.TradeItem = function(aContainer) {
     }.bind(this);
     
     itemDesc.innerHTML = this.data.item_name;
+    itemMods.innerHTML = this.data.short_string;
     
     itemPanel.onclick = this.click;
 };

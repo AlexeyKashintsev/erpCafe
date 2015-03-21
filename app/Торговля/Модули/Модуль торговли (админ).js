@@ -69,7 +69,16 @@ function TradeAdminModule() {
             curs.wh_item = itemData.wh_item;
             curs.color = itemData.color;
             curs.trade_point_id = itemData.trade_point;
+            
+            model.qItemsOnTpModifiers.params.item_on_tp = curs.items_on_tp_id;
+            model.qItemsOnTpModifiers.requery();
+            curs.short_string = '';
+            model.qItemsOnTpModifiers.forEach(function(cursor) {
+                if (cursor.show)
+                    curs.short_string += (curs.short_string ? ' ' : '') + cursor.display_value;
+            });
         }
+        
         if (!itemData.delete) {
             for (var price_type in itemData.costs) {
                 if (itemData.costs[price_type])

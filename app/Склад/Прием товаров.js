@@ -16,32 +16,22 @@ var grid;
 
 var mItems = {};
 function itemValueChange(anItemData) {
-    if (!mItems[anItemData.id]) {
-        mItems[anItemData.id] = {
-            value   :   anItemData.value,
-            cost    :   null
-        };
-    } else {
-        mItems[anItemData.id].value = anItemData.value;
-    }
+    if (!mItems[anItemData.id])
+        mItems[anItemData.id] = {};
+    mItems[anItemData.id].value = anItemData.value;
 }
 
 function itemCostChange(anItemData) {
-    if (!mItems[anItemData.id]) {
-        mItems[anItemData.id] = {
-            value   :   null,
-            cost    :   anItemData.value
-        };
-    } else {
-        mItems[anItemData.id].cost = anItemData.value;
-    }
+    if (!mItems[anItemData.id])
+        mItems[anItemData.id] = {};
+    mItems[anItemData.id].cost = anItemData.value;
 }
 
 function fillGrid() {
     var items = [];
     model.qWhItemsOnTP.forEach(function(anItem) {
-        items.push([anItem.item_name, 
-            {id: anItem.item_id, editable: true, value: null, onchange: itemValueChange}, ''
+        items.push([anItem.item_name + (anItem.short_string ? ' ' + anItem.short_string : ''), 
+            {id: anItem.items_on_tp_id, editable: true, value: null, onchange: itemValueChange}, ''
             //{id: anItem.item_id, editable: true, value: null, onchange: itemCostChange}
             ]);
     });
