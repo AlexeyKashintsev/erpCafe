@@ -6,7 +6,7 @@ function ItemSettingsAndCost(aTradeItemId, aOpenType) {
     var self = this, model = this.model, form = this;
     var tradeAdminModule = Session.get("TradeAdminModule");
 
-    var fmItemCard, fmTIcontents, fmItemCost, fmBonuses, fmGroup;
+    var fmItemCard, fmTIcontents, fmItemCost, fmBonuses, fmGroup, fmModifiers;
     /*require(['ItemCard', 'ContentTradeItem', 'ItemCostForm', 'BonusRateForm'],
         function() {*/
             fmItemCard = new ItemCard();
@@ -20,6 +20,8 @@ function ItemSettingsAndCost(aTradeItemId, aOpenType) {
             fmItemCost.showOnPanel(form.pnlCost);
             fmBonuses = new BonusRateForm();
             fmBonuses.showOnPanel(form.pnlBonus);
+            fmModifiers = new TradeItemsModifiers();
+            fmModifiers.showOnPanel(form.pnlModifiers);
       //  });
 
 
@@ -35,17 +37,13 @@ function ItemSettingsAndCost(aTradeItemId, aOpenType) {
         model.qTradeItemsOnTP.params.trade_point = model.params.trade_pont;
         model.qTradeItemsOnTP.params.item_id = anItemId;
         model.qTradeItemsOnTP.params.item_on_tp = model.params.item_on_tp;
-        model.qTradeItemsOnTP.requery(function() {
-            if (model.qTradeItemsOnTP.empty) {
-                
-            } else {
-                fmItemCard.setItem(anItemId);
-                fmTIcontents.setTradeItem(anItemId);
-                fmGroup.setTradeItem(anItemId);
-                fmItemCost.setItem(anItemId);
-                fmBonuses.setTradeItem(anItemId);
-            }
-        });
+        model.qTradeItemsOnTP.requery();
+        fmItemCard.setItem(anItemId);
+        fmTIcontents.setTradeItem(anItemId);
+        fmGroup.setTradeItem(anItemId);
+        fmItemCost.setItem(anItemId);
+        fmBonuses.setTradeItem(anItemId);
+        fmModifiers.setItem(anItemOnTpId);
     };
 
     if (aTradeItemId)
@@ -57,6 +55,7 @@ function ItemSettingsAndCost(aTradeItemId, aOpenType) {
         fmItemCard.save();
         fmTIcontents.save();
         fmGroup.save();
+        fmModifiers.save();
 
         tradeAdminModule.processChangesForTradeItem({
             item_on_tp: model.params.item_on_tp,

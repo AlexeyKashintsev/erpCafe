@@ -37,10 +37,14 @@
     <valueField entityId="142234950682488" fieldName="misc_colors_id"/>
     <displayField entityId="142234950682488" fieldName="color_name"/>
     <datamodelElement entityId="-1" fieldName="color"/>
-    <constraints height="20px" left="12px" top="24px" type="MarginConstraintsDesignInfo" width="156px"/>
+    <constraints height="20px" left="12px" top="36px" type="MarginConstraintsDesignInfo" width="156px"/>
   </widget>
   <widget name="label" parent="pnlColor" prefHeight="24px" prefWidth="96px" text="Цвет:" type="LabelDesignInfo">
     <constraints height="24px" left="12px" top="0px" type="MarginConstraintsDesignInfo" width="96px"/>
+  </widget>
+  <widget name="pnlModifiers" parent="tabbedPane" prefHeight="386px" prefWidth="651px" type="PanelDesignInfo" visible="false">
+    <layout type="MarginLayoutDesignInfo"/>
+    <constraints tabTitle="Модификаторы" type="TabsConstraintsDesignInfo"/>
   </widget>
   <widget backgroundColor="#ededed" name="pnlContent" parent="tabbedPane" prefHeight="386px" prefWidth="651px" type="PanelDesignInfo" visible="false">
     <layout type="MarginLayoutDesignInfo"/>
