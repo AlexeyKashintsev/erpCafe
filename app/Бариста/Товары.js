@@ -7,7 +7,7 @@ function ItemsSelector(aContainer, aParent, aTradePoint, anActualDate) {
     var self = this, model = this.model;
     self.mode = 0; //0 - продажа товаров, 1 - настройка
     self.parent = aParent;
-    self.itemSettingsAndCost = new ItemSettingsAndCost();
+//    self.itemSettingsAndCost = new ItemSettingsAndCost();
     var addItemWidget;
     balanceMeter = new BalanceMeter();
     var whSession = session.whSession;
@@ -22,6 +22,12 @@ function ItemsSelector(aContainer, aParent, aTradePoint, anActualDate) {
     
     var trade_items = {};
     var bar_codes = {};
+    
+    self.showItemSettings = function(anItemId, anItemOnTp) {
+        var itemSettingsAndCost = new ItemSettingsAndCost();
+        itemSettingsAndCost.setTradeItem(anItemId, session.tradePoint, anItemOnTp);
+        itemSettingsAndCost.showModal(self.reloadItems);
+    };
     
     self.reloadItems = function() {
         for (var j in trade_items) {

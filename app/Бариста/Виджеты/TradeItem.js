@@ -56,8 +56,9 @@ function TradeItem(anItemData, aParent, aContainer) {
     this.addToOrder = addToOrder;
     
     function settingsShow() {
-        aParent.itemSettingsAndCost.setTradeItem(this.data.item_id, session.tradePoint, this.data.items_on_tp_id);
-        aParent.itemSettingsAndCost.showModal(aParent.reloadItems);
+        aParent.showItemSettings(this.data.item_id, session.tradePoint, this.data.items_on_tp_id);
+//        aParent.itemSettingsAndCost.setTradeItem(this.data.item_id, session.tradePoint, this.data.items_on_tp_id);
+//        aParent.itemSettingsAndCost.showModal(aParent.reloadItems);
     }
 
     this.click = (function() {

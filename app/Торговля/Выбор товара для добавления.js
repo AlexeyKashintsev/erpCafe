@@ -4,7 +4,6 @@
  */
 function AddItemToDashboard() {
     var self = this, model = this.model, form = this;
-    var ItemSettings = new ItemSettingsAndCost();
     var itemCard = new ItemCard();
     var tradeAdminModule = new ServerModule("TradeAdminModule");
     
@@ -32,6 +31,7 @@ function AddItemToDashboard() {
     }//GEN-LAST:event_btnAddToDashboardActionPerformed
 
     function showItemSettings() {
+        var ItemSettings = new ItemSettingsAndCost();
         ItemSettings.setTradeItem(model.qTradeItemsWithSearch.cursor.items_catalog_id);
         ItemSettings.showModal();
     }
