@@ -74,14 +74,14 @@ div.dashboard.report {
   
   div.mainArea {
     margin-top: 50px;
-    padding-bottom: 50px;
+    #padding-bottom: 50px;
     padding-top: 15px;
     position: fixed;
     bottom: 0px;
     right: 0px;
     top: 0px;
     #height: 100%;
-    overflow-y: scroll;
+    #overflow-y: scroll;
   }
 }
 
@@ -171,6 +171,20 @@ button.typeSelector {
 }
 
 /* TRADE ITEMS */
+
+div.items_select {
+    overflow-y: scroll;
+    height: 100%;
+    position: absolute;
+}
+
+div.item_selector {
+    height: 100%;
+}
+
+div.dashboard {
+    height: 100%;
+}
 
 .itemDescription {
     cursor: pointer;

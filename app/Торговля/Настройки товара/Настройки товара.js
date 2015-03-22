@@ -37,11 +37,11 @@ function ItemSettingsAndCost(aTradeItemId, aOpenType) {
         model.qSuppliers.params.franchazi_id = session.franchaziId;
         model.qSuppliers.execute();
         
-        model.qTradeItemsOnTP.params.trade_point = model.params.trade_pont;
-        model.qTradeItemsOnTP.params.item_id = anItemId;
+//        model.qTradeItemsOnTP.params.trade_point = model.params.trade_pont;
+//        model.qTradeItemsOnTP.params.item_id = anItemId;
         model.qTradeItemsOnTP.params.item_on_tp = model.params.item_on_tp;
         model.qTradeItemsOnTP.requery(function() {
-            if (!model.qTradeItemsOnTP.empty) {
+            if (!model.qTradeItemsOnTP.empty && model.params.item_on_tp) {
                 form.cbTradeItem.selected = model.qTradeItemsOnTP.cursor.trade_item;
                 form.cbWhContent.selected = model.qTradeItemsOnTP.cursor.wh_content;
                 form.cbWhItem.selected = model.qTradeItemsOnTP.cursor.wh_item;
@@ -58,7 +58,7 @@ function ItemSettingsAndCost(aTradeItemId, aOpenType) {
             fmItemCard.setItem(anItemId);
             fmTIcontents.setTradeItem(anItemId);
             fmGroup.setTradeItem(anItemId);
-            fmItemCost.setItem(anItemId);
+            fmItemCost.setItem(anItemOnTpId);
             fmBonuses.setTradeItem(anItemId);
             fmModifiers.setItem(anItemOnTpId, anItemId);
         });
@@ -66,7 +66,15 @@ function ItemSettingsAndCost(aTradeItemId, aOpenType) {
 
     if (aTradeItemId)
         self.setTradeItem(aTradeItemId);
-
+    
+    function getShortStr() {
+        var supplier = model.params.supplier ? model.qSuppliers.findById(model.params.supplier) : '';
+        if (supplier !== '')
+            supplier = (supplier.short_name ? supplier.short_name : supplier.supplier_name) + ' ';
+        model.params.short_str = 
+                form.taShortStr.text = supplier + fmModifiers.getModString();
+        return model.params.short_str;
+    }
 
     function btnSaveActionPerformed(evt) {//GEN-FIRST:event_btnSaveActionPerformed
         model.save();
@@ -84,17 +92,21 @@ function ItemSettingsAndCost(aTradeItemId, aOpenType) {
             trade_item: form.cbTradeItem.selected,
             costs: fmItemCost.getCosts(),
             supplier: model.params.supplier,
-            short_str:  model.params.short_str,
+            short_str:  model.params.short_str ? model.params.short_str : getShortStr(),
             modifiers:  fmModifiers.getModifiers()
         });
         form.close(true);
     }//GEN-LAST:event_btnSaveActionPerformed
 
     function btnDelActionPerformed(evt) {//GEN-FIRST:event_btnDelActionPerformed
-        model.save();
+        /*model.save();
         fmItemCard.save();
         fmTIcontents.save();
-        //fmItemCost.save(true);
+        fmItemCost.save(true);*/
+        tradeAdminModule.processChangesForTradeItem({
+            item_on_tp: model.params.item_on_tp,
+            for_delete: true
+        });
         form.close(true);
     }//GEN-LAST:event_btnDelActionPerformed
 
@@ -107,11 +119,7 @@ function ItemSettingsAndCost(aTradeItemId, aOpenType) {
     }//GEN-LAST:event_formWindowOpened
 
     function btnGetShortStrActionPerformed(evt) {//GEN-FIRST:event_btnGetShortStrActionPerformed
-        var supplier = model.params.supplier ? model.qSuppliers.findById(model.params.supplier) : '';
-        if (supplier !== '')
-            supplier = (supplier.short_name ? supplier.short_name : supplier.supplier_name) + ' ';
-        model.params.short_str = 
-                form.taShortStr.text = supplier + fmModifiers.getModString();
+        getShortStr();
     }//GEN-LAST:event_btnGetShortStrActionPerformed
 
     function taShortStrKeyTyped(evt) {//GEN-FIRST:event_taShortStrKeyTyped

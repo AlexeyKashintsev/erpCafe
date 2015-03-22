@@ -10,5 +10,5 @@ From trade_items_cost t1
  Inner Join items_on_tp t on t1.item_on_tp = t.items_on_tp_id
  Where (:actual_date >= t1.start_date
  and (:actual_date < t1.end_date or t1.end_date is null))
- and :items_on_tp = t.items_on_tp_id
- and :trade_point = t.trade_point_id
+ and (:items_on_tp = t.items_on_tp_id or (:items_on_tp is null and :trade_point is not null))
+ and (:trade_point = t.trade_point_id or :trade_point is null)

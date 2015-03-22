@@ -41,12 +41,10 @@ function TradeAdminModule() {
 
     /**** Управление ценой на товар *****/
 
-    function findItemOnTP(anItemId, aTradePoint) {
-        model.qTradeItemsOnTP.params.trade_point = aTradePoint;
-        model.qTradeItemsOnTP.params.item_id = null;
+    function findItemOnTP(anItemOnTp) {
+        model.qTradeItemsOnTP.params.item_on_tp = anItemOnTp;
         model.qTradeItemsOnTP.requery();
-        var item = model.qTradeItemsOnTP.find(model.qTradeItemsOnTP.schema.item_id, anItemId);
-        return item[0] ? item[0].items_on_tp_id : null;
+        return !model.qTradeItemsOnTP.empty ? anItemOnTp : null;
     }
 
     /*
@@ -54,15 +52,16 @@ function TradeAdminModule() {
      * {item_id, trade_point, costs : {price_type, cost}, delete, trade_item, wh_content, wh_item, color}
      */
     self.processChangesForTradeItem = function(itemData) {
-        var itemOnTP = findItemOnTP(itemData.item_id, itemData.trade_point);
+//        var itemOnTP = findItemOnTP(itemData.item_id, itemData.trade_point);
+        var itemOnTP = findItemOnTP(itemData.item_on_tp);
         var added = false;
         
-        if (!itemOnTP) {
-            itemOnTP = addItemToTP(itemData.item_id, itemData.trade_point);
+        if (!itemData.item_on_tp) {
+            var itemOnTP = addItemToTP(itemData.item_id, itemData.trade_point);
             added = true;
         }
 
-        if (itemData.wh_content || itemData.trade_item || itemData.wh_item || itemData.color) {
+        if ((itemData.wh_content || itemData.trade_item || itemData.wh_item || itemData.color) && !itemData.for_delete) {
             var curs = model.qTradeItemsOnTP.findById(itemOnTP);
             curs.wh_content = itemData.wh_content;
             curs.trade_item = itemData.trade_item;
@@ -95,7 +94,7 @@ function TradeAdminModule() {
             }
         }
         
-        if (!itemData.delete) {
+        if (!itemData.for_delete) {
             for (var price_type in itemData.costs) {
                 if (itemData.costs[price_type])
                     setCost4TradeItemOnTradePoint(itemOnTP, itemData.costs[price_type], price_type);

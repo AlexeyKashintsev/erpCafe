@@ -9,7 +9,7 @@ function ItemCostForm() {
     self.setItem = function(anItemOnTpId) {
         model.qPriceTypeForTradeItem.params.items_on_tp = anItemOnTpId;
         model.qPriceTypeForTradeItem.params.actual_date = new Date();
-        model.qPriceTypeForTradeItem.params.trade_point = session.tradePoint;
+        model.qPriceTypeForTradeItem.params.trade_point = null;
         model.requery();
     };
 

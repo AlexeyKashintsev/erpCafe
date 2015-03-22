@@ -10,13 +10,11 @@
     <constraints place="Center" type="BorderLayoutConstraintsDesignInfo"/>
   </widget>
   <widget name="modelGrid" parent="pnlWorkSpace" prefHeight="318px" prefWidth="372px" type="DbGridDesignInfo">
-    <treeDesignInfo/>
     <column name="colModName" title="Модификатор">
       <controlInfo classHint="DbComboDesignInfo" name="view" prefHeight="0px" prefWidth="0px">
         <valueField entityId="142693625394917" fieldName="items_modifiers_id"/>
         <displayField entityId="142693625394917" fieldName="modifier_name"/>
       </controlInfo>
-      <datamodelElement entityId="142693625746127" fieldName="modifier"/>
       <columnsDatasource/>
       <columnsDisplayField/>
       <cellsDatasource/>
@@ -28,13 +26,13 @@
       <headerStyle>
         <nativeFont name="Lucida Grande" size="13"/>
       </headerStyle>
+      <datamodelElement entityId="142693625746127" fieldName="modifier"/>
     </column>
     <column name="colModValue" title="Значение">
       <controlInfo classHint="DbComboDesignInfo" name="view" prefHeight="0px" prefWidth="0px">
         <valueField entityId="142693625545877" fieldName="items_mods_values_id"/>
         <displayField entityId="142693625545877" fieldName="mod_value"/>
       </controlInfo>
-      <datamodelElement entityId="142693625746127" fieldName="mod_value"/>
       <columnsDatasource/>
       <columnsDisplayField/>
       <cellsDatasource/>
@@ -46,10 +44,10 @@
       <headerStyle>
         <nativeFont name="Lucida Grande" size="13"/>
       </headerStyle>
+      <datamodelElement entityId="142693625746127" fieldName="mod_value"/>
     </column>
     <column name="colShow" title="Отображать">
       <controlInfo classHint="DbCheckDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
-      <datamodelElement entityId="142693625746127" fieldName="show"/>
       <columnsDatasource/>
       <columnsDisplayField/>
       <cellsDatasource/>
@@ -61,10 +59,12 @@
       <headerStyle>
         <nativeFont name="Lucida Grande" size="13"/>
       </headerStyle>
+      <datamodelElement entityId="142693625746127" fieldName="show"/>
     </column>
     <rowsColumnsDesignInfo>
       <rowsDatasource entityId="142693625746127" field="false"/>
     </rowsColumnsDesignInfo>
+    <treeDesignInfo/>
     <constraints bottom="0px" left="0px" right="0px" top="0px" type="MarginConstraintsDesignInfo"/>
   </widget>
   <layout type="BorderLayoutDesignInfo"/>

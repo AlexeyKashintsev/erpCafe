@@ -58,10 +58,12 @@ function formWindowClosing(evt) {//GEN-FIRST:event_formWindowClosing
     function btnAddActionPerformed(evt) {//GEN-FIRST:event_btnAddActionPerformed
         fmItemsModifiers.showModal(function(aModifier){
             var item_on_tp = model.qItemsOnTpModifiers.params.item_on_tp;
+            model.qModValues.requery();
             model.qItemsOnTpModifiers.push({
                 item_on_tp: item_on_tp,
                 mod_value:  aModifier[0],
-                modifier:   aModifier[1]
+                modifier:   aModifier[1],
+                show:       true
             });
         });
     }//GEN-LAST:event_btnAddActionPerformed

@@ -17,12 +17,12 @@
   <entity Name="qItemsOnTpModifiers" Title="" entityHeight="200" entityIconified="false" entityId="142698008758048" entityLocationX="724" entityLocationY="9" entityWidth="150" queryId="qItemsOnTpModifiers" tableName="" tableSchemaName=""/>
   <entity Name="qLastClosedSessionOnTradePoint" Title="" entityHeight="66" entityIconified="false" entityId="141338139419273" entityLocationX="164" entityLocationY="312" entityWidth="153" queryId="qLastClosedSessionOnTradePoint" tableName="" tableSchemaName=""/>
   <entity Name="qTradeOperationBySession" Title="" entityHeight="170" entityIconified="false" entityId="141285077401886" entityLocationX="326" entityLocationY="311" entityWidth="150" queryId="qTradeOperationBySession" tableName="" tableSchemaName=""/>
-  <referenceRelation leftEntityFieldName="item_id" leftEntityId="142115809291982" rightEntityFieldName="wh_item" rightEntityId="142418983098851"/>
-  <referenceRelation leftEntityFieldName="session_id" leftEntityId="141285077401886" rightEntityFieldName="org_session_id" rightEntityId="141338139419273"/>
-  <referenceRelation leftEntityFieldName="item_on_tp" leftEntityId="142698008758048" rightEntityFieldName="items_on_tp_id" rightEntityId="142115809291982"/>
-  <referenceRelation leftEntityFieldName="item_id" leftEntityId="142115809291982" rightEntityFieldName="trade_item" rightEntityId="142418983098851"/>
-  <referenceRelation leftEntityFieldName="session_id" leftEntityId="141285077401886" rightEntityFieldName="org_session_id" rightEntityId="141285162304332"/>
-  <referenceRelation leftEntityFieldName="item_id" leftEntityId="142115809291982" rightEntityFieldName="trade_item" rightEntityId="142418985300733"/>
   <referenceRelation leftEntityFieldName="item_on_tp" leftEntityId="142133588279344" rightEntityFieldName="items_on_tp_id" rightEntityId="142115809291982"/>
+  <referenceRelation leftEntityFieldName="session_id" leftEntityId="141285077401886" rightEntityFieldName="org_session_id" rightEntityId="141338139419273"/>
+  <referenceRelation leftEntityFieldName="item_id" leftEntityId="142115809291982" rightEntityFieldName="wh_item" rightEntityId="142418983098851"/>
+  <referenceRelation leftEntityFieldName="session_id" leftEntityId="141285077401886" rightEntityFieldName="org_session_id" rightEntityId="141285162304332"/>
+  <referenceRelation leftEntityFieldName="item_id" leftEntityId="142115809291982" rightEntityFieldName="trade_item" rightEntityId="142418983098851"/>
+  <referenceRelation leftEntityFieldName="item_on_tp" leftEntityId="142698008758048" rightEntityFieldName="items_on_tp_id" rightEntityId="142115809291982"/>
+  <referenceRelation leftEntityFieldName="item_id" leftEntityId="142115809291982" rightEntityFieldName="trade_item" rightEntityId="142418985300733"/>
   <referenceRelation leftEntityFieldName="session_id" leftEntityId="141285077401886" rightEntityFieldName="org_session_id" rightEntityId="141529641957798"/>
 </datamodel>
