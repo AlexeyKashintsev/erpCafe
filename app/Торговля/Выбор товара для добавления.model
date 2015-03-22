@@ -6,13 +6,13 @@
   </parameters>
   <parametersEntity entityHeight="200" entityIconified="false" entityLocationX="12" entityLocationY="12" entityWidth="150" onAfterChange="paramsOnChanged"/>
   <entity Name="itemType" Title="" entityHeight="200" entityIconified="false" entityId="141882836911917" entityLocationX="215" entityLocationY="23" entityWidth="150" queryId="itemType" tableName="" tableSchemaName=""/>
-  <entity Name="qTradeItemsWithSearch" Title="" entityHeight="200" entityIconified="false" entityId="142348542547543" entityLocationX="509" entityLocationY="8" entityWidth="150" queryId="qTradeItemsWithSearch" tableName="" tableSchemaName=""/>
+  <entity Name="qTradeItemsWithSearch" Title="" entityHeight="200" entityIconified="false" entityId="142348542547543" entityLocationX="509" entityLocationY="8" entityWidth="233" queryId="qTradeItemsWithSearch" tableName="" tableSchemaName=""/>
+  <relation leftEntityId="-1" leftEntityParameterName="franchazi_id" rightEntityId="142348542547543" rightEntityParameterName="franchazi_id"/>
   <relation leftEntityId="-1" leftEntityParameterName="item_search" rightEntityId="142348542547543" rightEntityParameterName="item_search"/>
   <relation leftEntityFieldName="items_types_id" leftEntityId="141882836911917" rightEntityId="142348542547543" rightEntityParameterName="item_type"/>
   <relation leftEntityId="-1" leftEntityParameterName="trade_point_id" rightEntityId="142348542547543" rightEntityParameterName="trade_point"/>
   <relation leftEntityId="-1" leftEntityParameterName="franchazi_id" rightEntityId="141882836911917" rightEntityParameterName="franchazi_id"/>
-  <relation leftEntityId="-1" leftEntityParameterName="franchazi_id" rightEntityId="142348542547543" rightEntityParameterName="franchazi_id"/>
-  <referenceRelation leftEntityFieldName="parent_type" leftEntityId="141882836911917" rightEntityFieldName="items_types_id" rightEntityId="141882836911917"/>
   <referenceRelation leftEntityFieldName="item_id" leftEntityId="142348542547543" rightEntityFieldName="items_catalog_id" rightEntityId="142348542547543"/>
+  <referenceRelation leftEntityFieldName="parent_type" leftEntityId="141882836911917" rightEntityFieldName="items_types_id" rightEntityId="141882836911917"/>
   <referenceRelation leftEntityFieldName="item_type" leftEntityId="142348542547543" rightEntityFieldName="items_types_id" rightEntityId="141882836911917"/>
 </datamodel>
