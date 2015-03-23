@@ -127,15 +127,14 @@ function ItemsSelector(aContainer, aParent, aTradePoint, anActualDate) {
                     trade_items[aTIData.items_on_tp_id].setAdditionalData(aTIData);
             });
             getSort();
+            getItemsTypes();
+            self.setActivePrice(10);
             self.reloadItemsLimit();
             if (aCallback)
                 aCallback();
         });    
     }
     
-    getItems(function() {
-        self.setActivePrice(10);
-        getItemsTypes();
-    });
+    getItems();
     bcp.action = self.barCodeEnter;
 }
