@@ -248,7 +248,7 @@ wf.BalanceMeter = function() {
     var weight = cmn.createElement("h1", "balance-meter weight", infoPane);
     var btnRefresh = cmn.createElement("button", "balance-meter btnRefresh color belize-hole", infoPane);
     btnRefresh.innerHTML = '<span class="glyphicon glyphicon-refresh"></span><br>Обновить';
-    btnRefresh.onclick = this.getWeight();
+    btnRefresh.onclick = this.getWeight;
     //var cost = cmn.createElement("h1", "balance-meter cost", infoPane);
     var btnPane = cmn.createElement("div", "balance-meter btn_pane", this.dockElement);
     var btnOk = cmn.createElement("button", "balance-meter btnOk", btnPane);
@@ -270,7 +270,7 @@ wf.BalanceMeter = function() {
     };
     
     this.onshow = function() {
-        this.weight = 2.054;
+        this.weight = 0;
         this.updateView();
     };
     
