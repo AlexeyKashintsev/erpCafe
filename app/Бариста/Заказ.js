@@ -20,6 +20,7 @@ function OrderList(aParent, aContainer) {
             for (var j in self.orderDetails[i])
                 orderSum += self.orderDetails[i][j].orderSum;
         }
+        orderSum = orderSum.toFixed(2);
         self.updateOrderSum(orderSum);
         
         //AS.updateOrder(self, orderSum);
@@ -30,16 +31,16 @@ function OrderList(aParent, aContainer) {
     };
 
     self.addItem = function(anItemData, aPriceType, aPrice, anQuantity) {
-        if (!self.orderDetails[anItemData.item_id]) {
-            self.orderDetails[anItemData.item_id] = {};
+        if (!self.orderDetails[anItemData.items_on_tp_id]) {
+            self.orderDetails[anItemData.items_on_tp_id] = {};
         }
-        if (!self.orderDetails[anItemData.item_id][aPriceType]) {
-            self.orderDetails[anItemData.item_id][aPriceType] = new OrderItem(anItemData, aPriceType, aPrice);
+        if (!self.orderDetails[anItemData.items_on_tp_id][aPriceType]) {
+            self.orderDetails[anItemData.items_on_tp_id][aPriceType] = new OrderItem(anItemData, aPriceType, aPrice);
         }
         if (!!anQuantity)
-            self.orderDetails[anItemData.item_id][aPriceType].setQuantity(anQuantity);
+            self.orderDetails[anItemData.items_on_tp_id][aPriceType].setQuantity(anQuantity);
         else
-            self.orderDetails[anItemData.item_id][aPriceType].increase();
+            self.orderDetails[anItemData.items_on_tp_id][aPriceType].increase();
     };
 
     self.deleteOrder = function(dontReloadLimits) {

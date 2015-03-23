@@ -2,8 +2,16 @@ var wf = {};
 
 wf.proto = function() {
     this.dockElement = cmn.createElement(this.elType, this.elClass, this.container, this.ID);
-    this.hide = (function(){$(this.dockElement).hide()}).bind(this);
-    this.show = (function(){$(this.dockElement).show()}).bind(this);
+    this.hide = (function(){
+        if (this.onhide)
+            this.onhide();
+        $(this.dockElement).hide();
+    }).bind(this);
+    this.show = (function(){
+        if (this.onshow)
+            this.onshow();
+        $(this.dockElement).show();
+    }).bind(this);
     this.destroy = (function() {
         cmn.deleteElement(this.dockElement);
         delete this;
@@ -45,7 +53,7 @@ wf.DevActions = function(aContainer) {
     this.container = aContainer;
     wf.proto.bind(this)();
     
-}
+};
 
 wf.Selector = function(aContainer, aValues, anAction) {
     this.elType = "select";
@@ -125,7 +133,9 @@ wf.OrderItem = function(aObject, aContainer) {
 
     this.updateText = this.show = function() {
         itemName.innerHTML = aObject.itemName;
-        itemCount.innerHTML = aObject.orderQuantity + ' ' + (aObject.measure ? aObject.measure : 'шт') +' ' + aObject.orderSum + " р.";
+        itemCount.innerHTML = aObject.orderQuantity + ' '
+                + (aObject.measure ? aObject.measure : 'шт')
+                +' ' + aObject.orderSum.toFixed(2) + " р.";
     };
 
     this.stop = false;
@@ -236,6 +246,9 @@ wf.BalanceMeter = function() {
     var infoPane = cmn.createElement("div", "balance-meter weigth_info", this.dockElement);
     var itemName = cmn.createElement("h1", "balance-meter item-name", infoPane);
     var weight = cmn.createElement("h1", "balance-meter weight", infoPane);
+    var btnRefresh = cmn.createElement("button", "balance-meter btnRefresh color belize-hole", infoPane);
+    btnRefresh.innerHTML = '<span class="glyphicon glyphicon-refresh"></span><br>Обновить';
+    btnRefresh.onclick = this.getWeight();
     //var cost = cmn.createElement("h1", "balance-meter cost", infoPane);
     var btnPane = cmn.createElement("div", "balance-meter btn_pane", this.dockElement);
     var btnOk = cmn.createElement("button", "balance-meter btnOk", btnPane);
@@ -245,14 +258,20 @@ wf.BalanceMeter = function() {
     btnCancel.innerHTML = 'Отмена';
     
     this.updateView = function() {
+        var cost = (this.weight * this.itemData.item_cost).toFixed(2);
         itemName.innerHTML = this.itemData.item_name;
         weight.innerHTML = this.weight + ' ' + this.itemData.item_measure + ' | '
-        + this.weight * this.itemData.item_cost + ' р.';
+        + cost + ' р.';
     }.bind(this);
     
     btnOk.onclick = this.accept;
     btnCancel.onclick = function() {
         view.hide();
+    };
+    
+    this.onshow = function() {
+        this.weight = 2.054;
+        this.updateView();
     };
     
     this.hide();

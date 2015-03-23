@@ -41,10 +41,9 @@ function BalanceMeter() {
     }
     
     self.getWeight = function(anItemData, aCallback) {
-        self.itemData = anItemData;
-        self.weight = 0;
-        callback = aCallback;
-        askScales();
+        if (anItemData) self.itemData = anItemData;
+        if (aCallback) callback = aCallback;
+        //askScales();
         self.show();
     };
     

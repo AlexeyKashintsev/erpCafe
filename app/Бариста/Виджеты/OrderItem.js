@@ -39,7 +39,7 @@ function OrderItem(anItemData, aPriceType, aPrice) {
 
     ordItem.delete = function(aWORecalc) {
         ordItem.orderSum = ordItem.orderQuantity = 0;
-        delete(orderList.orderDetails[ordItem.itemId][ordItem.priceType]);
+        delete(orderList.orderDetails[ordItem.tradeId][ordItem.priceType]);
         ordItem.view.delete();
         if (!!aWORecalc) orderList.calculateOrder();
     };

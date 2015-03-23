@@ -209,7 +209,7 @@ function WhSessionModule() {
                         usedItems[id] += anItems[id];
                     else
                         usedItems[id] = anItems[id];
-                }
+                }//TODO Здесь совсем все плохо
                 if (itemData.wh_content) {
                     var contentsData = model.qContentsOnTp.find(model.qContentsOnTp.schema.item_on_tp_id, id);
                     var contents = {};
@@ -231,10 +231,11 @@ function WhSessionModule() {
     /*
      * Добавление товаров на склад
      */
-    self.whMovement = function(anItems, aMovementType, aSession) {
+    self.whMovement = function(anItems, aMovementType, aTradeOperation, aSession) {
         if (aSession)
             setParams(null, aSession);
         
+        model.queryMovements.reverse();
         if (self.getCurrentSession()) {
             for (var id in anItems) {
                 model.queryMovements.push({
@@ -243,7 +244,8 @@ function WhSessionModule() {
                     item_on_tp_id: id,
                     movement_date: new Date(),
                     movement_type: aMovementType,
-                    value: anItems[id]
+                    value: anItems[id],
+                    trade_operation: aTradeOperation
                 });
             }
             model.save();

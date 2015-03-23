@@ -132,10 +132,10 @@ function TradeSessions() {
      */
     function processOrderItem(anOrderItem, aTradeOperationId) {
         if (anOrderItem.tradeId && anOrderItem.quantity) {
-            var itemId = sessionItems[anOrderItem.tradeId].itemID;
+            //var itemId = sessionItems[anOrderItem.tradeId].itemID;
             TradeItemsPushInTradeOperation( aTradeOperationId,
                                             anOrderItem.tradeId,
-                                            itemId,
+                                            anOrderItem.itemId,
                                             anOrderItem.quantity,
                                             anOrderItem.priceType);
 

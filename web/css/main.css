@@ -446,6 +446,18 @@ div.weigth_info {
     margin-bottom: 22px;
 }
 
+.balance-meter.btnRefresh {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    height: 80px;
+    width: 80px;
+}
+
+div.balance-meter.btnRefresh > span {
+    font-size: larger;
+}
+
 div.balance-meter.btn_pane > button {
     height: 60px;
 }
@@ -654,6 +666,7 @@ body > div.session_indicator {
 /* ### MAP ### */
 div.form-container {
     height : 100%;
+    overflow: auto;
 }
 
 div.map-container {
