@@ -13,3 +13,4 @@ From items_on_tp t1
  Inner Join items_catalog t on t1.item_id = t.items_catalog_id
  Where :trade_point = t1.trade_point_id
  and (:item_id = t1.item_id or :item_id is null)
+order by t1.supplier, t.item_name

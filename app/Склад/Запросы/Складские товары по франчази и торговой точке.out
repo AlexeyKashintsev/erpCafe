@@ -2,4 +2,5 @@
   <field bindedColumn="start_value" sqlType="2"/>
   <field bindedColumn="item_measure" sqlType="12"/>
   <field bindedColumn="end_value" sqlType="2"/>
+  <field bindedColumn="full_string" sqlType="12"/>
 </outputFields>
