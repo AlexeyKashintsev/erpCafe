@@ -94,7 +94,7 @@ function TradeAdminModule() {
             }
             for (var price_type in itemData.costs) {
                 if (itemData.costs[price_type])
-                    setCost4TradeItemOnTradePoint(itemOnTP, itemData.costs[price_type], price_type);
+                    self.setCost4TradeItemOnTradePoint(itemOnTP, itemData.costs[price_type], price_type);
             }
             if (curs.wh_content) {
                 whModule.addItemContentsToWH(curs.item_id, curs.trade_point_id);
@@ -111,7 +111,7 @@ function TradeAdminModule() {
         return true;
     };
 
-    function setCost4TradeItemOnTradePoint(anItemOnTP, aCost, aPriceType) {
+    self.setCost4TradeItemOnTradePoint = function(anItemOnTP, aCost, aPriceType, doSave) {
         closeTradeItemCost(anItemOnTP, aPriceType);
         if (aCost)
             model.qItemOnTPCosts.push({
@@ -120,6 +120,8 @@ function TradeAdminModule() {
                 item_cost: aCost,
                 price_type: aPriceType
             });
+        if (doSave)
+            model.save();
     }
     ;
 

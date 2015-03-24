@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?><layout defaultCloseOperation="2" name="Form" prefHeight="348px" prefWidth="372px" windowClosing="formWindowClosing" windowOpened="formWindowOpened">
+  <widget floatable="false" name="toolBar" parent="Form" prefHeight="30px" prefWidth="372px" rollover="true" type="ToolbarDesignInfo">
+    <constraints place="North" type="BorderLayoutConstraintsDesignInfo"/>
+  </widget>
+  <widget actionPerformed="btnAddActionPerformed" focusable="false" horizontalTextPosition="0" icon="icons/22x22/actions/list-add.png" name="btnAdd" parent="toolBar" prefHeight="26px" prefWidth="34px" toolTipText="Добавить" type="ButtonDesignInfo" verticalTextPosition="3"/>
+  <widget actionPerformed="btnDelActionPerformed" focusable="false" horizontalTextPosition="0" icon="icons/22x22/actions/list-remove.png" name="btnDel" parent="toolBar" prefHeight="26px" prefWidth="34px" toolTipText="Удалить" type="ButtonDesignInfo" verticalTextPosition="3"/>
+  <widget actionPerformed="btnReqActionPerformed" focusable="false" horizontalTextPosition="0" icon="icons/22x22/actions/new-view-refresh.png" name="btnReq" parent="toolBar" prefHeight="26px" prefWidth="34px" toolTipText="Обновить" type="ButtonDesignInfo" verticalTextPosition="3"/>
+  <widget actionPerformed="btnSaveActionPerformed" focusable="false" horizontalTextPosition="0" icon="icons/22x22/actions/document-save.png" name="btnSave" parent="toolBar" prefHeight="26px" prefWidth="34px" toolTipText="Сохранить" type="ButtonDesignInfo" verticalTextPosition="3"/>
+  <widget name="pnlWorkSpace" parent="Form" prefHeight="318px" prefWidth="372px" type="PanelDesignInfo">
+    <layout type="MarginLayoutDesignInfo"/>
+    <constraints place="Center" type="BorderLayoutConstraintsDesignInfo"/>
+  </widget>
+  <widget deletable="false" insertable="false" mouseClicked="grdTradeItemsMouseClicked" name="grdTradeItems" parent="pnlWorkSpace" prefHeight="318px" prefWidth="372px" type="DbGridDesignInfo">
+    <column name="colName" readonly="true" title="Наименование">
+      <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
+      <columnsDatasource/>
+      <columnsDisplayField/>
+      <cellsDatasource/>
+      <cellDesignInfo>
+        <rowsKeyField/>
+        <columnsKeyField/>
+        <cellValueField/>
+      </cellDesignInfo>
+      <headerStyle>
+        <nativeFont name="Lucida Grande" size="13"/>
+      </headerStyle>
+      <datamodelElement entityId="142303506349188" fieldName="full_string"/>
+    </column>
+    <column name="colBuy" title="Закупка" width="20">
+      <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
+      <columnsDatasource entityId="142303524476735" field="false"/>
+      <columnsDisplayField entityId="142303524476735" fieldName="type_name"/>
+      <cellsDatasource entityId="142719705622282" field="false"/>
+      <cellDesignInfo>
+        <rowsKeyField entityId="142719705622282" fieldName="item_on_tp"/>
+        <columnsKeyField entityId="142719705622282" fieldName="price_type"/>
+        <cellValueField entityId="142719705622282" fieldName="item_cost"/>
+      </cellDesignInfo>
+      <headerStyle>
+        <nativeFont name="Lucida Grande" size="13"/>
+      </headerStyle>
+      <datamodelElement entityId="142303506349188" fieldName="buying_cost"/>
+    </column>
+    <column name="colSellPrice" title="Продажа" width="20">
+      <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
+      <columnsDatasource/>
+      <columnsDisplayField/>
+      <cellsDatasource entityId="142719705622282" field="false"/>
+      <cellDesignInfo>
+        <rowsKeyField entityId="142719705622282" fieldName="item_on_tp"/>
+        <columnsKeyField/>
+        <cellValueField entityId="142719705622282" fieldName="item_cost"/>
+      </cellDesignInfo>
+      <headerStyle>
+        <nativeFont name="Lucida Grande" size="13"/>
+      </headerStyle>
+      <datamodelElement entityId="142303506349188" fieldName="selling_cost"/>
+    </column>
+    <rowsColumnsDesignInfo>
+      <rowsDatasource entityId="142303506349188" field="false"/>
+    </rowsColumnsDesignInfo>
+    <treeDesignInfo/>
+    <constraints bottom="0px" left="0px" right="0px" top="0px" type="MarginConstraintsDesignInfo"/>
+  </widget>
+  <layout type="BorderLayoutDesignInfo"/>
+</layout>
