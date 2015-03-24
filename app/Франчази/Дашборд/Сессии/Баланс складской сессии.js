@@ -20,10 +20,10 @@ function WHSessionBalance(aContainer) {
                     var itemData = model.qWHSessionBalance.find(model.qWHSessionBalance.schema.item_on_tp_id, cursor.items_on_tp_id)[0];
                     if (itemData)
                         data.push([
-                            cursor.item_name,
-                            (itemData.start_value ? itemData.start_value : "--") + ' ' + (cursor.item_measure ? cursor.item_measure : ""),
-                            (itemData.used_value ? itemData.used_value : "--") + ' ' + (cursor.item_measure ? cursor.item_measure : ""),
-                            (itemData.final_value ? itemData.final_value : "--") + ' ' + (cursor.item_measure ? cursor.item_measure : "")
+                            cursor.full_string,
+                            (itemData.start_value || itemData.start_value === 0 ? itemData.start_value : "--") + ' ' + (cursor.item_measure ? cursor.item_measure : ""),
+                            (itemData.used_value || itemData.used_value === 0 ? itemData.used_value : "--") + ' ' + (cursor.item_measure ? cursor.item_measure : ""),
+                            (itemData.final_value || itemData.final_value === 0 ? itemData.final_value : "--") + ' ' + (cursor.item_measure ? cursor.item_measure : "")
                         ]);
                     else
                         data.push([
