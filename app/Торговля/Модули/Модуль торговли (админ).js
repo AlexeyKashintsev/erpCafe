@@ -61,7 +61,7 @@ function TradeAdminModule() {
             added = true;
         }
 
-        if ((itemData.wh_content || itemData.trade_item || itemData.wh_item || itemData.color) && !itemData.for_delete) {
+        if (!itemData.for_delete) {
             var curs = model.qTradeItemsOnTP.findById(itemOnTP);
             curs.wh_content = itemData.wh_content;
             curs.trade_item = itemData.trade_item;
@@ -92,9 +92,6 @@ function TradeAdminModule() {
                     item_on_tp: itemOnTP
                 });
             }
-        }
-        
-        if (!itemData.for_delete) {
             for (var price_type in itemData.costs) {
                 if (itemData.costs[price_type])
                     setCost4TradeItemOnTradePoint(itemOnTP, itemData.costs[price_type], price_type);
