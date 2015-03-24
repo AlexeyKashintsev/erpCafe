@@ -109,7 +109,8 @@ function ItemsSelector(aContainer, aParent, aTradePoint, anActualDate) {
         model.tradeTypes4TP.params.actual_date = anActualDate ? anActualDate : new Date();
         model.tradeTypes4TP.requery(function() {
             model.tradeTypes4TP.forEach(function(aTTData) {
-                trade_items[aTTData.items_on_tp_id].addType(aTTData.type_id);
+                if (trade_items[aTTData.items_on_tp_id])
+                    trade_items[aTTData.items_on_tp_id].addType(aTTData.type_id);
             });
         });
     }
