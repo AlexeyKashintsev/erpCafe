@@ -187,9 +187,9 @@ function WhSessionModule() {
         return minimum;
     };
     
-    self.processTradeItems = function(anItems) {
+    self.processTradeItems = function(anItems, aTradeOp) {
         var consumption = calculateConsumption(anItems);
-        self.whMovement(consumption, self.WH_PRODUCE_ITEMS);
+        self.whMovement(consumption, self.WH_PRODUCE_ITEMS, aTradeOp);
     };
     
     function getItemData(aTradeItemID) {
