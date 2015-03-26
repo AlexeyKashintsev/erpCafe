@@ -8,6 +8,7 @@
   <widget actionPerformed="btnSaveActionPerformed" focusable="false" horizontalTextPosition="0" icon="icons/22x22/actions/document-save.png" name="btnSave" parent="toolBar" prefHeight="29px" prefWidth="29px" toolTipText="Сохранить" type="ButtonDesignInfo" verticalTextPosition="3"/>
   <widget actionPerformed="btnDel1ActionPerformed" focusable="false" horizontalTextPosition="0" icon="icons/22x22/actions/document-edit.png" name="btnDel1" parent="toolBar" prefHeight="29px" prefWidth="29px" toolTipText="Изменить" type="ButtonDesignInfo" verticalTextPosition="3"/>
   <widget actionPerformed="btnSetPointsActionPerformed" focusable="false" horizontalTextPosition="0" icon="icons/22x22/apps/okteta.png" name="btnSetPoints" parent="toolBar" prefHeight="29px" prefWidth="29px" toolTipText="Торговые точки по пользователю" type="ButtonDesignInfo" verticalTextPosition="3"/>
+  <widget actionPerformed="btnBaristaNameActionPerformed" focusable="false" horizontalTextPosition="0" icon="icons/22x22/apps/im-aim.png" name="btnBaristaName" parent="toolBar" prefHeight="29px" prefWidth="29px" toolTipText="Название баристы" type="ButtonDesignInfo" verticalTextPosition="3"/>
   <widget name="pnlSelLock" parent="Form" prefHeight="50px" prefWidth="507px" type="PanelDesignInfo">
     <layout type="MarginLayoutDesignInfo"/>
     <constraints place="South" type="BorderLayoutConstraintsDesignInfo"/>
@@ -20,85 +21,85 @@
     <constraints place="Center" type="BorderLayoutConstraintsDesignInfo"/>
   </widget>
   <widget deletable="false" editable="false" insertable="false" mouseClicked="modelGridMouseClicked" mousePressed="modelGridMousePressed" name="modelGrid" parent="pnlWorkSpace" prefHeight="261px" prefWidth="507px" type="DbGridDesignInfo">
-    <column name="colUsr_active" readonly="true" title=" " width="7">
-      <headerStyle>
-        <nativeFont name="Dialog" size="15"/>
-      </headerStyle>
-      <columnsDatasource/>
-      <columnsDisplayField/>
-      <cellsDatasource/>
-      <cellDesignInfo>
-        <rowsKeyField/>
-        <columnsKeyField/>
-        <cellValueField/>
-      </cellDesignInfo>
-      <controlInfo classHint="DbCheckDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
-      <datamodelElement entityId="140489862821608" fieldName="franc_users_active"/>
-    </column>
-    <column name="colUsr_name" readonly="true" title="Имя">
-      <headerStyle>
-        <nativeFont name="Dialog" size="15"/>
-      </headerStyle>
-      <columnsDatasource/>
-      <columnsDisplayField/>
-      <cellsDatasource/>
-      <cellDesignInfo>
-        <rowsKeyField/>
-        <columnsKeyField/>
-        <cellValueField/>
-      </cellDesignInfo>
-      <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
-      <datamodelElement entityId="140489862821608" fieldName="usr_name"/>
-    </column>
-    <column name="colUsr_phone" title="Телефон">
-      <headerStyle>
-        <nativeFont name="Dialog" size="15"/>
-      </headerStyle>
-      <columnsDatasource/>
-      <columnsDisplayField/>
-      <cellsDatasource/>
-      <cellDesignInfo>
-        <rowsKeyField/>
-        <columnsKeyField/>
-        <cellValueField/>
-      </cellDesignInfo>
-      <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
-      <datamodelElement entityId="140489862821608" fieldName="usr_phone"/>
-    </column>
-    <column name="colUsr_email" title="Email">
-      <headerStyle>
-        <nativeFont name="Dialog" size="15"/>
-      </headerStyle>
-      <columnsDatasource/>
-      <columnsDisplayField/>
-      <cellsDatasource/>
-      <cellDesignInfo>
-        <rowsKeyField/>
-        <columnsKeyField/>
-        <cellValueField/>
-      </cellDesignInfo>
-      <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
-      <datamodelElement entityId="140489862821608" fieldName="usr_email"/>
-    </column>
-    <column name="column" title="Роль">
-      <headerStyle>
-        <nativeFont name="Tahoma" size="11"/>
-      </headerStyle>
-      <columnsDatasource/>
-      <columnsDisplayField/>
-      <cellsDatasource/>
-      <cellDesignInfo>
-        <rowsKeyField/>
-        <columnsKeyField/>
-        <cellValueField/>
-      </cellDesignInfo>
-      <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
-      <datamodelElement entityId="140489862821608" fieldName="group_name"/>
-    </column>
+    <treeDesignInfo/>
     <rowsColumnsDesignInfo>
       <rowsDatasource entityId="140489862821608" field="false"/>
     </rowsColumnsDesignInfo>
-    <treeDesignInfo/>
+    <column name="colUsr_active" readonly="true" title=" " width="7">
+      <controlInfo classHint="DbCheckDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
+      <headerStyle>
+        <nativeFont name="Dialog" size="15"/>
+      </headerStyle>
+      <datamodelElement entityId="140489862821608" fieldName="franc_users_active"/>
+      <columnsDatasource/>
+      <columnsDisplayField/>
+      <cellsDatasource/>
+      <cellDesignInfo>
+        <rowsKeyField/>
+        <columnsKeyField/>
+        <cellValueField/>
+      </cellDesignInfo>
+    </column>
+    <column name="colUsr_name" readonly="true" title="Имя">
+      <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
+      <headerStyle>
+        <nativeFont name="Dialog" size="15"/>
+      </headerStyle>
+      <datamodelElement entityId="140489862821608" fieldName="usr_name"/>
+      <columnsDatasource/>
+      <columnsDisplayField/>
+      <cellsDatasource/>
+      <cellDesignInfo>
+        <rowsKeyField/>
+        <columnsKeyField/>
+        <cellValueField/>
+      </cellDesignInfo>
+    </column>
+    <column name="colUsr_phone" title="Телефон">
+      <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
+      <headerStyle>
+        <nativeFont name="Dialog" size="15"/>
+      </headerStyle>
+      <datamodelElement entityId="140489862821608" fieldName="usr_phone"/>
+      <columnsDatasource/>
+      <columnsDisplayField/>
+      <cellsDatasource/>
+      <cellDesignInfo>
+        <rowsKeyField/>
+        <columnsKeyField/>
+        <cellValueField/>
+      </cellDesignInfo>
+    </column>
+    <column name="colUsr_email" title="Email">
+      <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
+      <headerStyle>
+        <nativeFont name="Dialog" size="15"/>
+      </headerStyle>
+      <datamodelElement entityId="140489862821608" fieldName="usr_email"/>
+      <columnsDatasource/>
+      <columnsDisplayField/>
+      <cellsDatasource/>
+      <cellDesignInfo>
+        <rowsKeyField/>
+        <columnsKeyField/>
+        <cellValueField/>
+      </cellDesignInfo>
+    </column>
+    <column name="column" title="Роль">
+      <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
+      <headerStyle>
+        <nativeFont name="Tahoma" size="11"/>
+      </headerStyle>
+      <datamodelElement entityId="140489862821608" fieldName="group_name"/>
+      <columnsDatasource/>
+      <columnsDisplayField/>
+      <cellsDatasource/>
+      <cellDesignInfo>
+        <rowsKeyField/>
+        <columnsKeyField/>
+        <cellValueField/>
+      </cellDesignInfo>
+    </column>
     <constraints bottom="0px" left="0px" right="0px" top="0px" type="MarginConstraintsDesignInfo"/>
   </widget>
   <layout type="BorderLayoutDesignInfo"/>

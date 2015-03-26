@@ -13,6 +13,7 @@ function FranchaziUsers() {
     //var tradePointsForm = new TradePoints();
     var userCreateAndEditForm = new UserCreateAndEditForm();
     var baristaTP = new TradePointsbaristForm();
+    var settings = new ServerModule("Settings");
     
     model.params.franchazi_id = null;
     model.params.trade_point_id = null;
@@ -85,4 +86,13 @@ function formWindowClosing(evt) {//GEN-FIRST:event_formWindowClosing
 
     function btnDel1ActionPerformed(evt) {//GEN-FIRST:event_btnDel1ActionPerformed
     }//GEN-LAST:event_btnDel1ActionPerformed
+
+    function btnBaristaNameActionPerformed(evt) {//GEN-FIRST:event_btnBaristaNameActionPerformed
+        var franchizeId = session.getFranchize();
+        var set = settings.getSettings(null, null, null, franchizeId);
+        var p = prompt("Введите название баристы:", set.barista_name.name);
+        if(p){
+            settings.setSettings("barista_name", {name: p}, null, null, null, null, franchizeId);
+        }
+    }//GEN-LAST:event_btnBaristaNameActionPerformed
 }

@@ -11,3 +11,4 @@ From adm_settings t1
  and (:trade_point_id = t1.trade_point_id or :trade_point_id is null or t1.trade_point_id is null)
  and (:usr_name = t1.usr_name or :usr_name is null or t1.usr_name is null)
  and (:setting_name = t1.setting_name or :setting_name is null)
+ and (:franchize_id = t1.franchize_id or :franchize_id is null)

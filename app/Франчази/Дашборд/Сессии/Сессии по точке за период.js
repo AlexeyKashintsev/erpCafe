@@ -7,7 +7,11 @@ function tradeOperaionsByTP(aTradePoint, aContainer) {
     var shown = false;
     var content = null;
     var sessionDetailsView = null;
-    var tHeader = ["Бариста", "Дата", "Открытие", "Закрытие", "Касса открытие",
+    
+    var set = settings.getSettings(null, null, null, session.getFranchize());
+    var baristaName = set.barista_name.name ? set.barista_name.name : "Бариста";
+    
+    var tHeader = [baristaName, "Дата", "Открытие", "Закрытие", "Касса открытие",
                    "Наличка", "Бонусы", "Безнал", "Доход", "Касса закрытие"];
     
     self.setWarehouse = function(aWarehouse) {

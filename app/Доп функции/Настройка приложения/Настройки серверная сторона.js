@@ -9,15 +9,15 @@ function Settings() {
     
     var userSession = Session.get('UserSession');
     
-    self.updateSettingsParams = function(aFranchazi, aTradePoint, aUserName) {
+    self.updateSettingsParams = function(aFranchazi, aTradePoint, aUserName, aFranchize) {
         model.dsSettings.params.franchazi_id =  aFranchazi ? aFranchazi : userSession.getFranchazi();
         model.dsSettings.params.trade_point_id = aTradePoint ? aTradePoint : userSession.getTradePoint();
         model.dsSettings.params.usr_name = aUserName ? aUserName : userSession.getUserName();
         model.dsSettings.execute();
     };
     
-    self.getSettings = function(aFranchazi, aTradePoint, aUserName) {
-        self.updateSettingsParams(aFranchazi, aTradePoint, aUserName);
+    self.getSettings = function(aFranchazi, aTradePoint, aUserName, aFranchize) {
+        self.updateSettingsParams(aFranchazi, aTradePoint, aUserName, aFranchize);
         var res = {};
         model.dsSettings.beforeFirst();
         while (model.dsSettings.next()) {
@@ -51,7 +51,7 @@ function Settings() {
         } else return null;
     };
     
-    self.setSettings = function(aSettingsName, aSettings, aUserName, aTradePoint, aFranchazi, aDelete) {
+    self.setSettings = function(aSettingsName, aSettings, aUserName, aTradePoint, aFranchazi, aDelete, aFranchize) {
         var settingData = JSON.stringify(aSettings);
         var lst = model.dsSettings.find(model.dsSettings.schema.setting_name, aSettingsName,
                         aUserName   ? model.dsSettings.schema.usr_name : null,
@@ -59,7 +59,9 @@ function Settings() {
                         aTradePoint ? model.dsSettings.schema.trade_point_id : null,
                         aTradePoint ? aTradePoint : null,
                         aFranchazi  ? model.dsSettings.schema.franchazi_id : null,
-                        aFranchazi  ? aFranchazi : null);
+                        aFranchazi  ? aFranchazi : null,
+                        aFranchize  ? model.dsSettings.schema.franchize_id : null,
+                        aFranchize  ? aFranchize : null);
         if (lst.length > 0 && self.model.dsSettings.scrollTo(lst[0])) {
             if(aDelete)
                 model.dsSettings.deleteRow();
@@ -71,7 +73,8 @@ function Settings() {
                     model.dsSettings.schema.setting_name, aSettingsName,
                     model.dsSettings.schema.trade_point_id, aTradePoint ? aTradePoint : null,
                     model.dsSettings.schema.franchazi_id, aFranchazi ? aFranchazi : null,
-                    model.dsSettings.schema.setting_data, settingData
+                    model.dsSettings.schema.setting_data, settingData,
+                    model.dsSettings.schema.franchize_id, aFranchize ? aFranchize : null
                 );
         }
         model.save();

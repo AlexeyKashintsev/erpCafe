@@ -63,6 +63,12 @@ function UserCreateAndEditForm() {
 
     function formWindowOpened(evt) {//GEN-FIRST:event_formWindowOpened
         form.lbInfo.text = "";
+        
+        var settings = new ServerModule("Settings");
+        var set = settings.getSettings(null, null, null, session.getFranchize());
+        var baristaName = set.barista_name.name ? set.barista_name.name : "Бариста";
+        form.rbBarista.text = baristaName;
+        
         if(model.params.user_name){
             model.usersByNameReadonly.requery(function(){
                 userNew = false; //говорим что это не новый пользователь

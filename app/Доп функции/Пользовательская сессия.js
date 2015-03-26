@@ -46,6 +46,15 @@ function UserSession() {
         return model.params.franchaziId;
     };
     
+    self.getFranchize = function() {
+        model.listFranchazi.params.franchazi_id = self.getFranchazi();
+        model.listFranchazi.requery();
+        if(!model.listFranchazi.empty){
+            return model.listFranchazi.cursor.franchize_id;
+        }
+        return false;
+    };
+    
     self.getActiveTPSession = function() {
         model.qOpenedSession.requery();
         return model.qOpenedSession.empty ? false : 

@@ -44,6 +44,10 @@ function saveModel(){
 }
 
 function formWindowOpened(evt) {//GEN-FIRST:event_formWindowOpened
+    var settings = new ServerModule("Settings");
+    var set = settings.getSettings(null, null, null, session.getFranchize());
+    var baristaName = set.barista_name.name ? set.barista_name.name : "Бариста";
+    form.lbBarista.text += baristaName;
     form.lblNameBarista.text = model.params.usr_name;
     model.requery();
 }//GEN-LAST:event_formWindowOpened
