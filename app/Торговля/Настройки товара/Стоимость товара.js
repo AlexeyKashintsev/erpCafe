@@ -6,10 +6,10 @@ function ItemCostForm() {
     var self = this, model = this.model, form = this;
     var tradeModule = new ServerModule("TradeAdminModule");
 
-    self.setItem = function(anItemId) {
-        model.qPriceTypeForTradeItem.params.item_id = anItemId;
+    self.setItem = function(anItemOnTpId) {
+        model.qPriceTypeForTradeItem.params.items_on_tp = anItemOnTpId;
         model.qPriceTypeForTradeItem.params.actual_date = new Date();
-        model.qPriceTypeForTradeItem.params.trade_point = session.tradePoint;
+        model.qPriceTypeForTradeItem.params.trade_point = null;
         model.requery();
     };
 
@@ -34,7 +34,7 @@ function ItemCostForm() {
     };
     
     self.getCosts = function() {
-        var costs = [];
+        var costs = {};
         model.qPriceTypeForTradeItem.forEach(function(aCursor) {
             if (!aCursor.item_cost)
                 costs[aCursor.trade_price_types_id] = 0;

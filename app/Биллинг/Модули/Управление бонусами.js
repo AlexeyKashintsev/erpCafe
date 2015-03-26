@@ -21,12 +21,12 @@ function BonusModule() {
                 if(model.qBonusCountForTradeItem.empty){
                     model.qBonusCountForTradeItem.push({
                         bonus_rate: aBonusRate,
-                        trade_item: model.qGetItem.cursor.wh_items_id,
+                        trade_item: model.qGetItem.cursor.items_catalog_id,
                         client_bonus_category: aBonusCategory
                     });
                 } else {
                     model.qBonusCountForTradeItem.cursor.bonus_rate = aBonusRate;
-                    model.qBonusCountForTradeItem.cursor.trade_item = model.qGetItem.cursor.wh_items_id;
+                    model.qBonusCountForTradeItem.cursor.trade_item = model.qGetItem.cursor.items_catalog_id;
                     model.qBonusCountForTradeItem.cursor.client_bonus_category = aBonusCategory;
                 }
             }

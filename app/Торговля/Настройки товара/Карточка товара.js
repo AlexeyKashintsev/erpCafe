@@ -9,8 +9,15 @@ function ItemCard() {
     var imgW = 190;
     var OpenType = null;
     
-    self.setItem = function(aItem){
-        fillFields(aItem);
+    try {
+        model.itemType.params.franchazi_id = session.franchaziId;
+    } catch (e) {
+        console.log('No franchazi :(');
+    }
+    
+    self.setItem = function(anItem){
+        model.qTradeItems.params.item_id = anItem;
+        model.qTradeItems.requery(getItemPicture);
     };
     
     self.addNew = function(){
@@ -26,11 +33,11 @@ function ItemCard() {
         OpenType = aType;
     };
     
-    function searchInDataBase(anItemCode, successcallback, failcallback){
-        model.qGetItem.params.barcode = anItemCode;
+    function findItemByBarcode(aBarcode, successcallback, failcallback){
+        model.qGetItem.params.barcode = aBarcode;
         model.qGetItem.requery(function(){
              if (model.qGetItem.length > 0){
-                successcallback(model.qGetItem.cursor.item_name, model.qGetItem.cursor.wh_items_id);
+                successcallback(model.qGetItem.cursor.item_name, model.qGetItem.cursor.items_catalog_id);
                 //successcallback();
                 return model.qGetItem.cursor.item_name;
             } else {
@@ -41,7 +48,7 @@ function ItemCard() {
     }
     
     function searchInInternetResource(anItemCode, callback){
-        var item = {};
+        var item = {};//TODO Распарсить на месте нельзя и буз пыха?
         $.get("http://files.lapshina.net/parser.php?"+
                 "url="+
                 encodeURIComponent("http://goodsmatrix.ru/mobile/" + anItemCode + ".html"),
@@ -88,29 +95,26 @@ function ItemCard() {
         form.close(true);
     }//GEN-LAST:event_btnSaveActionPerformed
 
-    function buttonActionPerformed(evt) {//GEN-FIRST:event_buttonActionPerformed
+    function btnLoadPictureActionPerformed(evt) {//GEN-FIRST:event_btnLoadPictureActionPerformed
         selectFile(function(aFile){
             Resource.upload(aFile, function(url) {
-                model.qTradeItems.cursor.item_picture = url;
+                model.qTradeItems.cursor.item_picture = url;//TODO form.lblImageArea.text три раза повторяется, вынести в отдельную функцию
                 form.lblImageArea.text = "<html><img src='" + url + "' style='max-width: " + imgW +"px; max-height: " + imgH +"px;'></html>";
             });
         });
-    }//GEN-LAST:event_buttonActionPerformed
+    }//GEN-LAST:event_btnLoadPictureActionPerformed
 
-    function fillFields(anItem){
-        model.qTradeItems.params.item_id = anItem;
-        model.qTradeItems.requery(function(){
-            if (model.qTradeItems.cursor.item_picture)
-                form.lblImageArea.text = "<html><img src='" + model.qTradeItems.cursor.item_picture + "' style='max-width: " + imgW +"px; max-height: " + imgH +"px;'></html>";
-            else 
-                form.lblImageArea.text = "Изображение отсутствует!";
-        });
+    function getItemPicture(){
+        if (model.qTradeItems.cursor.item_picture)
+            form.lblImageArea.text = "<html><img src='" + model.qTradeItems.cursor.item_picture + "' style='max-width: " + imgW +"px; max-height: " + imgH +"px;'></html>";
+        else 
+            form.lblImageArea.text = "Изображение отсутствует!";
     }
     
-    function button1ActionPerformed(evt) {//GEN-FIRST:event_button1ActionPerformed
+    function btnPictureFromURLActionPerformed(evt) {//GEN-FIRST:event_btnPictureFromURLActionPerformed
         model.qTradeItems.cursor.item_picture = confirm("Введите URL картинки");
         
-    }//GEN-LAST:event_button1ActionPerformed
+    }//GEN-LAST:event_btnPictureFromURLActionPerformed
 
     function qTradeItemsOnChanged(evt) {//GEN-FIRST:event_qTradeItemsOnChanged
 
@@ -125,28 +129,30 @@ function ItemCard() {
 
     function formWindowOpened(evt) {//GEN-FIRST:event_formWindowOpened
         if (OpenType === "modal"){
-            form.btnSave.visible = true;
+            form.btnSave.visible = 
             form.btnCancel.visible = true;
-        } else if(OpenType === "no_barcode") {
-            form.btnSave.visible = false;
-            form.btnCancel.visible = false;
-            form.tfBarCode.editable = false;
-            form.tfBarCode.enabled = false;
-            form.btnCheck.visible = false;
         } else {
-            form.btnSave.visible = false;
-            form.btnCancel.visible = false;
+            if(OpenType === "no_barcode") {
+                form.btnSave.visible = 
+                form.btnCancel.visible = 
+                form.tfBarCode.editable = 
+                form.tfBarCode.enabled = 
+                form.btnCheck.visible = false;
+            } else {
+                form.btnSave.visible = 
+                form.btnCancel.visible = false;
+            }
         }
     }//GEN-LAST:event_formWindowOpened
 
     function tfBarCodeKeyPressed(evt) {//GEN-FIRST:event_tfBarCodeKeyPressed
-        if(evt.key == 13){
+        if (evt.key == 13) {
             tfBarCodeFocusLost();
         }
     }//GEN-LAST:event_tfBarCodeKeyPressed
 
     function tfBarCodeFocusLost(evt) {//GEN-FIRST:event_tfBarCodeFocusLost
-        searchInDataBase(model.qTradeItems.cursor.bar_code, 
+        findItemByBarcode(model.qTradeItems.cursor.bar_code, 
             function(aName, aId){
                 model.qTradeItems.cursor.bar_code = null;
                 var conf = confirm("Такой товар уже есть ("+aName+"), окрыть его карточку?");

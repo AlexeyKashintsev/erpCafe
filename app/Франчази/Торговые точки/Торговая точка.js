@@ -16,6 +16,9 @@ function TradePoint() {
     
     var fmFranchaziUsers = new FranchaziUsers();
     fmFranchaziUsers.showOnPanel(form.pnlBaristas);
+    
+    var fmTradeItemsCost = new TradeItemsWCostOnTPView();
+    fmTradeItemsCost.showOnPanel(form.pnlTradePositionsCost);
             
     self.setFranchazi = function(aFranchazi) {
         //model.params.franchaziId = aFranchazi;
@@ -29,6 +32,7 @@ function TradePoint() {
         session.tradePoint = aTradePoint;
         fmWarehouse.setTradePoint(aTradePoint);
         fmTradeItems.setTradePoint(aTradePoint);
+        fmTradeItemsCost.setTradePoint(aTradePoint);
         fmFranchaziUsers.setTradePoint(aTradePoint);
         fmCity.setTradePoint(aTradePoint);
     };

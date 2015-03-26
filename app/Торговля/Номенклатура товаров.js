@@ -19,8 +19,8 @@ function ItemsForTrade() {
             if (model.modified && confirm('Сохранить изменения?')) {
                 model.save();
             }
-            Logger.info(model.qTradeItemsWithContents.cursor.wh_items_id);
-            itemSettings.setTradeItem(model.qTradeItemsWithContents.cursor.wh_items_id);
+            Logger.info(model.qTradeItemsWithContents.cursor.items_catalog_id);
+            itemSettings.setTradeItem(model.qTradeItemsWithContents.cursor.items_catalog_id);
             itemSettings.showModal(function() {
                 model.requery();
             });
@@ -42,12 +42,12 @@ function ItemsForTrade() {
     }//GEN-LAST:event_btnDelActionPerformed
 
     function btnAddActionPerformed(evt) {//GEN-FIRST:event_btnAddActionPerformed
-        if (model.itemType.cursor.wh_items_type_id <= 0) {
+        if (model.itemType.cursor.items_types_id <= 0) {
             alert("Выберите тип товара отличный от \"Все товары\" и \"Мои товары\"");
         } else {
             model.qTradeItemsWithContents.push({
                     franchazi_id    : model.params.franchazi_id,
-                    item_type       : model.itemType.cursor.wh_items_type_id
+                    item_type       : model.itemType.cursor.items_types_id
                 });
         }
     }//GEN-LAST:event_btnAddActionPerformed
@@ -59,13 +59,13 @@ function ItemsForTrade() {
     }//GEN-LAST:event_btnConfigureTypesActionPerformed
 
     function itemTypeOnScrolled(evt) {//GEN-FIRST:event_itemTypeOnScrolled
-        model.qTradeItemsWithContents.params.item_type = model.itemType.cursor.wh_item_types_id;
+        model.qTradeItemsWithContents.params.item_type = model.itemType.cursor.items_types_id;
         model.qTradeItemsWithContents.requery();
     }//GEN-LAST:event_itemTypeOnScrolled
 
     function qTradeItemsWithContentsOnRequeried(evt) {//GEN-FIRST:event_qTradeItemsWithContentsOnRequeried
         if (model.qTradeItemsWithContents.empty 
-                && model.itemType.wh_item_types_id === 0
+                && model.itemType.items_types_id === 0
                 && confirm('Не обнаружено товарной номенклатуры.\nЗаполнить из основного справочника?')) {
             (new ServerModule('WhModuleAdmin')).initItemsForFranchazi(session.franchaziId, model.requery);
         }

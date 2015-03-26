@@ -15,6 +15,6 @@
   <referenceRelation leftEntityFieldName="account_id" leftEntityId="141209122106028" rightEntityFieldName="bill_accounts_id" rightEntityId="141209122106028"/>
   <referenceRelation leftEntityFieldName="franchazi_id" leftEntityId="141156478723655" rightEntityFieldName="org_franchazi_id" rightEntityId="141209122106028"/>
   <referenceRelation leftEntityFieldName="franchazi_id" leftEntityId="141209122106028" rightEntityFieldName="org_franchazi_id" rightEntityId="141209122106028"/>
-  <referenceRelation leftEntityFieldName="item_id" leftEntityId="141156478723655" rightEntityFieldName="wh_items_id" rightEntityId="141156478723655"/>
+  <referenceRelation leftEntityFieldName="item_id" leftEntityId="141156478723655" rightEntityFieldName="items_catalog_id" rightEntityId="141156478723655"/>
   <referenceRelation leftEntityFieldName="operation_status" leftEntityId="141209122106028" rightEntityFieldName="bill_operations_status_id" rightEntityId="141209122106028"/>
 </datamodel>

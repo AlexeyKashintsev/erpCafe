@@ -2,7 +2,7 @@
   <fieldsEntity entityHeight="200" entityIconified="false" entityId="140560045930765" entityLocationX="204" entityLocationY="36" entityWidth="170" tableName="trade_items_cost"/>
   <fieldsEntity entityHeight="113" entityIconified="false" entityId="140557824155163" entityLocationX="13" entityLocationY="144" entityWidth="150" tableName="org_trade_point"/>
   <fieldsEntity entityHeight="200" entityIconified="false" entityId="141086777401598" entityLocationX="569" entityLocationY="493" entityWidth="313" tableName="bill_operation_trade_operations_connect"/>
-  <fieldsEntity entityHeight="200" entityIconified="false" entityId="140560123292754" entityLocationX="763" entityLocationY="16" entityWidth="150" tableName="wh_items"/>
+  <fieldsEntity entityHeight="200" entityIconified="false" entityId="140560123292754" entityLocationX="763" entityLocationY="16" entityWidth="150" tableName="items_catalog"/>
   <fieldsEntity entityHeight="200" entityIconified="false" entityId="140713493747142" entityLocationX="202" entityLocationY="252" entityWidth="150" tableName="org_session"/>
   <fieldsEntity entityHeight="200" entityIconified="false" entityId="140560765816897" entityLocationX="753" entityLocationY="228" entityWidth="150" tableName="wh_movements"/>
   <fieldsEntity entityHeight="200" entityIconified="false" entityId="140560123291397" entityLocationX="428" entityLocationY="32" entityWidth="244" tableName="trade_items_contents"/>

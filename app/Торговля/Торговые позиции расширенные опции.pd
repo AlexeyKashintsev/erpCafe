@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?><datamodel datamodelDbId="null">
+  <fieldsEntity entityHeight="200" entityIconified="false" entityId="142680507582679" entityLocationX="796" entityLocationY="270" entityWidth="150" tableName="items_modifiers"/>
+  <fieldsEntity entityHeight="200" entityIconified="false" entityId="142678023686917" entityLocationX="23" entityLocationY="17" entityWidth="150" tableName="items_types"/>
+  <fieldsEntity entityHeight="200" entityIconified="false" entityId="142696150434367" entityLocationX="28" entityLocationY="232" entityWidth="150" tableName="org_contragent"/>
+  <fieldsEntity entityHeight="200" entityIconified="false" entityId="142696187129678" entityLocationX="209" entityLocationY="251" entityWidth="150" tableName="wh_suppliers"/>
+  <fieldsEntity entityHeight="200" entityIconified="false" entityId="142678023279053" entityLocationX="217" entityLocationY="21" entityWidth="150" tableName="items_catalog"/>
+  <fieldsEntity entityHeight="200" entityIconified="false" entityId="142675987291692" entityLocationX="427" entityLocationY="31" entityWidth="150" tableName="items_on_tp"/>
+  <fieldsEntity entityHeight="200" entityIconified="false" entityId="142680534061369" entityLocationX="424" entityLocationY="276" entityWidth="150" tableName="items_mods"/>
+  <fieldsEntity entityHeight="200" entityIconified="false" entityId="142680526896636" entityLocationX="612" entityLocationY="264" entityWidth="150" tableName="items_mods_values"/>
+</datamodel>

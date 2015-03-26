@@ -114,10 +114,9 @@ function WhSessionModule() {
             if (model.qOpenedSession.cursor.revision && aEndValues) {
                 model.querySessionBalance.params.session_id = model.params.session_id;
                 model.querySessionBalance.requery();
-                model.querySessionBalance.beforeFirst();
-                while (model.querySessionBalance.next()) {
-                    model.querySessionBalance.cursor.end_value = aEndValues[model.querySessionBalance.cursor.item_id];
-                }
+                model.querySessionBalance.forEach(function(cursor) {
+                    cursor.end_value = aEndValues[cursor.item_on_tp_id];
+                });
                 model.save();
             } else {
                 model.save();
@@ -163,7 +162,7 @@ function WhSessionModule() {
         
         var res = [];
         for (var j in anItems)
-            res.push({itemID : anItems[j], limit : self.getItemLimit(anItems[j])});
+            res.push({itemOnTPID: anItems[j], limit : self.getItemLimit(anItems[j])});
         return res;
     };
     
@@ -175,7 +174,7 @@ function WhSessionModule() {
         
         for (var id in items4Use) {
             try {
-                var whBalance = model.qWHSessionBalance.find(model.qWHSessionBalance.schema.item_id, id);
+                var whBalance = model.qWHSessionBalance.find(model.qWHSessionBalance.schema.item_on_tp_id, id);
                 var cons = whBalance !== [] ? Math.floor(whBalance[0].final_value / items4Use[id]) : null;
                 if (minimum === null)
                     minimum = cons;
@@ -188,28 +187,34 @@ function WhSessionModule() {
         return minimum;
     };
     
-    self.processTradeItems = function(anItems) {
+    self.processTradeItems = function(anItems, aTradeOp) {
         var consumption = calculateConsumption(anItems);
-        self.whMovement(consumption, self.WH_PRODUCE_ITEMS);
+        self.whMovement(consumption, self.WH_PRODUCE_ITEMS, aTradeOp);
     };
+    
+    function getItemData(aTradeItemID) {
+        //var itemData = model.qTradeItemsOnTP.find(model.qTradeItemsOnTP.schema.item_id, anItemID);
+       // if (!itemData)
+        var itemData = model.qTradeItemsOnTP.find(model.qTradeItemsOnTP.schema.items_on_tp_id, aTradeItemID);
+        return itemData ? itemData[0] : false;
+    }
     
     function calculateConsumption(anItems) {
         var usedItems = {};
         for (var id in anItems) {
-            var itemData = model.qTradeItemsOnTP.find(model.qTradeItemsOnTP.schema.item_id, id);
+            var itemData = getItemData(id);
             if (itemData) {
-                itemData = itemData[0];
                 if (itemData.wh_item) {
                     if (usedItems[id])
                         usedItems[id] += anItems[id];
                     else
                         usedItems[id] = anItems[id];
-                }
+                }//TODO Здесь совсем все плохо
                 if (itemData.wh_content) {
-                    var contentsData = model.qContentsOnTp.find(model.qContentsOnTp.schema.trade_item, id);
+                    var contentsData = model.qContentsOnTp.find(model.qContentsOnTp.schema.item_on_tp_id, id);
                     var contents = {};
                     for (var j in contentsData)
-                        contents[contentsData[j].wh_item] = contentsData[j].usage_quantity * anItems[id];
+                        contents[contentsData[j].content_item_id] = contentsData[j].usage_quantity * anItems[id];
                     contentsData = calculateConsumption(contents);
                     for (var j in contentsData) {
                         if (usedItems[j])
@@ -226,18 +231,21 @@ function WhSessionModule() {
     /*
      * Добавление товаров на склад
      */
-    self.whMovement = function(anItems, aMovementType, aSession) {
+    self.whMovement = function(anItems, aMovementType, aTradeOperation, aSession) {
         if (aSession)
             setParams(null, aSession);
         
+        model.queryMovements.reverse();
         if (self.getCurrentSession()) {
             for (var id in anItems) {
                 model.queryMovements.push({
                     session_id: model.params.session_id,
-                    item_id: id,
+                    item_id: getItemData(id).item_id,
+                    item_on_tp_id: id,
                     movement_date: new Date(),
                     movement_type: aMovementType,
-                    value: anItems[id]
+                    value: anItems[id],
+                    trade_operation: aTradeOperation
                 });
             }
             model.save();
@@ -278,11 +286,11 @@ function WhSessionModule() {
         
         if (!aStartValues) 
             aStartValues = [];
-        model.qWhItemsOnTP.beforeFirst();
         model.qWhItemsOnTP.forEach(function(cursor) {
-            var startValue = aStartValues[cursor.item_id] ? aStartValues[cursor.item_id] : 0;
+            var startValue = aStartValues[cursor.items_on_tp_id] ? aStartValues[cursor.items_on_tp_id] : 0;
             model.querySessionBalance.push({
                     session_id: model.params.session_id,
+                    item_on_tp_id: cursor.items_on_tp_id,
                     item_id: cursor.item_id,
                     start_value: startValue
             });
@@ -304,7 +312,7 @@ function WhSessionModule() {
         model.querySessionBalance.params.session_id = aSession;
         model.querySessionBalance.requery();
         model.querySessionBalance.forEach(function(cursor) {
-            values[cursor.item_id] = aEndValue ? cursor.end_value : cursor.start_value;
+            values[cursor.item_on_tp_id] = aEndValue ? cursor.end_value : cursor.start_value;
         });
         return values;
     }

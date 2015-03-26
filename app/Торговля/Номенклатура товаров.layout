@@ -12,10 +12,8 @@
   </widget>
   <widget actionPerformed="btnConfigureTypesActionPerformed" focusable="false" horizontalTextPosition="0" icon="icons/22x22/actions/mail-forward.png" name="btnConfigureTypes" parent="toolBar1" prefHeight="26px" prefWidth="34px" toolTipText="Добавить" type="ButtonDesignInfo" verticalTextPosition="3"/>
   <widget name="modelGrid1" parent="Form" prefHeight="440px" prefWidth="564px" type="DbGridDesignInfo">
+    <treeDesignInfo/>
     <column name="column1" title="Название">
-      <headerStyle>
-        <nativeFont name="Tahoma" size="11"/>
-      </headerStyle>
       <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
       <datamodelElement entityId="142323580370955" fieldName="item_name"/>
       <columnsDatasource/>
@@ -26,11 +24,11 @@
         <columnsKeyField/>
         <cellValueField/>
       </cellDesignInfo>
-    </column>
-    <column name="column2" title="Состав">
       <headerStyle>
         <nativeFont name="Tahoma" size="11"/>
       </headerStyle>
+    </column>
+    <column name="column2" title="Состав">
       <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
       <datamodelElement entityId="142323580370955" fieldName="contents"/>
       <columnsDatasource/>
@@ -41,18 +39,20 @@
         <columnsKeyField/>
         <cellValueField/>
       </cellDesignInfo>
+      <headerStyle>
+        <nativeFont name="Tahoma" size="11"/>
+      </headerStyle>
     </column>
     <rowsColumnsDesignInfo>
       <rowsDatasource entityId="142323580370955" field="false"/>
     </rowsColumnsDesignInfo>
-    <treeDesignInfo/>
     <constraints bottom="38px" left="312px" right="-2px" top="36px" type="MarginConstraintsDesignInfo"/>
   </widget>
   <widget deletable="false" editable="false" insertable="false" name="modelGrid" parent="Form" prefHeight="440px" prefWidth="312px" type="DbGridDesignInfo">
+    <treeDesignInfo>
+      <unaryLinkField entityId="142323168771995" fieldName="parent_type"/>
+    </treeDesignInfo>
     <column name="column" title="Тип товара">
-      <headerStyle>
-        <nativeFont name="Tahoma" size="11"/>
-      </headerStyle>
       <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
       <datamodelElement entityId="142323168771995" fieldName="type_description"/>
       <columnsDatasource/>
@@ -63,13 +63,13 @@
         <columnsKeyField/>
         <cellValueField/>
       </cellDesignInfo>
+      <headerStyle>
+        <nativeFont name="Tahoma" size="11"/>
+      </headerStyle>
     </column>
     <rowsColumnsDesignInfo>
       <rowsDatasource entityId="142323168771995" field="false"/>
     </rowsColumnsDesignInfo>
-    <treeDesignInfo>
-      <unaryLinkField entityId="142323168771995" fieldName="parent_type"/>
-    </treeDesignInfo>
     <constraints bottom="38px" left="0px" top="36px" type="MarginConstraintsDesignInfo" width="312px"/>
   </widget>
   <layout type="MarginLayoutDesignInfo"/>

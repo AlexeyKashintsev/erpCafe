@@ -72,7 +72,7 @@ function ChangeItemType() {
                 model.itemType.cursor.trade_type = true;
             if (model.modified)// && confirm("Сохранить изменения?"))
                 model.save();
-            form.close(model.itemType.cursor.wh_item_types_id);
+            form.close(model.itemType.cursor.items_types_id);
         }
     }//GEN-LAST:event_buttonActionPerformed
 }

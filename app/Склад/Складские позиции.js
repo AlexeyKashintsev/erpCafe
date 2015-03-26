@@ -52,7 +52,7 @@ function formWindowClosing(evt) {//GEN-FIRST:event_formWindowClosing
 }//GEN-LAST:event_formWindowClosing
 
     function btnAddActionPerformed(evt) {//GEN-FIRST:event_btnAddActionPerformed
-        model.qWarehouseItems.insert(model.qWarehouseItems.schema.item_type, model.itemType.cursor.wh_item_types_id === 0 ? null : model.itemType.cursor.wh_item_types_id,
+        model.qWarehouseItems.insert(model.qWarehouseItems.schema.item_type, model.itemType.cursor.items_types_id === 0 ? null : model.itemType.cursor.items_types_id,
                                 model.qWarehouseItems.schema.franchazi_id, model.params.franchazi_id
                                 );
     }//GEN-LAST:event_btnAddActionPerformed
@@ -71,7 +71,7 @@ function formWindowClosing(evt) {//GEN-FIRST:event_formWindowClosing
     }//GEN-LAST:event_modelGridMouseClicked
 
     function itemTypeOnScrolled(evt) {//GEN-FIRST:event_itemTypeOnScrolled
-        model.params.item_type = model.itemType.cursor.wh_item_types_id;
+        model.params.item_type = model.itemType.cursor.items_types_id;
     }//GEN-LAST:event_itemTypeOnScrolled
 
     function rbAllActionPerformed(evt) {//GEN-FIRST:event_rbAllActionPerformed
@@ -88,7 +88,7 @@ function formWindowClosing(evt) {//GEN-FIRST:event_formWindowClosing
 
     function btnSelectActionPerformed(evt) {//GEN-FIRST:event_btnSelectActionPerformed
         if(model.qWarehouseItems.length > 0){
-            form.close(model.qWarehouseItems.cursor.wh_items_id);
+            form.close(model.qWarehouseItems.cursor.items_catalog_id);
         } else {
             alert('Вы ничего не выбрали!');
         }

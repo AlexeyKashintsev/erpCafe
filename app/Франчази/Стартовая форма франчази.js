@@ -32,21 +32,29 @@ var self = this, model = this.model, form = this;
             selfGeneration  :   true,
             defEnabled  :   true
         },
-        users           :   {
-            display     :   "Пользователи",
-            dispForm    :   "FranchaziUsers"
-        },
-        buyItems        :   {
+        /*buyItems        :   {
             display     :   "Заказ товаров",
             dispForm    :   "BuyItemsForm"
         },
         historyOrders        :   {
             display     :   "История заказов",
             dispForm    :   "HistoryOrders"
-        },
+        },*/
         tradePositions  :   {
             display     :   "Номенклатура товаров",
             dispForm    :   "ItemsForTrade"
+        },
+        tradeModifiers  :   {
+            display     :   "Дополнительные справочники",
+            dispForm    :   "TradeItemsModifiersValues"
+        },
+        suppliers       :   {
+            display     :   "Поставщики",
+            dispForm    :   "SuppliersForm"
+        },
+        users           :   {
+            display     :   "Пользователи",
+            dispForm    :   "FranchaziUsers"
         },
         billAndServices :   {
             display     :   "Счета и услуги",

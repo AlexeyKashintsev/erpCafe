@@ -26,7 +26,7 @@ function TypesSelector(aContainer, aParent, aTradePoint, anActualDate) {
         var buttons = [{d_name: 'Все', active: true}];
         model.itemType.forEach(function(data) {
             if (data.trade_type)
-                buttons[data.wh_item_types_id] = {
+                buttons[data.items_types_id] = {
                     d_name: data.type_description,
                     d_title: data.type_description
                 };

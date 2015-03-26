@@ -18,5 +18,9 @@
     <layout type="MarginLayoutDesignInfo"/>
     <constraints tabTitle="Позиции" type="TabsConstraintsDesignInfo"/>
   </widget>
+  <widget name="pnlTradePositionsCost" parent="tabbedPane" prefHeight="417px" prefWidth="613px" type="PanelDesignInfo" visible="false">
+    <layout type="MarginLayoutDesignInfo"/>
+    <constraints tabTitle="Цены" type="TabsConstraintsDesignInfo"/>
+  </widget>
   <layout type="MarginLayoutDesignInfo"/>
 </layout>

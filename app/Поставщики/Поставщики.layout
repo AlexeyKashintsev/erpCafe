@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?><layout backgroundColor="#ededed" defaultCloseOperation="2" name="Form" prefHeight="418px" prefWidth="802px" windowClosing="formWindowClosing" windowOpened="formWindowOpened">
+  <widget backgroundColor="#ededed" floatable="false" foregroundColor="#7f7f7f" name="toolBar" parent="Form" prefHeight="36px" prefWidth="801px" rollover="true" type="ToolbarDesignInfo">
+    <constraints height="36px" left="0px" right="1px" top="0px" type="MarginConstraintsDesignInfo"/>
+  </widget>
+  <widget actionPerformed="btnAddActionPerformed" focusable="false" horizontalTextPosition="0" icon="icons/22x22/actions/list-add.png" name="btnAdd" parent="toolBar" prefHeight="26px" prefWidth="34px" toolTipText="Добавить" type="ButtonDesignInfo" verticalTextPosition="3"/>
+  <widget actionPerformed="btnDelActionPerformed" focusable="false" horizontalTextPosition="0" icon="icons/22x22/actions/list-remove.png" name="btnDel" parent="toolBar" prefHeight="26px" prefWidth="34px" toolTipText="Удалить" type="ButtonDesignInfo" verticalTextPosition="3"/>
+  <widget actionPerformed="btnReqActionPerformed" focusable="false" horizontalTextPosition="0" icon="icons/22x22/actions/new-view-refresh.png" name="btnReq" parent="toolBar" prefHeight="26px" prefWidth="34px" toolTipText="Обновить" type="ButtonDesignInfo" verticalTextPosition="3"/>
+  <widget actionPerformed="btnSaveActionPerformed" focusable="false" horizontalTextPosition="0" icon="icons/22x22/actions/document-save.png" name="btnSave" parent="toolBar" prefHeight="26px" prefWidth="34px" toolTipText="Сохранить" type="ButtonDesignInfo" verticalTextPosition="3"/>
+  <widget actionPerformed="buttonActionPerformed" icon="icons/22x22/actions/dialog-apply.png" name="button" parent="Form" prefHeight="41px" prefWidth="146px" text="Выбрать" type="ButtonDesignInfo">
+    <constraints bottom="5px" height="41px" right="11px" type="MarginConstraintsDesignInfo" width="146px"/>
+  </widget>
+  <widget name="modelGrid" parent="Form" prefHeight="331px" prefWidth="801px" type="DbGridDesignInfo">
+    <treeDesignInfo/>
+    <column name="column" title="Наименование">
+      <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
+      <datamodelElement entityId="142696216508976" fieldName="supplier_name"/>
+      <columnsDatasource/>
+      <columnsDisplayField/>
+      <cellsDatasource/>
+      <cellDesignInfo>
+        <rowsKeyField/>
+        <columnsKeyField/>
+        <cellValueField/>
+      </cellDesignInfo>
+      <headerStyle>
+        <nativeFont name="Lucida Grande" size="13"/>
+      </headerStyle>
+    </column>
+    <column name="column1" title="Сокращенное" width="40">
+      <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
+      <datamodelElement entityId="142696216508976" fieldName="short_name"/>
+      <columnsDatasource/>
+      <columnsDisplayField/>
+      <cellsDatasource/>
+      <cellDesignInfo>
+        <rowsKeyField/>
+        <columnsKeyField/>
+        <cellValueField/>
+      </cellDesignInfo>
+      <headerStyle>
+        <nativeFont name="Lucida Grande" size="13"/>
+      </headerStyle>
+    </column>
+    <rowsColumnsDesignInfo>
+      <rowsDatasource entityId="142696216508976" field="false"/>
+    </rowsColumnsDesignInfo>
+    <constraints bottom="51px" left="0px" right="1px" top="36px" type="MarginConstraintsDesignInfo"/>
+  </widget>
+  <layout type="MarginLayoutDesignInfo"/>
+</layout>

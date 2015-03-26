@@ -5,9 +5,9 @@
   <parametersEntity entityHeight="200" entityIconified="false" entityLocationX="8" entityLocationY="7" entityWidth="150"/>
   <entity Title="" entityHeight="200" entityIconified="false" entityId="141838329177451" entityLocationX="226" entityLocationY="8" entityWidth="150" tableAlias="t1" tableName="trade_cash_box_operation" tableSchemaName=""/>
   <entity Title="" entityHeight="100" entityIconified="false" entityId="141838335378225" entityLocationX="393" entityLocationY="103" entityWidth="150" tableAlias="t2" tableName="trade_cash_box_operation_types" tableSchemaName=""/>
-  <entity Title="" entityHeight="200" entityIconified="false" entityId="141838652114944" entityLocationX="579" entityLocationY="8" entityWidth="150" tableAlias="t3" tableName="wh_items" tableSchemaName=""/>
+  <entity Title="" entityHeight="200" entityIconified="false" entityId="141838652114944" entityLocationX="579" entityLocationY="8" entityWidth="150" tableAlias="t3" tableName="items_catalog" tableSchemaName=""/>
   <entity Title="" entityHeight="80" entityIconified="false" entityId="141838648140711" entityLocationX="393" entityLocationY="13" entityWidth="152" tableAlias="t" tableName="trade_operations" tableSchemaName=""/>
-  <relation leftEntityFieldName="trade_item" leftEntityId="141838648140711" rightEntityFieldName="wh_items_id" rightEntityId="141838652114944"/>
+  <relation leftEntityFieldName="trade_item" leftEntityId="141838648140711" rightEntityFieldName="items_catalog_id" rightEntityId="141838652114944"/>
   <relation leftEntityFieldName="cash_box_operation" leftEntityId="141838648140711" rightEntityFieldName="trade_cash_box_operation_id" rightEntityId="141838329177451"/>
   <relation leftEntityFieldName="operation_type" leftEntityId="141838329177451" rightEntityFieldName="trade_cash_box_operation_types_id" rightEntityId="141838335378225"/>
   <relation leftEntityId="-1" leftEntityParameterName="session_id" rightEntityFieldName="session_id" rightEntityId="141838329177451"/>

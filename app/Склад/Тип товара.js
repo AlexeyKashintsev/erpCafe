@@ -31,12 +31,12 @@ function formWindowClosing(evt) {//GEN-FIRST:event_formWindowClosing
 }//GEN-LAST:event_formWindowClosing
 
     function btnAddActionPerformed(evt) {//GEN-FIRST:event_btnAddActionPerformed
-        var p = model.itemType.cursor.parent_type;
+        var p = model.itemType.cursor ? model.itemType.cursor.parent_type : null;
         model.itemType.insert(model.itemType.schema.parent_type, p);
     }//GEN-LAST:event_btnAddActionPerformed
 
     function btnAddParentActionPerformed(evt) {//GEN-FIRST:event_btnAddParentActionPerformed
-        var p = model.itemType.cursor.wh_item_types_id;
+        var p = model.itemType.cursor.items_types_id;
         model.itemType.insert(model.itemType.schema.parent_type, p);
     }//GEN-LAST:event_btnAddParentActionPerformed
 

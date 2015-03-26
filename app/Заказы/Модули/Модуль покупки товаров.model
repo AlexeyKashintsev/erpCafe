@@ -7,11 +7,11 @@
   <entity Name="qBillMeasures" Title="" entityHeight="200" entityIconified="false" entityId="141113516677345" entityLocationX="209" entityLocationY="230" entityWidth="150" queryId="qBillMeasures" tableName="" tableSchemaName=""/>
   <entity Name="qItemBillCost" Title="" entityHeight="200" entityIconified="false" entityId="141113430452349" entityLocationX="394" entityLocationY="11" entityWidth="150" queryId="qItemBillCostServer" tableName="" tableSchemaName=""/>
   <referenceRelation leftEntityFieldName="bill_measure" leftEntityId="141113422812389" rightEntityFieldName="bill_measures_id" rightEntityId="141113516677345"/>
-  <referenceRelation leftEntityFieldName="item_id" leftEntityId="141113422812389" rightEntityFieldName="wh_items_id" rightEntityId="141113422812389"/>
-  <referenceRelation leftEntityFieldName="item_id" leftEntityId="141113430452349" rightEntityFieldName="wh_items_id" rightEntityId="141113430452349"/>
+  <referenceRelation leftEntityFieldName="item_id" leftEntityId="141113422812389" rightEntityFieldName="items_catalog_id" rightEntityId="141113422812389"/>
+  <referenceRelation leftEntityFieldName="item_id" leftEntityId="141113430452349" rightEntityFieldName="items_catalog_id" rightEntityId="141113430452349"/>
   <referenceRelation leftEntityFieldName="cost_id" leftEntityId="142141401693039" rightEntityFieldName="bill_item_cost_id" rightEntityId="141113422812389"/>
-  <referenceRelation leftEntityFieldName="item_id" leftEntityId="141113430452349" rightEntityFieldName="wh_items_id" rightEntityId="141113422812389"/>
+  <referenceRelation leftEntityFieldName="item_id" leftEntityId="141113430452349" rightEntityFieldName="items_catalog_id" rightEntityId="141113422812389"/>
   <referenceRelation leftEntityFieldName="cost_id" leftEntityId="142141401693039" rightEntityFieldName="bill_item_cost_id" rightEntityId="141113430452349"/>
-  <referenceRelation leftEntityFieldName="item_id" leftEntityId="141113422812389" rightEntityFieldName="wh_items_id" rightEntityId="141113430452349"/>
+  <referenceRelation leftEntityFieldName="item_id" leftEntityId="141113422812389" rightEntityFieldName="items_catalog_id" rightEntityId="141113430452349"/>
   <referenceRelation leftEntityFieldName="bill_measure" leftEntityId="141113430452349" rightEntityFieldName="bill_measures_id" rightEntityId="141113516677345"/>
 </datamodel>

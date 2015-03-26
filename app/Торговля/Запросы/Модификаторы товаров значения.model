@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?><datamodel>
+  <parameters>
+    <parameter description="" name="modifier" nullable="true" parameterMode="1" precision="0" scale="0" selectionForm="null" signed="true" size="0" type="2" typeName="NUMERIC"/>
+    <parameter description="" name="franchazi_id" nullable="true" parameterMode="1" precision="0" scale="0" selectionForm="null" signed="true" size="0" type="2" typeName="NUMERIC"/>
+  </parameters>
+  <parametersEntity entityHeight="200" entityIconified="false" entityLocationX="8" entityLocationY="7" entityWidth="150"/>
+  <entity Title="" entityHeight="200" entityIconified="false" entityId="142687708653786" entityLocationX="240" entityLocationY="3" entityWidth="150" tableAlias="t1" tableName="items_mods_values" tableSchemaName=""/>
+  <relation leftEntityId="-1" leftEntityParameterName="modifier" rightEntityFieldName="modifier" rightEntityId="142687708653786"/>
+  <relation leftEntityId="-1" leftEntityParameterName="franchazi_id" rightEntityFieldName="franchazi_id" rightEntityId="142687708653786"/>
+</datamodel>

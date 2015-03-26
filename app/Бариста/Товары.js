@@ -7,7 +7,7 @@ function ItemsSelector(aContainer, aParent, aTradePoint, anActualDate) {
     var self = this, model = this.model;
     self.mode = 0; //0 - продажа товаров, 1 - настройка
     self.parent = aParent;
-    self.itemSettingsAndCost = new ItemSettingsAndCost();
+//    self.itemSettingsAndCost = new ItemSettingsAndCost();
     var addItemWidget;
     balanceMeter = new BalanceMeter();
     var whSession = session.whSession;
@@ -23,6 +23,12 @@ function ItemsSelector(aContainer, aParent, aTradePoint, anActualDate) {
     var trade_items = {};
     var bar_codes = {};
     
+    self.showItemSettings = function(anItemId, anItemOnTp) {
+        var itemSettingsAndCost = new ItemSettingsAndCost();
+        itemSettingsAndCost.setTradeItem(anItemId, session.tradePoint, anItemOnTp);
+        itemSettingsAndCost.showModal(self.reloadItems);
+    };
+    
     self.reloadItems = function() {
         for (var j in trade_items) {
             cmn.deleteElement(trade_items[j].dockElement);
@@ -34,11 +40,12 @@ function ItemsSelector(aContainer, aParent, aTradePoint, anActualDate) {
     
     self.reloadItemsLimit = function() {
         var limits = [];
-        for (var j in trade_items)
+        for (var j in trade_items) {
             limits.push(j);
+        };
         limits = whSession.getItemsLimit(limits);
         for (var j in limits)
-            trade_items[limits[j].itemID].setLimit(limits[j].limit);
+            trade_items[limits[j].itemOnTPID].setLimit(limits[j].limit);
     };
     
     self.barCodeEnter = function(aBarcode) {
@@ -102,7 +109,8 @@ function ItemsSelector(aContainer, aParent, aTradePoint, anActualDate) {
         model.tradeTypes4TP.params.actual_date = anActualDate ? anActualDate : new Date();
         model.tradeTypes4TP.requery(function() {
             model.tradeTypes4TP.forEach(function(aTTData) {
-                trade_items[aTTData.item_id].addType(aTTData.type_id);
+                if (trade_items[aTTData.items_on_tp_id])
+                    trade_items[aTTData.items_on_tp_id].addType(aTTData.type_id);
             });
         });
     }
@@ -113,22 +121,21 @@ function ItemsSelector(aContainer, aParent, aTradePoint, anActualDate) {
         model.tradeItemsCostByTP.requery(function() {
             model.tradeItemsCostByTP.forEach(function(aTIData) {
                 if (aTIData.bar_code)
-                    bar_codes[aTIData.bar_code] = aTIData.item_id;
-                if (!trade_items[aTIData.item_id])
-                    trade_items[aTIData.item_id] = new TradeItem(aTIData, self, items_body);
+                    bar_codes[aTIData.bar_code] = aTIData.items_on_tp_id;
+                if (!trade_items[aTIData.items_on_tp_id])
+                    trade_items[aTIData.items_on_tp_id] = new TradeItem(aTIData, self, items_body);
                 else
-                    trade_items[aTIData.item_id].setAdditionalData(aTIData);
+                    trade_items[aTIData.items_on_tp_id].setAdditionalData(aTIData);
             });
             getSort();
+            getItemsTypes();
+            self.setActivePrice(10);
             self.reloadItemsLimit();
             if (aCallback)
                 aCallback();
         });    
     }
     
-    getItems(function() {
-        self.setActivePrice(10);
-        getItemsTypes();
-    });
+    getItems();
     bcp.action = self.barCodeEnter;
 }

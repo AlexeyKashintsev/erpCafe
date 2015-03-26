@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?><outputFields>
+  <field bindedColumn="full_string" sqlType="12"/>
+  <field bindedColumn="buying_cost" sqlType="2"/>
+  <field bindedColumn="buying_cost_orig" sqlType="2"/>
+  <field bindedColumn="selling_cost" sqlType="2"/>
+  <field bindedColumn="selling_cost_orig" sqlType="2"/>
+</outputFields>

@@ -2,7 +2,7 @@
   <fieldsEntity entityHeight="200" entityIconified="false" entityId="141156669593958" entityLocationX="426" entityLocationY="243" entityWidth="150" tableName="bill_operations_status"/>
   <fieldsEntity entityHeight="200" entityIconified="false" entityId="140415925635721" entityLocationX="10" entityLocationY="20" entityWidth="150" tableName="ord_bills"/>
   <fieldsEntity entityHeight="200" entityIconified="false" entityId="141156666665131" entityLocationX="202" entityLocationY="19" entityWidth="150" tableName="bill_item_cost"/>
-  <fieldsEntity entityHeight="200" entityIconified="false" entityId="141156667468759" entityLocationX="423" entityLocationY="19" entityWidth="150" tableName="wh_items"/>
+  <fieldsEntity entityHeight="200" entityIconified="false" entityId="141156667468759" entityLocationX="423" entityLocationY="19" entityWidth="150" tableName="items_catalog"/>
   <fieldsEntity entityHeight="200" entityIconified="false" entityId="141156668702058" entityLocationX="207" entityLocationY="248" entityWidth="150" tableName="bill_operations"/>
   <fieldsEntity entityHeight="200" entityIconified="false" entityId="141156670858131" entityLocationX="12" entityLocationY="248" entityWidth="150" tableName="bill_operations_items"/>
 </datamodel>

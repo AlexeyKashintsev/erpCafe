@@ -7,7 +7,5 @@
     <parameter description="" name="trade_point" nullable="true" parameterMode="1" precision="0" scale="0" selectionForm="null" signed="true" size="0" type="2" typeName="NUMERIC"/>
   </parameters>
   <parametersEntity entityHeight="200" entityIconified="false" entityLocationX="8" entityLocationY="7" entityWidth="150"/>
-  <entity Title="" entityHeight="200" entityIconified="false" entityId="142357919045372" entityLocationX="393" entityLocationY="9" entityWidth="150" tableAlias="t" tableName="trade_items_on_tp" tableSchemaName=""/>
-  <entity Title="" entityHeight="200" entityIconified="false" entityId="142348544511158" entityLocationX="185" entityLocationY="11" entityWidth="150" tableAlias="t1" tableName="wh_items" tableSchemaName=""/>
-  <relation leftEntityFieldName="wh_items_id" leftEntityId="142348544511158" rightEntityFieldName="item_id" rightEntityId="142357919045372"/>
+  <entity Title="" entityHeight="200" entityIconified="false" entityId="142348544511158" entityLocationX="185" entityLocationY="11" entityWidth="150" tableAlias="t1" tableName="items_catalog" tableSchemaName=""/>
 </datamodel>

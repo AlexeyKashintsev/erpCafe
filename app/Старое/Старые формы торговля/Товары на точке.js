@@ -88,7 +88,7 @@ function btnSaveActionPerformed(evt) {//GEN-FIRST:event_btnSaveActionPerformed
 
     function btnSelectActionPerformed(evt) {//GEN-FIRST:event_btnSelectActionPerformed
         if(model.qTradeItemsAndType.length > 0){
-            form.close(model.qTradeItemsAndType.cursor.wh_items_id);
+            form.close(model.qTradeItemsAndType.cursor.items_catalog_id);
         } else {
             alert('Вы ничего не выбрали!');
         }

@@ -12,7 +12,7 @@
   <relation leftEntityId="-1" leftEntityParameterName="operation_id" rightEntityId="141156478723655" rightEntityParameterName="operation_id"/>
   <referenceRelation leftEntityFieldName="operation_status" leftEntityId="141156193438016" rightEntityFieldName="bill_operations_status_id" rightEntityId="141156193438016"/>
   <referenceRelation leftEntityFieldName="cost_id" leftEntityId="141156478723655" rightEntityFieldName="bill_item_cost_id" rightEntityId="141156478723655"/>
-  <referenceRelation leftEntityFieldName="item_id" leftEntityId="141156478723655" rightEntityFieldName="wh_items_id" rightEntityId="141156478723655"/>
+  <referenceRelation leftEntityFieldName="item_id" leftEntityId="141156478723655" rightEntityFieldName="items_catalog_id" rightEntityId="141156478723655"/>
   <referenceRelation leftEntityFieldName="operation_id" leftEntityId="141156478723655" rightEntityFieldName="bill_operations_id" rightEntityId="141156193438016"/>
   <referenceRelation leftEntityFieldName="account_id" leftEntityId="141156193438016" rightEntityFieldName="bill_accounts_id" rightEntityId="141156193438016"/>
 </datamodel>

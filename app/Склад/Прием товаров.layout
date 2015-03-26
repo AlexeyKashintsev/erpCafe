@@ -13,29 +13,29 @@
   <widget name="modelGrid" parent="pnlWorkSpace" prefHeight="298px" prefWidth="448px" type="DbGridDesignInfo">
     <column name="colItem_name" title="Товар">
       <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
+      <columnsDatasource/>
+      <columnsDisplayField/>
+      <cellsDatasource/>
       <cellDesignInfo>
         <rowsKeyField/>
         <columnsKeyField/>
         <cellValueField/>
       </cellDesignInfo>
-      <columnsDatasource/>
-      <columnsDisplayField/>
-      <cellsDatasource/>
       <headerStyle>
         <nativeFont name="Dialog" size="15"/>
       </headerStyle>
-      <datamodelElement entityId="140549864254788" fieldName="item_name"/>
+      <datamodelElement entityId="140549864254788" fieldName="full_string"/>
     </column>
     <column name="colItem_id" title="Количество">
       <controlInfo classHint="DbLabelDesignInfo" emptyText="0" name="view" prefHeight="0px" prefWidth="0px"/>
+      <columnsDatasource/>
+      <columnsDisplayField/>
+      <cellsDatasource/>
       <cellDesignInfo>
         <rowsKeyField/>
         <columnsKeyField/>
         <cellValueField/>
       </cellDesignInfo>
-      <columnsDatasource/>
-      <columnsDisplayField/>
-      <cellsDatasource/>
       <headerStyle>
         <nativeFont name="Dialog" size="15"/>
       </headerStyle>

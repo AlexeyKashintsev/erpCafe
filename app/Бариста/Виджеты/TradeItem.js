@@ -42,9 +42,14 @@ function TradeItem(anItemData, aParent, aContainer) {
                 self.limit--;
                 self.updateLimit();
             } else {
-                var data = this.data;
-                balanceMeter.getWeight(this.data, function(anQuantity) {
-                    orderList.addItem(data, priceTypeSel, costs[priceTypeSel], anQuantity);
+                var full_data = this.data;
+                var data = {
+                    item_name: this.data.item_name,
+                    item_measure: this.data.item_measure,
+                    item_cost: costs[priceTypeSel]
+                };
+                balanceMeter.getWeight(data, function(anQuantity) {
+                    orderList.addItem(full_data, priceTypeSel, costs[priceTypeSel], anQuantity);
                     self.limit -= anQuantity;
                     self.updateLimit();
                 });
@@ -56,8 +61,9 @@ function TradeItem(anItemData, aParent, aContainer) {
     this.addToOrder = addToOrder;
     
     function settingsShow() {
-        aParent.itemSettingsAndCost.setTradeItem(this.data.item_id);
-        aParent.itemSettingsAndCost.showModal(aParent.reloadItems);
+        aParent.showItemSettings(this.data.item_id, this.data.items_on_tp_id);
+//        aParent.itemSettingsAndCost.setTradeItem(this.data.item_id, session.tradePoint, this.data.items_on_tp_id);
+//        aParent.itemSettingsAndCost.showModal(aParent.reloadItems);
     }
 
     this.click = (function() {

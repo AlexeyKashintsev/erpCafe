@@ -35,12 +35,12 @@ function formWindowClosing(evt) {//GEN-FIRST:event_formWindowClosing
 }//GEN-LAST:event_formWindowClosing
 
     function btnAddActionPerformed(evt) {//GEN-FIRST:event_btnAddActionPerformed
-        if (model.itemType.cursor.wh_item_types_id <= 0) {
+        if (model.itemType.cursor.items_types_id <= 0) {
             alert("Выберите тип товара отличный от \"Все товары\" и \"Мои товары\"");
         } else {
             model.qTradeItems.insert(
                     model.qTradeItems.schema.franchazi_id, model.params.franchazi_id,
-                    model.qTradeItems.schema.item_type, model.itemType.cursor.wh_item_types_id
+                    model.qTradeItems.schema.item_type, model.itemType.cursor.items_types_id
                     );
         }
     }//GEN-LAST:event_btnAddActionPerformed
@@ -69,7 +69,7 @@ function formWindowClosing(evt) {//GEN-FIRST:event_formWindowClosing
     }//GEN-LAST:event_btnAdd1ActionPerformed
 
     function btnAddParentActionPerformed(evt) {//GEN-FIRST:event_btnAddParentActionPerformed
-        var p = model.itemType.cursor.wh_item_types_id;
+        var p = model.itemType.cursor.items_types_id;
         model.itemType.insert(model.itemType.schema.parent_type, p);
     }//GEN-LAST:event_btnAddParentActionPerformed
 
@@ -97,8 +97,8 @@ function formWindowClosing(evt) {//GEN-FIRST:event_formWindowClosing
             if (model.modified && confirm('Сохранить изменения?')) {
                 model.save();
             }
-            Logger.info(model.qTradeItems.cursor.wh_items_id);
-            contentTradeItem.setTradeItem(model.qTradeItems.cursor.wh_items_id);
+            Logger.info(model.qTradeItems.cursor.items_catalog_id);
+            contentTradeItem.setTradeItem(model.qTradeItems.cursor.items_catalog_id);
             contentTradeItem.setBlock(false);
             contentTradeItem.showModal(function() {
                 model.requery();
@@ -112,8 +112,8 @@ function formWindowClosing(evt) {//GEN-FIRST:event_formWindowClosing
         model.save();
         model.qTradeItems.requery();
         model.qTradeItemContents.requery();
-        Logger.info(model.qTradeItems.cursor.wh_items_id);
-        contentTradeItem.setTradeItem(model.qTradeItems.cursor.wh_items_id);
+        Logger.info(model.qTradeItems.cursor.items_catalog_id);
+        contentTradeItem.setTradeItem(model.qTradeItems.cursor.items_catalog_id);
         contentTradeItem.showModal(function() {
             model.qTradeItemContents.requery();
             model.qTradeItems.requery();
@@ -126,14 +126,14 @@ function formWindowClosing(evt) {//GEN-FIRST:event_formWindowClosing
 
                 model.qTradeItemContents.beforeFirst();
                 while (model.qTradeItemContents.next()) {
-                    if (model.qTradeItemContents.cursor.wh_items_id === model.qTradeItems.cursor.wh_items_id) {
+                    if (model.qTradeItemContents.cursor.items_catalog_id === model.qTradeItems.cursor.items_catalog_id) {
                         model.qTradeItems.insert(
                                 model.qTradeItems.schema.franchazi_id, model.params.franchazi_id,
                                 model.qTradeItems.schema.item_type, model.qTradeItems.cursor.item_type,
-                                model.qTradeItems.schema.original_id, model.qTradeItems.cursor.wh_items_id
+                                model.qTradeItems.schema.original_id, model.qTradeItems.cursor.items_catalog_id
                                 );
                         model.qTradeItemContents.insert(
-                                model.qTradeItemContents.schema.wh_items_id, model.qTradeItems.cursor.wh_items_id,
+                                model.qTradeItemContents.schema.items_catalog_id, model.qTradeItems.cursor.items_catalog_id,
                                 model.qTradeItemContents.schema.contents, model.qTradeItemContents.cursor.contents
                                 );
                     }
@@ -141,7 +141,7 @@ function formWindowClosing(evt) {//GEN-FIRST:event_formWindowClosing
 
                 flag = 1;
 
-                model.qContents.params.trade_item_id = evt.object.wh_items_id;
+                model.qContents.params.trade_item_id = evt.object.items_catalog_id;
                 model.qContents.requery(function() {
                     if (model.qContents.length > 0) {
                         model.qContents.beforeFirst();
@@ -149,7 +149,7 @@ function formWindowClosing(evt) {//GEN-FIRST:event_formWindowClosing
                             model.qContents.insert(
                                     model.qContents.schema.wh_item, model.qContents.cursor.wh_item,
                                     model.qContents.schema.usage_quantity, model.qContents.cursor.usage_quantity,
-                                    model.qContents.schema.trade_item, model.qTradeItems.cursor.wh_items_id
+                                    model.qContents.schema.trade_item, model.qTradeItems.cursor.items_catalog_id
                                     );
                         }
                     }
@@ -175,18 +175,18 @@ function formWindowClosing(evt) {//GEN-FIRST:event_formWindowClosing
     function btnItemCreateDoubleActionPerformed(evt) {//GEN-FIRST:event_btnItemCreateDoubleActionPerformed
         //TODO Дублирование теперь не нужно
         //Переделать в подгрузку стандартных айтемов
-        model.qContents.params.trade_item_id = model.qTradeItems.cursor.wh_items_id;
+        model.qContents.params.trade_item_id = model.qTradeItems.cursor.items_catalog_id;
         model.qTradeItemContents.beforeFirst();
         while (model.qTradeItemContents.next()) {
-            if (model.qTradeItemContents.cursor.wh_items_id === model.qTradeItems.cursor.wh_items_id) {
+            if (model.qTradeItemContents.cursor.items_catalog_id === model.qTradeItems.cursor.items_catalog_id) {
                 model.qTradeItems.insert(
                         model.qTradeItems.schema.franchazi_id, model.params.franchazi_id,
                         model.qTradeItems.schema.item_type, model.qTradeItems.cursor.item_type,
                         model.qTradeItems.schema.item_name, model.qTradeItems.cursor.item_name + " - копия",
-                        model.qTradeItems.schema.original_id, model.qTradeItems.cursor.wh_items_id
+                        model.qTradeItems.schema.original_id, model.qTradeItems.cursor.items_catalog_id
                         );
                 model.qTradeItemContents.insert(
-                        model.qTradeItemContents.schema.wh_items_id, model.qTradeItems.cursor.wh_items_id,
+                        model.qTradeItemContents.schema.items_catalog_id, model.qTradeItems.cursor.items_catalog_id,
                         model.qTradeItemContents.schema.contents, model.qTradeItemContents.cursor.contents
                         );
             }
@@ -199,7 +199,7 @@ function formWindowClosing(evt) {//GEN-FIRST:event_formWindowClosing
                     model.qContents.insert(
                             model.qContents.schema.wh_item, model.qContents.cursor.wh_item,
                             model.qContents.schema.usage_quantity, model.qContents.cursor.usage_quantity,
-                            model.qContents.schema.trade_item, model.qTradeItems.cursor.wh_items_id
+                            model.qContents.schema.trade_item, model.qTradeItems.cursor.items_catalog_id
                             );
                 }
             }
@@ -210,7 +210,7 @@ function formWindowClosing(evt) {//GEN-FIRST:event_formWindowClosing
     }//GEN-LAST:event_paramsOnChanged
 
     function qTradeItemsOnScrolled(evt) {//GEN-FIRST:event_qTradeItemsOnScrolled
-        model.qBonusCountForTradeItemReadonly.params.trade_item = model.qTradeItems.cursor.wh_items_id;
+        model.qBonusCountForTradeItemReadonly.params.trade_item = model.qTradeItems.cursor.items_catalog_id;
         model.qBonusCountForTradeItemReadonly.params.trade_type = null;
         model.qBonusCountForTradeItemReadonly.requery(function() {
             if (model.qBonusCountForTradeItemReadonly.length > 0) {
@@ -228,9 +228,9 @@ function formWindowClosing(evt) {//GEN-FIRST:event_formWindowClosing
         if (evt.clickCount > 1 && session.getUserRole() === "admin") {
             var rate = prompt("Введите бонусную ставку для категории товара: " + model.itemType.cursor.type_description, 0);
             if (rate) {
-                model.qBonusCountForTradeItemReadonly.params.trade_type = model.itemType.cursor.wh_item_types_id;
+                model.qBonusCountForTradeItemReadonly.params.trade_type = model.itemType.cursor.items_types_id;
                 model.qBonusCountForTradeItemReadonly.params.trade_item = null;
-                bonus.setBonusRate(null, model.itemType.cursor.wh_item_types_id, rate);
+                bonus.setBonusRate(null, model.itemType.cursor.items_types_id, rate);
                 form.lbCategory.text = "Бонусная ставка по категории товара: " + rate + "%";
                 form.btnResetCategory.visible = true;
             }
@@ -241,7 +241,7 @@ function formWindowClosing(evt) {//GEN-FIRST:event_formWindowClosing
         if ((evt.clickCount > 1 && model.qTradeItems.cursor.franchazi_id) || (evt.clickCount > 1 && session.getUserRole() === "admin")) {
             var rate = prompt("Введите бонусную ставку для товара: " + model.qTradeItems.cursor.item_name, 0);
             if (rate) {
-                bonus.setBonusRate(model.qTradeItems.cursor.wh_items_id, null, rate);
+                bonus.setBonusRate(model.qTradeItems.cursor.items_catalog_id, null, rate);
                 form.lbItem.text = "Бонусная ставка по товару: " + rate + "%";
                 form.btnResetItems.visible = true;
             }
@@ -249,13 +249,13 @@ function formWindowClosing(evt) {//GEN-FIRST:event_formWindowClosing
     }//GEN-LAST:event_lbItemMouseClicked
 
     function btnResetItemsActionPerformed(evt) {//GEN-FIRST:event_btnResetItemsActionPerformed
-        bonus.clearBonusRate(model.qTradeItems.cursor.wh_items_id, null);
+        bonus.clearBonusRate(model.qTradeItems.cursor.items_catalog_id, null);
         form.lbItem.text = "Бонусная ставка по товару не назначена";
         form.btnResetItems.visible = false;
     }//GEN-LAST:event_btnResetItemsActionPerformed
 
     function btnResetCategoryActionPerformed(evt) {//GEN-FIRST:event_btnResetCategoryActionPerformed
-        bonus.clearBonusRate(null, model.itemType.cursor.wh_item_types_id);
+        bonus.clearBonusRate(null, model.itemType.cursor.items_types_id);
         form.lbCategory.text = "Бонусная ставка по категории товара не назначена";
         form.btnResetCategory.visible = false;
     }//GEN-LAST:event_btnResetCategoryActionPerformed

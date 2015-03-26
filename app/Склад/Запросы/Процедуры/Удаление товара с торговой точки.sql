@@ -5,5 +5,5 @@
  * @public
  * TODO Перенести на сторону сервера
  */ 
-Delete From trade_items_on_tp
+Delete From items_on_tp
  Where :item_id = item_id

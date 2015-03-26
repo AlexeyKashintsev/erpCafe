@@ -8,6 +8,7 @@ function OrderItem(anItemData, aPriceType, aPrice) {
 
     ordItem.orderQuantity = 0;
     ordItem.itemId = anItemData.item_id;
+    ordItem.tradeId = anItemData.items_on_tp_id;
     ordItem.itemName = anItemData.item_name;
     ordItem.itemCost = aPrice ? aPrice : anItemData.item_cost;
     ordItem.measure = anItemData.item_measure;
@@ -38,7 +39,7 @@ function OrderItem(anItemData, aPriceType, aPrice) {
 
     ordItem.delete = function(aWORecalc) {
         ordItem.orderSum = ordItem.orderQuantity = 0;
-        delete(orderList.orderDetails[ordItem.itemId][ordItem.priceType]);
+        delete(orderList.orderDetails[ordItem.tradeId][ordItem.priceType]);
         ordItem.view.delete();
         if (!!aWORecalc) orderList.calculateOrder();
     };

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?><datamodel>
+  <parametersEntity entityHeight="200" entityIconified="false" entityLocationX="12" entityLocationY="12" entityWidth="150"/>
+  <entity Name="qModValues" Title="" entityHeight="200" entityIconified="false" entityId="142693198859686" entityLocationX="485" entityLocationY="20" entityWidth="150" queryId="qModValues" tableName="" tableSchemaName=""/>
+  <entity Name="qItemsModifiersTypes" Title="" entityHeight="200" entityIconified="false" entityId="142687610061169" entityLocationX="236" entityLocationY="29" entityWidth="150" queryId="qItemsModifiersTypes" tableName="" tableSchemaName=""/>
+  <relation leftEntityFieldName="items_modifiers_id" leftEntityId="142687610061169" rightEntityId="142693198859686" rightEntityParameterName="modifier"/>
+  <referenceRelation leftEntityFieldName="modifier" leftEntityId="142693198859686" rightEntityFieldName="items_modifiers_id" rightEntityId="142687610061169"/>
+  <referenceRelation leftEntityFieldName="modifier_parent" leftEntityId="142687610061169" rightEntityFieldName="items_modifiers_id" rightEntityId="142687610061169"/>
+</datamodel>

@@ -10,8 +10,8 @@
     <layout type="MarginLayoutDesignInfo"/>
     <constraints place="Center" type="BorderLayoutConstraintsDesignInfo"/>
   </widget>
-  <widget deletable="false" editable="false" insertable="false" mouseClicked="grdTradeItemsMouseClicked" name="grdTradeItems" parent="pnlWorkSpace" prefHeight="318px" prefWidth="372px" type="DbGridDesignInfo">
-    <column name="colName" title="Наименование">
+  <widget deletable="false" insertable="false" mouseClicked="grdTradeItemsMouseClicked" name="grdTradeItems" parent="pnlWorkSpace" prefHeight="318px" prefWidth="372px" type="DbGridDesignInfo">
+    <column name="colName" readonly="true" title="Наименование">
       <controlInfo classHint="DbLabelDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>
       <columnsDatasource/>
       <columnsDisplayField/>
@@ -24,7 +24,7 @@
       <headerStyle>
         <nativeFont name="Lucida Grande" size="13"/>
       </headerStyle>
-      <datamodelElement entityId="142303506349188" fieldName="item_name"/>
+      <datamodelElement entityId="142303506349188" fieldName="full_string"/>
     </column>
     <column name="colTrade" title="Продажа" width="20">
       <controlInfo classHint="DbCheckDesignInfo" name="view" prefHeight="0px" prefWidth="0px"/>

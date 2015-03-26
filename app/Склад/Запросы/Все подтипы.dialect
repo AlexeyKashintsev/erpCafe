@@ -1,12 +1,12 @@
 WITH RECURSIVE tst AS
 (
-    SELECT r.wh_item_types_id, r.type_description, r.parent_type
-    from wh_item_types r
-    where r.wh_item_types_id = :parent_type 
+    SELECT r.items_types_id, r.type_description, r.parent_type
+    from items_types r
+    where r.items_types_id = :parent_type 
         or (r.parent_type is null and (:parent_type is null or :parent_type = 0))
   UNION ALL
-    select r.wh_item_types_id, r.type_description, r.parent_type
-    FROM wh_item_types r, tst t
-    where r.parent_type = t.wh_item_types_id
+    select r.items_types_id, r.type_description, r.parent_type
+    FROM items_types r, tst t
+    where r.parent_type = t.items_types_id
 )
 SELECT * FROM tst

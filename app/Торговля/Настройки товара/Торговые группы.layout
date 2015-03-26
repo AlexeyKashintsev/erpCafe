@@ -7,7 +7,7 @@
   <widget name="modelGrid" parent="Form" prefHeight="264px" prefWidth="400px" type="DbGridDesignInfo">
     <column name="colGroup" title="Группа">
       <controlInfo classHint="DbComboDesignInfo" name="view" prefHeight="0px" prefWidth="0px">
-        <valueField entityId="142651298206353" fieldName="wh_item_types_id"/>
+        <valueField entityId="142651298206353" fieldName="items_types_id"/>
         <displayField entityId="142651298206353" fieldName="type_description"/>
       </controlInfo>
       <datamodelElement entityId="142651297345181" fieldName="type_id"/>

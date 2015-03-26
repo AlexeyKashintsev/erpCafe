@@ -8,9 +8,8 @@ function TradeSessions() {
     Session.set('TradeSessions', this);
     var self = this, model = this.model;
     var whSession = Session.get('WhSessionModule');
-    var clientModule = Session.get('ClientServerModule');
-    var billing = Session.get('BillModule');
     var bonuses = Session.get('BonusModule');
+    var odp = new OrderProcessorServer();
     var ep = new EventProcessor();
     var session = Session.get("UserSession");
     var sessionItems = {};
@@ -79,153 +78,36 @@ function TradeSessions() {
         return model.params.session_id;
     }
 
-    function TradeOperationAddToCashBox(anOrderSum, anOperationType, aClientId) {
-        model.qTradeOperationBySession.push({
-            operation_sum: anOrderSum,
-            operation_date: new Date(),
-            session_id: model.params.session_id,
-            operation_type: anOperationType,
-            client_id: aClientId
-        });
-        return model.qTradeOperationBySession.trade_cash_box_operation_id;
-    }
-
-    /*
-     * @param {type} aCashBoxOperationId
-     * @param {type} anItemId
-     * @param {type} aQuantity
-     * @returns {undefined}
-     */
-    function TradeItemsPushInTradeOperation(aCashBoxOperationId, anItemId, aQuantity, aPriceType) {
-        model.qTradeOperationsWithItems.push({
-            cash_box_operation  :   aCashBoxOperationId,
-            trade_item          :   anItemId,
-            items_quantity      :   aQuantity,
-            price_type          :   aPriceType
-        });
-    }
-
     function getTradeItemsByTradePointWithCostAndBonuses(){
         model.tradeItemsByTPwCost.params.actual_date = new Date();
         //model.tradeItemsByTradePointWithCost.params.franchazi_id = session.getFranchazi();
         model.tradeItemsByTPwCost.params.trade_point_id = session.getTradePoint();  
         model.tradeItemsByTPwCost.requery();
-        model.tradeItemsByTPwCost.beforeFirst();
-        while (model.tradeItemsByTPwCost.next()){
-            sessionItems[model.tradeItemsByTPwCost.cursor.item_id] = {};
-            sessionItems[model.tradeItemsByTPwCost.cursor.item_id].cost = model.tradeItemsByTPwCost.cursor.item_cost;
-            sessionItems[model.tradeItemsByTPwCost.cursor.item_id].name = model.tradeItemsByTPwCost.cursor.item_name;
-            sessionItems[model.tradeItemsByTPwCost.cursor.item_id].bonus_category = [];
+        model.tradeItemsByTPwCost.forEach(function(cursor) {
+            sessionItems[cursor.items_on_tp_id] = {};
+            sessionItems[cursor.items_on_tp_id].itemID = cursor.item_id;
+            sessionItems[cursor.items_on_tp_id].cost = model.tradeItemsByTPwCost.cursor.item_cost;
+            sessionItems[cursor.items_on_tp_id].name = model.tradeItemsByTPwCost.cursor.item_name;
+            sessionItems[cursor.items_on_tp_id].bonus_category = [];
             for (var i = 1; i<=3; i++){
-                sessionItems[model.tradeItemsByTPwCost.cursor.item_id].bonus_category[i] = bonuses.getCountBonusesByItem(model.tradeItemsByTPwCost.cursor.item_id, i);
+                sessionItems[cursor.items_on_tp_id].bonus_category[i] = bonuses.getCountBonusesByItem(cursor.item_id, i);
             }
-        }
+        });
         return sessionItems;
     }
 
-    /*
-     * Запись проданных товаров в торговую операцию
-     * @param {type} anOrderItem
-     * @param {type} aTradeOperationId
-     * @returns {Boolean}
-     */
-    function processOrderItem(anOrderItem, aTradeOperationId) {
-        if (anOrderItem.itemId && anOrderItem.quantity) {
-            TradeItemsPushInTradeOperation( aTradeOperationId,
-                                            anOrderItem.itemId,
-                                            anOrderItem.quantity,
-                                            anOrderItem.priceType);
-
-            //WhItemsConsumption(anOrderItem.itemId, anOrderItem.quantity);
-            var cons = {};
-            cons[anOrderItem.itemId] = anOrderItem.quantity;
-            whSession.processTradeItems(cons);
-        } else {
-            ep.addEvent('errorAddTradeOperation', {
-                desk: 'Не указано количество или ID товара(er#170)',
-                opID: aTradeOperationId
-            });
-        }
-    }
-
-    function calculateOrderSum(anItems) { //TODO Исправить для использования с типом цены
-        var sum = 0;
-        model.qOpenedSession.params.user_name = session.getUserName();
-        var tpid = model.qOpenedSession.cursor.trade_point;
-        for (var i in anItems) {
-            sum += sessionItems[anItems[i].itemId] * anItems[i].quantity;
-        };
-        return sum;
-    }
-    
-    function checkOrderSum(anItems, aSum){
-        if (calculateOrderSum(anItems) !== aSum) return false;
-        else return true;
-    }
-    
-    /*
-     * Процесс продажи
-     * @param {type} anOrderDetails
-     * @returns {String}
-     */
     self.processOrder = function(anOrderDetails) {
-        var client = false;
-        getCurrentSession();
-
-        if (anOrderDetails.clientData)
-            client = clientModule.getClientDataByPhone(anOrderDetails.clientData.phone);
-
-        //При внесении операции после окончания серверной сессии
+        var session;
         if (!model.params.session_id && session.checkSession(anOrderDetails.session_id)) {
-            model.params.session_id = anOrderDetails.session_id;
+            //При внесении операции после окончания серверной сессии
+            session = model.params.session_id = anOrderDetails.session_id;
             whSession.setCurrentSession(anOrderDetails.session_id);
-        }
-
-        if (model.params.session_id) {
-            var OperationType = anOrderDetails.methodOfPayment;
-            
-            switch (anOrderDetails.methodOfPayment) {
-                case 0: //Деньги
-                    var BonusCount = 0;
-                    var BonusOperation = billing.OPERATION_ADD_BONUS;
-                    break;
-                case 1: //"bonus":
-                    BonusOperation = billing.OPERATION_DEL_BUY;
-                    BonusCount = anOrderDetails.orderSum;
-                    if (client.bonusBill) {
-                        if (client.bonusCount < anOrderDetails.orderSum) {
-                            ep.addEvent('errorNotEnoughBonuses', anOrderDetails);
-                            return 2;
-                        }
-                    }
-                    break;
-                case 10 : break;
-                default:
-                    ep.addEvent('errorMethodOfPaymentIsNull', anOrderDetails);
-                    return "error";
-            }
-
-            var TradeOperationId = TradeOperationAddToCashBox(anOrderDetails.orderSum,
-                    OperationType,
-                    client ? client.bonusBill : null);
-                    
-            for (var i in anOrderDetails.orderItems) {
-                processOrderItem(anOrderDetails.orderItems[i], TradeOperationId);
-
-                if (client && anOrderDetails.methodOfPayment === 0) {
-                    BonusCount += sessionItems[anOrderDetails.orderItems[i].itemId].bonus_category[client.bonusCategory]
-                            * sessionItems[anOrderDetails.orderItems[i].itemId].cost//getCountBonusesByItem(anOrderDetails.orderItems[i].itemId, client.bonusCategory)
-                            * anOrderDetails.orderItems[i].quantity;
-                }
-            }
-            model.save();
-
-            if (client.bonusBill) {
-                bonuses.bonusOperation(client, BonusOperation, BonusCount, TradeOperationId);
-            }
-
+        } else {
+            session = getCurrentSession();
         };
-        return 0;
+        
+        odp.processOrder(anOrderDetails, session, sessionItems);
     };
+    
     getCurrentSession();
 }
