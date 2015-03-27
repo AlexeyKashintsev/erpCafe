@@ -109,5 +109,5 @@ function OrderList(aParent, aContainer) {
         }
     };
 
-    wf.OrderListPane.bind(self)(aContainer ? aContainer : "actionPanel");                                      
+    wf.OrderList.bind(self)(aContainer ? aContainer : "actionPanel");                                      
 }
