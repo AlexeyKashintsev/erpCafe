@@ -81,6 +81,7 @@ function TradePointCommonInfo(aTradePointDetails, aContainer) {
     
     function btnTPSettingsOnClick() {
         tradePoint = new TradePoint();
+        tradePoint.setFranchazi(session.getFranchazi());
         tradePoint.setTradePoint(tradePointDetails.org_trade_point_id);
         tradePoint.showModal();
     }
