@@ -115,8 +115,8 @@ function TradePointCommonInfo(aTradePointDetails, aContainer) {
             
             var opSum = tradePointDetails.operationsSum ?  tradePointDetails.operationsSum : 0;
             var startValue = tradePointDetails.start_value ? tradePointDetails.start_value : 0;
-            income = tradePointDetails.incomeSum ? tradePointDetails.incomeSum : 0;
-            cashBox = startValue + opSum;
+            income = Math.round((tradePointDetails.incomeSum ? tradePointDetails.incomeSum : 0) * 100)/100;
+            cashBox = Math.round((startValue + opSum)*100)/100;
             setAdditionalInfo(income, cashBox);
      
             var btnEmptyCashBox = cmn.createElement("button", "btn btn-success btn-xs btn-block", currentSession);

@@ -67,7 +67,7 @@ function WHBalance(aWarehouse, aContainer) {
         model.qWHSessionBalance.forEach(function (md) {
                 //var md = model.qWHSessionBalance.cursor;
                 data.push([md.item_name + (md.short_string ? ' ' + md.short_string : '')
-                    , (md.final_value || md.final_value === 0) ? md.final_value
+                    , (md.final_value || md.final_value === 0) ? Math.round(md.final_value*1000)/1000
                             + (md.item_measure ? ' ' + md.item_measure : '') : "Нет данных"
                     , "Нет данных"]);
             });
