@@ -5,10 +5,10 @@
  * @public
  */
 function BillModule() {
-    Session.set('BillModule', this);
+    Session.setModule('BillModule', this);
     var self = this, model = this.model;
     var eventProcessor = new EventProcessor();
-    var session = Session.get("UserSession");
+    var session = Session.getModule("UserSession");
 
     // Типы операций
     self.OPERATION_ADD_CASH = 1; //Добавление средств на счет
@@ -238,7 +238,7 @@ function BillModule() {
             if (checkMoneyOnAccount(model.qBillOperationsListServer.cursor.account_id,
                     model.qBillOperationsListServer.cursor.operation_sum))
             {
-                var settings = Session.get("Settings");
+                var settings = Session.getModule("Settings");
                 var SHOP_PASSWORD = settings.getSettingByName("shopPassword").pass;
                 if (aStatus === self.OP_STATUS_SUCCESS && ((session.getUserRole() === "admin") ||
                         aShopPassword === SHOP_PASSWORD)) {

@@ -15,7 +15,7 @@ function ServerSession() {
     Session.chat.count = 0;
     var sessions = {};
     
-    Session.get = function(aModuleName) {
+    Session.getModule = function(aModuleName) {
         var userName = getSessionUserName();
         Logger.finest('Get module ' + aModuleName);
         if (!sessions[userName][aModuleName]) {
@@ -36,7 +36,7 @@ function ServerSession() {
         return sessions[userName][aModuleName];
     };
     
-    Session.set = function(aModuleName, aModule) {
+    Session.setModule = function(aModuleName, aModule) {
         Logger.finest('Module created ' + aModuleName);
         var userName = getSessionUserName();
         if (!loadModules[userName][aModuleName]) {

@@ -5,10 +5,10 @@
  */
 function BonusModule() {
     var self = this, model = this.model;
-    var session = Session.get("UserSession"); 
-    var bm      = Session.get("BillModule");
-    var sender  = Session.get("MessageSender");
-    var client  = Session.get("ClientServerModule");
+    var session = Session.getModule("UserSession"); 
+    var bm      = Session.getModule("BillModule");
+    var sender  = Session.getModule("MessageSender");
+    var client  = Session.getModule("ClientServerModule");
     
     self.setBonusRate = function(anItemId, aTypeId, aBonusRate, aBonusCategory) {
         if(!aBonusCategory) aBonusCategory = 1;

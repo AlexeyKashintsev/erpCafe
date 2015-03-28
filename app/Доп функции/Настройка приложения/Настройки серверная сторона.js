@@ -7,12 +7,13 @@
 function Settings() {
     var self = this, model = self.model;
     
-    var userSession = Session.get('UserSession');
+    var userSession = Session.getModule('UserSession');
     
     self.updateSettingsParams = function(aFranchazi, aTradePoint, aUserName, aFranchize) {
         model.dsSettings.params.franchazi_id =  aFranchazi ? aFranchazi : userSession.getFranchazi();
         model.dsSettings.params.trade_point_id = aTradePoint ? aTradePoint : userSession.getTradePoint();
         model.dsSettings.params.usr_name = aUserName ? aUserName : userSession.getUserName();
+        model.dsSettings.params.franchize_id = aFranchize ? aFranchize : userSession.getFranchize();
         model.dsSettings.execute();
     };
     
@@ -28,6 +29,7 @@ function Settings() {
     };
 
     self.getSettingByName = function(aSettingName) {
+        self.updateSettingsParams();
         var settings = model.dsSettings.find(model.dsSettings.schema.setting_name, aSettingName);
         var priority = 0, used_prior = 0, setting = {};
         if (settings.length > 0) {
@@ -80,5 +82,5 @@ function Settings() {
         model.save();
     };
     
-    self.getSettings();
+    self.updateSettingsParams();
 }

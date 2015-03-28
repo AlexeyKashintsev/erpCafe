@@ -8,8 +8,8 @@
 function BillsFranchazi() {
 var self = this, model = this.model, form = this;
 var createBillAccount = new CreateBillAccount();
-var bm = Session.get("BillModule");
-var serviceModule = Session.get("ServiceModule");
+var bm = Session.getModule("BillModule");
+var serviceModule = Session.getModule("ServiceModule");
 var addServiceForm = new AddServiceForm();
 var addBillOperation = new AddBillOperation();
 var historyOperations = new HistoryOperations();

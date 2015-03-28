@@ -5,9 +5,9 @@
  */ 
 function YandexPaymentReceiver() {
     var self = this, model = this.model;
-    var bm = Session.get("BillModule");
-    var ep = Session.get("EventProcessor");
-    var settings = Session.get("Settings");
+    var bm = Session.getModule("BillModule");
+    var ep = Session.getModule("EventProcessor");
+    var settings = Session.getModule("Settings");
     var af = new AdminFunctions();
     
     //Варианты ответа для яндекс денег

@@ -4,13 +4,13 @@
  * @public
  */
 function ClientServerModule() {
-    Session.set('ClientServerModule', this);
+    Session.setModule('ClientServerModule', this);
     //TODO ak
     var self = this, model = this.model;
     var sender = new MessageSender();                                            
-//    var userModule = Session.get('UserModule');
+//    var userModule = Session.getModule('UserModule');
 //    var adminFunctions = new AdminFunctions();
-    var billModule = Session.get('BillModule');
+    var billModule = Session.getModule('BillModule');
 
     function ClientConstructor(aPhone) {
         model.qPersonalData.params.phone = aPhone;

@@ -7,13 +7,14 @@
 function OrderProcessorServer() {
     var self = this, model = this.model;
     var whSession, clientModule, billing, bonuses;
+    var ep = new EventProcessor();
     var session, sessionItems;
     
     function getModules() {
-         whSession = Session.get('WhSessionModule');
-         clientModule = Session.get('ClientServerModule');
-         billing = Session.get('BillModule');
-         bonuses = Session.get('BonusModule');
+         whSession = Session.getModule('WhSessionModule');
+         clientModule = Session.getModule('ClientServerModule');
+         billing = Session.getModule('BillModule');
+         bonuses = Session.getModule('BonusModule');
     }
     
     function TradeOperationAddToCashBox(anOrderSum, anOperationType, aClientId) {
@@ -51,7 +52,6 @@ function OrderProcessorServer() {
      */
     function processOrderItem(anOrderItem, aTradeOperationId) {
         if (anOrderItem.tradeId && anOrderItem.quantity) {
-            //var itemId = sessionItems[anOrderItem.tradeId].itemID;
             TradeItemsPushInTradeOperation( aTradeOperationId,
                                             anOrderItem.tradeId,
                                             anOrderItem.itemId,
@@ -60,9 +60,6 @@ function OrderProcessorServer() {
 
             //WhItemsConsumption(anOrderItem.itemId, anOrderItem.quantity);
             //TODO Тут тоже переписать ЖАРА!!!!
-            var cons = {};
-            cons[anOrderItem.tradeId] = anOrderItem.quantity;
-            whSession.processTradeItems(cons);
         } else {
             ep.addEvent('errorAddTradeOperation', {
                 desk: 'Не указано количество или ID товара(er#170)',
@@ -70,15 +67,7 @@ function OrderProcessorServer() {
             });
         }
     }
-    
-    function calculateOrderSum(anItems) { //TODO Исправить для использования с типом цены
-        var sum = 0;
-        for (var i in anItems) {
-            sum += sessionItems[anItems[i].tradeId] * anItems[i].quantity;
-        };
-        return sum;
-    }
-    
+
     /*
      * Процесс продажи
      * @param {type} anOrderDetails
@@ -90,11 +79,30 @@ function OrderProcessorServer() {
         session = aSession;
         sessionItems = aSessionItems;
 
-        if (anOrderDetails.clientData)
-            client = clientModule.getClientDataByPhone(anOrderDetails.clientData.phone);
-
         var OperationType = anOrderDetails.methodOfPayment;
+        /*OP1*/
 
+        var TradeOperationId = TradeOperationAddToCashBox(anOrderDetails.orderSum,
+                                                            OperationType, client ? client.bonusBill : null);
+                                                            
+        var whCons = {};
+        for (var i in anOrderDetails.orderItems) {
+            processOrderItem(anOrderDetails.orderItems[i], TradeOperationId);
+            whCons[anOrderDetails.orderItems[i].tradeId] = anOrderDetails.orderItems[i].quantity;
+            /*OP2*/
+        }
+        model.save();
+        whSession.processTradeItems(whCons);
+
+        /*OP3*/
+        return 0;
+    };
+}
+
+
+/** OLD PROCESSING
+* 1:    if (anOrderDetails.clientData)
+            client = clientModule.getClientDataByPhone(anOrderDetails.clientData.phone);
         switch (anOrderDetails.methodOfPayment) {
             case 0: //Деньги
                 var BonusCount = 0;
@@ -115,26 +123,13 @@ function OrderProcessorServer() {
                 ep.addEvent('errorMethodOfPaymentIsNull', anOrderDetails);
                 return "error";
         }
-
-        var TradeOperationId = TradeOperationAddToCashBox(anOrderDetails.orderSum,
-                                                            OperationType,
-                                                            client ? client.bonusBill : null);
-
-        for (var i in anOrderDetails.orderItems) {
-            processOrderItem(anOrderDetails.orderItems[i], TradeOperationId);
-
-            if (client && anOrderDetails.methodOfPayment === 0) {
+2:          if (client && anOrderDetails.methodOfPayment === 0) {
                 BonusCount += sessionItems[anOrderDetails.orderItems[i].tradeId].bonus_category[client.bonusCategory]
                         * sessionItems[anOrderDetails.orderItems[i].tradeId].cost//getCountBonusesByItem(anOrderDetails.orderItems[i].itemId, client.bonusCategory)
                         * anOrderDetails.orderItems[i].quantity;
             }
-        }
-        model.save();
-
-        if (client.bonusBill) {
+3:      if (client.bonusBill) {
             bonuses.bonusOperation(client, BonusOperation, BonusCount, TradeOperationId);
         }
-
-        return 0;
-    };
-}
+ * 
+ */

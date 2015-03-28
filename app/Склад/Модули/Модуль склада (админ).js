@@ -6,7 +6,7 @@
  */ 
 function WhModuleAdmin() {
     var self = this, model = this.model;
-    var whModule = Session.get("WhSessionModule");
+    var whModule = Session.getModule("WhSessionModule");
     
     self.addItemContentsToWH = function(anItem, aTradePoint) {
         model.qContents.params.trade_item_id = anItem;

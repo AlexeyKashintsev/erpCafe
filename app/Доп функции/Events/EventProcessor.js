@@ -31,7 +31,7 @@ function EventProcessor() {
                     event_date  :   new Date()
                 });
                 model.save();
-                Logger.info(evt);
+                Logger.warning(evt);
             } else {
                 Logger.warning('Неизвестный event-type ' + aEventType + '\nevtData: ' + aEventData);
             }

@@ -8,7 +8,7 @@ function TradeItemsWCostOnTPView() {
 var self = this, model = this.model, form = this; 
 var fmAddItemList, fmItemSettings;
 var tp;
-var tradeAdmMod = Session.get("TradeAdminModule");
+var tradeAdmMod = Session.getModule("TradeAdminModule");
     
 self.setTradePoint = function(aTradePoint) {
     model.qTradeItemsOnTPwData.params.trade_point = tp = aTradePoint;

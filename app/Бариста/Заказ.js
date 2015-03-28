@@ -89,6 +89,7 @@ function OrderList(aParent, aContainer) {
                 for (var j in self.orderDetails[i]) {
                     anOrderDetails.orderSum += self.orderDetails[i][j].orderSum;
                     anOrderDetails.orderItems.push({
+                        tradeId     :   self.orderDetails[i][j].tradeId,
                         itemId      :   self.orderDetails[i][j].itemId,
                         quantity    :   self.orderDetails[i][j].orderQuantity,
                         priceType   :   j,

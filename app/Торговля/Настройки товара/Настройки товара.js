@@ -4,7 +4,7 @@
  */
 function ItemSettingsAndCost(aTradeItemId, aOpenType) {
     var self = this, model = this.model, form = this;
-    var tradeAdminModule = Session.get("TradeAdminModule");
+    var tradeAdminModule = Session.getModule("TradeAdminModule");
 
     var fmItemCard, fmTIcontents, fmItemCost, fmBonuses, fmGroup, fmModifiers;
     /*require(['ItemCard', 'ContentTradeItem', 'ItemCostForm', 'BonusRateForm'],

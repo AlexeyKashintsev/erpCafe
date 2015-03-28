@@ -5,13 +5,13 @@
  * @public
  */
 function TradeSessions() {
-    Session.set('TradeSessions', this);
+    Session.setModule('TradeSessions', this);
     var self = this, model = this.model;
-    var whSession = Session.get('WhSessionModule');
-    var bonuses = Session.get('BonusModule');
+    var whSession = Session.getModule('WhSessionModule');
+    var bonuses = Session.getModule('BonusModule');
     var odp = new OrderProcessorServer();
     var ep = new EventProcessor();
-    var session = Session.get("UserSession");
+    var session = Session.getModule("UserSession");
     var sessionItems = {};
 
     self.getInfoForErrors = function(anError) {

@@ -15,7 +15,7 @@ function UserSession() {
     };
     //test
     //Session.login();
-    Session.set('UserSession', this);
+    Session.setModule('UserSession', this);
     model.params.userName = self.principal.name;
     if (!self.principal.hasRole('client'))
         model.qFrancByUserName.requery();

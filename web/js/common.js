@@ -6,6 +6,7 @@ var session = {/*
     activeSession
     tradePoint
     franchaziId*/};
+var settings;
 var Session = new (function() {
         var servModules = {};
         this.get = function(aModuleName) {
@@ -14,13 +15,17 @@ var Session = new (function() {
             }
             return servModules[aModuleName];
         };
-    })();
-//var settings = Session.get('Settings'); //глобальная переменная для всего проекта на стороне клиента
+    })();;
+//var settings = Session.getModule('Settings'); //глобальная переменная для всего проекта на стороне клиента
 
 var Logout = function() {
     logout();
     setTimeout(location.reload, 1000);
 };
+
+$('#modalForm').on('hidden.bs.modal', function (e) {
+    document.getElementById('modal-body-window').innerHTML = '';
+});
 
 cmn.Modal = function(aTitle) {
     var modalBody = document.getElementById("modal-body-window");
@@ -32,7 +37,7 @@ cmn.Modal = function(aTitle) {
     
     this.getModalBody = function() {
         return modalBody;
-    }
+    };  
 }
 
 cmn.showModal = function(aForm, aCallback) {

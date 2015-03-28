@@ -8,8 +8,8 @@
 function TradeAdminModule() {
     var self = this, model = this.model;
     var franchazi = null;
-    var session = Session.get("UserSession");
-    var whModule = Session.get("WhModuleAdmin");
+    var session = Session.getModule("UserSession");
+    var whModule = Session.getModule("WhModuleAdmin");
 
     self.OP_TYPE_REMOVE_CASH = 101; // операция снятия кассы
 

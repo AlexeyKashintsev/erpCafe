@@ -3,7 +3,7 @@
  */
 function ChangeItemType() {
     var self = this, model = this.model, form = this;
-    var userSession = Session.get("UserSession");
+    var userSession = Session.getModule("UserSession");
     var franchazi_id = userSession.getFranchazi();
     model.itemType.params.franchazi_id = franchazi_id;
     

@@ -7,8 +7,8 @@
 
 function SelectFranchaziAdminForm() {
 var self = this, model = this.model, form = this;
-//var bm = Session.get("BillModule");
-//var whModuleAdmin = Session.get("WhModuleAdmin");
+//var bm = Session.getModule("BillModule");
+//var whModuleAdmin = Session.getModule("WhModuleAdmin");
 
 function btnReqActionPerformed(evt) {//GEN-FIRST:event_btnReqActionPerformed
     if (self.model.modified&&confirm('Сохранить изменения?')){

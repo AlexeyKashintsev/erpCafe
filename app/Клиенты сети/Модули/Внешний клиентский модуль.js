@@ -6,8 +6,8 @@
  */
 function ClientPublicModule() {
     var self = this, model = this.model;
-    var BM = Session.get("BillModule");
-    var CSM = Session.get("ClientServerModule");
+    var BM = Session.getModule("BillModule");
+    var CSM = Session.getModule("ClientServerModule");
     
     self.CreateUserWithBonuses = function (){
         var post = self.http.request.params;

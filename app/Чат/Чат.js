@@ -6,7 +6,7 @@
 function MyChat(aContainer) {
     var self = this, model = this.model, form = this;
     var sendChatMsg = new ServerModule("SendChatMsg");
-    var userSession = Session.get("UserSession");
+    var userSession = Session.getModule("UserSession");
    
     var chat = cmn.createElement('div', 'chat', aContainer);
     var msgArea = cmn.createElement('div', 'chat-msgarea', chat, 'chat-msgarea');

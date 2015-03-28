@@ -66,11 +66,10 @@ function SessionKeeper() {
 }
 
 platypus.ready = function() {
-    $('#modalForm').on('hidden.bs.modal', function (e) {
-        document.getElementById('modal-body-window').innerHTML = '';
-    })
     require(['getUserSession'], function() {
         session = getUserSession();
+        //settings = Session.getModule("Settings");
+        
         session.getUserRole(function(anUserRole){
                 session.userRole = anUserRole;
                 session.userName = session.getUserName();
