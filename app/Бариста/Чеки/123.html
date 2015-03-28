@@ -1,0 +1,70 @@
+<head>
+
+</head>
+<body>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script>
+function PrintModule() {
+    var self = this, model = this.model;
+    
+	var Data = {};
+	Data.methodOfPayment = 0;
+	Data.orderSum = 5002;
+	Data.orderItems = [];
+	Data.orderItems[0] = {
+		item_name : "Капустка",
+		quantity  : 2
+	};
+	
+	
+    self.print = function(){
+        var iframe=$('<iframe id="print_frame">');
+        $('body').append(iframe);
+        var doc = $('#print_frame')[0].contentDocument || $('#print_frame')[0].contentWindow.document;
+        var win = $('#print_frame')[0].contentWindow || $('#print_frame')[0];
+        doc.getElementsByTagName('body')[0].innerHTML=createCheck(321, Data);
+        win.print();
+        $('iframe').remove();
+    };
+    
+    var basic = {};
+    basic.caption = 'ООО "Три копыта"';
+    basic.customInfo = {};
+    basic.customInfo.kkm = 321321455;
+    basic.customInfo.inn = 21321321213121;
+    basic.customInfo.eklz = 1321154549875;
+    
+    self.setBasicInfo = function(aInfo){
+        basic = aInfo;
+    }
+    
+    function createCheck(aNumber, anOrderDetails){
+        var html =  '<style media=print></style>';
+        html +=     '<div class=p_container"><div class="p_head">' + basic.caption + '</div>';
+        html +=     '<div class="p_custom_info"><p>ККМ ' + basic.customInfo.kkm + '</p>';
+        html +=     '<p>ИНН ' + basic.customInfo.inn + '</p>';
+        html +=     '<p>ЭКЛЗ ' + basic.customInfo.eklz + '</p></div>';
+        html +=     '<div class="p_order_info"><p>Дата ' + new Date().toLocaleString(); + '</p>';
+        html +=     '<p>Продавец ' + 'TODO имя продавца' + '</p>';
+        html +=     '<p>№ чека ' + aNumber + '</p></div>';
+        html +=     '<div class="p_order">';
+        for (var i in anOrderDetails.orderItems) {
+            html += '<p>' + anOrderDetails.orderItems[i].item_name + ' ' + anOrderDetails.orderItems[i].quantity + '</p>';
+            //sessionItems[anOrderDetails.orderItems[i].tradeId].cost //цена товара
+        }
+        html +=     '</div>';
+        html +=     '<div class="p_order_after"><p> Способ оплаты: ' + anOrderDetails.methodOfPayment ? "Бонусы" : "Наличные";
+        html +=     '</p><p class="p_summ"> СУММА: ' + anOrderDetails.orderSum + '</p></div>';
+        html +=     '</div>';
+		return html;
+    }
+}
+var PM = new PrintModule();
+$(function()
+        {
+            alert('Подключена последняя версия jQuery через Google хостинг');
+        });
+</script>
+<button id="bprint" onclick=PM.print();>Печать</button>
+</body>
