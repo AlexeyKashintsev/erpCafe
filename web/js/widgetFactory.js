@@ -2,6 +2,7 @@ var wf = {};
 
 wf.proto = function() {
     this.dockElement = cmn.createElement(this.elType, this.elClass, this.container, this.ID);
+    CSS_M.registerHTMLComponent(this.dockElement, this.constructor.name);
     this.hide = (function(){
         if (this.onhide)
             this.onhide();
@@ -80,7 +81,7 @@ wf.Selector = function(aContainer, aValues, anAction) {
     this.dockElement.onchange = processChange;
 };
 
-wf.OrderListPane = function(aContainer) {
+wf.OrderList = function(aContainer) {
     this.elType = "div";
     this.elClass = "baristaOrder panel panel-primary";
     this.container = aContainer;
@@ -227,7 +228,7 @@ wf.TradeItemAdd = function(aContainer) {
     itemPanel.onclick = this.click;
 };
 
-wf.ClientSelector = function(aContainer) {
+wf.ClientPhoneSelector = function(aContainer) {
     this.elType = "div";
     this.elClass = "baristaOrder panel panel-primary";
     this.container = aContainer;

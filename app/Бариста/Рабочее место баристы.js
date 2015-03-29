@@ -11,6 +11,7 @@ function BaristaDesktop() {
     var whAdd = null;
     var dashboard, itemSelector, modifiers, reportView, whView, devSetView;
     var tsReport, whReplenish, devSettings;
+    var lm = new CSSManager();
     
     var chekLists = new CheckLists();
     settings = new ServerModule('Settings');

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?><datamodel>
   <parametersEntity entityHeight="200" entityIconified="false" entityLocationX="12" entityLocationY="12" entityWidth="150"/>
-  <entity Name="getSessions" Title="" entityHeight="200" entityIconified="false" entityId="140688477684616" entityLocationX="209" entityLocationY="66" entityWidth="150" queryId="getSessions" tableName="" tableSchemaName=""/>
   <entity Name="qTradePoint" Title="" entityHeight="200" entityIconified="false" entityId="141153927151931" entityLocationX="378" entityLocationY="6" entityWidth="150" queryId="qTradePoint" tableName="" tableSchemaName=""/>
+  <entity Name="getSessions" Title="" entityHeight="200" entityIconified="false" entityId="140688477684616" entityLocationX="209" entityLocationY="66" entityWidth="150" queryId="getSessions" tableName="" tableSchemaName=""/>
   <referenceRelation leftEntityFieldName="trade_point" leftEntityId="140688477684616" rightEntityFieldName="org_trade_point_id" rightEntityId="141153927151931"/>
 </datamodel>
