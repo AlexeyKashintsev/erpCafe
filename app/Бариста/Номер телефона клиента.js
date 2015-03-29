@@ -83,7 +83,7 @@ function ClientPhoneSelector(aParent, aContainer) {
     }
 
     function createClientSelectPane(aContainer) {
-        wf.ClientSelector.bind(self)(aContainer);
+        wf.ClientPhoneSelector.bind(self)(aContainer);
         var clientLabel = cmn.createElement("h4", 'clientLabel', self.dockElement, 'clientLabel');
         clientLabel.innerHTML = "Введите номер телефона клиента";
         inpPhone = cmn.createElement("input", "client-phone-input", self.dockElement);
