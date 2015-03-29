@@ -6,18 +6,18 @@
 function PrintModule() {
     var self = this, model = this.model;
     
-    self.print = function(){
-        var iframe=$('<iframe id="print_frame">');
+    self.print = function(aData){
+        var iframe = $('<iframe id="print_frame">');
         $('body').append(iframe);
         var doc = $('#print_frame')[0].contentDocument || $('#print_frame')[0].contentWindow.document;
         var win = $('#print_frame')[0].contentWindow || $('#print_frame')[0];
-        doc.getElementsByTagName('body')[0].innerHTML=html;
+        doc.getElementsByTagName('body')[0].innerHTML = createCheck(0, aData);
         win.print();
         $('iframe').remove();
     };
     
     var basic = {};
-    basic.caption = 'ООО "Три копыта"';
+    basic.caption = '4REAL-POS CUSTOM';
     basic.customInfo = {};
     basic.customInfo.kkm = 321321455;
     basic.customInfo.inn = 21321321213121;
@@ -27,7 +27,7 @@ function PrintModule() {
         basic = aInfo;
     }
     
-    function createCheck(aNumber, aData){
+    function createCheck(aNumber, aData) {
         var html =  '<style media=print></style>';
         html +=     '<div class=p_container"><div class="p_head">' + basic.caption + '</div>';
         html +=     '<div class="p_custom_info"><p>ККМ ' + basic.customInfo.kkm + '</p>';
@@ -45,5 +45,6 @@ function PrintModule() {
         html +=     '<div class="p_order_after"><p> Способ оплаты: ' + aData.methodOfPayment ? "Бонусы" : "Наличные";
         html +=     '</p><p class="p_summ"> СУММА: ' + aData.orderSum + '</p></div>';
         html +=     '</div>';
+        return html;
     }
 }

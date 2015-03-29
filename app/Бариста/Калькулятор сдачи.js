@@ -12,8 +12,9 @@ function CashBackCalculator(aParent, aContainer) {
     var btnsSumEnabled = true;
     self.shown = false;
     var kln;
-    
+   
     var container = cmn.createElement('div', 'cash_calculator', aContainer ? aContainer : 'mainArea');
+    CSS_M.registerHTMLComponent(container, 'cashBackCalc');
     $( ".cash_calculator" ).disableSelection();
         
     function createButton(aClass, aContainer, aText, aValue, aTitle) {

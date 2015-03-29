@@ -8,6 +8,7 @@ function OrderList(aParent, aContainer) {
     var self = this, model = this.model, form = this;
     self.orderDetails = {};
     orderList = this;
+    var chekPrint = new PrintModule();
     
     var orderProcessor = new OrderProcessor();
     var orderChanged = false;
@@ -91,6 +92,7 @@ function OrderList(aParent, aContainer) {
                     anOrderDetails.orderItems.push({
                         tradeId     :   self.orderDetails[i][j].tradeId,
                         itemId      :   self.orderDetails[i][j].itemId,
+                        item_name   :   self.orderDetails[i][j].item_name,
                         quantity    :   self.orderDetails[i][j].orderQuantity,
                         priceType   :   j,
                         price       :   self.orderDetails[i][j].itemCost,
@@ -104,6 +106,7 @@ function OrderList(aParent, aContainer) {
             if (ic > 0) {
                 anOrderDetails.methodOfPayment = aPayDetails.paymentMethod;//"money";
                 orderProcessor.processOrder(anOrderDetails);
+                chekPrint.print(anOrderDetails);
             } else {
                 alert("Ничего не выбрано");
             }

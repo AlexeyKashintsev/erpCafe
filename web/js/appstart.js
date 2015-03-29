@@ -66,9 +66,14 @@ function SessionKeeper() {
 }
 
 platypus.ready = function() {
+    require(['CSSManager'],function() {
+        CSS_M = new CSSManager();
+    });
+    
     require(['getUserSession'], function() {
         session = getUserSession();
         //settings = Session.getModule("Settings");
+        
         
         session.getUserRole(function(anUserRole){
                 session.userRole = anUserRole;

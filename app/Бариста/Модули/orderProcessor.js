@@ -45,7 +45,7 @@ function OrderProcessor() {
     self.processOrder = function(anOrderDetails, anAlert, anAttempt) {
         var attempt = anAttempt ? anAttempt : 0;
         attempt++;
-        Logger.info(logs.sending + attempt);
+        console.log(logs.sending + attempt);
         var alert = new Alerter(anAlert, "alert-info", alerts.sending + attempt, false);
         session.tradeSession.processOrder(anOrderDetails, function() {
                 new Alerter(alert, "alert-success", alerts.success

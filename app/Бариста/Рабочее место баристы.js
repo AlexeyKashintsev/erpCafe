@@ -11,7 +11,6 @@ function BaristaDesktop() {
     var whAdd = null;
     var dashboard, itemSelector, modifiers, reportView, whView, devSetView;
     var tsReport, whReplenish, devSettings;
-    var lm = new CSSManager();
     
     var chekLists = new CheckLists();
     settings = new ServerModule('Settings');
@@ -34,17 +33,36 @@ function BaristaDesktop() {
         } else return false; 
     }
     
+    var panelSettings = {
+        clientSelector : false,
+        modifiersOnTop : true,
+        typeModifiers : true,
+        priceModifiers : false,
+        priceModBeforeItems : true
+    };
     function initTradePanels() {
             dashboard = cmn.createElement('div', 'dashboard', "mainArea");
-            itemSelector = cmn.createElement('div', 'item_selector col-sm-8 row', dashboard);
-            modifiers = cmn.createElement('div', 'modifiers col-sm-4 row', dashboard);
-            self.clientSelector = new ClientPhoneSelector(self);
+            self.cashBackCalc = new CashBackCalculator(self, dashboard);
+            if (!panelSettings.priceModBeforeItems) {
+                itemSelector = cmn.createElement('div', '', dashboard);
+                modifiers = cmn.createElement('div', '', dashboard);
+            } else {
+                modifiers = cmn.createElement('div', '', dashboard);
+                itemSelector = cmn.createElement('div', '', dashboard);
+            }
+            
+            
+            CSS_M.registerHTMLComponent(itemSelector, 'itemSelector');
+            CSS_M.registerHTMLComponent(modifiers, 'selectorModifiers');
+            
+            self.clientSelector = new ClientPhoneSelector(self, panelSettings.clientSelector)
             new OrderList(self);
-            self.cashBackCalc = new CashBackCalculator(self, itemSelector);
             self.itemsSelector = new ItemsSelector(itemSelector, self, session.tradePoint);
             itemsBoard = self.itemsSelector;
-            self.typesSelector = new TypesSelector(modifiers, self, session.tradePoint);
-            self.priceModifier = new PriceModifier(modifiers, self, session.tradePoint);
+            if (panelSettings.typeModifiers)
+                self.typesSelector = new TypesSelector(modifiers, self, session.tradePoint);
+            if (panelSettings.priceModifiers)
+                self.priceModifier = new PriceModifier(modifiers, self, session.tradePoint);
             //self.chat = new MyChat(modifiers); self.chat.initChat();
     }
     

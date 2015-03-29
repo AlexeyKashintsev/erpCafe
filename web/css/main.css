@@ -174,16 +174,16 @@ button.typeSelector {
 
 div.items_select {
     overflow-y: auto;
-    height: 100%;
+    #height: 100%;
     position: absolute;
 }
 
 div.item_selector {
-    height: 100%;
+    #height: 100%;
 }
 
 div.dashboard {
-    height: 100%;
+    #height: 100%;
 }
 
 .itemDescription {
@@ -191,6 +191,12 @@ div.dashboard {
     margin-bottom: 0px;
     padding: 0px 0px 15px 15px;
     display: inline-block;
+}
+
+.itemDescription.no-padding {
+    padding: 0px;
+    border-right: solid 1px;
+    border-bottom: solid 1px;
 }
 
 .itemDescription > div.panel {
@@ -257,13 +263,16 @@ h1.item-add {
 /* COST MODIFIERS */
 
 div.modifiers {
-  height: 100%;
   right: 0px;
   padding-top: 15px;
   margin-top: -15px;
   margin-right: 0px;
-  position: absolute;
   background-color: rgba(253, 227, 167, 0.5);
+}
+
+div.modifiers.row {
+    height: 100%;
+    position: absolute;
 }
 
 .price_modifier {
@@ -466,6 +475,14 @@ div.balance-meter.btn_pane > button {
 div.cash_calculator {
   display: inline-block;
   margin: -6px 0px 35px -15px;
+}
+
+div.cash_calculator.v800x480 {
+    display: absolute;
+    top: 50px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
 }
 
 div.top_head {
