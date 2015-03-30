@@ -12,12 +12,15 @@ function PrintModule() {
         var doc = $('#print_frame')[0].contentDocument || $('#print_frame')[0].contentWindow.document;
         var win = $('#print_frame')[0].contentWindow || $('#print_frame')[0];
         doc.getElementsByTagName('body')[0].innerHTML = createCheck(0, aData);
-        win.print();
-        $('iframe').remove();
+        setTimeout(function() {
+            win.print();
+            $('iframe').remove();
+        }, 500);
+        
     };
     
     var basic = {};
-    basic.caption = '4REAL-POS CUSTOM';
+    basic.caption = '4REAL-POS CUSTOM BIG II SAPMLE PRINT';
     basic.customInfo = {};
     basic.customInfo.kkm = 321321455;
     basic.customInfo.inn = 21321321213121;
@@ -30,20 +33,8 @@ function PrintModule() {
     function createCheck(aNumber, aData) {
         var html =  '<style media=print></style>';
         html +=     '<div class=p_container"><div class="p_head">' + basic.caption + '</div>';
-        html +=     '<div class="p_custom_info"><p>ККМ ' + basic.customInfo.kkm + '</p>';
-        html +=     '<p>ИНН ' + basic.customInfo.inn + '</p>';
-        html +=     '<p>ЭКЛЗ ' + basic.customInfo.eklz + '</p></div>';
-        html +=     '<div class="p_order_info"><p>Дата ' + new Date().toLocaleString(); + '</p>';
-        html +=     '<p>Продавец ' + 'TODO имя продавца' + '</p>';
-        html +=     '<p>№ чека ' + aNumber + '</p></div>';
-        html +=     '<div class="p_order">';
-        for (var i in aData.orderItems) {
-            html += '<p>' + aData.orderItems[i].item_name + ' ' + aData.orderItems[i].quantity + '</p>';
-            //sessionItems[aData.orderItems[i].tradeId].cost //цена товара
-        }
-        html +=     '</div>';
-        html +=     '<div class="p_order_after"><p> Способ оплаты: ' + aData.methodOfPayment ? "Бонусы" : "Наличные";
-        html +=     '</p><p class="p_summ"> СУММА: ' + aData.orderSum + '</p></div>';
+        html +=     '<img src="img/header_logo_4r.png"></img>';
+        html +=     '</p><h1 class="p_summ"> СУММА: ' + aData.orderSum + '</h1></div>';
         html +=     '</div>';
         return html;
     }
